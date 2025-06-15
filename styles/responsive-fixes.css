@@ -1,0 +1,21 @@
+/* Estilos para pantallas menores a 992px */
+@media (max-width: 991.98px) {
+
+    /* Evita desbordamiento horizontal */
+    body,
+    html {
+        max-width: 100%;
+        overflow-x: clip;
+    }
+
+    /* Elimina márgenes laterales en filas dentro de container-fluid con padding horizontal */
+    .container-fluid[class*=px-]>.row {
+        margin-right: 0;
+        margin-left: 0;
+    }
+
+    /* Limita ancho de elementos posicionados absolutamente en .hero-section */
+    .hero-section .position-absolute {
+        max-width: 100vw;
+    }
+}

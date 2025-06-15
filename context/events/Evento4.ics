@@ -1,0 +1,50 @@
+BEGIN:VCALENDAR
+VERSION:1.0
+PRODID:-//Iglesia Bautista de Monterrey//Eventos//ES
+CALSCALE:GREGORIAN
+BEGIN:VTIMEZONE
+TZID:America/Monterrey
+X-LIC-LOCATION:America/Monterrey
+BEGIN:STANDARD
+TZOFFSETFROM:-0500
+TZOFFSETTO:-0600
+TZNAME:CST
+DTSTART:19701025T020000
+RRULE:FREQ=YEARLY;BYMONTH=10;BYDAY=-1SU
+END:STANDARD
+BEGIN:DAYLIGHT
+TZOFFSETFROM:-0600
+TZOFFSETTO:-0500
+TZNAME:CDT
+DTSTART:19700405T020000
+RRULE:FREQ=YEARLY;BYMONTH=4;BYDAY=1SU
+END:DAYLIGHT
+END:VTIMEZONE
+BEGIN:VEVENT
+UID:Siembra2025-1@ibmonterrey.mx
+DTSTAMP:20240607T120000Z
+DTSTART;TZID=America/Monterrey:20251010T190000
+DTEND;TZID=America/Monterrey:20251010T210000
+SUMMARY:Conferencia Siembra
+DESCRIPTION:Tres días en los que tendrás la oportunidad de profundizar en tus finanzas desde la perspectiva de tu fe.
+LOCATION:(Pendiente de confirmar)
+END:VEVENT
+BEGIN:VEVENT
+UID:Siembra2025-2@ibmonterrey.mx
+DTSTAMP:20240607T120000Z
+DTSTART;TZID=America/Monterrey:20251011T190000
+DTEND;TZID=America/Monterrey:20251011T210000
+SUMMARY:Conferencia Siembra
+DESCRIPTION:Tres días en los que tendrás la oportunidad de profundizar en tus finanzas desde la perspectiva de tu fe.
+LOCATION:(Pendiente de confirmar)
+END:VEVENT
+BEGIN:VEVENT
+UID:Siembra2025-3@ibmonterrey.mx
+DTSTAMP:20240607T120000Z
+DTSTART;TZID=America/Monterrey:20251012T190000
+DTEND;TZID=America/Monterrey:20251012T210000
+SUMMARY:Conferencia Siembra
+DESCRIPTION:Tres días en los que tendrás la oportunidad de profundizar en tus finanzas desde la perspectiva de tu fe.
+LOCATION:(Pendiente de confirmar)
+END:VEVENT
+END:VCALENDAR

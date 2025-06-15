@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="es" data-bs-theme="light">
+    <head>
+        <!-- Metadatos básicos -->
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <meta name="description" content="Nosotros | Iglesia Bautista de Monterrey">
+
+        <!-- Configuración de tema claro/oscuro -->
+        <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+        <meta name="theme-color" content="#121212" media="(prefers-color-scheme: dark)">
+
+        <!-- Precarga de recursos críticos para mejorar rendimiento -->
+        <link rel="preload" href="assets/icons/IBMty_Logo_Desktop.png" as="image">
+        <link rel="preload" href="assets/icons/IBMty_Logo_Mobile.png" as="image">
+        <!-- Favicon e ícono para dispositivos Apple -->
+        <link rel="icon" type="image/png" sizes="32x32" href="assets/icons/IBMty_Icon.png">
+        <link rel="apple-touch-icon" sizes="180x180" href="assets/icons/IBMty_Icon.png">
+
+        <title>Iglesia Bautista de Monterrey</title>
+
+        <!-- Bibliotecas Bootstrap, Font Awesome, AOS y Animate. -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" integrity="sha512-1cK78a1o+ht2JcaW6g8OXYwqpev9+6GqOkz9xmBN9iUUhIndKtxwILGWYOSibOKjLsEdjyjZvYDq/cZwNeak0w==" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+        
+        <!-- Hojas de estilo personalizadas -->
+        <link rel="stylesheet" href="components/navbar.css">
+        <link rel="stylesheet" href="components/footer.css">
+        <link rel="stylesheet" href="styles/responsive-fixes.css">
+    </head>
+    <body>
+        <!-- BARRA DE NAVEGACIÓN -->
+        <nav class="navbar navbar-expand-lg">
+            <div class="container-fluid">
+                <!-- Botón de cambio de tema (versión móvil) -->
+                <button type="button" class="btn theme-toggle mobile-theme-toggle d-lg-none" onclick="toggleTheme()">
+                    <i class="fas fa-sun" id="mobile-theme-icon"></i>
+                </button>
+                <!-- Logo para escritorio -->
+                <a class="navbar-brand" href="index.html">
+                    <img src="assets/icons/IBMty_Logo_Desktop.png" alt="Logo" class="img-fluid">
+                </a>
+                <!-- Logo para móvil -->
+                <a class="navbar-brand mobile-brand" href="index.html">
+                    <img src="assets/icons/IBMty_Logo_Mobile.png" alt="Logo" class="img-fluid">
+                </a>
+                <!-- Botón de menú para móviles -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <!-- Menú de navegación -->
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">
+                                <i class="fas fa-home"></i>Inicio
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <!-- Página activa marcada con clase 'active' -->
+                            <a class="nav-link active" href="nosotros.html">
+                                <i class="fas fa-users"></i>Nosotros
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="ministerios.html">
+                                <i class="fas fa-church"></i>Ministerios
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="salvacion.html">
+                                <i class="fas fa-cross"></i>Salvación
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="donativo.html">
+                                <i class="fas fa-donate"></i>Donativo
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Botón de cambio de tema (versión escritorio) -->
+                <button type="button" class="btn theme-toggle d-none d-lg-flex" onclick="toggleTheme()">
+                    <i class="fas fa-sun" id="desktop-theme-icon"></i>
+                </button>
+            </div>
+        </nav>
+
+        <main>
+            <!-- SECCIÓN PRINCIPAL DE NUESTRO ADN -->
+            <section class="hero-section py-4 py-md-5 py-lg-6 bg-body" id="hero">
+                <div class="container-fluid container-sm container-md container-lg px-3 px-md-4">
+                    <div class="row justify-content-center">
+                        <div class="col-12 col-sm-11 col-md-10 col-lg-9 col-xl-8">
+                            <header class="text-center mb-4 mb-md-5" data-aos="fade-up" data-aos-duration="1000">
+                                <div class="hero-icon mb-3 mb-md-4">
+                                    <div class="bg-info bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center animate__animated animate__pulse animate__infinite animate__slow" style="width: 100px; height: 100px;">
+                                        <i class="fa-solid fa-dna text-info fs-2" aria-hidden="true"></i>
+                                    </div>
+                                </div>
+                                <h1 class="display-5 display-md-4 display-lg-3 fw-bold text-body-emphasis mb-3 mb-md-4 animate__animated animate__fadeIn">Nuestro ADN</h1>
+                                <div class="divider mx-auto bg-info rounded-pill" style="width: 60px; height: 4px;"></div>
+                                <p class="lead mt-4 text-body-secondary" data-aos="fade-up" data-aos-delay="200">Descubre la esencia que nos impulsa y nos define como iglesia</p>
+                            </header>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECCIÓN MISIÓN, VISIÓN Y VALORES -->
+            <section class="py-4 py-md-5 py-lg-6 bg-body-tertiary" id="mission-vision">
+                <div class="container-fluid container-lg px-3 px-md-4">
+                    <div class="row g-3 g-md-4 g-lg-4">
+                        <!-- TARJETA DE MISIÓN -->
+                        <div class="col-12 col-lg-4" data-aos="fade-right" data-aos-duration="1000">
+                            <div class="card h-100 border-0 shadow-sm bg-body">
+                                <div class="card-body p-3 p-md-4 p-lg-4 d-flex flex-column">
+                                    <div class="d-flex align-items-center mb-3 mb-md-4">
+                                        <div class="bg-primary bg-opacity-10 rounded-circle p-2 p-md-3 me-3 animate__animated animate__flip animate__slow flex-shrink-0">
+                                            <i class="fas fa-bullseye text-primary fs-5 fs-md-4" aria-hidden="true"></i>
+                                        </div>
+                                        <div class="flex-grow-1">
+                                            <h2 class="h5 h-md-4 h-lg-4 fw-bold text-body-emphasis mb-0">Misión</h2>
+                                        </div>
+                                    </div>
+                                    <blockquote class="blockquote mb-3 mb-md-4 flex-grow-1">
+                                        <p class="text-body text-center fs-6 fs-md-6 lh-base mb-0">Formar discípulos apasionados por el llamado de Dios para compartir el evangelio en Monterrey, México y el mundo.</p>
+                                    </blockquote>
+                                    <div class="mt-auto pt-3 border-top border-opacity-25">
+                                        <div class="row g-2 text-center">
+                                            <div class="col-4" data-aos="zoom-in" data-aos-delay="100">
+                                                <div class="text-primary fw-bold fs-6">Formar</div>
+                                                <small class="text-body-secondary d-block">Discípulos</small>
+                                            </div>
+                                            <div class="col-4" data-aos="zoom-in" data-aos-delay="200">
+                                                <div class="text-primary fw-bold fs-6">Multiplicar</div>
+                                                <small class="text-body-secondary d-block">Ministros</small>
+                                            </div>
+                                            <div class="col-4" data-aos="zoom-in" data-aos-delay="300">
+                                                <div class="text-primary fw-bold fs-6">Alcanzar</div>
+                                                <small class="text-body-secondary d-block">El mundo</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- TARJETA DE VISIÓN -->
+                        <div class="col-12 col-lg-4" data-aos="fade-up" data-aos-duration="1000">
+                            <div class="card h-100 border-0 shadow-sm bg-body">
+                                <div class="card-body p-3 p-md-4 p-lg-4 d-flex flex-column">
+                                    <div class="d-flex align-items-center mb-3 mb-md-4">
+                                        <div class="bg-success bg-opacity-10 rounded-circle p-2 p-md-3 me-3 animate__animated animate__flip animate__slow flex-shrink-0">
+                                            <i class="fas fa-eye text-success fs-5 fs-md-4" aria-hidden="true"></i>
+                                        </div>
+                                        <div class="flex-grow-1">
+                                            <h2 class="h5 h-md-4 h-lg-4 fw-bold text-body-emphasis mb-0">Visión</h2>
+                                        </div>
+                                    </div>
+                                    <blockquote class="blockquote mb-3 mb-md-4 flex-grow-1">
+                                        <p class="text-body text-center fs-6 fs-md-6 lh-base mb-0">Una iglesia viva que guía a cada persona hacia una relación transformadora con Cristo.</p>
+                                    </blockquote>
+                                    <div class="mt-auto pt-3 border-top border-opacity-25">
+                                        <div class="d-flex align-items-center justify-content-center">
+                                            <div class="d-flex flex-column align-items-center w-100">
+                                                <i class="fas fa-globe text-success mb-2 fs-5" aria-hidden="true"></i>
+                                                <small class="text-body-secondary d-block">Alcanzamos vidas para Cristo</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- TARJETA DE VALORES -->
+                        <div class="col-12 col-lg-4" data-aos="fade-left" data-aos-duration="1000">
+                            <div class="card h-100 border-0 shadow-sm bg-body">
+                                <div class="card-body p-3 p-md-4 p-lg-4 d-flex flex-column">
+                                    <div class="d-flex align-items-center mb-3 mb-md-4">
+                                        <div class="bg-danger bg-opacity-10 rounded-circle p-2 p-md-3 me-3 animate__animated animate__flip animate__slow flex-shrink-0">
+                                            <i class="fas fa-hand-holding-heart text-danger fs-5 fs-md-4" aria-hidden="true"></i>
+                                        </div>
+                                        <div class="flex-grow-1">
+                                            <h2 class="h5 h-md-4 h-lg-4 fw-bold text-body-emphasis mb-0">Valores</h2>
+                                        </div>
+                                    </div>
+                                    <blockquote class="blockquote mb-3 mb-md-4 flex-grow-1">
+                                        <p class="text-body text-center fs-6 fs-md-6 lh-base mb-0">Queremos servirte y amarte con el mismo amor que Jesús nos ha mostrado para compartirlo con los demás.</p>
+                                    </blockquote>
+                                    <div class="mt-auto pt-3 border-top border-opacity-25">
+                                        <div class="row g-2 text-center">
+                                            <div class="col-4" data-aos="zoom-in" data-aos-delay="100">
+                                                <div class="text-danger fw-bold fs-6">Ve</div>
+                                                <small class="text-body-secondary d-block">con Fe</small>
+                                            </div>
+                                            <div class="col-4" data-aos="zoom-in" data-aos-delay="200">
+                                                <div class="text-danger fw-bold fs-6">Sirve</div>
+                                                <small class="text-body-secondary d-block">con humildad</small>
+                                            </div>
+                                            <div class="col-4" data-aos="zoom-in" data-aos-delay="300">
+                                                <div class="text-danger fw-bold fs-6">Ama</div>
+                                                <small class="text-body-secondary d-block">como Cristo</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECCIÓN DE HISTORIA -->
+            <section class="py-5 py-lg-6 bg-body-tertiary" id="history">
+                <div class="container">
+                    <div class="row align-items-center g-4 g-lg-5">
+                        <div class="col-12 col-lg-6 order-2 order-lg-1" data-aos="fade-right" data-aos-duration="1000">
+                            <div class="card h-100 border-0 shadow-sm bg-body">
+                                <div class="card-body p-4 p-lg-5">
+                                    <div class="text-body lh-base">
+                                        <p class="mb-4"> Con más de 
+                                            <strong class="text-info animate__animated animate__heartBeat animate__infinite animate__slow">36 años</strong>,
+                                            la Iglesia Bautista de Monterrey ha proclamado el evangelio y formado seguidores de Jesús.
+                                        </p>
+                                        <div class="bg-body-secondary bg-opacity-25 rounded-3 p-4 mb-4" data-aos="zoom-in"
+                                            data-aos-delay="200">
+                                            <p class="mb-0 fw-semibold text-body">
+                                                <i class="fas fa-network-wired text-info me-2" aria-hidden="true"></i> Formamos
+                                                parte de <strong>RIBBI</strong> (Red de Iglesias Bíblicas Bautistas
+                                                Interdependientes), una red de iglesias
+                                                comprometidas con la sana doctrina y la cooperación mutua.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-6 order-1 order-lg-2" data-aos="fade-left" data-aos-duration="1000">
+                            <div class="position-relative">
+                                <img src="assets/images/extras/Historia.jpg" alt="Iglesia Bautista de Monterrey" class="img-fluid rounded-3 shadow-lg w-100 animate__animated animate__fadeIn">
+                                <div class="position-absolute bottom-0 start-0 end-0 bg-dark bg-opacity-75 rounded-bottom-3 p-4">
+                                    <p class="text-white mb-0 fw-semibold">
+                                        <i class="fas fa-seedling me-2" aria-hidden="true"></i>Sirviendo desde 1988.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECCIÓN DE UBICACIÓN -->
+            <section class="py-5 py-lg-6 bg-body" id="location">
+                <div class="container">
+                    <header class="row justify-content-center mb-5" data-aos="fade-up" data-aos-duration="1000">
+                        <div class="col-12 col-md-10 col-lg-8 text-center">
+                            <h2 class="display-5 fw-bold mb-3" data-aos="fade-up" data-aos-duration="800">
+                                <i class="fa fa-map-marker-alt text-info me-3"></i>Visítanos
+                            </h2>
+                            <p class="lead text-body-secondary" data-aos="fade-up" data-aos-delay="200" data-aos-duration="800">Encuentra nuestra ubicación y horarios de servicio</p>
+                        </div>
+                    </header>
+                    <div class="row g-4 g-lg-5 align-items-stretch">
+                        <div class="col-12 col-lg-5 order-2 order-lg-1" data-aos="fade-right" data-aos-duration="1000">
+                            <div class="card h-100 shadow-sm border-0 bg-body-tertiary">
+                                <div class="card-body p-4 p-lg-5">
+                                    <div class="mb-4 mb-lg-5">
+                                        <h3 class="h5 fw-bold text-body-emphasis mb-3 d-flex align-items-center">
+                                            <i class="fas fa-map-marker-alt text-info me-2" aria-hidden="true"></i>Dirección
+                                        </h3>
+                                        <address class="text-body-secondary mb-0">
+                                            <strong>Av Eugenio Garza Sada 6309</strong> <br>
+                                            Residencial La Hacienda <br>
+                                            64890 Monterrey, N.L.
+                                        </address>
+                                    </div>
+                                    <div class="mb-4 mb-lg-5">
+                                        <h3 class="h5 fw-bold text-body-emphasis mb-3 d-flex align-items-center">
+                                            <i class="fas fa-clock text-secondary me-2 animate__animated animate__pulse animate__infinite animate__slow" aria-hidden="true"></i>Horarios de Servicio – Domingo
+                                        </h3>
+                                        <ul class="list-unstyled mb-0">
+                                            <li class="d-flex flex-column flex-sm-row justify-content-between align-items-start align-items-sm-center py-3 border-bottom">
+                                                <div class="d-flex align-items-center mb-1 mb-sm-0">
+                                                    <i class="fas fa-sun text-warning me-2"></i>
+                                                    <span class="fw-semibold text-body">Matutinos</span>
+                                                </div>
+                                                <div class="d-flex flex-column flex-sm-row gap-2">
+                                                    <span class="badge bg-warning bg-opacity-10 text-warning fw-semibold px-3 py-2">9:30 AM</span>
+                                                    <span class="badge bg-warning bg-opacity-10 text-warning fw-semibold px-3 py-2">11:00 AM</span>
+                                                </div>
+                                            </li>
+                                            <li class="d-flex flex-column flex-sm-row justify-content-between align-items-start align-items-sm-center py-3">
+                                                <div class="d-flex align-items-center mb-1 mb-sm-0">
+                                                    <i class="fas fa-moon text-info me-2"></i>
+                                                    <span class="fw-semibold text-body">Vespertino</span>
+                                                </div>
+                                                <span class="badge bg-info bg-opacity-10 text-info fw-semibold px-3 py-2">6:00 PM</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="d-grid">
+                                        <a href="https://www.google.com/maps?q=Iglesia+Bautista+de+Monterrey"
+                                           target="_blank"
+                                           rel="noopener noreferrer"
+                                           class="btn btn-info btn-lg fw-semibold text-white animate__animated animate__pulse animate__infinite animate__slow">
+                                            <i class="fas fa-external-link-alt me-2" aria-hidden="true"></i>Ver en Google Maps
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-7 order-1 order-lg-2" data-aos="fade-left" data-aos-duration="1000">
+                            <div class="ratio ratio-16x9 h-100 shadow-lg rounded-4">
+                                <iframe
+                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d115136.84564654063!2d-100.41939790273437!3d25.604038099999997!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8662bf5d6fb29c59%3A0xeeec73c82d8bcd32!2sIglesia%20Bautista%20de%20Monterrey!5e0!3m2!1ses-419!2smx!4v1749840709170!5m2!1ses-419!2smx"
+                                    width="600"
+                                    height="450"
+                                    style="border: 0;"
+                                    allowfullscreen=""
+                                    loading="lazy"
+                                    referrerpolicy="no-referrer-when-downgrade">
+                                </iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECCIÓN DE CONTACTO -->
+            <section class="py-5 py-lg-6 bg-body" id="contact">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-8 col-md-10">
+                            <header class="row justify-content-center mb-5" data-aos="fade-up" data-aos-duration="1000">
+                                <div class="col-12 col-md-10 col-lg-8 text-center">
+                                    <h2 class="display-5 fw-bold mb-3" data-aos="fade-up" data-aos-duration="800">
+                                        <i class="fa fa-envelope text-info me-3"></i>Contáctanos
+                                    </h2>
+                                    <p class="lead text-body-secondary" data-aos="fade-up" data-aos-delay="200" data-aos-duration="800">¿Tienes preguntas? Completa el formulario y te responderemos pronto.</p>
+                                </div>
+                            </header>
+                            <div class="card shadow-lg border-0" data-aos="zoom-in" data-aos-duration="1000">
+                                <div class="card-body p-4 p-md-5">
+                                    <form action="https://formspree.io/mbjzknka" method="POST" class="needs-validation" novalidate>
+                                        <div class="row g-3">
+                                            <!-- Campo de nombre -->
+                                            <div class="col-12 col-md-6" data-aos="fade-right" data-aos-delay="100">
+                                                <div class="input-group input-group-lg">
+                                                    <span class="input-group-text bg-body-secondary border-end-0">
+                                                        <i class="fas fa-user text-info opacity-75"></i>
+                                                    </span>
+                                                    <input type="text" class="form-control border-start-0 bg-body" id="firstName" name="firstName" placeholder="Nombre(s)" required>
+                                                </div>
+                                                <div class="invalid-feedback">Por favor, ingresa tu nombre.</div>
+                                            </div>
+
+                                            <!-- Campo de apellido -->
+                                            <div class="col-12 col-md-6" data-aos="fade-left" data-aos-delay="100">
+                                                <div class="input-group input-group-lg">
+                                                    <span class="input-group-text bg-body-secondary border-end-0">
+                                                        <i class="fas fa-user-tag text-info opacity-75"></i>
+                                                    </span>
+                                                    <input type="text" class="form-control border-start-0 bg-body" id="lastName" name="lastName" placeholder="Apellido(s)" required>
+                                                </div>
+                                                <div class="invalid-feedback">Por favor, ingresa tu apellido.</div>
+                                            </div>
+
+                                            <!-- Campo de teléfono -->
+                                            <div class="col-12 col-md-6" data-aos="fade-right" data-aos-delay="200">
+                                                <div class="input-group input-group-lg">
+                                                    <span class="input-group-text bg-body-secondary border-end-0"> 
+                                                        <i class="fas fa-phone text-info opacity-75"></i>
+                                                    </span>
+                                                    <input type="tel" class="form-control border-start-0 bg-body" id="phone" name="phone" placeholder="Celular" required>
+                                                    </div>
+                                                <div class="invalid-feedback">Por favor, ingresa un número de celular válido.</div>
+                                            </div>
+
+                                            <!-- Campo de email -->
+                                            <div class="col-12 col-md-6" data-aos="fade-left" data-aos-delay="200">
+                                                <div class="input-group input-group-lg">
+                                                    <span class="input-group-text bg-body-secondary border-end-0">
+                                                        <i class="fas fa-envelope text-info opacity-75"></i>
+                                                    </span>
+                                                    <input type="email" class="form-control border-start-0 bg-body" id="email" name="email" placeholder="Correo Electrónico" required>
+                                                </div>
+                                                <div class="invalid-feedback">Por favor, ingresa un correo electrónico válido.</div>
+                                            </div>
+
+                                            <!-- Campo de mensaje -->
+                                            <div class="col-12" data-aos="fade-up" data-aos-delay="300">
+                                                <div class="input-group input-group-lg">
+                                                    <span class="input-group-text bg-body-secondary border-end-0">
+                                                        <i class="fas fa-comment-dots text-info opacity-75"></i>
+                                                    </span>
+                                                    <textarea class="form-control border-start-0 bg-body" id="message" name="message" rows="4" required placeholder="Escribe tu mensaje aquí..."></textarea>
+                                                </div>
+                                            </div>
+
+                                            <!-- Botón de envío -->
+                                            <div class="col-12 text-center mt-4" data-aos="zoom-in" data-aos-delay="400">
+                                                <button type="submit" class="btn btn-info btn-lg px-5 py-3 text-white animate__animated animate__pulse animate__infinite animate__slow">
+                                                    <i class="fas fa-paper-plane me-2 text-white"></i>Enviar
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- FOOTER -->
+        <footer class="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="social-section footer-section">
+                        <h5><i class="fas fa-share-alt"></i>Síguenos</h5>
+                        <p>Mantente conectado con nosotros</p>
+                        <div class="social-icons">
+                            <a href="https://www.facebook.com/IBMty/" aria-label="Facebook">
+                                <i class="fab fa-facebook"></i>
+                            </a>
+                            <a href="https://www.instagram.com/iglesiabautistademonterrey?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" aria-label="Instagram">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="https://wa.me/528132503031?text=Hola,%20me%20interesa%20recibir%20informaci%C3%B3n%20de%20la%20iglesia" aria-label="WhatsApp">
+                                <i class="fab fa-whatsapp"></i>
+                            </a>
+                            <a href="https://www.youtube.com/channel/UCfhSTnqLb6vFO28eNm_n0qw" aria-label="YouTube">
+                                <i class="fab fa-youtube"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="mobile-double-column">
+                        <div class="contact-section footer-section">
+                            <h5><i class="fas fa-map-marker-alt"></i>Contacto</h5>
+                            <p class="small mb-2">
+                                Av. Eugenio Garza Sada 6309, <br>
+                                64890 Monterrey, N.L.
+                            </p>
+                            <p class="small mb-2">
+                                <i class="fas fa-envelope me-1"></i>
+                                <a href="mailto:ibmty@ribbi.org">ibmty@ribbi.org</a>
+                            </p>
+                            <p class="small mb-0">
+                                <i class="fas fa-phone me-1"></i>
+                                <a href="tel:+528132503000">+52 81 3250 3000</a>
+                            </p>
+                        </div>
+                        <div class="links-section footer-section">
+                            <h5><i class="fas fa-external-link-alt"></i>Enlaces Externos</h5>
+                            <a href="https://www.ribbi.org/" class="d-block small py-1">
+                                <i class="fa-solid fa-network-wired me-1"></i>RIBBI
+                            </a>
+                            <a href="https://elsaucillo.org/" class="d-block small py-1">
+                                <i class="fa-solid fa-mountain-sun me-1"></i>El Saucillo
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Pie de página con copyright -->
+            <div class="footer-bottom">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-md-6 text-center text-md-start">
+                            <div class="d-flex flex-column flex-sm-row justify-content-center justify-content-md-start">
+                                <a href="privacidad.html" class="me-3 mb-1 mb-sm-0 small">Aviso de Privacidad</a>
+                            </div>
+                        </div>
+                        <div class="col-md-6 text-center text-md-end">
+                            <p class="mb-0 small">© <span id="currentYear"></span> Iglesia Bautista de Monterrey.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <!-- Scripts -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js" integrity="sha512-A7AYk1fGKX6S2SsHywmPkrnzTZHrgiVT7GcQkLGDe2ev0aWb8zejytzS8wjo7PGEXKqJOrjQ4oORtnimIRZBtw==" crossorigin="anonymous"></script>
+        <script src="context/ThemeManager.js"></script>
+        <script src="context/utils.js"></script>
+    </body>
+</html>

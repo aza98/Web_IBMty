@@ -1,0 +1,342 @@
+.gospel-img,
+.salvation-card {
+    box-shadow: 0 10px 30px var(--salvation-shadow)
+}
+
+:root {
+    --salvation-primary: #30426a;
+    --salvation-secondary: #f8f9fa;
+    --salvation-accent: #e74c3c;
+    --salvation-bg-gradient: #5ac2e0;
+    --salvation-text: #333;
+    --salvation-light-text: #f8f9fa;
+    --salvation-card-bg: #ffffff;
+    --salvation-modal-bg: #ffffff;
+    --salvation-shadow: rgba(0, 0, 0, 0.1);
+    --salvation-border: rgba(255, 255, 255, 0.1)
+}
+
+[data-bs-theme=dark] {
+    --salvation-primary: #4a5f8a;
+    --salvation-secondary: #1a1a1a;
+    --salvation-accent: #ff6b6b;
+    --salvation-text: #e0e0e0;
+    --salvation-light-text: #ffffff;
+    --salvation-bg-gradient: #2c5282;
+    --salvation-card-bg: #2d3748;
+    --salvation-modal-bg: #2d3748;
+    --salvation-shadow: rgba(0, 0, 0, 0.3);
+    --salvation-border: rgba(255, 255, 255, 0.2)
+}
+
+.salvation-page {
+    font-family: Lato, sans-serif;
+    color: var(--salvation-text);
+    background-color: var(--salvation-secondary)
+}
+
+.salvation-page h1,
+.salvation-page h2,
+.salvation-page h3,
+.salvation-page h4,
+.salvation-page h5,
+.salvation-page h6 {
+    font-family: Mulish, sans-serif;
+    font-weight: 700
+}
+
+.salvation-introduction {
+    min-height: 100vh;
+    background: linear-gradient(135deg, var(--salvation-bg-gradient) 0, var(--salvation-primary) 100%);
+    color: var(--salvation-light-text);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 0;
+    position: relative;
+    overflow: hidden
+}
+
+.prayer-button,
+.salvation-btn-primary {
+    text-decoration: none;
+    display: inline-block
+}
+
+.salvation-introduction::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, .1) 0, transparent 70%);
+    pointer-events: none
+}
+
+.gospel-main-title {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, .3)
+}
+
+.gospel-main-text {
+    font-size: clamp(1rem, 2.5vw, 1.25rem);
+    line-height: 1.6;
+    max-width: 800px;
+    margin: 0 auto;
+    text-shadow: 0 1px 5px rgba(0, 0, 0, .2)
+}
+
+.salvation-section {
+    padding: 4rem 0;
+    background-color: var(--salvation-secondary);
+    transition: background-color .3s
+}
+
+.gospel-step {
+    margin-bottom: 4rem;
+    align-items: center
+}
+
+.gospel-text {
+    font-size: clamp(1.1rem, 2.2vw, 1.3rem);
+    font-weight: 600;
+    color: var(--salvation-text);
+    margin-bottom: 1rem;
+    font-family: Mulish, sans-serif;
+    transition: color .3s
+}
+
+.gospel-text-verse,
+.salvation-card .card-title {
+    color: var(--salvation-primary);
+    transition: color .3s
+}
+
+.gospel-text-verse {
+    font-size: clamp(.95rem, 1.8vw, 1.05rem);
+    font-style: italic;
+    font-weight: 400;
+    font-family: Lato, sans-serif
+}
+
+.gospel-img {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    border-radius: 15px;
+    transition: .3s;
+    filter: brightness(1)
+}
+
+[data-bs-theme=dark] .gospel-img {
+    filter: brightness(.9) contrast(1.1)
+}
+
+.gospel-img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 15px 40px var(--salvation-shadow)
+}
+
+.salvation-card {
+    background-color: var(--salvation-card-bg);
+    border: 1px solid var(--salvation-border);
+    transition: .3s
+}
+
+.salvation-card .card-text {
+    color: var(--salvation-text);
+    transition: color .3s
+}
+
+.prayer-button,
+.prayer-button:hover,
+.salvation-btn-primary,
+.salvation-btn-primary:hover,
+.salvation-modal .modal-header {
+    color: var(--salvation-light-text)
+}
+
+.salvation-btn-primary {
+    background: linear-gradient(45deg, var(--salvation-primary), var(--salvation-bg-gradient));
+    border: none;
+    padding: .75rem 2rem;
+    border-radius: 25px;
+    font-weight: 600;
+    transition: .3s;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, .2)
+}
+
+.salvation-btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, .3);
+    background: linear-gradient(45deg, var(--salvation-accent), var(--salvation-primary))
+}
+
+.prayer-button {
+    background: var(--salvation-primary);
+    border: 2px solid var(--salvation-primary);
+    padding: .75rem 1.5rem;
+    border-radius: 25px;
+    font-weight: 600;
+    transition: .3s
+}
+
+.prayer-button:hover {
+    background: var(--salvation-accent);
+    border-color: var(--salvation-accent);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px var(--salvation-shadow)
+}
+
+.salvation-modal .modal-content {
+    background-color: var(--salvation-modal-bg);
+    border: 1px solid var(--salvation-border);
+    border-radius: 15px;
+    box-shadow: 0 20px 60px var(--salvation-shadow)
+}
+
+.salvation-modal .modal-header {
+    background: linear-gradient(45deg, var(--salvation-primary), var(--salvation-bg-gradient));
+    border-bottom: none;
+    border-radius: 15px 15px 0 0
+}
+
+.salvation-modal .modal-title {
+    font-family: Mulish, sans-serif;
+    font-weight: 600
+}
+
+.salvation-modal .modal-body {
+    color: var(--salvation-text);
+    line-height: 1.7;
+    padding: 2rem
+}
+
+.salvation-modal .modal-footer {
+    border-top: 1px solid var(--salvation-border);
+    background-color: var(--salvation-modal-bg);
+    border-radius: 0 0 15px 15px
+}
+
+.salvation-modal .btn-close {
+    filter: invert(1)
+}
+
+.continue-btn {
+    animation: 2s infinite bounce
+}
+
+@keyframes bounce {
+
+    0%,
+    100%,
+    20%,
+    50%,
+    80% {
+        transform: translateY(0)
+    }
+
+    40% {
+        transform: translateY(-10px)
+    }
+
+    60% {
+        transform: translateY(-5px)
+    }
+}
+
+@media (max-width:768px) {
+    .salvation-introduction {
+        padding: 1rem;
+        min-height: 100vh
+    }
+
+    .salvation-section {
+        padding: 0
+    }
+
+    .gospel-step {
+        margin-bottom: 0;
+        text-align: center;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 2rem 1rem
+    }
+
+    .flip-text-order,
+    .gospel-text,
+    .gospel-text-verse {
+        text-align: center !important
+    }
+
+    .flip-img-order {
+        order: 2;
+        margin-top: 2rem;
+        flex: 0 0 auto
+    }
+
+    .flip-text-order {
+        order: 1;
+        flex: 0 0 auto
+    }
+
+    .gospel-img {
+        max-width: 280px;
+        margin: 0 auto
+    }
+
+    .salvation-card .card-body {
+        padding: 2rem 1rem !important
+    }
+
+    .salvation-section>.container>.row:last-child {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        padding: 2rem 0
+    }
+}
+
+@media (max-width:576px) {
+    .gospel-img {
+        max-width: 200px
+    }
+
+    .salvation-modal .modal-dialog {
+        margin: 1rem
+    }
+
+    .salvation-modal .modal-body {
+        font-size: .9rem;
+        padding: 1.5rem
+    }
+}
+
+@media (min-width:769px) {
+
+    .gospel-text-1,
+    .gospel-text-3,
+    .gospel-text-5 {
+        text-align: right
+    }
+
+    .gospel-text-2,
+    .gospel-text-4,
+    .gospel-text-6 {
+        text-align: left
+    }
+}
+
+.salvation-card *,
+.salvation-introduction *,
+.salvation-modal *,
+.salvation-page *,
+.salvation-section * {
+    transition: background-color .3s, color .3s, border-color .3s
+}

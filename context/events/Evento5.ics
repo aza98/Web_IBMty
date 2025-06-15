@@ -1,0 +1,41 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Iglesia Bautista de Monterrey//Eventos//ES
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:CIMA2025-1@ibmonterrey.mx
+DTSTAMP:20240607T120000Z
+DTSTART;VALUE=DATE:20251114
+DTEND;VALUE=DATE:20251115
+SUMMARY:CIMA 2025
+DESCRIPTION:Conferencia de Celebración de Impulso Misionero. Un evento para honrar a los misioneros, abierto a todos aquellos que deseen acompañarnos.
+LOCATION:CDMX
+END:VEVENT
+BEGIN:VEVENT
+UID:CIMA2025-2@ibmonterrey.mx
+DTSTAMP:20240607T120000Z
+DTSTART;VALUE=DATE:20251115
+DTEND;VALUE=DATE:20251116
+SUMMARY:CIMA 2025
+DESCRIPTION:Conferencia de Celebración de Impulso Misionero. Un evento para honrar a los misioneros, abierto a todos aquellos que deseen acompañarnos.
+LOCATION:CDMX
+END:VEVENT
+BEGIN:VEVENT
+UID:CIMA2025-3@ibmonterrey.mx
+DTSTAMP:20240607T120000Z
+DTSTART;VALUE=DATE:20251116
+DTEND;VALUE=DATE:20251117
+SUMMARY:CIMA 2025
+DESCRIPTION:Conferencia de Celebración de Impulso Misionero. Un evento para honrar a los misioneros, abierto a todos aquellos que deseen acompañarnos.
+LOCATION:CDMX
+END:VEVENT
+BEGIN:VEVENT
+UID:CIMA2025-4@ibmonterrey.mx
+DTSTAMP:20240607T120000Z
+DTSTART;VALUE=DATE:20251117
+DTEND;VALUE=DATE:20251118
+SUMMARY:CIMA 2025
+DESCRIPTION:Conferencia de Celebración de Impulso Misionero. Un evento para honrar a los misioneros, abierto a todos aquellos que deseen acompañarnos.
+LOCATION:CDMX
+END:VEVENT
+END:VCALENDAR

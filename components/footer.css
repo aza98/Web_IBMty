@@ -1,0 +1,653 @@
+:root {
+    --footer-bg-light: #f8f9fa;
+    --footer-bg-dark: #1a1a1a;
+    --footer-text-light: #495057;
+    --footer-text-dark: #e9ecef;
+    --footer-heading-light: #212529;
+    --footer-heading-dark: #ffffff;
+    --footer-border-light: #dee2e6;
+    --footer-border-dark: #495057;
+    --footer-bottom-bg-light: #ffffff;
+    --footer-bottom-bg-dark: #121212;
+    --footer-link-hover: #00c0f6;
+    --facebook-color: #1877f2;
+    --instagram-color: #e4405f;
+    --whatsapp-color: #25d366;
+    --youtube-color: #ff0000;
+    --social-bg-light: rgba(255, 255, 255, 0.8);
+    --social-bg-dark: rgba(255, 255, 255, 0.1);
+    --transition-speed: 0.3s;
+    --border-radius: 8px;
+    --shadow-light: 0 2px 8px rgba(0, 0, 0, 0.1);
+    --shadow-dark: 0 2px 8px rgba(0, 0, 0, 0.3)
+}
+
+/* ========================================
+   ESTILOS PRINCIPALES DEL FOOTER
+   ======================================== */
+.footer {
+    background: var(--footer-bg-light);
+    color: var(--footer-text-light);
+    margin-top: auto;
+    transition: all var(--transition-speed) ease
+}
+
+[data-bs-theme=dark] .footer {
+    background: var(--footer-bg-dark);
+    color: var(--footer-text-dark)
+}
+
+/* ========================================
+   ESTILOS DE SECCIONES DEL FOOTER
+   ======================================== */
+.footer-section {
+    margin-bottom: 1rem
+}
+
+.footer-section h5,
+.footer-section h6 {
+    color: var(--footer-heading-light);
+    font-weight: 600;
+    margin-bottom: .5rem;
+    display: flex;
+    align-items: center;
+    gap: .4rem
+}
+
+[data-bs-theme=dark] .footer-section h5,
+[data-bs-theme=dark] .footer-section h6 {
+    color: var(--footer-heading-dark)
+}
+
+.footer-section h5 i,
+.footer-section h6 i {
+    color: var(--footer-link-hover);
+    font-size: 1.1rem;
+    flex-shrink: 0
+}
+
+.footer-section p {
+    margin-bottom: .3rem;
+    line-height: 1.5
+}
+
+.footer-section address {
+    font-style: normal;
+    margin-bottom: .3rem;
+    line-height: 1.5
+}
+
+.footer-section strong {
+    color: var(--footer-heading-light);
+    font-weight: 600
+}
+
+[data-bs-theme=dark] .footer-section strong {
+    color: var(--footer-heading-dark)
+}
+
+/* ========================================
+   ESTILOS DE ENLACES DEL FOOTER
+   ======================================== */
+.footer-section a {
+    color: inherit;
+    text-decoration: none;
+    transition: all var(--transition-speed) ease;
+    display: inline-flex;
+    align-items: center;
+    gap: .4rem
+}
+
+.footer-section a:hover {
+    color: var(--footer-link-hover);
+    transform: translateX(3px)
+}
+
+.footer-section a i {
+    width: 16px;
+    text-align: center;
+    flex-shrink: 0
+}
+
+/* ========================================
+   ESTILOS DE REDES SOCIALES
+   ======================================== */
+.social-icons {
+    display: flex;
+    gap: .5rem;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: .5rem
+}
+
+.social-icons a {
+    background: var(--social-bg-light);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    transition: all var(--transition-speed) ease;
+    color: #666;
+    box-shadow: var(--shadow-light);
+    border: 2px solid transparent
+}
+
+[data-bs-theme=dark] .social-icons a {
+    background: var(--social-bg-dark);
+    color: #ccc;
+    box-shadow: var(--shadow-dark)
+}
+
+.social-icons a:hover {
+    transform: translateY(-2px) scale(1.05)
+}
+
+.social-icons a[href*=facebook]:hover {
+    background: var(--facebook-color);
+    color: #fff;
+    border-color: var(--facebook-color);
+    box-shadow: 0 6px 16px rgba(24, 119, 242, .4)
+}
+
+.social-icons a[href*=instagram]:hover {
+    background: linear-gradient(45deg, #f09433 0, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    color: #fff;
+    border-color: var(--instagram-color);
+    box-shadow: 0 6px 16px rgba(228, 64, 95, .4)
+}
+
+.social-icons a[href*="wa.me"]:hover,
+.social-icons a[href*=whatsapp]:hover {
+    background: var(--whatsapp-color);
+    color: #fff;
+    border-color: var(--whatsapp-color);
+    box-shadow: 0 6px 16px rgba(37, 211, 102, .4)
+}
+
+.social-icons a[href*=youtube]:hover {
+    background: var(--youtube-color);
+    color: #fff;
+    border-color: var(--youtube-color);
+    box-shadow: 0 6px 16px rgba(255, 0, 0, .4)
+}
+
+/* ========================================
+   ESTILOS DE LA SECCIÓN INFERIOR
+   ======================================== */
+.footer-bottom {
+    background: var(--footer-bottom-bg-light);
+    border-top: 1px solid var(--footer-border-light);
+    padding: .1rem 0;
+    margin-top: .35rem
+}
+
+[data-bs-theme=dark] .footer-bottom {
+    background: var(--footer-bottom-bg-dark);
+    border-top-color: var(--footer-border-dark)
+}
+
+.footer-bottom a {
+    color: inherit;
+    text-decoration: none;
+    transition: all var(--transition-speed) ease;
+    font-weight: 500;
+    position: relative
+}
+
+.footer-bottom a:hover {
+    color: var(--footer-link-hover);
+    text-decoration: none
+}
+
+.footer-bottom a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -2px;
+    left: 0;
+    background-color: var(--footer-link-hover);
+    transition: width var(--transition-speed) ease
+}
+
+.footer-bottom a:hover::after {
+    width: 100%
+}
+
+.footer-bottom .small {
+    font-size: .8rem;
+    opacity: .85;
+    line-height: 1.1
+}
+
+.footer-bottom .d-flex a:not(:last-child)::before {
+    content: '';
+    position: absolute;
+    right: -.4rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1px;
+    height: 8px;
+    background-color: var(--footer-border-light);
+    opacity: .5
+}
+
+[data-bs-theme=dark] .footer-bottom .d-flex a:not(:last-child)::before {
+    background-color: var(--footer-border-dark)
+}
+
+.footer-bottom p {
+    margin-bottom: 0;
+    font-weight: 400
+}
+
+/* ========================================
+   ESTILOS RESPONSIVOS - MÓVIL
+   ======================================== */
+
+@media (max-width:767.98px) {
+    .footer-bottom {
+        padding: .35rem 0;
+        text-align: center
+    }
+
+    .footer-bottom .row {
+        flex-direction: column;
+        gap: .3rem
+    }
+
+    .footer-bottom .col-md-6 {
+        text-align: center !important
+    }
+
+    .footer-bottom .d-flex {
+        justify-content: center !important;
+        flex-wrap: wrap;
+        gap: .25rem
+    }
+
+    .footer-bottom .small {
+        font-size: .75rem
+    }
+
+    .footer-bottom .d-flex a::before {
+        display: none
+    }
+}
+
+@media (max-width:575.98px) {
+    .footer-bottom {
+        padding: .25rem 0
+    }
+
+    .footer-bottom .d-flex {
+        flex-direction: column;
+        gap: .1rem
+    }
+
+    .footer-bottom .small {
+        font-size: .7rem
+    }
+}
+
+@media (max-width:767.98px) {
+    .footer .container {
+        padding: .75rem
+    }
+
+    .footer .row {
+        flex-direction: column
+    }
+
+    .social-section {
+        order: 1;
+        text-align: center;
+        margin-bottom: 1.5rem
+    }
+
+    .social-section h5 {
+        font-size: 1.1rem;
+        justify-content: center;
+        margin-bottom: .5rem
+    }
+
+    .social-section p {
+        font-size: .9rem;
+        margin-bottom: .75rem
+    }
+
+    .social-icons {
+        justify-content: center;
+        gap: .4rem
+    }
+
+    .social-icons a {
+        width: 36px;
+        height: 36px;
+        font-size: 1rem
+    }
+
+    .mobile-double-column {
+        order: 2;
+        display: flex;
+        flex-wrap: wrap;
+        gap: .75rem;
+        margin-bottom: .75rem
+    }
+
+    .mobile-double-column .contact-section,
+    .mobile-double-column .links-section {
+        flex: 1;
+        min-width: calc(50% - .375rem);
+        margin-bottom: 0
+    }
+
+    .contact-section {
+        order: 1
+    }
+
+    .links-section {
+        order: 2
+    }
+
+    .contact-section,
+    .links-section {
+        text-align: left
+    }
+
+    .contact-section h5,
+    .links-section h5 {
+        font-size: 1rem;
+        justify-content: flex-start;
+        margin-bottom: .5rem
+    }
+
+    .contact-section h5 i,
+    .links-section h5 i {
+        font-size: .95rem
+    }
+
+    .contact-section address,
+    .contact-section p,
+    .links-section a {
+        font-size: .85rem
+    }
+
+    .contact-section address {
+        margin-bottom: .3rem
+    }
+
+    .footer-section a:hover {
+        transform: translateY(-1px)
+    }
+}
+
+/* ========================================
+   ESTILOS RESPONSIVOS - MÓVILES PEQUEÑOS
+   ======================================== */
+@media (max-width:575.98px) {
+    .footer .container {
+        padding: .6rem
+    }
+
+    .footer-section {
+        margin-bottom: .75rem
+    }
+
+    .social-section {
+        margin-bottom: 1.25rem
+    }
+
+    .social-section h5 {
+        font-size: 1rem
+    }
+
+    .social-section p {
+        font-size: .85rem
+    }
+
+    .social-icons a {
+        width: 34px;
+        height: 34px;
+        font-size: .95rem
+    }
+
+    .mobile-double-column {
+        gap: .6rem
+    }
+
+    .mobile-double-column .contact-section,
+    .mobile-double-column .links-section {
+        min-width: calc(50% - .3rem)
+    }
+
+    .contact-section h5,
+    .links-section h5 {
+        font-size: .95rem;
+        margin-bottom: .4rem
+    }
+
+    .contact-section address,
+    .contact-section p,
+    .links-section a {
+        font-size: .8rem;
+        line-height: 1.4
+    }
+
+    .contact-section address {
+        margin-bottom: .25rem
+    }
+
+    .footer-bottom {
+        padding: .25rem 0
+    }
+
+    .footer-bottom .small {
+        font-size: .7rem
+    }
+
+    .footer-bottom .d-flex {
+        flex-direction: column;
+        gap: .1rem
+    }
+}
+
+@media (max-width:360px) {
+    .mobile-double-column {
+        flex-direction: column;
+        gap: .75rem
+    }
+
+    .mobile-double-column .contact-section,
+    .mobile-double-column .links-section {
+        min-width: 100%;
+        flex: none
+    }
+}
+
+@media (min-width:768px) and (max-width:991.98px) {
+    .footer .container {
+        padding: 1.25rem
+    }
+
+    .footer-section {
+        margin-bottom: 1.25rem
+    }
+
+    .mobile-double-column {
+        display: block
+    }
+
+    .contact-section,
+    .links-section,
+    .social-section {
+        order: initial;
+        margin-bottom: 1.25rem
+    }
+
+    .social-section {
+        text-align: center
+    }
+
+    .social-icons {
+        justify-content: center;
+        gap: .75rem
+    }
+}
+
+/* ========================================
+   ESTILOS RESPONSIVOS - ESCRITORIO
+   ======================================== */
+@media (min-width:992px) {
+    .footer .container {
+        max-width: 1200px;
+        padding: 1.5rem 1rem
+    }
+
+    .mobile-double-column {
+        display: contents
+    }
+
+    .footer .row {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: flex-start
+    }
+
+    .contact-section {
+        order: 1;
+        flex: 1;
+        max-width: calc(33.333% - 1.5rem);
+        margin: 0 .75rem;
+        margin-bottom: 0
+    }
+
+    .links-section {
+        order: 2;
+        flex: 1;
+        max-width: calc(33.333% - 1.5rem);
+        margin: 0 .75rem;
+        margin-bottom: 0
+    }
+
+    .social-section {
+        order: 3;
+        flex: 1;
+        max-width: calc(33.333% - 1.5rem);
+        margin: 0 .75rem;
+        margin-bottom: 0
+    }
+
+    .footer-section {
+        margin-bottom: 0
+    }
+
+    .footer-section h5 {
+        font-size: 1.2rem;
+        margin-bottom: .75rem;
+        justify-content: flex-start
+    }
+
+    .footer-section p {
+        margin-bottom: .5rem
+    }
+
+    .contact-section,
+    .links-section {
+        text-align: left
+    }
+
+    .social-section {
+        text-align: left
+    }
+
+    .social-section h5 {
+        justify-content: flex-start
+    }
+
+    .social-icons {
+        justify-content: flex-start;
+        margin-top: .75rem;
+        gap: .6rem
+    }
+
+    .social-icons a {
+        width: 42px;
+        height: 42px;
+        font-size: 1.15rem
+    }
+}
+
+/* ========================================
+   ANIMACIONES Y EFECTOS ESPECIALES
+   ======================================== */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(15px)
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0)
+    }
+}
+
+.footer-section {
+    animation: fadeInUp .5s ease forwards
+}
+
+.footer-section:nth-child(2) {
+    animation-delay: .1s
+}
+
+.footer-section:nth-child(3) {
+    animation-delay: .15s
+}
+
+/* ========================================
+   ACCESIBILIDAD Y PREFERENCIAS DE USUARIO
+   ======================================== */
+@media (prefers-reduced-motion:reduce) {
+
+    .footer-section,
+    .footer-section a,
+    .social-icons a {
+        animation: none;
+        transition: none
+    }
+
+    .footer-section a:hover,
+    .social-icons a:hover {
+        transform: none
+    }
+}
+
+.footer-section a:focus,
+.social-icons a:focus {
+    outline: 2px solid var(--footer-link-hover);
+    outline-offset: 2px;
+    border-radius: 4px
+}
+
+/* ========================================
+   ESTILOS PARA IMPRESIÓN
+   ======================================== */
+@media print {
+    .footer {
+        background: #fff !important;
+        color: #000 !important;
+        box-shadow: none
+    }
+
+    .social-icons {
+        display: none
+    }
+
+    .footer-section a {
+        color: #000 !important
+    }
+}

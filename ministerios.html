@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="es" data-bs-theme="light">
+    <head>
+        <!-- Metadatos básicos -->
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <meta name="description" content="Ministerios y Lideres | Iglesia Bautista de Monterrey">
+
+        <!-- Configuración de tema claro/oscuro -->
+        <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+        <meta name="theme-color" content="#121212" media="(prefers-color-scheme: dark)">
+
+        <!-- Precarga de recursos críticos para mejorar rendimiento -->
+        <link rel="preload" href="assets/icons/IBMty_Logo_Desktop.png" as="image">
+        <link rel="preload" href="assets/icons/IBMty_Logo_Mobile.png" as="image">
+        <!-- Favicon e ícono para dispositivos Apple -->
+        <link rel="icon" type="image/png" sizes="32x32" href="assets/icons/IBMty_Icon.png">
+        <link rel="apple-touch-icon" sizes="180x180" href="assets/icons/IBMty_Icon.png">
+
+        <title>Iglesia Bautista de Monterrey</title>
+
+        <!-- Bibliotecas Bootstrap, Font Awesome, AOS y Animate. -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" integrity="sha512-1cK78a1o+ht2JcaW6g8OXYwqpev9+6GqOkz9xmBN9iUUhIndKtxwILGWYOSibOKjLsEdjyjZvYDq/cZwNeak0w==" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+        
+        <!-- Hojas de estilo personalizadas -->
+        <link rel="stylesheet" href="components/navbar.css">
+        <link rel="stylesheet" href="components/footer.css">
+        <link rel="stylesheet" href="styles/ministerios.css">
+        <link rel="stylesheet" href="styles/responsive-fixes.css">
+    </head>
+    <body>
+        <!-- BARRA DE NAVEGACIÓN -->
+        <nav class="navbar navbar-expand-lg">
+            <div class="container-fluid">
+                <!-- Botón de cambio de tema (versión móvil) -->
+                <button type="button" class="btn theme-toggle mobile-theme-toggle d-lg-none" onclick="toggleTheme()">
+                    <i class="fas fa-sun" id="mobile-theme-icon"></i>
+                </button>
+                <!-- Logo para escritorio -->
+                <a class="navbar-brand" href="index.html">
+                    <img src="assets/icons/IBMty_Logo_Desktop.png" alt="Logo" class="img-fluid">
+                </a>
+                <!-- Logo para móvil -->
+                <a class="navbar-brand mobile-brand" href="index.html">
+                    <img src="assets/icons/IBMty_Logo_Mobile.png" alt="Logo" class="img-fluid">
+                </a>
+                <!-- Botón de menú para móviles -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <!-- Menú de navegación -->
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">
+                                <i class="fas fa-home"></i>Inicio
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="nosotros.html">
+                                <i class="fas fa-users"></i>Nosotros
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <!-- Página activa marcada con clase 'active' -->
+                            <a class="nav-link active" href="ministerios.html">
+                                <i class="fas fa-church"></i>Ministerios
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="salvacion.html">
+                                <i class="fas fa-cross"></i>Salvación
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="donativo.html">
+                                <i class="fas fa-donate"></i>Donativo
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Botón de cambio de tema (versión escritorio) -->
+                <button type="button" class="btn theme-toggle d-none d-lg-flex" onclick="toggleTheme()">
+                    <i class="fas fa-sun" id="desktop-theme-icon"></i>
+                </button>
+            </div>
+        </nav>
+
+        <main>
+            <!-- SECCIÓN PRINCIPAL DE MINISTERIOS Y LIDERES -->
+            <section class="hero-section py-4 py-md-5 bg-body" id="hero">
+                <div class="container-lg px-3">
+                    <div class="row justify-content-center">
+                        <div class="col-12 col-lg-10 col-xl-8">
+                            <header class="text-center mb-4" data-aos="fade-up" data-aos-duration="1000">
+                                <div class="hero-icon mb-3">
+                                    <div class="bg-warning bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center animate__animated animate__pulse animate__infinite animate__slow" style="width: 100px; height: 100px;">
+                                        <i class="fas fa-hands-helping text-warning fs-1" aria-hidden="true"></i>
+                                    </div>
+                                </div>
+                                <h1 class="display-3 fw-bold text-body-emphasis mb-3 animate__animated animate__fadeIn">Ministerios y Líderes</h1>
+                                <div class="divider mx-auto bg-warning rounded-pill" style="width: 60px; height: 4px;"></div>
+                                <p class="lead mt-4 text-body-secondary" data-aos="fade-up" data-aos-delay="200">Personas con corazón dispuesto a servir, guiando a cada generación a conocer y seguir a Cristo</p>
+                            </header>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECCIÓN DE GALERÍA DE MINISTERIOS -->
+            <div class="ministerios-page">
+                <div class="ministerios-gallery-container">
+                    <div class="ministerios-scroll-container">
+                        <div class="ministerios-profile-gallery" id="ministeriosProfileGallery">
+                            <!-- TARJETA 1: Pastores Líderes -->
+                            <div class="ministerios-profile-card" data-ministry="lideres">
+                                <div class="ministerios-card-banner ministerios-banner-1">
+                                    <div class="ministerios-banner-overlay"></div>
+                                    <div class="ministerios-profile-avatar ministerios-avatar-1"></div>
+                                </div>
+                                <div class="ministerios-card-content">
+                                    <h2 class="ministerios-profile-name">Brian & Jaidy Brown</h2>
+                                    <p class="ministerios-profile-title">PASTOR LÍDER</p>
+                                    <div class="ministerios-social-links">
+                                        <a href="https://www.facebook.com/IBMty/" class="ministerios-social-link facebook">
+                                            <i class="fa-brands fa-facebook-f"></i>
+                                        </a>
+                                        <a href="https://www.instagram.com/iglesiabautistademonterrey?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="ministerios-social-link instagram">
+                                            <i class="fab fa-instagram"></i>
+                                        </a>
+                                    </div>
+                                    <p class="ministerios-profile-description">Guiamos con sabiduría, enseñamos la Palabra y acompañamos a cada persona en su camino de fe.</p>
+                                </div>
+                            </div>
+
+                            <!-- TARJETA 2: Ministerio de Adultos -->
+                            <div class="ministerios-profile-card" data-ministry="adultos">
+                                <div class="ministerios-card-banner ministerios-banner-2">
+                                    <div class="ministerios-banner-overlay"></div>
+                                    <div class="ministerios-profile-avatar ministerios-avatar-2"></div>
+                                </div>
+                                <div class="ministerios-card-content">
+                                    <h2 class="ministerios-profile-name">Alberto & Mariana De Agüero</h2>
+                                    <p class="ministerios-profile-title">MINISTERIO DE ADULTOS</p>
+                                    <div class="ministerios-social-links">
+                                        <a href="https://www.facebook.com/ministerioadultosibmty/" class="ministerios-social-link facebook">
+                                            <i class="fa-brands fa-facebook-f"></i>
+                                        </a>
+                                        <a href="https://www.instagram.com/adultosibmty?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="ministerios-social-link instagram">
+                                            <i class="fab fa-instagram"></i>
+                                        </a>
+                                    </div>
+                                    <p class="ministerios-profile-description">Para matrimonios y adultos que desean fortalecer su fe y reflejar el carácter de Cristo en su vida diaria.</p>
+                                </div>
+                            </div>
+
+                            <!-- TARJETA 3: Ministerio de Profesionistas -->
+                            <div class="ministerios-profile-card" data-ministry="profesionistas">
+                                <div class="ministerios-card-banner ministerios-banner-3">
+                                    <div class="ministerios-banner-overlay"></div>
+                                    <div class="ministerios-profile-avatar ministerios-avatar-3"></div>
+                                </div>
+                                <div class="ministerios-card-content">
+                                    <h2 class="ministerios-profile-name">
+                                        Edgar & Esther Zamarrón<br>
+                                        Alma Barrera
+                                    </h2>
+                                    <p class="ministerios-profile-title">MINISTERIO DE PROFESIONISTAS</p>
+                                    <div class="ministerios-social-links">
+                                        <a href="https://www.facebook.com/pro.ibmty" class="ministerios-social-link facebook">
+                                            <i class="fa-brands fa-facebook-f"></i>
+                                        </a>
+                                        <a href="https://www.instagram.com/profesionistasibmty?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="ministerios-social-link instagram">
+                                            <i class="fab fa-instagram"></i>
+                                        </a>
+                                    </div>
+                                    <p class="ministerios-profile-description">Dirigido a solteros de 25 años en adelante que buscan crecer espiritualmente mientras enfrentan los desafíos de la vida profesional.</p>
+                                </div>
+                            </div>
+
+                            <!-- TARJETA 4: Ministerio de Universitarios -->
+                            <div class="ministerios-profile-card" data-ministry="universitarios">
+                                <div class="ministerios-card-banner ministerios-banner-4">
+                                    <div class="ministerios-banner-overlay"></div>
+                                    <div class="ministerios-profile-avatar ministerios-avatar-4"></div>
+                                </div>
+                                <div class="ministerios-card-content">
+                                    <h2 class="ministerios-profile-name">Hugo & Thalía Guerrero</h2>
+                                    <p class="ministerios-profile-title">MINISTERIO DE UNIVERSITARIOS</p>
+                                    <div class="ministerios-social-links">
+                                        <a href="https://www.tiktok.com/@universitariosibmty" class="ministerios-social-link tiktok">
+                                            <i class="fab fa-tiktok"></i>
+                                        </a>
+                                        <a href="https://www.instagram.com/unisibmty?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="ministerios-social-link instagram">
+                                            <i class="fab fa-instagram"></i>
+                                        </a>
+                                        <a href="https://www.facebook.com/IBMtyuniversitarios" class="ministerios-social-link facebook">
+                                            <i class="fa-brands fa-facebook-f"></i>
+                                        </a>
+                                    </div>
+                                    <p class="ministerios-profile-description">Jóvenes universitarios entre 18 y 24 años que desean construir una fe sólida y relaciones significativas centradas en Cristo.</p>
+                                </div>
+                            </div>
+
+                            <!-- TARJETA 5: Ministerio de Jóvenes -->
+                            <div class="ministerios-profile-card" data-ministry="jovenes">
+                                <div class="ministerios-card-banner ministerios-banner-5">
+                                    <div class="ministerios-banner-overlay"></div>
+                                    <div class="ministerios-profile-avatar ministerios-avatar-5"></div>
+                                </div>
+                                <div class="ministerios-card-content">
+                                    <h2 class="ministerios-profile-name">
+                                        Brandon Brown<br>
+                                        Caro Hernández
+                                    </h2>
+                                    <p class="ministerios-profile-title">MINISTERIO DE JÓVENES</p>
+                                    <div class="ministerios-social-links">
+                                        <a href="https://www.tiktok.com/@jvns_ibmty/" class="ministerios-social-link tiktok">
+                                            <i class="fab fa-tiktok"></i>
+                                        </a>
+                                        <a href="https://www.instagram.com/jvns_ibmty?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="ministerios-social-link instagram">
+                                            <i class="fab fa-instagram"></i>
+                                        </a>
+                                        <a href="https://www.facebook.com/JVNSMty/" class="ministerios-social-link facebook">
+                                            <i class="fa-brands fa-facebook-f"></i>
+                                        </a>
+                                    </div>
+                                    <p class="ministerios-profile-description">Adolescentes de 14 a 18 años que están formando su identidad en Cristo y aprendiendo a vivir conforme a Su propósito.</p>
+                                </div>
+                            </div>
+
+                            <!-- TARJETA 6: Ministerio de Intermedios -->
+                            <div class="ministerios-profile-card" data-ministry="intermedios">
+                                <div class="ministerios-card-banner ministerios-banner-6">
+                                    <div class="ministerios-banner-overlay"></div>
+                                    <div class="ministerios-profile-avatar ministerios-avatar-6"></div>
+                                </div>
+                                <div class="ministerios-card-content">
+                                    <h2 class="ministerios-profile-name">Rafael & Karina Reyna</h2>
+                                    <p class="ministerios-profile-title">MINISTERIO DE INTERMEDIOS</p>
+                                    <div class="ministerios-social-links">
+                                        <a href="#" class="ministerios-social-link tiktok">
+                                            <i class="fab fa-tiktok"></i>
+                                        </a>
+                                        <a href="https://www.instagram.com/intersibmty?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="ministerios-social-link instagram">
+                                            <i class="fab fa-instagram"></i>
+                                        </a>
+                                        <a href="https://www.facebook.com/intersibmty" class="ministerios-social-link facebook">
+                                            <i class="fa-brands fa-facebook-f"></i>
+                                        </a>
+                                    </div>
+                                    <p class="ministerios-profile-description">Pre-adolescentes entre 11 y 13 años que desean conocer más de Dios, vivir Su verdad y ser luz en su entorno.</p>
+                                </div>
+                            </div>
+
+                            <!-- TARJETA 7: Ministerio de Culto Infantil -->
+                            <div class="ministerios-profile-card" data-ministry="culto-infantil">
+                                <div class="ministerios-card-banner ministerios-banner-7">
+                                    <div class="ministerios-banner-overlay"></div>
+                                    <div class="ministerios-profile-avatar ministerios-avatar-7"></div>
+                                </div>
+                                <div class="ministerios-card-content">
+                                    <h2 class="ministerios-profile-name">Laura Munguía</h2>
+                                    <p class="ministerios-profile-title">MINISTERIO DE CULTO INFANTIL</p>
+                                    <p class="ministerios-profile-description">Niños de 6 a 10 años aprenderán los principios bíblicos a través de juegos, historias y actividades que fortalecen su fe.</p>
+                                </div>
+                            </div>
+
+                            <!-- TARJETA 8: Ministerio de Párvulos -->
+                            <div class="ministerios-profile-card" data-ministry="parvulos">
+                                <div class="ministerios-card-banner ministerios-banner-7">
+                                    <div class="ministerios-banner-overlay"></div>
+                                    <div class="ministerios-profile-avatar ministerios-avatar-7"></div>
+                                </div>
+                                <div class="ministerios-card-content">
+                                    <h2 class="ministerios-profile-name">José & Xóchitl Munguía</h2>
+                                    <p class="ministerios-profile-title">MINISTERIO DE PÁRVULOS</p>
+                                    <p class="ministerios-profile-description">Para niños de 3 a 5 años, enseñamos las verdades bíblicas de forma creativa, involucrando a los padres en su formación espiritual.</p>
+                                </div>
+                            </div>
+
+                            <!-- TARJETA 9: Ministerio de Guardería -->
+                            <div class="ministerios-profile-card" data-ministry="guarderia">
+                                <div class="ministerios-card-banner ministerios-banner-7">
+                                    <div class="ministerios-banner-overlay"></div>
+                                    <div class="ministerios-profile-avatar ministerios-avatar-7"></div>
+                                </div>
+                                <div class="ministerios-card-content">
+                                    <h2 class="ministerios-profile-name">Proximamente</h2>
+                                    <p class="ministerios-profile-title">MINISTERIO DE GUARDERÍA</p>
+                                    <p class="ministerios-profile-description">Cuidamos con amor a bebés de 0 a 2 años en un espacio seguro, mientras sus padres participan en el servicio.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Indicadores de posición del carrusel -->
+                        <div class="ministerios-scroll-indicator">
+                            <div class="ministerios-indicator-dot active"></div>
+                            <div class="ministerios-indicator-dot"></div>
+                            <div class="ministerios-indicator-dot"></div>
+                            <div class="ministerios-indicator-dot"></div>
+                            <div class="ministerios-indicator-dot"></div>
+                            <div class="ministerios-indicator-dot"></div>
+                            <div class="ministerios-indicator-dot"></div>
+                        </div>
+                    </div>
+                    <!-- Botones de navegación del carrusel -->
+                    <div class="ministerios-scroll-nav">
+                        <button class="ministerios-scroll-btn" id="ministeriosScrollLeft">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <button class="ministerios-scroll-btn" id="ministeriosScrollRight">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- NOTIFICACIÓN TOAST PARA COPIAR -->
+        <div class="toast-container position-fixed bottom-0 end-0 p-3">
+            <div id="copyToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="toast-header">
+                    <i class="fas fa-check-circle text-success me-2"></i>
+                    <strong class="me-auto">¡Copiado!</strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+                <div class="toast-body">Información copiada al portapapeles</div>
+            </div>
+        </div>
+
+        <!-- FOOTER -->
+        <footer class="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="social-section footer-section">
+                        <h5><i class="fas fa-share-alt"></i>Síguenos</h5>
+                        <p>Mantente conectado con nosotros</p>
+                        <div class="social-icons">
+                            <a href="https://www.facebook.com/IBMty/" aria-label="Facebook">
+                                <i class="fab fa-facebook"></i>
+                            </a>
+                            <a href="https://www.instagram.com/iglesiabautistademonterrey?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" aria-label="Instagram">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="https://wa.me/528132503031?text=Hola,%20me%20interesa%20recibir%20informaci%C3%B3n%20de%20la%20iglesia" aria-label="WhatsApp">
+                                <i class="fab fa-whatsapp"></i>
+                            </a>
+                            <a href="https://www.youtube.com/channel/UCfhSTnqLb6vFO28eNm_n0qw" aria-label="YouTube">
+                                <i class="fab fa-youtube"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="mobile-double-column">
+                        <div class="contact-section footer-section">
+                            <h5><i class="fas fa-map-marker-alt"></i>Contacto</h5>
+                            <p class="small mb-2">
+                                Av. Eugenio Garza Sada 6309, <br>
+                                64890 Monterrey, N.L.
+                            </p>
+                            <p class="small mb-2">
+                                <i class="fas fa-envelope me-1"></i>
+                                <a href="mailto:ibmty@ribbi.org">ibmty@ribbi.org</a>
+                            </p>
+                            <p class="small mb-0">
+                                <i class="fas fa-phone me-1"></i>
+                                <a href="tel:+528132503000">+52 81 3250 3000</a>
+                            </p>
+                        </div>
+                        <div class="links-section footer-section">
+                            <h5><i class="fas fa-external-link-alt"></i>Enlaces Externos</h5>
+                            <a href="https://www.ribbi.org/" class="d-block small py-1">
+                                <i class="fa-solid fa-network-wired me-1"></i>RIBBI
+                            </a>
+                            <a href="https://elsaucillo.org/" class="d-block small py-1">
+                                <i class="fa-solid fa-mountain-sun me-1"></i>El Saucillo
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Pie de página con copyright -->
+            <div class="footer-bottom">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-md-6 text-center text-md-start">
+                            <div class="d-flex flex-column flex-sm-row justify-content-center justify-content-md-start">
+                                <a href="privacidad.html" class="me-3 mb-1 mb-sm-0 small">Aviso de Privacidad</a>
+                            </div>
+                        </div>
+                        <div class="col-md-6 text-center text-md-end">
+                            <p class="mb-0 small">© <span id="currentYear"></span> Iglesia Bautista de Monterrey.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <!-- Scripts -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js" integrity="sha512-A7AYk1fGKX6S2SsHywmPkrnzTZHrgiVT7GcQkLGDe2ev0aWb8zejytzS8wjo7PGEXKqJOrjQ4oORtnimIRZBtw==" crossorigin="anonymous"></script>
+        <script src="context/ThemeManager.js"></script>
+        <script src="context/utils.js"></script>
+        <!-- Script para el carrusel de ministerios -->
+        <script>
+            // Obtener referencias a los elementos del DOM
+            const gallery = document.getElementById('ministeriosProfileGallery');
+            const scrollLeftBtn = document.getElementById('ministeriosScrollLeft');
+            const scrollRightBtn = document.getElementById('ministeriosScrollRight');
+            const indicators = document.querySelectorAll('.ministerios-indicator-dot');
+            let currentIndex = 0;
+            const cardWidth = 350;
+
+            /*
+             * Actualiza los indicadores visuales según la tarjeta activa
+             */
+            function updateIndicators() {
+                indicators.forEach((dot, index) => {
+                    dot.classList.toggle('active', index === currentIndex);
+                });
+            }
+
+            /*
+             * Desplaza el carrusel a una tarjeta específica
+             * @param {number} index - Índice de la tarjeta a mostrar
+             */
+            function scrollToCard(index) {
+                const scrollPosition = index * cardWidth;
+                gallery.scrollTo({
+                    left: scrollPosition,
+                    behavior: 'smooth'
+                });
+                currentIndex = index;
+                updateIndicators();
+            }
+
+            // Evento para el botón de desplazamiento izquierdo y derecho
+            scrollLeftBtn.addEventListener('click', () => {
+                if (currentIndex > 0) {
+                    scrollToCard(currentIndex - 1);
+                }
+            });
+
+            scrollRightBtn.addEventListener('click', () => {
+                if (currentIndex < indicators.length - 1) {
+                    scrollToCard(currentIndex + 1);
+                }
+            });
+
+            // Eventos para los indicadores de punto
+            indicators.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    scrollToCard(index);
+                });
+            });
+
+            /*
+             * Actualiza el estado de los botones de navegación (deshabilitando cuando se llega al inicio o final)
+             */
+            function updateButtonStates() {
+                scrollLeftBtn.disabled = currentIndex === 0;
+                scrollRightBtn.disabled = currentIndex === indicators.length - 1;
+            }
+
+            updateButtonStates();
+            updateIndicators();
+
+            // Evento de desplazamiento para actualizar el estado cuando se desplaza manualmente
+            gallery.addEventListener('scroll', () => {
+                const scrollLeft = gallery.scrollLeft;
+                const newIndex = Math.round(scrollLeft / cardWidth);
+                if (newIndex !== currentIndex) {
+                    currentIndex = newIndex;
+                    updateIndicators();
+                    updateButtonStates();
+                }
+            });
+        </script>
+    </body>
+</html>

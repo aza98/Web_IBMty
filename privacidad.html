@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="es" data-bs-theme="light">
+    <head>
+        <!-- Metadatos básicos -->
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <meta name="description" content="Privacidad | Iglesia Bautista de Monterrey">
+
+        <!-- Configuración de tema claro/oscuro -->
+        <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+        <meta name="theme-color" content="#121212" media="(prefers-color-scheme: dark)">
+
+        <!-- Precarga de recursos críticos para mejorar rendimiento -->
+        <link rel="preload" href="assets/icons/IBMty_Logo_Desktop.png" as="image">
+        <link rel="preload" href="assets/icons/IBMty_Logo_Mobile.png" as="image">
+        <!-- Favicon e ícono para dispositivos Apple -->
+        <link rel="icon" type="image/png" sizes="32x32" href="assets/icons/IBMty_Icon.png">
+        <link rel="apple-touch-icon" sizes="180x180" href="assets/icons/IBMty_Icon.png">
+
+        <title>Iglesia Bautista de Monterrey</title>
+
+        <!-- Bibliotecas Bootstrap, Font Awesome, AOS y Animate. -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" integrity="sha512-1cK78a1o+ht2JcaW6g8OXYwqpev9+6GqOkz9xmBN9iUUhIndKtxwILGWYOSibOKjLsEdjyjZvYDq/cZwNeak0w==" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+        
+        <!-- Hojas de estilo personalizadas -->
+        <link rel="stylesheet" href="components/navbar.css">
+        <link rel="stylesheet" href="components/footer.css">
+        <link rel="stylesheet" href="styles/responsive-fixes.css">
+    </head>
+    <body>
+        <!-- BARRA DE NAVEGACIÓN -->
+        <nav class="navbar navbar-expand-lg">
+            <div class="container-fluid">
+                <!-- Botón de cambio de tema (versión móvil) -->
+                <button type="button" class="btn theme-toggle mobile-theme-toggle d-lg-none" onclick="toggleTheme()">
+                    <i class="fas fa-sun" id="mobile-theme-icon"></i>
+                </button>
+                <!-- Logo para escritorio -->
+                <a class="navbar-brand" href="index.html">
+                    <img src="assets/icons/IBMty_Logo_Desktop.png" alt="Logo" class="img-fluid">
+                </a>
+                <!-- Logo para móvil -->
+                <a class="navbar-brand mobile-brand" href="index.html">
+                    <img src="assets/icons/IBMty_Logo_Mobile.png" alt="Logo" class="img-fluid">
+                </a>
+                <!-- Botón de menú para móviles -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <!-- Menú de navegación -->
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">
+                                <i class="fas fa-home"></i>Inicio
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="nosotros.html">
+                                <i class="fas fa-users"></i>Nosotros
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="ministerios.html">
+                                <i class="fas fa-church"></i>Ministerios
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="salvacion.html">
+                                <i class="fas fa-cross"></i>Salvación
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="donativo.html">
+                                <i class="fas fa-donate"></i>Donativo
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Botón de cambio de tema (versión escritorio) -->
+                <button type="button" class="btn theme-toggle d-none d-lg-flex" onclick="toggleTheme()">
+                    <i class="fas fa-sun" id="desktop-theme-icon"></i>
+                </button>
+            </div>
+        </nav>
+
+        <main class="container-fluid">
+            <!-- Sección de aviso de privacidad -->
+            <section class="row justify-content-center mt-5 pt-4">
+                <div class="col-12 col-md-10 col-lg-8 py-4 py-lg-5">
+                    <header class="mb-5 text-center">
+                        <h1 class="display-4 fw-bold text-secondary mb-3">Aviso de privacidad</h1>
+                        <div class="divider mx-auto bg-secondary rounded-pill" style="width: 60px; height: 4px;"></div>
+                    </header>
+                    <article>
+                        <div class="card border-0 shadow-sm mb-4 bg-body">
+                            <div class="card-body p-4">
+                                <p class="lead text-body-secondary">
+                                    En la Iglesia Bautista de Monterrey, Asociación Religiosa, (Iglesia), con domicilio en Avenida Eugenio Garza Sada,
+                                    número 6309, Colonia Residencia La Hacienda, Plaza Sur, Monterrey, en la ciudad de Monterrey, Nuevo León, C.P. 64890,
+                                    nos comprometemos a proteger la privacidad de sus datos, personales que Usted nos proporcione ya sea en forma directa, a
+                                    través de nuestra página en Internet:
+                                    <a href="index.html" class="text-decoration-none fw-semibold">
+                                        <span class="text-info">www.ibmty.com</span>
+                                    </a>
+                                    o por medio de otros mecanismos permitidos por la Ley.<br><br>
+                                    
+                                    Para lograrlo, contamos con procesos de seguridad de información
+                                    que incluye todo lo referente a protecciones físicas y lógicas, para el manejo y tratamiento de sus datos personales.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="card border-0 shadow-sm mb-4 bg-body">
+                            <div class="card-header bg-secondary bg-opacity-10 border-0">
+                                <h2 class="h4 card-title mb-0 text-secondary fw-bold">
+                                    <i class="bi bi-person-check me-2"></i>Responsable del tratamiento de sus datos personales
+                                </h2>
+                            </div>
+                            <div class="card-body p-4">
+                                <p class="card-text text-body-secondary">
+                                    El responsable del tratamiento de sus datos personales es, la Iglesia Bautista de Monterrey, Asociación Religiosa,
+                                    (Iglesia) o Lic. Brian Emil Brown Elbe, para el caso de sus miembros, asociados o visitantes.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="card border-0 shadow-sm mb-4 bg-body">
+                            <div class="card-header bg-secondary bg-opacity-10 border-0">
+                                <h2 class="h4 card-title mb-0 text-secondary fw-bold">
+                                    <i class="bi bi-database me-2"></i>Datos personales que pueden recabarse
+                                </h2>
+                            </div>
+                            <div class="card-body p-4">
+                                <p class="card-text text-body-secondary">
+                                    La Iglesia Bautista de Monterrey, Asociación Religiosa, podrá recabar nombre, domicilio, correo electrónico, edad,
+                                    estado civil, ocupación, profesión, estudios, fotografía, fecha de nacimiento, creencia religiosa, actividad o giro del
+                                    negocio al que se dedique, número telefónico fijo o celular.
+                                </p>
+                                <p class="card-text text-body-secondary">
+                                    Los datos personales que La Iglesia Bautista de Monterrey, Asociación Religiosa, recabe por solicitud o voluntariamente
+                                    se proporcionen, serán empleados para los fines que se describen en el siguiente párrafo.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="card border-0 shadow-sm mb-4 bg-body">
+                            <div class="card-header bg-secondary bg-opacity-10 border-0">
+                                <h2 class="h4 card-title mb-0 text-secondary fw-bold">
+                                    <i class="bi bi-target me-2"></i>Finalidades del tratamiento de sus datos personales
+                                </h2>
+                            </div>
+                            <div class="card-body p-4">
+                                <p class="card-text text-body-secondary">Los datos personales que La Iglesia Bautista de Monterrey, Asociación Religiosa, recaba, serán empleados para fines de:</p>
+                                <div class="row g-3 mt-2">
+                                    <div class="col-md-6">
+                                        <div class="d-flex align-items-start">
+                                            <div class="bg-success bg-opacity-10 rounded-circle p-2 me-3 flex-shrink-0">
+                                                <i class="bi bi-person-badge text-success"></i>
+                                            </div>
+                                            <div>
+                                                <p class="mb-0 text-body-secondary">Conocer la identidad del titular, a fin de brindar una atención personalizada</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="d-flex align-items-start">
+                                            <div class="bg-success bg-opacity-10 rounded-circle p-2 me-3 flex-shrink-0">
+                                                <i class="bi bi-envelope text-success"></i>
+                                            </div>
+                                            <div>
+                                                <p class="mb-0 text-body-secondary">Hacer llegar información por medio de envío de correos electrónicos, SMS, mensajes de voz, aplicaciones electrónicas</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="d-flex align-items-start">
+                                            <div class="bg-success bg-opacity-10 rounded-circle p-2 me-3 flex-shrink-0">
+                                                <i class="bi bi-graph-up text-success"></i>
+                                            </div>
+                                            <div>
+                                                <p class="mb-0 text-body-secondary">Realizar estudios internos que nos permitan cumplir con la meta y objetivos que como Iglesia nos hemos planteado</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="d-flex align-items-start">
+                                            <div class="bg-success bg-opacity-10 rounded-circle p-2 me-3 flex-shrink-0">
+                                                <i class="bi bi-house-door text-success"></i>
+                                            </div>
+                                            <div>
+                                                <p class="mb-0 text-body-secondary">Efectuar en el domicilio proporcionado por usted, visitas personalizadas de cortesía</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="d-flex align-items-start">
+                                            <div class="bg-success bg-opacity-10 rounded-circle p-2 me-3 flex-shrink-0">
+                                                <i class="bi bi-arrow-clockwise text-success"></i>
+                                            </div>
+                                            <div>
+                                                <p class="mb-0 text-body-secondary">Actualización de datos para envío de información referente a su visita a La Iglesia</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="alert alert-warning border-0 mt-4" role="alert">
+                                    <div class="d-flex">
+                                        <i class="bi bi-shield-check text-warning me-3 fs-4"></i>
+                                        <p class="mb-0">
+                                            Los comunicados y/o mensajes donde La Iglesia Bautista de Monterrey, Asociación Religiosa, maneje información
+                                            confidencial con titulares, terceros o familiares que envíe a los domicilios, por ningún motivo estarán abiertos y
+                                            expuestos al público y los datos ahí publicados obedecen a información proporcionada por usted mismo, hacia la Iglesia
+                                            Bautista de Monterrey, Asociación Religiosa.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card border-0 shadow-sm mb-4 bg-body">
+                            <div class="card-header bg-secondary bg-opacity-10 border-0">
+                                <h2 class="h4 card-title mb-0 text-secondary fw-bold">
+                                    <i class="bi bi-hand-thumbs-down me-2"></i>Mecanismo para manifestar la negativa
+                                </h2>
+                            </div>
+                            <div class="card-body p-4">
+                                <p class="card-text text-body-secondary">
+                                    Respecto a sus datos personales, podrá ejercer, cuando así lo requiera, los derechos de acceso, rectificación,
+                                    cancelación u oposición (derechos ARCO) que la Ley prevé en un plazo de 30 días hábiles a partir del 06 de enero de
+                                    2012, o a partir de la fecha en que se recabaron sus datos personales, conforme al artículo tercero y cuarto de la Ley
+                                    Federal de Protección de Datos Personales en Posesión de Particulares.
+                                </p>
+                                <div class="alert alert-info border-0 d-flex align-items-center" role="alert">
+                                    <i class="bi bi-info-circle text-info me-3 fs-4"></i>
+                                    <p class="mb-0">
+                                        Esta solicitud debe realizarse por escrito para el cambio de sus datos, dirigido al responsable de los datos
+                                        particulares referido con antelación, debiendo presentar solicitud por escrito en las oficinas de la Iglesia.
+                                    </p>
+                                </div>
+                                <p class="card-text text-body-secondary">
+                                    Asimismo, le informamos que sus datos personales pueden ser transferidos y tratados dentro y fuera del país, por
+                                    personas distintas a esta Iglesia. En este sentido, su información puede ser compartida con nuestras Iglesias en
+                                    formación y misioneros, para fines estadísticos, promocionales o de planeación.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="card border-0 shadow-sm mb-4 bg-body">
+                            <div class="card-header bg-secondary bg-opacity-10 border-0">
+                                <h2 class="h4 card-title mb-0 text-secondary fw-bold">
+                                    <i class="bi bi-shield-lock me-2"></i>Sus derechos consisten en lo siguiente
+                                </h2>
+                            </div>
+                            <div class="card-body p-4">
+                                <div class="accordion accordion-flush" id="accordionDerechos">
+                                    <div class="accordion-item border-0 mb-3 rounded overflow-hidden shadow-sm">
+                                        <h3 class="accordion-header" id="headingAcceso">
+                                            <button class="accordion-button collapsed bg-primary bg-opacity-10 fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseAcceso" aria-expanded="false" aria-controls="collapseAcceso">
+                                                <i class="bi bi-eye me-2 text-primary"></i> <strong>Acceso</strong>
+                                            </button>
+                                        </h3>
+                                        <div id="collapseAcceso" class="accordion-collapse collapse" aria-labelledby="headingAcceso" data-bs-parent="#accordionDerechos">
+                                            <div class="accordion-body bg-body">
+                                                Poder conocer en todo momento sus datos personales proporcionados y que se encuentran en posesión de La Iglesia Bautista
+                                                de Monterrey, Asociación Religiosa, así como conocer el Aviso de Privacidad correspondiente.
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="accordion-item border-0 mb-3 rounded overflow-hidden shadow-sm">
+                                        <h3 class="accordion-header" id="headingRectificacion">
+                                            <button class="accordion-button collapsed bg-info bg-opacity-10 fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseRectificacion" aria-expanded="false" aria-controls="collapseRectificacion">
+                                                <i class="bi bi-pencil me-2 text-info"></i> <strong>Rectificación</strong>
+                                            </button>
+                                        </h3>
+                                        <div id="collapseRectificacion" class="accordion-collapse collapse"
+                                            aria-labelledby="headingRectificacion" data-bs-parent="#accordionDerechos">
+                                            <div class="accordion-body bg-body">
+                                                Si alguno de sus datos es inexacto o está incompleto, podrá solicitar su modificación,
+                                                siempre adjuntando la documentación que acredite dicha corrección.
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="accordion-item border-0 mb-3 rounded overflow-hidden shadow-sm">
+                                        <h3 class="accordion-header" id="headingCancelacion">
+                                            <button class="accordion-button collapsed bg-danger bg-opacity-10 fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseCancelacion" aria-expanded="false" aria-controls="collapseCancelacion">
+                                                <i class="bi bi-trash me-2 text-danger"></i> <strong>Cancelación</strong>
+                                            </button>
+                                        </h3>
+                                        <div id="collapseCancelacion" class="accordion-collapse collapse" aria-labelledby="headingCancelacion" data-bs-parent="#accordionDerechos">
+                                            <div class="accordion-body bg-body">
+                                                Podrá requerir cuando así lo considere, la cancelación de sus datos y, en caso de ser procedente, su información
+                                                personal entrará en un periodo de bloqueo para proceder posteriormente a su eliminación. Al entrar a dicho periodo, su
+                                                información ya no podrá ser tratada.
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="accordion-item border-0 mb-3 rounded overflow-hidden shadow-sm">
+                                        <h3 class="accordion-header" id="headingOposicion">
+                                            <button class="accordion-button collapsed bg-warning bg-opacity-10 fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOposicion" aria-expanded="false" aria-controls="collapseOposicion">
+                                                <i class="bi bi-x-circle me-2 text-warning"></i> <strong>Oposición</strong>
+                                            </button>
+                                        </h3>
+                                        <div id="collapseOposicion" class="accordion-collapse collapse" aria-labelledby="headingOposicion" data-bs-parent="#accordionDerechos">
+                                            <div class="accordion-body bg-body">
+                                                Podrá en todo momento y por causa legítima, oponerse al tratamiento de sus datos personales. 
+                                                Si su solicitud resulta procedente, ya no podremos hacer uso de los mismos.
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="alert alert-secondary border-0 mt-4" role="alert">
+                                    <div class="d-flex align-items-start">
+                                        <i class="bi bi-info-circle text-secondary me-3 fs-4 flex-shrink-0"></i>
+                                        <div>
+                                            <p class="mb-3">
+                                                En el caso de uso de sus derechos ARCO, es necesario que se direccione a la siguiente dirección electrónica,
+                                                donde le solicitaremos algunos datos para poder comunicarnos con usted y darle la atención necesaria para resolver su
+                                                petición y asegurar que ésta haya sido atendida.
+                                            </p>
+                                            <div class="text-center">
+                                                <a href="mailto:avisoprivacidad@ibmty.com" class="btn btn-info btn-lg text-white rounded-pill">
+                                                    <i class="bi bi-envelope me-2"></i>avisoprivacidad@ibmty.com
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card border-0 shadow-sm mb-4 bg-body">
+                            <div class="card-header bg-secondary bg-opacity-10 border-0">
+                                <h2 class="h4 card-title mb-0 text-secondary fw-bold">
+                                    <i class="bi bi-arrow-left-right me-2"></i>Transferencia de datos personales
+                                </h2>
+                            </div>
+                            <div class="card-body p-4">
+                                <p class="card-text text-body-secondary">
+                                    La Iglesia Bautista de Monterrey, Asociación Religiosa, así mismo, le informa que sus datos personales pueden ser
+                                    transferidos y tratados dentro y fuera del país, por personas distintas a esta Iglesia. En este sentido, su información
+                                    puede ser compartida con nuestras Iglesias en formación y misioneros, para fines estadísticos, promocionales o de
+                                    planeación. Así como a terceros mexicanos únicamente a quienes les provean de servicios necesarios para su debida
+                                    operación, como visitas domiciliarias de cortesía, envío de cartas, volantes ya sea en forma física o electrónica, SMS,
+                                    mensajes de voz, así como a los miembros o asociados pertenecientes a la Iglesia Bautista de Monterrey, Asociación
+                                    Religiosa, para cumplir con la finalidad del tratamiento de sus datos personales, que ha quedado debidamente precisado
+                                    bajo el rubro "Finalidades del tratamiento de sus datos personales"
+                                </p>
+                            </div>
+                        </div>
+                        <div class="card border-0 shadow-sm mb-4 bg-body">
+                            <div class="card-header bg-secondary bg-opacity-10 border-0">
+                                <h2 class="h4 card-title mb-0 text-secondary fw-bold">
+                                    <i class="bi bi-pencil-square me-2"></i>Modificaciones al aviso de privacidad
+                                </h2>
+                            </div>
+                            <div class="card-body p-4">
+                                <p class="card-text text-body-secondary">
+                                    Cualquier modificación al presente aviso de privacidad, La Iglesia Bautista de Monterrey, Asociación Religiosa, lo dará
+                                    a conocer por medio de la publicación del mismo en el presente portal:
+                                    <a href="index.html" class="text-decoration-none fw-semibold">
+                                        <span class="text-info">www.ibmty.com</span>
+                                    </a>, en donde se encontrará el Aviso de Privacidad vigente.
+                                </p>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </section>
+        </main>
+
+        <!-- FOOTER -->
+        <footer class="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="social-section footer-section">
+                        <h5><i class="fas fa-share-alt"></i>Síguenos</h5>
+                        <p>Mantente conectado con nosotros</p>
+                        <div class="social-icons">
+                            <a href="https://www.facebook.com/IBMty/" aria-label="Facebook">
+                                <i class="fab fa-facebook"></i>
+                            </a>
+                            <a href="https://www.instagram.com/iglesiabautistademonterrey?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" aria-label="Instagram">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="https://wa.me/528132503031?text=Hola,%20me%20interesa%20recibir%20informaci%C3%B3n%20de%20la%20iglesia" aria-label="WhatsApp">
+                                <i class="fab fa-whatsapp"></i>
+                            </a>
+                            <a href="https://www.youtube.com/channel/UCfhSTnqLb6vFO28eNm_n0qw" aria-label="YouTube">
+                                <i class="fab fa-youtube"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="mobile-double-column">
+                        <div class="contact-section footer-section">
+                            <h5><i class="fas fa-map-marker-alt"></i>Contacto</h5>
+                            <p class="small mb-2">
+                                Av. Eugenio Garza Sada 6309, <br>
+                                64890 Monterrey, N.L.
+                            </p>
+                            <p class="small mb-2">
+                                <i class="fas fa-envelope me-1"></i>
+                                <a href="mailto:ibmty@ribbi.org">ibmty@ribbi.org</a>
+                            </p>
+                            <p class="small mb-0">
+                                <i class="fas fa-phone me-1"></i>
+                                <a href="tel:+528132503000">+52 81 3250 3000</a>
+                            </p>
+                        </div>
+                        <div class="links-section footer-section">
+                            <h5><i class="fas fa-external-link-alt"></i>Enlaces Externos</h5>
+                            <a href="https://www.ribbi.org/" class="d-block small py-1">
+                                <i class="fa-solid fa-network-wired me-1"></i>RIBBI
+                            </a>
+                            <a href="https://elsaucillo.org/" class="d-block small py-1">
+                                <i class="fa-solid fa-mountain-sun me-1"></i>El Saucillo
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Pie de página con copyright -->
+            <div class="footer-bottom">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-md-6 text-center text-md-start">
+                            <div class="d-flex flex-column flex-sm-row justify-content-center justify-content-md-start">
+                                <a href="privacidad.html" class="me-3 mb-1 mb-sm-0 small">Aviso de Privacidad</a>
+                            </div>
+                        </div>
+                        <div class="col-md-6 text-center text-md-end">
+                            <p class="mb-0 small">© <span id="currentYear"></span> Iglesia Bautista de Monterrey.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <!-- Scripts -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js" integrity="sha512-A7AYk1fGKX6S2SsHywmPkrnzTZHrgiVT7GcQkLGDe2ev0aWb8zejytzS8wjo7PGEXKqJOrjQ4oORtnimIRZBtw==" crossorigin="anonymous"></script>
+        <script src="context/ThemeManager.js"></script>
+        <script src="context/utils.js"></script>
+    </body>
+</html>
