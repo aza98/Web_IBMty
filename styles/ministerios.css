@@ -137,35 +137,39 @@
 }
 
 .ministerios-profile-card[data-ministry=lideres] .ministerios-card-banner {
-    background-image: url('../assets/images/lideres/Lideres_Iglesia.png')
+    background-image: url('../assets/images/lideres/Lideres_Iglesia.jpg')
 }
 
 .ministerios-profile-card[data-ministry=adultos] .ministerios-card-banner {
-    background-image: url('../assets/images/lideres/Lideres_Adultos.png')
+    background-image: url('../assets/images/lideres/Lideres_Adultos.jpg')
 }
 
 .ministerios-profile-card[data-ministry=profesionistas] .ministerios-card-banner {
-    background-image: url('../assets/images/lideres/Lideres_Profesionistas.png')
+    background-image: url('../assets/images/lideres/Lideres_Profesionistas.jpg')
 }
 
 .ministerios-profile-card[data-ministry=universitarios] .ministerios-card-banner {
-    background-image: url('../assets/images/lideres/Lideres_Universitarios.png')
+    background-image: url('../assets/images/lideres/Lideres_Universitarios.jpg')
 }
 
 .ministerios-profile-card[data-ministry=jovenes] .ministerios-card-banner {
-    background-image: url('../assets/images/lideres/Lideres_Jovenes.png')
+    background-image: url('../assets/images/lideres/Lideres_Jovenes.jpg')
 }
 
 .ministerios-profile-card[data-ministry=intermedios] .ministerios-card-banner {
-    background-image: url('../assets/images/lideres/Lideres_Intermedios.png')
+    background-image: url('../assets/images/lideres/Lideres_Intermedios.jpg')
 }
 
 .ministerios-profile-card[data-ministry=culto-infantil] .ministerios-card-banner {
-    background-image: url('../assets/images/lideres/Lideres_CultoInfantil.png')
+    background-image: url('../assets/images/lideres/Lideres_CultoInfantil.jpg')
 }
 
 .ministerios-profile-card[data-ministry=parvulos] .ministerios-card-banner {
-    background-image: url('../assets/images/lideres/Lideres_Parvulos.png')
+    background-image: url('../assets/images/lideres/Lideres_Parvulos.jpg')
+}
+
+.ministerios-profile-card[data-ministry=guarderia] .ministerios-card-banner {
+    background-image: url('../assets/images/lideres/Lideres_Guarderia.jpg')
 }
 
 .ministerios-banner-overlay {
@@ -216,27 +220,27 @@
 }
 
 .ministerios-profile-card[data-ministry=lideres] .ministerios-profile-avatar {
-    background-image: url('../assets/icons/IBMty_Icon_90.png')
+    background-image: url('../assets/icons/Logo_IBMty.png')
 }
 
 .ministerios-profile-card[data-ministry=adultos] .ministerios-profile-avatar {
-    background-image: url('../assets/icons/Logo_Adultos_90.png')
+    background-image: url('../assets/icons/Logo_Adultos.png')
 }
 
 .ministerios-profile-card[data-ministry=profesionistas] .ministerios-profile-avatar {
-    background-image: url('../assets/icons/Logo_Profesionistas_90.png')
+    background-image: url('../assets/icons/Logo_Profesionistas.png')
 }
 
 .ministerios-profile-card[data-ministry=universitarios] .ministerios-profile-avatar {
-    background-image: url('../assets/icons/Logo_Universitarios_90.png')
+    background-image: url('../assets/icons/Logo_Universitarios.png')
 }
 
 .ministerios-profile-card[data-ministry=jovenes] .ministerios-profile-avatar {
-    background-image: url('../assets/icons/Logo_Jovenes_90.png')
+    background-image: url('../assets/icons/Logo_Jovenes.png')
 }
 
 .ministerios-profile-card[data-ministry=intermedios] .ministerios-profile-avatar {
-    background-image: url('../assets/icons/Logo_Intermedios_90.png')
+    background-image: url('../assets/icons/Logo_Intermedios.png')
 }
 
 .ministerios-profile-card[data-ministry=culto-infantil] .ministerios-profile-avatar {
