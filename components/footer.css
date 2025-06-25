@@ -11,7 +11,7 @@
     --footer-bottom-bg-dark: #121212;
     --footer-link-hover: #00c0f6;
     --facebook-color: #1877f2;
-    --instagram-color: #e4405f;
+    --instagram-color: #E1306C;
     --whatsapp-color: #25d366;
     --youtube-color: #ff0000;
     --social-bg-light: rgba(255, 255, 255, 0.8);
@@ -22,9 +22,6 @@
     --shadow-dark: 0 2px 8px rgba(0, 0, 0, 0.3)
 }
 
-/* ========================================
-   ESTILOS PRINCIPALES DEL FOOTER
-   ======================================== */
 .footer {
     background: var(--footer-bg-light);
     color: var(--footer-text-light);
@@ -37,9 +34,6 @@
     color: var(--footer-text-dark)
 }
 
-/* ========================================
-   ESTILOS DE SECCIONES DEL FOOTER
-   ======================================== */
 .footer-section {
     margin-bottom: 1rem
 }
@@ -86,9 +80,6 @@
     color: var(--footer-heading-dark)
 }
 
-/* ========================================
-   ESTILOS DE ENLACES DEL FOOTER
-   ======================================== */
 .footer-section a {
     color: inherit;
     text-decoration: none;
@@ -109,15 +100,14 @@
     flex-shrink: 0
 }
 
-/* ========================================
-   ESTILOS DE REDES SOCIALES
-   ======================================== */
 .social-icons {
     display: flex;
     gap: .5rem;
     align-items: center;
+    justify-content: center;
     flex-wrap: wrap;
-    margin-top: .5rem
+    margin-top: .5rem;
+    width: 100%
 }
 
 .social-icons a {
@@ -132,7 +122,16 @@
     transition: all var(--transition-speed) ease;
     color: #666;
     box-shadow: var(--shadow-light);
-    border: 2px solid transparent
+    border: 2px solid #fff0;
+    margin: 0
+}
+
+.social-icons a i {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%
 }
 
 [data-bs-theme=dark] .social-icons a {
@@ -149,14 +148,14 @@
     background: var(--facebook-color);
     color: #fff;
     border-color: var(--facebook-color);
-    box-shadow: 0 6px 16px rgba(24, 119, 242, .4)
+    box-shadow: 0 6px 16px rgb(24 119 242 / .4)
 }
 
 .social-icons a[href*=instagram]:hover {
-    background: linear-gradient(45deg, #f09433 0, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    background: linear-gradient(45deg, #FFDC80 0, #F56040 25%, #C13584 50%, #833AB4 75%, #405DE6 100%);
     color: #fff;
     border-color: var(--instagram-color);
-    box-shadow: 0 6px 16px rgba(228, 64, 95, .4)
+    box-shadow: 0 6px 16px rgb(228 64 95 / .4)
 }
 
 .social-icons a[href*="wa.me"]:hover,
@@ -164,19 +163,16 @@
     background: var(--whatsapp-color);
     color: #fff;
     border-color: var(--whatsapp-color);
-    box-shadow: 0 6px 16px rgba(37, 211, 102, .4)
+    box-shadow: 0 6px 16px rgb(37 211 102 / .4)
 }
 
 .social-icons a[href*=youtube]:hover {
     background: var(--youtube-color);
     color: #fff;
     border-color: var(--youtube-color);
-    box-shadow: 0 6px 16px rgba(255, 0, 0, .4)
+    box-shadow: 0 6px 16px rgb(255 0 0 / .4)
 }
 
-/* ========================================
-   ESTILOS DE LA SECCIÓN INFERIOR
-   ======================================== */
 .footer-bottom {
     background: var(--footer-bottom-bg-light);
     border-top: 1px solid var(--footer-border-light);
@@ -200,21 +196,6 @@
 .footer-bottom a:hover {
     color: var(--footer-link-hover);
     text-decoration: none
-}
-
-.footer-bottom a::after {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 2px;
-    bottom: -2px;
-    left: 0;
-    background-color: var(--footer-link-hover);
-    transition: width var(--transition-speed) ease
-}
-
-.footer-bottom a:hover::after {
-    width: 100%
 }
 
 .footer-bottom .small {
@@ -243,10 +224,6 @@
     margin-bottom: 0;
     font-weight: 400
 }
-
-/* ========================================
-   ESTILOS RESPONSIVOS - MÓVIL
-   ======================================== */
 
 @media (max-width:767.98px) {
     .footer-bottom {
@@ -385,9 +362,6 @@
     }
 }
 
-/* ========================================
-   ESTILOS RESPONSIVOS - MÓVILES PEQUEÑOS
-   ======================================== */
 @media (max-width:575.98px) {
     .footer .container {
         padding: .6rem
@@ -498,9 +472,6 @@
     }
 }
 
-/* ========================================
-   ESTILOS RESPONSIVOS - ESCRITORIO
-   ======================================== */
 @media (min-width:992px) {
     .footer .container {
         max-width: 1200px;
@@ -581,9 +552,6 @@
     }
 }
 
-/* ========================================
-   ANIMACIONES Y EFECTOS ESPECIALES
-   ======================================== */
 @keyframes fadeInUp {
     from {
         opacity: 0;
@@ -608,9 +576,6 @@
     animation-delay: .15s
 }
 
-/* ========================================
-   ACCESIBILIDAD Y PREFERENCIAS DE USUARIO
-   ======================================== */
 @media (prefers-reduced-motion:reduce) {
 
     .footer-section,
@@ -633,9 +598,6 @@
     border-radius: 4px
 }
 
-/* ========================================
-   ESTILOS PARA IMPRESIÓN
-   ======================================== */
 @media print {
     .footer {
         background: #fff !important;

@@ -15,7 +15,7 @@
     }
 
     /* Limita ancho de elementos posicionados absolutamente en .hero-section */
-    .hero-section .position-absolute {
+    .nosotros-section, .hero-introduction, .position-absolute {
         max-width: 100vw;
     }
 }

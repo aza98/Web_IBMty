@@ -6,21 +6,26 @@
     --heading-light: #1e293b;
     --heading-dark: #f1f5f9;
     --card-bg-light: #ffffff;
-    --card-bg-dark: #161f27;
-    --shadow-light: 0 15px 35px rgba(0, 0, 0, 0.08);
-    --shadow-dark: 0 15px 35px rgba(0, 0, 0, 0.25);
-    --shadow-hover-light: 0 25px 50px rgba(0, 0, 0, 0.15);
-    --shadow-hover-dark: 0 25px 50px rgba(0, 0, 0, 0.4);
-    --glass-bg-light: rgba(255, 255, 255, 0.85);
-    --glass-bg-dark: rgba(30, 41, 59, 0.85);
-    --glass-border: rgba(255, 255, 255, 0.2);
+    --card-bg-dark: #1a1a1a;
     --primary: #ffc108;
-    --secondary: #5c6bc0;
-    --tertiary: #8e24aa;
-    --section-spacing: clamp(40px, 8vw, 80px);
-    --card-spacing: clamp(20px, 4vw, 30px);
+    --primary-dark: #ffce58;
+    --primary-light: #ffe3a2;
+    --shadow-light: 0 4px 12px rgba(0, 0, 0, 0.08), 0 2px 4px rgba(0, 0, 0, 0.05);
+    --shadow-dark: 0 4px 12px rgba(0, 0, 0, 0.3), 0 2px 4px rgba(0, 0, 0, 0.2);
+    --shadow-hover-light: 0 8px 25px rgba(0, 0, 0, 0.12), 0 4px 8px rgba(0, 0, 0, 0.08);
+    --shadow-hover-dark: 0 8px 25px rgba(0, 0, 0, 0.4), 0 4px 8px rgba(0, 0, 0, 0.3);
+    --glass-bg-light: rgba(255, 255, 255, 0.9);
+    --glass-bg-dark: rgba(26, 26, 26, 0.9);
+    --glass-border-light: rgba(255, 255, 255, 0.2);
+    --glass-border-dark: rgba(255, 255, 255, 0.1);
+    --section-spacing: clamp(2rem, 5vw, 4rem);
+    --card-spacing: clamp(1rem, 3vw, 1.5rem);
+    --card-padding: clamp(1.25rem, 4vw, 2rem);
     --transition-smooth: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.1);
-    --transition-fast: all 0.2s ease
+    --transition-fast: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    --card-width: clamp(280px, 25vw, 340px);
+    --card-banner-height: clamp(140px, 15vw, 180px);
+    --avatar-size: clamp(70px, 8vw, 100px)
 }
 
 .ministerios-page {
@@ -37,25 +42,25 @@
     content: '';
     position: absolute;
     inset: 0;
-    background: radial-gradient(circle at 20% 80%, rgb(18 18 18 / .05) 0, transparent 50%), radial-gradient(circle at 80% 20%, rgb(18 18 18 / .05) 0, transparent 50%);
+    background: radial-gradient(circle at 20% 80%, rgb(0 192 246 / .03) 0%, transparent 50%), radial-gradient(circle at 80% 20%, rgb(0 192 246 / .03) 0%, transparent 50%);
     pointer-events: none
 }
 
-[data-bs-theme=dark] .ministerios-page {
+[data-bs-theme="dark"] .ministerios-page {
     background: var(--bg-dark);
     color: var(--text-dark)
 }
 
-[data-bs-theme=dark] .ministerios-page::before {
-    background: radial-gradient(circle at 20% 80%, rgb(18 18 18 / .18) 0, transparent 50%), radial-gradient(circle at 80% 20%, rgb(18 18 18 / .18) 0, transparent 50%)
+[data-bs-theme="dark"] .ministerios-page::before {
+    background: radial-gradient(circle at 20% 80%, #fff0 0%, transparent 50%), radial-gradient(circle at 80% 20%, #fff0 0%, transparent 50%)
 }
 
 .ministerios-gallery-container {
     position: relative;
     z-index: 1;
-    max-width: 1400px;
+    max-width: min(1400px, 95vw);
     margin: 0 auto;
-    padding: 0 clamp(15px, 4vw, 30px)
+    padding: 0 var(--card-spacing)
 }
 
 .ministerios-scroll-container {
@@ -66,7 +71,7 @@
 .ministerios-profile-gallery {
     display: flex;
     gap: var(--card-spacing);
-    padding: 25px 10px;
+    padding: 1.5rem .5rem;
     overflow-x: auto;
     scroll-behavior: smooth;
     scrollbar-width: thin;
@@ -89,14 +94,14 @@
     border-radius: 3px
 }
 
-[data-bs-theme=dark] .ministerios-profile-gallery::-webkit-scrollbar-track {
+[data-bs-theme="dark"] .ministerios-profile-gallery::-webkit-scrollbar-track {
     background: rgb(255 255 255 / .05)
 }
 
 .ministerios-profile-card {
-    flex: 0 0 340px;
+    flex: 0 0 var(--card-width);
     background: var(--card-bg-light);
-    border-radius: 24px;
+    border-radius: 1.5rem;
     overflow: visible;
     box-shadow: var(--shadow-light);
     transition: var(--transition-smooth);
@@ -105,180 +110,176 @@
     cursor: pointer;
     border: 1px solid rgb(0 0 0 / .05);
     backdrop-filter: blur(10px);
-    animation: .6s forwards fadeInUp;
-    contain: layout style paint;
+    animation: 0.6s ease-out forwards fadeInUp;
     will-change: transform
 }
 
-[data-bs-theme=dark] .ministerios-profile-card {
+[data-bs-theme="dark"] .ministerios-profile-card {
     background: var(--card-bg-dark);
     box-shadow: var(--shadow-dark);
     border-color: rgb(255 255 255 / .1)
 }
 
 .ministerios-profile-card:hover {
-    transform: translateY(-20px) scale(1.02);
+    transform: translate3d(0, -1.25rem, 0) scale(1.02);
     box-shadow: var(--shadow-hover-light);
     z-index: 10
 }
 
-[data-bs-theme=dark] .ministerios-profile-card:hover {
+[data-bs-theme="dark"] .ministerios-profile-card:hover {
     box-shadow: var(--shadow-hover-dark)
 }
 
 .ministerios-card-banner {
-    height: 180px;
-    background: linear-gradient(135deg, var(--secondary), var(--tertiary));
+    height: var(--card-banner-height);
+    background: linear-gradient(135deg, var(--primary-light), var(--primary));
     position: relative;
     overflow: visible;
     background-size: cover;
     background-position: center;
-    background-repeat: no-repeat
+    background-repeat: no-repeat;
+    border-radius: 1.5rem 1.5rem 0 0
 }
 
-.ministerios-profile-card[data-ministry=lideres] .ministerios-card-banner {
+.ministerios-profile-card[data-ministry="lideres"] .ministerios-card-banner {
     background-image: url(../assets/images/lideres/Lideres_Iglesia.jpg)
 }
 
-.ministerios-profile-card[data-ministry=adultos] .ministerios-card-banner {
+.ministerios-profile-card[data-ministry="adultos"] .ministerios-card-banner {
     background-image: url(../assets/images/lideres/Lideres_Adultos.jpg)
 }
 
-.ministerios-profile-card[data-ministry=profesionistas] .ministerios-card-banner {
+.ministerios-profile-card[data-ministry="profesionistas"] .ministerios-card-banner {
     background-image: url(../assets/images/lideres/Lideres_Profesionistas.jpg)
 }
 
-.ministerios-profile-card[data-ministry=universitarios] .ministerios-card-banner {
+.ministerios-profile-card[data-ministry="universitarios"] .ministerios-card-banner {
     background-image: url(../assets/images/lideres/Lideres_Universitarios.jpg)
 }
 
-.ministerios-profile-card[data-ministry=jovenes] .ministerios-card-banner {
+.ministerios-profile-card[data-ministry="jovenes"] .ministerios-card-banner {
     background-image: url(../assets/images/lideres/Lideres_Jovenes.jpg)
 }
 
-.ministerios-profile-card[data-ministry=intermedios] .ministerios-card-banner {
+.ministerios-profile-card[data-ministry="intermedios"] .ministerios-card-banner {
     background-image: url(../assets/images/lideres/Lideres_Intermedios.jpg)
 }
 
-.ministerios-profile-card[data-ministry=culto-infantil] .ministerios-card-banner {
+.ministerios-profile-card[data-ministry="culto-infantil"] .ministerios-card-banner {
     background-image: url(../assets/images/lideres/Lideres_CultoInfantil.jpg)
 }
 
-.ministerios-profile-card[data-ministry=parvulos] .ministerios-card-banner {
+.ministerios-profile-card[data-ministry="parvulos"] .ministerios-card-banner {
     background-image: url(../assets/images/lideres/Lideres_Parvulos.jpg)
 }
 
-.ministerios-profile-card[data-ministry=guarderia] .ministerios-card-banner {
+.ministerios-profile-card[data-ministry="guarderia"] .ministerios-card-banner {
     background-image: url(../assets/images/lideres/Lideres_Guarderia.jpg)
 }
 
 .ministerios-banner-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(transparent, rgb(0 0 0 / .2));
-    transition: opacity .3s
+    background: linear-gradient(transparent 50%, rgb(0 0 0 / .3));
+    transition: opacity 0.3s ease
 }
 
-[data-bs-theme=dark] .ministerios-banner-overlay {
-    background: linear-gradient(transparent, rgb(0 0 0 / .5))
+[data-bs-theme="dark"] .ministerios-banner-overlay {
+    background: linear-gradient(transparent 30%, rgb(0 0 0 / .6))
 }
 
 .ministerios-profile-card:hover .ministerios-banner-overlay {
-    opacity: .7
+    opacity: .8
 }
 
 .ministerios-profile-avatar {
-    width: 100px;
-    height: 100px;
+    width: var(--avatar-size);
+    height: var(--avatar-size);
     border-radius: 50%;
-    border: 5px solid var(--card-bg-light);
+    border: 4px solid var(--card-bg-light);
     position: absolute;
-    bottom: -50px;
+    bottom: calc(var(--avatar-size) / -2);
     left: 50%;
     transform: translateX(-50%);
     background-size: cover;
     background-position: center;
     background-color: var(--card-bg-light);
-    box-shadow: 0 10px 30px rgb(0 0 0 / .2);
+    box-shadow: 0 8px 25px rgb(0 0 0 / .15);
     transition: var(--transition-smooth);
-    z-index: 15;
+    z-index: 50;
     display: flex;
     align-items: center;
-    justify-content: center;
-    contain: layout style paint
+    justify-content: center
 }
 
-[data-bs-theme=dark] .ministerios-profile-avatar {
+[data-bs-theme="dark"] .ministerios-profile-avatar {
     border-color: var(--card-bg-dark);
     background-color: var(--card-bg-dark);
-    box-shadow: 0 10px 30px rgb(0 0 0 / .4)
+    box-shadow: 0 8px 25px rgb(0 0 0 / .4)
 }
 
 .ministerios-profile-card:hover .ministerios-profile-avatar {
-    transform: translateX(-50%) scale(1.15) rotate(5deg);
-    box-shadow: 0 15px 40px rgb(0 0 0 / .3)
+    transform: translateX(-50%) scale(1.1) rotate(3deg);
+    box-shadow: 0 12px 35px rgb(0 0 0 / .25)
 }
 
-.ministerios-profile-card[data-ministry=lideres] .ministerios-profile-avatar {
+[data-bs-theme="dark"] .ministerios-profile-card:hover .ministerios-profile-avatar {
+    box-shadow: 0 12px 35px rgb(0 0 0 / .5)
+}
+
+.ministerios-profile-card[data-ministry="lideres"] .ministerios-profile-avatar {
     background-image: url(../assets/icons/IBMty_Icon.png)
 }
 
-.ministerios-profile-card[data-ministry=adultos] .ministerios-profile-avatar {
+.ministerios-profile-card[data-ministry="adultos"] .ministerios-profile-avatar {
     background-image: url(../assets/icons/Logo_Adultos.png)
 }
 
-.ministerios-profile-card[data-ministry=profesionistas] .ministerios-profile-avatar {
+.ministerios-profile-card[data-ministry="profesionistas"] .ministerios-profile-avatar {
     background-image: url(../assets/icons/Logo_Profesionistas.png)
 }
 
-.ministerios-profile-card[data-ministry=universitarios] .ministerios-profile-avatar {
+.ministerios-profile-card[data-ministry="universitarios"] .ministerios-profile-avatar {
     background-image: url(../assets/icons/Logo_Universitarios.png)
 }
 
-.ministerios-profile-card[data-ministry=jovenes] .ministerios-profile-avatar {
+.ministerios-profile-card[data-ministry="jovenes"] .ministerios-profile-avatar {
     background-image: url(../assets/icons/Logo_Jovenes.png)
 }
 
-.ministerios-profile-card[data-ministry=intermedios] .ministerios-profile-avatar {
+.ministerios-profile-card[data-ministry="intermedios"] .ministerios-profile-avatar {
     background-image: url(../assets/icons/Logo_Intermedios.png)
 }
 
-.ministerios-profile-card[data-ministry=culto-infantil] .ministerios-profile-avatar {
+.ministerios-profile-card[data-ministry="culto-infantil"] .ministerios-profile-avatar {
     background-image: url(../assets/icons/Logo_culto_infantil.png)
 }
 
-.ministerios-profile-card[data-ministry=guarderia] .ministerios-profile-avatar::before,
-.ministerios-profile-card[data-ministry=parvulos] .ministerios-profile-avatar::before {
-    font-family: "Font Awesome 5 Free";
-    font-weight: 900;
-    font-size: 42px;
-    color: #00c0f6
+.ministerios-profile-card[data-ministry="parvulos"] .ministerios-profile-avatar {
+    background-image: url(../assets/icons/Logo_Parvulos.png)
 }
 
-.ministerios-profile-card[data-ministry=parvulos] .ministerios-profile-avatar::before {
-    content: "\f1ae"
-}
-
-.ministerios-profile-card[data-ministry=guarderia] .ministerios-profile-avatar::before {
-    content: "\f77c"
+.ministerios-profile-card[data-ministry="guarderia"] .ministerios-profile-avatar {
+    background-image: url(../assets/icons/Logo_Guarderia.png)
 }
 
 .ministerios-card-content {
-    padding: 60px 30px 30px;
+    padding: calc(var(--avatar-size) / 2 + 1rem) var(--card-padding) var(--card-padding);
     text-align: center;
-    position: relative
+    position: relative;
+    z-index: 1
 }
 
 .ministerios-profile-name {
-    font-size: 24px;
+    font-size: clamp(1.25rem, 4vw, 1.5rem);
     font-weight: 700;
     color: var(--heading-light);
-    margin-bottom: 8px;
+    margin-bottom: .5rem;
     transition: var(--transition-fast);
     line-height: 1.2
 }
 
-[data-bs-theme=dark] .ministerios-profile-name {
+[data-bs-theme="dark"] .ministerios-profile-name {
     color: var(--heading-dark)
 }
 
@@ -289,27 +290,30 @@
 
 .ministerios-profile-title {
     color: var(--text-light);
-    font-size: 13px;
+    font-size: clamp(0.75rem, 2vw, 0.875rem);
     font-weight: 600;
-    margin-bottom: 24px;
+    margin-bottom: 1.5rem;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: .5px;
     opacity: .7
 }
 
-[data-bs-theme=dark] .ministerios-profile-description,
-[data-bs-theme=dark] .ministerios-profile-title {
+[data-bs-theme="dark"] .ministerios-profile-title {
     color: var(--text-dark)
 }
 
 .ministerios-profile-description {
     color: var(--text-light);
-    font-size: 14px;
+    font-size: clamp(0.875rem, 2vw, 1rem);
     line-height: 1.6;
     max-width: 280px;
-    margin: 0 auto;
+    margin: 0 auto 1.5rem;
     opacity: .8;
-    transition: opacity .3s
+    transition: opacity 0.3s ease
+}
+
+[data-bs-theme="dark"] .ministerios-profile-description {
+    color: var(--text-dark)
 }
 
 .ministerios-profile-card:hover .ministerios-profile-description {
@@ -319,28 +323,28 @@
 .ministerios-social-links {
     display: flex;
     justify-content: center;
-    gap: 12px;
-    margin-bottom: 20px
+    gap: .75rem;
+    margin-bottom: 1.25rem
 }
 
 .ministerios-social-link {
-    width: 42px;
-    height: 42px;
-    border-radius: 20px;
+    width: clamp(2.25rem, 5vw, 2.5rem);
+    height: clamp(2.25rem, 5vw, 2.5rem);
+    border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     text-decoration: none;
     color: #fff;
-    font-size: 16px;
+    font-size: clamp(0.875rem, 3vw, 1rem);
     transition: var(--transition-fast);
     position: relative;
     overflow: hidden
 }
 
 .ministerios-social-link:hover {
-    transform: translateY(-4px) scale(1.05);
-    box-shadow: 0 10px 25px rgb(0 0 0 / .2)
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 8px 20px rgb(0 0 0 / .2)
 }
 
 .ministerios-social-link:hover i {
@@ -352,45 +356,42 @@
 }
 
 .ministerios-social-link.instagram {
-    background: linear-gradient(135deg, #f58529, #dd2a7b, #515bd4)
+    background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%)
 }
 
 .ministerios-social-link.tiktok {
-    background: #333
-}
-
-.ministerios-social-link.twitter {
-    background: #1da1f2
+    background: #000
 }
 
 .ministerios-scroll-nav {
     display: flex;
     justify-content: center;
-    gap: 16px;
-    margin-top: 40px
+    gap: 1rem;
+    margin-top: 2.5rem
 }
 
 .ministerios-scroll-btn {
-    width: 54px;
-    height: 54px;
+    width: clamp(3rem, 6vw, 3.5rem);
+    height: clamp(3rem, 6vw, 3.5rem);
     border-radius: 50%;
     background: var(--glass-bg-light);
-    border: 2px solid var(--glass-border);
+    border: 2px solid var(--glass-border-light);
     color: var(--text-light);
-    font-size: 18px;
+    font-size: clamp(1rem, 3vw, 1.125rem);
     cursor: pointer;
     transition: var(--transition-fast);
     display: flex;
     align-items: center;
     justify-content: center;
     backdrop-filter: blur(15px);
-    box-shadow: 0 8px 25px rgb(0 0 0 / .1)
+    box-shadow: 0 4px 15px rgb(0 0 0 / .1)
 }
 
-[data-bs-theme=dark] .ministerios-scroll-btn {
+[data-bs-theme="dark"] .ministerios-scroll-btn {
     background: var(--glass-bg-dark);
+    border-color: var(--glass-border-dark);
     color: var(--text-dark);
-    box-shadow: 0 8px 25px rgb(0 0 0 / .3)
+    box-shadow: 0 4px 15px rgb(0 0 0 / .3)
 }
 
 .ministerios-scroll-btn:hover:not(:disabled) {
@@ -398,7 +399,7 @@
     border-color: var(--primary);
     color: #fff;
     transform: scale(1.1);
-    box-shadow: 0 12px 30px rgb(255 193 8 / .3)
+    box-shadow: 0 4px 10px #ffe3a2
 }
 
 .ministerios-scroll-btn:disabled {
@@ -408,16 +409,16 @@
 
 .ministerios-scroll-indicator {
     position: absolute;
-    bottom: -20px;
+    bottom: -1.25rem;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
-    gap: 8px
+    gap: .5rem
 }
 
 .ministerios-indicator-dot {
-    width: 10px;
-    height: 10px;
+    width: .625rem;
+    height: .625rem;
     border-radius: 50%;
     background: rgb(0 0 0 / .2);
     transition: var(--transition-fast);
@@ -425,7 +426,7 @@
     position: relative
 }
 
-[data-bs-theme=dark] .ministerios-indicator-dot {
+[data-bs-theme="dark"] .ministerios-indicator-dot {
     background: rgb(255 255 255 / .2)
 }
 
@@ -445,87 +446,10 @@
     transform: scale(1)
 }
 
-@media (max-width:1024px) {
-    .ministerios-profile-card {
-        flex: 0 0 320px
-    }
-
-    .ministerios-card-banner {
-        height: 160px
-    }
-}
-
-@media (max-width:768px) {
-    .ministerios-profile-gallery {
-        gap: 20px;
-        padding: 20px 5px
-    }
-
-    .ministerios-profile-card {
-        flex: 0 0 300px
-    }
-
-    .ministerios-card-banner {
-        height: 150px
-    }
-
-    .ministerios-profile-avatar {
-        width: 90px;
-        height: 90px;
-        bottom: -45px
-    }
-
-    .ministerios-card-content {
-        padding: 55px 25px 25px
-    }
-
-    .ministerios-social-link {
-        width: 38px;
-        height: 38px;
-        font-size: 14px
-    }
-
-    .ministerios-scroll-btn {
-        width: 48px;
-        height: 48px;
-        font-size: 16px
-    }
-}
-
-@media (max-width:480px) {
-    .ministerios-profile-card {
-        flex: 0 0 280px
-    }
-
-    .ministerios-card-banner {
-        height: 140px
-    }
-
-    .ministerios-profile-avatar {
-        width: 80px;
-        height: 80px;
-        bottom: -40px
-    }
-
-    .ministerios-card-content {
-        padding: 50px 20px 20px
-    }
-
-    .ministerios-profile-name {
-        font-size: 22px
-    }
-
-    .ministerios-social-link {
-        width: 36px;
-        height: 36px;
-        font-size: 13px
-    }
-}
-
 @keyframes fadeInUp {
     from {
         opacity: 0;
-        transform: translateY(30px)
+        transform: translateY(2rem)
     }
 
     to {
@@ -535,13 +459,39 @@
 }
 
 .ministerios-profile-card:nth-child(n+2) {
-    animation-delay: calc(.1s * (var(--card-index, 1) - 1))
+    animation-delay: calc(0.1s * (var(--card-index, 1) - 1))
+}
+
+@media (max-width:768px) {
+    .ministerios-profile-gallery {
+        gap: 1rem;
+        padding: 1.25rem .25rem
+    }
+
+    .ministerios-card-content {
+        padding: calc(var(--avatar-size) / 2 + 0.75rem) 1.25rem 1.25rem
+    }
+}
+
+@media (max-width:480px) {
+    .ministerios-profile-name {
+        font-size: 1.125rem
+    }
+
+    .ministerios-profile-description {
+        font-size: .875rem
+    }
+
+    .ministerios-card-content {
+        padding: calc(var(--avatar-size) / 2 + 0.75rem) 1rem 1rem
+    }
 }
 
 @media (prefers-reduced-motion:reduce) {
     * {
-        animation-duration: 0s !important;
-        transition-duration: 0s !important
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important
     }
 
     .ministerios-profile-card:hover,
@@ -551,28 +501,24 @@
     }
 }
 
-.ministerios-indicator-dot:focus,
+.ministerios-profile-card:focus-within,
 .ministerios-scroll-btn:focus,
-.ministerios-social-link:focus {
-    outline: 3px solid var(--primary);
-    outline-offset: 2px
-}
-
-.ministerios-profile-card:focus-within {
+.ministerios-social-link:focus,
+.ministerios-indicator-dot:focus {
     outline: 2px solid var(--primary);
-    outline-offset: 4px
+    outline-offset: 2px
 }
 
 @media (prefers-contrast:high) {
     .ministerios-profile-card {
-        border: 2px solid currentColor
+        border: 2px solid var(--text-light)
+    }
+
+    [data-bs-theme="dark"] .ministerios-profile-card {
+        border-color: var(--text-dark)
     }
 
     .ministerios-social-link {
-        border: 1px solid currentColor
+        border: 1px solid var(--text-light)
     }
-}
-
-.ministerios-profile-card:hover {
-    transform: translate3d(0, -20px, 0) scale(1.02)
 }
