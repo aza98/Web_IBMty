@@ -1,7 +1,11 @@
 BEGIN:VCALENDAR
-VERSION:1.0
+VERSION:2.0
 PRODID:-//Iglesia Bautista de Monterrey//Eventos//ES
 CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Especial de Navidad 2025
+X-WR-CALDESC:Cantata Navideña - Iglesia Bautista de Monterrey
+X-WR-TIMEZONE:America/Monterrey
 BEGIN:VTIMEZONE
 TZID:America/Monterrey
 X-LIC-LOCATION:America/Monterrey
@@ -22,20 +26,40 @@ END:DAYLIGHT
 END:VTIMEZONE
 BEGIN:VEVENT
 UID:Navidad2025-1@ibmonterrey.mx
-DTSTAMP:20240607T120000Z
+DTSTAMP:20250627T120000Z
 DTSTART;TZID=America/Monterrey:20251206T170000
 DTEND;TZID=America/Monterrey:20251206T200000
-SUMMARY:Especial de Navidad
-DESCRIPTION:Una cantata navideña que celebra el nacimiento de Jesús con música, teatro y un mensaje de esperanza.
+SUMMARY:Especial de Navidad - Función 1
+DESCRIPTION:Una cantata navideña que celebra el nacimiento de Jesús con música\, teatro y un mensaje de esperanza.
 LOCATION:Iglesia Bautista de Monterrey
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+ORGANIZER;CN=Iglesia Bautista de Monterrey:mailto:oficina@ibmty.com
+CATEGORIES:Navidad,Iglesia,Cantata,Teatro,Música
+CLASS:PUBLIC
+PRIORITY:3
+SEQUENCE:0
+CREATED:20250627T120000Z
+LAST-MODIFIED:20250627T120000Z
+URL:https://www.ibmty.com/
 END:VEVENT
 BEGIN:VEVENT
 UID:Navidad2025-2@ibmonterrey.mx
-DTSTAMP:20240607T120000Z
+DTSTAMP:20250627T120000Z
 DTSTART;TZID=America/Monterrey:20251207T170000
 DTEND;TZID=America/Monterrey:20251207T200000
-SUMMARY:Especial de Navidad
-DESCRIPTION:Una cantata navideña que celebra el nacimiento de Jesús con música, teatro y un mensaje de esperanza.
+SUMMARY:Especial de Navidad - Función 2
+DESCRIPTION:Una cantata navideña que celebra el nacimiento de Jesús con música\, teatro y un mensaje de esperanza.
 LOCATION:Iglesia Bautista de Monterrey
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+ORGANIZER;CN=Iglesia Bautista de Monterrey:mailto:oficina@ibmty.com
+CATEGORIES:Navidad,Iglesia,Cantata,Teatro,Música
+CLASS:PUBLIC
+PRIORITY:3
+SEQUENCE:0
+CREATED:20250627T120000Z
+LAST-MODIFIED:20250627T120000Z
+URL:https://www.ibmty.com/
 END:VEVENT
 END:VCALENDAR

@@ -41,4 +41,8 @@ function initAnimateCSS() {
 // Inicializar el tema al cargar la página
 document.addEventListener("DOMContentLoaded", () => {
     setTheme(getPreferredTheme()), initAOS(), initAnimateCSS()
+    ,
+
+    // Mostrar el año actual en el pie de página
+    document.getElementById("currentYear").textContent = new Date().getFullYear()
 });

@@ -5,28 +5,29 @@
     --footer-text-dark: #e9ecef;
     --footer-heading-light: #212529;
     --footer-heading-dark: #ffffff;
-    --footer-border-light: #dee2e6;
-    --footer-border-dark: #495057;
-    --footer-bottom-bg-light: #ffffff;
-    --footer-bottom-bg-dark: #121212;
+    --footer-border-light: #dee2e680;
+    --footer-border-dark: #6767674d;
     --footer-link-hover: #00c0f6;
     --facebook-color: #1877f2;
-    --instagram-color: #E1306C;
-    --whatsapp-color: #25d366;
+    --instagram-color: #C13584;
+    --mail-color: #1fabfc;
     --youtube-color: #ff0000;
-    --social-bg-light: rgba(255, 255, 255, 0.8);
-    --social-bg-dark: rgba(255, 255, 255, 0.1);
+    --social-bg-light: #ffffffe6;
+    --social-bg-dark: #ffffff1f;
     --transition-speed: 0.3s;
     --border-radius: 8px;
-    --shadow-light: 0 2px 8px rgba(0, 0, 0, 0.1);
-    --shadow-dark: 0 2px 8px rgba(0, 0, 0, 0.3)
+    --shadow-light: 0 2px 12px #00000014;
+    --shadow-dark: 0 2px 12px #00000040;
+    --footer-padding: 1.5rem;
+    --footer-gap: 1rem
 }
 
 .footer {
     background: var(--footer-bg-light);
     color: var(--footer-text-light);
     margin-top: auto;
-    transition: all var(--transition-speed) ease
+    transition: all var(--transition-speed) ease;
+    position: relative
 }
 
 [data-bs-theme=dark] .footer {
@@ -35,7 +36,7 @@
 }
 
 .footer-section {
-    margin-bottom: 1rem
+    margin-bottom: var(--footer-gap)
 }
 
 .footer-section h5,
@@ -62,13 +63,13 @@
 
 .footer-section p {
     margin-bottom: .3rem;
-    line-height: 1.5
+    line-height: 1.6
 }
 
 .footer-section address {
     font-style: normal;
     margin-bottom: .3rem;
-    line-height: 1.5
+    line-height: 1.6
 }
 
 .footer-section strong {
@@ -86,7 +87,8 @@
     transition: all var(--transition-speed) ease;
     display: inline-flex;
     align-items: center;
-    gap: .4rem
+    gap: .4rem;
+    position: relative
 }
 
 .footer-section a:hover {
@@ -102,7 +104,7 @@
 
 .social-icons {
     display: flex;
-    gap: .5rem;
+    gap: .6rem;
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
@@ -118,12 +120,31 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.1rem;
-    transition: all var(--transition-speed) ease;
+    font-size: 1.2rem;
+    transition: all var(--transition-speed) cubic-bezier(.4, 0, .2, 1);
     color: #666;
     box-shadow: var(--shadow-light);
     border: 2px solid #fff0;
-    margin: 0
+    margin: 0;
+    position: relative;
+    overflow: hidden
+}
+
+.social-icons a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 50%;
+    background: linear-gradient(45deg, transparent, rgb(255 255 255 / .1));
+    opacity: 0;
+    transition: opacity var(--transition-speed) ease
+}
+
+.social-icons a:hover::before {
+    opacity: 1
 }
 
 .social-icons a i {
@@ -131,7 +152,8 @@
     align-items: center;
     justify-content: center;
     width: 100%;
-    height: 100%
+    height: 100%;
+    z-index: 1
 }
 
 [data-bs-theme=dark] .social-icons a {
@@ -141,47 +163,45 @@
 }
 
 .social-icons a:hover {
-    transform: translateY(-2px) scale(1.05)
+    transform: translateY(-3px) scale(1.08)
 }
 
 .social-icons a[href*=facebook]:hover {
     background: var(--facebook-color);
     color: #fff;
     border-color: var(--facebook-color);
-    box-shadow: 0 6px 16px rgb(24 119 242 / .4)
+    box-shadow: 0 8px 20px rgb(24 119 242 / .4)
 }
 
 .social-icons a[href*=instagram]:hover {
-    background: linear-gradient(45deg, #FFDC80 0, #F56040 25%, #C13584 50%, #833AB4 75%, #405DE6 100%);
+    background: linear-gradient(45deg, #FFDC80 0%, #F56040 25%, #C13584 50%, #833AB4 75%, #405DE6 100%);
     color: #fff;
     border-color: var(--instagram-color);
-    box-shadow: 0 6px 16px rgb(228 64 95 / .4)
+    box-shadow: 0 8px 20px rgb(228 64 95 / .4)
 }
 
 .social-icons a[href*="wa.me"]:hover,
-.social-icons a[href*=whatsapp]:hover {
-    background: var(--whatsapp-color);
+.social-icons a[href*=mail]:hover {
+    background: var(--mail-color);
     color: #fff;
-    border-color: var(--whatsapp-color);
-    box-shadow: 0 6px 16px rgb(37 211 102 / .4)
+    border-color: var(--mail-color);
+    box-shadow: 0 8px 20px #0070b1;
 }
 
 .social-icons a[href*=youtube]:hover {
     background: var(--youtube-color);
     color: #fff;
     border-color: var(--youtube-color);
-    box-shadow: 0 6px 16px rgb(255 0 0 / .4)
+    box-shadow: 0 8px 20px rgb(255 0 0 / .4)
 }
 
 .footer-bottom {
-    background: var(--footer-bottom-bg-light);
-    border-top: 1px solid var(--footer-border-light);
-    padding: .1rem 0;
-    margin-top: .35rem
+    background: var(--footer-bg-light);
+    border-top: 0.5px solid var(--footer-border-light);
 }
 
 [data-bs-theme=dark] .footer-bottom {
-    background: var(--footer-bottom-bg-dark);
+    background: var(--footer-bg-dark);
     border-top-color: var(--footer-border-dark)
 }
 
@@ -201,23 +221,21 @@
 .footer-bottom .small {
     font-size: .8rem;
     opacity: .85;
-    line-height: 1.1
+    line-height: 1.4
 }
 
-.footer-bottom .d-flex a:not(:last-child)::before {
-    content: '';
+.footer-bottom .d-flex a:not(:last-child)::after {
+    content: '•';
     position: absolute;
-    right: -.4rem;
+    right: -.5rem;
     top: 50%;
     transform: translateY(-50%);
-    width: 1px;
-    height: 8px;
-    background-color: var(--footer-border-light);
-    opacity: .5
+    color: var(--footer-border-light);
+    font-weight: 700
 }
 
-[data-bs-theme=dark] .footer-bottom .d-flex a:not(:last-child)::before {
-    background-color: var(--footer-border-dark)
+[data-bs-theme=dark] .footer-bottom .d-flex a:not(:last-child)::after {
+    color: var(--footer-border-dark)
 }
 
 .footer-bottom p {
@@ -227,13 +245,13 @@
 
 @media (max-width:767.98px) {
     .footer-bottom {
-        padding: .35rem 0;
+        padding: .5rem 0;
         text-align: center
     }
 
     .footer-bottom .row {
         flex-direction: column;
-        gap: .3rem
+        gap: .4rem
     }
 
     .footer-bottom .col-md-6 {
@@ -243,36 +261,40 @@
     .footer-bottom .d-flex {
         justify-content: center !important;
         flex-wrap: wrap;
-        gap: .25rem
+        gap: .5rem
     }
 
     .footer-bottom .small {
         font-size: .75rem
     }
 
-    .footer-bottom .d-flex a::before {
-        display: none
+    .footer-bottom .d-flex a:not(:last-child)::after {
+        right: -.3rem
     }
 }
 
 @media (max-width:575.98px) {
     .footer-bottom {
-        padding: .25rem 0
+        padding: .4rem 0
     }
 
     .footer-bottom .d-flex {
         flex-direction: column;
-        gap: .1rem
+        gap: .2rem
     }
 
     .footer-bottom .small {
         font-size: .7rem
     }
+
+    .footer-bottom .d-flex a:not(:last-child)::after {
+        display: none
+    }
 }
 
 @media (max-width:767.98px) {
     .footer .container {
-        padding: .75rem
+        padding: var(--footer-padding)
     }
 
     .footer .row {
@@ -298,12 +320,12 @@
 
     .social-icons {
         justify-content: center;
-        gap: .4rem
+        gap: .5rem
     }
 
     .social-icons a {
-        width: 36px;
-        height: 36px;
+        width: 38px;
+        height: 38px;
         font-size: 1rem
     }
 
@@ -311,14 +333,14 @@
         order: 2;
         display: flex;
         flex-wrap: wrap;
-        gap: .75rem;
+        gap: 1rem;
         margin-bottom: .75rem
     }
 
     .mobile-double-column .contact-section,
     .mobile-double-column .links-section {
         flex: 1;
-        min-width: calc(50% - .375rem);
+        min-width: calc(50% - 0.5rem);
         margin-bottom: 0
     }
 
@@ -364,7 +386,7 @@
 
 @media (max-width:575.98px) {
     .footer .container {
-        padding: .6rem
+        padding: 0.5rem
     }
 
     .footer-section {
@@ -384,18 +406,18 @@
     }
 
     .social-icons a {
-        width: 34px;
-        height: 34px;
+        width: 36px;
+        height: 36px;
         font-size: .95rem
     }
 
     .mobile-double-column {
-        gap: .6rem
+        gap: .8rem
     }
 
     .mobile-double-column .contact-section,
     .mobile-double-column .links-section {
-        min-width: calc(50% - .3rem)
+        min-width: calc(50% - 0.4rem)
     }
 
     .contact-section h5,
@@ -408,24 +430,11 @@
     .contact-section p,
     .links-section a {
         font-size: .8rem;
-        line-height: 1.4
+        line-height: 1.5
     }
 
     .contact-section address {
         margin-bottom: .25rem
-    }
-
-    .footer-bottom {
-        padding: .25rem 0
-    }
-
-    .footer-bottom .small {
-        font-size: .7rem
-    }
-
-    .footer-bottom .d-flex {
-        flex-direction: column;
-        gap: .1rem
     }
 }
 
@@ -444,7 +453,7 @@
 
 @media (min-width:768px) and (max-width:991.98px) {
     .footer .container {
-        padding: 1.25rem
+        padding: 0.5rem
     }
 
     .footer-section {
@@ -475,7 +484,7 @@
 @media (min-width:992px) {
     .footer .container {
         max-width: 1200px;
-        padding: 1.5rem 1rem
+        padding: var(--footer-padding) 1rem
     }
 
     .mobile-double-column {
@@ -542,12 +551,12 @@
     .social-icons {
         justify-content: flex-start;
         margin-top: .75rem;
-        gap: .6rem
+        gap: .7rem
     }
 
     .social-icons a {
-        width: 42px;
-        height: 42px;
+        width: 44px;
+        height: 44px;
         font-size: 1.15rem
     }
 }
@@ -555,7 +564,7 @@
 @keyframes fadeInUp {
     from {
         opacity: 0;
-        transform: translateY(15px)
+        transform: translateY(20px)
     }
 
     to {
@@ -564,16 +573,44 @@
     }
 }
 
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-10px)
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0)
+    }
+}
+
 .footer-section {
-    animation: fadeInUp .5s ease forwards
+    animation: fadeInUp 0.6s ease forwards
 }
 
 .footer-section:nth-child(2) {
-    animation-delay: .1s
+    animation-delay: 0.1s
 }
 
 .footer-section:nth-child(3) {
-    animation-delay: .15s
+    animation-delay: 0.2s
+}
+
+.social-icons a {
+    animation: slideIn 0.4s ease forwards
+}
+
+.social-icons a:nth-child(2) {
+    animation-delay: 0.1s
+}
+
+.social-icons a:nth-child(3) {
+    animation-delay: 0.2s
+}
+
+.social-icons a:nth-child(4) {
+    animation-delay: 0.3s
 }
 
 @media (prefers-reduced-motion:reduce) {
@@ -598,11 +635,20 @@
     border-radius: 4px
 }
 
+.footer-section a:focus-visible,
+.social-icons a:focus-visible {
+    outline: 2px solid var(--footer-link-hover);
+    outline-offset: 3px;
+    border-radius: 6px;
+    box-shadow: 0 0 0 4px rgb(0 192 246 / .2)
+}
+
 @media print {
     .footer {
         background: #fff !important;
         color: #000 !important;
-        box-shadow: none
+        box-shadow: none;
+        page-break-inside: avoid
     }
 
     .social-icons {
@@ -610,6 +656,11 @@
     }
 
     .footer-section a {
-        color: #000 !important
+        color: #000 !important;
+        text-decoration: underline
+    }
+
+    .footer-bottom {
+        border-top: 1px solid #ccc !important
     }
 }

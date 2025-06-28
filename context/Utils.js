@@ -67,8 +67,5 @@ document.addEventListener("DOMContentLoaded", function () {
                 }(o)
             } else e("Error al copiar el texto")
         })
-    }),
-
-    // Mostrar el año actual en el pie de página
-    document.getElementById("currentYear").textContent = new Date().getFullYear()
+    })
 });

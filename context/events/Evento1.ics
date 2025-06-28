@@ -1,7 +1,11 @@
 BEGIN:VCALENDAR
-VERSION:1.0
+VERSION:2.0
 PRODID:-//Iglesia Bautista de Monterrey//Eventos//ES
 CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Escuelitas de Verano 2025
+X-WR-CALDESC:Eventos de Escuelitas de Verano - Iglesia Bautista de Monterrey
+X-WR-TIMEZONE:America/Monterrey
 BEGIN:VTIMEZONE
 TZID:America/Monterrey
 X-LIC-LOCATION:America/Monterrey
@@ -22,47 +26,97 @@ END:DAYLIGHT
 END:VTIMEZONE
 BEGIN:VEVENT
 UID:Escuelitas2025-1@ibmonterrey.mx
-DTSTAMP:20240607T120000Z
+DTSTAMP:20250627T120000Z
 DTSTART;TZID=America/Monterrey:20250721T090000
 DTEND;TZID=America/Monterrey:20250721T130000
-SUMMARY:Escuelitas de Verano
-DESCRIPTION:Una semana llena de juegos, actividades, manualidades y enseñanzas bíblicas para niños.
+SUMMARY:Escuelitas de Verano - Día 1
+DESCRIPTION:Una semana llena de juegos\, actividades\, manualidades y enseñanzas bíblicas para niños.
 LOCATION:Iglesia Bautista de Monterrey
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+ORGANIZER;CN=Iglesia Bautista de Monterrey:mailto:oficina@ibmty.com
+CATEGORIES:Niños,Iglesia,Verano
+CLASS:PUBLIC
+PRIORITY:5
+SEQUENCE:0
+CREATED:20250627T120000Z
+LAST-MODIFIED:20250627T120000Z
+URL:https://www.ibmty.com/
 END:VEVENT
 BEGIN:VEVENT
 UID:Escuelitas2025-2@ibmonterrey.mx
-DTSTAMP:20240607T120000Z
+DTSTAMP:20250627T120000Z
 DTSTART;TZID=America/Monterrey:20250722T090000
 DTEND;TZID=America/Monterrey:20250722T130000
-SUMMARY:Escuelitas de Verano
-DESCRIPTION:Una semana llena de juegos, actividades, manualidades y enseñanzas bíblicas para niños.
+SUMMARY:Escuelitas de Verano - Día 2
+DESCRIPTION:Una semana llena de juegos\, actividades\, manualidades y enseñanzas bíblicas para niños.
 LOCATION:Iglesia Bautista de Monterrey
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+ORGANIZER;CN=Iglesia Bautista de Monterrey:mailto:oficina@ibmty.com
+CATEGORIES:Niños,Iglesia,Verano
+CLASS:PUBLIC
+PRIORITY:5
+SEQUENCE:0
+CREATED:20250627T120000Z
+LAST-MODIFIED:20250627T120000Z
+URL:https://www.ibmty.com/
 END:VEVENT
 BEGIN:VEVENT
 UID:Escuelitas2025-3@ibmonterrey.mx
-DTSTAMP:20240607T120000Z
+DTSTAMP:20250627T120000Z
 DTSTART;TZID=America/Monterrey:20250723T090000
 DTEND;TZID=America/Monterrey:20250723T130000
-SUMMARY:Escuelitas de Verano
-DESCRIPTION:Una semana llena de juegos, actividades, manualidades y enseñanzas bíblicas para niños.
+SUMMARY:Escuelitas de Verano - Día 3
+DESCRIPTION:Una semana llena de juegos\, actividades\, manualidades y enseñanzas bíblicas para niños.
 LOCATION:Iglesia Bautista de Monterrey
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+ORGANIZER;CN=Iglesia Bautista de Monterrey:mailto:oficina@ibmty.com
+CATEGORIES:Niños,Iglesia,Verano
+CLASS:PUBLIC
+PRIORITY:5
+SEQUENCE:0
+CREATED:20250627T120000Z
+LAST-MODIFIED:20250627T120000Z
+URL:https://www.ibmty.com/
 END:VEVENT
 BEGIN:VEVENT
 UID:Escuelitas2025-4@ibmonterrey.mx
-DTSTAMP:20240607T120000Z
+DTSTAMP:20250627T120000Z
 DTSTART;TZID=America/Monterrey:20250724T090000
 DTEND;TZID=America/Monterrey:20250724T130000
-SUMMARY:Escuelitas de Verano
-DESCRIPTION:Una semana llena de juegos, actividades, manualidades y enseñanzas bíblicas para niños.
+SUMMARY:Escuelitas de Verano - Día 4
+DESCRIPTION:Una semana llena de juegos\, actividades\, manualidades y enseñanzas bíblicas para niños.
 LOCATION:Iglesia Bautista de Monterrey
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+ORGANIZER;CN=Iglesia Bautista de Monterrey:mailto:oficina@ibmty.com
+CATEGORIES:Niños,Iglesia,Verano
+CLASS:PUBLIC
+PRIORITY:5
+SEQUENCE:0
+CREATED:20250627T120000Z
+LAST-MODIFIED:20250627T120000Z
+URL:https://www.ibmty.com/
 END:VEVENT
 BEGIN:VEVENT
 UID:Escuelitas2025-5@ibmonterrey.mx
-DTSTAMP:20240607T120000Z
+DTSTAMP:20250627T120000Z
 DTSTART;TZID=America/Monterrey:20250725T090000
 DTEND;TZID=America/Monterrey:20250725T130000
-SUMMARY:Escuelitas de Verano
-DESCRIPTION:Una semana llena de juegos, actividades, manualidades y enseñanzas bíblicas para niños.
+SUMMARY:Escuelitas de Verano - Día 5
+DESCRIPTION:Una semana llena de juegos\, actividades\, manualidades y enseñanzas bíblicas para niños.
 LOCATION:Iglesia Bautista de Monterrey
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+ORGANIZER;CN=Iglesia Bautista de Monterrey:mailto:oficina@ibmty.com
+CATEGORIES:Niños,Iglesia,Verano
+CLASS:PUBLIC
+PRIORITY:5
+SEQUENCE:0
+CREATED:20250627T120000Z
+LAST-MODIFIED:20250627T120000Z
+URL:https://www.ibmty.com/
 END:VEVENT
 END:VCALENDAR
