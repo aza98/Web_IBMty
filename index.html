@@ -30,6 +30,7 @@
         <link rel="stylesheet" href="components/footer.css">
         <link rel="stylesheet" href="components/floating-bottom.css">
         <link rel="stylesheet" href="styles/responsive-fixes.css">
+        <link rel="stylesheet" href="styles/eventsCarousel.css">
     </head>
     <body class="no-navbar-padding">
         <!-- BARRA DE NAVEGACIÓN -->
@@ -187,7 +188,7 @@
                                 <div class="col-12 col-lg-8" >
                                     <article class="card border-0 shadow-sm h-100" data-aos="fade-right" data-aos-duration="800">
                                         <div class="ratio ratio-16x9">
-                                            <iframe id="youtube-live-embed" src="https://www.youtube.com/embed/4eADE7DI0zA"
+                                            <iframe id="youtube-live-embed" src="https://www.youtube.com/embed/2xVo6npUww0"
                                                 title="Transmisión en vivo - Iglesia Bautista de Monterrey"
                                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                                                 referrerpolicy="strict-origin-when-cross-origin" allowfullscreen
@@ -284,317 +285,392 @@
                     </div>
                 </div>
             </section>
-        
+
             <!-- SECCIÓN DE PRÓXIMOS EVENTOS -->
             <section id="eventos" class="py-3 py-sm-4 py-md-5 py-lg-6" aria-label="Sección de próximos eventos">
-                <div class="container-fluid container-sm px-3 px-md-4 px-lg-5">
+                <div class="container-fluid px-3 px-sm-4 px-md-5 px-xl-6">
                     <div class="row justify-content-center mb-3 mb-sm-4 mb-md-5">
                         <div class="col-12 col-sm-11 col-md-10 col-lg-8 text-center">
                             <h2 class="display-5 fw-bold mb-3" data-aos="fade-up" data-aos-duration="800">
-                                <i class="fa fa-calendar-check text-danger me-3"></i>Próximos Eventos
+                                <i class="fa fa-calendar-check text-danger me-2"></i>Próximos Eventos
                             </h2>
-                            <p class="lead text-body-secondary px-1 px-sm-2 fs-6 fs-sm-5" data-aos="fade-up"
-                                data-aos-delay="200" data-aos-duration="800">Mantente al día con todas nuestras actividades y
-                                celebraciones especiales</p>
+                            <p class="lead text-muted fs-6 fs-md-5 px-2 px-lg-4" data-aos="fade-up" data-aos-delay="200" data-aos-duration="800">
+                                Mantente al día con todas nuestras actividades y celebraciones especiales.
+                            </p>
                         </div>
                     </div>
                     <div class="row justify-content-center">
-                        <div class="col-12 col-xl-11">
-                            <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-3 g-sm-3 g-md-4" id="eventsContainer">
-        
-                                <!-- Evento 1: Escuelitas de Verano -->
-                                <div class="col">
-                                    <article class="card h-100 border-0 shadow-sm shadow-md-lg" data-aos="fade-up"
-                                        data-aos-delay="100" data-aos-duration="800">
-                                        <div class="ratio ratio-16x9">
-                                            <img src="assets/images/eventos/Evento1.png" class="card-img-top object-fit-cover"
-                                                alt="Escuelitas de Verano" loading="lazy">
-                                        </div>
-                                        <div class="card-body d-flex flex-column p-3 p-sm-3 p-md-4">
-                                            <h3 class="card-title h6 h-sm-5 fw-bold mb-2 lh-sm">Escuelitas de Verano</h3>
-                                            <p class="card-text text-body-secondary mb-3 small lh-sm">Una semana llena de
-                                                juegos, actividades, manualidades y enseñanzas bíblicas para niños.</p>
-                                            <div class="mt-auto">
-                                                <dl class="row small mb-2 mb-sm-3">
-                                                    <dt
-                                                        class="col-2 col-sm-2 text-secondary d-flex align-items-center justify-content-center">
-                                                        <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-                                                    </dt>
-                                                    <dd class="col-10 col-sm-10 mb-1 mb-sm-2 d-flex align-items-center">Del 21
-                                                        al 25 de julio de 2025</dd>
-                                                    <dt
-                                                        class="col-2 col-sm-2 text-secondary d-flex align-items-center justify-content-center">
-                                                        <i class="fas fa-clock" aria-hidden="true"></i>
-                                                    </dt>
-                                                    <dd class="col-10 col-sm-10 mb-1 mb-sm-2 d-flex align-items-center">9:00 AM
-                                                        a 1:00 PM</dd>
-                                                    <dt
-                                                        class="col-2 col-sm-2 text-secondary d-flex align-items-center justify-content-center">
-                                                        <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
-                                                    </dt>
-                                                    <dd class="col-10 col-sm-10 mb-0 d-flex align-items-center">Iglesia Bautista
-                                                        de Monterrey</dd>
-                                                </dl>
-        
-                                                <div
-                                                    class="d-flex flex-sm-row flex-sm-row gap-2 justify-content-center align-items-center">
-                                                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSeR16HSfVIHnZc0uR7nysPbNUX3HeldZy0cu3xwkAII_lOwpg/viewform"
-                                                        class="btn btn-sm btn-outline-danger rounded-pill d-inline-flex align-items-center animate__animated animate__pulse animate__infinite animate__slow"
-                                                        aria-label="Registrarse para Escuelitas de Verano" target="_blank"
-                                                        rel="noopener">
+                        <div class="col-12 col-sm-11 col-md-4" data-aos="fade-up" data-aos-duration="800">
+                            <div id="eventsCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="5000" data-bs-pause="hover">
+                                <!-- Carousel Indicators -->
+                                <div class="carousel-indicators mb-0">
+                                    <button type="button" data-bs-target="#eventsCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Evento 1"></button>
+                                    <button type="button" data-bs-target="#eventsCarousel" data-bs-slide-to="1" aria-label="Evento 2"></button>
+                                    <button type="button" data-bs-target="#eventsCarousel" data-bs-slide-to="2" aria-label="Evento 3"></button>
+                                    <button type="button" data-bs-target="#eventsCarousel" data-bs-slide-to="3" aria-label="Evento 4"></button>
+                                    <button type="button" data-bs-target="#eventsCarousel" data-bs-slide-to="4" aria-label="Evento 5"></button>
+                                    <button type="button" data-bs-target="#eventsCarousel" data-bs-slide-to="5" aria-label="Evento 6"></button>
+                                </div>
+
+                                <div class="carousel-inner px-2 px-sm-3 pb-4 pb-sm-5">
+                                    <!-- Slide 1: Escuelitas de Verano -->
+                                    <div class="carousel-item active">
+                                        <article class="card border-0 shadow-sm h-100 overflow-hidden">
+                                            <div class="position-relative">
+                                                <div class="ratio ratio-16x9">
+                                                    <img src="assets/images/eventos/Evento1.png" class="card-img-top object-fit-cover" alt="Escuelitas de Verano" loading="lazy">
+                                                </div>
+                                                <div class="position-absolute top-0 start-0 m-2 m-sm-3">
+                                                    <span class="badge bg-danger fs-7 fs-sm-6 px-2 px-sm-3 py-1 py-sm-2 rounded-pill">
+                                                        <i class="fas fa-star me-1"></i>Destacado
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="card-body p-3 p-sm-4 d-flex flex-column">
+                                                <div class="text-center mb-3 mb-sm-4">
+                                                    <h3 class="card-title h5 h4-sm fw-bold mb-2 mb-sm-3">Escuelitas de Verano</h3>
+                                                    <p class="card-text text-muted fs-7 fs-sm-6 lh-base">
+                                                        Una semana llena de juegos, actividades, manualidades y enseñanzas bíblicas para niños.
+                                                    </p>
+                                                </div>
+                                                <div class="mb-3 mb-sm-4">
+                                                    <div class="row g-2 g-sm-3">
+                                                        <div class="col-12 col-sm-6">
+                                                            <div class="d-flex align-items-center p-2 p-sm-3 bg-body-secondary rounded">
+                                                                <div class="text-danger me-2 me-sm-3 fs-6 fs-sm-5"><i class="fas fa-calendar-alt"></i></div>
+                                                                <div class="flex-grow-1">
+                                                                    <small class="text-muted d-block">Fecha</small>
+                                                                    <span class="fw-semibold fs-7 fs-sm-6">Del 21 al 25 de julio de 2025</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-12 col-sm-6">
+                                                            <div class="d-flex align-items-center p-2 p-sm-3 bg-body-secondary rounded">
+                                                                <div class="text-danger me-2 me-sm-3 fs-6 fs-sm-5"><i class="fas fa-clock"></i></div>
+                                                                <div class="flex-grow-1">
+                                                                    <small class="text-muted d-block">Horario</small>
+                                                                    <span class="fw-semibold fs-7 fs-sm-6">9:00 AM - 1:00 PM</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-12">
+                                                            <div class="d-flex align-items-center p-2 p-sm-3 bg-body-secondary rounded">
+                                                                <div class="text-danger me-2 me-sm-3 fs-6 fs-sm-5"><i class="fas fa-map-marker-alt"></i></div>
+                                                                <div class="flex-grow-1">
+                                                                    <small class="text-muted d-block">Lugar</small>
+                                                                    <span class="fw-semibold fs-sm-6 fs-sm-6">Iglesia Bautista de Monterrey</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="d-flex gap-2 justify-content-center">
+                                                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSeR16HSfVIHnZc0uR7nysPbNUX3HeldZy0cu3xwkAII_lOwpg/viewform" class="btn btn-outline-danger btn-md-lg rounded-pill fw-semibold px-3 px-sm-4 d-flex align-items-center justify-content-center" aria-label="Registrarse">
                                                         <i class="fa-solid fa-user-plus me-1 me-sm-2"></i>
-                                                        <span class="d-none d-sm-inline">Registro</span>
-                                                        <span class="d-inline d-sm-none">Registro</span>
+                                                        <span class="d-none d-sm-inline">Registrarse</span>
+                                                        <span class="d-sm-none">Registro</span>
                                                     </a>
-                                                    <a href="context/events/Evento1.ics"
-                                                        class="btn btn-sm btn-danger rounded-pill d-inline-flex align-items-center animate__animated animate__pulse animate__infinite animate__slow"
-                                                        aria-label="Añadir Escuelitas de Verano al calendario" target="_blank"
-                                                        rel="noopener">
+                                                    <a href="context/events/Evento1.ics" class="btn btn-danger btn-md-lg rounded-pill fw-semibold text-white px-3 px-sm-4 d-flex align-items-center justify-content-center" aria-label="Añadir al calendario">
                                                         <i class="fa-regular fa-calendar me-1 me-sm-2"></i>
                                                         <span class="d-none d-sm-inline">Calendario</span>
-                                                        <span class="d-inline d-sm-none">Calendario</span>
+                                                        <span class="d-sm-none">Añadir</span>
                                                     </a>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </article>
-                                </div>
-        
-                                <!-- Evento 2: Día de Campo en Familia -->
-                                <div class="col">
-                                    <article class="card h-100 border-0 shadow-sm shadow-md-lg" data-aos="fade-up"
-                                        data-aos-delay="200" data-aos-duration="800">
-                                        <div class="ratio ratio-16x9">
-                                            <img src="assets/images/eventos/Evento2.png" class="card-img-top object-fit-cover"
-                                                alt="Día de Campo en Familia" loading="lazy">
-                                        </div>
-                                        <div class="card-body d-flex flex-column p-3 p-sm-3 p-md-4">
-                                            <h3 class="card-title h6 h-sm-5 fw-bold mb-2 lh-sm">Día de Campo en Familia</h3>
-                                            <p class="card-text text-body-secondary mb-3 small lh-sm">Un día para disfrutar al
-                                                aire libre con juegos, comida y tiempo de convivencia entre familias.</p>
-                                            <div class="mt-auto">
-                                                <dl class="row small mb-2 mb-sm-3">
-                                                    <dt
-                                                        class="col-2 col-sm-2 text-secondary d-flex align-items-center justify-content-center">
-                                                        <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-                                                    </dt>
-                                                    <dd class="col-10 col-sm-10 mb-1 mb-sm-2 d-flex align-items-center">23 de
-                                                        agosto de 2025</dd>
-                                                    <dt
-                                                        class="col-2 col-sm-2 text-secondary d-flex align-items-center justify-content-center">
-                                                        <i class="fas fa-clock" aria-hidden="true"></i>
-                                                    </dt>
-                                                    <dd class="col-10 col-sm-10 mb-1 mb-sm-2 d-flex align-items-center">3:00 PM
-                                                    </dd>
-                                                    <dt
-                                                        class="col-2 col-sm-2 text-secondary d-flex align-items-center justify-content-center">
-                                                        <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
-                                                    </dt>
-                                                    <dd class="col-10 col-sm-10 mb-0 d-flex align-items-center">El Saucillo</dd>
-                                                </dl>
-                                                <div class="d-grid justify-content-center">
-                                                    <a href="context/events/Evento2.ics"
-                                                        class="btn btn-sm btn-danger rounded-pill w-auto px-6 d-inline-flex align-items-center animate__animated animate__pulse animate__infinite animate__slow"
-                                                        aria-label="Añadir Día de Campo al calendario" target="_blank"
-                                                        rel="noopener">
-                                                        <i class="fa-regular fa-calendar me-1 me-sm-2"></i>
+                                        </article>
+                                    </div>
+
+                                    <!-- Slide 2: Día de Campo en Familia -->
+                                    <div class="carousel-item">
+                                        <article class="card border-0 shadow-sm h-100 overflow-hidden">
+                                            <div class="position-relative">
+                                                <div class="ratio ratio-16x9">
+                                                    <img src="assets/images/eventos/Evento2.png" class="card-img-top object-fit-cover" alt="Día de Campo en Familia" loading="lazy">
+                                                </div>
+                                                <div class="position-absolute top-0 start-0 m-2 m-sm-3">
+                                                    <span class="badge bg-success fs-7 fs-sm-6 px-2 px-sm-3 py-1 py-sm-2 rounded-pill">
+                                                        <i class="fas fa-leaf me-1"></i>Al aire libre
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="card-body p-3 p-sm-4 d-flex flex-column">
+                                                <div class="text-center mb-3 mb-sm-4">
+                                                    <h3 class="card-title h5 h4-sm fw-bold mb-2 mb-sm-3">Día de Campo en Familia</h3>
+                                                    <p class="card-text text-muted fs-7 fs-sm-6 lh-base">
+                                                        Un día para disfrutar al aire libre con juegos, comida y tiempo de convivencia entre familias.
+                                                    </p>
+                                                </div>
+                                                <div class="mb-3 mb-sm-4">
+                                                    <div class="row g-2 g-sm-3">
+                                                        <div class="col-12 col-sm-6">
+                                                            <div class="d-flex align-items-center p-2 p-sm-3 bg-body-secondary rounded">
+                                                                <div class="text-danger me-2 me-sm-3 fs-6 fs-sm-5"><i class="fas fa-calendar-alt"></i></div>
+                                                                <div class="flex-grow-1">
+                                                                    <small class="text-muted d-block">Fecha</small>
+                                                                    <span class="fw-semibold fs-7 fs-sm-6">23 de agosto de 2025</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-12 col-sm-6">
+                                                            <div class="d-flex align-items-center p-2 p-sm-3 bg-body-secondary rounded">
+                                                                <div class="text-danger me-2 me-sm-3 fs-6 fs-sm-5"><i class="fas fa-clock"></i></div>
+                                                                <div class="flex-grow-1">
+                                                                    <small class="text-muted d-block">Horario</small>
+                                                                    <span class="fw-semibold fs-7 fs-sm-6">3:00 PM</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-12">
+                                                            <div class="d-flex align-items-center p-2 p-sm-3 bg-body-secondary rounded">
+                                                                <div class="text-danger me-2 me-sm-3 fs-6 fs-sm-5"><i class="fas fa-map-marker-alt"></i></div>
+                                                                <div class="flex-grow-1">
+                                                                    <small class="text-muted d-block">Lugar</small>
+                                                                    <span class="fw-semibold fs-7 fs-sm-6">El Saucillo</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="d-grid justify-content-center mt-auto">
+                                                    <a href="context/events/Evento2.ics" class="btn btn-danger btn-md-lg rounded-pill fw-semibold text-white px-3 px-sm-4 d-flex align-items-center justify-content-center">
+                                                        <i class="fa-regular fa-calendar me-2"></i>
                                                         <span class="d-none d-sm-inline">Agregar al calendario</span>
-                                                        <span class="d-inline d-sm-none">Calendario</span>
+                                                        <span class="d-sm-none">Añadir</span>
                                                     </a>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </article>
-                                </div>
-        
-                                <!-- Evento 3: Fiesta Mexicana / Aniversario Iglesia -->
-                                <div class="col">
-                                    <article class="card h-100 border-0 shadow-sm shadow-md-lg" data-aos="fade-up"
-                                        data-aos-delay="300" data-aos-duration="800">
-                                        <div class="ratio ratio-16x9">
-                                            <img src="assets/images/eventos/Evento3.png" class="card-img-top object-fit-cover"
-                                                alt="Fiesta Mexicana/Aniversario Iglesia" loading="lazy">
-                                        </div>
-                                        <div class="card-body d-flex flex-column p-3 p-sm-3 p-md-4">
-                                            <h3 class="card-title h6 h-sm-5 fw-bold mb-2 lh-sm">Fiesta Mexicana / Aniversario
-                                                Iglesia</h3>
-                                            <p class="card-text text-body-secondary mb-3 small lh-sm">¡Festejamos nuestro
-                                                aniversario con una velada repleta de música, gastronomía tradicional y
-                                                folclore!</p>
-                                            <div class="mt-auto">
-                                                <dl class="row small mb-2 mb-sm-3">
-                                                    <dt
-                                                        class="col-2 col-sm-2 text-secondary d-flex align-items-center justify-content-center">
-                                                        <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-                                                    </dt>
-                                                    <dd class="col-10 col-sm-10 mb-1 mb-sm-2 d-flex align-items-center">20 de
-                                                        septiembre de 2025</dd>
-                                                    <dt
-                                                        class="col-2 col-sm-2 text-secondary d-flex align-items-center justify-content-center">
-                                                        <i class="fas fa-clock" aria-hidden="true"></i>
-                                                    </dt>
-                                                    <dd class="col-10 col-sm-10 mb-1 mb-sm-2 d-flex align-items-center">3:00 PM
-                                                    </dd>
-                                                    <dt
-                                                        class="col-2 col-sm-2 text-secondary d-flex align-items-center justify-content-center">
-                                                        <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
-                                                    </dt>
-                                                    <dd class="col-10 col-sm-10 mb-0 d-flex align-items-center">Iglesia Bautista
-                                                        de Monterrey</dd>
-                                                </dl>
-                                                <div class="d-grid justify-content-center">
-                                                    <a href="context/events/Evento3.ics"
-                                                        class="btn btn-sm btn-danger rounded-pill w-auto px-6 d-inline-flex align-items-center animate__animated animate__pulse animate__infinite animate__slow"
-                                                        aria-label="Añadir Fiesta Mexicana al calendario" target="_blank"
-                                                        rel="noopener">
-                                                        <i class="fa-regular fa-calendar me-1 me-sm-2"></i>
+                                        </article>
+                                    </div>
+
+                                    <!-- Slide 3: Fiesta Mexicana -->
+                                    <div class="carousel-item">
+                                        <article class="card border-0 shadow-sm h-100 overflow-hidden">
+                                            <div class="position-relative">
+                                                <div class="ratio ratio-16x9">
+                                                    <img src="assets/images/eventos/Evento3.png" class="card-img-top object-fit-cover" alt="Fiesta Mexicana / Aniversario Iglesia" loading="lazy">
+                                                </div>
+                                            </div>
+                                            <div class="card-body p-3 p-sm-4 d-flex flex-column">
+                                                <div class="text-center mb-3 mb-sm-4">
+                                                    <h3 class="card-title h5 h4-sm fw-bold mb-2 mb-sm-3">Fiesta Mexicana / Aniversario</h3>
+                                                    <p class="card-text text-muted fs-7 fs-sm-6 lh-base">
+                                                        ¡Festejamos nuestro aniversario con música, gastronomía y folclore mexicano!
+                                                    </p>
+                                                </div>
+                                                <div class="mb-3 mb-sm-4">
+                                                    <div class="row g-2 g-sm-3">
+                                                        <div class="col-12 col-sm-6">
+                                                            <div class="d-flex align-items-center p-2 p-sm-3 bg-body-secondary rounded">
+                                                                <div class="text-danger me-2 me-sm-3 fs-6 fs-sm-5"><i class="fas fa-calendar-alt"></i></div>
+                                                                <div class="flex-grow-1">
+                                                                    <small class="text-muted d-block">Fecha</small>
+                                                                    <span class="fw-semibold fs-7 fs-sm-6">20 de septiembre de 2025</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-12 col-sm-6">
+                                                            <div class="d-flex align-items-center p-2 p-sm-3 bg-body-secondary rounded">
+                                                                <div class="text-danger me-2 me-sm-3 fs-6 fs-sm-5"><i class="fas fa-clock"></i></div>
+                                                                <div class="flex-grow-1">
+                                                                    <small class="text-muted d-block">Horario</small>
+                                                                    <span class="fw-semibold fs-7 fs-sm-6">3:00 PM</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-12">
+                                                            <div class="d-flex align-items-center p-2 p-sm-3 bg-body-secondary rounded">
+                                                                <div class="text-danger me-2 me-sm-3 fs-6 fs-sm-5"><i class="fas fa-map-marker-alt"></i></div>
+                                                                <div class="flex-grow-1">
+                                                                    <small class="text-muted d-block">Lugar</small>
+                                                                    <span class="fw-semibold fs-7 fs-sm-6">Iglesia Bautista de Monterrey</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="d-grid justify-content-center mt-auto">
+                                                    <a href="context/events/Evento3.ics" class="btn btn-danger btn-md-lg rounded-pill fw-semibold text-white px-3 px-sm-4 d-flex align-items-center justify-content-center">
+                                                        <i class="fa-regular fa-calendar me-2"></i>
                                                         <span class="d-none d-sm-inline">Agregar al calendario</span>
-                                                        <span class="d-inline d-sm-none">Calendario</span>
+                                                        <span class="d-sm-none">Añadir</span>
                                                     </a>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </article>
-                                </div>
-        
-                                <!-- Evento 4: Conferencia Siembra -->
-                                <div class="col">
-                                    <article class="card h-100 border-0 shadow-sm shadow-md-lg" data-aos="fade-up"
-                                        data-aos-delay="400" data-aos-duration="800">
-                                        <div class="ratio ratio-16x9">
-                                            <img src="assets/images/eventos/Evento4.png" class="card-img-top object-fit-cover"
-                                                alt="Conferencia Siembra" loading="lazy">
-                                        </div>
-                                        <div class="card-body d-flex flex-column p-3 p-sm-3 p-md-4">
-                                            <h3 class="card-title h6 h-sm-5 fw-bold mb-2 lh-sm">Conferencia Siembra</h3>
-                                            <p class="card-text text-body-secondary mb-3 small lh-sm">Tres días en los que
-                                                tendrás la oportunidad de profundizar en tus finanzas desde la perspectiva de tu
-                                                fe.</p>
-                                            <div class="mt-auto">
-                                                <dl class="row small mb-2 mb-sm-3">
-                                                    <dt
-                                                        class="col-2 col-sm-2 text-secondary d-flex align-items-center justify-content-center">
-                                                        <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-                                                    </dt>
-                                                    <dd class="col-10 col-sm-10 mb-1 mb-sm-2 d-flex align-items-center">10 al 12
-                                                        de octubre de 2025</dd>
-                                                    <dt
-                                                        class="col-2 col-sm-2 text-secondary d-flex align-items-center justify-content-center">
-                                                        <i class="fas fa-clock" aria-hidden="true"></i>
-                                                    </dt>
-                                                    <dd class="col-10 col-sm-10 mb-1 mb-sm-2 d-flex align-items-center">7:00 PM
-                                                        a 9:00 PM</dd>
-                                                    <dt
-                                                        class="col-2 col-sm-2 text-secondary d-flex align-items-center justify-content-center">
-                                                        <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
-                                                    </dt>
-                                                    <dd class="col-10 col-sm-10 mb-0 d-flex align-items-center">(Pendiente de
-                                                        confirmar)</dd>
-                                                </dl>
-                                                <div class="d-grid justify-content-center">
-                                                    <a href="context/events/Evento4.ics"
-                                                        class="btn btn-sm btn-danger rounded-pill w-auto px-6 d-inline-flex align-items-center animate__animated animate__pulse animate__infinite animate__slow"
-                                                        aria-label="Añadir Conferencia Siembra al calendario" target="_blank"
-                                                        rel="noopener">
-                                                        <i class="fa-regular fa-calendar me-1 me-sm-2"></i>
+                                        </article>
+                                    </div>
+                                    
+                                    <!-- Slide 4: Conferencia Siembra -->
+                                    <div class="carousel-item">
+                                        <article class="card border-0 shadow-sm h-100 overflow-hidden">
+                                            <div class="position-relative">
+                                                <div class="ratio ratio-16x9">
+                                                    <img src="assets/images/eventos/Evento4.png" class="card-img-top object-fit-cover" alt="Conferencia Siembra" loading="lazy">
+                                                </div>
+                                            </div>
+                                            <div class="card-body p-3 p-sm-4 d-flex flex-column">
+                                                <div class="text-center mb-3 mb-sm-4">
+                                                    <h3 class="card-title h5 h4-sm fw-bold mb-2 mb-sm-3">Conferencia Siembra</h3>
+                                                    <p class="card-text text-muted fs-7 fs-sm-6 lh-base">
+                                                        Tres días para profundizar en tus finanzas con una perspectiva bíblica.
+                                                    </p>
+                                                </div>
+                                                <div class="mb-3 mb-sm-4">
+                                                    <div class="row g-2 g-sm-3">
+                                                        <div class="col-12 col-sm-6">
+                                                            <div class="d-flex align-items-center p-2 p-sm-3 bg-body-secondary rounded">
+                                                                <div class="text-danger me-2 me-sm-3 fs-6 fs-sm-5"><i class="fas fa-calendar-alt"></i></div>
+                                                                <div class="flex-grow-1">
+                                                                    <small class="text-muted d-block">Fecha</small>
+                                                                    <span class="fw-semibold fs-7 fs-sm-6">10 al 12 de octubre de 2025</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-12 col-sm-6">
+                                                            <div class="d-flex align-items-center p-2 p-sm-3 bg-body-secondary rounded">
+                                                                <div class="text-danger me-2 me-sm-3 fs-6 fs-sm-5"><i class="fas fa-clock"></i></div>
+                                                                <div class="flex-grow-1">
+                                                                    <small class="text-muted d-block">Horario</small>
+                                                                    <span class="fw-semibold fs-7 fs-sm-6">7:00 PM a 9:00 PM</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-12">
+                                                            <div class="d-flex align-items-center p-2 p-sm-3 bg-body-secondary rounded">
+                                                                <div class="text-danger me-2 me-sm-3 fs-6 fs-sm-5"><i class="fas fa-map-marker-alt"></i></div>
+                                                                <div class="flex-grow-1">
+                                                                    <small class="text-muted d-block">Lugar</small>
+                                                                    <span class="fw-semibold fs-7 fs-sm-6">Por confirmar</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="d-grid justify-content-center mt-auto">
+                                                    <a href="context/events/Evento4.ics" class="btn btn-danger btn-md-lg rounded-pill fw-semibold text-white px-3 px-sm-4 d-flex align-items-center justify-content-center">
+                                                        <i class="fa-regular fa-calendar me-2"></i>
                                                         <span class="d-none d-sm-inline">Agregar al calendario</span>
-                                                        <span class="d-inline d-sm-none">Calendario</span>
+                                                        <span class="d-sm-none">Añadir</span>
                                                     </a>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </article>
-                                </div>
-        
-                                <!-- Evento 5: CIMA 2025 -->
-                                <div class="col">
-                                    <article class="card h-100 border-0 shadow-sm shadow-md-lg" data-aos="fade-up"
-                                        data-aos-delay="500" data-aos-duration="800">
-                                        <div class="ratio ratio-16x9">
-                                            <img src="assets/images/eventos/Evento5.png" class="card-img-top object-fit-cover"
-                                                alt="CIMA 2025" loading="lazy">
-                                        </div>
-                                        <div class="card-body d-flex flex-column p-3 p-sm-3 p-md-4">
-                                            <h3 class="card-title h6 h-sm-5 fw-bold mb-2 lh-sm">CIMA 2025</h3>
-                                            <p class="card-text text-body-secondary mb-3 small lh-sm">Conferencia de Celebración
-                                                de Impulso Misionero un evento para honrar a los misioneros, abierto a todos
-                                                aquellos que deseen acompañarnos.</p>
-                                            <div class="mt-auto">
-                                                <dl class="row small mb-2 mb-sm-3">
-                                                    <dt
-                                                        class="col-2 col-sm-2 text-secondary d-flex align-items-center justify-content-center">
-                                                        <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-                                                    </dt>
-                                                    <dd class="col-10 col-sm-10 mb-1 mb-sm-2 d-flex align-items-center">14 al 17
-                                                        de noviembre de 2025</dd>
-                                                    <dt
-                                                        class="col-2 col-sm-2 text-secondary d-flex align-items-center justify-content-center">
-                                                        <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
-                                                    </dt>
-                                                    <dd class="col-10 col-sm-10 mb-0 d-flex align-items-center">CDMX</dd>
-                                                </dl>
-                                                <div class="d-grid justify-content-center">
-                                                    <a href="context/events/Evento5.ics"
-                                                        class="btn btn-sm btn-danger rounded-pill w-auto px-6 d-inline-flex align-items-center animate__animated animate__pulse animate__infinite animate__slow"
-                                                        aria-label="Añadir CIMA 2025 al calendario" target="_blank"
-                                                        rel="noopener">
-                                                        <i class="fa-regular fa-calendar me-1 me-sm-2"></i>
+                                        </article>
+                                    </div>
+
+                                    <!-- Slide 5: CIMA 2025 -->
+                                    <div class="carousel-item">
+                                        <article class="card border-0 shadow-sm h-100 overflow-hidden">
+                                            <div class="position-relative">
+                                                <div class="ratio ratio-16x9">
+                                                    <img src="assets/images/eventos/Evento5.png" class="card-img-top object-fit-cover" alt="CIMA 2025" loading="lazy">
+                                                </div>
+                                            </div>
+                                            <div class="card-body p-3 p-sm-4 d-flex flex-column">
+                                                <div class="text-center mb-3 mb-sm-4">
+                                                    <h3 class="card-title h5 h4-sm fw-bold mb-2 mb-sm-3">CIMA 2025</h3>
+                                                    <p class="card-text text-muted fs-7 fs-sm-6 lh-base">
+                                                        Conferencia de Celebración de Impulso Misionero. Honramos a los misioneros y abrimos las puertas a todos.
+                                                    </p>
+                                                </div>
+                                                <div class="mb-3 mb-sm-4">
+                                                    <div class="row g-2 g-sm-3">
+                                                        <div class="col-12 col-sm-6">
+                                                            <div class="d-flex align-items-center p-2 p-sm-3 bg-body-secondary rounded">
+                                                                <div class="text-danger me-2 me-sm-3 fs-6 fs-sm-5"><i class="fas fa-calendar-alt"></i></div>
+                                                                <div class="flex-grow-1">
+                                                                    <small class="text-muted d-block">Fecha</small>
+                                                                    <span class="fw-semibold fs-7 fs-sm-6">14 al 17 de noviembre de 2025</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-12 col-sm-6">
+                                                            <div class="d-flex align-items-center p-2 p-sm-3 bg-body-secondary rounded">
+                                                                <div class="text-danger me-2 me-sm-3 fs-6 fs-sm-5"><i class="fas fa-map-marker-alt"></i></div>
+                                                                <div class="flex-grow-1">
+                                                                    <small class="text-muted d-block">Lugar</small>
+                                                                    <span class="fw-semibold fs-7 fs-sm-6">CDMX</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="d-grid justify-content-center mt-auto">
+                                                    <a href="context/events/Evento5.ics" class="btn btn-danger btn-md-lg rounded-pill fw-semibold text-white px-3 px-sm-4 d-flex align-items-center justify-content-center">
+                                                        <i class="fa-regular fa-calendar me-2"></i>
                                                         <span class="d-none d-sm-inline">Agregar al calendario</span>
-                                                        <span class="d-inline d-sm-none">Calendario</span>
+                                                        <span class="d-sm-none">Añadir</span>
                                                     </a>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </article>
-                                </div>
-        
-                                <!-- Evento 6: Especial de Navidad -->
-                                <div class="col">
-                                    <article class="card h-100 border-0 shadow-sm shadow-md-lg" data-aos="fade-up"
-                                        data-aos-delay="600" data-aos-duration="800">
-                                        <div class="ratio ratio-16x9">
-                                            <img src="assets/images/eventos/Evento6.png" class="card-img-top object-fit-cover"
-                                                alt="Especial de Navidad" loading="lazy">
-                                        </div>
-                                        <div class="card-body d-flex flex-column p-3 p-sm-3 p-md-4">
-                                            <h3 class="card-title h6 h-sm-5 fw-bold mb-2 lh-sm">Especial de Navidad</h3>
-                                            <p class="card-text text-body-secondary mb-3 small lh-sm">Una cantata navideña que
-                                                celebra el nacimiento de Jesús con música, teatro y un mensaje de esperanza.</p>
-                                            <div class="mt-auto">
-                                                <dl class="row small mb-2 mb-sm-3">
-                                                    <dt
-                                                        class="col-2 col-sm-2 text-secondary d-flex align-items-center justify-content-center">
-                                                        <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-                                                    </dt>
-                                                    <dd class="col-10 col-sm-10 mb-1 mb-sm-2 d-flex align-items-center">6 y 7 de
-                                                        diciembre de 2025</dd>
-                                                    <dt
-                                                        class="col-2 col-sm-2 text-secondary d-flex align-items-center justify-content-center">
-                                                        <i class="fas fa-clock" aria-hidden="true"></i>
-                                                    </dt>
-                                                    <dd class="col-10 col-sm-10 mb-1 mb-sm-2 d-flex align-items-center">5:00 PM
-                                                        a 8:00 PM</dd>
-                                                    <dt
-                                                        class="col-2 col-sm-2 text-secondary d-flex align-items-center justify-content-center">
-                                                        <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
-                                                    </dt>
-                                                    <dd class="col-10 col-sm-10 mb-0 d-flex align-items-center">Iglesia Bautista
-                                                        de Monterrey</dd>
-                                                </dl>
-                                                <div class="d-grid justify-content-center">
-                                                    <a href="context/events/Evento6.ics"
-                                                        class="btn btn-sm btn-danger rounded-pill w-auto px-6 d-inline-flex align-items-center animate__animated animate__pulse animate__infinite animate__slow"
-                                                        aria-label="Añadir Especial de Navidad al calendario" target="_blank"
-                                                        rel="noopener">
-                                                        <i class="fa-regular fa-calendar me-1 me-sm-2"></i>
+                                        </article>
+                                    </div>
+
+                                    <!-- Slide 6: Especial de Navidad -->
+                                    <div class="carousel-item">
+                                        <article class="card border-0 shadow-sm h-100 overflow-hidden">
+                                            <div class="position-relative">
+                                                <div class="ratio ratio-16x9">
+                                                    <img src="assets/images/eventos/Evento6.png" class="card-img-top object-fit-cover" alt="Especial de Navidad" loading="lazy">
+                                                </div>
+                                            </div>
+                                            <div class="card-body p-3 p-sm-4 d-flex flex-column">
+                                                <div class="text-center mb-3 mb-sm-4">
+                                                    <h3 class="card-title h5 h4-sm fw-bold mb-2 mb-sm-3">Especial de Navidad</h3>
+                                                    <p class="card-text text-muted fs-7 fs-sm-6 lh-base">
+                                                        Una cantata que celebra el nacimiento de Jesús con música, teatro y esperanza.
+                                                    </p>
+                                                </div>
+                                                <div class="mb-3 mb-sm-4">
+                                                    <div class="row g-2 g-sm-3">
+                                                        <div class="col-12 col-sm-6">
+                                                            <div class="d-flex align-items-center p-2 p-sm-3 bg-body-secondary rounded">
+                                                                <div class="text-danger me-2 me-sm-3 fs-6 fs-sm-5"><i class="fas fa-calendar-alt"></i></div>
+                                                                <div class="flex-grow-1">
+                                                                    <small class="text-muted d-block">Fecha</small>
+                                                                    <span class="fw-semibold fs-7 fs-sm-6">6 y 7 de diciembre de 2025</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-12 col-sm-6">
+                                                            <div class="d-flex align-items-center p-2 p-sm-3 bg-body-secondary rounded">
+                                                                <div class="text-danger me-2 me-sm-3 fs-6 fs-sm-5"><i class="fas fa-clock"></i></div>
+                                                                <div class="flex-grow-1">
+                                                                    <small class="text-muted d-block">Horario</small>
+                                                                    <span class="fw-semibold fs-7 fs-sm-6">5:00 PM a 8:00 PM</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-12">
+                                                            <div class="d-flex align-items-center p-2 p-sm-3 bg-body-secondary rounded">
+                                                                <div class="text-danger me-2 me-sm-3 fs-6 fs-sm-5"><i class="fas fa-map-marker-alt"></i></div>
+                                                                <div class="flex-grow-1">
+                                                                    <small class="text-muted d-block">Lugar</small>
+                                                                    <span class="fw-semibold fs-7 fs-sm-6">Iglesia Bautista de Monterrey</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="d-grid justify-content-center mt-auto">
+                                                    <a href="context/events/Evento6.ics" class="btn btn-danger btn-md-lg rounded-pill fw-semibold text-white px-3 px-sm-4 d-flex align-items-center justify-content-center">
+                                                        <i class="fa-regular fa-calendar me-2"></i>
                                                         <span class="d-none d-sm-inline">Agregar al calendario</span>
-                                                        <span class="d-inline d-sm-none">Calendario</span>
+                                                        <span class="d-sm-none">Añadir</span>
                                                     </a>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </article>
+                                        </article>
+                                    </div>
                                 </div>
+
+                                <!-- Carousel Controls -->
+                                <button class="carousel-control-prev" type="button" data-bs-target="#eventsCarousel" data-bs-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Anterior</span>
+                                </button>
+                                <button class="carousel-control-next" type="button" data-bs-target="#eventsCarousel" data-bs-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Siguiente</span>
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -602,10 +678,9 @@
             </section>
         </main>
 
-        <a href="https://wa.me/528132503031?text=Hola,%20me%20interesa%20recibir%20informaci%C3%B3n%20de%20la%20iglesia"
-            class="boton-flotante" title="Enviar mensaje por WhatsApp" target="_blank" rel="noopener noreferrer"
-            aria-label="Contactar por WhatsApp">
-            <i class="fab fa-whatsapp" aria-hidden="true"></i>
+        <a href="https://wa.me/528132503031?text=Hola,%20me%20interesa%20recibir%20informaci%c3%b3n%20de%20la%20iglesia"
+            class="whatsapp-floating-btn" target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp">
+            <i class="fab fa-whatsapp"></i>
         </a>
 
         <!-- FOOTER -->
