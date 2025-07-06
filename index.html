@@ -104,7 +104,7 @@
                             alt="Comunidad de la iglesia reunida en celebración" class="w-100 h-100 object-fit-cover"
                             loading="eager">
                     </picture>
-                    <div class="position-absolute top-0 start-0 w-100 h-100 bg-dark" style="opacity: 0.6;" aria-hidden="true">
+                    <div class="position-absolute top-0 start-0 w-100 h-100 bg-dark" style="opacity: 0.5;" aria-hidden="true">
                     </div>
                 </div>
                 <div class="container-fluid px-3 px-sm-4 px-lg-5 position-relative" style="z-index: 1;">
@@ -300,18 +300,8 @@
                         </div>
                     </div>
                     <div class="row justify-content-center">
-                        <div class="col-12 col-sm-11 col-md-4" data-aos="fade-up" data-aos-duration="800">
-                            <div id="eventsCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="5000" data-bs-pause="hover">
-                                <!-- Carousel Indicators -->
-                                <div class="carousel-indicators mb-0">
-                                    <button type="button" data-bs-target="#eventsCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Evento 1"></button>
-                                    <button type="button" data-bs-target="#eventsCarousel" data-bs-slide-to="1" aria-label="Evento 2"></button>
-                                    <button type="button" data-bs-target="#eventsCarousel" data-bs-slide-to="2" aria-label="Evento 3"></button>
-                                    <button type="button" data-bs-target="#eventsCarousel" data-bs-slide-to="3" aria-label="Evento 4"></button>
-                                    <button type="button" data-bs-target="#eventsCarousel" data-bs-slide-to="4" aria-label="Evento 5"></button>
-                                    <button type="button" data-bs-target="#eventsCarousel" data-bs-slide-to="5" aria-label="Evento 6"></button>
-                                </div>
-
+                        <div class="col-12 col-sm-11 col-md-4" data-aos="fade-up" data-aos-duration="800"></div>
+                            <div id="eventsCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="5000" data-bs-pause="hover" style="margin-bottom: 0;">
                                 <div class="carousel-inner px-2 px-sm-3 pb-4 pb-sm-5">
                                     <!-- Slide 1: Escuelitas de Verano -->
                                     <div class="carousel-item active">
@@ -671,6 +661,20 @@
                                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                                     <span class="visually-hidden">Siguiente</span>
                                 </button>
+                                <!-- Touch Hint for Mobile -->
+                                <div class="events-touch-hint d-md-none">
+                                    <span>Desliza para ver más</span>
+                                    <i class="fas fa-hand-point-right animate__animated animate__slideOutRight animate__infinite animate__slow"></i>
+                                </div>
+                                <!-- Carousel Indicators -->
+                                <div class="carousel-indicators mb-0">
+                                    <button type="button" data-bs-target="#eventsCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Evento 1"></button>
+                                    <button type="button" data-bs-target="#eventsCarousel" data-bs-slide-to="1" aria-label="Evento 2"></button>
+                                    <button type="button" data-bs-target="#eventsCarousel" data-bs-slide-to="2" aria-label="Evento 3"></button>
+                                    <button type="button" data-bs-target="#eventsCarousel" data-bs-slide-to="3" aria-label="Evento 4"></button>
+                                    <button type="button" data-bs-target="#eventsCarousel" data-bs-slide-to="4" aria-label="Evento 5"></button>
+                                    <button type="button" data-bs-target="#eventsCarousel" data-bs-slide-to="5" aria-label="Evento 6"></button>
+                                </div>
                             </div>
                         </div>
                     </div>
