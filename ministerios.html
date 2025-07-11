@@ -1,31 +1,23 @@
 <!DOCTYPE html>
 <html lang="es" data-bs-theme="light">
     <head>
-        <!-- Metadatos básicos -->
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width,initial-scale=1">
         <meta name="description" content="Ministerios y Lideres | Iglesia Bautista de Monterrey">
-
-        <!-- Configuración de tema claro/oscuro -->
         <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
         <meta name="theme-color" content="#121212" media="(prefers-color-scheme: dark)">
 
-        <!-- Precarga de recursos críticos para mejorar rendimiento -->
         <link rel="preload" href="assets/icons/IBMty_Logo_Desktop.png" as="image">
         <link rel="preload" href="assets/icons/IBMty_Logo_Mobile.png" as="image">
-        <!-- Favicon e ícono para dispositivos Apple -->
         <link rel="icon" type="image/png" sizes="32x32" href="assets/icons/IBMty_Icon.png">
         <link rel="apple-touch-icon" sizes="180x180" href="assets/icons/IBMty_Icon.png">
 
         <title>Iglesia Bautista de Monterrey</title>
 
-        <!-- Bibliotecas Bootstrap, Font Awesome, AOS y Animate. -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" integrity="sha512-1cK78a1o+ht2JcaW6g8OXYwqpev9+6GqOkz9xmBN9iUUhIndKtxwILGWYOSibOKjLsEdjyjZvYDq/cZwNeak0w==" crossorigin="anonymous">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
-        
-        <!-- Hojas de estilo personalizadas -->
         <link rel="stylesheet" href="components/navbar.css">
         <link rel="stylesheet" href="components/footer.css">
         <link rel="stylesheet" href="components/floating-bottom.css">
@@ -33,26 +25,20 @@
         <link rel="stylesheet" href="styles/responsive-fixes.css">
     </head>
     <body>
-        <!-- BARRA DE NAVEGACIÓN -->
         <nav class="navbar navbar-expand-lg">
             <div class="container-fluid">
-                <!-- Botón de cambio de tema (versión móvil) -->
                 <button type="button" class="btn theme-toggle mobile-theme-toggle d-lg-none" onclick="toggleTheme()">
                     <i class="fas fa-sun" id="mobile-theme-icon"></i>
                 </button>
-                <!-- Logo para escritorio -->
                 <a class="navbar-brand" href="index.html">
                     <img src="assets/icons/IBMty_Logo_Desktop.png" alt="Logo Desktop" class="img-fluid">
                 </a>
-                <!-- Logo para móvil -->
                 <a class="navbar-brand mobile-brand" href="index.html">
                     <img src="assets/icons/IBMty_Logo_Mobile.png" alt="Logo Mobile" class="img-fluid">
                 </a>
-                <!-- Botón de menú para móviles -->
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <!-- Menú de navegación -->
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item">
@@ -83,7 +69,6 @@
                         </li>
                     </ul>
                 </div>
-                <!-- Botón de cambio de tema (versión escritorio) -->
                 <button type="button" class="btn theme-toggle d-none d-lg-flex" onclick="toggleTheme()">
                     <i class="fas fa-sun" id="desktop-theme-icon"></i>
                 </button>
@@ -111,7 +96,6 @@
                         </div>
                     </div>
                 </div>
-                <!-- SECCIÓN DE GALERÍA DE MINISTERIOS -->
                 <div class="ministerios-page">
                     <div class="ministerios-gallery-container">
                         <div class="ministerios-scroll-container">
@@ -123,7 +107,6 @@
                                     <i class="fas fa-chevron-right"></i>
                                 </button>
                             </div>
-                            <!-- CARRUSEL DE MINISTERIOS -->
                             <div class="ministerios-profile-gallery" id="ministeriosProfileGallery">
                                 <!-- TARJETA 1: Pastores Líderes -->
                                 <div class="ministerios-profile-card" data-ministry="lideres">
@@ -302,10 +285,7 @@
                                     </div>
                                 </div>
                             </div>
-
-                            <!-- Enhanced Progress Indicators -->
                             <div class="ministerios-progress-container">
-                                <!-- Touch Hint for Mobile -->
                                 <div class="ministerios-touch-hint d-md-none">
                                     <span>Desliza para ver más</span>
                                     <i class="fas fa-hand-point-right animate__animated animate__slideOutRight animate__infinite animate__slow"></i>
@@ -326,7 +306,6 @@
             <i class="fab fa-whatsapp"></i>
         </a>
 
-        <!-- FOOTER -->
         <footer class="footer">
             <div class="container">
                 <div class="row">
@@ -380,7 +359,7 @@
                     </div>
                 </div>
             </div>
-            <!-- Pie de página con copyright -->
+
             <div class="footer-bottom">
                 <div class="container">
                     <div class="row align-items-center text-center text-md-start g-0">
@@ -415,7 +394,6 @@
             </div>
         </footer>
 
-        <!-- Scripts -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js" integrity="sha512-A7AYk1fGKX6S2SsHywmPkrnzTZHrgiVT7GcQkLGDe2ev0aWb8zejytzS8wjo7PGEXKqJOrjQ4oORtnimIRZBtw==" crossorigin="anonymous"></script>
         <script src="context/ThemeManager.js"></script>
