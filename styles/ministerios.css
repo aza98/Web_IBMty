@@ -7,7 +7,7 @@
 
 .ministerios-gallery-container {
     position: relative;
-    max-width: min(760px, 100vw);
+    max-width: min(770px, 100vw);
     ;
     margin: 0 auto;
     padding: 0 1rem
@@ -177,7 +177,7 @@
     width: var(--ministry-nav-size);
     height: var(--ministry-nav-size);
     border-radius: 50%;
-    background: rgb(255 255 255 / .9);
+    background: rgb(255 255 255 / .3);
     border: 2px solid rgb(255 255 255 / .2);
     color: var(--bs-body-color);
     font-size: 1rem;
@@ -234,7 +234,7 @@
     width: 10px;
     height: 10px;
     border-radius: 50%;
-    background: rgb(0 0 0 / .2);
+    background: rgba(255, 205, 5, 0.314);
     transition: var(--ministry-transition);
     cursor: pointer
 }
