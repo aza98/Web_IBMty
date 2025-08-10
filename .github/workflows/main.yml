@@ -1,0 +1,36 @@
+            - name: FTP Deploy Action via lftp (FTP, SFTP, FTPS)
+  # You may pin to the exact commit or the version.
+  # uses: pontago/lftp-deploy-action@47debd112419af76b6b7c0ee7861dc506a26f01b
+  uses: pontago/lftp-deploy-action@v1.0.1
+  with:
+    # Sever Hostname or IP
+    host: 0398b5f.netsolhost.com
+    # Login Username
+    username: ibmty2020
+    # Login Password
+    password: Faith2God
+    # Default port are FTP(21), SFTP(22).
+    port: # optional, default is 
+    # Transfer protocol (ftp, ftps, sftp)
+    protocol: # optional, default is ftp
+    # If you want to use SSH Private Key, protocol parameter should be sftp.
+    ssh_private_key: # optional, default is 
+    # If you want to no SSL verification, false. (FTPS)
+    verify_cert: # optional, default is true
+    # Upload source directory.
+    local_dir: # optional, default is 
+    # Upload remote directory.
+    remote_dir: # optional, default is 
+    # If doesn't exists, create remote directory.
+    create_remote_dir: # optional, default is true
+    # Support lftp commands. If you input local_dir and remote_dir, the script will be executed after mirror command.
+    script: # optional, default is 
+    # You can check the operation. Not upload and create remote directory.
+    dry_run: # optional
+    # Debug mode. Output lftp log and upload verbose.
+    debug: # optional
+    # Timeout in seconds.
+    timeout: # optional, default is 30
+    # Max retries. 0 is unlimited. 1 means no retries.
+    max_retries: # optional, default is 5
+          
