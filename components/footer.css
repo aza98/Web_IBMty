@@ -1,6 +1,6 @@
 :root {
     --footer-bg: #f8f9fa;
-    --footer-text: #495057;
+    --footer-text: #5a5a5a;
     --footer-text-heading: #212529;
     --footer-border: #dee2e680;
     --footer-link-hover: var(--primary-color);
@@ -16,7 +16,7 @@
     --footer-gap: 1rem
 }
 
-[data-bs-theme="dark"] {
+[data-bs-theme=dark] {
     --footer-bg: #1a1a1a;
     --footer-text: #e9ecef;
     --footer-text-heading: #ffffff;
@@ -35,15 +35,15 @@
 
 .footer-section {
     margin-bottom: var(--footer-gap);
-    animation: fadeInUp 0.6s ease forwards
+    animation: fadeInUp .6s ease forwards
 }
 
 .footer-section:nth-child(2) {
-    animation-delay: 0.1s
+    animation-delay: .1s
 }
 
 .footer-section:nth-child(3) {
-    animation-delay: 0.2s
+    animation-delay: .2s
 }
 
 .footer-section h5,
@@ -63,8 +63,8 @@
     flex-shrink: 0
 }
 
-.footer-section p,
-.footer-section address {
+.footer-section address,
+.footer-section p {
     margin-bottom: .3rem;
     line-height: 1.6
 }
@@ -124,19 +124,19 @@
     border: 2px solid #fff0;
     position: relative;
     overflow: hidden;
-    animation: slideIn 0.4s ease forwards
+    animation: slideIn .4s ease forwards
 }
 
 .social-icons a:nth-child(2) {
-    animation-delay: 0.1s
+    animation-delay: .1s
 }
 
 .social-icons a:nth-child(3) {
-    animation-delay: 0.2s
+    animation-delay: .2s
 }
 
 .social-icons a:nth-child(4) {
-    animation-delay: 0.3s
+    animation-delay: .3s
 }
 
 .social-icons a::before {
@@ -162,7 +162,7 @@
     z-index: 1
 }
 
-[data-bs-theme="dark"] .social-icons a {
+[data-bs-theme=dark] .social-icons a {
     color: #ccc
 }
 
@@ -170,29 +170,29 @@
     transform: translateY(-3px) scale(1.08)
 }
 
-.social-icons a[href*="facebook"]:hover {
+.social-icons a[href*=facebook]:hover {
     background: var(--footer-social-facebook);
     color: #fff;
     border-color: var(--footer-social-facebook);
     box-shadow: 0 8px 20px rgb(24 119 242 / .4)
 }
 
-.social-icons a[href*="instagram"]:hover {
-    background: linear-gradient(135deg, #f9ce34 0%, #ee2a7b 40%, #6228d7 100%);
+.social-icons a[href*=instagram]:hover {
+    background: linear-gradient(135deg, #f9ce34 0, #ee2a7b 40%, #6228d7 100%);
     color: #fff;
     border-color: var(--footer-social-instagram);
     box-shadow: 0 8px 20px rgb(228 64 95 / .4)
 }
 
 .social-icons a[href*="wa.me"]:hover,
-.social-icons a[href*="mail"]:hover {
+.social-icons a[href*=mail]:hover {
     background: var(--footer-social-mail);
     color: #fff;
     border-color: var(--footer-social-mail);
     box-shadow: 0 8px 20px #0070b1
 }
 
-.social-icons a[href*="youtube"]:hover {
+.social-icons a[href*=youtube]:hover {
     background: var(--footer-social-youtube);
     color: #fff;
     border-color: var(--footer-social-youtube);
@@ -286,7 +286,7 @@
     .mobile-double-column .contact-section,
     .mobile-double-column .links-section {
         flex: 1;
-        min-width: calc(50% - 0.4rem);
+        min-width: calc(50% - .4rem);
         margin-bottom: 0
     }
 
@@ -420,7 +420,7 @@
     .mobile-double-column .contact-section,
     .mobile-double-column .links-section {
         flex: 1;
-        min-width: calc(50% - 0.5rem);
+        min-width: calc(50% - .5rem);
         margin-bottom: 0
     }
 

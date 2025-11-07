@@ -1,0 +1,110 @@
+{
+  "name": "Iglesia Bautista de Monterrey",
+  "short_name": "IBMty",
+  "description": "Sitio oficial de la Iglesia Bautista de Monterrey. Conoce más sobre nuestra fe, ministerios y eventos.",
+  "start_url": "/index.html",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#ffffff",
+  "theme_color": "#003366",
+  "id": "/",
+  "lang": "es-MX",
+  "dir": "ltr",
+  "categories": [
+    "religion",
+    "education",
+    "lifestyle"
+  ],
+  "icons": [
+    {
+      "src": "assets/icons/IBMty_Icon_32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/icons/IBMty_Icon_152.png",
+      "sizes": "152x152",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "assets/icons/IBMty_Icon_167.png",
+      "sizes": "167x167",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "assets/icons/IBMty_Icon_180.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "assets/icons/IBMty_Icon_192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "assets/icons/IBMty_Icon_512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "assets/screenshots/desktop-screenshot.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Versión de escritorio del sitio de la Iglesia Bautista de Monterrey"
+    },
+    {
+      "src": "assets/screenshots/mobile-screenshot.png",
+      "sizes": "750x1334",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Versión móvil del sitio de la Iglesia Bautista de Monterrey"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Ministerios",
+      "short_name": "Ministerios",
+      "description": "Descubre los ministerios de la iglesia",
+      "url": "/ministerios.html",
+      "icons": [
+        {
+          "src": "assets/icons/Logo_Adultos.png",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "Donativos",
+      "short_name": "Donativos",
+      "description": "Apoya nuestra misión",
+      "url": "/donativo.html",
+      "icons": [
+        {
+          "src": "assets/icons/Logo_Profesionistas.png",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "Eventos",
+      "short_name": "Eventos",
+      "description": "Consulta próximos eventos y actividades",
+      "url": "/index.html#eventos",
+      "icons": [
+        {
+          "src": "assets/icons/IBMty_Icon_180.png",
+          "sizes": "96x96"
+        }
+      ]
+    }
+  ]
+}

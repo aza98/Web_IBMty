@@ -1,5 +1,5 @@
 :root {
-    --primary-color: #00c0f6;
+    --primary-color: #00c0f7;
     --primary-dark: #0284c7;
     --primary-light: #38bdf8;
     --color-dark: #020617;
@@ -44,7 +44,7 @@
     --spacing-xl: 2rem
 }
 
-[data-bs-theme="dark"] {
+[data-bs-theme=dark] {
     --bg-color: #121212;
     --text-color: #f1f5f9;
     --text-inactive: #94a3b8;
@@ -327,10 +327,10 @@ body.no-navbar-padding {
 
 @media (prefers-reduced-motion:reduce) {
 
-    .navbar,
-    .navbar-collapse,
     .nav-link,
+    .navbar,
     .navbar-brand img,
+    .navbar-collapse,
     .navbar-toggler,
     .theme-toggle {
         transition: none;
@@ -344,8 +344,8 @@ body.no-navbar-padding {
     }
 }
 
-.navbar-brand img,
 .nav-link i,
+.navbar-brand img,
 .theme-toggle {
     will-change: transform
 }
@@ -361,14 +361,14 @@ body.no-navbar-padding {
 @media (hover:none) and (pointer:coarse) {
 
     .nav-link:hover,
-    .theme-toggle:hover,
-    .navbar-toggler:hover {
+    .navbar-toggler:hover,
+    .theme-toggle:hover {
         transform: none
     }
 
     .nav-link:active,
-    .theme-toggle:active,
-    .navbar-toggler:active {
+    .navbar-toggler:active,
+    .theme-toggle:active {
         transform: scale(.95)
     }
 }

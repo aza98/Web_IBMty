@@ -1,122 +1,163 @@
 BEGIN:VCALENDAR
 VERSION:2.0
-PRODID:-//Iglesia Bautista de Monterrey//Eventos//ES
+PRODID:-//Iglesia Bautista de Monterrey//CIMA 2025//ES
 CALSCALE:GREGORIAN
 METHOD:PUBLISH
-X-WR-CALNAME:Escuelitas de Verano 2025
-X-WR-CALDESC:Eventos de Escuelitas de Verano - Iglesia Bautista de Monterrey
-X-WR-TIMEZONE:America/Monterrey
-BEGIN:VTIMEZONE
-TZID:America/Monterrey
-X-LIC-LOCATION:America/Monterrey
-BEGIN:STANDARD
-TZOFFSETFROM:-0500
-TZOFFSETTO:-0600
-TZNAME:CST
-DTSTART:19701025T020000
-RRULE:FREQ=YEARLY;BYMONTH=10;BYDAY=-1SU
-END:STANDARD
-BEGIN:DAYLIGHT
-TZOFFSETFROM:-0600
-TZOFFSETTO:-0500
-TZNAME:CDT
-DTSTART:19700405T020000
-RRULE:FREQ=YEARLY;BYMONTH=4;BYDAY=1SU
-END:DAYLIGHT
-END:VTIMEZONE
+X-WR-CALNAME:CIMA 2025 - UNyDOS
+X-WR-CALDESC:Conferencia de Celebración de Impulso Misionero 2025
+X-WR-TIMEZONE:America/Mexico_City
 BEGIN:VEVENT
-UID:Escuelitas2025-1@ibmonterrey.mx
-DTSTAMP:20250627T120000Z
-DTSTART;TZID=America/Monterrey:20250721T090000
-DTEND;TZID=America/Monterrey:20250721T130000
-SUMMARY:Escuelitas de Verano - Día 1
-DESCRIPTION:Una semana llena de juegos\, actividades\, manualidades y enseñanzas bíblicas para niños.
-LOCATION:Iglesia Bautista de Monterrey
+UID:CIMA2025-1@ibmonterrey.mx
+DTSTAMP:20251030T053403Z
+DTSTART;TZID=America/Mexico_City:20251114T140000
+SUMMARY:Registro y Bienvenida
+LOCATION:Centro de Vida Lomas (CVL), Ciudad de México, México
+DESCRIPTION:CIMA 2025 - UNyDOS\nOrganizado por RIBBI
+URL:https://maps.app.goo.gl/HYPPHjGQHvtB3cs28
 STATUS:CONFIRMED
 TRANSP:OPAQUE
-ORGANIZER;CN=Iglesia Bautista de Monterrey:mailto:oficina@ibmty.com
-CATEGORIES:Niños,Iglesia,Verano
-CLASS:PUBLIC
-PRIORITY:5
-SEQUENCE:0
-CREATED:20250627T120000Z
-LAST-MODIFIED:20250627T120000Z
-URL:https://www.ibmty.com/
 END:VEVENT
 BEGIN:VEVENT
-UID:Escuelitas2025-2@ibmonterrey.mx
-DTSTAMP:20250627T120000Z
-DTSTART;TZID=America/Monterrey:20250722T090000
-DTEND;TZID=America/Monterrey:20250722T130000
-SUMMARY:Escuelitas de Verano - Día 2
-DESCRIPTION:Una semana llena de juegos\, actividades\, manualidades y enseñanzas bíblicas para niños.
-LOCATION:Iglesia Bautista de Monterrey
+UID:CIMA2025-2@ibmonterrey.mx
+DTSTAMP:20251030T053403Z
+DTSTART;TZID=America/Mexico_City:20251114T190000
+SUMMARY:Inauguración + Servicio 1
+LOCATION:Centro de Vida Lomas (CVL), Ciudad de México, México
+DESCRIPTION:CIMA 2025 - UNyDOS\nOrganizado por RIBBI
+URL:https://maps.app.goo.gl/HYPPHjGQHvtB3cs28
 STATUS:CONFIRMED
 TRANSP:OPAQUE
-ORGANIZER;CN=Iglesia Bautista de Monterrey:mailto:oficina@ibmty.com
-CATEGORIES:Niños,Iglesia,Verano
-CLASS:PUBLIC
-PRIORITY:5
-SEQUENCE:0
-CREATED:20250627T120000Z
-LAST-MODIFIED:20250627T120000Z
-URL:https://www.ibmty.com/
 END:VEVENT
 BEGIN:VEVENT
-UID:Escuelitas2025-3@ibmonterrey.mx
-DTSTAMP:20250627T120000Z
-DTSTART;TZID=America/Monterrey:20250723T090000
-DTEND;TZID=America/Monterrey:20250723T130000
-SUMMARY:Escuelitas de Verano - Día 3
-DESCRIPTION:Una semana llena de juegos\, actividades\, manualidades y enseñanzas bíblicas para niños.
-LOCATION:Iglesia Bautista de Monterrey
+UID:CIMA2025-3@ibmonterrey.mx
+DTSTAMP:20251030T053403Z
+DTSTART;TZID=America/Mexico_City:20251115T080000
+SUMMARY:Talleres 1
+LOCATION:Centro de Vida Lomas (CVL), Ciudad de México, México
+DESCRIPTION:CIMA 2025 - UNyDOS\nOrganizado por RIBBI
+URL:https://maps.app.goo.gl/HYPPHjGQHvtB3cs28
 STATUS:CONFIRMED
 TRANSP:OPAQUE
-ORGANIZER;CN=Iglesia Bautista de Monterrey:mailto:oficina@ibmty.com
-CATEGORIES:Niños,Iglesia,Verano
-CLASS:PUBLIC
-PRIORITY:5
-SEQUENCE:0
-CREATED:20250627T120000Z
-LAST-MODIFIED:20250627T120000Z
-URL:https://www.ibmty.com/
 END:VEVENT
 BEGIN:VEVENT
-UID:Escuelitas2025-4@ibmonterrey.mx
-DTSTAMP:20250627T120000Z
-DTSTART;TZID=America/Monterrey:20250724T090000
-DTEND;TZID=America/Monterrey:20250724T130000
-SUMMARY:Escuelitas de Verano - Día 4
-DESCRIPTION:Una semana llena de juegos\, actividades\, manualidades y enseñanzas bíblicas para niños.
-LOCATION:Iglesia Bautista de Monterrey
+UID:CIMA2025-4@ibmonterrey.mx
+DTSTAMP:20251030T053403Z
+DTSTART;TZID=America/Mexico_City:20251115T110000
+SUMMARY:Break + Desayuno
+LOCATION:Centro de Vida Lomas (CVL), Ciudad de México, México
+DESCRIPTION:CIMA 2025 - UNyDOS\nOrganizado por RIBBI
+URL:https://maps.app.goo.gl/HYPPHjGQHvtB3cs28
 STATUS:CONFIRMED
 TRANSP:OPAQUE
-ORGANIZER;CN=Iglesia Bautista de Monterrey:mailto:oficina@ibmty.com
-CATEGORIES:Niños,Iglesia,Verano
-CLASS:PUBLIC
-PRIORITY:5
-SEQUENCE:0
-CREATED:20250627T120000Z
-LAST-MODIFIED:20250627T120000Z
-URL:https://www.ibmty.com/
 END:VEVENT
 BEGIN:VEVENT
-UID:Escuelitas2025-5@ibmonterrey.mx
-DTSTAMP:20250627T120000Z
-DTSTART;TZID=America/Monterrey:20250725T090000
-DTEND;TZID=America/Monterrey:20250725T130000
-SUMMARY:Escuelitas de Verano - Día 5
-DESCRIPTION:Una semana llena de juegos\, actividades\, manualidades y enseñanzas bíblicas para niños.
-LOCATION:Iglesia Bautista de Monterrey
+UID:CIMA2025-5@ibmonterrey.mx
+DTSTAMP:20251030T053403Z
+DTSTART;TZID=America/Mexico_City:20251115T120000
+SUMMARY:Talleres 2
+LOCATION:Centro de Vida Lomas (CVL), Ciudad de México, México
+DESCRIPTION:CIMA 2025 - UNyDOS\nOrganizado por RIBBI
+URL:https://maps.app.goo.gl/HYPPHjGQHvtB3cs28
 STATUS:CONFIRMED
 TRANSP:OPAQUE
-ORGANIZER;CN=Iglesia Bautista de Monterrey:mailto:oficina@ibmty.com
-CATEGORIES:Niños,Iglesia,Verano
-CLASS:PUBLIC
-PRIORITY:5
-SEQUENCE:0
-CREATED:20250627T120000Z
-LAST-MODIFIED:20250627T120000Z
-URL:https://www.ibmty.com/
+END:VEVENT
+BEGIN:VEVENT
+UID:CIMA2025-6@ibmonterrey.mx
+DTSTAMP:20251030T053403Z
+DTSTART;TZID=America/Mexico_City:20251115T150000
+SUMMARY:Tiempo libre
+LOCATION:Centro de Vida Lomas (CVL), Ciudad de México, México
+DESCRIPTION:CIMA 2025 - UNyDOS\nOrganizado por RIBBI
+URL:https://maps.app.goo.gl/HYPPHjGQHvtB3cs28
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+UID:CIMA2025-7@ibmonterrey.mx
+DTSTAMP:20251030T053403Z
+DTSTART;TZID=America/Mexico_City:20251115T190000
+SUMMARY:Cena internacional + Servicio 2
+LOCATION:Centro de Vida Lomas (CVL), Ciudad de México, México
+DESCRIPTION:CIMA 2025 - UNyDOS\nOrganizado por RIBBI
+URL:https://maps.app.goo.gl/HYPPHjGQHvtB3cs28
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+UID:CIMA2025-8@ibmonterrey.mx
+DTSTAMP:20251030T053403Z
+DTSTART;TZID=America/Mexico_City:20251116T090000
+SUMMARY:Traslado Actividad Impacto
+LOCATION:Centro de Vida Lomas (CVL), Ciudad de México, México
+DESCRIPTION:CIMA 2025 - UNyDOS\nOrganizado por RIBBI
+URL:
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+UID:CIMA2025-9@ibmonterrey.mx
+DTSTAMP:20251030T053403Z
+DTSTART;TZID=America/Mexico_City:20251116T110000
+SUMMARY:Actividad Impacto
+LOCATION:Centro de Vida Lomas (CVL), Ciudad de México, México
+DESCRIPTION:CIMA 2025 - UNyDOS\nOrganizado por RIBBI
+URL:
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+UID:CIMA2025-10@ibmonterrey.mx
+DTSTAMP:20251030T053403Z
+DTSTART;TZID=America/Mexico_City:20251116T120000
+SUMMARY:Tiempo Libre - CDMX
+LOCATION:Centro de Vida Lomas (CVL), Ciudad de México, México
+DESCRIPTION:CIMA 2025 - UNyDOS\nOrganizado por RIBBI
+URL:https://maps.app.goo.gl/HYPPHjGQHvtB3cs28
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+UID:CIMA2025-11@ibmonterrey.mx
+DTSTAMP:20251030T053403Z
+DTSTART;TZID=America/Mexico_City:20251116T170000
+SUMMARY:Regreso CIMA UNYDOS
+LOCATION:Centro de Vida Lomas (CVL), Ciudad de México, México
+DESCRIPTION:CIMA 2025 - UNyDOS\nOrganizado por RIBBI
+URL:https://maps.app.goo.gl/HYPPHjGQHvtB3cs28
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+UID:CIMA2025-12@ibmonterrey.mx
+DTSTAMP:20251030T053403Z
+DTSTART;TZID=America/Mexico_City:20251116T180000
+SUMMARY:Servicio 3
+LOCATION:Centro de Vida Lomas (CVL), Ciudad de México, México
+DESCRIPTION:CIMA 2025 - UNyDOS\nOrganizado por RIBBI
+URL:https://maps.app.goo.gl/HYPPHjGQHvtB3cs28
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+UID:CIMA2025-13@ibmonterrey.mx
+DTSTAMP:20251030T053403Z
+DTSTART;TZID=America/Mexico_City:20251117T090000
+SUMMARY:Desayuno Brunch + Clausura Servicio 4
+LOCATION:Centro de Vida Lomas (CVL), Ciudad de México, México
+DESCRIPTION:CIMA 2025 - UNyDOS\nOrganizado por RIBBI
+URL:https://maps.app.goo.gl/HYPPHjGQHvtB3cs28
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+UID:CIMA2025-14@ibmonterrey.mx
+DTSTAMP:20251030T053403Z
+DTSTART;TZID=America/Mexico_City:20251117T130000
+SUMMARY:Finalizan actividades
+LOCATION:Centro de Vida Lomas (CVL), Ciudad de México, México
+DESCRIPTION:CIMA 2025 - UNyDOS\nOrganizado por RIBBI
+URL:https://maps.app.goo.gl/HYPPHjGQHvtB3cs28
+STATUS:CONFIRMED
+TRANSP:OPAQUE
 END:VEVENT
 END:VCALENDAR

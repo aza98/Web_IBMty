@@ -8,7 +8,6 @@
 .ministerios-gallery-container {
     position: relative;
     max-width: min(770px, 100vw);
-    ;
     margin: 0 auto;
     padding: 0 1rem
 }
@@ -66,7 +65,7 @@
     position: absolute;
     inset: 0;
     background: linear-gradient(transparent 50%, rgb(0 0 0 / .3));
-    transition: opacity 0.3s ease
+    transition: opacity .3s ease
 }
 
 .ministerios-profile-card:hover .ministerios-banner-overlay {
@@ -153,7 +152,7 @@
 }
 
 .ministerios-social-link.instagram {
-    background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%)
+    background: radial-gradient(circle at 30% 107%, #fdf497 0, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285aeb 90%)
 }
 
 .ministerios-social-link.tiktok {
@@ -220,7 +219,7 @@
     height: 100%;
     background: #ffc108;
     border-radius: 2px;
-    transition: width 0.3s ease;
+    transition: width .3s ease;
     width: 11.11%
 }
 
@@ -234,7 +233,7 @@
     width: 10px;
     height: 10px;
     border-radius: 50%;
-    background: rgba(255, 205, 5, 0.314);
+    background: rgba(255, 205, 5, .314);
     transition: var(--ministry-transition);
     cursor: pointer
 }
@@ -255,76 +254,76 @@
     opacity: .7
 }
 
-.ministerios-profile-card[data-ministry="lideres"] .ministerios-card-banner {
-    background-image: url(../assets/images/lideres/Lideres_Iglesia.jpg)
+.ministerios-profile-card[data-ministry=lideres] .ministerios-card-banner {
+    background-image: url(assets/images/lideres/Lideres_Iglesia.jpg)
 }
 
-.ministerios-profile-card[data-ministry="adultos"] .ministerios-card-banner {
-    background-image: url(../assets/images/lideres/Lideres_Adultos.jpg)
+.ministerios-profile-card[data-ministry=adultos] .ministerios-card-banner {
+    background-image: url(assets/images/lideres/Lideres_Adultos.jpg)
 }
 
-.ministerios-profile-card[data-ministry="profesionistas"] .ministerios-card-banner {
-    background-image: url(../assets/images/lideres/Lideres_Profesionistas.jpg)
+.ministerios-profile-card[data-ministry=profesionistas] .ministerios-card-banner {
+    background-image: url(assets/images/lideres/Lideres_Profesionistas.jpg)
 }
 
-.ministerios-profile-card[data-ministry="universitarios"] .ministerios-card-banner {
-    background-image: url(../assets/images/lideres/Lideres_Universitarios.jpg)
+.ministerios-profile-card[data-ministry=universitarios] .ministerios-card-banner {
+    background-image: url(assets/images/lideres/Lideres_Universitarios.jpg)
 }
 
-.ministerios-profile-card[data-ministry="jovenes"] .ministerios-card-banner {
-    background-image: url(../assets/images/lideres/Lideres_Jovenes.jpg)
+.ministerios-profile-card[data-ministry=jovenes] .ministerios-card-banner {
+    background-image: url(assets/images/lideres/Lideres_Jovenes.jpg)
 }
 
-.ministerios-profile-card[data-ministry="intermedios"] .ministerios-card-banner {
-    background-image: url(../assets/images/lideres/Lideres_Intermedios.jpg)
+.ministerios-profile-card[data-ministry=intermedios] .ministerios-card-banner {
+    background-image: url(assets/images/lideres/Lideres_Intermedios.jpg)
 }
 
-.ministerios-profile-card[data-ministry="culto-infantil"] .ministerios-card-banner {
-    background-image: url(../assets/images/lideres/Lideres_CultoInfantil.jpg)
+.ministerios-profile-card[data-ministry=culto-infantil] .ministerios-card-banner {
+    background-image: url(assets/images/lideres/Lideres_CultoInfantil.jpg)
 }
 
-.ministerios-profile-card[data-ministry="parvulos"] .ministerios-card-banner {
-    background-image: url(../assets/images/lideres/Lideres_Parvulos.jpg)
+.ministerios-profile-card[data-ministry=parvulos] .ministerios-card-banner {
+    background-image: url(assets/images/lideres/Lideres_Parvulos.jpg)
 }
 
-.ministerios-profile-card[data-ministry="guarderia"] .ministerios-card-banner {
-    background-image: url(../assets/images/lideres/Lideres_Guarderia.jpg)
+.ministerios-profile-card[data-ministry=guarderia] .ministerios-card-banner {
+    background-image: url(assets/images/lideres/Lideres_Guarderia.jpg)
 }
 
-.ministerios-profile-card[data-ministry="lideres"] .ministerios-profile-avatar {
-    background-image: url(../assets/icons/IBMty_Icon.png)
+.ministerios-profile-card[data-ministry=lideres] .ministerios-profile-avatar {
+    background-image: url(assets/icons/IBMty_Icon.png)
 }
 
-.ministerios-profile-card[data-ministry="adultos"] .ministerios-profile-avatar {
-    background-image: url(../assets/icons/Logo_Adultos.png)
+.ministerios-profile-card[data-ministry=adultos] .ministerios-profile-avatar {
+    background-image: url(assets/icons/Logo_Adultos.png)
 }
 
-.ministerios-profile-card[data-ministry="profesionistas"] .ministerios-profile-avatar {
-    background-image: url(../assets/icons/Logo_Profesionistas.png)
+.ministerios-profile-card[data-ministry=profesionistas] .ministerios-profile-avatar {
+    background-image: url(assets/icons/Logo_Profesionistas.png)
 }
 
-.ministerios-profile-card[data-ministry="universitarios"] .ministerios-profile-avatar {
-    background-image: url(../assets/icons/Logo_Universitarios.png)
+.ministerios-profile-card[data-ministry=universitarios] .ministerios-profile-avatar {
+    background-image: url(assets/icons/Logo_Universitarios.png)
 }
 
-.ministerios-profile-card[data-ministry="jovenes"] .ministerios-profile-avatar {
-    background-image: url(../assets/icons/Logo_Jovenes.png)
+.ministerios-profile-card[data-ministry=jovenes] .ministerios-profile-avatar {
+    background-image: url(assets/icons/Logo_Jovenes.png)
 }
 
-.ministerios-profile-card[data-ministry="intermedios"] .ministerios-profile-avatar {
-    background-image: url(../assets/icons/Logo_Intermedios.png)
+.ministerios-profile-card[data-ministry=intermedios] .ministerios-profile-avatar {
+    background-image: url(assets/icons/Logo_Intermedios.png)
 }
 
-.ministerios-profile-card[data-ministry="culto-infantil"] .ministerios-profile-avatar {
-    background-image: url(../assets/icons/Logo_culto_infantil.png)
+.ministerios-profile-card[data-ministry=culto-infantil] .ministerios-profile-avatar {
+    background-image: url(assets/icons/Logo_culto_infantil.png)
 }
 
-.ministerios-profile-card[data-ministry="parvulos"] .ministerios-profile-avatar {
-    background-image: url(../assets/icons/Logo_Parvulos.png)
+.ministerios-profile-card[data-ministry=parvulos] .ministerios-profile-avatar {
+    background-image: url(assets/icons/Logo_Parvulos.png)
 }
 
-.ministerios-profile-card[data-ministry="guarderia"] .ministerios-profile-avatar {
-    background-image: url(../assets/icons/Logo_Guarderia.png)
+.ministerios-profile-card[data-ministry=guarderia] .ministerios-profile-avatar {
+    background-image: url(assets/icons/Logo_Guarderia.png)
 }
 
 @media (max-width:768px) {

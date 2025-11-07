@@ -3,8 +3,8 @@ VERSION:2.0
 PRODID:-//Iglesia Bautista de Monterrey//Eventos//ES
 CALSCALE:GREGORIAN
 METHOD:PUBLISH
-X-WR-CALNAME:Eventos Iglesia Bautista Monterrey
-X-WR-CALDESC:Eventos de la Iglesia Bautista de Monterrey
+X-WR-CALNAME:Especial de Navidad 2025
+X-WR-CALDESC:Cantata Navideña - Iglesia Bautista de Monterrey
 X-WR-TIMEZONE:America/Monterrey
 BEGIN:VTIMEZONE
 TZID:America/Monterrey
@@ -25,19 +25,38 @@ RRULE:FREQ=YEARLY;BYMONTH=4;BYDAY=1SU
 END:DAYLIGHT
 END:VTIMEZONE
 BEGIN:VEVENT
-UID:CampoFamiliar2025@ibmonterrey.mx
+UID:Navidad2025-1@ibmonterrey.mx
 DTSTAMP:20250627T120000Z
-DTSTART;TZID=America/Monterrey:20250823T150000
-DTEND;TZID=America/Monterrey:20250823T180000
-SUMMARY:Día de Campo en Familia
-DESCRIPTION:Un día para disfrutar al aire libre con juegos\, comida y tiempo de convivencia entre familias.
-LOCATION:Por confirmar
+DTSTART;TZID=America/Monterrey:20251206T170000
+DTEND;TZID=America/Monterrey:20251206T200000
+SUMMARY:Especial de Navidad - Función 1
+DESCRIPTION:Una cantata navideña que celebra el nacimiento de Jesús con música\, teatro y un mensaje de esperanza.
+LOCATION:Iglesia Bautista de Monterrey
 STATUS:CONFIRMED
 TRANSP:OPAQUE
 ORGANIZER;CN=Iglesia Bautista de Monterrey:mailto:oficina@ibmty.com
-CATEGORIES:Familia,Iglesia,Evento Social
+CATEGORIES:Navidad,Iglesia,Cantata,Teatro,Música
 CLASS:PUBLIC
-PRIORITY:5
+PRIORITY:3
+SEQUENCE:0
+CREATED:20250627T120000Z
+LAST-MODIFIED:20250627T120000Z
+URL:https://www.ibmty.com/
+END:VEVENT
+BEGIN:VEVENT
+UID:Navidad2025-2@ibmonterrey.mx
+DTSTAMP:20250627T120000Z
+DTSTART;TZID=America/Monterrey:20251207T170000
+DTEND;TZID=America/Monterrey:20251207T200000
+SUMMARY:Especial de Navidad - Función 2
+DESCRIPTION:Una cantata navideña que celebra el nacimiento de Jesús con música\, teatro y un mensaje de esperanza.
+LOCATION:Iglesia Bautista de Monterrey
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+ORGANIZER;CN=Iglesia Bautista de Monterrey:mailto:oficina@ibmty.com
+CATEGORIES:Navidad,Iglesia,Cantata,Teatro,Música
+CLASS:PUBLIC
+PRIORITY:3
 SEQUENCE:0
 CREATED:20250627T120000Z
 LAST-MODIFIED:20250627T120000Z

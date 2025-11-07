@@ -1,100 +1,92 @@
-/* Estilos para dispositivos móviles y tablets */
-@media (max-width: 991.98px) {
-    
-    /* Previene desbordamiento horizontal y mejora el rendimiento */
+@media (max-width:991.98px) {
+
     body,
     html {
         max-width: 100%;
-        overflow-x: hidden; /* hidden es más compatible que clip */
+        overflow-x: hidden;
         box-sizing: border-box;
+        font-family: Inter, sans-serif
     }
 
-    /* Asegura que todos los elementos usen border-box */
     *,
-    *::before,
-    *::after {
-        box-sizing: border-box;
+    ::after,
+    ::before {
+        box-sizing: border-box
     }
 
-    /* Elimina márgenes laterales en filas dentro de container-fluid */
-    .container-fluid[class*="px-"] > .row {
+    .container-fluid[class*=px-]>.row {
         margin-right: 0;
-        margin-left: 0;
+        margin-left: 0
     }
 
-    /* Previene desbordamiento en elementos de ancho completo */
-    .container-fluid[class*="px-"] > .row > [class*="col-"] {
+    .container-fluid[class*=px-]>.row>[class*=col-] {
         padding-right: 0;
-        padding-left: 0;
+        padding-left: 0
     }
 
-    /* Controla elementos posicionados absolutamente */
-    .nosotros-section,
-    .hero-introduction {
+    .hero-introduction,
+    .nosotros-section {
         max-width: 100vw;
         width: 100%;
         left: 0;
-        right: 0;
+        right: 0
     }
 
-    /* Mejora general para elementos con position absolute */
     .position-absolute {
         max-width: 100vw;
         max-height: 100vh;
-        /* Previene que se salgan de la pantalla */
         left: 0;
-        right: auto;
+        right: auto
     }
 
-    /* Asegura que las imágenes sean responsivas */
     img {
         max-width: 100%;
-        height: auto;
+        height: auto
     }
 
-    /* Previene desbordamiento de texto */
     .container,
     .container-fluid,
     .row,
-    [class*="col-"] {
+    [class*=col-] {
         word-wrap: break-word;
-        overflow-wrap: break-word;
+        overflow-wrap: break-word
     }
 
-    /* Mejora la legibilidad en dispositivos móviles */
     body {
-        font-size: 16px; /* Tamaño mínimo recomendado para móviles */
-        line-height: 1.5;
+        font-size: 16px;
+        line-height: 1.5
     }
 
-    /* Optimiza el espaciado para pantallas pequeñas */
     .container-fluid {
         padding-right: 15px;
-        padding-left: 15px;
+        padding-left: 15px
     }
 }
 
-/* Media query adicional para dispositivos muy pequeños */
-@media (max-width: 575.98px) {
-    
-    /* Reduce el padding en dispositivos muy pequeños */
+@media (max-width:575.98px) {
     .container-fluid {
         padding-right: 10px;
-        padding-left: 10px;
+        padding-left: 10px
     }
 
-    /* Ajusta elementos posicionados para pantallas muy pequeñas */
     .position-absolute {
-        position: relative; /* Considera cambiar a relative en móviles */
-        max-width: 100%;
+        position: relative;
+        max-width: 100%
     }
 
-    /* Mejora la tipografía en pantallas muy pequeñas */
     body {
-        font-size: 14px;
+        font-size: 14px
     }
 
-    h1 { font-size: 1.75rem; }
-    h2 { font-size: 1.5rem; }
-    h3 { font-size: 1.25rem; }
+    h1 {
+        font-size: 1.75rem
+    }
+
+    h2 {
+        font-size: 1.5rem
+    }
+
+    h3 {
+        font-size: 1.25rem
+    }
 }

@@ -23,7 +23,7 @@
     --salvation-hover-blur: 0
 }
 
-[data-bs-theme="dark"] {
+[data-bs-theme=dark] {
     --salvation-color-primary: #4a6fa5;
     --salvation-color-secondary: #121212;
     --salvation-color-accent: #33ccf7;
@@ -43,7 +43,7 @@
 }
 
 .salvation-page {
-    font-family: 'Lato', sans-serif;
+    font-family: Lato, sans-serif;
     color: var(--salvation-text-primary);
     background-color: var(--salvation-color-secondary);
     transition: background-color var(--salvation-transition-normal), color var(--salvation-transition-normal)
@@ -55,14 +55,14 @@
 .salvation-page h4,
 .salvation-page h5,
 .salvation-page h6 {
-    font-family: 'Mulish', sans-serif;
+    font-family: Mulish, sans-serif;
     font-weight: 700;
     transition: color var(--salvation-transition-normal)
 }
 
 .salvation-introduction {
     min-height: 100vh;
-    background: linear-gradient(135deg, var(--salvation-gradient-start) 0%, var(--salvation-gradient-end) 100%);
+    background: linear-gradient(135deg, var(--salvation-gradient-start) 0, var(--salvation-gradient-end) 100%);
     color: var(--salvation-text-light);
     display: flex;
     align-items: center;
@@ -79,7 +79,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: radial-gradient(circle at 20% 20%, var(--salvation-overlay) 0%, transparent 50%), radial-gradient(circle at 80% 80%, var(--salvation-overlay) 0%, transparent 50%), radial-gradient(circle at 50% 50%, var(--salvation-overlay) 0%, transparent 70%);
+    background: radial-gradient(circle at 20% 20%, var(--salvation-overlay) 0, transparent 50%), radial-gradient(circle at 80% 80%, var(--salvation-overlay) 0, transparent 50%), radial-gradient(circle at 50% 50%, var(--salvation-overlay) 0, transparent 70%);
     pointer-events: none;
     animation: overlayPulse 8s ease-in-out infinite
 }
@@ -98,7 +98,7 @@
     max-width: 800px;
     margin: 0 auto;
     text-shadow: 0 1px 5px rgb(0 0 0 / .2);
-    animation: fadeInUp 1s ease-out 0.3s both
+    animation: fadeInUp 1s ease-out .3s both
 }
 
 .salvation-section {
@@ -111,15 +111,15 @@
     margin-bottom: 4rem;
     align-items: center;
     opacity: 0;
-    animation: fadeInUp 0.8s ease-out forwards
+    animation: fadeInUp .8s ease-out forwards
 }
 
 .gospel-step:nth-child(odd) {
-    animation: slideInLeft 0.8s ease-out forwards
+    animation: slideInLeft .8s ease-out forwards
 }
 
 .gospel-step:nth-child(even) {
-    animation: slideInRight 0.8s ease-out forwards
+    animation: slideInRight .8s ease-out forwards
 }
 
 .gospel-text {
@@ -127,15 +127,15 @@
     font-weight: 600;
     color: var(--salvation-text-primary);
     margin-bottom: 1rem;
-    font-family: 'Mulish', sans-serif;
+    font-family: Mulish, sans-serif;
     transition: color var(--salvation-transition-normal)
 }
 
 .gospel-text-verse {
-    font-size: clamp(0.95rem, 1.8vw, 1.05rem);
+    font-size: clamp(.95rem, 1.8vw, 1.05rem);
     font-style: italic;
     font-weight: 400;
-    font-family: 'Lato', sans-serif;
+    font-family: Lato, sans-serif;
     color: var(--salvation-text-secondary);
     transition: color var(--salvation-transition-normal)
 }
@@ -150,7 +150,7 @@
     box-shadow: 0 10px 30px var(--salvation-shadow-base)
 }
 
-[data-bs-theme="dark"] .gospel-img {
+[data-bs-theme=dark] .gospel-img {
     filter: brightness(.9) contrast(1.1)
 }
 
@@ -166,7 +166,7 @@
     border-radius: 20px;
     transition: all var(--salvation-transition-normal);
     box-shadow: 0 10px 30px var(--salvation-shadow-base);
-    animation: scaleIn 0.6s ease-out;
+    animation: scaleIn .6s ease-out;
     backdrop-filter: blur(10px)
 }
 
@@ -260,7 +260,7 @@
     border-radius: 20px;
     box-shadow: 0 25px 80px var(--salvation-shadow-strong);
     backdrop-filter: blur(20px);
-    animation: scaleIn 0.4s ease-out
+    animation: scaleIn .4s ease-out
 }
 
 .salvation-modal .modal-header {
@@ -272,7 +272,7 @@
 }
 
 .salvation-modal .modal-title {
-    font-family: 'Mulish', sans-serif;
+    font-family: Mulish, sans-serif;
     font-weight: 600
 }
 
@@ -362,10 +362,10 @@
 @keyframes bounce {
 
     0%,
+    100%,
     20%,
     50%,
-    80%,
-    100% {
+    80% {
         transform: translateY(0)
     }
 
@@ -413,9 +413,9 @@
         padding: 2rem 1rem
     }
 
+    .flip-text-order,
     .gospel-text,
-    .gospel-text-verse,
-    .flip-text-order {
+    .gospel-text-verse {
         text-align: center !important
     }
 
@@ -489,18 +489,18 @@
     }
 
     .gospel-step {
-        animation-delay: calc(var(--scroll-index, 0) * 0.1s)
+        animation-delay: calc(var(--scroll-index, 0) * .1s)
     }
 }
 
 @media (prefers-reduced-motion:reduce) {
 
     *,
-    *::before,
-    *::after {
-        animation-duration: 0.01ms !important;
+    ::after,
+    ::before {
+        animation-duration: 0s !important;
         animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important
+        transition-duration: 0s !important
     }
 }
 
@@ -510,7 +510,7 @@
         --salvation-border-base: rgba(0, 0, 0, 0.3)
     }
 
-    [data-bs-theme="dark"] {
+    [data-bs-theme=dark] {
         --salvation-shadow-base: rgba(255, 255, 255, 0.3);
         --salvation-border-base: rgba(255, 255, 255, 0.4)
     }
@@ -521,19 +521,19 @@
 }
 
 .fade-in {
-    animation: fadeInUp 0.6s ease-out
+    animation: fadeInUp .6s ease-out
 }
 
 .slide-in-left {
-    animation: slideInLeft 0.6s ease-out
+    animation: slideInLeft .6s ease-out
 }
 
 .slide-in-right {
-    animation: slideInRight 0.6s ease-out
+    animation: slideInRight .6s ease-out
 }
 
 .scale-in {
-    animation: scaleIn 0.6s ease-out
+    animation: scaleIn .6s ease-out
 }
 
 @media print {
@@ -550,8 +550,8 @@
         border: 1px solid #ccc
     }
 
-    .salvation-btn-primary,
-    .prayer-button {
+    .prayer-button,
+    .salvation-btn-primary {
         background: #000 !important;
         color: #fff !important;
         box-shadow: none
