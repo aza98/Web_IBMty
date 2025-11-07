@@ -1,4 +1,4 @@
-name: Deploy website on push
+name: Deploy website
 
 on:
   push:
@@ -7,23 +7,23 @@ on:
 
 jobs:
   web-deploy:
-    name: Deploy via FTP
+    name: Deploy website
     runs-on: ubuntu-latest
 
     steps:
-      - name: Obtener el código más reciente
+      - name: Checkout del código
         uses: actions/checkout@v4
 
-      - name: Sincronizar archivos con el servidor
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.6
+      - name: Subir archivos por SFTP
+        uses: appleboy/scp-action@v0.1.7
         with:
-          server: 0398b5f.netsolhost.com
+          host: ${{ secrets.FRPHOSTNAME }}
           username: ${{ secrets.FTPUSERNAME }}
           password: ${{ secrets.FTPPASSWORD }}
-          protocol: ftps
-          server-dir: /public_html/test-push-ftp/
-          local-dir: ./
-          exclude: |
-            **/.git*
-            **/.github/**
-            **/*.yml
+          port: 22
+          source: "./"
+          target: "/public_html/test-push-ftp/"
+          overwrite: true
+          strip_components: 1
+          rm: false
+          timeout: 120s
