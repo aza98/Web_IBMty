@@ -22,7 +22,7 @@ jobs:
           password: ${{ secrets.FTPPASSWORD }}
           port: 22
           source: "./"
-          target: "/public_html/test-push-ftp/"
+          target: "/"
           overwrite: true
           strip_components: 1
           rm: false
