@@ -1,4 +1,4 @@
-name: FTP Uploader
+name: Deploy website on push
 
 on:
   push:
@@ -6,24 +6,24 @@ on:
       - main
 
 jobs:
-  deploy:
+  web-deploy:
+    name: Deploy via FTP
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout del repositorio
+      - name: Obtener el código más reciente
         uses: actions/checkout@v4
 
-      - name: Subir archivos al servidor FTP
-        uses: zinh/ftp-uploader-action@v0.5
+      - name: Sincronizar archivos con el servidor
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.6
         with:
-          ftpHostname: 0398b5f.netsolhost.com
-          ftpUsername: ibmty2020
-          ftpPassword: Faith2God
-          files: "./**/*"
-          src: "./"
-          dest: "/public_html/"
-          ignore: |
+          server: 0398b5f.netsolhost.com
+          username: ${{ secrets.FTPUSERNAME }}
+          password: ${{ secrets.FTPPASSWORD }}
+          protocol: ftps
+          server-dir: /public_html/test-push-ftp/
+          local-dir: ./
+          exclude: |
             **/.git*
             **/.github/**
             **/*.yml
-          dryRun: false
