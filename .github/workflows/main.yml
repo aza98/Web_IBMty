@@ -20,7 +20,7 @@ jobs:
         server: ${{ secrets.FRPHOSTNAME }}
         username: ${{ secrets.FTPUSERNAME }}
         password: ${{ secrets.FTPPASSWORD }}
-        server-dir: /svr/htdocs/iglesiab2024/public
+        server-dir: /svr/htdocs/iglesiab2024/public/
         dangerous-clean-slate: true
         log-level: verbose
         exclude: |
