@@ -32,7 +32,7 @@ if (workbox) {
     { url: '/manifest.json', revision: '3.0.1' },
 
     // Scripts críticos
-    { url: '/context/Utils.js', revision: '3.0.1' },
+    { url: '/context/utils.js', revision: '3.0.1' },
     { url: '/context/btn-install.js', revision: '3.0.1' },
     { url: '/context/sw-registration.js', revision: '3.0.1' },
     { url: '/context/carousel-manager.js', revision: '3.0.1' },

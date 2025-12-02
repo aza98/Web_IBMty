@@ -46,22 +46,6 @@
       "purpose": "any maskable"
     }
   ],
-  "screenshots": [
-    {
-      "src": "assets/screenshots/desktop-screenshot.png",
-      "sizes": "1280x720",
-      "type": "image/png",
-      "form_factor": "wide",
-      "label": "Versión de escritorio del sitio de la Iglesia Bautista de Monterrey"
-    },
-    {
-      "src": "assets/screenshots/mobile-screenshot.png",
-      "sizes": "750x1334",
-      "type": "image/png",
-      "form_factor": "narrow",
-      "label": "Versión móvil del sitio de la Iglesia Bautista de Monterrey"
-    }
-  ],
   "shortcuts": [
     {
       "name": "Ministerios",

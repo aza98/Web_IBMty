@@ -20,7 +20,7 @@ jobs:
         server: ${{ secrets.FRPHOSTNAME }}
         username: ${{ secrets.FTPUSERNAME }}
         password: ${{ secrets.FTPPASSWORD }}
-        server-dir: ./
+        server-dir: /public_html/www.ibmty.com/
         dangerous-clean-slate: true
         log-level: verbose
         exclude: |
