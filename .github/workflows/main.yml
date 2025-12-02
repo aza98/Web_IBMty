@@ -14,12 +14,17 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v3
     
-    - name: Deploy via FTP
+    - name: Deploy via FTP (Replace All Files)
       uses: SamKirkland/FTP-Deploy-Action@v4.3.4
       with:
         server: ${{ secrets.FRPHOSTNAME }}
         username: ${{ secrets.FTPUSERNAME }}
         password: ${{ secrets.FTPPASSWORD }}
         server-dir: /public_html/
+        dangerous-clean-slate: true
         log-level: verbose
-        dry-run: false
+        exclude: |
+          **/.git*
+          **/.git*/**
+          **/node_modules/**
+          **/.github/**
