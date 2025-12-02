@@ -20,7 +20,7 @@ jobs:
         server: ${{ secrets.FRPHOSTNAME }}
         username: ${{ secrets.FTPUSERNAME }}
         password: ${{ secrets.FTPPASSWORD }}
-        server-dir: ./
+        server-dir: htdocs/
         dangerous-clean-slate: true
         log-level: verbose
         exclude: |
@@ -28,3 +28,4 @@ jobs:
           **/.git*/**
           **/node_modules/**
           **/.github/**
+          **/.DS_Store/**
