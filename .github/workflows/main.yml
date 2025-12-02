@@ -1,4 +1,4 @@
-name: Deploy to website
+name: Deploy to Network Solutions
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
 
 jobs:
   deploy:
-    name: Deploy website
+    name: Deploy static site
     runs-on: ubuntu-latest
     
     steps:
@@ -20,9 +20,6 @@ jobs:
         server: ${{ secrets.FRPHOSTNAME }}
         username: ${{ secrets.FTPUSERNAME }}
         password: ${{ secrets.FTPPASSWORD }}
-        server-dir: /
-        exclude: |
-          **/.git*
-          **/.git*/**
-          **/node_modules/**
-          **/.github/**
+        server-dir: /public_html/
+        log-level: verbose
+        dry-run: false
