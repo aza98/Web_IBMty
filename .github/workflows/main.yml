@@ -1,4 +1,4 @@
-name: Deploy to Network Solutions
+name: Deploy SFTP
 
 on:
   push:
@@ -7,24 +7,30 @@ on:
 
 jobs:
   deploy:
-    name: Deploy static site
     runs-on: ubuntu-latest
-    
+
     steps:
-    - name: Checkout repository
+    - name: Obtener último commit
       uses: actions/checkout@v3
-    
-    - name: Deploy via FTP (Replace All Files)
-      uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+
+    - name: Limpiar carpeta pública del servidor
+      uses: appleboy/ssh-action@v1.0.0
       with:
-        server: ${{ secrets.FRPHOSTNAME }}
+        host: ${{ secrets.FRPHOSTNAME }}
         username: ${{ secrets.FTPUSERNAME }}
         password: ${{ secrets.FTPPASSWORD }}
-        server-dir: /svr/htdocs/iglesiab2024/public/
-        dangerous-clean-slate: true
-        log-level: verbose
-        exclude: |
-          **/.git*
-          **/.git*/**
-          **/node_modules/**
-          **/.github/**
+        port: 22
+        script: |
+          rm -rf /svr/htdocs/ibm/public/*
+          echo "Carpeta pública limpiada."
+
+    - name: Subir archivos vía SFTP
+      uses: appleboy/scp-action@v1.0.0
+      with:
+        host: ${{ secrets.FRPHOSTNAME }}
+        username: ${{ secrets.FTPUSERNAME }}
+        password: ${{ secrets.FTPPASSWORD }}
+        port: 22
+        source: "dist/*"
+        target: "/svr/htdocs/ibm/public"
+        overwrite: true
