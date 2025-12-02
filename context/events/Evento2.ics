@@ -27,7 +27,7 @@ END:VTIMEZONE
 BEGIN:VEVENT
 UID:Navidad2025-1@ibmonterrey.mx
 DTSTAMP:20250627T120000Z
-DTSTART;TZID=America/Monterrey:20251206T170000
+DTSTART;TZID=America/Monterrey:20251206T180000
 DTEND;TZID=America/Monterrey:20251206T200000
 SUMMARY:Especial de Navidad - Función 1
 DESCRIPTION:Una cantata navideña que celebra el nacimiento de Jesús con música\, teatro y un mensaje de esperanza.
@@ -46,7 +46,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:Navidad2025-2@ibmonterrey.mx
 DTSTAMP:20250627T120000Z
-DTSTART;TZID=America/Monterrey:20251207T170000
+DTSTART;TZID=America/Monterrey:20251207T180000
 DTEND;TZID=America/Monterrey:20251207T200000
 SUMMARY:Especial de Navidad - Función 2
 DESCRIPTION:Una cantata navideña que celebra el nacimiento de Jesús con música\, teatro y un mensaje de esperanza.

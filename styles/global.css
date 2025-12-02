@@ -1,0 +1,129 @@
+body {
+    font-family: var(--font-body);
+    background-color: var(--bg-body);
+    color: var(--text-primary);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    font-size: var(--text-base)
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.display-1,
+.display-2,
+.display-3,
+.display-4,
+.display-5,
+.display-6 {
+    font-family: var(--font-heading);
+    font-weight: var(--font-bold);
+    letter-spacing: -.02em;
+    color: var(--text-primary)
+}
+
+h1 {
+    font-size: 2.5rem
+}
+
+h2 {
+    font-size: 2rem
+}
+
+.container {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem
+}
+
+@media (min-width:768px) {
+    h1 {
+        font-size: calc(1.375rem + 1.5vw)
+    }
+
+    h2 {
+        font-size: calc(1.325rem + 0.9vw)
+    }
+}
+
+.glass-panel {
+    background: var(--bg-glass);
+    backdrop-filter: var(--blur-lg);
+    -webkit-backdrop-filter: var(--blur-lg);
+    border: 1px solid rgb(255 255 255 / .3)
+}
+
+[data-bs-theme="dark"] .glass-panel {
+    border: 1px solid rgb(255 255 255 / .05)
+}
+
+.card-premium {
+    background: var(--bg-surface);
+    border: none;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden
+}
+
+.card-premium:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-premium)
+}
+
+section {
+    position: relative;
+    overflow: hidden
+}
+
+.fs-7 {
+    font-size: .875rem
+}
+
+.opacity-90 {
+    opacity: .9
+}
+
+.tracking-wide {
+    letter-spacing: .05em
+}
+
+.ls-1 {
+    letter-spacing: 1px
+}
+
+.p-6 {
+    padding: 4rem !important
+}
+
+.border-4 {
+    border-width: 4px !important
+}
+
+@media (min-width:768px) {
+    .fs-md-3 {
+        font-size: 1.75rem !important
+    }
+}
+
+.footer {
+    background-color: var(--footer-bg);
+    color: var(--footer-text);
+    font-size: .95rem
+}
+
+.hover-link:hover {
+    color: var(--primary-color) !important;
+    padding-left: 5px;
+    transition: all .2s ease
+}
+
+.footer-bottom {
+    border-color: rgb(0 0 0 / .05) !important
+}
+
+[data-bs-theme=dark] .footer-bottom {
+    border-color: rgb(255 255 255 / .05) !important
+}

@@ -1,11 +1,7 @@
 .hero-section {
     position: relative;
     height: 100vh;
-    min-height: 500px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    height: 100dvh;
     overflow: hidden;
     background-color: #222
 }
@@ -20,15 +16,21 @@
     overflow: hidden
 }
 
-#parallax-img {
+#parallax-img-wrapper {
+    width: 115%;
+    height: 140%;
     position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 120%;
-    object-fit: cover;
-    object-position: center center;
+    top: -20%;
+    left: -7.5%;
     will-change: transform
+}
+
+#parallax-img-wrapper img,
+#parallax-img-wrapper picture {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center
 }
 
 .hero-overlay {
@@ -37,18 +39,12 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, .4);
+    background-color: var(--bg-overlay);
     z-index: 1;
-    pointer-events: none
+    pointer-events: none;
 }
 
-.hero-section .container-fluid {
+.hero-content {
     position: relative;
     z-index: 2
-}
-
-@media (max-width:768px) {
-    #parallax-img {
-        height: 110%
-    }
 }

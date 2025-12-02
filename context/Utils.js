@@ -1,116 +1,291 @@
-// Tema constantes
-const LIGHT_THEME = "light",
-    DARK_THEME = "dark";
+/**
+ * @file Utility functions for the website.
+ * @author IBMty
+ */
 
-// Función para obtener el tema preferido del usuario de localStorage o de las preferencias del sistema.
+const LIGHT_THEME = "light";
+const DARK_THEME = "dark";
+
+/**
+ * Gets the preferred theme from local storage or system settings.
+ * @returns {string} The preferred theme (light or dark).
+ */
 function getPreferredTheme() {
-    let e = localStorage.getItem("theme");
-    return e || (window.matchMedia("(prefers-color-scheme: dark)").matches ? DARK_THEME : LIGHT_THEME)
+    const storedTheme = localStorage.getItem("theme");
+    if (storedTheme) {
+        return storedTheme;
+    }
+    return window.matchMedia("(prefers-color-scheme: dark)").matches ? DARK_THEME : LIGHT_THEME;
 }
 
-// Función para establecer los iconos del tema
-function setThemeIcons(e) {
-    let t = document.getElementById("mobile-theme-icon"),
-        n = document.getElementById("desktop-theme-icon");
-    e ? (t?.classList.replace("fa-sun", "fa-moon"), n?.classList.replace("fa-sun", "fa-moon")) : (t?.classList.replace("fa-moon", "fa-sun"), n?.classList.replace("fa-moon", "fa-sun"))
+/**
+ * Sets the theme icons based on the current theme.
+ * @param {boolean} isDark - Whether the dark theme is active.
+ */
+function setThemeIcons(isDark) {
+    const mobileIcon = document.getElementById("mobile-theme-icon");
+    const desktopIcon = document.getElementById("desktop-theme-icon");
+
+    if (isDark) {
+        mobileIcon?.classList.replace("fa-sun", "fa-moon");
+        desktopIcon?.classList.replace("fa-sun", "fa-moon");
+    } else {
+        mobileIcon?.classList.replace("fa-moon", "fa-sun");
+        desktopIcon?.classList.replace("fa-moon", "fa-sun");
+    }
 }
 
-// Función para establecer el tema
-function setTheme(e) {
-    document.documentElement.setAttribute("data-bs-theme", e), localStorage.setItem("theme", e), setThemeIcons(e === DARK_THEME)
+/**
+ * Sets the theme for the website.
+ * @param {string} theme - The theme to set (light or dark).
+ */
+function setTheme(theme) {
+    document.documentElement.setAttribute("data-bs-theme", theme);
+    localStorage.setItem("theme", theme);
+    setThemeIcons(theme === DARK_THEME);
 }
 
-// Función para cambiar de tema
+/**
+ * Toggles between light and dark theme.
+ */
 function toggleTheme() {
-    let e = document.documentElement.getAttribute("data-bs-theme");
-    setTheme(e === LIGHT_THEME ? DARK_THEME : LIGHT_THEME)
+    const currentTheme = document.documentElement.getAttribute("data-bs-theme");
+    setTheme(currentTheme === LIGHT_THEME ? DARK_THEME : LIGHT_THEME);
 }
 
-// Inicializar AOS y Animate.css
+/**
+ * Initializes the AOS library for animations on scroll.
+ */
 function initAOS() {
-    window.AOS && AOS.init()
+    if (window.AOS) {
+        AOS.init();
+    }
 }
 
-// Inicializar Animate.css en los elementos
+/**
+ * Initializes Animate.css for elements that should animate on load.
+ */
 function initAnimateCSS() {
-    let e = document.querySelectorAll(".animate-on-load");
-    e.forEach(e => {
-        e.classList.add("animate__animated"), e.classList.add("animate__fadeIn")
-    })
+    document.querySelectorAll(".animate-on-load").forEach(element => {
+        element.classList.add("animate__animated", "animate__fadeIn");
+    });
 }
 
-// Función para el Easter Egg del ícono de corazón
+/**
+ * Initializes the heart icon easter egg.
+ * Click the heart icon 7 times to show the developers modal.
+ */
 function initHeartIconEasterEgg() {
+    const heartIcon = document.getElementById("heartIcon");
+    if (!heartIcon) return;
+
     let clickCount = 0;
-    let clickTimer;
-    const heartIcon = document.getElementById('heartIcon');
+    let timer;
 
-    if (heartIcon) {
-        heartIcon.addEventListener('click', function() {
-            clickCount++;
-            clearTimeout(clickTimer);
-            clickTimer = setTimeout(() => {
-                if (clickCount >= 7) {
-                    const modal = new bootstrap.Modal(document.getElementById('developers'));
-                    modal.show()
+    heartIcon.addEventListener("click", () => {
+        clickCount++;
+        clearTimeout(timer);
+        timer = setTimeout(() => {
+            if (clickCount >= 7) {
+                const developersModal = document.getElementById("developers");
+                if (developersModal) {
+                    new bootstrap.Modal(developersModal).show();
                 }
-                clickCount = 0
-            }, 1000)
-        })
-    }
+            }
+            clickCount = 0;
+        }, 1000);
+    });
 }
 
-// Función de Fallback para copiar texto (para navegadores antiguos o inseguros)
-function fallbackCopyText(text, toastInstance) {
-    const textArea = document.createElement('textarea');
-    textArea.value = text;
-    textArea.style.position = 'fixed';
-    textArea.style.top = 0;
-    textArea.style.left = 0;
-    textArea.style.opacity = 0;
-    document.body.appendChild(textArea);
-    textArea.focus();
-    textArea.select();
-    try {
-        const successful = document.execCommand('copy');
-        if (successful) {
-            toastInstance.show();
-        } else {
-            console.error('Fallback: No se pudo copiar el texto');
+/**
+ * Copies text to the clipboard.
+ * @param {string} text - The text to copy.
+ * @returns {Promise<void>}
+ */
+function copyToClipboard(text) {
+    if (navigator.clipboard && window.isSecureContext) {
+        return navigator.clipboard.writeText(text);
+    }
+    // Fallback for insecure contexts or older browsers
+    return new Promise((resolve, reject) => {
+        try {
+            const textArea = document.createElement("textarea");
+            textArea.value = text;
+            textArea.style.position = "fixed";
+            textArea.style.left = "-9999px";
+            textArea.style.top = "0";
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+            const success = document.execCommand("copy");
+            document.body.removeChild(textArea);
+            if (success) {
+                resolve();
+            } else {
+                reject(new Error("execCommand returned false"));
+            }
+        } catch (err) {
+            reject(err);
         }
-    } catch (err) {
-        console.error('Fallback: Error al copiar', err);
-    }
-    document.body.removeChild(textArea);
+    });
 }
 
-// Inicializar botones de copiar con Toast de Bootstrap
+/**
+ * Shares content using the Web Share API or a fallback modal.
+ * @param {string} title - The title of the content to share.
+ * @param {string} text - The text/description to share.
+ * @param {string} url - The URL to share.
+ */
+function shareContent(title, text, url) {
+    if (navigator.share) {
+        navigator.share({
+                title: title,
+                text: text,
+                url: url,
+            })
+            .catch(error => console.log("Error sharing:", error));
+    } else {
+        showShareModal(title, text, url);
+    }
+}
+
+/**
+ * Shows a modal with sharing options as a fallback for the Web Share API.
+ * @param {string} title - The title of the content to share.
+ * @param {string} text - The text/description to share.
+ * @param {string} url - The URL to share.
+ */
+function showShareModal(title, text, url) {
+    const shareText = encodeURIComponent(`${title} - ${text}`);
+    const shareUrl = encodeURIComponent(url);
+
+    // Remove existing modal to prevent duplicates
+    const existingModal = document.getElementById("shareModal");
+    if (existingModal) {
+        existingModal.remove();
+    }
+
+    const modalHTML = `
+        <div class="modal fade" id="shareModal" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Compartir</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="d-grid gap-2">
+                            <a href="https://wa.me/?text=${shareText}%20${shareUrl}" target="_blank" class="btn btn-success text-white">
+                                <i class="fab fa-whatsapp me-2"></i>WhatsApp
+                            </a>
+                            <a href="https://www.facebook.com/sharer/sharer.php?u=${shareUrl}" target="_blank" class="btn btn-primary">
+                                <i class="fab fa-facebook me-2"></i>Facebook
+                            </a>
+                            <a href="https://twitter.com/intent/tweet?text=${shareText}&url=${shareUrl}" target="_blank" class="btn btn-info text-white">
+                                <i class="fab fa-twitter me-2"></i>Twitter
+                            </a>
+                            <button class="btn btn-secondary" onclick="copyToClipboard('''${url}''').then(() => alert('¡Enlace copiado!'))">
+                                <i class="fas fa-copy me-2"></i>Copiar Enlace
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `;
+    document.body.insertAdjacentHTML("beforeend", modalHTML);
+    const shareModal = document.getElementById("shareModal");
+    if (shareModal) {
+        new bootstrap.Modal(shareModal).show();
+    }
+}
+
+/**
+ * Shares an event using data attributes from the clicked element.
+ * @param {HTMLElement} element - The element that was clicked.
+ */
+function shareEvent(element) {
+    if (!element) return;
+    const title = element.getAttribute("data-title") || "Evento IBMty";
+    const description = element.getAttribute("data-description") || "";
+    const url = element.getAttribute("data-url") || window.location.href;
+    shareContent(title, description, url);
+}
+
+/**
+ * Initializes copy-to-clipboard functionality for elements with the .copy-btn class.
+ */
 function initCopyButtons() {
-    const toastEl = document.getElementById('copyToast');
-    if (toastEl) {
-        const copyToast = new bootstrap.Toast(toastEl);
-        document.querySelectorAll('.copy-btn').forEach(button => {
-            button.addEventListener('click', () => {
-                const textToCopy = button.dataset.copy;
-                if (navigator.clipboard) {
-                    navigator.clipboard.writeText(textToCopy).then(() => {
+    const copyToastEl = document.getElementById("copyToast");
+    if (!copyToastEl) return;
+
+    const copyToast = new bootstrap.Toast(copyToastEl);
+    document.querySelectorAll(".copy-btn").forEach(button => {
+        button.addEventListener("click", () => {
+            const textToCopy = button.dataset.copy;
+            if (textToCopy) {
+                copyToClipboard(textToCopy)
+                    .then(() => {
                         copyToast.show();
-                    }).catch(err => {
-                        console.error('Error al copiar con la API moderna: ', err);
-                        fallbackCopyText(textToCopy, copyToast);
+                    })
+                    .catch(err => {
+                        console.error("Error copying:", err);
+                        // Fallback for browsers that don't support copy command
+                        prompt("Copy the text manually:", textToCopy);
                     });
-                } else {
-                    fallbackCopyText(textToCopy, copyToast);
-                }
-            });
+            }
+        });
+    });
+}
+
+/**
+ * Initializes form validation logic.
+ */
+function initFormValidation() {
+    "use strict";
+
+    // Restrict input for firstName and lastName to letters and spaces
+    document.querySelectorAll("#firstName, #lastName").forEach(element => {
+        element.addEventListener("input", () => {
+            element.value = element.value.replace(/[^A-Za-zÁÉÍÓÚÑáéíóúñ\s]/g, "");
+        });
+    });
+
+    // Restrict input for phone to 10 digits
+    const phoneInput = document.getElementById("phone");
+    if (phoneInput) {
+        phoneInput.addEventListener("input", (event) => {
+            event.target.value = event.target.value.replace(/[^0-9]/g, "").slice(0, 10);
         });
     }
+
+    // Bootstrap form validation
+    const forms = document.querySelectorAll(".needs-validation");
+    Array.from(forms).forEach(form => {
+        form.addEventListener("submit", event => {
+            if (!form.checkValidity()) {
+                event.preventDefault();
+                event.stopPropagation();
+            }
+            form.classList.add("was-validated");
+        }, false);
+    });
 }
 
-// Inicializar el tema al cargar la página
-document.addEventListener("DOMContentLoaded", () => {
-    setTheme(getPreferredTheme()), initAOS(), initAnimateCSS(), initHeartIconEasterEgg(), initCopyButtons(),
 
-        // Mostrar el año actual en el pie de página
-        document.getElementById("currentYear").textContent = new Date().getFullYear()
+/**
+ * Main DOMContentLoaded listener.
+ */
+document.addEventListener("DOMContentLoaded", () => {
+    setTheme(getPreferredTheme());
+    initAOS();
+    initAnimateCSS();
+    initHeartIconEasterEgg();
+    initCopyButtons();
+    initFormValidation(); // Added form validation
+
+    const currentYearEl = document.getElementById("currentYear");
+    if (currentYearEl) {
+        currentYearEl.textContent = new Date().getFullYear();
+    }
 });

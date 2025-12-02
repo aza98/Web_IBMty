@@ -1,0 +1,73 @@
+.btn-social {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: var(--bg-surface);
+    color: var(--text-secondary);
+    border: 1px solid var(--border-light);
+    box-shadow: var(--shadow-sm);
+    transition: all 0.3s cubic-bezier(.175, .885, .32, 1.275);
+    text-decoration: none;
+    font-size: 1.1rem;
+    padding: 0;
+    cursor: pointer
+}
+
+.btn-social:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+    background-color: var(--bg-surface);
+    border-color: currentColor
+}
+
+.btn-social[aria-label="Facebook"]:hover,
+.btn-social:has(.fa-facebook-f):hover {
+    color: #1877f2
+}
+
+.btn-social[aria-label="Instagram"]:hover,
+.btn-social:has(.fa-instagram):hover {
+    color: #E1306C
+}
+
+.btn-social[aria-label="TikTok"]:hover,
+.btn-social:has(.fa-tiktok):hover {
+    color: #000
+}
+
+.btn-social[aria-label="WhatsApp"]:hover,
+.btn-social:has(.fa-whatsapp):hover {
+    color: #25D366
+}
+
+.btn-social[aria-label="YouTube"]:hover,
+.btn-social:has(.fa-youtube):hover {
+    color: red
+}
+
+.btn-social[aria-label="Mail"]:hover,
+.btn-social:has(.fa-envelope):hover {
+    color: var(--color-primary)
+}
+
+.btn-social.btn-share:hover {
+    color: var(--color-system-gray)
+}
+
+[data-bs-theme="dark"] .btn-social {
+    background-color: var(--bg-surface-secondary);
+    border-color: var(--border-color);
+    color: var(--text-secondary)
+}
+
+[data-bs-theme="dark"] .btn-social:hover {
+    background-color: var(--bg-surface-secondary)
+}
+
+[data-bs-theme="dark"] .btn-social[aria-label="TikTok"]:hover,
+[data-bs-theme="dark"] .btn-social:has(.fa-tiktok):hover {
+    color: #fff
+}

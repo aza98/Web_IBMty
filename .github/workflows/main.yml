@@ -1,4 +1,4 @@
-name: Deploy website
+name: Deploy to website
 
 on:
   push:
@@ -6,24 +6,23 @@ on:
       - main
 
 jobs:
-  web-deploy:
+  deploy:
     name: Deploy website
     runs-on: ubuntu-latest
-
+    
     steps:
-      - name: Checkout del código
-        uses: actions/checkout@v4
-
-      - name: Subir archivos por SFTP
-        uses: appleboy/scp-action@v0.1.7
-        with:
-          host: ${{ secrets.FRPHOSTNAME }}
-          username: ${{ secrets.FTPUSERNAME }}
-          password: ${{ secrets.FTPPASSWORD }}
-          port: 22
-          source: "./"
-          target: "/"
-          overwrite: true
-          strip_components: 1
-          rm: false
-          timeout: 120s
+    - name: Checkout repository
+      uses: actions/checkout@v3
+    
+    - name: Deploy via FTP
+      uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+      with:
+        server: ${{ secrets.FRPHOSTNAME }}
+        username: ${{ secrets.FTPUSERNAME }}
+        password: ${{ secrets.FTPPASSWORD }}
+        server-dir: /
+        exclude: |
+          **/.git*
+          **/.git*/**
+          **/node_modules/**
+          **/.github/**
