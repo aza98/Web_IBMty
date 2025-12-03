@@ -4,13 +4,14 @@
     --wpp-color-dark: #2b2b2b;
     --wpp-size: 56px;
     --wpp-position: 16px;
+    --wpp-bottom: 100px;
     --wpp-transition-duration: 0.3s
 }
 
 .whatsapp-floating-btn {
     position: fixed;
     z-index: 1000;
-    bottom: var(--wpp-position);
+    bottom: var(--wpp-bottom);
     right: var(--wpp-position);
     width: var(--wpp-size);
     height: var(--wpp-size);
