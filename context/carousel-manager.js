@@ -4,37 +4,61 @@ class CarouselManager {
     }
     init() {
         if (!this.container) return;
-        let e = {
-                effect: "coverflow",
-                grabCursor: !0,
-                centeredSlides: !0,
-                slidesPerView: "auto",
-                initialSlide: 0,
-                loop: !0,
-                coverflowEffect: {
-                    rotate: 50,
-                    stretch: 0,
-                    depth: 100,
-                    modifier: 1,
-                    slideShadows: !0
-                },
-                pagination: {
-                    el: ".swiper-pagination",
-                    clickable: !0,
-                    dynamicBullets: !0
-                },
-                keyboard: {
-                    enabled: !0,
-                    onlyInViewport: !0
-                },
-                on: {
-                    init: e => {
-                        this.updateIndicators(e), this.addSwipeHint()
-                    },
-                    slideChange: e => this.updateIndicators(e),
-                    touchStart: () => this.removeSwipeHint()
+
+        // Check for hash in URL to set initial slide
+        let initialSlide = 0;
+        const hash = window.location.hash;
+        if (hash) {
+            // Find the slide that contains the element with the hash ID
+            const targetElement = this.container.querySelector(hash);
+            if (targetElement) {
+                const slide = targetElement.closest('.swiper-slide');
+                if (slide) {
+                    // Get the index of the slide among its siblings
+                    const slides = Array.from(this.container.querySelectorAll('.swiper-slide'));
+                    initialSlide = slides.indexOf(slide);
+
+                    // Prevent default browser scroll behavior which breaks layout
+                    // We'll let Swiper handle the positioning
+                    if (initialSlide !== -1) {
+                        // Scroll to top of page to reset any browser auto-scroll
+                        window.scrollTo(0, 0);
+                    }
                 }
+            }
+        }
+
+        let e = {
+            effect: "coverflow",
+            grabCursor: !0,
+            centeredSlides: !0,
+            slidesPerView: "auto",
+            initialSlide: initialSlide,
+            loop: !0,
+            coverflowEffect: {
+                rotate: 50,
+                stretch: 0,
+                depth: 100,
+                modifier: 1,
+                slideShadows: !0
             },
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: !0,
+                dynamicBullets: !0
+            },
+            keyboard: {
+                enabled: !0,
+                onlyInViewport: !0
+            },
+            on: {
+                init: e => {
+                    this.updateIndicators(e), this.addSwipeHint()
+                },
+                slideChange: e => this.updateIndicators(e),
+                touchStart: () => this.removeSwipeHint()
+            }
+        },
             t = {
                 ...e,
                 ...this.options
@@ -54,17 +78,26 @@ class CarouselManager {
         }
     }
     initShareButtons() {
-        this.container.querySelectorAll(".btn-share")
-            .forEach((e => {
-                let t = e.cloneNode(!0);
-                e.parentNode.replaceChild(t, e), t.addEventListener("click", (e => {
-                    e.preventDefault();
-                    let n = t.dataset.title || "",
-                        i = t.dataset.description || "",
-                        o = t.dataset.url || window.location.href;
-                    "function" == typeof shareContent ? shareContent(n, i, o) : (console.error("Utils.js: shareContent function not found."), prompt("Copia el enlace:", o))
-                }))
-            }))
+        // Use event delegation for better performance and to avoid cloning issues
+        this.container.addEventListener('click', (e) => {
+            const btn = e.target.closest('.btn-share');
+            if (btn) {
+                e.preventDefault();
+                e.stopPropagation();
+
+                const title = btn.dataset.title || "";
+                const description = btn.dataset.description || "";
+                const url = btn.dataset.url || window.location.href;
+
+                if (typeof shareContent === "function") {
+                    shareContent(title, description, url);
+                } else {
+                    console.error("Utils.js: shareContent function not found.");
+                    // Fallback
+                    prompt("Copia el enlace:", url);
+                }
+            }
+        });
     }
     addSwipeHint() {
         if (!(window.innerWidth < 768) || this.container.querySelector(".swipe-hint-overlay")) return;
@@ -79,10 +112,10 @@ class CarouselManager {
         }), 500))
     }
 }
-document.addEventListener("DOMContentLoaded", (function() {
+document.addEventListener("DOMContentLoaded", (function () {
     let e = {
         dynamicMainBullets: 3,
-        renderBullet: function(e, t) {
+        renderBullet: function (e, t) {
             return '<span class="' + t + '"></span>'
         }
     };

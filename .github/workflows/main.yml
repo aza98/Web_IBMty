@@ -1,5 +1,4 @@
-name: Deploy to Network Solutions
-
+name: Deploy to IBMty
 on:
   push:
     branches:
@@ -14,14 +13,13 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v3
     
-    - name: Deploy via FTP (Replace All Files)
+    - name: Deploy via FTP (Sync Changes Only)
       uses: SamKirkland/FTP-Deploy-Action@v4.3.4
       with:
         server: ${{ secrets.FRPHOSTNAME }}
         username: ${{ secrets.FTPUSERNAME }}
         password: ${{ secrets.FTPPASSWORD }}
-        server-dir: /public_html/www.ibmty.com/
-        dangerous-clean-slate: true
+        server-dir: /ibmty/
         log-level: verbose
         exclude: |
           **/.git*

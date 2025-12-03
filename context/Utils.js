@@ -139,10 +139,10 @@ function copyToClipboard(text) {
 function shareContent(title, text, url) {
     if (navigator.share) {
         navigator.share({
-                title: title,
-                text: text,
-                url: url,
-            })
+            title: title,
+            text: text,
+            url: url,
+        })
             .catch(error => console.log("Error sharing:", error));
     } else {
         showShareModal(title, text, url);
@@ -200,17 +200,7 @@ function showShareModal(title, text, url) {
     }
 }
 
-/**
- * Shares an event using data attributes from the clicked element.
- * @param {HTMLElement} element - The element that was clicked.
- */
-function shareEvent(element) {
-    if (!element) return;
-    const title = element.getAttribute("data-title") || "Evento IBMty";
-    const description = element.getAttribute("data-description") || "";
-    const url = element.getAttribute("data-url") || window.location.href;
-    shareContent(title, description, url);
-}
+
 
 /**
  * Initializes copy-to-clipboard functionality for elements with the .copy-btn class.

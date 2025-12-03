@@ -327,22 +327,15 @@
 										</a>
 									</div>
 									<div class="col-6">
-										<button onclick='shareContent("Ubicación IBMty","Visítanos en Av. Eugenio Garza Sada 6309, Monterrey.","https://www.google.com/maps?q=Iglesia+Bautista+de+Monterrey")' 
+										<button
+											onclick='shareContent("Ubicación IBMty","Visítanos en Av. Eugenio Garza Sada 6309, Monterrey.","https://www.google.com/maps?q=Iglesia+Bautista+de+Monterrey")'
 											class="btn btn-secondary btn-lg w-100 rounded-pill d-flex align-items-center justify-content-center"
-											type="button"
-											aria-label="Compartir ubicación">
+											type="button" aria-label="Compartir ubicación">
 											<i class="fas fa-share-alt me-2" aria-hidden="true"></i>
 											<span>Compartir</span>
 										</button>
 									</div>
-									<div class="col-12 col-md-6">
-										<small class="d-block text-center text-body-secondary">¡Abre Google Maps con el botón "Maps"!</small>
-									</div>
-									<div class="col-12 col-md-6">
-										<small class="d-block text-center text-body-secondary">¡Comparte la ubicación con el botón!</small>
-									</div>
 								</div>
-
 							</div>
 						</div>
 					</div>
@@ -549,6 +542,8 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js" integrity="sha512-A7AYk1fGKX6S2SsHywmPkrnzTZHrgiVT7GcQkLGDe2ev0aWb8zejytzS8wjo7PGEXKqJOrjQ4oORtnimIRZBtw==" crossorigin="anonymous"></script>
 	<script src="context/sw-registration.js"></script>
 	<script src="context/utils.js"></script>
+	<script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
+	<script src="context/onesignal-init.js" defer></script>
 </body>
 
 </html>
