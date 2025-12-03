@@ -4,7 +4,7 @@
  * Versión: 3.0.0 con Workbox
  */
 
-importScripts('https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.sw.js');
+importScripts('https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js');
 importScripts('https://cdnjs.cloudflare.com/ajax/libs/workbox-sw/7.3.0/workbox-sw.min.js');
 
 if (workbox) {
