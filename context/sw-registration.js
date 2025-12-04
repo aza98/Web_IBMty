@@ -22,8 +22,12 @@ if ('serviceWorker' in navigator) {
                     newWorker.addEventListener('statechange', () => {
                         if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
                             // Hay una nueva versión disponible
-                            console.log('✨ Nueva versión disponible.');
-                            showUpdateToast(registration);
+                            console.log('✨ Nueva versión disponible. Por favor, recarga la página.');
+
+                            // Opcional: Mostrar notificación al usuario
+                            // if (confirm('Hay una nueva versión disponible. ¿Deseas recargar la página?')) {
+                            //    window.location.reload();
+                            // }
                         }
                     });
                 });
@@ -49,43 +53,6 @@ if ('serviceWorker' in navigator) {
             console.log('🔄 Service Worker actualizado y activado');
         });
     });
-
-    function showUpdateToast(registration) {
-        // Evitar bucle si acabamos de recargar por actualización
-        if (sessionStorage.getItem('pwa_update_reloaded')) {
-            console.log('🚫 Notificación suprimida para evitar bucle tras recarga.');
-            sessionStorage.removeItem('pwa_update_reloaded');
-            return;
-        }
-
-        // Si ya existe el toast, no crear otro
-        if (document.getElementById('pwa-update-toast')) return;
-
-        const toastHTML = `
-            <div id="pwa-update-toast" class="position-fixed bottom-0 end-0 p-3" style="z-index: 11000">
-                <div class="toast show align-items-center text-bg-dark border-0 shadow-lg" role="alert" aria-live="assertive" aria-atomic="true">
-                    <div class="d-flex">
-                        <div class="toast-body">
-                            <i class="fas fa-sync-alt me-2"></i>Nueva versión disponible.
-                        </div>
-                        <button type="button" id="pwa-update-btn" class="btn btn-info btn-sm text-white me-2 m-auto fw-bold">Actualizar</button>
-                        <button type="button" class="btn-close btn-close-white me-2 m-auto" onclick="this.closest('#pwa-update-toast').remove()" aria-label="Cerrar"></button>
-                    </div>
-                </div>
-            </div>
-        `;
-
-        document.body.insertAdjacentHTML('beforeend', toastHTML);
-
-        document.getElementById('pwa-update-btn').addEventListener('click', () => {
-            const waitingWorker = registration.waiting;
-            if (waitingWorker) {
-                waitingWorker.postMessage({ type: 'SKIP_WAITING' });
-            }
-            sessionStorage.setItem('pwa_update_reloaded', 'true');
-            window.location.reload();
-        });
-    }
 } else {
     console.warn('⚠️ Service Workers no están soportados en este navegador');
     console.log('La aplicación funcionará sin capacidades offline');
