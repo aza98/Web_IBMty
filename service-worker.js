@@ -1,7 +1,7 @@
 /**
  * Service Worker con Workbox
  * Iglesia Bautista de Monterrey - PWA
- * Versión: 3.0.0 con Workbox
+ * Versión: 4.0.1 con Workbox
  */
 
 importScripts("https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.sw.js");
@@ -14,34 +14,28 @@ if (workbox) {
   });
 
   // ============================================
-  // PRECACHING - Recursos críticos
+  // PRECACHING - Recursos críticos (Solo Assets)
   // ============================================
   workbox.precaching.precacheAndRoute([
-    { url: '/index.html', revision: '3.0.1' },
-    { url: '/nosotros.html', revision: '3.0.1' },
-    { url: '/ministerios.html', revision: '3.0.1' },
-    { url: '/salvacion.html', revision: '3.0.1' },
-    { url: '/donativo.html', revision: '3.0.1' },
-    { url: '/privacidad.html', revision: '3.0.1' },
-    { url: '/manifest.json', revision: '3.0.1' },
-    { url: '/context/utils.js', revision: '3.0.1' },
-    { url: '/context/btn-install.js', revision: '3.0.1' },
-    { url: '/context/sw-registration.js', revision: '3.0.1' },
-    { url: '/context/carousel-manager.js', revision: '3.0.1' },
-    { url: '/context/parallax.js', revision: '3.0.1' },
-    { url: '/context/YouTubeManager.js', revision: '3.0.1' },
-    { url: '/context/onesignal-init.js', revision: '3.0.1' },
-    { url: '/assets/icons/IBMty_Icon_32.png', revision: '3.0.1' },
-    { url: '/assets/icons/IBMty_Icon_152.png', revision: '3.0.1' },
-    { url: '/assets/icons/IBMty_Icon_180.png', revision: '3.0.1' },
-    { url: '/assets/icons/IBMty_Icon_512.png', revision: '3.0.1' },
-    { url: '/assets/icons/IBMty_Logo_Mobile.png', revision: '3.0.1' },
-    { url: '/assets/icons/IBMty_Logo_Desktop.png', revision: '3.0.1' },
+    { url: '/manifest.json', revision: '4.0.1' },
+    { url: '/context/utils.js', revision: '4.0.1' },
+    { url: '/context/btn-install.js', revision: '4.0.1' },
+    { url: '/context/sw-registration.js', revision: '4.0.1' },
+    { url: '/context/carousel-manager.js', revision: '4.0.1' },
+    { url: '/context/parallax.js', revision: '4.0.1' },
+    { url: '/context/YouTubeManager.js', revision: '4.0.1' },
+    { url: '/context/onesignal-init.js', revision: '4.0.1' },
+    { url: '/assets/icons/IBMty_Icon_32.png', revision: '4.0.1' },
+    { url: '/assets/icons/IBMty_Icon_152.png', revision: '4.0.1' },
+    { url: '/assets/icons/IBMty_Icon_180.png', revision: '4.0.1' },
+    { url: '/assets/icons/IBMty_Icon_512.png', revision: '4.0.1' },
+    { url: '/assets/icons/IBMty_Logo_Mobile.png', revision: '4.0.1' },
+    { url: '/assets/icons/IBMty_Logo_Desktop.png', revision: '4.0.1' },
   ]);
 
   // ============================================
-  // ESTRATEGIA 1: CacheFirst
-  // Para recursos estáticos que rara vez cambian
+  // ESTRATEGIA 1: StaleWhileRevalidate
+  // Para recursos estáticos que cambian (CSS, JS)
   // ============================================
 
   workbox.routing.registerRoute(
@@ -49,8 +43,8 @@ if (workbox) {
       request.destination === 'style' ||
       request.destination === 'script' &&
       url.origin === self.location.origin,
-    new workbox.strategies.CacheFirst({
-      cacheName: 'ibmty-static-assets-v3',
+    new workbox.strategies.NetworkFirst({
+      cacheName: 'ibmty-static-assets-v4',
       plugins: [
         new workbox.expiration.ExpirationPlugin({
           maxEntries: 60,
@@ -68,8 +62,8 @@ if (workbox) {
     ({ request, url }) =>
       request.destination === 'image' &&
       url.origin === self.location.origin,
-    new workbox.strategies.CacheFirst({
-      cacheName: 'ibmty-images-v3',
+    new workbox.strategies.StaleWhileRevalidate({
+      cacheName: 'ibmty-images-v4',
       plugins: [
         new workbox.expiration.ExpirationPlugin({
           maxEntries: 100,
@@ -86,7 +80,7 @@ if (workbox) {
   workbox.routing.registerRoute(
     ({ request }) => request.destination === 'font',
     new workbox.strategies.CacheFirst({
-      cacheName: 'ibmty-fonts-v3',
+      cacheName: 'ibmty-fonts-v4',
       plugins: [
         new workbox.expiration.ExpirationPlugin({
           maxEntries: 30,
@@ -108,7 +102,7 @@ if (workbox) {
   workbox.routing.registerRoute(
     ({ request }) => request.mode === 'navigate',
     new workbox.strategies.NetworkFirst({
-      cacheName: 'ibmty-pages-v3',
+      cacheName: 'ibmty-pages-v4',
       plugins: [
         new workbox.expiration.ExpirationPlugin({
           maxEntries: 50,
@@ -132,7 +126,7 @@ if (workbox) {
       url.origin === 'https://fonts.googleapis.com' ||
       url.origin === 'https://fonts.gstatic.com',
     new workbox.strategies.StaleWhileRevalidate({
-      cacheName: 'ibmty-google-fonts-v3',
+      cacheName: 'ibmty-google-fonts-v4',
       plugins: [
         new workbox.expiration.ExpirationPlugin({
           maxEntries: 20,
@@ -151,7 +145,7 @@ if (workbox) {
       url.origin === 'https://cdn.jsdelivr.net' ||
       url.origin === 'https://cdnjs.cloudflare.com',
     new workbox.strategies.StaleWhileRevalidate({
-      cacheName: 'ibmty-cdn-assets-v3',
+      cacheName: 'ibmty-cdn-assets-v4',
       plugins: [
         new workbox.expiration.ExpirationPlugin({
           maxEntries: 50,
@@ -168,7 +162,7 @@ if (workbox) {
   workbox.routing.registerRoute(
     ({ url }) => url.origin === 'https://www.youtube.com' || url.origin === 'https://i.ytimg.com',
     new workbox.strategies.StaleWhileRevalidate({
-      cacheName: 'ibmty-youtube-v3',
+      cacheName: 'ibmty-youtube-v4',
       plugins: [
         new workbox.expiration.ExpirationPlugin({
           maxEntries: 10,
@@ -188,7 +182,7 @@ if (workbox) {
 
   workbox.routing.setDefaultHandler(
     new workbox.strategies.NetworkFirst({
-      cacheName: 'ibmty-default-v3',
+      cacheName: 'ibmty-default-v4',
     })
   );
 
@@ -212,14 +206,14 @@ if (workbox) {
     console.log('Service Worker: Activado');
     event.waitUntil(self.clients.claim());
     const currentCaches = [
-      'ibmty-static-assets-v3',
-      'ibmty-images-v3',
-      'ibmty-fonts-v3',
-      'ibmty-pages-v3',
-      'ibmty-google-fonts-v3',
-      'ibmty-cdn-assets-v3',
-      'ibmty-youtube-v3',
-      'ibmty-default-v3',
+      'ibmty-static-assets-v4',
+      'ibmty-images-v4',
+      'ibmty-fonts-v4',
+      'ibmty-pages-v4',
+      'ibmty-google-fonts-v4',
+      'ibmty-cdn-assets-v4',
+      'ibmty-youtube-v4',
+      'ibmty-default-v4',
       workbox.core.cacheNames.precache,
     ];
     event.waitUntil(
@@ -242,7 +236,7 @@ if (workbox) {
     }
     if (event.data && event.data.type === 'CACHE_URLS') {
       event.waitUntil(
-        caches.open('ibmty-runtime-v3').then((cache) => {
+        caches.open('ibmty-runtime-v4').then((cache) => {
           return cache.addAll(event.data.urls);
         })
       );
