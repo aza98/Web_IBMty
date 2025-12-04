@@ -2,9 +2,9 @@
     --wpp-color-green: #25d366;
     --wpp-color-white: var(--text-inverse);
     --wpp-color-dark: #2b2b2b;
-    --wpp-size: 56px;
-    --wpp-position: 16px;
-    --wpp-bottom: 100px;
+    --wpp-size: 50px;
+    --wpp-position: 19px;
+    --wpp-bottom: 80px;
     --wpp-transition-duration: 0.3s
 }
 
