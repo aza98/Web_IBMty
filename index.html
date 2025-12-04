@@ -521,28 +521,6 @@
     <script src="context/utils.js"></script>
     <script src="context/onesignal-init.js" defer></script>
     <script src="context/YouTubeManager.js"></script>
-    <script>
-        if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('/service-worker.js').then((registration) => {
-                setInterval(() => {
-                    registration.update();
-                    console.log('🔍 Verificando actualizaciones del SW...');
-                }, 10 * 60 * 1000);
-                registration.addEventListener('updatefound', () => {
-                    const newWorker = registration.installing;
-                    newWorker.addEventListener('statechange', () => {
-                        if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
-                            console.log(' Nueva versión disponible, actualizando...');
-                            newWorker.postMessage({ type: 'SKIP_WAITING' });
-                            navigator.serviceWorker.addEventListener('controllerchange', () => {
-                                window.location.reload();
-                            });
-                        }
-                    });
-                });
-            });
-        }
-    </script>
 </body>
 
 </html>
