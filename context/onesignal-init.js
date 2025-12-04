@@ -12,7 +12,7 @@ OneSignalDeferred.push(async function (OneSignal) {
             enable: true,
         },
         allowLocalhostAsSecureOrigin: true,
+        serviceWorkerPath: 'service-worker.js',
     });
-
     console.log('✅ OneSignal inicializado');
 });
