@@ -67,7 +67,7 @@ if (workbox) {
       plugins: [
         new workbox.expiration.ExpirationPlugin({
           maxEntries: 100,
-          maxAgeSeconds: 60 * 24 * 60 * 60,
+          maxAgeSeconds: 24 * 60 * 60, // 24 horas
           purgeOnQuotaError: true,
         }),
         new workbox.cacheableResponse.CacheableResponsePlugin({
@@ -149,7 +149,7 @@ if (workbox) {
       plugins: [
         new workbox.expiration.ExpirationPlugin({
           maxEntries: 50,
-          maxAgeSeconds: 30 * 24 * 60 * 60,
+          maxAgeSeconds: 24 * 60 * 60, // 24 horas
           purgeOnQuotaError: true,
         }),
         new workbox.cacheableResponse.CacheableResponsePlugin({
