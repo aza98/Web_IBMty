@@ -2,7 +2,7 @@ class PwaInstaller {
     constructor() {
         (this.installBtn = document.getElementById("install-btn")),
             (this.iosPopup = document.getElementById("ios-popup")),
-            (this.closePopup = document.getElementById("close-popup")),
+            (this.closePopup = document.getElementById("close-ios-popup")),
             (this.deferredPrompt = null),
             (this.isIOS = /iphone|ipad|ipod/.test(navigator.userAgent.toLowerCase())),
             (this.isStandalone = "standalone" in navigator && navigator.standalone),
