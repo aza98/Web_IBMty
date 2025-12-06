@@ -5,28 +5,70 @@
     --wpp-size: 50px;
     --wpp-position: 19px;
     --wpp-bottom: 80px;
-    --wpp-transition-duration: 0.3s
+    --wpp-transition: 0.3s ease
 }
 
 .whatsapp-floating-btn {
     position: fixed;
-    z-index: 1000;
     bottom: var(--wpp-bottom);
     right: var(--wpp-position);
+    z-index: 1000;
     width: var(--wpp-size);
     height: var(--wpp-size);
-    background: var(--wpp-color-green);
-    color: var(--wpp-color-white);
-    border-radius: 50%;
-    border: none;
-    cursor: pointer;
-    text-decoration: none;
-    font-size: 1.8rem;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: transform var(--wpp-transition-duration) ease, box-shadow var(--wpp-transition-duration) ease;
+    background: var(--wpp-color-green);
+    color: var(--wpp-color-white);
+    border: none;
+    border-radius: 50%;
+    box-shadow: var(--shadow-md);
+    font-size: 1.8rem;
+    text-decoration: none;
+    cursor: pointer;
+    transition: transform var(--wpp-transition), box-shadow var(--wpp-transition), opacity var(--wpp-transition), width var(--wpp-transition), height var(--wpp-transition)
+}
+
+.whatsapp-floating-btn.scrolled {
+    transform: scale(.85);
+    opacity: .7
+}
+
+.whatsapp-floating-btn:hover,
+.whatsapp-floating-btn:focus {
+    transform: translateY(-3px) scale(1.08);
+    box-shadow: var(--shadow-lg);
+    outline: 0
+}
+
+.whatsapp-floating-btn.scrolled:hover,
+.whatsapp-floating-btn.scrolled:focus {
+    transform: translateY(-3px) scale(.95);
+    opacity: 1
+}
+
+.whatsapp-floating-btn:active {
+    transform: translateY(0) scale(1.02);
     box-shadow: var(--shadow-md)
+}
+
+.whatsapp-floating-btn i {
+    line-height: 1;
+    transition: transform var(--wpp-transition)
+}
+
+.whatsapp-floating-btn:hover i {
+    transform: scale(1.15)
+}
+
+.whatsapp-floating-btn.left {
+    right: auto;
+    left: var(--wpp-position)
+}
+
+[data-bs-theme="dark"] .whatsapp-floating-btn {
+    background: var(--wpp-color-dark);
+    color: var(--wpp-color-green)
 }
 
 @media (min-width:577px) {
@@ -40,34 +82,10 @@
     }
 }
 
-[data-bs-theme="dark"] .whatsapp-floating-btn {
-    background: var(--wpp-color-dark);
-    color: var(--wpp-color-green);
-    box-shadow: var(--shadow-md)
-}
+@media (prefers-reduced-motion:reduce) {
 
-.whatsapp-floating-btn:focus,
-.whatsapp-floating-btn:hover {
-    transform: translateY(-3px) scale(1.08);
-    box-shadow: var(--shadow-lg);
-    outline: 0
-}
-
-.whatsapp-floating-btn:active {
-    transform: translateY(0) scale(1.02);
-    box-shadow: var(--shadow-md)
-}
-
-.whatsapp-floating-btn i {
-    line-height: 1;
-    transition: transform var(--wpp-transition-duration) ease
-}
-
-.whatsapp-floating-btn:hover i {
-    transform: scale(1.15)
-}
-
-.whatsapp-floating-btn.left {
-    right: auto;
-    left: var(--wpp-position)
+    .whatsapp-floating-btn,
+    .whatsapp-floating-btn i {
+        transition: none !important
+    }
 }

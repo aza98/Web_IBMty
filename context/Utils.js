@@ -262,6 +262,29 @@ function initFormValidation() {
     });
 }
 
+// Detectar scroll y agregar/quitar clase
+let lastScroll = 0;
+const whatsappBtn = document.querySelector('.whatsapp-floating-btn');
+
+if (whatsappBtn) {
+    window.addEventListener('scroll', () => {
+        const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+
+        if (currentScroll > 100) { // Después de 100px de scroll
+            if (currentScroll > lastScroll) {
+                // Scrolling hacia abajo
+                whatsappBtn.classList.add('scrolled');
+            } else {
+                // Scrolling hacia arriba
+                whatsappBtn.classList.remove('scrolled');
+            }
+        } else {
+            whatsappBtn.classList.remove('scrolled');
+        }
+
+        lastScroll = currentScroll;
+    }, { passive: true });
+}
 
 /**
  * Main DOMContentLoaded listener.

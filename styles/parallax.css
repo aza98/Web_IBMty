@@ -3,7 +3,8 @@
     height: 100vh;
     height: 100dvh;
     overflow: hidden;
-    background-color: #222
+    background-color: #222;
+    contain: layout style paint
 }
 
 #parallax-bg-container {
@@ -13,7 +14,8 @@
     width: 100%;
     height: 100%;
     z-index: 0;
-    overflow: hidden
+    overflow: hidden;
+    isolation: isolate
 }
 
 #parallax-img-wrapper {
@@ -22,7 +24,14 @@
     position: absolute;
     top: -20%;
     left: -7.5%;
-    will-change: transform
+    will-change: transform;
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    -webkit-transform: translateZ(0);
+    perspective: 1000px;
+    -webkit-perspective: 1000px;
+    -webkit-font-smoothing: subpixel-antialiased
 }
 
 #parallax-img-wrapper img,
@@ -30,7 +39,16 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center
+    object-position: center;
+    display: block;
+    transform: translateZ(0);
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges
+}
+
+#parallax-img-wrapper img {
+    transform: translate3d(0, 0, 0);
+    -webkit-transform: translate3d(0, 0, 0)
 }
 
 .hero-overlay {
@@ -42,9 +60,45 @@
     background-color: var(--bg-overlay);
     z-index: 1;
     pointer-events: none;
+    will-change: auto;
+    transform: translateZ(0)
 }
 
 .hero-content {
     position: relative;
-    z-index: 2
+    z-index: 2;
+    transform: translateZ(0)
+}
+
+@media (max-width:992px) {
+    #parallax-img-wrapper {
+        will-change: transform
+    }
+}
+
+@media (max-width:576px) {
+    #parallax-img-wrapper {
+        transform: translate3d(0, 0, 0)
+    }
+
+    #parallax-img-wrapper {
+        width: 110%;
+        height: 130%;
+        top: -15%;
+        left: -5%
+    }
+}
+
+@media (prefers-reduced-motion:reduce) {
+    #parallax-img-wrapper {
+        will-change: auto;
+        transform: none !important
+    }
+}
+
+@media (prefers-reduced-motion:reduce),
+(prefers-color-scheme:dark) and (prefers-reduced-transparency:reduce) {
+    .hero-overlay {
+        opacity: .9
+    }
 }
