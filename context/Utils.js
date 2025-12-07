@@ -15,7 +15,9 @@ function getPreferredTheme() {
     if (storedTheme) {
         return storedTheme;
     }
-    return window.matchMedia("(prefers-color-scheme: dark)").matches ? DARK_THEME : LIGHT_THEME;
+    return window.matchMedia("(prefers-color-scheme: dark)").matches ?
+        DARK_THEME :
+        LIGHT_THEME;
 }
 
 /**
@@ -25,7 +27,6 @@ function getPreferredTheme() {
 function setThemeIcons(isDark) {
     const mobileIcon = document.getElementById("mobile-theme-icon");
     const desktopIcon = document.getElementById("desktop-theme-icon");
-
     if (isDark) {
         mobileIcon?.classList.replace("fa-sun", "fa-moon");
         desktopIcon?.classList.replace("fa-sun", "fa-moon");
@@ -66,7 +67,7 @@ function initAOS() {
  * Initializes Animate.css for elements that should animate on load.
  */
 function initAnimateCSS() {
-    document.querySelectorAll(".animate-on-load").forEach(element => {
+    document.querySelectorAll(".animate-on-load").forEach((element) => {
         element.classList.add("animate__animated", "animate__fadeIn");
     });
 }
@@ -78,10 +79,8 @@ function initAnimateCSS() {
 function initHeartIconEasterEgg() {
     const heartIcon = document.getElementById("heartIcon");
     if (!heartIcon) return;
-
     let clickCount = 0;
     let timer;
-
     heartIcon.addEventListener("click", () => {
         clickCount++;
         clearTimeout(timer);
@@ -106,7 +105,6 @@ function copyToClipboard(text) {
     if (navigator.clipboard && window.isSecureContext) {
         return navigator.clipboard.writeText(text);
     }
-    // Fallback for insecure contexts or older browsers
     return new Promise((resolve, reject) => {
         try {
             const textArea = document.createElement("textarea");
@@ -138,12 +136,13 @@ function copyToClipboard(text) {
  */
 function shareContent(title, text, url) {
     if (navigator.share) {
-        navigator.share({
-            title: title,
-            text: text,
-            url: url,
-        })
-            .catch(error => console.log("Error sharing:", error));
+        navigator
+            .share({
+                title: title,
+                text: text,
+                url: url
+            })
+            .catch((error) => console.log("Error sharing:", error));
     } else {
         showShareModal(title, text, url);
     }
@@ -158,13 +157,10 @@ function shareContent(title, text, url) {
 function showShareModal(title, text, url) {
     const shareText = encodeURIComponent(`${title} - ${text}`);
     const shareUrl = encodeURIComponent(url);
-
-    // Remove existing modal to prevent duplicates
     const existingModal = document.getElementById("shareModal");
     if (existingModal) {
         existingModal.remove();
     }
-
     const modalHTML = `
         <div class="modal fade" id="shareModal" tabindex="-1" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
@@ -208,9 +204,8 @@ function showShareModal(title, text, url) {
 function initCopyButtons() {
     const copyToastEl = document.getElementById("copyToast");
     if (!copyToastEl) return;
-
     const copyToast = new bootstrap.Toast(copyToastEl);
-    document.querySelectorAll(".copy-btn").forEach(button => {
+    document.querySelectorAll(".copy-btn").forEach((button) => {
         button.addEventListener("click", () => {
             const textToCopy = button.dataset.copy;
             if (textToCopy) {
@@ -218,9 +213,8 @@ function initCopyButtons() {
                     .then(() => {
                         copyToast.show();
                     })
-                    .catch(err => {
+                    .catch((err) => {
                         console.error("Error copying:", err);
-                        // Fallback for browsers that don't support copy command
                         prompt("Copy the text manually:", textToCopy);
                     });
             }
@@ -233,57 +227,73 @@ function initCopyButtons() {
  */
 function initFormValidation() {
     "use strict";
-
-    // Restrict input for firstName and lastName to letters and spaces
-    document.querySelectorAll("#firstName, #lastName").forEach(element => {
+    document.querySelectorAll("#firstName, #lastName").forEach((element) => {
         element.addEventListener("input", () => {
             element.value = element.value.replace(/[^A-Za-zÁÉÍÓÚÑáéíóúñ\s]/g, "");
         });
     });
-
-    // Restrict input for phone to 10 digits
     const phoneInput = document.getElementById("phone");
     if (phoneInput) {
         phoneInput.addEventListener("input", (event) => {
-            event.target.value = event.target.value.replace(/[^0-9]/g, "").slice(0, 10);
+            event.target.value = event.target.value
+                .replace(/[^0-9]/g, "")
+                .slice(0, 10);
         });
     }
 
     // Bootstrap form validation
     const forms = document.querySelectorAll(".needs-validation");
-    Array.from(forms).forEach(form => {
-        form.addEventListener("submit", event => {
-            if (!form.checkValidity()) {
-                event.preventDefault();
-                event.stopPropagation();
-            }
-            form.classList.add("was-validated");
-        }, false);
+    Array.from(forms).forEach((form) => {
+        form.addEventListener(
+            "submit",
+            (event) => {
+                if (!form.checkValidity()) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                }
+                form.classList.add("was-validated");
+            },
+            !1
+        );
     });
 }
 
-// Detectar scroll y agregar/quitar clase
-let lastScroll = 0;
-const whatsappBtn = document.querySelector('.whatsapp-floating-btn');
-
-if (whatsappBtn) {
-    window.addEventListener('scroll', () => {
-        const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
-
-        if (currentScroll > 100) { // Después de 100px de scroll
-            if (currentScroll > lastScroll) {
-                // Scrolling hacia abajo
-                whatsappBtn.classList.add('scrolled');
-            } else {
-                // Scrolling hacia arriba
-                whatsappBtn.classList.remove('scrolled');
+function initWhatsAppButton() {
+    const whatsappBtn = document.querySelector(".whatsapp-floating-btn");
+    if (!whatsappBtn) return;
+    const isPWA =
+        window.matchMedia("(display-mode: standalone)").matches ||
+        window.navigator.standalone === !0;
+    if (isPWA) {
+        whatsappBtn.style.display = "none";
+        return;
+    }
+    let lastScroll = 0;
+    let ticking = !1;
+    window.addEventListener(
+        "scroll",
+        () => {
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    const currentScroll = window.scrollY;
+                    if (currentScroll > 100) {
+                        if (currentScroll > lastScroll) {
+                            whatsappBtn.classList.add("scrolled");
+                        } else {
+                            whatsappBtn.classList.remove("scrolled");
+                        }
+                    } else {
+                        whatsappBtn.classList.remove("scrolled");
+                    }
+                    lastScroll = currentScroll;
+                    ticking = !1;
+                });
+                ticking = !0;
             }
-        } else {
-            whatsappBtn.classList.remove('scrolled');
+        }, {
+            passive: !0
         }
-
-        lastScroll = currentScroll;
-    }, { passive: true });
+    );
 }
 
 /**
@@ -295,8 +305,16 @@ document.addEventListener("DOMContentLoaded", () => {
     initAnimateCSS();
     initHeartIconEasterEgg();
     initCopyButtons();
-    initFormValidation(); // Added form validation
-
+    initFormValidation();
+    initCopyButtons();
+    initFormValidation();
+    initWhatsAppButton();
+    if (
+        window.CSS &&
+        CSS.supports("padding-bottom: env(safe-area-inset-bottom)")
+    ) {
+        document.body.classList.add("supports-safe-area");
+    }
     const currentYearEl = document.getElementById("currentYear");
     if (currentYearEl) {
         currentYearEl.textContent = new Date().getFullYear();

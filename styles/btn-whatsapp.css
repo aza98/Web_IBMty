@@ -2,17 +2,18 @@
     --wpp-color-green: #25d366;
     --wpp-color-white: var(--text-inverse);
     --wpp-color-dark: #2b2b2b;
-    --wpp-size: 50px;
-    --wpp-position: 19px;
-    --wpp-bottom: 80px;
-    --wpp-transition: 0.3s ease
+    --wpp-size: 56px;
+    --wpp-position: 20px;
+    --wpp-bottom: 90px;
+    --wpp-transition: 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+    --wpp-safe-bottom: env(safe-area-inset-bottom, 20px)
 }
 
 .whatsapp-floating-btn {
     position: fixed;
-    bottom: var(--wpp-bottom);
+    bottom: calc(var(--wpp-bottom) + var(--wpp-safe-bottom));
     right: var(--wpp-position);
-    z-index: 1000;
+    z-index: 1045;
     width: var(--wpp-size);
     height: var(--wpp-size);
     display: flex;
@@ -22,70 +23,110 @@
     color: var(--wpp-color-white);
     border: none;
     border-radius: 50%;
-    box-shadow: var(--shadow-md);
-    font-size: 1.8rem;
+    box-shadow: 0 4px 12px rgb(37 211 102 / .4), 0 8px 24px rgb(0 0 0 / .15);
+    font-size: 2rem;
     text-decoration: none;
     cursor: pointer;
-    transition: transform var(--wpp-transition), box-shadow var(--wpp-transition), opacity var(--wpp-transition), width var(--wpp-transition), height var(--wpp-transition)
+    transition: transform var(--wpp-transition), box-shadow 0.3s ease, opacity 0.3s ease;
+    animation: wpp-entrance 0.6s cubic-bezier(.175, .885, .32, 1.275) 1s backwards
 }
 
-.whatsapp-floating-btn.scrolled {
-    transform: scale(.85);
-    opacity: .7
+.whatsapp-floating-btn::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: inherit;
+    opacity: .6;
+    z-index: -1;
+    animation: wpp-pulse 2.5s infinite
 }
 
 .whatsapp-floating-btn:hover,
 .whatsapp-floating-btn:focus {
-    transform: translateY(-3px) scale(1.08);
-    box-shadow: var(--shadow-lg);
-    outline: 0
-}
-
-.whatsapp-floating-btn.scrolled:hover,
-.whatsapp-floating-btn.scrolled:focus {
-    transform: translateY(-3px) scale(.95);
-    opacity: 1
+    transform: translateY(-4px) scale(1.05);
+    box-shadow: 0 8px 20px rgb(37 211 102 / .5), 0 12px 28px rgb(0 0 0 / .2);
+    outline: none;
+    color: var(--wpp-color-white)
 }
 
 .whatsapp-floating-btn:active {
-    transform: translateY(0) scale(1.02);
-    box-shadow: var(--shadow-md)
+    transform: translateY(0) scale(.95);
+    box-shadow: 0 2px 8px rgb(37 211 102 / .4)
 }
 
 .whatsapp-floating-btn i {
-    line-height: 1;
-    transition: transform var(--wpp-transition)
+    filter: drop-shadow(0 2px 4px rgb(0 0 0 / .1));
+    transition: transform 0.3s ease
 }
 
-.whatsapp-floating-btn:hover i {
-    transform: scale(1.15)
+.whatsapp-floating-btn.scrolled {
+    transform: scale(.85) translateX(10px);
+    opacity: .8
 }
 
-.whatsapp-floating-btn.left {
-    right: auto;
-    left: var(--wpp-position)
+.whatsapp-floating-btn.scrolled::after {
+    animation: none;
+    opacity: 0
+}
+
+.whatsapp-floating-btn.scrolled:hover {
+    transform: scale(1) translateX(0);
+    opacity: 1
 }
 
 [data-bs-theme="dark"] .whatsapp-floating-btn {
-    background: var(--wpp-color-dark);
-    color: var(--wpp-color-green)
+    box-shadow: 0 4px 15px rgb(0 0 0 / .4), 0 0 0 1px rgb(255 255 255 / .1)
 }
 
-@media (min-width:577px) {
+@keyframes wpp-entrance {
+    0% {
+        opacity: 0;
+        transform: scale(0) rotate(-180deg)
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1) rotate(0)
+    }
+}
+
+@keyframes wpp-pulse {
+    0% {
+        transform: scale(1);
+        opacity: .6
+    }
+
+    70% {
+        transform: scale(1.5);
+        opacity: 0
+    }
+
+    100% {
+        transform: scale(1.5);
+        opacity: 0
+    }
+}
+
+@media (min-width:992px) {
     :root {
         --wpp-size: 64px;
-        --wpp-position: 24px
+        --wpp-position: 32px;
+        --wpp-bottom: 40px
     }
 
     .whatsapp-floating-btn {
-        font-size: 2.3rem
+        font-size: 2.5rem
     }
 }
 
 @media (prefers-reduced-motion:reduce) {
 
     .whatsapp-floating-btn,
+    .whatsapp-floating-btn::after,
     .whatsapp-floating-btn i {
+        animation: none !important;
         transition: none !important
     }
 }
