@@ -261,39 +261,83 @@ function initFormValidation() {
 function initWhatsAppButton() {
     const whatsappBtn = document.querySelector(".whatsapp-floating-btn");
     if (!whatsappBtn) return;
-    const isPWA =
-        window.matchMedia("(display-mode: standalone)").matches ||
-        window.navigator.standalone === !0;
-    if (isPWA) {
-        whatsappBtn.style.display = "none";
-        return;
+
+    function isPWAMode() {
+        if (window.navigator.standalone === !0) {
+            console.log("PWA detectada: iOS");
+            return !0
+        }
+        if (window.matchMedia('(display-mode: standalone)').matches) {
+            console.log("PWA detectada: display-mode standalone");
+            return !0
+        }
+        if (window.matchMedia('(display-mode: fullscreen)').matches) {
+            console.log("PWA detectada: display-mode fullscreen");
+            return !0
+        }
+        if (window.matchMedia('(display-mode: minimal-ui)').matches) {
+            console.log("PWA detectada: display-mode minimal-ui");
+            return !0
+        }
+        if (document.referrer.includes('android-app://')) {
+            console.log("PWA detectada: Android app referrer");
+            return !0
+        }
+        if (window.matchMedia('(display-mode: window-controls-overlay)').matches) {
+            console.log("PWA detectada: Windows overlay");
+            return !0
+        }
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get('source') === 'pwa' || urlParams.get('mode') === 'standalone') {
+            console.log("PWA detectada: URL params");
+            return !0
+        }
+        console.log("PWA NO detectada - modo navegador normal");
+        return !1
     }
+
+    function checkAndHideIfPWA() {
+        if (isPWAMode()) {
+            whatsappBtn.style.display = "none";
+            whatsappBtn.setAttribute('data-pwa-hidden', 'true');
+            return !0
+        }
+        return !1
+    }
+    if (checkAndHideIfPWA()) return;
+    setTimeout(() => {
+        checkAndHideIfPWA()
+    }, 100);
+    window.matchMedia('(display-mode: standalone)').addEventListener('change', (e) => {
+        if (e.matches) {
+            console.log("PWA instalada durante la sesión");
+            whatsappBtn.style.display = "none"
+        }
+    });
     let lastScroll = 0;
     let ticking = !1;
-    window.addEventListener(
-        "scroll",
-        () => {
-            if (!ticking) {
-                window.requestAnimationFrame(() => {
-                    const currentScroll = window.scrollY;
-                    if (currentScroll > 100) {
-                        if (currentScroll > lastScroll) {
-                            whatsappBtn.classList.add("scrolled");
-                        } else {
-                            whatsappBtn.classList.remove("scrolled");
-                        }
+    window.addEventListener("scroll", () => {
+        if (whatsappBtn.getAttribute('data-pwa-hidden') === 'true') return;
+        if (!ticking) {
+            window.requestAnimationFrame(() => {
+                const currentScroll = window.scrollY;
+                if (currentScroll > 100) {
+                    if (currentScroll > lastScroll) {
+                        whatsappBtn.classList.add("scrolled")
                     } else {
-                        whatsappBtn.classList.remove("scrolled");
+                        whatsappBtn.classList.remove("scrolled")
                     }
-                    lastScroll = currentScroll;
-                    ticking = !1;
-                });
-                ticking = !0;
-            }
-        }, {
-            passive: !0
+                } else {
+                    whatsappBtn.classList.remove("scrolled")
+                }
+                lastScroll = currentScroll;
+                ticking = !1
+            });
+            ticking = !0
         }
-    );
+    }, {
+        passive: !0
+    })
 }
 
 /**
