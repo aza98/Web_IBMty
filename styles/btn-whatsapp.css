@@ -111,9 +111,9 @@
 
 @media (min-width:992px) {
     :root {
-        --wpp-size: 64px;
-        --wpp-position: 32px;
-        --wpp-bottom: 40px
+        --wpp-size: 53px;
+        --wpp-position: 20px;
+        --wpp-bottom: 85px;
     }
 
     .whatsapp-floating-btn {

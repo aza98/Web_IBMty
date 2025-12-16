@@ -17,31 +17,31 @@ if (workbox) {
   // PRECACHING - Recursos críticos (Solo Assets)
   // ============================================
   workbox.precaching.precacheAndRoute([
-    { url: '/manifest.json', revision: '4.0.1' },
-    { url: '/context/utils.js', revision: '4.0.1' },
-    { url: '/context/btn-install.js', revision: '4.0.1' },
-    { url: '/context/sw-registration.js', revision: '4.0.1' },
-    { url: '/context/carousel-manager.js', revision: '4.0.1' },
-    { url: '/context/parallax.js', revision: '4.0.1' },
-    { url: '/context/YouTubeManager.js', revision: '4.0.1' },
-    { url: '/context/onesignal-init.js', revision: '4.0.1' },
-    { url: '/assets/icons/IBMty_Icon_32.png', revision: '4.0.1' },
-    { url: '/assets/icons/IBMty_Icon_152.png', revision: '4.0.1' },
-    { url: '/assets/icons/IBMty_Icon_180.png', revision: '4.0.1' },
-    { url: '/assets/icons/IBMty_Icon_512.png', revision: '4.0.1' },
-    { url: '/assets/icons/IBMty_Logo_Mobile.png', revision: '4.0.1' },
-    { url: '/assets/icons/IBMty_Logo_Desktop.png', revision: '4.0.1' },
+    { url: '/', revision: '4.0.2' },
+    { url: '/index.html', revision: '4.0.2' },
+    { url: '/manifest.json', revision: '4.0.2' },
+
+    { url: '/context/utils.js', revision: '4.0.2' },
+    { url: '/context/btn-install.js', revision: '4.0.2' },
+    { url: '/context/sw-registration.js', revision: '4.0.2' },
+
+    { url: '/assets/icons/IBMty_Icon_32.png', revision: '4.0.2' },
+    { url: '/assets/icons/IBMty_Icon_152.png', revision: '4.0.2' },
+    { url: '/assets/icons/IBMty_Icon_180.png', revision: '4.0.2' },
+    { url: '/assets/icons/IBMty_Icon_512.png', revision: '4.0.2' },
+    { url: '/assets/icons/IBMty_Logo_Mobile.png', revision: '4.0.2' },
+    { url: '/assets/icons/IBMty_Logo_Desktop.png', revision: '4.0.2' },
   ]);
 
   // ============================================
-  // ESTRATEGIA 1: StaleWhileRevalidate
-  // Para recursos estáticos que cambian (CSS, JS)
+  // ESTRATEGIA 1: NetworkFirst
+  // CSS y JS propios para asegurar actualización en PWA instalada
   // ============================================
 
   workbox.routing.registerRoute(
     ({ request, url }) =>
-      request.destination === 'style' ||
-      request.destination === 'script' &&
+      (request.destination === 'style' ||
+       request.destination === 'script') &&
       url.origin === self.location.origin,
     new workbox.strategies.NetworkFirst({
       cacheName: 'ibmty-static-assets-v4',
@@ -67,7 +67,7 @@ if (workbox) {
       plugins: [
         new workbox.expiration.ExpirationPlugin({
           maxEntries: 100,
-          maxAgeSeconds: 24 * 60 * 60, // 24 horas
+          maxAgeSeconds: 24 * 60 * 60,
           purgeOnQuotaError: true,
         }),
         new workbox.cacheableResponse.CacheableResponsePlugin({
@@ -186,9 +186,11 @@ if (workbox) {
     })
   );
 
-  workbox.routing.setCatchHandler(({ event }) => {
+  workbox.routing.setCatchHandler(async ({ event }) => {
     if (event.request.mode === 'navigate') {
-      return caches.match('/index.html');
+      return await caches.match('/index.html', {
+        cacheName: workbox.core.cacheNames.precache,
+      });
     }
     return Response.error();
   });
@@ -199,12 +201,20 @@ if (workbox) {
 
   self.addEventListener('install', (event) => {
     console.log('Service Worker: Instalando...');
-    self.skipWaiting();
+    event.waitUntil(self.skipWaiting());
   });
 
   self.addEventListener('activate', (event) => {
     console.log('Service Worker: Activado');
-    event.waitUntil(self.clients.claim());
+    event.waitUntil(
+      (async () => {
+        await self.clients.claim();
+        const clients = await self.clients.matchAll({ type: 'window' });
+        clients.forEach(client => {
+          client.postMessage({ type: 'SW_UPDATED' });
+        });
+      })()
+    );
     const currentCaches = [
       'ibmty-static-assets-v4',
       'ibmty-images-v4',
@@ -214,6 +224,7 @@ if (workbox) {
       'ibmty-cdn-assets-v4',
       'ibmty-youtube-v4',
       'ibmty-default-v4',
+      'ibmty-runtime-v4',
       workbox.core.cacheNames.precache,
     ];
     event.waitUntil(
@@ -230,16 +241,16 @@ if (workbox) {
     );
   });
 
-  self.addEventListener('message', (event) => {
-    if (event.data && event.data.type === 'SKIP_WAITING') {
-      self.skipWaiting();
+  self.addEventListener('message', async (event) => {
+    if (!event.data) return;
+
+    if (event.data.type === 'SKIP_WAITING') {
+      await self.skipWaiting();
     }
-    if (event.data && event.data.type === 'CACHE_URLS') {
-      event.waitUntil(
-        caches.open('ibmty-runtime-v4').then((cache) => {
-          return cache.addAll(event.data.urls);
-        })
-      );
+
+    if (event.data.type === 'CACHE_URLS' && Array.isArray(event.data.urls)) {
+      const cache = await caches.open('ibmty-runtime-v4');
+      await cache.addAll(event.data.urls);
     }
   });
 

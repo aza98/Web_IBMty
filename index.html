@@ -29,6 +29,7 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="IBMty">
     <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-startup-image" href="assets/icons/IBMty_Icon_32.png">
     <link rel="apple-touch-icon" href="assets/icons/IBMty_Icon_180.png">
     <link rel="apple-touch-icon" sizes="152x152" href="assets/icons/IBMty_Icon_152.png">
     <link rel="apple-touch-icon" sizes="167x167" href="assets/icons/IBMty_Icon_167.png">
@@ -105,9 +106,9 @@
                     <i class="fas fa-sun" id="desktop-theme-icon"></i>
                 </button>
             </div>
-            </div>
         </div>
     </nav>
+
     <main>
         <section class="hero-section d-flex flex-column justify-content-center align-items-center position-relative py-4">
             <div id="parallax-bg-container" class="position-absolute w-100 h-100 top-0 start-0">
@@ -163,17 +164,15 @@
                         <h2 class="display-6 fw-bold mb-2" data-aos="fade-up">
                             <i class="fa fa-broadcast-tower text-info me-2"></i>Transmisión en vivo
                         </h2>
-                        <p class="lead text-body-secondary" data-aos="fade-up" data-aos-delay="100">
-                            Únete a nuestro servicio en tiempo real desde cualquier lugar.
-                        </p>
+                        <p class="lead text-body-secondary" data-aos="fade-up" data-aos-delay="100">Únete a nuestro servicio en tiempo real desde cualquier lugar.</p>
                     </div>
                 </div>
                 <div class="row g-4">
                     <div class="col-12 col-lg-8">
-                        <article class="card border-0 shadow-sm h-100 rounded-4 overflow-hidden" data-aos="fade-up">
+                        <article class="card-premium h-100" data-aos="fade-up">
                             <div class="ratio ratio-16x9 bg-black">
                                 <iframe id="youtube-live-embed" 
-                                    src="https://www.youtube.com/embed/l-2skz6s5J0" 
+                                    src="https://www.youtube.com/embed/KXOXSB0mtIs" 
                                     title="Transmisión en vivo"
                                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                                     allowfullscreen loading="lazy">
@@ -253,9 +252,7 @@
                         <h2 class="display-6 fw-bold mb-3 d-inline-block">
                             <i class="fa fa-calendar-check text-info me-2"></i>Próximos Eventos
                         </h2>
-                        <p class="lead text-body-secondary mx-auto" style="max-width:600px">
-                            Mantente al día con todas nuestras actividades y celebraciones especiales.
-                        </p>
+                        <p class="lead text-body-secondary mx-auto" style="max-width:600px">Mantente al día con todas nuestras actividades y celebraciones especiales.</p>
                     </div>
                 </div>
                 <div class="row justify-content-center">
@@ -267,51 +264,6 @@
                                 <div class="swiper mySwiper carousel-events">
                                     <div class="swiper-wrapper">
                                         <div class="swiper-slide">
-                                            <article id="evento2" class="card-premium h-100 event-card">
-                                                <div class="ratio ratio-16x9 position-relative">
-                                                    <img src="assets/images/eventos/Evento2.png" class="object-fit-cover" alt="Especial de Navidad" loading="lazy">
-                                                </div>
-                                                <div class="card-body p-4 bg-body text-center">
-                                                    <div class="text-center mb-4">
-                                                        <h3 class="h4 fw-bold mb-2 text-body-emphasis">Especial de Navidad</h3>
-                                                        <p class="card-text text-body-secondary small">
-                                                            Una cantata que celebra el nacimiento de Jesús con música, teatro y esperanza.
-                                                        </p>
-                                                    </div>
-                                                    <figure class="bg-body-tertiary p-3 rounded-4 d-inline-block shadow-sm border border-light-subtle mb-4">
-                                                        <div class="d-flex flex-column gap-2 text-start">
-                                                            <div class="d-flex align-items-center">
-                                                                <i class="fa fa-calendar text-secondary fs-5 me-2"></i>
-                                                                <span class="fst-italic small fw-medium">6 y 7 de diciembre</span>
-                                                            </div>
-                                                            <div class="d-flex align-items-center">
-                                                                <i class="fa-solid fa-clock text-secondary fs-5 me-2"></i>
-                                                                <span class="fst-italic small fw-medium">6 pm</span>
-                                                            </div>
-                                                            <div class="d-flex align-items-center">
-                                                                <i class="fas fa-map-marker-alt text-secondary fs-5 me-2"></i>
-                                                                <span class="fst-italic small fw-medium">Iglesia Bautista de Monterrey</span>
-                                                            </div>
-                                                        </div>
-                                                    </figure>
-                                                    <div class="row g-2">
-                                                        <div class="col-6">
-                                                            <a href="context/events/Evento2.ics" target="_blank" rel="noopener noreferrer" role="button" aria-label="Abrir calendario para agregar evento" class="btn btn-info btn-lg text-white w-100 rounded-pill add-to-calendar-btn">
-                                                                <i class="fa-regular fa-calendar me-2" aria-hidden="true"></i>
-                                                                <span>Añadir</span>
-                                                            </a>
-                                                        </div>
-                                                        <div class="col-6">
-                                                            <button type="button" aria-label="Compartir evento" class="btn btn-secondary btn-md w-100 rounded-pill btn-share" data-title="Especial de Navidad" data-description="Una cantata que celebra el nacimiento de Jesús con música, teatro y esperanza. 6-7 Dic, 6:00 PM" data-url="https://www.ibmty.com/index.html#evento2">
-                                                                <i class="fas fa-share-alt me-2" aria-hidden="true"></i>
-                                                                <span>Compartir</span>
-                                                            </button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </article>
-                                        </div>
-                                        <div class="swiper-slide">
                                             <article id="evento3" class="card-premium h-100 event-card">
                                                 <div class="ratio ratio-16x9 position-relative">
                                                     <img src="assets/images/eventos/Evento3.png" class="object-fit-cover" alt="Vistete de Diseñador" loading="lazy">
@@ -319,9 +271,7 @@
                                                 <div class="card-body p-4 bg-body text-center">
                                                     <div class="text-center mb-4">
                                                         <h3 class="h4 fw-bold mb-2 text-body-emphasis">Vistete de Diseñador</h3>
-                                                        <p class="card-text text-body-secondary small">
-                                                            Conferencia para mujeres que buscan reencontrarse con la identidad y el diseño de Su Creador.
-                                                        </p>
+                                                        <p class="card-text text-body-secondary small">Conferencia para mujeres que buscan reencontrarse con la identidad y el diseño de Su Creador.</p>
                                                     </div>
                                                     <figure class="bg-body-tertiary p-3 rounded-4 d-inline-block shadow-sm border border-light-subtle mb-4">
                                                         <div class="d-flex flex-column gap-2 text-start">
@@ -341,20 +291,62 @@
                                                     </figure>
                                                     <div class="row g-2">
                                                         <div class="col-12 social-links d-flex justify-content-center">
-                                                            <a href="https://www.instagram.com/vistetededisenador?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" aria-label="Instagram" class="btn-social">
-                                                                <i class="fab fa-instagram"></i>
-                                                            </a>
+                                                            <a href="https://www.instagram.com/vistetededisenador?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" aria-label="Instagram" class="btn-social"><i class="fab fa-instagram"></i></a>
                                                         </div>
                                                         <div class="col-6">
                                                             <a href="https://form.jotform.com/253278811749872" target="_blank" rel="noopener noreferrer" role="button" aria-label="Abrir calendario para agregar evento" class="btn btn-info btn-lg text-white w-100 rounded-pill add-to-calendar-btn">
-                                                                <i class="fa-solid fa-pen-to-square me-2"></i>
-                                                                <span>Registro</span>
+                                                                <i class="fa-solid fa-pen-to-square me-2"></i><span>Registro</span>
                                                             </a>
                                                         </div>
                                                         <div class="col-6">
                                                             <button type="button" aria-label="Compartir evento" class="btn btn-secondary btn-md w-100 rounded-pill btn-share" data-title="Vistete de Diseñador" data-description="Conferencia para mujeres que buscan reencontrarse con la identidad y el diseño de Su Creador. 7 Mar, 9:30 AM" data-url="https://www.ibmty.com/index.html#evento3">
-                                                                <i class="fas fa-share-alt me-2" aria-hidden="true"></i>
-                                                                <span>Compartir</span>
+                                                                <i class="fas fa-share-alt me-2" aria-hidden="true"></i><span>Compartir</span>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </article>
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <article id="evento2" class="card-premium h-100 event-card">
+                                                <div class="position-absolute top-0 start-0 m-3 z-3">
+                                                    <span class="badge bg-info fs-6 px-3 py-2 shadow">
+                                                        <i class="fas fa-check-circle me-1"></i>Concluido
+                                                    </span>
+                                                </div>
+                                                <div class="ratio ratio-16x9 position-relative">
+                                                    <img src="assets/images/eventos/Evento2.png" class="object-fit-cover" alt="Especial de Navidad" loading="lazy">
+                                                </div>
+                                                <div class="card-body p-4 bg-body text-center">
+                                                    <div class="text-center mb-4">
+                                                        <h3 class="h4 fw-bold mb-2 text-body-emphasis">Especial de Navidad</h3>
+                                                        <p class="card-text text-body-secondary small">Una cantata que celebra el nacimiento de Jesús con música, teatro y esperanza.</p>
+                                                    </div>
+                                                    <figure class="bg-body-tertiary p-3 rounded-4 d-inline-block shadow-sm border border-light-subtle mb-4">
+                                                        <div class="d-flex flex-column gap-2 text-start">
+                                                            <div class="d-flex align-items-center">
+                                                                <i class="fa fa-calendar text-secondary fs-5 me-2"></i>
+                                                                <span class="fst-italic small fw-medium">6 y 7 de diciembre 2025</span>
+                                                            </div>
+                                                            <div class="d-flex align-items-center">
+                                                                <i class="fa-solid fa-clock text-secondary fs-5 me-2"></i>
+                                                                <span class="fst-italic small fw-medium">6 pm</span>
+                                                            </div>
+                                                            <div class="d-flex align-items-center">
+                                                                <i class="fas fa-map-marker-alt text-secondary fs-5 me-2"></i>
+                                                                <span class="fst-italic small fw-medium">Iglesia Bautista de Monterrey</span>
+                                                            </div>
+                                                        </div>
+                                                    </figure>
+                                                    <div class="row g-2">
+                                                        <div class="col-6">
+                                                            <a href="context/events/Evento2.ics" target="_blank" rel="noopener noreferrer" role="button" aria-label="Abrir calendario para agregar evento" class="btn btn-info btn-lg text-white w-100 rounded-pill add-to-calendar-btn">
+                                                                <i class="fa-regular fa-calendar me-2" aria-hidden="true"></i><span>Añadir</span>
+                                                            </a>
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <button type="button" aria-label="Compartir evento" class="btn btn-secondary btn-md w-100 rounded-pill btn-share" data-title="Especial de Navidad" data-description="Una cantata que celebra el nacimiento de Jesús con música, teatro y esperanza. 6-7 Dic, 6:00 PM" data-url="https://www.ibmty.com/index.html#evento2">
+                                                                <i class="fas fa-share-alt me-2" aria-hidden="true"></i><span>Compartir</span>
                                                             </button>
                                                         </div>
                                                     </div>
@@ -480,9 +472,7 @@
                     <div class="col-md-4 text-center text-md-start mb-2 mb-md-0">
                         <a href="privacidad.html" class="text-reset text-decoration-none">Aviso de Privacidad</a>
                     </div>
-                    <div class="col-md-4 text-center mb-2 mb-md-0">
-                        &copy; <span id="currentYear"></span> IBMty.
-                    </div>
+                    <div class="col-md-4 text-center mb-2 mb-md-0">&copy; <span id="currentYear"></span> IBMty.</div>
                     <div class="col-md-4 text-center text-md-end">Hecho con 
                         <i id="heartIcon" class="fas fa-heart text-danger" style="cursor:pointer"></i> para 
                         <a href="salvacion.html" class="text-reset text-decoration-none">Dios</a>
