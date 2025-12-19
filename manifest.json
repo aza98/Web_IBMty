@@ -2,12 +2,17 @@
   "name": "Iglesia Bautista de Monterrey",
   "short_name": "IBMty",
   "description": "Sitio oficial de la Iglesia Bautista de Monterrey. Conoce más sobre nuestra fe, ministerios y eventos.",
-  "start_url": "/index.html",
+  "start_url": "/?source=pwa",
   "scope": "/",
   "display": "standalone",
-  "background_color": "#ffffff",
-  "theme_color": "#003366",
-  "id": "/",
+  "display_override": [
+    "standalone",
+    "minimal-ui"
+  ],
+  "prefer_related_applications": false,
+  "background_color": "#121212",
+  "theme_color": "#121212",
+  "id": "/?source=pwa",
   "lang": "es-MX",
   "dir": "ltr",
   "categories": [
@@ -22,20 +27,13 @@
       "type": "image/png"
     },
     {
-      "src": "assets/icons/IBMty_Icon_152.png",
-      "sizes": "152x152",
-      "type": "image/png",
-      "purpose": "any maskable"
-    },
-    {
-      "src": "assets/icons/IBMty_Icon_167.png",
-      "sizes": "167x167",
-      "type": "image/png",
-      "purpose": "any maskable"
-    },
-    {
       "src": "assets/icons/IBMty_Icon_180.png",
       "sizes": "180x180",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/icons/IBMty_Icon_192.png",
+      "sizes": "192x192",
       "type": "image/png",
       "purpose": "any maskable"
     },
@@ -82,6 +80,22 @@
           "sizes": "96x96"
         }
       ]
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "assets/screenshots/home-mobile.png",
+      "sizes": "1080x1920",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Inicio de la Iglesia Bautista de Monterrey"
+    },
+    {
+      "src": "assets/screenshots/home-desktop.png",
+      "sizes": "1920x1080",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Sitio oficial IBMty en escritorio"
     }
   ]
 }
