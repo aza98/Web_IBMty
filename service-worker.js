@@ -1,7 +1,7 @@
 /**
  * Service Worker con Workbox
  * Iglesia Bautista de Monterrey - PWA
- * Versión: 4.0.1 con Workbox
+ * Versión: 4.0.4
  */
 
 importScripts("https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.sw.js");
@@ -9,188 +9,168 @@ importScripts('https://cdnjs.cloudflare.com/ajax/libs/workbox-sw/7.3.0/workbox-s
 
 if (workbox) {
   console.log('✅ Workbox cargado correctamente');
-  workbox.setConfig({
-    debug: false,
-  });
+
+  workbox.setConfig({ debug: false });
+
+  const { registerRoute, setDefaultHandler, setCatchHandler } = workbox.routing;
+  const { NetworkFirst, StaleWhileRevalidate, CacheFirst } = workbox.strategies;
+  const { ExpirationPlugin } = workbox.expiration;
+  const { CacheableResponsePlugin } = workbox.cacheableResponse;
+  const { precacheAndRoute, matchPrecache } = workbox.precaching;
+
+  const CACHE_VERSION = 'v4';
+  const CACHE_NAMES = {
+    static: `ibmty-static-assets-${CACHE_VERSION}`,
+    images: `ibmty-images-${CACHE_VERSION}`,
+    fonts: `ibmty-fonts-${CACHE_VERSION}`,
+    pages: `ibmty-pages-${CACHE_VERSION}`,
+    googleFonts: `ibmty-google-fonts-${CACHE_VERSION}`,
+    cdn: `ibmty-cdn-assets-${CACHE_VERSION}`,
+    youtube: `ibmty-youtube-${CACHE_VERSION}`,
+    default: `ibmty-default-${CACHE_VERSION}`,
+    runtime: `ibmty-runtime-${CACHE_VERSION}`,
+  };
 
   // ============================================
-  // PRECACHING - Recursos críticos (Solo Assets)
+  // 1. PRECACHING - Recursos críticos
   // ============================================
-  workbox.precaching.precacheAndRoute([
-    { url: '/', revision: '4.0.2' },
-    { url: '/index.html', revision: '4.0.2' },
-    { url: '/manifest.json', revision: '4.0.2' },
-
-    { url: '/context/utils.js', revision: '4.0.2' },
-    { url: '/context/btn-install.js', revision: '4.0.2' },
-    { url: '/context/sw-registration.js', revision: '4.0.2' },
-
-    { url: '/assets/icons/IBMty_Icon_32.png', revision: '4.0.2' },
-    { url: '/assets/icons/IBMty_Icon_152.png', revision: '4.0.2' },
-    { url: '/assets/icons/IBMty_Icon_180.png', revision: '4.0.2' },
-    { url: '/assets/icons/IBMty_Icon_512.png', revision: '4.0.2' },
-    { url: '/assets/icons/IBMty_Logo_Mobile.png', revision: '4.0.2' },
-    { url: '/assets/icons/IBMty_Logo_Desktop.png', revision: '4.0.2' },
+  precacheAndRoute([
+    { url: '/', revision: '4.0.4' },
+    { url: '/index.html', revision: '4.0.4' },
+    { url: '/manifest.json', revision: '4.0.4' },
+    { url: '/context/utils.js', revision: '4.0.4' },
+    { url: '/context/btn-install.js', revision: '4.0.4' },
+    { url: '/context/sw-registration.js', revision: '4.0.4' },
+    { url: '/assets/icons/IBMty_Icon_32.png', revision: '4.0.4' },
+    { url: '/assets/icons/IBMty_Icon_180.png', revision: '4.0.4' },
+    { url: '/assets/icons/IBMty_Icon_192.png', revision: '4.0.4' },
+    { url: '/assets/icons/IBMty_Icon_512.png', revision: '4.0.4' },
+    { url: '/assets/icons/IBMty_Logo_Desktop.png', revision: '4.0.4' },
+    { url: '/assets/icons/IBMty_Logo_Mobile.png', revision: '4.0.4' },
   ]);
 
   // ============================================
-  // ESTRATEGIA 1: NetworkFirst
-  // CSS y JS propios para asegurar actualización en PWA instalada
+  // 2. RUTAS DE NAVEGACIÓN (Páginas HTML)
   // ============================================
-
-  workbox.routing.registerRoute(
-    ({ request, url }) =>
-      (request.destination === 'style' ||
-       request.destination === 'script') &&
-      url.origin === self.location.origin,
-    new workbox.strategies.NetworkFirst({
-      cacheName: 'ibmty-static-assets-v4',
+  registerRoute(
+    ({ request }) => request.mode === 'navigate',
+    new NetworkFirst({
+      cacheName: CACHE_NAMES.pages,
+      networkTimeoutSeconds: 3,
       plugins: [
-        new workbox.expiration.ExpirationPlugin({
-          maxEntries: 60,
-          maxAgeSeconds: 30 * 24 * 60 * 60,
+        new ExpirationPlugin({
+          maxEntries: 50,
+          maxAgeSeconds: 7 * 24 * 60 * 60,
           purgeOnQuotaError: true,
         }),
-        new workbox.cacheableResponse.CacheableResponsePlugin({
-          statuses: [0, 200],
-        }),
+        new CacheableResponsePlugin({ statuses: [0, 200] }),
       ],
     })
   );
 
-  workbox.routing.registerRoute(
+  // ============================================
+  // 3. ASSETS PROPIOS (CSS, JS)
+  // ============================================
+  registerRoute(
+    ({ request, url }) =>
+      (request.destination === 'style' || request.destination === 'script') &&
+      url.origin === self.location.origin,
+    new NetworkFirst({
+      cacheName: CACHE_NAMES.static,
+      networkTimeoutSeconds: 3,
+      plugins: [
+        new ExpirationPlugin({
+          maxEntries: 60,
+          maxAgeSeconds: 30 * 24 * 60 * 60,
+        }),
+        new CacheableResponsePlugin({ statuses: [0, 200] }),
+      ],
+    })
+  );
+
+  // ============================================
+  // 4. IMÁGENES
+  // ============================================
+  registerRoute(
     ({ request, url }) =>
       request.destination === 'image' &&
       url.origin === self.location.origin,
-    new workbox.strategies.StaleWhileRevalidate({
-      cacheName: 'ibmty-images-v4',
+    new CacheFirst({
+      cacheName: CACHE_NAMES.images,
       plugins: [
-        new workbox.expiration.ExpirationPlugin({
+        new ExpirationPlugin({
           maxEntries: 100,
-          maxAgeSeconds: 24 * 60 * 60,
+          maxAgeSeconds: 30 * 24 * 60 * 60,
           purgeOnQuotaError: true,
         }),
-        new workbox.cacheableResponse.CacheableResponsePlugin({
-          statuses: [0, 200],
-        }),
-      ],
-    })
-  );
-
-  workbox.routing.registerRoute(
-    ({ request }) => request.destination === 'font',
-    new workbox.strategies.CacheFirst({
-      cacheName: 'ibmty-fonts-v4',
-      plugins: [
-        new workbox.expiration.ExpirationPlugin({
-          maxEntries: 30,
-          maxAgeSeconds: 365 * 24 * 60 * 60,
-          purgeOnQuotaError: true,
-        }),
-        new workbox.cacheableResponse.CacheableResponsePlugin({
-          statuses: [0, 200],
-        }),
+        new CacheableResponsePlugin({ statuses: [0, 200] }),
       ],
     })
   );
 
   // ============================================
-  // ESTRATEGIA 2: NetworkFirst
-  // Para contenido que debe estar actualizado
+  // 5. FUENTES Y RECURSOS EXTERNOS (CDN)
   // ============================================
-
-  workbox.routing.registerRoute(
-    ({ request }) => request.mode === 'navigate',
-    new workbox.strategies.NetworkFirst({
-      cacheName: 'ibmty-pages-v4',
-      plugins: [
-        new workbox.expiration.ExpirationPlugin({
-          maxEntries: 50,
-          maxAgeSeconds: 7 * 24 * 60 * 60,
-          purgeOnQuotaError: true,
-        }),
-        new workbox.cacheableResponse.CacheableResponsePlugin({
-          statuses: [0, 200],
-        }),
-      ],
-    })
-  );
-
-  // ============================================
-  // ESTRATEGIA 3: StaleWhileRevalidate
-  // Para recursos de CDN que pueden actualizarse
-  // ============================================
-
-  workbox.routing.registerRoute(
-    ({ url }) =>
+  registerRoute(
+    ({ request, url }) =>
+      request.destination === 'font' ||
       url.origin === 'https://fonts.googleapis.com' ||
       url.origin === 'https://fonts.gstatic.com',
-    new workbox.strategies.StaleWhileRevalidate({
-      cacheName: 'ibmty-google-fonts-v4',
+    new CacheFirst({
+      cacheName: CACHE_NAMES.fonts,
       plugins: [
-        new workbox.expiration.ExpirationPlugin({
-          maxEntries: 20,
+        new ExpirationPlugin({
+          maxEntries: 30,
           maxAgeSeconds: 365 * 24 * 60 * 60,
-          purgeOnQuotaError: true,
         }),
-        new workbox.cacheableResponse.CacheableResponsePlugin({
-          statuses: [0, 200],
-        }),
+        new CacheableResponsePlugin({ statuses: [0, 200] }),
       ],
     })
   );
 
-  workbox.routing.registerRoute(
+  registerRoute(
     ({ url }) =>
       url.origin === 'https://cdn.jsdelivr.net' ||
       url.origin === 'https://cdnjs.cloudflare.com',
-    new workbox.strategies.StaleWhileRevalidate({
-      cacheName: 'ibmty-cdn-assets-v4',
+    new StaleWhileRevalidate({
+      cacheName: CACHE_NAMES.cdn,
       plugins: [
-        new workbox.expiration.ExpirationPlugin({
+        new ExpirationPlugin({
           maxEntries: 50,
-          maxAgeSeconds: 24 * 60 * 60, // 24 horas
-          purgeOnQuotaError: true,
+          maxAgeSeconds: 24 * 60 * 60,
         }),
-        new workbox.cacheableResponse.CacheableResponsePlugin({
-          statuses: [0, 200],
-        }),
+        new CacheableResponsePlugin({ statuses: [0, 200] }),
       ],
     })
   );
 
-  workbox.routing.registerRoute(
+  registerRoute(
     ({ url }) => url.origin === 'https://www.youtube.com' || url.origin === 'https://i.ytimg.com',
-    new workbox.strategies.StaleWhileRevalidate({
-      cacheName: 'ibmty-youtube-v4',
+    new StaleWhileRevalidate({
+      cacheName: CACHE_NAMES.youtube,
       plugins: [
-        new workbox.expiration.ExpirationPlugin({
-          maxEntries: 10,
-          maxAgeSeconds: 7 * 24 * 60 * 60,
-          purgeOnQuotaError: true,
+        new ExpirationPlugin({
+          maxEntries: 15,
+          maxAgeSeconds: 3 * 24 * 60 * 60,
         }),
-        new workbox.cacheableResponse.CacheableResponsePlugin({
-          statuses: [0, 200],
-        }),
+        new CacheableResponsePlugin({ statuses: [0, 200] }),
       ],
     })
   );
 
   // ============================================
-  // NAVEGACIÓN OFFLINE
+  // FALLBACK Y OFFLINE
   // ============================================
-
-  workbox.routing.setDefaultHandler(
-    new workbox.strategies.NetworkFirst({
-      cacheName: 'ibmty-default-v4',
+  setDefaultHandler(
+    new NetworkFirst({
+      cacheName: CACHE_NAMES.default,
+      networkTimeoutSeconds: 5,
     })
   );
 
-  workbox.routing.setCatchHandler(async ({ event }) => {
-    if (event.request.mode === 'navigate') {
-      return await caches.match('/index.html', {
-        cacheName: workbox.core.cacheNames.precache,
-      });
+  setCatchHandler(async ({ request }) => {
+    if (request.mode === 'navigate' || request.destination === 'document') {
+      return matchPrecache('/index.html');
     }
     return Response.error();
   });
@@ -198,46 +178,32 @@ if (workbox) {
   // ============================================
   // EVENTOS DEL SERVICE WORKER
   // ============================================
-
   self.addEventListener('install', (event) => {
-    console.log('Service Worker: Instalando...');
+    console.log('SW: Instalando v4.0.4...');
     event.waitUntil(self.skipWaiting());
   });
 
   self.addEventListener('activate', (event) => {
-    console.log('Service Worker: Activado');
+    console.log('SW: Activado');
     event.waitUntil(
       (async () => {
         await self.clients.claim();
+        
         const clients = await self.clients.matchAll({ type: 'window' });
-        clients.forEach(client => {
-          client.postMessage({ type: 'SW_UPDATED' });
-        });
-      })()
-    );
-    const currentCaches = [
-      'ibmty-static-assets-v4',
-      'ibmty-images-v4',
-      'ibmty-fonts-v4',
-      'ibmty-pages-v4',
-      'ibmty-google-fonts-v4',
-      'ibmty-cdn-assets-v4',
-      'ibmty-youtube-v4',
-      'ibmty-default-v4',
-      'ibmty-runtime-v4',
-      workbox.core.cacheNames.precache,
-    ];
-    event.waitUntil(
-      caches.keys().then((cacheNames) => {
-        return Promise.all(
+        clients.forEach(client => client.postMessage({ type: 'SW_UPDATED' }));
+
+        const cacheNames = await caches.keys();
+        const expectedCaches = Object.values(CACHE_NAMES).concat([workbox.core.cacheNames.precache]);
+        
+        await Promise.all(
           cacheNames.map((cacheName) => {
-            if (!currentCaches.includes(cacheName)) {
-              console.log('🗑️ Eliminando caché antigua:', cacheName);
+            if (!expectedCaches.includes(cacheName) && !cacheName.includes('onesignal')) {
+              console.log('Eliminando caché obsoleta:', cacheName);
               return caches.delete(cacheName);
             }
           })
         );
-      })
+      })()
     );
   });
 
@@ -249,12 +215,10 @@ if (workbox) {
     }
 
     if (event.data.type === 'CACHE_URLS' && Array.isArray(event.data.urls)) {
-      const cache = await caches.open('ibmty-runtime-v4');
+      const cache = await caches.open(CACHE_NAMES.runtime);
       await cache.addAll(event.data.urls);
     }
   });
-
-  console.log('Service Worker configurado con Workbox');
 
 } else {
   console.error('Error: Workbox no pudo ser cargado');
