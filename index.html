@@ -126,7 +126,7 @@
     </nav>
 
     <main>
-        <section class="hero-section d-flex flex-column justify-content-center align-items-center position-relative py-4">
+        <section class="hero-section d-flex flex-column justify-content-center align-items-center position-relative py-4 py-lg-5">
             <div id="parallax-bg-container" class="position-absolute w-100 h-100 top-0 start-0">
                 <div id="parallax-img-wrapper">
                     <picture>
@@ -180,12 +180,12 @@
                         <h2 class="display-6 fw-bold mb-2" data-aos="fade-up">
                             <i class="fa fa-broadcast-tower text-info me-2"></i>Transmisión en vivo
                         </h2>
-                        <p class="lead text-body-secondary" data-aos="fade-up" data-aos-delay="100">Únete a nuestro servicio en tiempo real desde cualquier lugar.</p>
+                        <p class="lead text-body-secondary mx-auto" style="max-width:700px" data-aos="fade-up" data-aos-delay="50">Únete a nuestro servicio en tiempo real desde cualquier lugar.</p>
                     </div>
                 </div>
                 <div class="row g-4">
                     <div class="col-12 col-lg-8">
-                        <article class="card-premium h-100" data-aos="fade-up">
+                        <article class="card-premium h-100" data-aos="fade-up" data-aos-delay="100">
                             <div class="ratio ratio-16x9 bg-black">
                                 <iframe id="youtube-live-embed" 
                                     src="https://www.youtube.com/embed/KXOXSB0mtIs" 
@@ -196,11 +196,13 @@
                             </div>
                             <div class="card-body p-3 p-md-4">
                                 <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 mb-4">
-                                    <span id="liveStatusBadge" class="badge bg-danger rounded-pill px-3 py-2 d-flex align-items-center gap-2 shadow-sm">
-                                        <i class="fas fa-circle fa-xs animate__animated animate__flash animate__infinite"></i>
-                                        <span id="liveStatusText" class="fw-bold tracking-wide">EN VIVO</span>
+                                    <span id="liveStatusBadge"
+                                        class="badge d-none rounded-pill px-3 py-2 align-items-center gap-2 shadow-sm">
+                                        <i class="fas fa-circle fa-xs"></i>
+                                        <span id="liveStatusText" class="fw-bold tracking-wide">Cargando...</span>
                                     </span>
-                                    <div class="text-body-secondary small fw-medium d-flex align-items-center" id="viewerCountContainer">
+                                    
+                                    <div class="text-body-secondary small fw-medium d-none align-items-center" id="viewerCountContainer">
                                         <i class="fas fa-eye text-info me-2"></i>
                                         <span id="viewerCount">--</span>
                                         <span class="ms-1">espectadores</span>
@@ -213,7 +215,7 @@
                                         </a>
                                     </div>
                                     <div class="col-6">
-                                        <button class="btn btn-secondary btn-lg w-100 rounded-pill" onclick="shareVideo()" type="button">
+                                        <button id="shareBtn" class="btn btn-secondary btn-lg w-100 rounded-pill" type="button">
                                             <i class="fas fa-share-alt me-2"></i> Compartir
                                         </button>
                                     </div>
@@ -261,14 +263,54 @@
                 </div>
             </div>
         </section>
-        <section id="eventos" class="py-4" aria-label="Sección de Eventos">
+        <section id="fotos" class="py-4 py-lg-5" aria-labelledby="Galería de Fotos">
+            <div class="container">
+                <header class="text-center mb-4 mb-lg-5" data-aos="fade-up">
+                    <h2 id="titulo-fotos" class="display-6 fw-bold mb-3 text-body">
+                        <i class="fa-regular fa-images text-info me-2"></i>Galería de Fotos</h2>
+                    <p class="lead text-body-secondary mx-auto px-3" style="max-width:700px">Revive los mejores momentos de nuestra cantata navideña.</p>
+                </header>
+                <article class="card card-premium border-0 shadow-sm rounded-4 overflow-hidden bg-body-tertiary" data-aos="zoom-in-up" data-aos-delay="100">
+                    <div class="row g-0">
+                        <div class="col-12 col-md-5">
+                            <img src="assets/gif/Download_File.gif" alt="Animación de fotos" class="img-fluid w-100 h-100 object-fit-cover" style="min-height:280px" loading="lazy">
+                        </div>
+                        <div class="col-12 col-md-7 d-flex align-items-center">
+                            <div class="card-body p-4 p-xl-5">
+                                <div class="mb-4">
+                                    <h3 class="h2 fw-bold mb-3 text-body">Descarga</h3>
+                                    <p class="text-body-secondary fs-5">Todas las fotografías ya están disponibles en nuestra carpeta de <strong>Google Drive</strong>.</p>
+                                </div>
+                                <ul class="list-unstyled mb-4 mb-md-5">
+                                    <li class="d-flex align-items-center mb-3">
+                                        <i class="fa-solid fa-circle-check text-info me-3 fs-5"></i> <span class="text-body">Alta resolución</span>
+                                    </li>
+                                    <li class="d-flex align-items-center mb-3">
+                                        <i class="fa-solid fa-circle-check text-info me-3 fs-5"></i> <span class="text-body">Acceso desde cualquier dispositivo</span>
+                                    </li>
+                                    <li class="d-flex align-items-center mb-0">
+                                        <i class="fa-solid fa-circle-check text-info me-3 fs-5"></i> <span class="text-body">Sin costo y fácil de compartir</span>
+                                    </li>
+                                </ul>
+                                <div class="d-grid d-md-block text-center text-md-start">
+                                    <a href="https://drive.google.com/drive/folders/1JpRUaO8TdhXBfnkxy2VWULzpojByrfdr" target="_blank" rel="noopener noreferrer" class="btn btn-info btn-md text-white rounded-pill fw-bold shadow-sm px-4 py-3">
+                                        <i class="fa-brands fa-google-drive me-2"></i> Abrir Google Drive
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+        <section id="eventos" class="py-4 py-lg-5" aria-label="Sección de Eventos">
             <div class="container">
                 <div class="row justify-content-center mb-3 mb-lg-4">
                     <div class="col-12 col-lg-8 text-center">
-                        <h2 class="display-6 fw-bold mb-3 d-inline-block">
+                        <h2 class="display-6 fw-bold mb-3 d-inline-block" data-aos="fade-up">
                             <i class="fa fa-calendar-check text-info me-2"></i>Eventos
                         </h2>
-                        <p class="lead text-body-secondary mx-auto" style="max-width:600px">Mantente al día con todas nuestras actividades y celebraciones especiales.</p>
+                        <p class="lead text-body-secondary mx-auto" style="max-width:700px" data-aos="fade-up" data-aos-delay="50">Mantente al día con todas nuestras actividades y celebraciones especiales.</p>
                     </div>
                 </div>
                 <div class="row justify-content-center">
@@ -364,7 +406,8 @@
                                                         </div>
                                                         <div class="col-6">
                                                             <button type="button" aria-label="Compartir evento" class="btn btn-secondary btn-md w-100 rounded-pill btn-share" data-title="Especial de Navidad" data-description="¡Hola! Te invitamos a revivir la magia con la repetición de nuestra Cantata de Navidad, un evento especial lleno de música y esperanza. ¡No te lo pierdas!" data-url="https://www.youtube.com/live/gz5g-GRFKe8">
-                                                                <i class="fas fa-share-alt me-2" aria-hidden="true"></i> <span>Compartir</span>
+                                                                <i class="fas fa-share-alt me-2" aria-hidden="true"></i>
+                                                                <span>Compartir</span>
                                                             </button>
                                                         </div>
                                                     </div>
@@ -394,30 +437,30 @@
             <h3>Instalar en iPhone o iPad</h3>
             <ol type="1" class="ios-popup-steps">
                 <li>
-                    <span>Presiona <strong>Compartir</strong></span> 
+                    <span>Presiona <strong>Compartir</strong></span>
                     <i class="fa-solid fa-arrow-up-from-bracket"></i>
                 </li>
                 <li>
-                    <span>Busca <strong>"Agregar a inicio"</strong></span> 
+                    <span>Busca <strong>"Agregar a inicio"</strong></span>
                     <i class="fa-regular fa-square-plus"></i>
                 </li>
                 <li>
-                    <span>Presiona <strong>Agregar</strong></span> 
+                    <span>Presiona <strong>Agregar</strong></span>
                     <i class="fa-regular fa-circle-check"></i>
                 </li>
             </ol>
         </div>
     </div>
-    
+
     <button id="install-btn" class="install-floating-btn" type="button" aria-label="Instalar aplicación web">
         <i class="fas fa-download" aria-hidden="true"></i> <span>Instala la app</span>
-    </button> 
-    
+    </button>
+
     <a href="https://wa.me/528132503031?text=Hola,%20me%20interesa%20recibir%20informaci%c3%b3n%20de%20la%20iglesia"
         class="whatsapp-floating-btn" target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp">
         <i class="fab fa-whatsapp"></i>
     </a>
-    
+
     <footer class="footer pt-4 pb-3 border-top">
         <div class="container">
             <div class="row gy-4">
@@ -429,13 +472,13 @@
                     <div class="social-icons d-flex justify-content-center justify-content-lg-start gap-2">
                         <a href="https://www.facebook.com/IBMty/" aria-label="Facebook" class="btn-social" target="_blank">
                             <i class="fab fa-facebook-f"></i>
-                        </a> 
+                        </a>
                         <a href="https://www.instagram.com/iglesiabautistademonterrey?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" aria-label="Instagram" class="btn-social" target="_blank">
                             <i class="fab fa-instagram"></i>
-                        </a> 
+                        </a>
                         <a href="mailto:oficina@ibmty.com" aria-label="Mail" class="btn-social">
                             <i class="fa-regular fa-envelope"></i>
-                        </a> 
+                        </a>
                         <a href="https://www.youtube.com/channel/UCfhSTnqLb6vFO28eNm_n0qw" aria-label="YouTube" class="btn-social" target="_blank">
                             <i class="fab fa-youtube"></i>
                         </a>
@@ -469,7 +512,7 @@
                     </h5>
                     <ul class="list-unstyled text-body-secondary small">
                         <li class="mb-2">
-                            <a href="https://www.ribbi.org/" class="text-decoration-none text-reset hover-link"  target="_blank">
+                            <a href="https://www.ribbi.org/" class="text-decoration-none text-reset hover-link" target="_blank">
                                 <i class="fa-solid fa-network-wired me-2"></i>RIBBI
                             </a>
                         </li>
@@ -489,13 +532,13 @@
                         <a href="privacidad.html" class="text-reset text-decoration-none">Aviso de Privacidad</a>
                     </div>
                     <div class="col-md-4 text-center mb-2 mb-md-0">&copy; <span id="currentYear"></span> IBMty.</div>
-                    <div class="col-md-4 text-center text-md-end">Hecho con 
-                        <i id="heartIcon" class="fas fa-heart text-danger" style="cursor:pointer"></i> para 
+                    <div class="col-md-4 text-center text-md-end">Hecho con
+                        <i id="heartIcon" class="fas fa-heart text-danger" style="cursor:pointer"></i> para
                         <a href="salvacion.html" class="text-reset text-decoration-none">Dios</a>
                     </div>
                 </div>
             </div>
-            <div class="modal fade" id="developers" tabindex="-1" aria-labelledby="developersLabel" aria-hidden="true">
+            <div class="modal fade" id="developers" tabindex="-1" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content text-center">
                         <div class="modal-header">

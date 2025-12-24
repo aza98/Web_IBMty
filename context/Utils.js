@@ -59,7 +59,20 @@ function toggleTheme() {
  */
 function initAOS() {
     if (window.AOS) {
-        AOS.init();
+        AOS.init({
+            duration: 500,
+            easing: 'ease-out-cubic',
+            once: true,
+            offset: 60,
+            delay: 0,
+            mobile: {
+                duration: 400,
+                easing: 'ease-out-cubic'
+            },
+            disable: function() {
+                return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            }
+        });
     }
 }
 
