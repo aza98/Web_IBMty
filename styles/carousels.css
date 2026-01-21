@@ -1,138 +1,113 @@
-.swiper-button-next,
-.swiper-button-prev {
-    color: var(--color-primary) !important
+:root {
+    --card-width-mobile: 85vw;
+    --card-width-desktop: 350px;
+    --banner-height: 160px;
+    --banner-height-desktop: 180px;
+    --anim-spring: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1)
 }
 
 .swiper {
+    position: relative;
     width: 100%;
-    padding-top: 1.5rem;
-    padding-bottom: 3.5rem
+    padding: 1rem 0;
+    overflow: visible
 }
 
 .swiper-slide {
+    width: var(--card-width-mobile);
+    max-width: 340px;
+    height: auto;
+    opacity: .85;
     background-position: center;
     background-size: cover;
-    height: auto;
     border-radius: var(--radius-lg);
     transition: transform 0.3s ease, opacity 0.3s ease;
+    will-change: transform, opacity;
     -webkit-tap-highlight-color: #fff0
 }
 
-.swiper-slide img {
-    display: block;
+.swiper-slide-active {
+    opacity: 1
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+    display: none
+}
+
+.carousel-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
     width: 100%;
-    border-radius: var(--radius-lg);
-    max-width: 100%;
-    height: auto
-}
-
-.carousel-events .swiper-slide {
-    width: 85vw;
-    max-width: 320px;
-    opacity: .85;
-    transform: scale(.94)
-}
-
-.carousel-events .swiper-slide-active {
-    opacity: 1;
-    transform: scale(1)
-}
-
-@media (min-width:768px) {
-    .carousel-events .swiper-slide {
-        width: 380px;
-        max-width: none
-    }
-
-    .carousel-events .swiper-slide:hover {
-        transform: translateY(-5px) scale(1.02)
-    }
-}
-
-:root {
-    --ministry-card-width-mobile: 85vw;
-    --ministry-card-width-desktop: 350px;
-    --ministry-transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1)
-}
-
-.carousel-ministerios {
-    width: 100%;
-    max-width: 1100px;
-    padding-top: 1rem;
-    padding-bottom: 1rem
-}
-
-.carousel-ministerios .swiper-slide {
-    width: var(--ministry-card-width-mobile);
-    max-width: 340px
-}
-
-.ministerios-profile-card {
-    width: 100%;
+    height: 100%;
     background: var(--bg-surface);
     border-radius: var(--radius-xl);
     box-shadow: var(--shadow-md);
-    transition: var(--ministry-transition);
-    position: relative;
-    overflow: visible;
     cursor: pointer;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    touch-action: manipulation
+    overflow: visible;
+    transition: var(--anim-spring);
+    will-change: transform, box-shadow
 }
 
-.ministerios-profile-card:active {
+.carousel-card:active {
     transform: scale(.98)
 }
 
-.ministerios-card-banner {
-    height: 160px;
-    background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
+.carousel-card-header {
     position: relative;
-    border-top-left-radius: var(--radius-xl);
-    border-top-right-radius: var(--radius-xl);
-    background-size: cover;
-    background-position: center
+    border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+    overflow: hidden
 }
 
-.ministerios-banner-overlay {
+.carousel-banner {
+    height: var(--banner-height);
+    background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
+    background-size: cover;
+    background-position: center;
+    position: relative
+}
+
+.carousel-banner-overlay {
     position: absolute;
     inset: 0;
     background: linear-gradient(to bottom, transparent 0%, rgb(0 0 0 / .3) 100%);
     opacity: .5;
-    border-top-left-radius: var(--radius-xl);
-    border-top-right-radius: var(--radius-xl);
     transition: opacity 0.3s ease
 }
 
-.ministerios-profile-avatar {
+.carousel-avatar {
     width: 80px;
     height: 80px;
     border-radius: 50%;
     border: 4px solid var(--bg-surface);
     position: absolute;
-    bottom: -40px;
+    top: var(--banner-height);
     left: 50%;
-    transform: translateX(-50%);
+    transform: translate(-50%, -50%);
+    background-color: var(--bg-surface);
     background-size: cover;
     background-position: center;
-    background-color: var(--bg-surface);
     box-shadow: var(--shadow-md);
-    transition: var(--ministry-transition);
-    z-index: 10
+    z-index: 2;
+    transition: var(--anim-spring);
+    will-change: transform
 }
 
-.ministerios-card-content {
-    padding: 3.5rem 1.25rem 1.5rem;
-    text-align: center;
+.carousel-card-body {
     flex-grow: 1;
     display: flex;
     flex-direction: column;
-    justify-content: space-between
+    justify-content: space-between;
+    padding: 3.5rem 1.25rem 1.5rem;
+    text-align: center
 }
 
-.ministerios-profile-name {
+.carousel-card-body.no-avatar {
+    padding-top: 1.5rem
+}
+
+.carousel-title {
     font-size: 1.25rem;
     font-weight: var(--font-bold);
     color: var(--text-primary);
@@ -141,7 +116,7 @@
     letter-spacing: -.3px
 }
 
-.ministerios-profile-title {
+.carousel-subtitle {
     color: var(--color-primary);
     font-size: .75rem;
     font-weight: var(--font-bold);
@@ -150,209 +125,323 @@
     letter-spacing: .8px
 }
 
-.ministerios-profile-description {
+.carousel-description {
     color: var(--text-secondary);
     font-size: .9rem;
     line-height: 1.5;
     margin-bottom: 1.25rem
 }
 
-.ministerios-social-links {
+.carousel-info-box {
+    background-color: var(--bs-body-bg);
+    border: 1px solid var(--bs-border-color-subtle);
+    padding: 1rem;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    margin-bottom: 1.5rem;
+    width: 100%
+}
+
+.carousel-info-row {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    text-align: left;
+    margin-bottom: .5rem
+}
+
+.carousel-info-row:last-child {
+    margin-bottom: 0
+}
+
+.carousel-info-row i {
+    color: var(--text-secondary);
+    min-width: 20px;
+    text-align: center
+}
+
+.carousel-info-text {
+    font-size: .85rem;
+    font-weight: var(--font-medium);
+    font-style: italic;
+    color: var(--text-primary)
+}
+
+.carousel-actions {
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
     gap: .75rem;
     margin-top: auto;
     padding-top: .5rem
 }
 
-@media (min-width:768px) {
-    .carousel-ministerios .swiper-slide {
-        width: var(--ministry-card-width-desktop);
-        max-width: none
-    }
-
-    .ministerios-profile-card:hover {
-        transform: translateY(-10px);
-        box-shadow: var(--shadow-premium)
-    }
-
-    .ministerios-profile-card:hover .ministerios-banner-overlay {
-        opacity: .3
-    }
-
-    .ministerios-profile-card:hover .ministerios-profile-avatar {
-        transform: translateX(-50%) scale(1.1) rotate(5deg);
-        border-color: var(--color-primary)
-    }
-
-    .ministerios-card-banner {
-        height: 180px
-    }
-
-    .ministerios-profile-avatar {
-        width: 90px;
-        height: 90px;
-        bottom: -45px
-    }
-
-    .ministerios-card-content {
-        padding: 4rem 1.5rem 2rem
-    }
-
-    .carousel-ministerios {
-        padding-top: 3rem
-    }
-
-    .ministerios-profile-name {
-        font-size: 1.35rem
-    }
-
-    .ministerios-profile-title {
-        font-size: .8rem;
-        margin-bottom: 1rem
-    }
-
-    .ministerios-profile-description {
-        font-size: .95rem;
-        line-height: 1.6;
-        margin-bottom: 1.5rem
-    }
-}
-
-.ministerios-profile-card[data-ministry="lideres"] .ministerios-card-banner {
-    background-image: url(../assets/images/lideres/Lideres_Iglesia.jpg)
-}
-
-.ministerios-profile-card[data-ministry="adultos"] .ministerios-card-banner {
-    background-image: url(../assets/images/lideres/Lideres_Adultos.jpg)
-}
-
-.ministerios-profile-card[data-ministry="profesionistas"] .ministerios-card-banner {
-    background-image: url(../assets/images/lideres/Lideres_Profesionistas.jpg)
-}
-
-.ministerios-profile-card[data-ministry="universitarios"] .ministerios-card-banner {
-    background-image: url(../assets/images/lideres/Lideres_Universitarios.jpg)
-}
-
-.ministerios-profile-card[data-ministry="jovenes"] .ministerios-card-banner {
-    background-image: url(../assets/images/lideres/Lideres_Jovenes.jpg)
-}
-
-.ministerios-profile-card[data-ministry="intermedios"] .ministerios-card-banner {
-    background-image: url(../assets/images/lideres/Lideres_Intermedios.jpg)
-}
-
-.ministerios-profile-card[data-ministry="culto-infantil"] .ministerios-card-banner {
-    background-image: url(../assets/images/lideres/Lideres_CultoInfantil.jpg)
-}
-
-.ministerios-profile-card[data-ministry="parvulos"] .ministerios-card-banner {
-    background-image: url(../assets/images/lideres/Lideres_Parvulos.jpg)
-}
-
-.ministerios-profile-card[data-ministry="guarderia"] .ministerios-card-banner {
-    background-image: url(../assets/images/lideres/Lideres_Guarderia.jpg)
-}
-
-.ministerios-profile-card[data-ministry="lideres"] .ministerios-profile-avatar {
-    background-image: url(../assets/icons/Logo_IBMty.png)
-}
-
-.ministerios-profile-card[data-ministry="adultos"] .ministerios-profile-avatar {
-    background-image: url(../assets/icons/Logo_Adultos.png)
-}
-
-.ministerios-profile-card[data-ministry="profesionistas"] .ministerios-profile-avatar {
-    background-image: url(../assets/icons/Logo_Profesionistas.png)
-}
-
-.ministerios-profile-card[data-ministry="universitarios"] .ministerios-profile-avatar {
-    background-image: url(../assets/icons/Logo_Universitarios.png)
-}
-
-.ministerios-profile-card[data-ministry="jovenes"] .ministerios-profile-avatar {
-    background-image: url(../assets/icons/Logo_Jovenes.png)
-}
-
-.ministerios-profile-card[data-ministry="intermedios"] .ministerios-profile-avatar {
-    background-image: url(../assets/icons/Logo_Intermedios.png)
-}
-
-.ministerios-profile-card[data-ministry="culto-infantil"] .ministerios-profile-avatar {
-    background-image: url(../assets/icons/Logo_culto_infantil.png)
-}
-
-.ministerios-profile-card[data-ministry="parvulos"] .ministerios-profile-avatar {
-    background-image: url(../assets/icons/Logo_Parvulos.png)
-}
-
-.ministerios-profile-card[data-ministry="guarderia"] .ministerios-profile-avatar {
-    background-image: url(../assets/icons/Logo_Guarderia.png)
+.btn-carousel-action {
+    flex-grow: 1
 }
 
 .swipe-hint-overlay {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 20;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 100;
     pointer-events: none;
     opacity: 0;
-    transition: opacity 0.5s ease;
-    border-radius: var(--radius-lg)
+    visibility: hidden;
+    transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.6s
 }
 
 .swipe-hint-overlay.active {
-    opacity: 1
+    opacity: 1;
+    visibility: visible
 }
 
 .swipe-hint-content {
-    background: rgb(0 0 0 / .6);
-    padding: 1rem 1.5rem;
-    border-radius: 2rem;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 1.5rem 2.5rem;
+    border-radius: 2.5rem;
     color: #fff;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: .5rem;
-    backdrop-filter: var(--blur-sm);
-    -webkit-backdrop-filter: var(--blur-sm)
+    gap: 1rem;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+    transform: scale(0.9);
+    transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1)
+}
+
+.swipe-hint-overlay.active .swipe-hint-content {
+    transform: scale(1)
+}
+
+.swipe-hint-visual {
+    position: relative;
+    width: 60px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center
 }
 
 .swipe-hint-icon {
-    font-size: 2rem;
-    animation: swipe-hand 2s infinite ease-in-out
+    font-size: 2.5rem;
+    color: #fff;
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.3));
+    animation: swipe-hand-premium 2.5s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
+    z-index: 2
+}
+
+.swipe-trail {
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    width: 40px;
+    height: 4px;
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.4));
+    border-radius: 2px;
+    transform: translateY(-50%) translateX(0);
+    opacity: 0;
+    animation: swipe-trail-premium 2.5s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite
 }
 
 .swipe-hint-text {
-    font-size: .85rem;
-    font-weight: var(--font-medium)
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    animation: swipe-text-pulse 2.5s ease-in-out infinite
 }
 
-@keyframes swipe-hand {
-    0% {
-        transform: translateX(10px);
-        opacity: .8
+@keyframes swipe-hand-premium {
+
+    0%,
+    100% {
+        transform: translateX(15px) rotate(0deg)
     }
 
     50% {
-        transform: translateX(-10px);
-        opacity: 1
-    }
-
-    100% {
-        transform: translateX(10px);
-        opacity: .8
+        transform: translateX(-15px) rotate(-10deg)
     }
 }
 
+@keyframes swipe-trail-premium {
+
+    0%,
+    100% {
+        width: 0;
+        opacity: 0;
+        transform: translateY(-50%) translateX(15px)
+    }
+
+    25% {
+        width: 30px;
+        opacity: 0.8
+    }
+
+    50% {
+        width: 0;
+        opacity: 0;
+        transform: translateY(-50%) translateX(-15px)
+    }
+}
+
+@keyframes swipe-text-pulse {
+
+    0%,
+    100% {
+        opacity: 0.8;
+        transform: scale(1)
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.05)
+    }
+}
+
+.carousel-toast {
+    font-family: var(--font-body);
+    font-size: .9rem
+}
+
+#eventos,
+#ministerios-info {
+    overflow-x: hidden;
+    overflow-y: visible
+}
+
 @media (min-width:768px) {
+    .swiper {
+        padding-top: 3rem
+    }
+
+    .swiper-slide {
+        width: var(--card-width-desktop);
+        max-width: none
+    }
+
+    .swiper-slide:hover {
+        transform: translateY(-10px);
+        z-index: 2
+    }
+
+    .swiper-button-next,
+    .swiper-button-prev {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 52px;
+        height: 52px;
+        border-radius: 50%;
+        background: var(--bg-surface);
+        color: var(--color-primary) !important;
+        box-shadow: 0 4px 12px rgb(0 0 0 / .15);
+        z-index: 50;
+        transition: all 0.3s cubic-bezier(.4, 0, .2, 1);
+        border: 2px solid #fff0;
+        cursor: pointer
+    }
+
+    .swiper-button-next::after,
+    .swiper-button-prev::after {
+        font-size: 1.4rem;
+        font-weight: 700
+    }
+
+    .swiper-button-next:hover,
+    .swiper-button-prev:hover {
+        background: var(--color-primary);
+        color: #fff !important;
+        transform: scale(1.1);
+        box-shadow: 0 6px 20px rgb(0 0 0 / .25)
+    }
+
+    .swiper-button-next:active,
+    .swiper-button-prev:active {
+        transform: scale(.95)
+    }
+
+    .swiper-button-next:focus-visible,
+    .swiper-button-prev:focus-visible {
+        outline: 3px solid var(--color-primary);
+        outline-offset: 3px
+    }
+
+    .swiper-button-disabled {
+        opacity: .35;
+        cursor: not-allowed;
+        pointer-events: none
+    }
+
+    .carousel-card:hover {
+        box-shadow: var(--shadow-premium)
+    }
+
+    .carousel-card:hover .carousel-banner-overlay {
+        opacity: .3
+    }
+
+    .carousel-banner {
+        height: var(--banner-height-desktop)
+    }
+
+    .carousel-avatar {
+        width: 90px;
+        height: 90px;
+        top: var(--banner-height-desktop)
+    }
+
+    .carousel-card:hover .carousel-avatar {
+        transform: translate(-50%, -50%) scale(1.1) rotate(5deg);
+        border-color: var(--color-primary)
+    }
+
+    .carousel-card-body {
+        padding: 4rem 1.5rem 2rem
+    }
+
+    .carousel-card-body.no-avatar {
+        padding-top: 2rem
+    }
+
+    .carousel-title {
+        font-size: 1.35rem
+    }
+
+    .carousel-subtitle {
+        font-size: .8rem;
+        margin-bottom: 1rem
+    }
+
+    .carousel-description {
+        font-size: .95rem;
+        line-height: 1.6;
+        margin-bottom: 1.5rem
+    }
+
     .swipe-hint-overlay {
         display: none !important
+    }
+}
+
+@media (prefers-reduced-motion:reduce) {
+
+    *,
+    ::before,
+    ::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important
+    }
+
+    .swiper-slide:hover,
+    .carousel-card:hover .carousel-avatar {
+        transform: none
     }
 }

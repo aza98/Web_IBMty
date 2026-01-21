@@ -1,7 +1,7 @@
 /**
  * Service Worker con Workbox
  * Iglesia Bautista de Monterrey - PWA
- * Versión: 4.0.6
+ * Versión: 4.1.7
  */
 
 importScripts("https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.sw.js");
@@ -35,18 +35,18 @@ if (workbox) {
   // 1. PRECACHING - Recursos críticos
   // ============================================
   precacheAndRoute([
-    { url: '/', revision: '4.0.6' },
-    { url: '/index.html', revision: '4.0.6' },
-    { url: '/manifest.json', revision: '4.0.6' },
-    { url: '/context/utils.js', revision: '4.0.6' },
-    { url: '/context/btn-install.js', revision: '4.0.6' },
-    { url: '/context/sw-registration.js', revision: '4.0.6' },
-    { url: '/assets/icons/IBMty_Icon_32.png', revision: '4.0.6' },
-    { url: '/assets/icons/IBMty_Icon_180.png', revision: '4.0.6' },
-    { url: '/assets/icons/IBMty_Icon_192.png', revision: '4.0.6' },
-    { url: '/assets/icons/IBMty_Icon_512.png', revision: '4.0.6' },
-    { url: '/assets/icons/IBMty_Logo_Desktop.png', revision: '4.0.6' },
-    { url: '/assets/icons/IBMty_Logo_Mobile.png', revision: '4.0.6' },
+    { url: '/', revision: '4.1.7' },
+    { url: '/index.html', revision: '4.1.7' },
+    { url: '/manifest.json', revision: '4.1.7' },
+    { url: '/context/utils.js', revision: '4.1.7' },
+    { url: '/context/btn-install.js', revision: '4.1.7' },
+    { url: '/context/sw-registration.js', revision: '4.1.7' },
+    { url: '/assets/icons/IBMty_Icon_32.png', revision: '4.1.7' },
+    { url: '/assets/icons/IBMty_Icon_180.png', revision: '4.1.7' },
+    { url: '/assets/icons/IBMty_Icon_192.png', revision: '4.1.7' },
+    { url: '/assets/icons/IBMty_Icon_512.png', revision: '4.1.7' },
+    { url: '/assets/icons/IBMty_Logo_Desktop.png', revision: '4.1.7' },
+    { url: '/assets/icons/IBMty_Logo_Mobile.png', revision: '4.1.7' },
   ]);
 
   // ============================================
@@ -179,7 +179,7 @@ if (workbox) {
   // EVENTOS DEL SERVICE WORKER
   // ============================================
   self.addEventListener('install', (event) => {
-    console.log('SW: Instalando v4.0.6...');
+    console.log('SW: Instalando v4.1.7...');
     event.waitUntil(self.skipWaiting());
   });
 

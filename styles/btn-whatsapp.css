@@ -27,8 +27,8 @@
     font-size: 2rem;
     text-decoration: none;
     cursor: pointer;
-    transition: transform var(--wpp-transition), box-shadow 0.3s ease, opacity 0.3s ease;
-    animation: wpp-entrance 0.6s cubic-bezier(.175, .885, .32, 1.275) 1s backwards
+    transition: transform var(--wpp-transition), box-shadow .3s ease, opacity .3s ease;
+    animation: .6s cubic-bezier(.175, .885, .32, 1.275) 1s backwards wpp-entrance
 }
 
 .whatsapp-floating-btn::after {
@@ -40,14 +40,14 @@
     background: inherit;
     opacity: .6;
     z-index: -1;
-    animation: wpp-pulse 2.5s infinite
+    animation: 2.5s infinite wpp-pulse
 }
 
-.whatsapp-floating-btn:hover,
-.whatsapp-floating-btn:focus {
+.whatsapp-floating-btn:focus,
+.whatsapp-floating-btn:hover {
     transform: translateY(-4px) scale(1.05);
     box-shadow: 0 8px 20px rgb(37 211 102 / .5), 0 12px 28px rgb(0 0 0 / .2);
-    outline: none;
+    outline: 0;
     color: var(--wpp-color-white)
 }
 
@@ -58,7 +58,7 @@
 
 .whatsapp-floating-btn i {
     filter: drop-shadow(0 2px 4px rgb(0 0 0 / .1));
-    transition: transform 0.3s ease
+    transition: transform .3s
 }
 
 .whatsapp-floating-btn.scrolled {
@@ -76,7 +76,7 @@
     opacity: 1
 }
 
-[data-bs-theme="dark"] .whatsapp-floating-btn {
+[data-bs-theme=dark] .whatsapp-floating-btn {
     box-shadow: 0 4px 15px rgb(0 0 0 / .4), 0 0 0 1px rgb(255 255 255 / .1)
 }
 
@@ -98,12 +98,8 @@
         opacity: .6
     }
 
+    100%,
     70% {
-        transform: scale(1.5);
-        opacity: 0
-    }
-
-    100% {
         transform: scale(1.5);
         opacity: 0
     }
@@ -124,8 +120,8 @@
 @media (prefers-reduced-motion:reduce) {
 
     .whatsapp-floating-btn,
-    .whatsapp-floating-btn::after,
-    .whatsapp-floating-btn i {
+    .whatsapp-floating-btn i,
+    .whatsapp-floating-btn::after {
         animation: none !important;
         transition: none !important
     }

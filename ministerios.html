@@ -45,13 +45,9 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" integrity="sha512-1cK78a1o+ht2JcaW6g8OXYwqpev9+6GqOkz9xmBN9iUUhIndKtxwILGWYOSibOKjLsEdjyjZvYDq/cZwNeak0w==" crossorigin="anonymous" referrerpolicy="no-referrer">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer">
-    <link rel="stylesheet" href="components/navbar.css">
     <link rel="stylesheet" href="styles/btn-whatsapp.css">
     <link rel="stylesheet" href="styles/carousels.css">
-    <link rel="stylesheet" href="styles/global.css">
-    <link rel="stylesheet" href="styles/social-icons.css">
-    <link rel="stylesheet" href="styles/responsive-fixes.css">
-    <link rel="stylesheet" href="styles/variables.css">
+    <link rel="stylesheet" href="styles/main.css">
 </head>
 
 <body>
@@ -117,129 +113,144 @@
                         <p class="lead text-body-secondary mx-auto" style="max-width:700px" data-aos="fade-up" data-aos-delay="200">Personas con corazón dispuesto a servir, guiando a cada generación a conocer y seguir a Cristo.</p>
                     </div>
                 </div>
-                <div class="swiper ministerios-swiper mySwiper carousel-ministerios">
-                    <div class="swiper-button-prev d-none d-md-flex"></div>
-                    <div class="swiper-button-next d-none d-md-flex"></div>
+                <div class="swiper ministerios-swiper">
                     <div class="swiper-wrapper">
                         <div class="swiper-slide">
-                            <div id="lideres" class="ministerios-profile-card card-premium h-100" data-ministry="lideres">
-                                <div class="ministerios-card-banner position-relative">
-                                    <div class="ministerios-banner-overlay"></div>
-                                    <div class="ministerios-profile-avatar shadow-lg border border-4 border-white"></div>
+                            <article id="lideres" class="carousel-card h-100" data-ministry="lideres">
+                                <div class="carousel-card-header">
+                                    <div class="carousel-banner" style="background-image:url(assets/images/lideres/Lideres_Iglesia.webp)">
+                                        <div class="carousel-banner-overlay"></div>
+                                    </div>
                                 </div>
-                                <div class="ministerios-card-content p-6 text-center">
-                                    <h2 class="ministerios-profile-name h3 fw-bold mb-1">Brian & Jaidy<br>Brown</h2>
-                                    <p class="ministerios-profile-title text-info fw-bold small tracking-wide mb-3">PASTOR LÍDER</p>
-                                    <p class="ministerios-profile-description text-muted small mb-4">Guiamos con sabiduría, enseñamos la Palabra y acompañamos a cada persona en su camino de fe.</p>
-                                    <div class="ministerios-social-links d-flex justify-content-center gap-3">
+                                <div class="carousel-avatar" style="background-image:url(assets/icons/Logo_IBMty.png)">
+                                </div>
+                                <div class="carousel-card-body">
+                                    <div class="mb-4">
+                                        <h3 class="carousel-title">Brian & Jaidy<br>Brown</h3>
+                                        <p class="carousel-subtitle">PASTOR LÍDER</p>
+                                        <p class="carousel-description">Guiamos con sabiduría, enseñamos la Palabra y acompañamos a cada persona en su camino de fe.</p>
+                                    </div>
+                                    <div class="carousel-actions">
                                         <a href="https://www.facebook.com/IBMty/" class="btn-social" aria-label="Facebook">
                                             <i class="fab fa-facebook-f"></i>
                                         </a>
                                         <a href="https://www.instagram.com/iglesiabautistademonterrey?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="btn-social" aria-label="Instagram">
                                             <i class="fab fa-instagram"></i>
                                         </a>
-                                        <button class="btn-social btn-share" data-title="Pastor Líder" data-description="PASTOR LÍDER - Guiamos con sabiduría, enseñamos la Palabra y acompañamos a cada persona en su camino de fe." data-url="https://www.ibmty.com/ministerios.html#lideres" aria-label="Compartir">
+                                        <button class="btn-social btn-share" data-title="Pastor Líder" data-description="¡Hola! Conoce a nuestro Pastor Líder, quien guía con sabiduría y acompaña en el camino de fe. ¡Te invito a conectar!" data-url="https://www.ibmty.com/ministerios.html#lideres" data-image="assets/icons/Logo_IBMty.png" aria-label="Compartir">
                                             <i class="fas fa-share-alt"></i>
                                         </button>
                                     </div>
                                 </div>
-                            </div>
+                            </article>
                         </div>
                         <div class="swiper-slide">
-                            <div id="adultos" class="ministerios-profile-card card-premium h-100" data-ministry="adultos">
-                                <div class="ministerios-card-banner position-relative">
-                                    <div class="ministerios-banner-overlay"></div>
-                                    <div class="ministerios-profile-avatar shadow-lg border border-4 border-white"></div>
+                            <article id="adultos" class="carousel-card h-100" data-ministry="adultos">
+                                <div class="carousel-card-header">
+                                    <div class="carousel-banner" style="background-image:url(assets/images/lideres/Lideres_Adultos.webp)">
+                                        <div class="carousel-banner-overlay"></div>
+                                    </div>
                                 </div>
-                                <div class="ministerios-card-content p-6 text-center">
-                                    <h2 class="ministerios-profile-name h3 fw-bold mb-1">Alberto & Mariana<br>De Agüero</h2>
-                                    <p class="ministerios-profile-title text-info fw-bold small tracking-wide mb-3">Ministerio de Adultos</p>
-                                    <p class="ministerios-profile-description text-muted small mb-4">Para matrimonios y adultos que desean fortalecer su fe y reflejar el carácter de Cristo en su vida diaria.</p>
-                                    <figure class="bg-body-tertiary p-3 rounded-4 d-inline-block shadow-sm border border-light-subtle mb-4">
+                                <div class="carousel-avatar" style="background-image:url(assets/icons/Logo_Adultos.webp)"></div>
+                                <div class="carousel-card-body">
+                                    <div class="mb-4">
+                                        <h3 class="carousel-title">Alberto & Mariana<br>De Agüero</h3>
+                                        <p class="carousel-subtitle">Ministerio de Adultos</p>
+                                        <p class="carousel-description">Para matrimonios y adultos que desean fortalecer su fe y reflejar el carácter de Cristo en su vida diaria.</p>
+                                    </div>
+                                    <div class="carousel-info-box">
                                         <div class="d-flex flex-column gap-2 text-start">
-                                            <div class="d-flex align-items-center">
-                                                <i class="fas fa-clock text-secondary fs-5 me-2"></i>
-                                                <span class="fst-italic small fw-medium">Viernes 8:00 PM</span>
+                                            <div class="carousel-info-row">
+                                                <i class="fas fa-clock"></i>
+                                                <span class="carousel-info-text">Viernes 8:00 PM</span>
                                             </div>
-                                            <div class="d-flex align-items-center">
-                                                <i class="fas fa-map-marker-alt text-secondary fs-5 me-2"></i>
-                                                <span class="fst-italic small fw-medium">Local 41</span>
+                                            <div class="carousel-info-row">
+                                                <i class="fas fa-map-marker-alt"></i>
+                                                <span class="carousel-info-text">Local 41</span>
                                             </div>
                                         </div>
-                                    </figure>
-                                    <div class="ministerios-social-links d-flex justify-content-center gap-3">
+                                    </div>
+                                    <div class="carousel-actions">
                                         <a href="https://www.facebook.com/ministerioadultosibmty/" class="btn-social" aria-label="Facebook">
                                             <i class="fab fa-facebook-f"></i>
                                         </a>
                                         <a href="https://www.instagram.com/adultosibmty?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="btn-social" aria-label="Instagram">
                                             <i class="fab fa-instagram"></i>
                                         </a>
-                                        <button class="btn-social btn-share" data-title="Ministerio de Adultos" data-description="Para matrimonios y adultos que desean fortalecer su fe." data-url="https://www.ibmty.com/ministerios.html#adultos" aria-label="Compartir">
+                                        <button class="btn-social btn-share" data-title="Grupo de Adultos" data-description="¡Hola! Te invito a nuestro Grupo de Adultos donde matrimonios fortalecen su fe juntos. ¡Únete a nosotros!" data-url="https://www.ibmty.com/ministerios.html#adultos" data-image="assets/icons/Logo_Adultos.webp" aria-label="Compartir">
                                             <i class="fas fa-share-alt"></i>
                                         </button>
                                     </div>
                                 </div>
-                            </div>
+                            </article>
                         </div>
                         <div class="swiper-slide">
-                            <div id="profesionistas" class="ministerios-profile-card card-premium h-100" data-ministry="profesionistas">
-                                <div class="ministerios-card-banner position-relative">
-                                    <div class="ministerios-banner-overlay"></div>
-                                    <div class="ministerios-profile-avatar shadow-lg border border-4 border-white"></div>
+                            <article id="profesionistas" class="carousel-card h-100" data-ministry="profesionistas">
+                                <div class="carousel-card-header">
+                                    <div class="carousel-banner" style="background-image:url(assets/images/lideres/Lideres_Profesionistas.webp)">
+                                        <div class="carousel-banner-overlay"></div>
+                                    </div>
                                 </div>
-                                <div class="ministerios-card-content p-6 text-center">
-                                    <h2 class="ministerios-profile-name h3 fw-bold mb-1">Edgar & Esther<br>Zamarrón<br>Alma Barrera</h2>
-                                    <p class="ministerios-profile-title text-info fw-bold small tracking-wide mb-3">Ministerio de Profesionistas</p>
-                                    <p class="ministerios-profile-description text-muted small mb-4">Dirigido a solteros de 25 años en adelante que buscan crecer espiritualmente mientras enfrentan los desafíos de la vida profesional.</p>
-                                    <figure class="bg-body-tertiary p-3 rounded-4 d-inline-block shadow-sm border border-light-subtle mb-4">
+                                <div class="carousel-avatar" style="background-image:url(assets/icons/Logo_Profesionistas.png)"></div>
+                                <div class="carousel-card-body">
+                                    <div class="mb-4">
+                                        <h3 class="carousel-title">Edgar & Esther<br>Zamarrón<br>Alma Barrera</h3>
+                                        <p class="carousel-subtitle">Ministerio de Profesionistas</p>
+                                        <p class="carousel-description">Dirigido a solteros de 25 años en adelante que buscan crecer espiritualmente mientras enfrentan los desafíos de la vida profesional.</p>
+                                    </div>
+                                    <div class="carousel-info-box">
                                         <div class="d-flex flex-column gap-2 text-start">
-                                            <div class="d-flex align-items-center">
-                                                <i class="fas fa-clock text-secondary fs-5 me-2"></i>
-                                                <span class="fst-italic small fw-medium">Viernes 8:00 PM</span>
+                                            <div class="carousel-info-row">
+                                                <i class="fas fa-clock"></i>
+                                                <span class="carousel-info-text">Viernes 8:00 PM</span>
                                             </div>
-                                            <div class="d-flex align-items-center">
-                                                <i class="fas fa-map-marker-alt text-secondary fs-5 me-2"></i>
-                                                <span class="fst-italic small fw-medium">Auditorio IBMty</span>
+                                            <div class="carousel-info-row">
+                                                <i class="fas fa-map-marker-alt"></i>
+                                                <span class="carousel-info-text">Auditorio IBMty</span>
                                             </div>
                                         </div>
-                                    </figure>
-                                    <div class="ministerios-social-links d-flex justify-content-center gap-3">
+                                    </div>
+                                    <div class="carousel-actions">
                                         <a href="https://www.facebook.com/ProfesionistasIBMty" class="btn-social" aria-label="Facebook">
                                             <i class="fab fa-facebook-f"></i>
                                         </a>
                                         <a href="https://www.instagram.com/profesionistasibmty?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="btn-social" aria-label="Instagram">
                                             <i class="fab fa-instagram"></i>
                                         </a>
-                                        <button class="btn-social btn-share" data-title="Ministerio de Profesionistas" data-description="Dirigido a solteros de 25 años en adelante." data-url="https://www.ibmty.com/ministerios.html#profesionistas" aria-label="Compartir">
+                                        <button class="btn-social btn-share" data-title="Grupo de Profesionistas" data-description="¡Hola! Te invitamos a nuestro Grupo de Profesionistas, un espacio para crecer espiritualmente y acompañarnos en la vida profesional. ¡Ven y conócenos!" data-url="https://www.ibmty.com/ministerios.html#profesionistas" data-image="assets/icons/Logo_Profesionistas.png" aria-label="Compartir">
                                             <i class="fas fa-share-alt"></i>
                                         </button>
                                     </div>
                                 </div>
-                            </div>
+                            </article>
                         </div>
                         <div class="swiper-slide">
-                            <div id="universitarios" class="ministerios-profile-card card-premium h-100" data-ministry="universitarios">
-                                <div class="ministerios-card-banner position-relative">
-                                    <div class="ministerios-banner-overlay"></div>
-                                    <div class="ministerios-profile-avatar shadow-lg border border-4 border-white"></div>
+                            <article id="universitarios" class="carousel-card h-100" data-ministry="universitarios">
+                                <div class="carousel-card-header">
+                                    <div class="carousel-banner" style="background-image:url(assets/images/lideres/Lideres_Universitarios.webp)">
+                                        <div class="carousel-banner-overlay"></div>
+                                    </div>
                                 </div>
-                                <div class="ministerios-card-content p-6 text-center">
-                                    <h2 class="ministerios-profile-name h3 fw-bold mb-1">Hugo & Thalía<br>Guerrero</h2>
-                                    <p class="ministerios-profile-title text-info fw-bold small tracking-wide mb-3">MINISTERIO DE UNIVERSITARIOS</p>
-                                    <p class="ministerios-profile-description text-muted small mb-4">Jóvenes universitarios entre 18 y 24 años que desean construir una fe sólida y relaciones significativas centradas en Cristo.</p>
-                                    <figure class="bg-body-tertiary p-3 rounded-4 d-inline-block shadow-sm border border-light-subtle mb-4">
+                                <div class="carousel-avatar" style="background-image:url(assets/icons/Logo_Universitarios.webp)"></div>
+                                <div class="carousel-card-body">
+                                    <div class="mb-4">
+                                        <h3 class="carousel-title">Hugo & Thalía<br>Guerrero</h3>
+                                        <p class="carousel-subtitle">MINISTERIO DE UNIVERSITARIOS</p>
+                                        <p class="carousel-description">Jóvenes universitarios entre 18 y 24 años que desean construir una fe sólida y relaciones significativas centradas en Cristo.</p>
+                                    </div>
+                                    <div class="carousel-info-box">
                                         <div class="d-flex flex-column gap-2 text-start">
-                                            <div class="d-flex align-items-center">
-                                                <i class="fas fa-clock text-secondary fs-5 me-2"></i>
-                                                <span class="fst-italic small fw-medium">Sábado 7:00 PM</span>
+                                            <div class="carousel-info-row">
+                                                <i class="fas fa-clock"></i>
+                                                <span class="carousel-info-text">Sábado 7:00 PM</span>
                                             </div>
-                                            <div class="d-flex align-items-center">
-                                                <i class="fas fa-map-marker-alt text-secondary fs-5 me-2"></i>
-                                                <span class="fst-italic small fw-medium">Local 41</span>
+                                            <div class="carousel-info-row">
+                                                <i class="fas fa-map-marker-alt"></i>
+                                                <span class="carousel-info-text">Local 41</span>
                                             </div>
                                         </div>
-                                    </figure>
-                                    <div class="ministerios-social-links d-flex justify-content-center gap-3">
+                                    </div>
+                                    <div class="carousel-actions">
                                         <a href="https://www.facebook.com/unisibmty/" class="btn-social" aria-label="Facebook" target="_blank" rel="noopener">
                                             <i class="fab fa-facebook-f"></i>
                                         </a>
@@ -249,36 +260,40 @@
                                         <a href="https://www.tiktok.com/@unis.ibmty" class="btn-social" aria-label="TikTok" target="_blank" rel="noopener">
                                             <i class="fab fa-tiktok"></i>
                                         </a>
-                                        <button class="btn-social btn-share" data-title="Ministerio de Universitarios" data-description="Jóvenes universitarios entre 18 y 24 años." data-url="https://www.ibmty.com/ministerios.html#universitarios" aria-label="Compartir">
+                                        <button class="btn-social btn-share" data-title="Grupo de Universitarios" data-description="¡Hola! Te invito a nuestro Grupo de Universitarios (18-24 años) donde crecemos juntos en fe. ¡Te esperamos!" data-url="https://www.ibmty.com/ministerios.html#universitarios" data-image="assets/icons/Logo_Universitarios.webp" aria-label="Compartir">
                                             <i class="fas fa-share-alt"></i>
                                         </button>
                                     </div>
                                 </div>
-                            </div>
+                            </article>
                         </div>
                         <div class="swiper-slide">
-                            <div id="jovenes" class="ministerios-profile-card card-premium h-100" data-ministry="jovenes">
-                                <div class="ministerios-card-banner position-relative">
-                                    <div class="ministerios-banner-overlay"></div>
-                                    <div class="ministerios-profile-avatar shadow-lg border border-4 border-white"></div>
+                            <article id="jovenes" class="carousel-card h-100" data-ministry="jovenes">
+                                <div class="carousel-card-header">
+                                    <div class="carousel-banner" style="background-image:url(assets/images/lideres/Lideres_Jovenes.webp)">
+                                        <div class="carousel-banner-overlay"></div>
+                                    </div>
                                 </div>
-                                <div class="ministerios-card-content p-6 text-center">
-                                    <h2 class="ministerios-profile-name h3 fw-bold mb-1">Brandon Brown<br>Caro Hernández</h2>
-                                    <p class="ministerios-profile-title text-info fw-bold small tracking-wide mb-3">MINISTERIO DE JÓVENES</p>
-                                    <p class="ministerios-profile-description text-muted small mb-4">Adolescentes de 14 a 18 años que están formando su identidad en Cristo y aprendiendo a vivir conforme a Su propósito.</p>
-                                    <figure class="bg-body-tertiary p-3 rounded-4 d-inline-block shadow-sm border border-light-subtle mb-4">
+                                <div class="carousel-avatar" style="background-image:url(assets/icons/Logo_Jovenes.webp)"></div>
+                                <div class="carousel-card-body">
+                                    <div class="mb-4">
+                                        <h3 class="carousel-title">Brandon Brown<br>Caro Hernández</h3>
+                                        <p class="carousel-subtitle">MINISTERIO DE JÓVENES</p>
+                                        <p class="carousel-description">Adolescentes de 14 a 18 años que están formando su identidad en Cristo y aprendiendo a vivir conforme a Su propósito.</p>
+                                    </div>
+                                    <div class="carousel-info-box">
                                         <div class="d-flex flex-column gap-2 text-start">
-                                            <div class="d-flex align-items-center">
-                                                <i class="fas fa-clock text-secondary fs-5 me-2"></i>
-                                                <span class="fst-italic small fw-medium">Sábado 5:00 PM</span>
+                                            <div class="carousel-info-row">
+                                                <i class="fas fa-clock"></i>
+                                                <span class="carousel-info-text">Sábado 5:00 PM</span>
                                             </div>
-                                            <div class="d-flex align-items-center">
-                                                <i class="fas fa-map-marker-alt text-secondary fs-5 me-2"></i>
-                                                <span class="fst-italic small fw-medium">Auditorio IBMty</span>
+                                            <div class="carousel-info-row">
+                                                <i class="fas fa-map-marker-alt"></i>
+                                                <span class="carousel-info-text">Auditorio IBMty</span>
                                             </div>
                                         </div>
-                                    </figure>
-                                    <div class="ministerios-social-links d-flex justify-content-center gap-3">
+                                    </div>
+                                    <div class="carousel-actions">
                                         <a href="https://www.facebook.com/JVNSMty/" class="btn-social" aria-label="Facebook" target="_blank" rel="noopener">
                                             <i class="fab fa-facebook-f"></i>
                                         </a>
@@ -288,146 +303,165 @@
                                         <a href="https://www.tiktok.com/@jvns_ibmty/" class="btn-social" aria-label="TikTok" target="_blank" rel="noopener">
                                             <i class="fab fa-tiktok"></i>
                                         </a>
-                                        <button class="btn-social btn-share" data-title="Ministerio de Jóvenes" data-description="Adolescentes de 14 a 18 años." data-url="https://www.ibmty.com/ministerios.html#jovenes" aria-label="Compartir">
+                                        <button class="btn-social btn-share" data-title="Grupo de Jóvenes" data-description="¡Hola! Te invito a nuestro Grupo de Jóvenes (14-18 años) donde descubrimos juntos nuestro propósito. ¡Anímate!" data-url="https://www.ibmty.com/ministerios.html#jovenes" data-image="assets/icons/Logo_Jovenes.webp" aria-label="Compartir">
                                             <i class="fas fa-share-alt"></i>
                                         </button>
                                     </div>
                                 </div>
-                            </div>
+                            </article>
                         </div>
                         <div class="swiper-slide">
-                            <div id="intermedios" class="ministerios-profile-card card-premium h-100" data-ministry="intermedios">
-                                <div class="ministerios-card-banner position-relative">
-                                    <div class="ministerios-banner-overlay"></div>
-                                    <div class="ministerios-profile-avatar shadow-lg border border-4 border-white"></div>
+                            <article id="intermedios" class="carousel-card h-100" data-ministry="intermedios">
+                                <div class="carousel-card-header">
+                                    <div class="carousel-banner" style="background-image:url(assets/images/lideres/Lideres_Intermedios.webp)">
+                                        <div class="carousel-banner-overlay"></div>
+                                    </div>
                                 </div>
-                                <div class="ministerios-card-content p-6 text-center">
-                                    <h2 class="ministerios-profile-name h3 fw-bold mb-1">Rafael & Karina<br>Reyna</h2>
-                                    <p class="ministerios-profile-title text-info fw-bold small tracking-wide mb-3">MINISTERIO DE INTERMEDIOS</p>
-                                    <p class="ministerios-profile-description text-muted small mb-4">Pre-adolescentes entre 11 y 13 años que desean conocer más de Dios, vivir Su verdad y ser luz en su entorno.</p>
-                                    <figure class="bg-body-tertiary p-3 rounded-4 d-inline-block shadow-sm border border-light-subtle mb-4">
+                                <div class="carousel-avatar" style="background-image:url(assets/icons/Logo_Intermedios.png)"></div>
+                                <div class="carousel-card-body">
+                                    <div class="mb-4">
+                                        <h3 class="carousel-title">Rafael & Karina<br>Reyna</h3>
+                                        <p class="carousel-subtitle">MINISTERIO DE INTERMEDIOS</p>
+                                        <p class="carousel-description">Pre-adolescentes entre 11 y 13 años que desean conocer más de Dios, vivir Su verdad y ser luz en su entorno.</p>
+                                    </div>
+                                    <div class="carousel-info-box">
                                         <div class="d-flex flex-column gap-2 text-start">
-                                            <div class="d-flex align-items-center">
-                                                <i class="fas fa-clock text-secondary fs-5 me-2"></i>
-                                                <span class="fst-italic small fw-medium">Sábado 1:00 PM</span>
+                                            <div class="carousel-info-row">
+                                                <i class="fas fa-clock"></i>
+                                                <span class="carousel-info-text">Sábado 1:00 PM</span>
                                             </div>
-                                            <div class="d-flex align-items-center">
-                                                <i class="fas fa-map-marker-alt text-secondary fs-5 me-2"></i>
-                                                <span class="fst-italic small fw-medium">Local 41</span>
+                                            <div class="carousel-info-row">
+                                                <i class="fas fa-map-marker-alt"></i>
+                                                <span class="carousel-info-text">Local 41</span>
                                             </div>
                                         </div>
-                                    </figure>
-                                    <div class="ministerios-social-links d-flex justify-content-center gap-3">
+                                    </div>
+                                    <div class="carousel-actions">
                                         <a href="https://www.facebook.com/intersibmty/" class="btn-social" aria-label="Facebook" target="_blank" rel="noopener">
                                             <i class="fab fa-facebook-f"></i>
                                         </a>
                                         <a href="https://www.instagram.com/intersibmty?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="btn-social" aria-label="Instagram" target="_blank" rel="noopener">
                                             <i class="fab fa-instagram"></i>
                                         </a>
-                                        <button class="btn-social btn-share" data-title="Ministerio de Intermedios" data-description="Pre-adolescentes entre 11 y 13 años." data-url="https://www.ibmty.com/ministerios.html#intermedios" aria-label="Compartir">
+                                        <button class="btn-social btn-share" data-title="Grupo de Intermedios" data-description="¡Hola! Te invito a conocer nuestro Grupo de Intermedios para pre-adolescentes (11-13 años). ¡Un espacio especial para crecer!" data-url="https://www.ibmty.com/ministerios.html#intermedios" data-image="assets/icons/Lideres_Intermedios.webp" aria-label="Compartir">
                                             <i class="fas fa-share-alt"></i>
                                         </button>
                                     </div>
                                 </div>
-                            </div>
+                            </article>
                         </div>
                         <div class="swiper-slide">
-                            <div id="culto-infantil" class="ministerios-profile-card card-premium h-100" data-ministry="culto-infantil">
-                                <div class="ministerios-card-banner position-relative">
-                                    <div class="ministerios-banner-overlay"></div>
-                                    <div class="ministerios-profile-avatar shadow-lg border border-4 border-white"></div>
+                            <article id="culto-infantil" class="carousel-card h-100" data-ministry="culto-infantil">
+                                <div class="carousel-card-header">
+                                    <div class="carousel-banner" style="background-image:url(assets/images/lideres/Lideres_CultoInfantil.webp)">
+                                        <div class="carousel-banner-overlay"></div>
+                                    </div>
                                 </div>
-                                <div class="ministerios-card-content p-6 text-center">
-                                    <h2 class="ministerios-profile-name h3 fw-bold mb-1">Laura Munguía</h2>
-                                    <p class="ministerios-profile-title text-info fw-bold small tracking-wide mb-3">MINISTERIO DE CULTO INFANTIL</p>
-                                    <p class="ministerios-profile-description text-muted small mb-4">Niños de 6 a 10 años aprenderán los principios bíblicos a través de juegos, historias y actividades que fortalecen su fe.</p>
-                                    <figure class="bg-body-tertiary p-3 rounded-4 d-inline-block shadow-sm border border-light-subtle mb-4">
+                                <div class="carousel-avatar" style="background-image:url(assets/icons/Logo_culto_infantil.png)"></div>
+                                <div class="carousel-card-body">
+                                    <div class="mb-4">
+                                        <h3 class="carousel-title">Laura Munguía</h3>
+                                        <p class="carousel-subtitle">MINISTERIO DE CULTO INFANTIL</p>
+                                        <p class="carousel-description">Niños de 6 a 10 años aprenderán los principios bíblicos a través de juegos, historias y actividades que fortalecen su fe.
+                                        </p>
+                                    </div>
+                                    <div class="carousel-info-box">
                                         <div class="d-flex flex-column gap-2 text-start">
-                                            <div class="d-flex align-items-center">
-                                                <i class="fas fa-clock text-secondary fs-5 me-2"></i>
-                                                <span class="fst-italic small fw-medium">Domingo, durante servicios</span>
+                                            <div class="carousel-info-row">
+                                                <i class="fas fa-clock"></i>
+                                                <span class="carousel-info-text">Domingo, durante servicios</span>
                                             </div>
-                                            <div class="d-flex align-items-center">
-                                                <i class="fas fa-map-marker-alt text-secondary fs-5 me-2"></i>
-                                                <span class="fst-italic small fw-medium">Local 41</span>
+                                            <div class="carousel-info-row">
+                                                <i class="fas fa-map-marker-alt"></i>
+                                                <span class="carousel-info-text">Local 41</span>
                                             </div>
                                         </div>
-                                    </figure>
-                                    <div class="ministerios-social-links d-flex justify-content-center gap-3">
-                                        <button class="btn-social btn-share" data-title="Ministerio de Culto Infantil" data-description="Niños de 6 a 10 años aprenderán los principios bíblicos." data-url="https://www.ibmty.com/ministerios.html#culto-infantil" aria-label="Compartir">
+                                    </div>
+                                    <div class="carousel-actions">
+                                        <button class="btn-social btn-share" data-title="Culto Infantil" data-description="¡Hola! En Culto Infantil, niños de 6 a 10 años aprenden principios bíblicos de forma divertida con juegos, historias y actividades. ¡Los esperamos!" data-url="https://www.ibmty.com/ministerios.html#culto-infantil" data-image="assets/icons/Logo_CultoInfantil.webp" aria-label="Compartir">
                                             <i class="fas fa-share-alt"></i>
                                         </button>
                                     </div>
                                 </div>
-                            </div>
+                            </article>
                         </div>
                         <div class="swiper-slide">
-                            <div id="parvulos" class="ministerios-profile-card card-premium h-100" data-ministry="parvulos">
-                                <div class="ministerios-card-banner position-relative">
-                                    <div class="ministerios-banner-overlay"></div>
-                                    <div class="ministerios-profile-avatar shadow-lg border border-4 border-white"></div>
+                            <article id="parvulos" class="carousel-card h-100" data-ministry="parvulos">
+                                <div class="carousel-card-header">
+                                    <div class="carousel-banner" style="background-image:url(assets/images/lideres/Lideres_Parvulos.webp)">
+                                        <div class="carousel-banner-overlay"></div>
+                                    </div>
                                 </div>
-                                <div class="ministerios-card-content p-6 text-center">
-                                    <h2 class="ministerios-profile-name h3 fw-bold mb-1">José & Xóchitl<br>Munguía</h2>
-                                    <p class="ministerios-profile-title text-info fw-bold small tracking-wide mb-3">MINISTERIO DE PÁRVULOS</p>
-                                    <p class="ministerios-profile-description text-muted small mb-4">Para niños de 3 a 5 años, enseñamos las verdades bíblicas de forma creativa, involucrando a los padres en su formación espiritual.</p>
-                                    <figure class="bg-body-tertiary p-3 rounded-4 d-inline-block shadow-sm border border-light-subtle mb-4">
+                                <div class="carousel-avatar" style="background-image:url(assets/icons/Logo_Parvulos.png)"></div>
+                                <div class="carousel-card-body">
+                                    <div class="mb-4">
+                                        <h3 class="carousel-title">José & Xóchitl<br>Munguía</h3>
+                                        <p class="carousel-subtitle">MINISTERIO DE PÁRVULOS</p>
+                                        <p class="carousel-description">Para niños de 3 a 5 años, enseñamos las verdades bíblicas de forma creativa, involucrando a los padres en su formación espiritual.</p>
+                                    </div>
+                                    <div class="carousel-info-box">
                                         <div class="d-flex flex-column gap-2 text-start">
-                                            <div class="d-flex align-items-center">
-                                                <i class="fas fa-clock text-secondary fs-5 me-2"></i>
-                                                <span class="fst-italic small fw-medium">Domingo, durante servicios</span>
+                                            <div class="carousel-info-row">
+                                                <i class="fas fa-clock"></i>
+                                                <span class="carousel-info-text">Domingo, durante servicios</span>
                                             </div>
-                                            <div class="d-flex align-items-center">
-                                                <i class="fas fa-map-marker-alt text-secondary fs-5 me-2"></i>
-                                                <span class="fst-italic small fw-medium">Local 23 (parte superior)</span>
+                                            <div class="carousel-info-row">
+                                                <i class="fas fa-map-marker-alt"></i>
+                                                <span class="carousel-info-text">Local 23 (parte superior)</span>
                                             </div>
                                         </div>
-                                    </figure>
-                                    <div class="ministerios-social-links d-flex justify-content-center gap-3">
-                                        <button class="btn-social btn-share" data-title="Ministerio de Párvulos" data-description="Para niños de 3 a 5 años." data-url="https://www.ibmty.com/ministerios.html#parvulos" aria-label="Compartir">
+                                    </div>
+                                    <div class="carousel-actions">
+                                        <button class="btn-social btn-share" data-title="Ministerio de Párvulos" data-description="¡Hola! El Ministerio de Párvulos cuida con amor a niños de 3 a 5 años, para que los papás puedan estar tranquilos y disfrutar los servicios. ¡Tus pequeños estarán en buenas manos!" data-url="https://www.ibmty.com/ministerios.html#parvulos" data-image="assets/icons/Logo_Parvulos.png" aria-label="Compartir">
                                             <i class="fas fa-share-alt"></i>
                                         </button>
                                     </div>
                                 </div>
-                            </div>
+                            </article>
                         </div>
                         <div class="swiper-slide">
-                            <div id="guarderia" class="ministerios-profile-card card-premium h-100" data-ministry="guarderia">
-                                <div class="ministerios-card-banner position-relative">
-                                    <div class="ministerios-banner-overlay"></div>
-                                    <div class="ministerios-profile-avatar shadow-lg border border-4 border-white"></div>
+                            <article id="guarderia" class="carousel-card h-100" data-ministry="guarderia">
+                                <div class="carousel-card-header">
+                                    <div class="carousel-banner" style="background-image:url(assets/images/lideres/Lideres_Guarderia.webp)">
+                                        <div class="carousel-banner-overlay"></div>
+                                    </div>
                                 </div>
-                                <div class="ministerios-card-content p-6 text-center">
-                                    <h2 class="ministerios-profile-name h3 fw-bold mb-1">Gustavo & Emelina<br>Pérez</h2>
-                                    <p class="ministerios-profile-title text-info fw-bold small tracking-wide mb-3">MINISTERIO DE GUARDERÍA</p>
-                                    <p class="ministerios-profile-description text-muted small mb-4">Cuidamos con amor a bebés de 0 a 2 años en un espacio seguro, mientras sus padres participan en el servicio.</p>
-                                    <figure class="bg-body-tertiary p-3 rounded-4 d-inline-block shadow-sm border border-light-subtle mb-4">
+                                <div class="carousel-avatar" style="background-image:url(assets/icons/Logo_Guarderia.png)"></div>
+                                <div class="carousel-card-body">
+                                    <div class="mb-4">
+                                        <h3 class="carousel-title">Gustavo & Emelina<br>Pérez</h3>
+                                        <p class="carousel-subtitle">MINISTERIO DE GUARDERÍA</p>
+                                        <p class="carousel-description">Cuidamos con amor a bebés de 0 a 2 años en un espacio seguro, mientras sus padres participan en el servicio.</p>
+                                    </div>
+                                    <div class="carousel-info-box">
                                         <div class="d-flex flex-column gap-2 text-start">
-                                            <div class="d-flex align-items-center">
-                                                <i class="fas fa-clock text-secondary fs-5 me-2"></i>
-                                                <span class="fst-italic small fw-medium">Domingo, durante servicios</span>
+                                            <div class="carousel-info-row">
+                                                <i class="fas fa-clock"></i>
+                                                <span class="carousel-info-text">Domingo, durante servicios</span>
                                             </div>
-                                            <div class="d-flex align-items-center">
-                                                <i class="fas fa-map-marker-alt text-secondary fs-5 me-2"></i>
-                                                <span class="fst-italic small fw-medium">Local 23 (parte inferior)</span>
+                                            <div class="carousel-info-row">
+                                                <i class="fas fa-map-marker-alt"></i>
+                                                <span class="carousel-info-text">Local 23 (parte inferior)</span>
                                             </div>
                                         </div>
-                                    </figure>
-                                    <div class="ministerios-social-links d-flex justify-content-center gap-3">
-                                        <button class="btn-social btn-share" data-title="Ministerio de Guardería" data-description="Cuidamos con amor a bebés de 0 a 2 años." data-url="https://www.ibmty.com/ministerios.html#guarderia" aria-label="Compartir">
+                                    </div>
+                                    <div class="carousel-actions">
+                                        <button class="btn-social btn-share" data-title="Ministerio de Guardería" data-description="¡Hola! En la Guardería cuidamos con amor a bebés de 0 a 2 años, para que los papás estén tranquilos y sus pequeños estén en un lugar seguro." data-url="https://www.ibmty.com/ministerios.html#guarderia" data-image="assets/icons/Logo_Guarderia.webp" aria-label="Compartir">
                                             <i class="fas fa-share-alt"></i>
                                         </button>
                                     </div>
                                 </div>
-                            </div>
+                            </article>
                         </div>
                     </div>
-                    <div class="text-center mt-4">
-                        <span class="badge bg-secondary" id="eventCounter">
-                            <i class="fas fa-users me-1"></i>
-                            <span id="currentSlide">1</span> / <span id="totalSlides">9</span>
-                        </span>
-                    </div>
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-button-next"></div>
+                </div>
+                <div class="text-center mt-4">
+                    <span class="badge bg-secondary rounded-pill">
+                        <i class="fas fa-users me-1"></i>
+                        <span class="current-slide-display">1</span> / <span class="total-slides-display">9</span>
+                    </span>
                 </div>
             </div>
         </section>
@@ -443,21 +477,21 @@
             <div class="row gy-4">
                 <div class="col-12 col-lg-4 text-center text-lg-start">
                     <h5 class="fw-bold mb-3 text-body-emphasis">
-                        <i class="fas fa-share-alt me-2 text-info"></i>Síguenos
+                        <i class="fa-solid fa-thumbs-up me-2 text-info"></i>Síguenos
                     </h5>
                     <p class="text-body-secondary mb-3">Mantente conectado con nosotros</p>
                     <div class="social-icons d-flex justify-content-center justify-content-lg-start gap-2">
-                        <a href="https://www.facebook.com/IBMty/" aria-label="Facebook" class="btn-social">
+                        <a href="https://www.facebook.com/IBMty/" aria-label="Facebook" class="btn-social" target="_blank">
                             <i class="fab fa-facebook-f"></i>
                         </a>
-                        <a href="https://www.instagram.com/iglesiabautistademonterrey?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" aria-label="Instagram" class="btn-social">
+                        <a href="https://www.instagram.com/iglesiabautistademonterrey?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" aria-label="Instagram" class="btn-social" target="_blank">
                             <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://www.youtube.com/channel/UCfhSTnqLb6vFO28eNm_n0qw" aria-label="YouTube" class="btn-social" target="_blank">
+                            <i class="fab fa-youtube"></i>
                         </a>
                         <a href="mailto:oficina@ibmty.com" aria-label="Mail" class="btn-social">
                             <i class="fa-regular fa-envelope"></i>
-                        </a>
-                        <a href="https://www.youtube.com/channel/UCfhSTnqLb6vFO28eNm_n0qw" aria-label="YouTube" class="btn-social">
-                            <i class="fab fa-youtube"></i>
                         </a>
                     </div>
                 </div>
@@ -489,12 +523,12 @@
                     </h5>
                     <ul class="list-unstyled text-body-secondary small">
                         <li class="mb-2">
-                            <a href="https://www.ribbi.org/" class="text-decoration-none text-reset hover-link">
+                            <a href="https://www.ribbi.org/" class="text-decoration-none text-reset hover-link" target="_blank">
                                 <i class="fa-solid fa-network-wired me-2"></i>RIBBI
                             </a>
                         </li>
                         <li>
-                            <a href="https://elsaucillo.org/" class="text-decoration-none text-reset hover-link">
+                            <a href="https://elsaucillo.org/" class="text-decoration-none text-reset hover-link" target="_blank">
                                 <i class="fa-solid fa-mountain-sun me-2"></i>El Saucillo
                             </a>
                         </li>
@@ -505,7 +539,9 @@
         <div class="footer-bottom mt-3 pt-3 border-top border-secondary-subtle">
             <div class="container">
                 <div class="row align-items-center small text-body-secondary">
-                    <div class="col-md-4 text-center text-md-start mb-2 mb-md-0"><a href="privacidad.html" class="text-reset text-decoration-none">Aviso de Privacidad</a></div>
+                    <div class="col-md-4 text-center text-md-start mb-2 mb-md-0">
+                        <a href="privacidad.html" class="text-reset text-decoration-none">Aviso de Privacidad</a>
+                    </div>
                     <div class="col-md-4 text-center mb-2 mb-md-0">&copy; <span id="currentYear"></span> IBMty.</div>
                     <div class="col-md-4 text-center text-md-end">Hecho con
                         <i id="heartIcon" class="fas fa-heart text-danger" style="cursor:pointer"></i> para
@@ -513,7 +549,7 @@
                     </div>
                 </div>
             </div>
-            <div class="modal fade" id="developers" tabindex="-1" aria-labelledby="developersLabel" aria-hidden="true">
+            <div class="modal fade" id="developers" tabindex="-1" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content text-center">
                         <div class="modal-header">
@@ -523,6 +559,7 @@
                         <div class="modal-body">
                             <p>H.G</p>
                             <p>E.A.R.G</p>
+                            <p>D.A.R.M</p>
                         </div>
                     </div>
                 </div>

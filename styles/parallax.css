@@ -1,3 +1,10 @@
+#parallax-bg-container,
+.hero-overlay {
+    width: 100%;
+    position: absolute;
+    height: 100%
+}
+
 .hero-section {
     position: relative;
     height: 100vh;
@@ -8,11 +15,8 @@
 }
 
 #parallax-bg-container {
-    position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
     z-index: 0;
     overflow: hidden;
     isolation: isolate
@@ -28,7 +32,6 @@
     transform: translate3d(0, 0, 0);
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
-    -webkit-transform: translateZ(0);
     perspective: 1000px;
     -webkit-perspective: 1000px;
     -webkit-font-smoothing: subpixel-antialiased
@@ -46,17 +49,9 @@
     image-rendering: crisp-edges
 }
 
-#parallax-img-wrapper img {
-    transform: translate3d(0, 0, 0);
-    -webkit-transform: translate3d(0, 0, 0)
-}
-
 .hero-overlay {
-    position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
     background-color: var(--bg-overlay);
     z-index: 1;
     pointer-events: none;
@@ -70,22 +65,18 @@
     transform: translateZ(0)
 }
 
-@media (max-width:992px) {
-    #parallax-img-wrapper {
-        will-change: transform
-    }
-}
-
 @media (max-width:576px) {
-    #parallax-img-wrapper {
-        transform: translate3d(0, 0, 0)
-    }
-
     #parallax-img-wrapper {
         width: 110%;
         height: 130%;
         top: -15%;
         left: -5%
+    }
+}
+
+@media (max-width:992px) {
+    #parallax-img-wrapper {
+        will-change: transform
     }
 }
 

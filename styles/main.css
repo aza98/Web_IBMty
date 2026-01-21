@@ -1,0 +1,629 @@
+/**
+ * =========================================
+ * MAIN.CSS - Estilos principales (Mobile First)
+ * =========================================
+ *
+ * Estilos globales.
+ * Incluye: Variables, Reinicio, Tipografía, Utilidades, Barra de navegación, Iconos sociales, Pie de página
+ *
+ * Tabla de contenidos:
+ * 1. Variables CSS (:root)
+ * 2. Variables de modo oscuro
+ * 3. Reinicio y estilos base
+ * 4. Tipografía
+ * 5. Clases utilitarias
+ * 6. Componente del navbar
+ * 7. Iconos sociales
+ * 8. Pie de página
+ * 9. Consultas de medios
+ */
+
+body,
+html,
+img {
+    max-width: 100%
+}
+
+/* =========================================
+   1. Variables CSS (:root)
+   ========================================= */
+:root {
+    --color-primary: #00c0f7;
+    --color-primary-rgb: 0, 192, 247;
+    --color-primary-dark: #009ac6;
+    --color-primary-light: #e0f7fe;
+    --color-system-blue: #007AFF;
+    --color-system-green: #34C759;
+    --color-system-indigo: #5856D6;
+    --color-system-orange: #FF9500;
+    --color-system-pink: #FF2D55;
+    --color-system-purple: #AF52DE;
+    --color-system-red: #FF3B30;
+    --color-system-teal: #5AC8FA;
+    --color-system-yellow: #FFCC00;
+    --color-system-gray: #8E8E93;
+    --text-primary: #000000;
+    --text-secondary: #3C3C4399;
+    --text-tertiary: #3C3C434D;
+    --text-quaternary: #3C3C432E;
+    --text-light: #ffffff;
+    --text-inverse: #ffffff;
+    --bg-body: #F2F2F7;
+    --bg-surface: #FFFFFF;
+    --bg-surface-secondary: #FFFFFF;
+    --bg-glass: rgba(255, 255, 255, 0.2);
+    --bg-overlay: rgba(0, 0, 0, 0.1);
+    --bg-hover: rgba(0, 0, 0, 0.05);
+    --bg-body-secondary: rgba(0, 0, 0, 0.03);
+    --border-color: #C6C6C8;
+    --border-light: #E5E5EA;
+    --font-heading: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    --text-xs: 0.75rem;
+    --text-sm: 0.875rem;
+    --text-base: 1rem;
+    --text-lg: 1.125rem;
+    --text-xl: 1.25rem;
+    --text-2xl: 1.5rem;
+    --text-3xl: 1.875rem;
+    --text-4xl: 2.25rem;
+    --font-regular: 400;
+    --font-medium: 500;
+    --font-semibold: 600;
+    --font-bold: 700;
+    --space-1: 0.25rem;
+    --space-2: 0.5rem;
+    --space-3: 0.75rem;
+    --space-4: 1rem;
+    --space-5: 1.25rem;
+    --space-6: 1.5rem;
+    --space-8: 2rem;
+    --space-10: 2.5rem;
+    --space-12: 3rem;
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    --shadow-premium: 0 18px 40px rgba(0, 0, 0, 0.12);
+    --radius-sm: 0.5rem;
+    --radius-md: 0.75rem;
+    --radius-lg: 1rem;
+    --radius-xl: 1.5rem;
+    --radius-full: 9999px;
+    --blur-sm: blur(4px);
+    --blur-md: blur(8px);
+    --blur-lg: blur(12px);
+    --blur-xl: blur(20px);
+    --breakpoint-sm: 576px;
+    --breakpoint-md: 768px;
+    --breakpoint-lg: 992px;
+    --breakpoint-xl: 1200px;
+    --breakpoint-xxl: 1400px;
+    --nav-margin-top: 1rem;
+    --nav-width-desktop: 80%;
+    --nav-max-width: 1200px;
+    --nav-height-mobile: 120px;
+    --nav-height-desktop: 80px
+}
+
+/* =========================================
+   2. Variables de modo oscuro
+   ========================================= */
+[data-bs-theme=dark] {
+    --text-primary: #FFFFFF;
+    --text-secondary: #EBEBF599;
+    --text-tertiary: #EBEBF54D;
+    --text-quaternary: #EBEBF52E;
+    --text-inverse: #000000;
+    --bg-body: #000000;
+    --bg-surface: #1C1C1E;
+    --bg-surface-secondary: #2C2C2E;
+    --bg-glass: rgba(27, 27, 27, 0.7);
+    --bg-overlay: rgba(0, 0, 0, 0.8);
+    --bg-hover: rgba(255, 255, 255, 0.1);
+    --bg-body-secondary: rgba(255, 255, 255, 0.05);
+    --border-color: #38383A;
+    --border-light: #2C2C2E;
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.5);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.5), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 4px 6px -2px rgba(0, 0, 0, 0.3);
+    --shadow-premium: 0 18px 40px rgba(0, 0, 0, 0.6)
+}
+
+.glass-panel,
+[data-bs-theme=dark] .glass-panel {
+    border: 1px solid
+}
+
+/* =========================================
+   3. Reinicio y estilos base
+   ========================================= */
+*,
+::after,
+::before {
+    box-sizing: border-box
+}
+
+body,
+html {
+    overflow-x: hidden
+}
+
+body {
+    font-family: var(--font-body);
+    font-size: 14px;
+    line-height: 1.5;
+    background-color: var(--bg-body);
+    color: var(--text-primary);
+    -webkit-font-smoothing: antialiased;
+    padding-top: calc(var(--nav-height-mobile) + var(--nav-margin-top) + 20px)
+}
+
+body.no-navbar-padding {
+    padding-top: 0 !important
+}
+
+img {
+    height: auto
+}
+
+section {
+    position: relative;
+    overflow: hidden
+}
+
+.dropdown-item,
+.nav-link,
+a.btn,
+button {
+    min-height: 44px;
+    min-width: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center
+}
+
+.container {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem
+}
+
+.container-fluid {
+    padding-right: 10px;
+    padding-left: 10px
+}
+
+.container,
+.container-fluid,
+.row,
+[class*=col-] {
+    word-wrap: break-word;
+    overflow-wrap: break-word
+}
+
+/* =========================================
+   4. Tipografía
+   ========================================= */
+.display-1,
+.display-2,
+.display-3,
+.display-4,
+.display-5,
+.display-6,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--font-heading);
+    font-weight: var(--font-bold);
+    letter-spacing: -.02em;
+    color: var(--text-primary)
+}
+
+h1 {
+    font-size: 1.75rem
+}
+
+h2 {
+    font-size: 1.5rem
+}
+
+h3 {
+    font-size: 1.25rem
+}
+
+/* =========================================
+   5. Clases utilitarias
+   ========================================= */
+.glass-panel {
+    background: var(--bg-glass);
+    backdrop-filter: var(--blur-lg);
+    -webkit-backdrop-filter: var(--blur-lg)
+}
+
+.card-premium {
+    background: var(--bg-surface);
+    border: none;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    transition: transform .3s, box-shadow .3s;
+    overflow: hidden
+}
+
+.card-premium:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-premium)
+}
+
+.fs-7 {
+    font-size: .875rem
+}
+
+.opacity-90 {
+    opacity: .9
+}
+
+.tracking-wide {
+    letter-spacing: .05em
+}
+
+.ls-1 {
+    letter-spacing: 1px
+}
+
+.p-6 {
+    padding: 4rem !important
+}
+
+.border-4 {
+    border-width: 4px !important
+}
+
+/* =========================================
+   6. Componente del navbar
+   ========================================= */
+.floating-nav {
+    position: fixed;
+    top: calc(var(--nav-margin-top) + env(safe-area-inset-top));
+    left: 50%;
+    transform: translateX(-50%);
+    width: 92%;
+    max-width: var(--nav-max-width);
+    background: var(--bg-glass);
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    border: 1px solid var(--border-light);
+    border-radius: 35px;
+    box-shadow: var(--shadow-lg);
+    transition: .3s cubic-bezier(.4, 0, .2, 1);
+    padding: .5rem .75rem;
+    z-index: 1030
+}
+
+.navbar-toggler,
+.theme-toggle {
+    border: none;
+    color: var(--color-primary)
+}
+
+.brand-img {
+    height: 38px;
+    width: auto;
+    transition: transform .3s;
+    object-fit: contain
+}
+
+.navbar-toggler {
+    background: 0 0;
+    padding: .25rem;
+    transition: transform .2s;
+    display: flex;
+    align-items: center;
+    justify-content: center
+}
+
+.nav-link,
+.theme-toggle {
+    align-items: center;
+    display: flex
+}
+
+.navbar-toggler:focus {
+    box-shadow: none;
+    outline: 0
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(0, 192, 247, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e")
+}
+
+.theme-toggle {
+    background: 0 0;
+    transition: transform .3s cubic-bezier(.34, 1.56, .64, 1);
+    width: 40px;
+    height: 40px;
+    justify-content: center;
+    border-radius: 50%
+}
+
+.theme-toggle:active,
+.theme-toggle:hover {
+    background-color: rgb(0 192 247 / .1);
+    transform: rotate(15deg) scale(1.1)
+}
+
+.navbar-collapse {
+    margin-top: .5rem;
+    background: 0 0;
+    border-radius: 16px;
+    overflow: hidden
+}
+
+.nav-link {
+    justify-content: center;
+    gap: 10px;
+    font-weight: 500;
+    color: var(--text-primary);
+    padding: .75rem 1rem;
+    border-radius: 12px;
+    transition: .2s;
+    margin-bottom: 2px
+}
+
+.nav-link i {
+    width: 24px;
+    text-align: center;
+    color: inherit;
+    opacity: .7;
+    font-size: 1.1rem;
+    transition: color .2s, opacity .2s
+}
+
+.nav-link:focus,
+.nav-link:hover {
+    background: rgb(0 192 247 / .08);
+    color: var(--color-primary);
+    transform: translateX(4px)
+}
+
+.nav-link.active i,
+.nav-link:focus i,
+.nav-link:hover i {
+    color: var(--color-primary);
+    opacity: 1
+}
+
+.nav-link.active {
+    background: rgb(0 192 247 / .12);
+    color: var(--color-primary) !important;
+    font-weight: 600
+}
+
+/* =========================================
+   7. Iconos sociales
+   ========================================= */
+.btn-social,
+.btn-social:hover {
+    background-color: var(--bg-surface)
+}
+
+.btn-social {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    color: var(--text-secondary);
+    border: 1px solid var(--border-light);
+    box-shadow: var(--shadow-sm);
+    transition: .3s cubic-bezier(.175, .885, .32, 1.275);
+    text-decoration: none;
+    font-size: 1.1rem;
+    padding: 0;
+    cursor: pointer
+}
+
+.btn-social:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+    border-color: currentColor
+}
+
+[data-bs-theme=dark] .btn-social,
+[data-bs-theme=dark] .btn-social:hover {
+    background-color: var(--bg-surface-secondary)
+}
+
+.btn-social:has(.fa-facebook-f):hover,
+.btn-social[aria-label=Facebook]:hover {
+    color: #1877f2
+}
+
+.btn-social:has(.fa-instagram):hover,
+.btn-social[aria-label=Instagram]:hover {
+    color: #e1306c
+}
+
+.btn-social:has(.fa-tiktok):hover,
+.btn-social[aria-label=TikTok]:hover {
+    color: #000
+}
+
+.btn-social:has(.fa-whatsapp):hover,
+.btn-social[aria-label=WhatsApp]:hover {
+    color: #25d366
+}
+
+.btn-social:has(.fa-youtube):hover,
+.btn-social[aria-label=YouTube]:hover {
+    color: red
+}
+
+.btn-social:has(.fa-envelope):hover,
+.btn-social[aria-label=Mail]:hover {
+    color: var(--color-primary)
+}
+
+.btn-social.btn-share:hover {
+    color: var(--color-system-gray)
+}
+
+[data-bs-theme=dark] .btn-social {
+    border-color: var(--border-color);
+    color: var(--text-secondary)
+}
+
+[data-bs-theme=dark] .btn-social:has(.fa-tiktok):hover,
+[data-bs-theme=dark] .btn-social[aria-label=TikTok]:hover {
+    color: #fff
+}
+
+/* =========================================
+   8. Footer
+   ========================================= */
+.footer {
+    background-color: var(--footer-bg);
+    color: var(--footer-text);
+    font-size: .95rem
+}
+
+.hover-link:hover {
+    color: var(--color-primary) !important;
+    padding-left: 5px;
+    transition: .2s
+}
+
+.footer-bottom {
+    border-color: rgb(0 0 0 / .05) !important
+}
+
+[data-bs-theme=dark] .footer-bottom {
+    border-color: rgb(255 255 255 / .05) !important
+}
+
+/* =========================================
+   9. Consultas de medios
+   ========================================= */
+@media (min-width:576px) {
+    body {
+        font-size: 16px
+    }
+
+    .container-fluid {
+        padding-right: 15px;
+        padding-left: 15px
+    }
+}
+
+@media (min-width:768px) {
+    h1 {
+        font-size: calc(1.375rem + 1.5vw)
+    }
+
+    h2 {
+        font-size: calc(1.325rem + .9vw)
+    }
+
+    .fs-md-3 {
+        font-size: 1.75rem !important
+    }
+}
+
+@media (min-width:992px) {
+    body {
+        padding-top: calc(var(--nav-height-desktop) + var(--nav-margin-top) + 40px)
+    }
+
+    .floating-nav {
+        top: 24px;
+        width: var(--nav-width-desktop);
+        border-radius: 50px;
+        padding: .5rem 3rem
+    }
+
+    .brand-img {
+        height: 48px
+    }
+
+    .navbar-collapse {
+        margin-top: 0
+    }
+
+    .navbar-nav {
+        gap: 1rem
+    }
+
+    .nav-link {
+        padding: .6rem 1.5rem;
+        font-size: .95rem;
+        margin-bottom: 0;
+        justify-content: flex-start
+    }
+
+    .nav-link:focus,
+    .nav-link:hover {
+        transform: translateY(-2px);
+        background: rgb(0 192 247 / .08)
+    }
+
+    .nav-link.active {
+        background: rgb(0 192 247 / .1)
+    }
+
+    .container-fluid[class*=px-]>.row {
+        margin-right: calc(-.5 * var(--bs-gutter-x));
+        margin-left: calc(-.5 * var(--bs-gutter-x))
+    }
+
+    .container-fluid[class*=px-]>.row>[class*=col-] {
+        padding-right: calc(.5 * var(--bs-gutter-x));
+        padding-left: calc(.5 * var(--bs-gutter-x))
+    }
+}
+
+@media (max-width:991.98px) {
+    .navbar-nav {
+        align-items: center;
+        width: 100%
+    }
+
+    .nav-item {
+        width: 100%;
+        display: flex;
+        justify-content: center
+    }
+
+    .nav-link {
+        width: 80%;
+        justify-content: center
+    }
+}
+
+@media (max-height:500px) and (orientation:landscape) {
+    .hero-section {
+        min-height: 100vh;
+        padding-top: 60px !important
+    }
+
+    .hero-content h1 {
+        font-size: 1.5rem !important;
+        margin-bottom: .5rem !important
+    }
+
+    .hero-content .display-3 {
+        font-size: 2rem !important
+    }
+
+    .hero-content p.lead {
+        font-size: 1rem !important;
+        margin-bottom: 1rem !important
+    }
+
+    .hero-content .btn {
+        padding: .25rem 1rem !important;
+        font-size: .9rem !important
+    }
+}

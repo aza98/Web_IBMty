@@ -1,37 +1,30 @@
-.install-floating-btn {
-    --btn-bg: var(--color-primary);
-    --btn-color: #ffffff
-}
-
+.install-floating-btn,
 .ios-popup {
-    --popup-bg: var(--bg-surface);
-    --popup-text: var(--text-primary);
-    --overlay-bg: color-mix(in oklab, var(--bg-overlay) 70%, transparent)
+    position: fixed;
+    opacity: 0;
+    display: flex
 }
 
 .install-floating-btn {
-    position: fixed;
     bottom: 18px;
     left: 50%;
     transform: translateX(-50%) translateY(100px);
     z-index: 1040;
-    display: flex;
     align-items: center;
     justify-content: center;
     gap: 8px;
     max-width: 90vw;
     padding: 12px;
-    background-color: var(--btn-bg);
-    color: var(--btn-color);
+    background-color: var(--color-primary);
+    color: #fff;
     border: none;
     border-radius: 36px;
     font-weight: 500;
-    font-family: var(--font-body, system-ui, -apple-system, sans-serif);
+    font-family: var(--font-body);
     white-space: nowrap;
     cursor: pointer;
-    opacity: 0;
     pointer-events: none;
-    transition: transform 200ms ease, opacity 200ms ease
+    transition: transform .2s, opacity .2s
 }
 
 .install-floating-btn.show {
@@ -61,17 +54,19 @@
     font-size: 1rem
 }
 
+.install-floating-btn:focus-visible {
+    outline: #fff solid 2px;
+    outline-offset: 2px
+}
+
 .ios-popup {
-    position: fixed;
     inset: 0;
     z-index: 1050;
-    display: flex;
     align-items: center;
     justify-content: center;
-    background-color: var(--overlay-bg);
-    opacity: 0;
+    background-color: color-mix(in oklab, var(--bg-overlay) 70%, transparent);
     visibility: hidden;
-    transition: opacity 200ms ease
+    transition: opacity .2s
 }
 
 .ios-popup.active {
@@ -84,13 +79,13 @@
     width: 90%;
     max-width: 380px;
     padding: 2rem 1.5rem 1.5rem;
-    background-color: var(--popup-bg);
-    color: var(--popup-text);
+    background-color: var(--bg-surface);
+    color: var(--text-primary);
     border: 1px solid var(--border-light);
     border-radius: 20px;
     box-shadow: 0 10px 25px -5px rgb(0 0 0 / .1), 0 8px 10px -6px rgb(0 0 0 / .1);
     transform: scale(.9);
-    transition: transform 200ms cubic-bezier(.34, 1.56, .64, 1)
+    transition: transform .2s cubic-bezier(.34, 1.56, .64, 1)
 }
 
 .ios-popup.active .ios-popup-content {
@@ -102,7 +97,7 @@
     font-size: 1rem;
     font-weight: 600;
     text-align: center;
-    font-family: var(--font-body, system-ui, -apple-system, sans-serif)
+    font-family: var(--font-body)
 }
 
 .ios-popup-steps {
@@ -140,18 +135,13 @@
     border: none;
     border-radius: 50%;
     cursor: pointer;
-    transition: all 0.2s ease
+    transition: .2s
 }
 
 .btn-close-popup:hover {
     background-color: var(--bg-hover);
     color: var(--text-primary);
     transform: rotate(90deg)
-}
-
-.install-floating-btn:focus-visible {
-    outline: 2px solid #fff;
-    outline-offset: 2px
 }
 
 @media (prefers-reduced-motion:reduce) {

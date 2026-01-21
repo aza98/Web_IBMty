@@ -44,12 +44,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous" referrerpolicy="no-referrer">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" integrity="sha512-1cK78a1o+ht2JcaW6g8OXYwqpev9+6GqOkz9xmBN9iUUhIndKtxwILGWYOSibOKjLsEdjyjZvYDq/cZwNeak0w==" crossorigin="anonymous" referrerpolicy="no-referrer">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer">
-    <link rel="stylesheet" href="components/navbar.css">
     <link rel="stylesheet" href="styles/btn-whatsapp.css">
-    <link rel="stylesheet" href="styles/global.css">
-    <link rel="stylesheet" href="styles/responsive-fixes.css">
-    <link rel="stylesheet" href="styles/social-icons.css">
-    <link rel="stylesheet" href="styles/variables.css">
+    <link rel="stylesheet" href="styles/main.css">
 </head>
 
 <body>
@@ -107,7 +103,7 @@
             <div class="container">
                 <div class="row justify-content-center mb-4 mb-lg-5">
                     <div class="col-12 col-lg-8 text-center">
-                        <div class="d-inline-flex align-items-center justify-content-center p-3 mb-3 rounded-circle bg-info-subtle text-info glass-panel" data-aos="zoom-in">
+                        <div class="d-inline-flex align-items-center justify-content-center p-3 mb-3 rounded-circle bg-info-subtle text-info-emphasis" data-aos="zoom-in">
                             <i class="fas fa-church fs-1"></i>
                         </div>
                         <h1 class="display-5 fw-bold text-body-emphasis mb-3" data-aos="fade-up" data-aos-delay="100">Nuestro Propósito</h1>
@@ -243,7 +239,7 @@
                     </div>
                     <div class="col-12 col-lg-6 order-1 order-lg-2">
                         <div class="position-relative rounded-4 overflow-hidden shadow-lg" data-aos="fade-left">
-                            <img src="assets/images/extras/Historia.jpg" alt="Fachada de la Iglesia Bautista de Monterrey" class="img-fluid w-100 object-fit-cover" loading="lazy">
+                            <img src="assets/images/extras/Historia.webp" alt="Fachada de la Iglesia Bautista de Monterrey" class="img-fluid w-100 object-fit-cover" loading="lazy">
                             <div class="position-absolute bottom-0 start-0 w-100 p-3 p-md-4 text-white" style="background:linear-gradient(to top,rgba(0,0,0,.8),transparent);backdrop-filter:blur(2px)">
                                 <p class="mb-0 fw-semibold d-flex align-items-center">
                                     <i class="fas fa-seedling text-success me-2"></i>
@@ -259,9 +255,9 @@
             <div class="container">
                 <div class="row justify-content-center mb-4 mb-lg-5">
                     <div class="col-12 col-lg-8 text-center">
-                        <h2 class="display-6 fw-bold mb-3 d-inline-block" data-aos="fade-up">
+                        <h1 class="display-6 fw-bold mb-3 d-inline-block" data-aos="fade-up">
                             <i class="fa-solid fa-map-location text-info me-2"></i>Visítanos
-                        </h2>
+                        </h1>
                         <p class="lead text-body-secondary mx-auto" style="max-width:700px" data-aos="fade-up" data-aos-delay="50">Encuentra nuestra ubicación y horarios de servicio.</p>
                     </div>
                 </div>
@@ -303,19 +299,13 @@
                                 </div>
                                 <div class="row g-2 g-sm-3 mt-auto">
                                     <div class="col-6">
-										<a href="https://www.google.com/maps?q=Iglesia+Bautista+de+Monterrey"
-											target="_blank" 
-											rel="noopener noreferrer" 
-											class="btn btn-info btn-lg text-white w-100 rounded-pill d-flex align-items-center justify-content-center"
-											aria-label="Abrir ubicación en Google Maps">
+                                        <a href="https://www.google.com/maps?q=Iglesia+Bautista+de+Monterrey" target="_blank" rel="noopener noreferrer" class="btn btn-info btn-md text-white w-100 rounded-pill d-flex align-items-center justify-content-center" aria-label="Abrir ubicación en Google Maps">
                                             <i class="fas fa-external-link-alt me-2" aria-hidden="true"></i>
                                             <span>Maps</span>
                                         </a>
                                     </div>
                                     <div class="col-6">
-										<button onclick='shareContent("Ubicación IBMty","Visítanos en Av. Eugenio Garza Sada 6309, Monterrey.","https://www.google.com/maps?q=Iglesia+Bautista+de+Monterrey")'
-												class="btn btn-secondary btn-lg w-100 rounded-pill d-flex align-items-center justify-content-center"
-												type="button" aria-label="Compartir ubicación">
+                                        <button class="btn btn-secondary btn-md w-100 rounded-pill d-flex align-items-center justify-content-center" type="button" aria-label="Compartir ubicación" data-title="Ubicación IBMty" data-description="¡Hola! Te comparto nuestra ubicación. Visítanos en Av. Eugenio Garza Sada 6309, Monterrey. ¡Te esperamos!">
                                             <i class="fas fa-share-alt me-2" aria-hidden="true"></i>
                                             <span>Compartir</span>
                                         </button>
@@ -340,9 +330,9 @@
             <div class="container">
                 <div class="row justify-content-center mb-4 mb-lg-5">
                     <div class="col-12 col-lg-8 text-center">
-                        <h2 class="display-6 fw-bold mb-3 d-inline-block" data-aos="fade-up">
+                        <h1 class="display-6 fw-bold mb-3 d-inline-block" data-aos="fade-up">
                             <i class="fa fa-envelope text-info me-2"></i>Contáctanos
-                        </h2>
+                        </h1>
                         <p class="lead text-body-secondary mx-auto" style="max-width:700px" data-aos="fade-up" data-aos-delay="50">¿Tienes preguntas? Completa el formulario y te responderemos pronto.</p>
                     </div>
                 </div>
@@ -400,8 +390,8 @@
                                         <div class="col-12 mt-4">
                                             <div class="row justify-content-center">
                                                 <div class="col-12 col-sm-auto">
-                                                    <button type="submit" class="btn btn-info btn-lg text-white rounded-pill w-100 w-sm-auto px-4">
-                                                        <i class="fas fa-paper-plane me-2"></i>Enviar Mensaje
+                                                    <button type="submit" class="btn btn-info btn-md text-white rounded-pill w-100 w-sm-auto px-4">
+                                                        <i class="fas fa-paper-plane me-2"></i>Enviar
                                                     </button>
                                                 </div>
                                             </div>
@@ -426,21 +416,21 @@
             <div class="row gy-4">
                 <div class="col-12 col-lg-4 text-center text-lg-start">
                     <h5 class="fw-bold mb-3 text-body-emphasis">
-                        <i class="fas fa-share-alt me-2 text-info"></i>Síguenos
+                        <i class="fa-solid fa-thumbs-up me-2 text-info"></i>Síguenos
                     </h5>
                     <p class="text-body-secondary mb-3">Mantente conectado con nosotros</p>
                     <div class="social-icons d-flex justify-content-center justify-content-lg-start gap-2">
-                        <a href="https://www.facebook.com/IBMty/" aria-label="Facebook" class="btn-social">
+                        <a href="https://www.facebook.com/IBMty/" aria-label="Facebook" class="btn-social" target="_blank">
                             <i class="fab fa-facebook-f"></i>
                         </a>
-                        <a href="https://www.instagram.com/iglesiabautistademonterrey?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" aria-label="Instagram" class="btn-social">
+                        <a href="https://www.instagram.com/iglesiabautistademonterrey?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" aria-label="Instagram" class="btn-social" target="_blank">
                             <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://www.youtube.com/channel/UCfhSTnqLb6vFO28eNm_n0qw" aria-label="YouTube" class="btn-social" target="_blank">
+                            <i class="fab fa-youtube"></i>
                         </a>
                         <a href="mailto:oficina@ibmty.com" aria-label="Mail" class="btn-social">
                             <i class="fa-regular fa-envelope"></i>
-                        </a>
-                        <a href="https://www.youtube.com/channel/UCfhSTnqLb6vFO28eNm_n0qw" aria-label="YouTube" class="btn-social">
-                            <i class="fab fa-youtube"></i>
                         </a>
                     </div>
                 </div>
@@ -472,12 +462,12 @@
                     </h5>
                     <ul class="list-unstyled text-body-secondary small">
                         <li class="mb-2">
-                            <a href="https://www.ribbi.org/" class="text-decoration-none text-reset hover-link">
+                            <a href="https://www.ribbi.org/" class="text-decoration-none text-reset hover-link" target="_blank">
                                 <i class="fa-solid fa-network-wired me-2"></i>RIBBI
                             </a>
                         </li>
                         <li>
-                            <a href="https://elsaucillo.org/" class="text-decoration-none text-reset hover-link">
+                            <a href="https://elsaucillo.org/" class="text-decoration-none text-reset hover-link" target="_blank">
                                 <i class="fa-solid fa-mountain-sun me-2"></i>El Saucillo
                             </a>
                         </li>
@@ -491,7 +481,7 @@
                     <div class="col-md-4 text-center text-md-start mb-2 mb-md-0">
                         <a href="privacidad.html" class="text-reset text-decoration-none">Aviso de Privacidad</a>
                     </div>
-                    <div class="col-md-4 text-center mb-2 mb-md-0"> &copy; <span id="currentYear"></span> IBMty. </div>
+                    <div class="col-md-4 text-center mb-2 mb-md-0">&copy; <span id="currentYear"></span> IBMty.</div>
                     <div class="col-md-4 text-center text-md-end">Hecho con
                         <i id="heartIcon" class="fas fa-heart text-danger" style="cursor:pointer"></i> para
                         <a href="salvacion.html" class="text-reset text-decoration-none">Dios</a>
@@ -508,6 +498,7 @@
                         <div class="modal-body">
                             <p>H.G</p>
                             <p>E.A.R.G</p>
+                            <p>D.A.R.M</p>
                         </div>
                     </div>
                 </div>

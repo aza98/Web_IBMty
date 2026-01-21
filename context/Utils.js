@@ -1,94 +1,57 @@
-/**
- * @file Utility functions for the website.
- * @author IBMty
- */
-
+"use strict";
 const LIGHT_THEME = "light";
 const DARK_THEME = "dark";
 
-/**
- * Gets the preferred theme from local storage or system settings.
- * @returns {string} The preferred theme (light or dark).
- */
 function getPreferredTheme() {
-    const storedTheme = localStorage.getItem("theme");
-    if (storedTheme) {
-        return storedTheme;
-    }
-    return window.matchMedia("(prefers-color-scheme: dark)").matches ?
-        DARK_THEME :
-        LIGHT_THEME;
+    return localStorage.getItem("theme") || (window.matchMedia("(prefers-color-scheme: dark)").matches ? DARK_THEME : LIGHT_THEME)
 }
 
-/**
- * Sets the theme icons based on the current theme.
- * @param {boolean} isDark - Whether the dark theme is active.
- */
 function setThemeIcons(isDark) {
-    const mobileIcon = document.getElementById("mobile-theme-icon");
-    const desktopIcon = document.getElementById("desktop-theme-icon");
-    if (isDark) {
-        mobileIcon?.classList.replace("fa-sun", "fa-moon");
-        desktopIcon?.classList.replace("fa-sun", "fa-moon");
-    } else {
-        mobileIcon?.classList.replace("fa-moon", "fa-sun");
-        desktopIcon?.classList.replace("fa-moon", "fa-sun");
-    }
+    const icons = {
+        mobile: document.getElementById("mobile-theme-icon"),
+        desktop: document.getElementById("desktop-theme-icon")
+    };
+    const [remove, add] = isDark ? ["fa-sun", "fa-moon"] : ["fa-moon", "fa-sun"];
+    Object.values(icons).forEach(icon => {
+        if (icon) {
+            icon.classList.replace(remove, add);
+            if (!icon.classList.contains(add)) icon.classList.add(add);
+        }
+    })
 }
 
-/**
- * Sets the theme for the website.
- * @param {string} theme - The theme to set (light or dark).
- */
 function setTheme(theme) {
     document.documentElement.setAttribute("data-bs-theme", theme);
     localStorage.setItem("theme", theme);
-    setThemeIcons(theme === DARK_THEME);
+    setThemeIcons(theme === DARK_THEME)
 }
 
-/**
- * Toggles between light and dark theme.
- */
 function toggleTheme() {
     const currentTheme = document.documentElement.getAttribute("data-bs-theme");
-    setTheme(currentTheme === LIGHT_THEME ? DARK_THEME : LIGHT_THEME);
+    setTheme(currentTheme === LIGHT_THEME ? DARK_THEME : LIGHT_THEME)
 }
 
-/**
- * Initializes the AOS library for animations on scroll.
- */
 function initAOS() {
     if (window.AOS) {
         AOS.init({
             duration: 500,
             easing: 'ease-out-cubic',
-            once: true,
+            once: !0,
             offset: 60,
             delay: 0,
             mobile: {
                 duration: 400,
                 easing: 'ease-out-cubic'
             },
-            disable: function() {
-                return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-            }
-        });
+            disable: () => window.matchMedia('(prefers-reduced-motion: reduce)').matches
+        })
     }
 }
 
-/**
- * Initializes Animate.css for elements that should animate on load.
- */
 function initAnimateCSS() {
-    document.querySelectorAll(".animate-on-load").forEach((element) => {
-        element.classList.add("animate__animated", "animate__fadeIn");
-    });
+    document.querySelectorAll(".animate-on-load").forEach(el => el.classList.add("animate__animated", "animate__fadeIn"))
 }
 
-/**
- * Initializes the heart icon easter egg.
- * Click the heart icon 7 times to show the developers modal.
- */
 function initHeartIconEasterEgg() {
     const heartIcon = document.getElementById("heartIcon");
     if (!heartIcon) return;
@@ -99,176 +62,177 @@ function initHeartIconEasterEgg() {
         clearTimeout(timer);
         timer = setTimeout(() => {
             if (clickCount >= 7) {
-                const developersModal = document.getElementById("developers");
-                if (developersModal) {
-                    new bootstrap.Modal(developersModal).show();
-                }
+                const modalEl = document.getElementById("developers");
+                if (modalEl) new bootstrap.Modal(modalEl).show();
             }
-            clickCount = 0;
-        }, 1000);
-    });
+            clickCount = 0
+        }, 1000)
+    })
 }
 
-/**
- * Copies text to the clipboard.
- * @param {string} text - The text to copy.
- * @returns {Promise<void>}
- */
 function copyToClipboard(text) {
     if (navigator.clipboard && window.isSecureContext) {
-        return navigator.clipboard.writeText(text);
+        return navigator.clipboard.writeText(text)
     }
     return new Promise((resolve, reject) => {
         try {
             const textArea = document.createElement("textarea");
+            Object.assign(textArea.style, {
+                position: "fixed",
+                left: "-9999px",
+                top: "0"
+            });
             textArea.value = text;
-            textArea.style.position = "fixed";
-            textArea.style.left = "-9999px";
-            textArea.style.top = "0";
             document.body.appendChild(textArea);
             textArea.focus();
             textArea.select();
             const success = document.execCommand("copy");
             document.body.removeChild(textArea);
-            if (success) {
-                resolve();
-            } else {
-                reject(new Error("execCommand returned false"));
-            }
+            success ? resolve() : reject(new Error("execCommand returned false"))
         } catch (err) {
-            reject(err);
+            reject(err)
         }
-    });
+    })
 }
 
-/**
- * Shares content using the Web Share API or a fallback modal.
- * @param {string} title - The title of the content to share.
- * @param {string} text - The text/description to share.
- * @param {string} url - The URL to share.
- */
-function shareContent(title, text, url) {
-    if (navigator.share) {
-        navigator
-            .share({
-                title: title,
-                text: text,
-                url: url
-            })
-            .catch((error) => console.log("Error sharing:", error));
-    } else {
-        showShareModal(title, text, url);
-    }
-}
-
-/**
- * Shows a modal with sharing options as a fallback for the Web Share API.
- * @param {string} title - The title of the content to share.
- * @param {string} text - The text/description to share.
- * @param {string} url - The URL to share.
- */
-function showShareModal(title, text, url) {
-    const shareText = encodeURIComponent(`${title} - ${text}`);
-    const shareUrl = encodeURIComponent(url);
-    const existingModal = document.getElementById("shareModal");
-    if (existingModal) {
-        existingModal.remove();
-    }
-    const modalHTML = `
-        <div class="modal fade" id="shareModal" tabindex="-1" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">Compartir</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="d-grid gap-2">
-                            <a href="https://wa.me/?text=${shareText}%20${shareUrl}" target="_blank" class="btn btn-success text-white">
-                                <i class="fab fa-whatsapp me-2"></i>WhatsApp
-                            </a>
-                            <a href="https://www.facebook.com/sharer/sharer.php?u=${shareUrl}" target="_blank" class="btn btn-primary">
-                                <i class="fab fa-facebook me-2"></i>Facebook
-                            </a>
-                            <a href="https://twitter.com/intent/tweet?text=${shareText}&url=${shareUrl}" target="_blank" class="btn btn-info text-white">
-                                <i class="fab fa-twitter me-2"></i>Twitter
-                            </a>
-                            <button class="btn btn-secondary" onclick="copyToClipboard('''${url}''').then(() => alert('¡Enlace copiado!'))">
-                                <i class="fas fa-copy me-2"></i>Copiar Enlace
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    `;
-    document.body.insertAdjacentHTML("beforeend", modalHTML);
-    const shareModal = document.getElementById("shareModal");
-    if (shareModal) {
-        new bootstrap.Modal(shareModal).show();
-    }
-}
-
-
-
-/**
- * Initializes copy-to-clipboard functionality for elements with the .copy-btn class.
- */
 function initCopyButtons() {
     const copyToastEl = document.getElementById("copyToast");
     if (!copyToastEl) return;
     const copyToast = new bootstrap.Toast(copyToastEl);
-    document.querySelectorAll(".copy-btn").forEach((button) => {
+    document.querySelectorAll(".copy-btn").forEach(button => {
         button.addEventListener("click", () => {
             const textToCopy = button.dataset.copy;
             if (textToCopy) {
-                copyToClipboard(textToCopy)
-                    .then(() => {
-                        copyToast.show();
-                    })
-                    .catch((err) => {
-                        console.error("Error copying:", err);
-                        prompt("Copy the text manually:", textToCopy);
-                    });
+                copyToClipboard(textToCopy).then(() => copyToast.show()).catch(err => {
+                    console.error("Error copying:", err);
+                    prompt("Copy the text manually:", textToCopy)
+                })
             }
-        });
-    });
+        })
+    })
 }
 
-/**
- * Initializes form validation logic.
- */
 function initFormValidation() {
-    "use strict";
-    document.querySelectorAll("#firstName, #lastName").forEach((element) => {
-        element.addEventListener("input", () => {
-            element.value = element.value.replace(/[^A-Za-zÁÉÍÓÚÑáéíóúñ\s]/g, "");
-        });
+    document.querySelectorAll("#firstName, #lastName").forEach(el => {
+        el.addEventListener("input", () => el.value = el.value.replace(/[^A-Za-zÁÉÍÓÚÑáéíóúñ\s]/g, ""))
     });
     const phoneInput = document.getElementById("phone");
     if (phoneInput) {
-        phoneInput.addEventListener("input", (event) => {
-            event.target.value = event.target.value
-                .replace(/[^0-9]/g, "")
-                .slice(0, 10);
-        });
+        phoneInput.addEventListener("input", e => e.target.value = e.target.value.replace(/[^0-9]/g, "").slice(0, 10))
     }
-
-    // Bootstrap form validation
     const forms = document.querySelectorAll(".needs-validation");
-    Array.from(forms).forEach((form) => {
-        form.addEventListener(
-            "submit",
-            (event) => {
-                if (!form.checkValidity()) {
-                    event.preventDefault();
-                    event.stopPropagation();
+    Array.from(forms).forEach(form => {
+        form.addEventListener("submit", event => {
+            if (!form.checkValidity()) {
+                event.preventDefault();
+                event.stopPropagation()
+            }
+            form.classList.add("was-validated")
+        }, !1)
+    })
+}
+class ShareManager {
+    static async share(title, text, url, imageSource = null) {
+        if (!title || !url) {
+            console.error("ShareManager: Title and URL are required.");
+            return
+        }
+        const shareData = {
+            title: title,
+            text: text,
+            url: url
+        };
+        try {
+            if (imageSource && navigator.canShare && navigator.canShare({
+                files: [new File([], "test.png")]
+            })) {
+                const file = await this._urlToFile(imageSource);
+                if (file) {
+                    shareData.files = [file];
+                    shareData.text = `${text}\n\n${url}`;
+                    shareData.url = ""
                 }
-                form.classList.add("was-validated");
-            },
-            !1
-        );
-    });
+            }
+            if (navigator.share) {
+                if (!shareData.url) delete shareData.url;
+                await navigator.share(shareData)
+            } else {
+                this._fallbackShare(url)
+            }
+        } catch (error) {
+            console.warn("Share failed or canceled:", error);
+            if (error.name !== 'AbortError') {
+                this._fallbackShare(url)
+            }
+        }
+    }
+    static async _urlToFile(url) {
+        try {
+            const response = await fetch(url, {
+                mode: 'cors'
+            });
+            if (!response.ok) throw new Error("Image fetch failed");
+            const blob = await response.blob();
+            const mimeType = blob.type || "image/jpeg";
+            const ext = mimeType.split('/')[1] || "jpg";
+            return new File([blob], `share_image.${ext}`, {
+                type: mimeType
+            })
+        } catch (error) {
+            console.warn("Could not convert URL to File for sharing:", error);
+            return null
+        }
+    }
+    static _fallbackShare(url) {
+        if (navigator.clipboard) {
+            navigator.clipboard.writeText(url).then(() => this._showToast("Enlace copiado al portapapeles")).catch(() => prompt("Copia el enlace:", url))
+        } else {
+            prompt("Copia el enlace:", url)
+        }
+    }
+    static _showToast(message) {
+        let toastObj = null;
+        if (window.bootstrap && window.bootstrap.Toast) {
+            const toastEl = document.getElementById('copyToast');
+            if (toastEl) {
+                toastObj = new bootstrap.Toast(toastEl);
+                const body = toastEl.querySelector('.toast-body');
+                if (body) body.textContent = message;
+                toastObj.show();
+                return
+            }
+        }
+        const t = document.createElement('div');
+        t.style.cssText = `position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:rgba(0,0,0,0.8);color:white;padding:12px 24px;border-radius:50px;z-index:10000;font-family:system-ui,-apple-system,sans-serif;font-size:14px;opacity:0;transition:opacity 0.3s ease;`;
+        t.textContent = message;
+        document.body.appendChild(t);
+        t.offsetHeight;
+        t.style.opacity = '1';
+        setTimeout(() => {
+            t.style.opacity = '0';
+            setTimeout(() => t.remove(), 300)
+        }, 3000)
+    }
+}
+window.shareContent = (title, text, url, image) => ShareManager.share(title, text, url, image);
+
+function initGlobalShareButtons() {
+    document.querySelectorAll('[data-title][data-description]').forEach(btn => {
+        if (!btn.onclick && !btn.closest('.swiper')) {
+            btn.onclick = (e) => {
+                e.preventDefault();
+                const title = btn.dataset.title;
+                const text = btn.dataset.description;
+                let url = btn.dataset.url || window.location.href;
+                if (btn.closest('#localizacion')) {
+                    const siblingLink = btn.closest('.row').querySelector('a[href^="https://www.google.com/maps"]');
+                    if (siblingLink) url = siblingLink.href
+                }
+                const image = btn.dataset.image || null;
+                shareContent(title, text, url, image)
+            }
+        }
+    })
 }
 
 function initWhatsAppButton() {
@@ -276,37 +240,11 @@ function initWhatsAppButton() {
     if (!whatsappBtn) return;
 
     function isPWAMode() {
-        if (window.navigator.standalone === !0) {
-            console.log("PWA detectada: iOS");
-            return !0
-        }
-        if (window.matchMedia('(display-mode: standalone)').matches) {
-            console.log("PWA detectada: display-mode standalone");
-            return !0
-        }
-        if (window.matchMedia('(display-mode: fullscreen)').matches) {
-            console.log("PWA detectada: display-mode fullscreen");
-            return !0
-        }
-        if (window.matchMedia('(display-mode: minimal-ui)').matches) {
-            console.log("PWA detectada: display-mode minimal-ui");
-            return !0
-        }
-        if (document.referrer.includes('android-app://')) {
-            console.log("PWA detectada: Android app referrer");
-            return !0
-        }
-        if (window.matchMedia('(display-mode: window-controls-overlay)').matches) {
-            console.log("PWA detectada: Windows overlay");
-            return !0
-        }
-        const urlParams = new URLSearchParams(window.location.search);
-        if (urlParams.get('source') === 'pwa' || urlParams.get('mode') === 'standalone') {
-            console.log("PWA detectada: URL params");
-            return !0
-        }
-        console.log("PWA NO detectada - modo navegador normal");
-        return !1
+        const checks = [() => window.navigator.standalone === !0, () => window.matchMedia('(display-mode: standalone)').matches, () => window.matchMedia('(display-mode: fullscreen)').matches, () => window.matchMedia('(display-mode: minimal-ui)').matches, () => window.matchMedia('(display-mode: window-controls-overlay)').matches, () => document.referrer.includes('android-app://'), () => {
+            const params = new URLSearchParams(window.location.search);
+            return params.get('source') === 'pwa' || params.get('mode') === 'standalone'
+        }];
+        return checks.some(check => check())
     }
 
     function checkAndHideIfPWA() {
@@ -318,14 +256,9 @@ function initWhatsAppButton() {
         return !1
     }
     if (checkAndHideIfPWA()) return;
-    setTimeout(() => {
-        checkAndHideIfPWA()
-    }, 100);
-    window.matchMedia('(display-mode: standalone)').addEventListener('change', (e) => {
-        if (e.matches) {
-            console.log("PWA instalada durante la sesión");
-            whatsappBtn.style.display = "none"
-        }
+    setTimeout(checkAndHideIfPWA, 100);
+    window.matchMedia('(display-mode: standalone)').addEventListener('change', e => {
+        if (e.matches) whatsappBtn.style.display = "none"
     });
     let lastScroll = 0;
     let ticking = !1;
@@ -335,11 +268,7 @@ function initWhatsAppButton() {
             window.requestAnimationFrame(() => {
                 const currentScroll = window.scrollY;
                 if (currentScroll > 100) {
-                    if (currentScroll > lastScroll) {
-                        whatsappBtn.classList.add("scrolled")
-                    } else {
-                        whatsappBtn.classList.remove("scrolled")
-                    }
+                    whatsappBtn.classList.toggle("scrolled", currentScroll > lastScroll)
                 } else {
                     whatsappBtn.classList.remove("scrolled")
                 }
@@ -352,10 +281,6 @@ function initWhatsAppButton() {
         passive: !0
     })
 }
-
-/**
- * Main DOMContentLoaded listener.
- */
 document.addEventListener("DOMContentLoaded", () => {
     setTheme(getPreferredTheme());
     initAOS();
@@ -363,17 +288,11 @@ document.addEventListener("DOMContentLoaded", () => {
     initHeartIconEasterEgg();
     initCopyButtons();
     initFormValidation();
-    initCopyButtons();
-    initFormValidation();
     initWhatsAppButton();
-    if (
-        window.CSS &&
-        CSS.supports("padding-bottom: env(safe-area-inset-bottom)")
-    ) {
-        document.body.classList.add("supports-safe-area");
+    if (typeof initGlobalShareButtons === 'function') initGlobalShareButtons();
+    if (window.CSS && CSS.supports("padding-bottom: env(safe-area-inset-bottom)")) {
+        document.body.classList.add("supports-safe-area")
     }
     const currentYearEl = document.getElementById("currentYear");
-    if (currentYearEl) {
-        currentYearEl.textContent = new Date().getFullYear();
-    }
-});
+    if (currentYearEl) currentYearEl.textContent = new Date().getFullYear();
+})

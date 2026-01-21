@@ -1,4 +1,4 @@
-(function () {
+(function() {
     const GA_MEASUREMENT_ID = 'G-5QCR4WRFPD';
     if (!GA_MEASUREMENT_ID || GA_MEASUREMENT_ID === 'G-XXXXXXXXXX') {
         console.warn('Google Analytics: El ID de medición no está configurado. Actualice analytics.js.');

@@ -1,165 +1,191 @@
 class CarouselManager {
-    constructor(e, t = {}) {
-        (this.selector = e),
-            (this.container = document.querySelector(e)),
-            (this.options = t),
-            (this.swiper = null),
-            this.init();
+    static defaultConfig = {
+        effect: "coverflow",
+        grabCursor: !0,
+        centeredSlides: !0,
+        slidesPerView: "auto",
+        speed: 400,
+        coverflowEffect: {
+            rotate: 0,
+            stretch: 30,
+            depth: 150,
+            modifier: 1,
+            scale: 0.85,
+            slideShadows: !1
+        },
+        keyboard: {
+            enabled: !0,
+            onlyInViewport: !0
+        }
+    };
+    static defaultBreakpoints = {
+        320: {
+            slidesPerView: "auto",
+            spaceBetween: 50
+        },
+        768: {
+            slidesPerView: 2,
+            spaceBetween: 40
+        },
+        1024: {
+            slidesPerView: 3,
+            spaceBetween: 50
+        }
+    };
+    constructor(selector, options = {}) {
+        this.container = typeof selector === 'string' ? document.querySelector(selector) : selector;
+        if (!this.container) return;
+        this.selector = typeof selector === 'string' ? selector : `.${this.container.className.split(' ')[0]}`;
+        this.options = options;
+        this.init()
     }
     init() {
-        if (!this.container) return;
-        let initialSlide = 0;
-        const hash = window.location.hash;
-        if (hash) {
-            const targetElement = this.container.querySelector(hash);
-            if (targetElement) {
-                const slide = targetElement.closest(".swiper-slide");
-                if (slide) {
-                    const slides = Array.from(
-                        this.container.querySelectorAll(".swiper-slide")
-                    );
-                    initialSlide = slides.indexOf(slide);
-                    if (initialSlide !== -1) {
-                        window.scrollTo(0, 0);
-                    }
-                }
-            }
+        if (typeof Swiper === 'undefined') {
+            console.error('Swiper not loaded');
+            return
         }
-        let e = {
-            effect: "coverflow",
-            grabCursor: !0,
-            centeredSlides: !0,
-            slidesPerView: "auto",
-            initialSlide: initialSlide,
-            loop: !0,
-            loopAdditionalSlides: 1,
-            coverflowEffect: {
-                rotate: 50,
-                stretch: 0,
-                depth: 100,
-                modifier: 1,
-                slideShadows: !0,
+        const slides = this.container.querySelectorAll(".swiper-slide");
+        const totalSlides = slides.length;
+        const useLoop = totalSlides >= 4;
+        const config = {
+            ...CarouselManager.defaultConfig,
+            initialSlide: this.options.initialSlide || 0,
+            loop: useLoop,
+            rewind: !useLoop,
+            loopedSlides: useLoop ? totalSlides : null,
+            breakpoints: this.options.breakpoints || CarouselManager.defaultBreakpoints,
+            navigation: {
+                nextEl: `${this.selector} .swiper-button-next`,
+                prevEl: `${this.selector} .swiper-button-prev`
             },
             pagination: {
-                el: ".swiper-pagination",
+                el: `${this.selector} .swiper-pagination`,
                 clickable: !0,
-                dynamicBullets: !0,
-            },
-            keyboard: {
-                enabled: !0,
-                onlyInViewport: !0
+                dynamicBullets: !0
             },
             on: {
-                init: (e) => {
-                    this.updateIndicators(e), this.addSwipeHint();
+                init: (s) => {
+                    this.updateIndicators(s);
+                    this.addSwipeHint()
                 },
-                slideChange: (e) => this.updateIndicators(e),
-                touchStart: () => this.removeSwipeHint(),
-                transitionEnd: (e) => this.updateIndicators(e),
+                slideChange: (s) => this.updateIndicators(s),
+                touchStart: () => this.removeSwipeHint()
             },
-        },
-            t = {
-                ...e,
-                ...this.options
-            };
-        this.options.pagination &&
-            (t.pagination = {
-                ...e.pagination,
-                ...this.options.pagination
-            }),
-            this.options.autoplay && (t.autoplay = this.options.autoplay),
-            (this.swiper = new Swiper(this.selector, t)),
-            this.initShareButtons();
+            ...this.options
+        };
+        if (this.options.coverflowEffect) {
+            config.coverflowEffect = {
+                ...CarouselManager.defaultConfig.coverflowEffect,
+                ...this.options.coverflowEffect
+            }
+        }
+        this.swiper = new Swiper(this.container, config);
+        this.initShareButtons()
     }
-    updateIndicators(e) {
-        const currentSlideId = this.options.indicators?.current || "currentSlide";
-        const totalSlidesId = this.options.indicators?.total || "totalSlides";
-        let t = document.getElementById(currentSlideId),
-            n = document.getElementById(totalSlidesId);
-        if (t) {
-            let currentIndex = e.realIndex + 1;
-            t.textContent = currentIndex;
-        }
-        if (n) {
-            let totalSlides = this.container.querySelectorAll(
-                ".swiper-slide:not(.swiper-slide-duplicate)"
-            ).length;
-            n.textContent = totalSlides;
-        }
+    updateIndicators(swiper) {
+        const container = this.options.indicatorContainer ? document.querySelector(this.options.indicatorContainer) : this.container.parentElement;
+        if (!container) return;
+        const current = container.querySelector(".current-slide-display");
+        const total = container.querySelector(".total-slides-display");
+        if (current) current.textContent = swiper.realIndex + 1;
+        if (total) total.textContent = this.container.querySelectorAll(".swiper-slide:not(.swiper-slide-duplicate)").length
     }
     initShareButtons() {
         this.container.addEventListener("click", (e) => {
             const btn = e.target.closest(".btn-share");
-            if (btn) {
-                e.preventDefault();
-                e.stopPropagation();
-                const title = btn.dataset.title || "";
-                const description = btn.dataset.description || "";
-                const url = btn.dataset.url || window.location.href;
-                if (typeof shareContent === "function") {
-                    shareContent(title, description, url);
-                } else {
-                    console.error("Utils.js: shareContent function not found.");
-                    prompt("Copia el enlace:", url);
+            if (!btn) return;
+            e.preventDefault();
+            e.stopPropagation();
+            const title = btn.dataset.title || "";
+            const text = btn.dataset.description || "";
+            const url = btn.dataset.url || window.location.href;
+            let imageUrl = btn.dataset.image;
+            if (!imageUrl) {
+                const card = btn.closest(".carousel-card");
+                if (card) {
+                    const img = card.querySelector(".carousel-card-header img");
+                    if (img && img.src) {
+                        imageUrl = img.src
+                    }
                 }
+            }
+            if (typeof shareContent === 'function') {
+                shareContent(title, text, url, imageUrl);
+            } else {
+                console.warn('ShareManager not loaded, falling back to clipboard');
+                this.fallbackShare(url);
             }
         });
     }
+
+    fallbackShare(url) {
+        if (navigator.clipboard) {
+            navigator.clipboard.writeText(url).then(() => this.showToast("Enlace copiado"));
+        } else {
+            prompt("Copiar enlace:", url);
+        }
+    }
+    showToast(msg) {
+        const t = document.createElement('div');
+        t.className = 'carousel-toast';
+        t.textContent = msg;
+        t.style.cssText = `position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:rgba(0,0,0,0.8);color:#fff;padding:10px 20px;border-radius:20px;z-index:9999;animation:fadeInOut 2s`;
+        document.body.appendChild(t);
+        setTimeout(() => t.remove(), 2000)
+    }
     addSwipeHint() {
-        if (
-            !(window.innerWidth < 768) ||
-            this.container.querySelector(".swipe-hint-overlay")
-        )
-            return;
-        this.container.insertAdjacentHTML(
-            "beforeend",
-            '\n            <div class="swipe-hint-overlay active">\n                <div class="swipe-hint-content">\n                    <i class="fas fa-hand-pointer swipe-hint-icon"></i>\n                    <span class="swipe-hint-text">Desliza</span>\n                </div>\n            </div>\n        '
-        ),
-            setTimeout(() => {
-                this.removeSwipeHint();
-            }, 3500);
+        if (window.innerWidth >= 768 || this.container.querySelector(".swipe-hint-overlay")) return;
+        this.container.insertAdjacentHTML("beforeend", `
+            <div class="swipe-hint-overlay active">
+                <div class="swipe-hint-content">
+                    <div class="swipe-hint-visual">
+                        <div class="swipe-trail"></div>
+                        <i class="fas fa-hand-pointer swipe-hint-icon"></i>
+                    </div>
+                    <span class="swipe-hint-text">Desliza</span>
+                </div>
+            </div>`);
+        setTimeout(() => this.removeSwipeHint(), 4000)
     }
     removeSwipeHint() {
-        let e = this.container.querySelector(".swipe-hint-overlay");
-        e &&
-            (e.classList.remove("active"),
-                setTimeout(() => {
-                    e && e.parentNode && e.parentNode.removeChild(e);
-                }, 500));
+        const h = this.container.querySelector(".swipe-hint-overlay");
+        if (h) {
+            h.classList.remove("active");
+            setTimeout(() => h.remove(), 500)
+        }
     }
 }
-document.addEventListener("DOMContentLoaded", function () {
-    let e = {
-        dynamicMainBullets: 3,
-        renderBullet: function (e, t) {
-            return '<span class="' + t + '"></span>';
-        },
-    };
-    document.querySelector(".carousel-events") &&
-        new CarouselManager(".carousel-events", {
-            navigation: {
-                nextEl: ".swiper-button-next",
-                prevEl: ".swiper-button-prev",
+document.addEventListener("DOMContentLoaded", () => {
+    if (document.querySelector("#eventos-swiper")) {
+        new CarouselManager("#eventos-swiper", {
+            initialSlide: 1,
+            indicatorContainer: "#eventos"
+        })
+    }
+    if (document.querySelector(".ministerios-swiper")) {
+        new CarouselManager(".ministerios-swiper", {
+            indicatorContainer: "#ministerios-info",
+            breakpoints: {
+                320: {
+                    slidesPerView: "auto",
+                    spaceBetween: 40
+                },
+                768: {
+                    slidesPerView: 2,
+                    spaceBetween: 40
+                },
+                1024: {
+                    slidesPerView: 3,
+                    spaceBetween: 50
+                }
             },
-            pagination: e,
-            touchRatio: 1,
-            touchAngle: 45,
-            simulateTouch: !0,
-            indicators: {
-                current: "currentSlide",
-                total: "totalSlides"
-            },
-        }),
-        document.querySelector(".carousel-ministerios") &&
-        new CarouselManager(".carousel-ministerios", {
-            navigation: {
-                nextEl: ".swiper-button-next",
-                prevEl: ".swiper-button-prev",
-            },
-            pagination: e,
-            touchRatio: 1,
-            touchAngle: 45,
-            simulateTouch: !0,
-        });
-}),
-    (window.CarouselManager = CarouselManager);
+            coverflowEffect: {
+                stretch: 20,
+                depth: 120,
+                scale: 0.9
+            }
+        })
+    }
+    document.querySelectorAll(".swiper-carousel").forEach(el => new CarouselManager(el))
+});
+window.CarouselManager = CarouselManager
