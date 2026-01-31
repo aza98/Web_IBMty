@@ -49,239 +49,232 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg fixed-top floating-nav">
+    <nav class="navbar navbar-expand-lg fixed-top floating-nav" aria-label="Navegación principal">
         <div class="container-fluid">
-            <button type="button" class="btn theme-toggle d-lg-none me-2" onclick="toggleTheme()" aria-label="Cambiar tema">
-                <i class="fas fa-sun" id="mobile-theme-icon"></i>
+            <button class="btn theme-toggle d-lg-none me-2" type="button" aria-label="Cambiar tema de color" onclick="toggleTheme()">
+                <i id="mobile-theme-icon" class="fas fa-sun" aria-hidden="true"></i>
             </button>
-            <a class="navbar-brand" href="index.html">
+            <a class="navbar-brand" href="index.html" aria-label="Ir a página de inicio">
                 <picture>
                     <source media="(min-width: 992px)" srcset="assets/icons/IBMty_Logo_Desktop.png">
-                    <img src="assets/icons/IBMty_Logo_Mobile.png" alt="IBMty Logo" class="brand-img" width="50" height="50">
+                    <img class="brand-img" src="assets/icons/IBMty_Logo_Mobile.png" alt="Logotipo Iglesia Bautista de Monterrey" width="50" height="50">
                 </picture>
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Navegación">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Abrir menú de navegación">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
+            <div id="navbarNav" class="collapse navbar-collapse">
                 <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" href="index.html">
-                            <i class="fas fa-home"></i> Inicio
+                        <a class="nav-link" href="index.html" aria-label="Ir a Inicio">
+                            <i class="fas fa-home" aria-hidden="true"></i> Inicio
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="nosotros.html">
-                            <i class="fas fa-church"></i> Nosotros
+                        <a class="nav-link" href="nosotros.html" aria-label="Ir a Nosotros">
+                            <i class="fas fa-church" aria-hidden="true"></i> Nosotros
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="ministerios.html">
-                            <i class="fas fa-users"></i> Ministerios
+                        <a class="nav-link" href="ministerios.html" aria-label="Ir a Ministerios">
+                            <i class="fas fa-users" aria-hidden="true"></i> Ministerios
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="salvacion.html">
-                            <i class="fas fa-cross"></i> Salvación
+                        <a class="nav-link" href="salvacion.html" aria-label="Ir a Salvación">
+                            <i class="fas fa-cross" aria-hidden="true"></i> Salvación
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="donativo.html">
-                            <i class="fas fa-donate"></i> Donativo
+                        <a class="nav-link" href="donativo.html" aria-label="Ir a Donativo">
+                            <i class="fas fa-donate" aria-hidden="true"></i> Donativo
                         </a>
                     </li>
                 </ul>
-                <button type="button" class="btn theme-toggle d-none d-lg-flex ms-2" onclick="toggleTheme()" aria-label="Cambiar tema">
-                    <i class="fas fa-sun" id="desktop-theme-icon"></i>
+                <button class="btn theme-toggle d-none d-lg-flex ms-2" type="button" aria-label="Cambiar tema de color" onclick="toggleTheme()">
+                    <i id="desktop-theme-icon" class="fas fa-sun" aria-hidden="true"></i>
                 </button>
             </div>
         </div>
     </nav>
 
     <main>
-        <section id="privacidad" class="py-4 py-lg-5" aria-label="Aviso de Privacidad">
+        <section id="privacidad" class="py-4 py-md-5" aria-labelledby="heading-privacidad">
             <div class="container">
-                <div class="row justify-content-center mb-4 mb-lg-5">
+                <div class="row justify-content-center mb-4">
                     <div class="col-12 col-lg-8 text-center">
-                        <div class="d-inline-flex align-items-center justify-content-center p-3 mb-3 rounded-circle bg-info-subtle text-info-emphasis" data-aos="zoom-in">
+                        <div class="d-inline-flex justify-content-center align-items-center p-3 mb-3 rounded-circle bg-info-subtle text-info-emphasis" data-aos="zoom-in">
                             <i class="fa-solid fa-shield-halved fs-1"></i>
                         </div>
-                        <h1 class="display-5 fw-bold text-body-emphasis mb-3" data-aos="fade-up" data-aos-delay="100">Aviso de Privacidad</h1>
-                        <hr class="w-25 mx-auto border-info border-3 opacity-75 mb-4" data-aos="fade-up" data-aos-delay="150">
-                        <p class="lead text-body-secondary mx-auto" style="max-width:700px" data-aos="fade-up" data-aos-delay="200">Cuidamos tu información como si fuera nuestra, porque tu confianza es lo más importante.</p>
+                        <h2 id="heading-privacidad" class="display-5 fw-bold mb-3 text-body-emphasis" data-aos="fade-up" data-aos-delay="100">Aviso de Privacidad</h2>
+                        <hr class="w-25 mx-auto mb-3 border-info border-3 opacity-75" data-aos="fade-up" data-aos-delay="150">
+                        <p class="lead mx-auto text-body-secondary" style="max-width:700px" data-aos="fade-up" data-aos-delay="200">Cuidamos tu información como si fuera nuestra, porque tu confianza es lo más importante.</p>
                     </div>
                 </div>
                 <div class="row justify-content-center">
                     <div class="col-12 col-lg-9">
-                        <article class="card card-premium mb-3 mb-lg-4" data-aos="fade-up">
-                            <div class="card-body p-3 p-md-5">
-                                <p class="text-body-secondary mb-3">En la <strong>Iglesia Bautista de Monterrey, Asociación Religiosa</strong>, con
-                                    domicilio en Avenida Eugenio Garza Sada 6309, Colonia Residencial La Hacienda, Monterrey, N.L., nos comprometemos a
-                                    proteger la privacidad de los datos personales que Usted nos proporcione, ya sea directamente o a través de nuestra página: 
-                                    <a href="index.html" class="link-info link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover fw-semibold">www.ibmty.com</a>.
+                        <article class="card mb-4 border-0 shadow-sm rounded-4 bg-body" data-aos="fade-up">
+                            <div class="card-body p-3 p-md-4 p-lg-5">
+                                <h3 class="h5 fw-bold mb-3 text-body-emphasis">Información general</h3>
+                                <p class="mb-3 text-body-secondary">
+                                    En la <strong>Iglesia Bautista de Monterrey, Asociación Religiosa</strong>, con domicilio en Avenida Eugenio Garza Sada
+                                    6309, Colonia Residencial La Hacienda, Monterrey, N.L., nos comprometemos a proteger la privacidad de los datos
+                                    personales que Usted nos proporcione, ya sea directamente o a través de nuestra página:
+                                    <a class="link-info link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover fw-semibold" href="index.html">www.ibmty.com</a>.
                                 </p>
-                                <p class="text-body-secondary mb-0">Contamos con procesos de seguridad física y lógica para el manejo y tratamiento adecuado de sus datos.</p>
+                                <p class="mb-0 text-body-secondary">Contamos con procesos de seguridad física y lógica para el manejo y tratamiento adecuado de sus datos.</p>
                             </div>
                         </article>
-                        <div class="card card-premium mb-3 mb-lg-4 overflow-hidden" data-aos="fade-up" data-aos-delay="50">
-                            <div class="card-header bg-body-tertiary border-0 py-3">
-                                <h2 class="h5 mb-0 text-body-emphasis fw-bold d-flex align-items-center">
-                                    <i class="fa-solid fa-user-check me-2 text-secondary"></i>Responsable del tratamiento
-                                </h2>
+                        <article class="card mb-4 overflow-hidden border-0 shadow-sm rounded-4 bg-body" data-aos="fade-up" data-aos-delay="50">
+                            <div class="card-header py-3 px-3 px-md-4 border-0 bg-body-tertiary">
+                                <h3 class="h6 d-flex align-items-center mb-0 fw-bold text-body-emphasis"><i class="fa-solid fa-user-check me-2 text-secondary"></i>Responsable del tratamiento</h3>
                             </div>
-                            <div class="card-body p-3 p-md-5">
-                                <p class="card-text text-body-secondary mb-0">
-                                    El responsable es la Iglesia Bautista de Monterrey, A.R., o el Lic. Brian
-                                    Emil Brown Elbe, para el caso de sus miembros, asociados o visitantes.
-                                </p>
+                            <div class="card-body p-3 p-md-4 p-lg-5">
+                                <p class="card-text mb-0 text-body-secondary">El responsable es la Iglesia Bautista de Monterrey, A.R., o el Lic. Brian Emil Brown Elbe, para el caso de sus miembros, asociados o visitantes.</p>
                             </div>
-                        </div>
-                        <div class="card card-premium mb-3 mb-lg-4 overflow-hidden" data-aos="fade-up" data-aos-delay="100">
-                            <div class="card-header bg-body-tertiary border-0 py-3">
-                                <h2 class="h5 mb-0 text-body-emphasis fw-bold d-flex align-items-center">
-                                    <i class="fa-solid fa-database me-2 text-secondary"></i>Datos que pueden recabarse
-                                </h2>
+                        </article>
+                        <article class="card mb-4 overflow-hidden border-0 shadow-sm rounded-4 bg-body" data-aos="fade-up" data-aos-delay="100">
+                            <div class="card-header py-3 px-3 px-md-4 border-0 bg-body-tertiary">
+                                <h3 class="h6 d-flex align-items-center mb-0 fw-bold text-body-emphasis"><i class="fa-solid fa-database me-2 text-secondary"></i>Datos que pueden recabarse</h3>
                             </div>
-                            <div class="card-body p-3 p-md-5">
-                                <p class="text-body-secondary mb-0">
+                            <div class="card-body p-3 p-md-4 p-lg-5">
+                                <p class="mb-0 text-body-secondary">
                                     Podremos recabar: nombre, domicilio, correo, edad, estado civil, ocupación, profesión, estudios, fotografía, fecha de
                                     nacimiento, creencia religiosa, giro de negocio y teléfonos. Estos datos se usarán para los fines descritos a continuación.
                                 </p>
                             </div>
-                        </div>
-                        <div class="card card-premium mb-3 mb-lg-4 overflow-hidden" data-aos="fade-up" data-aos-delay="150">
-                            <div class="card-header bg-body-tertiary border-0 py-3">
-                                <h2 class="h5 mb-0 text-body-emphasis fw-bold d-flex align-items-center">
-                                    <i class="fa-solid fa-bullseye me-2 text-secondary"></i>Finalidades del tratamiento
-                                </h2>
+                        </article>
+                        <article class="card mb-4 overflow-hidden border-0 shadow-sm rounded-4 bg-body" data-aos="fade-up" data-aos-delay="150">
+                            <div class="card-header py-3 px-3 px-md-4 border-0 bg-body-tertiary">
+                                <h3 class="h6 d-flex align-items-center mb-0 fw-bold text-body-emphasis"><i class="fa-solid fa-bullseye me-2 text-secondary"></i>Finalidades del tratamiento</h3>
                             </div>
-                            <div class="card-body p-3 p-md-5">
-                                <div class="row g-3 g-lg-4">
-                                    <div class="col-md-6 d-flex">
-                                        <div class="bg-secondary-subtle text-secondary rounded-circle p-2 me-3 flex-shrink-0 h-auto align-self-start glass-panel">
-                                            <i class="fa-solid fa-id-badge fa-fw"></i>
+                            <div class="card-body p-3 p-md-4 p-lg-5">
+                                <div class="row g-3 g-md-4">
+                                    <div class="col-md-6 d-flex align-items-start">
+                                        <div class="flex-shrink-0 d-flex justify-content-center align-items-center p-2 me-3 rounded-circle bg-secondary-subtle text-secondary" style="width:40px;height:40px">
+                                            <i class="fa-solid fa-id-badge"></i>
                                         </div>
-                                        <span class="text-body-secondary small">Conocer su identidad para brindar atención personalizada.</span>
+                                        <span class="small pt-1 text-body-secondary">Conocer su identidad para brindar atención personalizada.</span>
                                     </div>
-                                    <div class="col-md-6 d-flex">
-                                        <div class="bg-secondary-subtle text-secondary rounded-circle p-2 me-3 flex-shrink-0 h-auto align-self-start glass-panel">
-                                            <i class="fa-solid fa-envelope fa-fw"></i>
+                                    <div class="col-md-6 d-flex align-items-start">
+                                        <div class="flex-shrink-0 d-flex justify-content-center align-items-center p-2 me-3 rounded-circle bg-secondary-subtle text-secondary" style="width:40px;height:40px">
+                                            <i class="fa-solid fa-envelope"></i>
                                         </div>
-                                        <span class="text-body-secondary small">Envío de información (correos, SMS, apps, voz).</span>
+                                        <span class="small pt-1 text-body-secondary">Envío de información (correos, SMS, apps, voz).</span>
                                     </div>
-                                    <div class="col-md-6 d-flex">
-                                        <div class="bg-secondary-subtle text-secondary rounded-circle p-2 me-3 flex-shrink-0 h-auto align-self-start glass-panel">
-                                            <i class="fa-solid fa-chart-line fa-fw"></i>
+                                    <div class="col-md-6 d-flex align-items-start">
+                                        <div class="flex-shrink-0 d-flex justify-content-center align-items-center p-2 me-3 rounded-circle bg-secondary-subtle text-secondary" style="width:40px;height:40px">
+                                            <i class="fa-solid fa-chart-line"></i>
                                         </div>
-                                        <span class="text-body-secondary small">Estudios internos para cumplir metas de la Iglesia.</span>
+                                        <span class="small pt-1 text-body-secondary">Estudios internos para cumplir metas de la Iglesia.</span>
                                     </div>
-                                    <div class="col-md-6 d-flex">
-                                        <div class="bg-secondary-subtle text-secondary rounded-circle p-2 me-3 flex-shrink-0 h-auto align-self-start glass-panel">
-                                            <i class="fa-solid fa-house-user fa-fw"></i>
+                                    <div class="col-md-6 d-flex align-items-start">
+                                        <div class="flex-shrink-0 d-flex justify-content-center align-items-center p-2 me-3 rounded-circle bg-secondary-subtle text-secondary" style="width:40px;height:40px">
+                                            <i class="fa-solid fa-house-user"></i>
                                         </div>
-                                        <span class="text-body-secondary small">Visitas personalizadas de cortesía en su domicilio.</span>
+                                        <span class="small pt-1 text-body-secondary">Visitas personalizadas de cortesía en su domicilio.</span>
                                     </div>
-                                    <div class="col-12 d-flex">
-                                        <div class="bg-secondary-subtle text-secondary rounded-circle p-2 me-3 flex-shrink-0 h-auto align-self-start glass-panel">
-                                            <i class="fa-solid fa-arrows-rotate fa-fw"></i>
+                                    <div class="col-12 d-flex align-items-start">
+                                        <div class="flex-shrink-0 d-flex justify-content-center align-items-center p-2 me-3 rounded-circle bg-secondary-subtle text-secondary" style="width:40px;height:40px">
+                                            <i class="fa-solid fa-arrows-rotate"></i>
                                         </div>
-                                        <span class="text-body-secondary small">Actualización de datos de visitas.</span>
+                                        <span class="small pt-1 text-body-secondary">Actualización de datos de visitas.</span>
                                     </div>
                                 </div>
-                                <div class="alert alert-secondary border-0 d-flex align-items-center mt-4 mb-0 rounded-4" role="alert">
-                                    <i class="fa-solid fa-lock text-body-emphasis me-3 fs-4 flex-shrink-0"></i>
-                                    <div class="small">La información confidencial enviada a domicilios nunca estará expuesta al público.</div>
+                                <div class="alert alert-secondary d-flex align-items-center mt-3 mt-md-4 mb-0 border-0 shadow-sm rounded-4" role="alert">
+                                    <i class="fa-solid fa-lock flex-shrink-0 me-3 fs-4 text-body-emphasis"></i>
+                                    <div class="small text-body-secondary">La información confidencial enviada a domicilios nunca estará expuesta al público.</div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="card card-premium mb-3 mb-lg-4 overflow-hidden" data-aos="fade-up" data-aos-delay="200">
-                            <div class="card-header bg-body-tertiary border-0 py-3">
-                                <h2 class="h5 mb-0 text-body-emphasis fw-bold d-flex align-items-center">
+                        </article>
+                        <article class="card mb-4 overflow-hidden border-0 shadow-sm rounded-4 bg-body" data-aos="fade-up" data-aos-delay="200">
+                            <div class="card-header py-3 px-3 px-md-4 border-0 bg-body-tertiary">
+                                <h3 class="h6 d-flex align-items-center mb-0 fw-bold text-body-emphasis">
                                     <i class="fa-solid fa-shield-halved me-2 text-secondary"></i>Sus Derechos (ARCO)
-                                </h2>
+                                </h3>
                             </div>
-                            <div class="card-body p-3 p-md-5">
-                                <p class="text-body-secondary mb-4">Puede ejercer sus derechos de Acceso, Rectificación, Cancelación u Oposición mediante solicitud escrita.</p>
-                                <div class="accordion" id="accordionDerechos">
-                                    <div class="accordion-item border-0 mb-2 rounded-4 overflow-hidden shadow-sm">
-                                        <h3 class="accordion-header" id="headingAcceso">
-                                            <button class="accordion-button collapsed bg-primary-subtle text-primary fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseAcceso">
+                            <div class="card-body p-3 p-md-4 p-lg-5">
+                                <p class="mb-3 mb-md-4 text-body-secondary">Puede ejercer sus derechos de Acceso, Rectificación, Cancelación u Oposición mediante solicitud escrita.</p>
+                                <div id="accordionDerechos" class="accordion accordion-flush d-flex flex-column gap-2">
+                                    <div class="accordion-item overflow-hidden border-0 shadow-sm rounded-4">
+                                        <h4 id="headingAcceso" class="accordion-header">
+                                            <button class="accordion-button collapsed fw-semibold bg-primary-subtle text-primary-emphasis" type="button" data-bs-toggle="collapse" data-bs-target="#collapseAcceso" aria-expanded="false" aria-controls="collapseAcceso">
                                                 <i class="fa-solid fa-eye me-2"></i> Acceso
                                             </button>
-                                        </h3>
-                                        <div id="collapseAcceso" class="accordion-collapse collapse" data-bs-parent="#accordionDerechos">
-                                            <div class="accordion-body bg-body text-body-secondary small">Conocer sus datos personales en nuestra posesión y el Aviso de Privacidad.</div>
+                                        </h4>
+                                        <div id="collapseAcceso" class="accordion-collapse collapse" role="region" aria-labelledby="headingAcceso" data-bs-parent="#accordionDerechos">
+                                            <div class="accordion-body small bg-body text-body-secondary">Conocer sus datos personales en nuestra posesión y el Aviso de Privacidad.</div>
                                         </div>
                                     </div>
-                                    <div class="accordion-item border-0 mb-2 rounded-4 overflow-hidden shadow-sm">
-                                        <h3 class="accordion-header" id="headingRect">
-                                            <button class="accordion-button collapsed bg-info-subtle text-info-emphasis fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseRect">
+                                    <div class="accordion-item overflow-hidden border-0 shadow-sm rounded-4">
+                                        <h4 id="headingRect" class="accordion-header">
+                                            <button class="accordion-button collapsed fw-semibold bg-info-subtle text-info-emphasis" type="button" data-bs-toggle="collapse" data-bs-target="#collapseRect" aria-expanded="false" aria-controls="collapseRect">
                                                 <i class="fa-solid fa-pencil me-2"></i> Rectificación
                                             </button>
-                                        </h3>
-                                        <div id="collapseRect" class="accordion-collapse collapse" data-bs-parent="#accordionDerechos">
-                                            <div class="accordion-body bg-body text-body-secondary small">Solicitar corrección de datos inexactos o incompletos (requiere documentación).</div>
+                                        </h4>
+                                        <div id="collapseRect" class="accordion-collapse collapse" role="region" aria-labelledby="headingRect" data-bs-parent="#accordionDerechos">
+                                            <div class="accordion-body small bg-body text-body-secondary">Solicitar corrección de datos inexactos o incompletos (requiere documentación).</div>
                                         </div>
                                     </div>
-                                    <div class="accordion-item border-0 mb-2 rounded-4 overflow-hidden shadow-sm">
-                                        <h3 class="accordion-header" id="headingCancel">
-                                            <button class="accordion-button collapsed bg-danger-subtle text-danger fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseCancel">
-                                                <i class="fa-solid fa-trash me-2"></i> Cancelación
+                                    <div class="accordion-item overflow-hidden border-0 shadow-sm rounded-4">
+                                        <h4 id="headingCancel" class="accordion-header">
+                                            <button class="accordion-button collapsed fw-semibold bg-danger-subtle text-danger-emphasis" type="button" data-bs-toggle="collapse" data-bs-target="#collapseCancel" aria-expanded="false" aria-controls="collapseCancel">
+                                                <i class="fa-solid fa-trash-can me-2"></i> Cancelación
                                             </button>
-                                        </h3>
-                                        <div id="collapseCancel" class="accordion-collapse collapse" data-bs-parent="#accordionDerechos">
-                                            <div class="accordion-body bg-body text-body-secondary small">Solicitar eliminación de datos tras un periodo de bloqueo, si procede.</div>
+                                        </h4>
+                                        <div id="collapseCancel" class="accordion-collapse collapse" role="region" aria-labelledby="headingCancel" data-bs-parent="#accordionDerechos">
+                                            <div class="accordion-body small bg-body text-body-secondary">Solicitar eliminación de datos tras un periodo de bloqueo, si procede.</div>
                                         </div>
                                     </div>
-                                    <div class="accordion-item border-0 mb-2 rounded-4 overflow-hidden shadow-sm">
-                                        <h3 class="accordion-header" id="headingOp">
-                                            <button class="accordion-button collapsed bg-warning-subtle text-warning-emphasis fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOp">
+                                    <div class="accordion-item overflow-hidden border-0 shadow-sm rounded-4">
+                                        <h4 id="headingOp" class="accordion-header">
+                                            <button class="accordion-button collapsed fw-semibold bg-warning-subtle text-warning-emphasis" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOp" aria-expanded="false" aria-controls="collapseOp">
                                                 <i class="fa-solid fa-circle-xmark me-2"></i> Oposición
                                             </button>
-                                        </h3>
-                                        <div id="collapseOp" class="accordion-collapse collapse" data-bs-parent="#accordionDerechos">
-                                            <div class="accordion-body bg-body text-body-secondary small">Oponerse al tratamiento de sus datos por causa legítima.</div>
+                                        </h4>
+                                        <div id="collapseOp" class="accordion-collapse collapse" role="region" aria-labelledby="headingOp" data-bs-parent="#accordionDerechos">
+                                            <div class="accordion-body small bg-body text-body-secondary">Oponerse al tratamiento de sus datos por causa legítima.</div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row justify-content-center mt-4 pt-2">
-                                    <div class="col-12 col-sm-auto">
-                                        <a href="mailto:avisoprivacidad@ibmty.com" class="btn btn-info btn-md text-white rounded-pill w-100 w-sm-auto px-4">
+                                <div class="row justify-content-center pt-2 mt-3 mt-md-4">
+                                    <div class="col-12 col-md-auto">
+                                        <a class="btn btn-info btn-md w-100 w-md-auto px-4 py-2 text-white shadow-sm rounded-pill" href="mailto:avisoprivacidad@ibmty.com">
                                             <i class="fa-solid fa-envelope me-2"></i>Enviar Solicitud ARCO
                                         </a>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="row g-3 g-lg-4">
+                        </article>
+                        <div class="row g-3 g-md-4">
                             <div class="col-12 col-md-6">
-                                <div class="card card-premium h-100 overflow-hidden" data-aos="fade-up" data-aos-delay="250">
-                                    <div class="card-header bg-body-tertiary border-0 py-3">
-                                        <h2 class="h6 mb-0 text-body-emphasis fw-bold">
+                                <article class="card h-100 overflow-hidden border-0 shadow-sm rounded-4 bg-body" data-aos="fade-up" data-aos-delay="250">
+                                    <div class="card-header py-3 px-3 px-md-4 border-0 bg-body-tertiary">
+                                        <h3 class="h6 mb-0 fw-bold text-body-emphasis">
                                             <i class="fa-solid fa-right-left me-2 text-secondary"></i>Transferencia
-                                        </h2>
+                                        </h3>
                                     </div>
-                                    <div class="card-body p-3 p-lg-4">
-                                        <p class="small text-body-secondary mb-0">
+                                    <div class="card-body p-3 p-md-4">
+                                        <p class="small mb-0 text-body-secondary">
                                             Sus datos pueden compartirse con iglesias en formación, misioneros y proveedores de servicios necesarios para la
                                             operación (ej. envíos), siempre cumpliendo las finalidades descritas.
                                         </p>
                                     </div>
-                                </div>
+                                </article>
                             </div>
                             <div class="col-12 col-md-6">
-                                <div class="card card-premium h-100 overflow-hidden" data-aos="fade-up" data-aos-delay="300">
-                                    <div class="card-header bg-body-tertiary border-0 py-3">
-                                        <h2 class="h6 mb-0 text-body-emphasis fw-bold">
+                                <article class="card h-100 overflow-hidden border-0 shadow-sm rounded-4 bg-body" data-aos="fade-up" data-aos-delay="300">
+                                    <div class="card-header py-3 px-3 px-md-4 border-0 bg-body-tertiary">
+                                        <h3 class="h6 mb-0 fw-bold text-body-emphasis">
                                             <i class="fa-solid fa-pen-to-square me-2 text-secondary"></i>Modificaciones
-                                        </h2>
+                                        </h3>
                                     </div>
-                                    <div class="card-body p-3 p-lg-4">
-                                        <p class="small text-body-secondary mb-0">Cualquier cambio a este aviso se publicará en nuestro portal:
-                                            <a href="index.html" class="link-info fw-semibold">www.ibmty.com</a>.
+                                    <div class="card-body p-3 p-md-4">
+                                        <p class="small mb-0 text-body-secondary">Cualquier cambio a este aviso se publicará en nuestro portal:
+                                            <a class="link-info fw-semibold" href="index.html">www.ibmty.com</a>.
                                         </p>
                                     </div>
-                                </div>
+                                </article>
                             </div>
                         </div>
                     </div>
@@ -290,68 +283,67 @@
         </section>
     </main>
 
-    <a href="https://wa.me/528132503031?text=Hola,%20me%20interesa%20recibir%20informaci%c3%b3n%20de%20la%20iglesia"
-        class="whatsapp-floating-btn" target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp">
+    <a class="whatsapp-floating-btn" href="https://wa.me/528132503031?text=Hola,%20me%20interesa%20recibir%20informaci%c3%b3n%20de%20la%20iglesia" aria-label="Contactar por WhatsApp" target="_blank" rel="noopener noreferrer">
         <i class="fab fa-whatsapp"></i>
     </a>
 
     <footer class="footer pt-4 pb-3 border-top">
         <div class="container">
-            <div class="row gy-4">
+            <div class="row gy-3 gy-md-4">
                 <div class="col-12 col-lg-4 text-center text-lg-start">
-                    <h5 class="fw-bold mb-3 text-body-emphasis">
-                        <i class="fa-solid fa-thumbs-up me-2 text-info"></i>Síguenos
-                    </h5>
-                    <p class="text-body-secondary mb-3">Mantente conectado con nosotros</p>
+                    <h2 class="h5 fw-bold mb-3 text-body-emphasis">
+                        <i class="fa-solid fa-thumbs-up text-info me-2"></i>Síguenos
+                    </h2>
+                    <p class="mb-3 text-body-secondary">Mantente conectado con nosotros</p>
                     <div class="social-icons d-flex justify-content-center justify-content-lg-start gap-2">
-                        <a href="https://www.facebook.com/IBMty/" aria-label="Facebook" class="btn-social" target="_blank">
+                        <a class="btn-social" href="https://www.facebook.com/IBMty/" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
                             <i class="fab fa-facebook-f"></i>
                         </a>
-                        <a href="https://www.instagram.com/iglesiabautistademonterrey?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" aria-label="Instagram" class="btn-social" target="_blank">
+                        <a class="btn-social" href="https://www.instagram.com/iglesiabautistademonterrey?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
                             <i class="fab fa-instagram"></i>
                         </a>
-                        <a href="https://www.youtube.com/channel/UCfhSTnqLb6vFO28eNm_n0qw" aria-label="YouTube" class="btn-social" target="_blank">
+                        <a class="btn-social" href="https://www.youtube.com/channel/UCfhSTnqLb6vFO28eNm_n0qw" aria-label="YouTube" target="_blank" rel="noopener noreferrer">
                             <i class="fab fa-youtube"></i>
                         </a>
-                        <a href="mailto:oficina@ibmty.com" aria-label="Mail" class="btn-social">
+                        <a class="btn-social" href="mailto:oficina@ibmty.com" aria-label="Correo electrónico">
                             <i class="fa-regular fa-envelope"></i>
                         </a>
                     </div>
                 </div>
                 <div class="col-6 col-lg-4">
-                    <h5 class="fw-bold mb-3 text-body-emphasis">
-                        <i class="fa-solid fa-id-badge me-2 text-info"></i>Contacto
-                    </h5>
-                    <ul class="list-unstyled text-body-secondary small">
+                    <h2 class="h5 fw-bold mb-3 text-body-emphasis">
+                        <i class="fa-solid fa-id-badge text-info me-2"></i>Contacto
+                    </h2>
+                    <ul class="list-unstyled small text-body-secondary">
                         <li class="mb-2">
-                            <a href="https://www.google.com/maps?q=Iglesia+Bautista+de+Monterrey" target="_blank" class="text-decoration-none text-reset">
+                            <a class="text-decoration-none text-reset hover-link" href="https://www.google.com/maps?q=Iglesia+Bautista+de+Monterrey" target="_blank" rel="noopener noreferrer">
                                 <i class="fas fa-map-marker-alt me-2"></i>Av. Eugenio Garza Sada 6309, MTY.
                             </a>
                         </li>
                         <li class="mb-2">
-                            <a href="tel:+528183496161" class="text-decoration-none text-reset">
+                            <a class="text-decoration-none text-reset hover-link" href="tel:+528183496161">
                                 <i class="fas fa-phone-alt me-2"></i>81 83 49 61 61
                             </a>
                         </li>
                         <li>
-                            <a href="tel:+528183496263" class="text-decoration-none text-reset">
+                            <a class="text-decoration-none text-reset hover-link" href="tel:+528183496263">
                                 <i class="fas fa-phone-alt me-2"></i>81 83 49 62 63
                             </a>
                         </li>
                     </ul>
                 </div>
                 <div class="col-6 col-lg-4">
-                    <h5 class="fw-bold mb-3 text-body-emphasis">
-                        <i class="fas fa-external-link-alt me-2 text-info"></i>Enlaces
-                    </h5>
-                    <ul class="list-unstyled text-body-secondary small">
+                    <h2 class="h5 fw-bold mb-3 text-body-emphasis">
+                        <i class="fas fa-external-link-alt text-info me-2"></i>Enlaces
+                    </h2>
+                    <ul class="list-unstyled small text-body-secondary">
                         <li class="mb-2">
-                            <a href="https://www.ribbi.org/" class="text-decoration-none text-reset hover-link" target="_blank">
+                            <a class="text-decoration-none text-reset hover-link" href="https://www.ribbi.org/" target="_blank" rel="noopener noreferrer">
                                 <i class="fa-solid fa-network-wired me-2"></i>RIBBI
                             </a>
                         </li>
                         <li>
-                            <a href="https://elsaucillo.org/" class="text-decoration-none text-reset hover-link" target="_blank">
+                            <a class="text-decoration-none text-reset hover-link" href="https://elsaucillo.org/" target="_blank" rel="noopener noreferrer">
                                 <i class="fa-solid fa-mountain-sun me-2"></i>El Saucillo
                             </a>
                         </li>
@@ -359,30 +351,32 @@
                 </div>
             </div>
         </div>
-        <div class="footer-bottom mt-3 pt-3 border-top border-secondary-subtle">
+        <div class="footer-bottom pt-3 mt-3 border-top">
             <div class="container">
                 <div class="row align-items-center small text-body-secondary">
                     <div class="col-md-4 text-center text-md-start mb-2 mb-md-0">
-                        <a href="privacidad.html" class="text-reset text-decoration-none">Aviso de Privacidad</a>
+                        <a class="text-decoration-none text-reset hover-link" href="privacidad.html">Aviso de Privacidad</a>
                     </div>
-                    <div class="col-md-4 text-center mb-2 mb-md-0">&copy; <span id="currentYear"></span> IBMty.</div>
+                    <div class="col-md-4 text-center mb-2 mb-md-0">
+                        &copy; <span id="currentYear"></span> IBMty.
+                    </div>
                     <div class="col-md-4 text-center text-md-end">Hecho con
                         <i id="heartIcon" class="fas fa-heart text-danger" style="cursor:pointer"></i> para
-                        <a href="salvacion.html" class="text-reset text-decoration-none">Dios</a>
+                        <a class="text-reset text-decoration-none" href="salvacion.html">Dios</a>
                     </div>
                 </div>
             </div>
-            <div class="modal fade" id="developers" tabindex="-1" aria-hidden="true">
+            <div id="developers" class="modal fade" tabindex="-1" role="dialog" aria-modal="true" aria-labelledby="developersLabel" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content text-center">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="developersLabel">Desarrolladores</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                            <h3 id="developersLabel" class="modal-title h4">Desarrolladores</h3>
+                            <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Cerrar"></button>
                         </div>
                         <div class="modal-body">
-                            <p>H.G</p>
-                            <p>E.A.R.G</p>
-                            <p>D.A.R.M</p>
+                            <p class="mb-2">H.G</p>
+                            <p class="mb-2">E.A.R.G</p>
+                            <p class="mb-0">D.A.R.M</p>
                         </div>
                     </div>
                 </div>
@@ -390,13 +384,13 @@
         </div>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous" defer></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js" integrity="sha512-A7AYk1fGKX6S2SsHywmPkrnzTZHrgiVT7GcQkLGDe2ev0aWb8zejytzS8wjo7PGEXKqJOrjQ4oORtnimIRZBtw==" crossorigin="anonymous" defer></script>
-    <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
-    <script src="context/utils.js" defer></script>
-    <script src="context/sw-registration.js" defer></script>
-    <script src="context/onesignal-init.js" defer></script>
-    <script src="context/analytics.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous" defer="defer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js" integrity="sha512-A7AYk1fGKX6S2SsHywmPkrnzTZHrgiVT7GcQkLGDe2ev0aWb8zejytzS8wjo7PGEXKqJOrjQ4oORtnimIRZBtw==" crossorigin="anonymous" defer="defer"></script>
+    <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer="defer"></script>
+    <script src="context/utils.js" defer="defer"></script>
+    <script src="context/sw-registration.js" defer="defer"></script>
+    <script src="context/onesignal-init.js" defer="defer"></script>
+    <script src="context/analytics.js" defer="defer"></script>
 </body>
 
 </html>

@@ -95,11 +95,23 @@ class YouTubeManager {
     }
     updateShareButton(title, text, url) {
         if (!this.shareBtn) return;
-        this.shareBtn.onclick = () => {
-            if (typeof shareContent === "function") {
+        this.shareBtn.dataset.url = url;
+        this.shareBtn.dataset.title = title;
+        this.shareBtn.dataset.description = text;
+        this.shareBtn.dataset.shareType = 'link';
+        this.shareBtn.onclick = (e) => {
+            e.preventDefault();
+            if (typeof ShareManager !== "undefined") {
+                ShareManager.share({
+                    title: title,
+                    text: text,
+                    url: url,
+                    type: 'link'
+                })
+            } else if (typeof shareContent === "function") {
                 shareContent(title, text, url)
             } else {
-                navigator.clipboard.writeText(url).then(() => alert("Enlace copiado: " + url)).catch(err => console.error('Error al copiar', err))
+                navigator.clipboard.writeText(url).then(() => {}).catch(err => console.error('Error al copiar', err))
             }
         }
     }

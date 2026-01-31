@@ -72,263 +72,131 @@
 </head>
 
 <body class="no-navbar-padding">
-    <nav class="navbar navbar-expand-lg fixed-top floating-nav">
+    <nav class="navbar navbar-expand-lg fixed-top floating-nav" aria-label="Navegación principal">
         <div class="container-fluid">
-            <button type="button" class="btn theme-toggle d-lg-none me-2" onclick="toggleTheme()" aria-label="Cambiar tema">
-                <i class="fas fa-sun" id="mobile-theme-icon"></i>
+            <button class="btn theme-toggle d-lg-none me-2" type="button" aria-label="Cambiar tema de color" onclick="toggleTheme()">
+                <i id="mobile-theme-icon" class="fas fa-sun" aria-hidden="true"></i>
             </button>
-            <a class="navbar-brand" href="index.html">
+            <a class="navbar-brand" href="index.html" aria-label="Ir a página de inicio">
                 <picture>
                     <source media="(min-width: 992px)" srcset="assets/icons/IBMty_Logo_Desktop.png">
-                    <img src="assets/icons/IBMty_Logo_Mobile.png" alt="IBMty Logo" class="brand-img" width="50" height="50">
+                    <img class="brand-img" src="assets/icons/IBMty_Logo_Mobile.png" alt="Logotipo Iglesia Bautista de Monterrey" width="50" height="50">
                 </picture>
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Navegación">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Abrir menú de navegación">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
+            <div id="navbarNav" class="collapse navbar-collapse">
                 <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="index.html">
-                            <i class="fas fa-home"></i> Inicio
+                        <a class="nav-link active" aria-current="page" href="index.html" aria-label="Ir a Inicio">
+                            <i class="fas fa-home" aria-hidden="true"></i> Inicio
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="nosotros.html">
-                            <i class="fas fa-church"></i> Nosotros
+                        <a class="nav-link" href="nosotros.html" aria-label="Ir a Nosotros">
+                            <i class="fas fa-church" aria-hidden="true"></i> Nosotros
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="ministerios.html">
-                            <i class="fas fa-users"></i> Ministerios
+                        <a class="nav-link" href="ministerios.html" aria-label="Ir a Ministerios">
+                            <i class="fas fa-users" aria-hidden="true"></i> Ministerios
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="salvacion.html">
-                            <i class="fas fa-cross"></i> Salvación
+                        <a class="nav-link" href="salvacion.html" aria-label="Ir a Salvación">
+                            <i class="fas fa-cross" aria-hidden="true"></i> Salvación
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="donativo.html">
-                            <i class="fas fa-donate"></i> Donativo
+                        <a class="nav-link" href="donativo.html" aria-label="Ir a Donativo">
+                            <i class="fas fa-donate" aria-hidden="true"></i> Donativo
                         </a>
                     </li>
                 </ul>
-                <button type="button" class="btn theme-toggle d-none d-lg-flex ms-2" onclick="toggleTheme()" aria-label="Cambiar tema">
-                    <i class="fas fa-sun" id="desktop-theme-icon"></i>
+                <button class="btn theme-toggle d-none d-lg-flex ms-2" type="button" aria-label="Cambiar tema de color" onclick="toggleTheme()">
+                    <i id="desktop-theme-icon" class="fas fa-sun" aria-hidden="true"></i>
                 </button>
             </div>
         </div>
     </nav>
 
     <main>
-        <section class="hero-section d-flex flex-column justify-content-center align-items-center position-relative py-4 py-lg-5">
+        <section id="hero" class="hero-section position-relative d-flex flex-column justify-content-center align-items-center py-5" aria-labelledby="hero-heading">
             <div id="parallax-bg-container" class="position-absolute w-100 h-100 top-0 start-0">
                 <div id="parallax-img-wrapper">
                     <picture>
                         <source media="(max-width: 576px)" srcset="assets/images/extras/Bienvenida_mobile.webp">
                         <source media="(max-width: 992px)" srcset="assets/images/extras/Bienvenida_mobile.webp">
-                        <img id="parallax-img" src="assets/images/extras/Bienvenida_desktop.webp" alt="Comunidad de la iglesia reunida en celebración" loading="eager" class="w-100 h-100 object-fit-cover">
+                        <img id="parallax-img" class="w-100 h-100 object-fit-cover" src="assets/images/extras/Bienvenida_desktop.webp" alt="Comunidad de la iglesia reunida en celebración" loading="eager">
                     </picture>
                 </div>
             </div>
-            <div class="hero-overlay position-absolute w-100 h-100 top-0 start-0 bg-dark opacity-50"></div>
-            <div class="container hero-content text-center text-white position-relative z-1">
-                <div class="row justify-content-center mb-3 mb-lg-4">
+            <div class="hero-overlay position-absolute w-100 h-100 bg-dark top-0 start-0 opacity-50"></div>
+            <div class="container hero-content position-relative text-center text-white z-1">
+                <div class="row justify-content-center mb-3 mb-md-4">
                     <div class="col-12 col-lg-10 col-xl-9">
-                        <h1 class="fw-bold mb-4 lh-1">
-                            <span class="d-block display-5 display-md-4 mb-2 text-white">Bienvenido a la</span>
-                            <span class="d-block display-3 display-md-2 text-info fw-bolder" style="text-shadow:0 0 30px rgba(13,202,240,.6)">Iglesia Bautista de Monterrey</span>
+                        <h1 id="hero-heading" class="fw-bold lh-1 mb-3 mb-md-4">
+                            <span class="d-block display-5 display-md-4 text-white mb-2">Bienvenido a la</span>
+                            <span class="d-block display-3 display-md-2 fw-bolder text-info" style="text-shadow:0 0 30px rgba(13,202,240,.6)">Iglesia Bautista de Monterrey</span>
                         </h1>
-                        <p class="lead fs-4 opacity-90 mx-auto" style="max-width:600px">¡Una iglesia que piensa en ti!</p>
+                        <p class="lead fs-5 fs-md-4 mx-auto opacity-90" style="max-width:600px">¡Una iglesia que piensa en ti!</p>
                     </div>
                 </div>
-                <div class="row justify-content-center mb-4 mb-md-5">
-                    <div class="col-12">
+                <div class="row justify-content-center mb-3 mb-md-4">
+                    <div class="col-12 col-md-auto">
                         <div class="row g-2 g-md-3 justify-content-center">
                             <div class="col-6 col-md-auto">
-                                <a href="nosotros.html" class="btn btn-info btn-md text-white w-100 w-md-auto rounded-pill px-4 px-md-5">
-                                    <i class="fas fa-church me-2"></i> Nosotros
+                                <a class="btn btn-info btn-md w-100 rounded-pill px-4 py-2 text-white shadow-sm" href="nosotros.html">
+                                    <i class="fas fa-church me-2"></i>Nosotros
                                 </a>
                             </div>
                             <div class="col-6 col-md-auto">
-                                <a href="ministerios.html" class="btn btn-secondary btn-md w-100 w-md-auto rounded-pill px-4 px-md-5">
-                                    <i class="fas fa-users me-2"></i> Ministerios
+                                <a class="btn btn-secondary btn-md w-100 rounded-pill px-4 py-2 shadow-sm" href="ministerios.html">
+                                    <i class="fas fa-users me-2"></i>Ministerios
                                 </a>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="text-center mt-2 mt-md-3">
-                    <a href="#transmision" class="d-inline-flex flex-column align-items-center text-decoration-none text-white" style="opacity:.6" aria-label="Ir a Transmisión">
-                        <small class="text-uppercase fw-light mb-2" style="font-size:.75rem;letter-spacing:.5px">Descubre más,<br>¡desliza hacia abajo!</small>
-                        <div class="border border-2 border-white rounded-circle p-2 d-flex align-items-center justify-content-center" style="width:40px;height:40px">
-                            <i class="fas fa-chevron-down text-white" aria-hidden="true"></i>
+                <div class="mt-3 mt-md-4">
+                    <a class="d-inline-flex flex-column align-items-center text-decoration-none text-white opacity-75" href="#eventos" aria-label="Desplazarse a eventos">
+                        <small class="text-uppercase mb-2" style="font-size:.7rem;letter-spacing:.05em">Desliza para descubrir</small>
+                        <div class="d-flex align-items-center justify-content-center border border-2 border-white rounded-circle" style="width:40px;height:40px">
+                            <i class="fas fa-chevron-down animacion-flotar"></i>
                         </div>
                     </a>
                 </div>
             </div>
         </section>
-        <section id="transmision" class="py-4 py-lg-5" aria-label="Sección de transmisión en vivo">
+        <section id="eventos" class="py-4 py-md-5" aria-labelledby="eventos-heading">
             <div class="container">
                 <div class="row justify-content-center mb-4">
                     <div class="col-12 col-lg-8 text-center">
-                        <h1 class="display-6 fw-bold mb-2" data-aos="fade-up">
-                            <i class="fa fa-broadcast-tower text-info me-2"></i>Transmisión en vivo
-                        </h1>
-                        <p class="lead text-body-secondary mx-auto" style="max-width:700px" data-aos="fade-up" data-aos-delay="50">Únete a nuestro servicio en tiempo real desde cualquier lugar.</p>
-                    </div>
-                </div>
-                <div class="row g-4">
-                    <div class="col-12 col-lg-8">
-                        <article class="card-premium h-100" data-aos="fade-up" data-aos-delay="100">
-                            <div class="ratio ratio-16x9 bg-black">
-                                <iframe id="youtube-live-embed"
-                                        src="https://www.youtube.com/embed/cbi06Gofjps"
-                                        title="Transmisión en vivo" 
-                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                        allowfullscreen loading="lazy">
-                                </iframe>
-                            </div>
-                            <div class="card-body p-3 p-md-4">
-                                <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 mb-4">
-                                    <span id="liveStatusBadge" class="badge d-none rounded-pill px-3 py-2 align-items-center gap-2 shadow-sm">
-                                        <i class="fas fa-circle fa-xs"></i>
-                                        <span id="liveStatusText" class="fw-bold tracking-wide">Cargando...</span>
-                                    </span>
-                                    <div class="text-body-secondary small fw-medium d-none align-items-center" id="viewerCountContainer">
-                                        <i class="fas fa-eye text-info me-2"></i>
-                                        <span id="viewerCount">--</span>
-                                        <span class="ms-1">espectadores</span>
-                                    </div>
-                                </div>
-                                <div class="row g-2 g-md-3">
-                                    <div class="col-6">
-                                        <a href="https://www.youtube.com/@IglesiaBautistadeMonterrey" target="_blank" rel="noopener noreferrer" class="btn btn-info text-white btn-md w-100 rounded-pill">
-                                            <i class="fab fa-youtube me-2"></i> Suscribirse
-                                        </a>
-                                    </div>
-                                    <div class="col-6">
-                                        <button id="shareBtn" class="btn btn-secondary btn-md w-100 rounded-pill" type="button" data-title="Último mensaje - IBMty" data-description="¡Hola! Te comparto el último mensaje de nuestra predicación. ¡Disfrútalo!">
-                                            <i class="fas fa-share-alt me-2"></i> Compartir
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </article>
-                    </div>
-                    <div class="col-12 col-lg-4">
-                        <aside class="card border-0 shadow-sm h-100 rounded-4" data-aos="fade-up" data-aos-delay="150">
-                            <div class="card-body p-3 p-md-4 d-flex flex-column">
-                                <h3 class="h5 fw-bold mb-4 text-body-emphasis border-bottom pb-3">Información del Servicio</h3>
-                                <div class="row row-cols-2 g-3 mb-4 flex-grow-1">
-                                    <div class="col">
-                                        <div class="d-flex flex-column justify-content-center align-items-center p-3 h-100 rounded-3 border border-light-subtle text-center">
-                                            <i class="fas fa-clock text-secondary fs-4 mb-2"></i>
-                                            <h6 class="fw-bold mb-1 small text-body">Horarios</h6>
-                                            <small class="text-body-secondary">Dom 11:00 AM</small>
-                                        </div>
-                                    </div>
-                                    <div class="col">
-                                        <div class="d-flex flex-column justify-content-center align-items-center p-3 h-100 rounded-3 border border-light-subtle text-center">
-                                            <i class="fas fa-bell text-secondary fs-4 mb-2"></i>
-                                            <h6 class="fw-bold mb-1 small text-body">Activa</h6>
-                                            <small class="text-body-secondary">Notificaciones</small>
-                                        </div>
-                                    </div>
-                                    <div class="col">
-                                        <div class="d-flex flex-column justify-content-center align-items-center p-3 h-100 rounded-3 border border-light-subtle text-center">
-                                            <i class="fas fa-users text-secondary fs-4 mb-2"></i>
-                                            <h6 class="fw-bold mb-1 small text-body">Comunidad</h6>
-                                            <small class="text-body-secondary">Para todos</small>
-                                        </div>
-                                    </div>
-                                    <div class="col">
-                                        <div class="d-flex flex-column justify-content-center align-items-center p-3 h-100 rounded-3 border border-light-subtle text-center">
-                                            <i class="fas fa-map-marker-alt text-secondary fs-4 mb-2"></i>
-                                            <h6 class="fw-bold mb-1 small text-body">Ubicación</h6>
-                                            <small class="text-body-secondary">MTY, NL</small>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </aside>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section id="fotos" class="py-4 py-lg-5" aria-labelledby="Galería de Fotos">
-            <div class="container">
-                <header class="text-center mb-4 mb-lg-5" data-aos="fade-up">
-                    <h1 id="titulo-fotos" class="display-6 fw-bold mb-3 text-body">
-                        <i class="fa-regular fa-images text-info me-2"></i>Galería de Fotos
-                    </h1>
-                    <p class="lead text-body-secondary mx-auto px-3" style="max-width:700px">Revive los mejores momentos de nuestra cantata navideña.</p>
-                </header>
-                <article class="card card-premium border-0 shadow-sm rounded-4 overflow-hidden bg-body-tertiary" data-aos="zoom-in-up" data-aos-delay="100">
-                    <div class="row g-0">
-                        <div class="col-12 col-md-5">
-                            <img src="assets/gif/Download_File.gif" alt="Animación de fotos" class="img-fluid w-100 h-100 object-fit-cover" style="min-height:280px" loading="lazy">
-                        </div>
-                        <div class="col-12 col-md-7 d-flex align-items-center">
-                            <div class="card-body p-4 p-xl-5">
-                                <div class="mb-4">
-                                    <h3 class="fw-bold mb-3 text-body">Descarga</h3>
-                                    <p class="text-body-secondary fs-5">Todas las fotografías ya están disponibles en nuestra carpeta de <strong>Google Drive</strong>.</p>
-                                </div>
-                                <ul class="list-unstyled mb-4 mb-md-5">
-                                    <li class="d-flex align-items-center mb-3">
-                                        <i class="fa-solid fa-circle-check text-info me-3 fs-5"></i>
-                                        <span class="text-body">Alta resolución</span>
-                                    </li>
-                                    <li class="d-flex align-items-center mb-3">
-                                        <i class="fa-solid fa-circle-check text-info me-3 fs-5"></i>
-                                        <span class="text-body">Acceso desde cualquier dispositivo</span>
-                                    </li>
-                                    <li class="d-flex align-items-center mb-0">
-                                        <i class="fa-solid fa-circle-check text-info me-3 fs-5"></i>
-                                        <span class="text-body">Sin costo y fácil de compartir</span>
-                                    </li>
-                                </ul>
-                                <div class="d-grid d-md-block text-center text-md-start">
-                                    <a href="https://drive.google.com/drive/folders/1JpRUaO8TdhXBfnkxy2VWULzpojByrfdr" target="_blank" rel="noopener noreferrer" class="btn btn-info btn-md text-white rounded-pill fw-bold shadow-sm px-4 py-3">
-                                        <i class="fa-brands fa-google-drive me-2"></i>Google Drive
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </article>
-            </div>
-        </section>
-        <section id="eventos" class="py-4 py-lg-5" aria-label="Sección de Eventos">
-            <div class="container">
-                <div class="row justify-content-center mb-3 mb-lg-4">
-                    <div class="col-12 col-lg-8 text-center">
-                        <h2 class="display-6 fw-bold mb-3 d-inline-block" data-aos="fade-up">
-                            <i class="fa fa-calendar-check text-info me-2"></i>Eventos
+                        <h2 id="eventos-heading" class="display-6 fw-bold mb-2 text-body-emphasis" data-aos="fade-up">
+                            <i class="fa fa-calendar-check me-2 text-info"></i>Eventos
                         </h2>
-                        <p class="lead text-body-secondary mx-auto" style="max-width:700px" data-aos="fade-up" data-aos-delay="50">Mantente al día con todas nuestras actividades y celebraciones especiales.</p>
+                        <p class="lead mx-auto text-body-secondary" style="max-width:700px" data-aos="fade-up" data-aos-delay="50">Mantente al día con nuestras actividades.</p>
                     </div>
                 </div>
                 <div class="row justify-content-center">
                     <div class="col-12 col-lg-10">
-                        <div class="swiper" id="eventos-swiper">
+                        <div id="eventos-swiper" class="swiper">
                             <div class="swiper-wrapper">
                                 <div class="swiper-slide">
                                     <article id="Evento0" class="carousel-card h-100">
-                                        <div class="position-absolute top-0 start-0 m-3 z-3">
-                                            <span class="badge bg-info fs-6 px-3 py-2 shadow">
+                                        <div class="position-absolute top-0 start-0 z-3 m-3">
+                                            <span class="badge px-3 py-2 shadow bg-info fs-6">
                                                 <i class="fas fa-check-circle me-1"></i>Concluido
                                             </span>
                                         </div>
                                         <div class="carousel-card-header carousel-card-header-image">
                                             <div class="ratio ratio-16x9">
-                                                <img src="assets/images/eventos/Evento0.webp" class="object-fit-cover" alt="Especial de Navidad" loading="lazy">
+                                                <img class="object-fit-cover" src="assets/images/eventos/Evento0.webp" alt="Especial de Navidad" loading="lazy">
                                             </div>
                                         </div>
                                         <div class="carousel-card-body no-avatar">
-                                            <div class="mb-1">
+                                            <div class="mb-3">
                                                 <h3 class="carousel-title">Especial de Navidad</h3>
                                                 <p class="carousel-description">Una cantata que celebra el nacimiento de Jesús con música, teatro y esperanza.</p>
                                             </div>
@@ -345,11 +213,11 @@
                                                 </div>
                                             </div>
                                             <div class="carousel-actions">
-                                                <a href="https://www.youtube.com/live/gz5g-GRFKe8" target="_blank" rel="noopener noreferrer" class="btn btn-info btn-md text-white rounded-pill btn-carousel-action">
+                                                <a class="btn btn-info btn-md btn-carousel-action px-4 py-2 text-white shadow-sm rounded-pill" href="https://www.youtube.com/live/gz5g-GRFKe8" target="_blank" rel="noopener noreferrer">
                                                     <i class="fab fa-youtube me-2"></i>Ver
                                                 </a>
-                                                <button type="button" aria-label="Compartir evento" class="btn-social btn-share" data-title="Especial de Navidad" data-description="¡Hola! Te invito a revivir la magia de nuestra Cantata de Navidad. ¡No te lo pierdas!" data-url="https://www.youtube.com/live/gz5g-GRFKe8" data-image="assets/images/eventos/Evento0.webp">
-                                                    <i class="fas fa-share-alt"></i>
+                                                <button class="btn btn-light d-flex justify-content-center align-items-center p-0 border shadow-sm rounded-circle btn-share" type="button" style="width:40px;height:40px" aria-label="Compartir" data-share data-share-type="link" data-title="Especial de Navidad: " data-description="✨ Revive la magia de nuestra Cantata de Navidad y compártela con alguien especial. ¡No te la pierdas!" data-url="https://www.youtube.com/live/gz5g-GRFKe8">
+                                                    <i class="fas fa-share-nodes text-secondary"></i>
                                                 </button>
                                             </div>
                                         </div>
@@ -359,11 +227,11 @@
                                     <article id="Evento1" class="carousel-card h-100">
                                         <div class="carousel-card-header carousel-card-header-image">
                                             <div class="ratio ratio-16x9">
-                                                <img src="assets/images/eventos/Evento1.webp" class="object-fit-cover" alt="Vistete de Diseñador" loading="lazy">
+                                                <img class="object-fit-cover" src="assets/images/eventos/Evento1.webp" alt="Love Fest" loading="lazy">
                                             </div>
                                         </div>
                                         <div class="carousel-card-body no-avatar">
-                                            <div class="mb-1">
+                                            <div class="mb-3">
                                                 <h3 class="carousel-title">Love Fest</h3>
                                                 <p class="carousel-description">¡Festeja con nosotros este Día del Amor y la Amistad! Ven a disfrutar de una tarde increíble con feria, boliche, show de magia, torito mecánico y muchas sorpresas más...</p>
                                             </div>
@@ -384,14 +252,14 @@
                                                 </div>
                                             </div>
                                             <div class="carousel-actions">
-                                                <a href="https://www.canva.com/design/DAG--WUCBWg/iseZJ41_IIGFYoVBrrdP5A/watch?utm_content=DAG--WUCBWg&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h5d5b195c7a" target="_blank" rel="noopener noreferrer" class="btn btn-info btn-md text-white rounded-pill btn-carousel-action">
+                                                <a class="btn btn-info btn-md btn-carousel-action px-4 py-2 text-white shadow-sm rounded-pill" href="https://www.canva.com/design/DAG--WUCBWg/iseZJ41_IIGFYoVBrrdP5A/watch?utm_content=DAG--WUCBWg&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h5d5b195c7a" target="_blank" rel="noopener noreferrer">
                                                     <i class="fa-solid fa-video me-2"></i>Video
                                                 </a>
-                                                <a href="https://www.instagram.com/iglesiabautistademonterrey?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" aria-label="Instagram" class="btn-social" target="_blank" rel="noopener noreferrer">
+                                                <a class="btn-social" href="https://www.instagram.com/p/DUHDHjwjryg/?utm_source=ig_web_button_share_sheet&igsh=MzRlODBiNWFlZA==" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
                                                     <i class="fab fa-instagram"></i>
                                                 </a>
-                                                <button type="button" aria-label="Compartir evento" class="btn-social btn-share" data-title="Love Fest" data-description="¡Hola! Te invito al Love Fest, un evento familiar increíble con feria, magia, premios y más. 15 Feb, 6:00 PM ¡Te esperamos!" data-url="https://www.ibmty.com/index.html#Evento1" data-image="assets/images/eventos/Evento1.webp">
-                                                    <i class="fas fa-share-alt"></i>
+                                                <button class="btn btn-light d-flex justify-content-center align-items-center p-0 border shadow-sm rounded-circle btn-share" type="button" style="width:40px;height:40px" aria-label="Compartir" data-share data-share-type="image" data-title="Love Fest: " data-description="❤️ Un evento familiar lleno de alegría y momentos especiales." data-url="https://www.ibmty.com/index.html#Evento1" data-image="assets/images/eventos/Evento1.webp">
+                                                    <i class="fas fa-share-nodes text-secondary"></i>
                                                 </button>
                                             </div>
                                         </div>
@@ -401,11 +269,11 @@
                                     <article id="Evento2" class="carousel-card h-100">
                                         <div class="carousel-card-header carousel-card-header-image">
                                             <div class="ratio ratio-16x9">
-                                                <img src="assets/images/eventos/Evento2.webp" class="object-fit-cover" alt="Vistete de Diseñador" loading="lazy">
+                                                <img class="object-fit-cover" src="assets/images/eventos/Evento2.webp" alt="Vistete de Diseñador" loading="lazy">
                                             </div>
                                         </div>
                                         <div class="carousel-card-body no-avatar">
-                                            <div class="mb-1">
+                                            <div class="mb-3">
                                                 <h3 class="carousel-title">Vistete de Diseñador</h3>
                                                 <p class="carousel-description">Conferencia para mujeres que buscan reencontrarse con la identidad y el diseño de Su Creador.</p>
                                             </div>
@@ -426,14 +294,14 @@
                                                 </div>
                                             </div>
                                             <div class="carousel-actions">
-                                                <a href="https://form.jotform.com/253278811749872" target="_blank" rel="noopener noreferrer" class="btn btn-info btn-md text-white rounded-pill btn-carousel-action">
+                                                <a class="btn btn-info btn-md btn-carousel-action px-4 py-2 text-white shadow-sm rounded-pill" href="https://form.jotform.com/253278811749872" target="_blank" rel="noopener noreferrer">
                                                     <i class="fa-solid fa-pen-to-square me-2"></i>Registro
                                                 </a>
-                                                <a href="https://www.instagram.com/vistetededisenador?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" aria-label="Instagram" class="btn-social" target="_blank" rel="noopener noreferrer">
+                                                <a class="btn-social" href="https://www.instagram.com/vistetededisenador?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
                                                     <i class="fab fa-instagram"></i>
                                                 </a>
-                                                <button type="button" aria-label="Compartir evento" class="btn-social btn-share" data-title="Vístete de Diseñador" data-description="¡Hola! Te invito a esta conferencia especial para mujeres sobre identidad y propósito. 7 Mar, 9:30 AM ¡Acompáñanos!" data-url="https://www.ibmty.com/index.html#Evento2" data-image="assets/images/eventos/Evento2.webp">
-                                                    <i class="fas fa-share-alt"></i>
+                                                <button class="btn btn-light d-flex justify-content-center align-items-center p-0 border shadow-sm rounded-circle btn-share" type="button" style="width:40px;height:40px" aria-label="Compartir" data-share data-share-type="image" data-title="Vístete de Diseñador: " data-description="🌸 Una conferencia para mujeres sobre identidad, propósito y diseño de Dios para tu vida. 7 de marzo · 9:30 AM. ¡Acompáñanos!" data-url="https://www.ibmty.com/index.html#Evento2" data-image="assets/images/eventos/Evento2.webp">
+                                                    <i class="fas fa-share-nodes text-secondary"></i>
                                                 </button>
                                             </div>
                                         </div>
@@ -443,12 +311,149 @@
                             <div class="swiper-button-prev"></div>
                             <div class="swiper-button-next"></div>
                         </div>
-                        <div class="text-center mt-4">
-                            <span class="badge bg-secondary rounded-pill">
+                        <div class="mt-3 mt-md-4 text-center">
+                            <span class="badge px-3 py-2 shadow-sm rounded-pill bg-secondary">
                                 <i class="fas fa-calendar-day me-1"></i>
                                 <span class="current-slide-display">1</span> / <span class="total-slides-display">2</span>
                             </span>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="transmision" class="py-4 py-md-5" aria-labelledby="transmision-heading">
+            <div class="container">
+                <div class="row justify-content-center mb-4">
+                    <div class="col-12 col-lg-8 text-center">
+                        <h2 id="transmision-heading" class="display-6 fw-bold mb-2 text-body-emphasis" data-aos="fade-up">
+                            <i class="fa fa-broadcast-tower me-2 text-info"></i>Transmisión en vivo
+                        </h2>
+                        <p class="lead mx-auto text-body-secondary" style="max-width:700px" data-aos="fade-up" data-aos-delay="50">Únete a nuestro servicio en tiempo real desde cualquier lugar.</p>
+                    </div>
+                </div>
+                <div class="row g-3 g-md-4">
+                    <div class="col-12 col-lg-8">
+                        <article class="card h-100 overflow-hidden border-0 shadow rounded-4" data-aos="fade-up" data-aos-delay="100">
+                            <h3 class="visually-hidden">Transmisión en vivo</h3>
+                            <div class="ratio ratio-16x9 bg-black">
+                                <iframe id="youtube-live-embed" src="https://www.youtube.com/embed/RXTBfFzUyp8" title="Transmisión en vivo" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy">
+                                </iframe>
+                            </div>
+                            <div class="card-body p-3 p-md-4">
+                                <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-3">
+                                    <span id="liveStatusBadge" class="badge d-none align-items-center gap-2 px-3 py-2 shadow-sm rounded-pill">
+                                        <i class="fas fa-circle fa-xs"></i>
+                                        <span id="liveStatusText" class="fw-bold">Cargando...</span>
+                                    </span>
+                                    <div id="viewerCountContainer" class="d-none align-items-center small fw-medium text-body-secondary">
+                                        <i class="fas fa-eye me-2 text-info"></i>
+                                        <span id="viewerCount">--</span>
+                                        <span class="ms-1">espectadores</span>
+                                    </div>
+                                </div>
+                                <div class="row g-2 g-md-3">
+                                    <div class="col-6">
+                                        <a class="btn btn-info btn-md d-flex justify-content-center align-items-center w-100 px-2 px-md-4 py-2 text-white shadow-sm rounded-pill" href="https://www.youtube.com/channel/UCfhSTnqLb6vFO28eNm_n0qw" aria-label="Suscribirse en YouTube" target="_blank" rel="noopener noreferrer">
+                                            <i class="fab fa-youtube me-2"></i>
+                                            <span>Suscribirse</span>
+                                        </a>
+                                    </div>
+                                    <div class="col-6">
+                                        <button id="shareBtn" class="btn btn-md btn-secondary d-flex justify-content-center align-items-center w-100 px-2 px-md-4 py-2 shadow-sm rounded-pill" type="button" data-share data-title="Título" data-description="Descripción" aria-label="Compartir">
+                                            <i class="fas fa-share-nodes me-2"></i>
+                                            <span>Compartir</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                    <div class="col-12 col-lg-4">
+                        <aside class="card h-100 border-0 shadow-sm rounded-4 bg-body" data-aos="fade-up" data-aos-delay="150">
+                            <div class="card-body d-flex flex-column p-3 p-md-4">
+                                <h3 class="h5 fw-bold pb-3 mb-3 border-bottom text-body-emphasis">Información del Servicio</h3>
+                                <div class="row row-cols-2 flex-grow-1 g-3">
+                                    <div class="col">
+                                        <div class="d-flex flex-column justify-content-center align-items-center h-100 p-3 text-center shadow-sm rounded-4 bg-body-tertiary">
+                                            <i class="fas fa-clock mb-2 fs-4 text-info"></i>
+                                            <h4 class="fw-bold small mb-1 text-body-emphasis">Horarios</h4>
+                                            <small class="text-body-secondary">Dom 11:00 AM</small>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="d-flex flex-column justify-content-center align-items-center h-100 p-3 text-center shadow-sm rounded-4 bg-body-tertiary">
+                                            <i class="fas fa-bell mb-2 fs-4 text-info"></i>
+                                            <h4 class="fw-bold small mb-1 text-body-emphasis">Activa</h4>
+                                            <small class="text-body-secondary">Notificaciones</small>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="d-flex flex-column justify-content-center align-items-center h-100 p-3 text-center shadow-sm rounded-4 bg-body-tertiary">
+                                            <i class="fas fa-users mb-2 fs-4 text-info"></i>
+                                            <h4 class="fw-bold small mb-1 text-body-emphasis">Comunidad</h4>
+                                            <small class="text-body-secondary">Para todos</small>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="d-flex flex-column justify-content-center align-items-center h-100 p-3 text-center shadow-sm rounded-4 bg-body-tertiary">
+                                            <i class="fas fa-map-marker-alt mb-2 fs-4 text-info"></i>
+                                            <h4 class="fw-bold small mb-1 text-body-emphasis">Ubicación</h4>
+                                            <small class="text-body-secondary">MTY, NL</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </aside>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="fotos" class="py-4 py-md-5" aria-labelledby="fotos-heading">
+            <div class="container">
+                <div class="row justify-content-center mb-4">
+                    <div class="col-12 col-lg-8 text-center">
+                        <h2 id="fotos-heading" class="display-6 fw-bold mb-2 text-body-emphasis" data-aos="fade-up">
+                            <i class="fa-regular fa-images me-2 text-info"></i>Galería de Fotos
+                        </h2>
+                        <p class="lead mx-auto text-body-secondary" style="max-width:700px" data-aos="fade-up" data-aos-delay="50">Revive momentos especiales de nuestra cantata navideña.</p>
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-12 col-lg-10">
+                        <article class="card overflow-hidden border-0 shadow rounded-4 bg-body" data-aos="zoom-in-up" data-aos-delay="100">
+                            <div class="row g-0">
+                                <div class="col-12 col-md-5">
+                                    <img class="img-fluid object-fit-cover w-100 h-100" src="assets/gif/Download_File.gif" alt="Animación de descarga de fotos" loading="lazy" style="min-height:280px">
+                                </div>
+                                <div class="col-12 col-md-7 d-flex align-items-center">
+                                    <div class="card-body p-3 p-md-4 p-lg-5">
+                                        <div class="mb-3 mb-md-4">
+                                            <h3 class="h4 fw-bold mb-3 text-body-emphasis">Descarga</h3>
+                                            <p class="fs-6 fs-md-5 text-body-secondary">Todas las fotografías ya están disponibles en nuestra carpeta de <strong>Google Drive</strong>.</p>
+                                        </div>
+                                        <ul class="list-unstyled mb-3 mb-md-4">
+                                            <li class="d-flex align-items-center mb-2 mb-md-3">
+                                                <i class="fa-solid fa-circle-check me-3 fs-5 text-info"></i>
+                                                <span class="text-body-emphasis">Alta resolución</span>
+                                            </li>
+                                            <li class="d-flex align-items-center mb-2 mb-md-3">
+                                                <i class="fa-solid fa-circle-check me-3 fs-5 text-info"></i>
+                                                <span class="text-body-emphasis">Acceso desde cualquier dispositivo</span>
+                                            </li>
+                                            <li class="d-flex align-items-center mb-0">
+                                                <i class="fa-solid fa-circle-check me-3 fs-5 text-info"></i>
+                                                <span class="text-body-emphasis">Sin costo y fácil de compartir</span>
+                                            </li>
+                                        </ul>
+                                        <div class="d-grid d-md-block">
+                                            <a class="btn btn-info btn-md fw-bold px-4 py-2 text-white shadow-sm rounded-pill" href="https://drive.google.com/drive/folders/1JpRUaO8TdhXBfnkxy2VWULzpojByrfdr" target="_blank" rel="noopener noreferrer">
+                                                <i class="fa-brands fa-google-drive me-2"></i>Google Drive
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
                     </div>
                 </div>
             </div>
@@ -461,7 +466,7 @@
                 <i class="fas fa-times"></i>
             </button>
             <h3>Instalar en iPhone o iPad</h3>
-            <ol type="1" class="ios-popup-steps">
+            <ol class="ios-popup-steps" type="1">
                 <li>
                     <span>Presiona <strong>Compartir</strong></span>
                     <i class="fa-solid fa-arrow-up-from-bracket"></i>
@@ -479,71 +484,71 @@
     </div>
 
     <button id="install-btn" class="install-floating-btn" type="button" aria-label="Instalar aplicación web">
-        <i class="fas fa-download" aria-hidden="true"></i> <span>Instala la app</span>
+        <i class="fas fa-download" aria-hidden="true"></i>
+        <span>Instala la app</span>
     </button>
 
-    <a href="https://wa.me/528132503031?text=Hola,%20me%20interesa%20recibir%20informaci%c3%b3n%20de%20la%20iglesia"
-        class="whatsapp-floating-btn" target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp">
+    <a class="whatsapp-floating-btn" href="https://wa.me/528132503031?text=Hola,%20me%20interesa%20recibir%20informaci%c3%b3n%20de%20la%20iglesia" aria-label="Contactar por WhatsApp" target="_blank" rel="noopener noreferrer">
         <i class="fab fa-whatsapp"></i>
     </a>
 
     <footer class="footer pt-4 pb-3 border-top">
         <div class="container">
-            <div class="row gy-4">
+            <div class="row gy-3 gy-md-4">
                 <div class="col-12 col-lg-4 text-center text-lg-start">
-                    <h5 class="fw-bold mb-3 text-body-emphasis">
-                        <i class="fa-solid fa-thumbs-up me-2 text-info"></i>Síguenos
-                    </h5>
-                    <p class="text-body-secondary mb-3">Mantente conectado con nosotros</p>
+                    <h2 class="h5 fw-bold mb-3 text-body-emphasis">
+                        <i class="fa-solid fa-thumbs-up text-info me-2"></i>Síguenos
+                    </h2>
+                    <p class="mb-3 text-body-secondary">Mantente conectado con nosotros</p>
                     <div class="social-icons d-flex justify-content-center justify-content-lg-start gap-2">
-                        <a href="https://www.facebook.com/IBMty/" aria-label="Facebook" class="btn-social" target="_blank">
+                        <a class="btn-social" href="https://www.facebook.com/IBMty/" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
                             <i class="fab fa-facebook-f"></i>
                         </a>
-                        <a href="https://www.instagram.com/iglesiabautistademonterrey?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" aria-label="Instagram" class="btn-social" target="_blank">
+                        <a class="btn-social" href="https://www.instagram.com/iglesiabautistademonterrey?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
                             <i class="fab fa-instagram"></i>
                         </a>
-                        <a href="https://www.youtube.com/channel/UCfhSTnqLb6vFO28eNm_n0qw" aria-label="YouTube" class="btn-social" target="_blank">
+                        <a class="btn-social" href="https://www.youtube.com/channel/UCfhSTnqLb6vFO28eNm_n0qw" aria-label="YouTube" target="_blank" rel="noopener noreferrer">
                             <i class="fab fa-youtube"></i>
                         </a>
-                        <a href="mailto:oficina@ibmty.com" aria-label="Mail" class="btn-social">
+                        <a class="btn-social" href="mailto:oficina@ibmty.com" aria-label="Correo electrónico">
                             <i class="fa-regular fa-envelope"></i>
                         </a>
                     </div>
                 </div>
                 <div class="col-6 col-lg-4">
-                    <h5 class="fw-bold mb-3 text-body-emphasis">
-                        <i class="fa-solid fa-id-badge me-2 text-info"></i>Contacto
-                    </h5>
-                    <ul class="list-unstyled text-body-secondary small">
+                    <h2 class="h5 fw-bold mb-3 text-body-emphasis">
+                        <i class="fa-solid fa-id-badge text-info me-2"></i>Contacto
+                    </h2>
+                    <ul class="list-unstyled small text-body-secondary">
                         <li class="mb-2">
-                            <a href="https://www.google.com/maps?q=Iglesia+Bautista+de+Monterrey" target="_blank" class="text-decoration-none text-reset">
+                            <a class="text-decoration-none text-reset hover-link" href="https://www.google.com/maps?q=Iglesia+Bautista+de+Monterrey" target="_blank" rel="noopener noreferrer">
                                 <i class="fas fa-map-marker-alt me-2"></i>Av. Eugenio Garza Sada 6309, MTY.
                             </a>
                         </li>
                         <li class="mb-2">
-                            <a href="tel:+528183496161" class="text-decoration-none text-reset">
+                            <a class="text-decoration-none text-reset hover-link" href="tel:+528183496161">
                                 <i class="fas fa-phone-alt me-2"></i>81 83 49 61 61
                             </a>
                         </li>
                         <li>
-                            <a href="tel:+528183496263" class="text-decoration-none text-reset">
+                            <a class="text-decoration-none text-reset hover-link" href="tel:+528183496263">
                                 <i class="fas fa-phone-alt me-2"></i>81 83 49 62 63
                             </a>
                         </li>
                     </ul>
                 </div>
                 <div class="col-6 col-lg-4">
-                    <h5 class="fw-bold mb-3 text-body-emphasis">
-                        <i class="fas fa-external-link-alt me-2 text-info"></i>Enlaces
-                    </h5>
-                    <ul class="list-unstyled text-body-secondary small">
+                    <h2 class="h5 fw-bold mb-3 text-body-emphasis">
+                        <i class="fas fa-external-link-alt text-info me-2"></i>Enlaces
+                    </h2>
+                    <ul class="list-unstyled small text-body-secondary">
                         <li class="mb-2">
-                            <a href="https://www.ribbi.org/" class="text-decoration-none text-reset hover-link" target="_blank">
+                            <a class="text-decoration-none text-reset hover-link" href="https://www.ribbi.org/" target="_blank" rel="noopener noreferrer">
                                 <i class="fa-solid fa-network-wired me-2"></i>RIBBI
                             </a>
                         </li>
                         <li>
-                            <a href="https://elsaucillo.org/" class="text-decoration-none text-reset hover-link" target="_blank">
+                            <a class="text-decoration-none text-reset hover-link" href="https://elsaucillo.org/" target="_blank" rel="noopener noreferrer">
                                 <i class="fa-solid fa-mountain-sun me-2"></i>El Saucillo
                             </a>
                         </li>
@@ -551,30 +556,32 @@
                 </div>
             </div>
         </div>
-        <div class="footer-bottom mt-3 pt-3 border-top border-secondary-subtle">
+        <div class="footer-bottom pt-3 mt-3 border-top">
             <div class="container">
                 <div class="row align-items-center small text-body-secondary">
                     <div class="col-md-4 text-center text-md-start mb-2 mb-md-0">
-                        <a href="privacidad.html" class="text-reset text-decoration-none">Aviso de Privacidad</a>
+                        <a class="text-decoration-none text-reset hover-link" href="privacidad.html">Aviso de Privacidad</a>
                     </div>
-                    <div class="col-md-4 text-center mb-2 mb-md-0">&copy; <span id="currentYear"></span> IBMty.</div>
+                    <div class="col-md-4 text-center mb-2 mb-md-0">
+                        &copy; <span id="currentYear"></span> IBMty.
+                    </div>
                     <div class="col-md-4 text-center text-md-end">Hecho con
                         <i id="heartIcon" class="fas fa-heart text-danger" style="cursor:pointer"></i> para
-                        <a href="salvacion.html" class="text-reset text-decoration-none">Dios</a>
+                        <a class="text-reset text-decoration-none" href="salvacion.html">Dios</a>
                     </div>
                 </div>
             </div>
-            <div class="modal fade" id="developers" tabindex="-1" aria-hidden="true">
+            <div id="developers" class="modal fade" tabindex="-1" role="dialog" aria-modal="true" aria-labelledby="developersLabel" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content text-center">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="developersLabel">Desarrolladores</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                            <h3 id="developersLabel" class="modal-title h4">Desarrolladores</h3>
+                            <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Cerrar"></button>
                         </div>
                         <div class="modal-body">
-                            <p>H.G</p>
-                            <p>E.A.R.G</p>
-                            <p>D.A.R.M</p>
+                            <p class="mb-2">H.G</p>
+                            <p class="mb-2">E.A.R.G</p>
+                            <p class="mb-0">D.A.R.M</p>
                         </div>
                     </div>
                 </div>
@@ -582,18 +589,18 @@
         </div>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js" defer></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js" integrity="sha512-A7AYk1fGKX6S2SsHywmPkrnzTZHrgiVT7GcQkLGDe2ev0aWb8zejytzS8wjo7PGEXKqJOrjQ4oORtnimIRZBtw==" crossorigin="anonymous" defer></script>
-    <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
-    <script src="context/utils.js" defer></script>
-    <script src="context/sw-registration.js" defer></script>
-    <script src="context/onesignal-init.js" defer></script>
-    <script src="context/carousel-manager.js" defer></script>
-    <script src="context/parallax.js" defer></script>
-    <script src="context/YouTubeManager.js" defer></script>
-    <script src="context/btn-install.js" defer></script>
-    <script src="context/analytics.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous" defer="defer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js" defer="defer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js" integrity="sha512-A7AYk1fGKX6S2SsHywmPkrnzTZHrgiVT7GcQkLGDe2ev0aWb8zejytzS8wjo7PGEXKqJOrjQ4oORtnimIRZBtw==" crossorigin="anonymous" defer="defer"></script>
+    <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer="defer"></script>
+    <script src="context/utils.js" defer="defer"></script>
+    <script src="context/sw-registration.js" defer="defer"></script>
+    <script src="context/onesignal-init.js" defer="defer"></script>
+    <script src="context/carousel-manager.js" defer="defer"></script>
+    <script src="context/parallax.js" defer="defer"></script>
+    <script src="context/YouTubeManager.js" defer="defer"></script>
+    <script src="context/btn-install.js" defer="defer"></script>
+    <script src="context/analytics.js" defer="defer"></script>
 </body>
 
 </html>

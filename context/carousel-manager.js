@@ -80,7 +80,6 @@ class CarouselManager {
             }
         }
         this.swiper = new Swiper(this.container, config);
-        this.initShareButtons()
     }
     updateIndicators(swiper) {
         const container = this.options.indicatorContainer ? document.querySelector(this.options.indicatorContainer) : this.container.parentElement;
@@ -89,41 +88,6 @@ class CarouselManager {
         const total = container.querySelector(".total-slides-display");
         if (current) current.textContent = swiper.realIndex + 1;
         if (total) total.textContent = this.container.querySelectorAll(".swiper-slide:not(.swiper-slide-duplicate)").length
-    }
-    initShareButtons() {
-        this.container.addEventListener("click", (e) => {
-            const btn = e.target.closest(".btn-share");
-            if (!btn) return;
-            e.preventDefault();
-            e.stopPropagation();
-            const title = btn.dataset.title || "";
-            const text = btn.dataset.description || "";
-            const url = btn.dataset.url || window.location.href;
-            let imageUrl = btn.dataset.image;
-            if (!imageUrl) {
-                const card = btn.closest(".carousel-card");
-                if (card) {
-                    const img = card.querySelector(".carousel-card-header img");
-                    if (img && img.src) {
-                        imageUrl = img.src
-                    }
-                }
-            }
-            if (typeof shareContent === 'function') {
-                shareContent(title, text, url, imageUrl);
-            } else {
-                console.warn('ShareManager not loaded, falling back to clipboard');
-                this.fallbackShare(url);
-            }
-        });
-    }
-
-    fallbackShare(url) {
-        if (navigator.clipboard) {
-            navigator.clipboard.writeText(url).then(() => this.showToast("Enlace copiado"));
-        } else {
-            prompt("Copiar enlace:", url);
-        }
     }
     showToast(msg) {
         const t = document.createElement('div');

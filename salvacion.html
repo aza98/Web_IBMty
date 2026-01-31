@@ -51,115 +51,113 @@
 </head>
 
 <body class="no-navbar-padding">
-    <nav class="navbar navbar-expand-lg fixed-top floating-nav">
+    <nav class="navbar navbar-expand-lg fixed-top floating-nav" aria-label="Navegación principal">
         <div class="container-fluid">
-            <button type="button" class="btn theme-toggle d-lg-none me-2" onclick="toggleTheme()" aria-label="Cambiar tema">
-                <i class="fas fa-sun" id="mobile-theme-icon"></i>
+            <button class="btn theme-toggle d-lg-none me-2" type="button" aria-label="Cambiar tema de color" onclick="toggleTheme()">
+                <i id="mobile-theme-icon" class="fas fa-sun" aria-hidden="true"></i>
             </button>
-            <a class="navbar-brand" href="index.html">
+            <a class="navbar-brand" href="index.html" aria-label="Ir a página de inicio">
                 <picture>
-                    <source media="(min-width: 992px)" srcset="assets/icons/IBMty_Logo_Desktop.png">
-                    <img src="assets/icons/IBMty_Logo_Mobile.png" alt="IBMty Logo" class="brand-img" width="50" height="50">
+                    <source media="(min-width: 992px)" srcset="assets/icons/IBMty_Logo_Desktop.png"><img class="brand-img" src="assets/icons/IBMty_Logo_Mobile.png" alt="Logotipo Iglesia Bautista de Monterrey" width="50" height="50">
                 </picture>
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Navegación">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Abrir menú de navegación">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
+            <div id="navbarNav" class="collapse navbar-collapse">
                 <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" href="index.html">
-                            <i class="fas fa-home"></i> Inicio
+                        <a class="nav-link" href="index.html" aria-label="Ir a Inicio">
+                            <i class="fas fa-home" aria-hidden="true"></i> Inicio
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="nosotros.html">
-                            <i class="fas fa-church"></i> Nosotros
+                        <a class="nav-link" href="nosotros.html" aria-label="Ir a Nosotros">
+                            <i class="fas fa-church" aria-hidden="true"></i> Nosotros
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="ministerios.html">
-                            <i class="fas fa-users"></i> Ministerios
+                        <a class="nav-link" href="ministerios.html" aria-label="Ir a Ministerios">
+                            <i class="fas fa-users" aria-hidden="true"></i> Ministerios
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="salvacion.html">
-                            <i class="fas fa-cross"></i> Salvación
+                        <a class="nav-link active" href="salvacion.html" aria-current="page" aria-label="Ir a Salvación">
+                            <i class="fas fa-cross" aria-hidden="true"></i> Salvación
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="donativo.html">
-                            <i class="fas fa-donate"></i> Donativo
+                        <a class="nav-link" href="donativo.html" aria-label="Ir a Donativo">
+                            <i class="fas fa-donate" aria-hidden="true"></i> Donativo
                         </a>
                     </li>
                 </ul>
-                <button type="button" class="btn theme-toggle d-none d-lg-flex ms-2" onclick="toggleTheme()" aria-label="Cambiar tema">
-                    <i class="fas fa-sun" id="desktop-theme-icon"></i>
+                <button class="btn theme-toggle d-none d-lg-flex ms-2" type="button" aria-label="Cambiar tema de color" onclick="toggleTheme()">
+                    <i id="desktop-theme-icon" class="fas fa-sun" aria-hidden="true"></i>
                 </button>
             </div>
         </div>
     </nav>
 
     <main>
-        <section class="hero-salvacion d-flex flex-column justify-content-center align-items-center text-center px-3 py-4 py-lg-5" aria-label="Introducción al plan de salvación">
+        <section id="hero-salvacion" class="hero-salvacion position-relative d-flex flex-column justify-content-center align-items-center py-4 py-md-5 text-center" aria-labelledby="hero-salvacion-heading">
             <div class="container position-relative z-1" data-aos="fade-down" data-aos-delay="200">
-                <span class="badge bg-info-subtle text-info-emphasis rounded-pill px-3 py-2 mb-3 animate__animated animate__fadeIn">El mensaje más importante</span>
-                <h1 class="display-3 fw-bold text-body-emphasis mb-3 mb-md-4">
-                    Conoce el plan de Dios<br><span class="text-info">para tu vida</span>
-                </h1>
-                <p class="lead text-body-secondary mb-4 mb-md-5 mx-auto" style="max-width:700px">
+                <span class="badge mb-3 px-3 py-2 rounded-pill bg-info-subtle text-info-emphasis animate__animated animate__fadeIn">El mensaje más importante</span>
+                <h2 id="hero-salvacion-heading" class="display-3 fw-bold mb-3 mb-md-4 text-body-emphasis">Conoce el plan de Dios<br><span class="text-info">para tu vida</span></h2>
+                <p class="lead mx-auto mb-3 mb-md-4 text-body-secondary" style="max-width:700px">
                     ¡Dios te ama y tiene un plan genial para ti! Al enviar a su Hijo Jesús a la cruz, pagó un precio altísimo para
                     ofrecernos un regalo único.<br><strong>¿Te animas a aceptar este regalo?</strong>
                 </p>
-                <div class="text-center mt-4 mt-md-5">
-                    <a href="#salvation-steps" class="d-inline-flex flex-column align-items-center text-decoration-none text-body-secondary" style="opacity:.6" aria-label="Ir a Pasos de Salvación">
-                        <small class="text-uppercase fw-light mb-2 text-muted">Descubre más,<br>¡desliza hacia abajo!</small>
-                        <div class="border border-2 border-secondary rounded-circle p-2 d-flex align-items-center justify-content-center" style="width:40px;height:40px">
+                <div class="mt-3 mt-md-4 text-center">
+                    <a class="d-inline-flex flex-column align-items-center text-decoration-none text-body-secondary" style="opacity:.6" href="#salvation-steps" aria-label="Ir a Pasos de Salvación">
+                        <small class="mb-2 fw-light text-uppercase" style="font-size:.7rem">Desliza para descubrir</small>
+                        <div class="d-flex justify-content-center align-items-center p-2 border border-2 border-secondary rounded-circle" style="width:40px;height:40px">
                             <i class="fas fa-chevron-down" aria-hidden="true"></i>
                         </div>
                     </a>
                 </div>
             </div>
         </section>
-        <section id="salvation-steps" class="timeline-section overflow-hidden py-4 py-lg-5">
+        <section id="salvation-steps" class="timeline-section overflow-hidden py-4 py-md-5" aria-labelledby="salvation-steps-heading">
             <div class="container position-relative">
+                <h2 id="salvation-steps-heading" class="visually-hidden">Pasos para la salvación</h2>
                 <div class="timeline-line"></div>
                 <div class="row timeline-row align-items-center" data-aos="fade-up" data-step="1">
                     <div class="col-lg-5 order-2 order-lg-1 timeline-content text-lg-end">
                         <div class="timeline-card">
-                            <h2 class="timeline-title">Reconoce tu condición</h2>
-                            <p class="timeline-description">Necesitas reconocer que, como todos los seres humanos, has fallado y eres pecador.</p>
-                            <div class="step-image-container mt-3">
-                                <img src="assets/images/salvacion/pecador.png" class="img-fluid step-image" alt="Ilustración de corazón roto">
+                            <h3 class="timeline-title text-body-emphasis">Reconoce tu condición</h3>
+                            <p class="timeline-description text-body-secondary">Necesitas reconocer que, como todos los seres humanos, has fallado y eres pecador.</p>
+                            <div class="mt-3 step-image-container">
+                                <img class="img-fluid step-image rounded-4" src="assets/images/salvacion/pecador.png" alt="Ilustración de corazón roto" loading="lazy">
                             </div>
-                            <figure class="timeline-blockquote mt-3">
+                            <figure class="mt-3 timeline-blockquote">
                                 <blockquote class="blockquote">
-                                    <p class="fst-italic">"Por cuanto todos pecaron, y están destituidos de la gloria de Dios."</p>
+                                    <p class="fst-italic text-body-emphasis">"Por cuanto todos pecaron, y están destituidos de la gloria de Dios."</p>
                                 </blockquote>
                                 <figcaption class="blockquote-footer">Romanos 3:23</figcaption>
                             </figure>
                         </div>
                     </div>
-                    <div class="col-lg-2 order-1 order-lg-2 d-flex justify-content-center position-relative z-1">
-                        <div class="timeline-badge">1</div>
+                    <div class="col-lg-2 order-1 order-lg-2 position-relative z-1 d-flex justify-content-center">
+                        <div class="timeline-badge shadow-sm">1</div>
                     </div>
                     <div class="col-lg-5 order-3 order-lg-3"></div>
                 </div>
                 <div class="row timeline-row align-items-center" data-aos="fade-up" data-step="2">
                     <div class="col-lg-5 order-3 order-lg-1"></div>
-                    <div class="col-lg-2 order-1 order-lg-2 d-flex justify-content-center position-relative z-1">
-                        <div class="timeline-badge">2</div>
+                    <div class="col-lg-2 order-1 order-lg-2 position-relative z-1 d-flex justify-content-center">
+                        <div class="timeline-badge shadow-sm">2</div>
                     </div>
                     <div class="col-lg-5 order-2 order-lg-3 timeline-content text-lg-start">
                         <div class="timeline-card">
-                            <h2 class="timeline-title">Entiende la consecuencia</h2>
-                            <p class="timeline-description">El pecado tiene un costo espiritual alto: la separación de Dios, que es la muerte espiritual.</p>
-                            <div class="step-image-container mt-3">
-                                <img src="assets/images/salvacion/paga.png" class="img-fluid step-image" alt="Ilustración de balanza">
+                            <h3 class="timeline-title text-body-emphasis">Entiende la consecuencia</h3>
+                            <p class="timeline-description text-body-secondary">El pecado tiene un costo espiritual alto: la separación de Dios, que es la muerte espiritual.</p>
+                            <div class="mt-3 step-image-container">
+                                <img class="img-fluid step-image rounded-4" src="assets/images/salvacion/paga.png" alt="Ilustración de balanza" loading="lazy">
                             </div>
-                            <figure class="timeline-blockquote mt-3">
+                            <figure class="mt-3 timeline-blockquote">
                                 <blockquote class="blockquote">
-                                    <p class="fst-italic">"Porque la paga del pecado es muerte..."</p>
+                                    <p class="fst-italic text-body-emphasis">"Porque la paga del pecado es muerte..."</p>
                                 </blockquote>
                                 <figcaption class="blockquote-footer">Romanos 6:23a</figcaption>
                             </figure>
@@ -169,39 +167,39 @@
                 <div class="row timeline-row align-items-center" data-aos="fade-up" data-step="3">
                     <div class="col-lg-5 order-2 order-lg-1 timeline-content text-lg-end">
                         <div class="timeline-card">
-                            <h2 class="timeline-title">El regalo de Dios</h2>
-                            <p class="timeline-description">Pero Dios no nos dejó sin esperanza. Él quiere darte vida eterna totalmente gratis.</p>
-                            <div class="step-image-container mt-3">
-                                <img src="assets/images/salvacion/regalo.png" class="img-fluid step-image" alt="Ilustración de regalo">
+                            <h3 class="timeline-title text-body-emphasis">El regalo de Dios</h3>
+                            <p class="timeline-description text-body-secondary">Pero Dios no nos dejó sin esperanza. Él quiere darte vida eterna totalmente gratis.</p>
+                            <div class="mt-3 step-image-container">
+                                <img class="img-fluid step-image rounded-4" src="assets/images/salvacion/regalo.png" alt="Ilustración de regalo" loading="lazy">
                             </div>
-                            <figure class="timeline-blockquote mt-3">
+                            <figure class="mt-3 timeline-blockquote">
                                 <blockquote class="blockquote">
-                                    <p class="fst-italic">"...mas la dádiva de Dios es vida eterna en Cristo Jesús Señor nuestro."</p>
+                                    <p class="fst-italic text-body-emphasis">"...mas la dádiva de Dios es vida eterna en Cristo Jesús Señor nuestro."</p>
                                 </blockquote>
                                 <figcaption class="blockquote-footer">Romanos 6:23b</figcaption>
                             </figure>
                         </div>
                     </div>
-                    <div class="col-lg-2 order-1 order-lg-2 d-flex justify-content-center position-relative z-1">
-                        <div class="timeline-badge">3</div>
+                    <div class="col-lg-2 order-1 order-lg-2 position-relative z-1 d-flex justify-content-center">
+                        <div class="timeline-badge shadow-sm">3</div>
                     </div>
                     <div class="col-lg-5 order-3 order-lg-3"></div>
                 </div>
                 <div class="row timeline-row align-items-center" data-aos="fade-up" data-step="4">
                     <div class="col-lg-5 order-3 order-lg-1"></div>
-                    <div class="col-lg-2 order-1 order-lg-2 d-flex justify-content-center position-relative z-1">
-                        <div class="timeline-badge">4</div>
+                    <div class="col-lg-2 order-1 order-lg-2 position-relative z-1 d-flex justify-content-center">
+                        <div class="timeline-badge shadow-sm">4</div>
                     </div>
                     <div class="col-lg-5 order-2 order-lg-3 timeline-content text-lg-start">
                         <div class="timeline-card">
-                            <h2 class="timeline-title">Acepta a Jesús</h2>
-                            <p class="timeline-description">No es por obras, es por fe. Acepta a Cristo Jesús como tu Salvador personal.</p>
-                            <div class="step-image-container mt-3">
-                                <img src="assets/images/salvacion/Jesus_Salvador.png" class="img-fluid step-image" alt="Ilustración de Jesús">
+                            <h3 class="timeline-title text-body-emphasis">Acepta a Jesús</h3>
+                            <p class="timeline-description text-body-secondary">No es por obras, es por fe. Acepta a Cristo Jesús como tu Salvador personal.</p>
+                            <div class="mt-3 step-image-container">
+                                <img class="img-fluid step-image rounded-4" src="assets/images/salvacion/Jesus_Salvador.png" alt="Ilustración de Jesús" loading="lazy">
                             </div>
-                            <figure class="timeline-blockquote mt-3">
+                            <figure class="mt-3 timeline-blockquote">
                                 <blockquote class="blockquote">
-                                    <p class="fst-italic">"Mas a todos los que le recibieron, a los que creen en su nombre, les dio potestad de ser hechos hijos de Dios."</p>
+                                    <p class="fst-italic text-body-emphasis">"Mas a todos los que le recibieron, a los que creen en su nombre, les dio potestad de ser hechos hijos de Dios."</p>
                                 </blockquote>
                                 <figcaption class="blockquote-footer">Juan 1:12</figcaption>
                             </figure>
@@ -211,44 +209,44 @@
                 <div class="row timeline-row align-items-center" data-aos="fade-up" data-step="5">
                     <div class="col-lg-5 order-2 order-lg-1 timeline-content text-lg-end">
                         <div class="timeline-card">
-                            <h2 class="timeline-title">Abre la puerta</h2>
-                            <p class="timeline-description">Jesús es un caballero; Él toca a la puerta de tu corazón, pero tú debes abrirle.</p>
-                            <div class="step-image-container mt-3">
-                                <img src="assets/images/salvacion/puerta.png" class="img-fluid step-image" alt="Ilustración de puerta abierta">
+                            <h3 class="timeline-title text-body-emphasis">Abre la puerta</h3>
+                            <p class="timeline-description text-body-secondary">Jesús es un caballero; Él toca a la puerta de tu corazón, pero tú debes abrirle.</p>
+                            <div class="mt-3 step-image-container">
+                                <img class="img-fluid step-image rounded-4" src="assets/images/salvacion/puerta.png" alt="Ilustración de puerta abierta" loading="lazy">
                             </div>
-                            <figure class="timeline-blockquote mt-3">
+                            <figure class="mt-3 timeline-blockquote">
                                 <blockquote class="blockquote">
-                                    <p class="fst-italic">"He aquí, yo estoy a la puerta y llamo: si alguno oye mi voz y abre la puerta, entraré a él, y cenaré con él, y él conmigo."</p>
+                                    <p class="fst-italic text-body-emphasis">"He aquí, yo estoy a la puerta y llamo: si alguno oye mi voz y abre la puerta, entraré a él, y cenaré con él, y él conmigo."</p>
                                 </blockquote>
                                 <figcaption class="blockquote-footer">Apocalipsis 3:20</figcaption>
                             </figure>
                         </div>
                     </div>
-                    <div class="col-lg-2 order-1 order-lg-2 d-flex justify-content-center position-relative z-1">
-                        <div class="timeline-badge">5</div>
+                    <div class="col-lg-2 order-1 order-lg-2 position-relative z-1 d-flex justify-content-center">
+                        <div class="timeline-badge shadow-sm">5</div>
                     </div>
                     <div class="col-lg-5 order-3 order-lg-3"></div>
                 </div>
             </div>
         </section>
-        <section class="py-4 py-lg-5">
+        <section id="cta-salvacion" class="py-4 py-md-5" aria-labelledby="cta-salvacion-heading">
             <div class="container text-center" data-aos="fade-up">
-                <div class="d-inline-block mb-4 p-3 rounded-circle bg-info bg-opacity-10 animate__animated animate__pulse animate__infinite">
-                    <i class="fas fa-praying-hands text-info fs-1"></i>
+                <div class="d-inline-flex justify-content-center align-items-center p-3 mb-3 mb-md-4 rounded-circle bg-info-subtle text-info animate__animated animate__pulse animate__infinite">
+                    <i class="fas fa-praying-hands fs-1"></i>
                 </div>
-                <h2 class="display-5 fw-bold text-body-emphasis mb-4">¿Estás listo para dar el paso?</h2>
-                <p class="lead text-body-secondary mb-5 px-lg-5 mx-auto" style="max-width:800px">La decisión más importante de tu vida te está esperando. Dios te ama y quiere tener una relación personal contigo hoy mismo.</p>
-                <div class="card border-0 shadow-lg rounded-4 overflow-hidden mx-auto" style="max-width:900px">
+                <h2 id="cta-salvacion-heading" class="display-5 fw-bold mb-3 mb-md-4 text-body-emphasis">¿Estás listo para dar el paso?</h2>
+                <p class="lead mx-auto px-lg-5 mb-4 mb-md-5 text-body-secondary" style="max-width:800px">La decisión más importante de tu vida te está esperando. Dios te ama y quiere tener una relación personal contigo hoy mismo.</p>
+                <div class="card mx-auto overflow-hidden border-0 shadow-sm rounded-4" style="max-width:900px">
                     <div class="row g-0">
                         <div class="col-md-5 d-none d-md-block">
-                            <img src="assets/images/salvacion/oracion.png" class="img-fluid h-100 object-fit-cover" alt="Persona orando">
+                            <img class="img-fluid h-100 object-fit-cover" src="assets/images/salvacion/oracion.png" alt="Persona orando" loading="lazy">
                         </div>
-                        <div class="col-md-7 p-3 p-md-5 d-flex flex-column justify-content-center align-items-center bg-body">
+                        <div class="col-md-7 d-flex flex-column justify-content-center align-items-center p-3 p-md-4 p-lg-5 bg-body">
                             <h3 class="h4 fw-bold mb-3 text-body-emphasis">Haz esta oración de fe</h3>
-                            <p class="text-body-secondary mb-4 small">Romanos 10:9 nos asegura que si confesamos con nuestra boca, seremos salvos.</p>
+                            <p class="small mb-3 mb-md-4 text-body-secondary">Romanos 10:9 nos asegura que si confesamos con nuestra boca, seremos salvos.</p>
                             <div class="row justify-content-center">
                                 <div class="col-12 col-md-auto">
-                                    <button class="btn btn-info btn-md rounded-pill text-white w-100 w-md-auto px-4 fw-bold" type="button" data-bs-toggle="modal" data-bs-target="#prayerModal">
+                                    <button class="btn btn-info btn-md fw-bold w-100 w-md-auto px-4 py-2 text-white shadow-sm rounded-pill" type="button" data-bs-toggle="modal" data-bs-target="#prayerModal">
                                         <i class="fas fa-heart me-2"></i>Aceptar a Jesús ahora
                                     </button>
                                 </div>
@@ -258,44 +256,37 @@
                 </div>
             </div>
         </section>
-        <div class="modal fade" id="prayerModal" tabindex="-1" aria-labelledby="prayerModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered modal-lg">
-                <div class="modal-content">
-                    <div class="modal-header text-white">
-                        <h5 class="modal-title" id="prayerModalLabel">
-                            <i class="fas fa-hands-praying me-2"></i>Oración de Invitación
-                        </h5>
-                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        <div id="prayerModal" class="modal fade" role="dialog" aria-modal="true" tabindex="-1" aria-labelledby="prayerModalLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                <div class="modal-content border-0 shadow-sm rounded-4 bg-body">
+                    <div class="modal-header pb-3 border-0">
+                        <h3 id="prayerModalLabel" class="modal-title h5 fw-bold text-body-emphasis">
+                            <i class="fas fa-hands-praying me-2" aria-hidden="true"></i> Oración de Invitación
+                        </h3>
+                        <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Cerrar"></button>
                     </div>
-                    <div class="modal-body text-center">
-                        <p class="lead mb-4 text-body-secondary">Lee esto en voz alta, con sinceridad en tu corazón:</p>
-                        <div class="prayer-box mb-4">
-                            <p class="prayer-text fst-italic mb-0">
-                                Querido Señor Jesús, sé que soy un pecador.
-                                <br>Te agradezco por tu amor y por morir en la cruz por mis pecados.
-                                <br>Hoy abro la puerta de mi corazón y te invito a entrar.
-                                <br>Acepto tu regalo de vida eterna y te recibo como mi Salvador.
-                                <br>Perdona mis faltas y hazme un hijo de Dios.
-                                <br><strong>En el nombre de Jesús, Amén.</strong>
+                    <div class="modal-body pt-0 px-3 px-md-4">
+                        <p class="small mb-3 text-center text-body-secondary">Lee con fe y sinceridad en tu corazón</p>
+                        <div class="p-3 p-md-4 mb-3 border border-info border-opacity-25 rounded-4 bg-info-subtle shadow-sm">
+                            <p class="fs-5 mb-3 lh-base fst-italic text-center text-body-emphasis">
+                                "Señor Jesús, reconozco que soy pecador y te necesito. Gracias por morir en la cruz por mí. Hoy abro la puerta de mi
+                                vida y te recibo como mi Señor y Salvador. Perdona mis pecados y hazme tu hijo. En tu nombre, Amén."
                             </p>
+                            <hr class="my-3 opacity-25 border-info">
+                            <p class="small mb-2 text-body-secondary"><strong class="text-info-emphasis">¡Felicidades!</strong> Si hiciste esta oración con fe, ahora eres hijo de Dios.</p>
+                            <p class="small mb-1 fst-italic text-body-secondary">"El que tiene al Hijo, tiene la vida; el que no tiene al Hijo de Dios no tiene la vida."</p>
+                            <p class="small mb-0 text-end text-body-secondary">— 1 Juan 5:12</p>
                         </div>
-                        <div class="celebration-alert d-flex align-items-start text-start" role="alert">
-                            <div>
-                                <strong class="d-block mb-1">¡Felicidades!</strong>
-                                <p class="mb-0 small text-body-secondary">Si hiciste esta oración con fe, la Biblia dice que ahora eres hijo de Dios.</p>
-                                <blockquote class="blockquote">
-                                    <p class="fst-italic mb-0">"El que tiene al Hijo, tiene la vida; el que no tiene al Hijo de Dios no tiene la vida."</p>
-                                    <figcaption class="blockquote-footer mt-1 small">1 Juan 5:12</figcaption>
-                                </blockquote>
-                            </div>
-                        </div>
+                        <p class="small mb-0 text-center text-body-secondary">Esta oración es el inicio de una relación personal con Dios. No estás solo en este camino.</p>
                     </div>
-                    <div class="modal-footer justify-content-center gap-2">
-                        <a href="nosotros.html#contacto" class="btn btn-secondary btn-md rounded-pill flex-fill">
-                            <i class="fas fa-envelope me-2"></i>Platícanos
+                    <div class="modal-footer d-flex pt-2 px-3 px-md-4 gap-2 border-0">
+                        <a class="btn btn-secondary btn-lg d-flex flex-fill justify-content-center align-items-center py-2 shadow-sm rounded-pill" href="nosotros.html#contacto">
+                            <i class="fas fa-envelope me-2"></i>
+                            <span>Cuéntanos</span>
                         </a>
-                        <button type="button" id="btn-amen" class="btn btn-info btn-md text-white rounded-pill flex-fill" data-bs-dismiss="modal">
-                            <i class="fas fa-star me-2"></i>Amén
+                        <button id="btn-amen" class="btn btn-info btn-lg d-flex flex-fill justify-content-center align-items-center py-2 text-white shadow-sm rounded-pill" type="button" data-bs-dismiss="modal">
+                            <i class="fas fa-heart me-2"></i>
+                            <span>¡Amén!</span>
                         </button>
                     </div>
                 </div>
@@ -303,68 +294,67 @@
         </div>
     </main>
 
-    <a href="https://wa.me/528132503031?text=Hola,%20me%20interesa%20recibir%20informaci%c3%b3n%20de%20la%20iglesia"
-        class="whatsapp-floating-btn" target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp">
+    <a class="whatsapp-floating-btn" href="https://wa.me/528132503031?text=Hola,%20me%20interesa%20recibir%20informaci%c3%b3n%20de%20la%20iglesia" aria-label="Contactar por WhatsApp" target="_blank" rel="noopener noreferrer">
         <i class="fab fa-whatsapp"></i>
     </a>
 
     <footer class="footer pt-4 pb-3 border-top">
         <div class="container">
-            <div class="row gy-4">
+            <div class="row gy-3 gy-md-4">
                 <div class="col-12 col-lg-4 text-center text-lg-start">
-                    <h5 class="fw-bold mb-3 text-body-emphasis">
-                        <i class="fa-solid fa-thumbs-up me-2 text-info"></i>Síguenos
-                    </h5>
-                    <p class="text-body-secondary mb-3">Mantente conectado con nosotros</p>
+                    <h2 class="h5 fw-bold mb-3 text-body-emphasis">
+                        <i class="fa-solid fa-thumbs-up text-info me-2"></i>Síguenos
+                    </h2>
+                    <p class="mb-3 text-body-secondary">Mantente conectado con nosotros</p>
                     <div class="social-icons d-flex justify-content-center justify-content-lg-start gap-2">
-                        <a href="https://www.facebook.com/IBMty/" aria-label="Facebook" class="btn-social" target="_blank">
+                        <a class="btn-social" href="https://www.facebook.com/IBMty/" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
                             <i class="fab fa-facebook-f"></i>
                         </a>
-                        <a href="https://www.instagram.com/iglesiabautistademonterrey?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" aria-label="Instagram" class="btn-social" target="_blank">
+                        <a class="btn-social" href="https://www.instagram.com/iglesiabautistademonterrey?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
                             <i class="fab fa-instagram"></i>
                         </a>
-                        <a href="https://www.youtube.com/channel/UCfhSTnqLb6vFO28eNm_n0qw" aria-label="YouTube" class="btn-social" target="_blank">
+                        <a class="btn-social" href="https://www.youtube.com/channel/UCfhSTnqLb6vFO28eNm_n0qw" aria-label="YouTube" target="_blank" rel="noopener noreferrer">
                             <i class="fab fa-youtube"></i>
                         </a>
-                        <a href="mailto:oficina@ibmty.com" aria-label="Mail" class="btn-social">
+                        <a class="btn-social" href="mailto:oficina@ibmty.com" aria-label="Correo electrónico">
                             <i class="fa-regular fa-envelope"></i>
                         </a>
                     </div>
                 </div>
                 <div class="col-6 col-lg-4">
-                    <h5 class="fw-bold mb-3 text-body-emphasis">
-                        <i class="fa-solid fa-id-badge me-2 text-info"></i>Contacto
-                    </h5>
-                    <ul class="list-unstyled text-body-secondary small">
+                    <h2 class="h5 fw-bold mb-3 text-body-emphasis">
+                        <i class="fa-solid fa-id-badge text-info me-2"></i>Contacto
+                    </h2>
+                    <ul class="list-unstyled small text-body-secondary">
                         <li class="mb-2">
-                            <a href="https://www.google.com/maps?q=Iglesia+Bautista+de+Monterrey" target="_blank" class="text-decoration-none text-reset">
+                            <a class="text-decoration-none text-reset hover-link" href="https://www.google.com/maps?q=Iglesia+Bautista+de+Monterrey" target="_blank" rel="noopener noreferrer">
                                 <i class="fas fa-map-marker-alt me-2"></i>Av. Eugenio Garza Sada 6309, MTY.
                             </a>
                         </li>
                         <li class="mb-2">
-                            <a href="tel:+528183496161" class="text-decoration-none text-reset">
+                            <a class="text-decoration-none text-reset hover-link" href="tel:+528183496161">
                                 <i class="fas fa-phone-alt me-2"></i>81 83 49 61 61
                             </a>
                         </li>
                         <li>
-                            <a href="tel:+528183496263" class="text-decoration-none text-reset">
+                            <a class="text-decoration-none text-reset hover-link" href="tel:+528183496263">
                                 <i class="fas fa-phone-alt me-2"></i>81 83 49 62 63
                             </a>
                         </li>
                     </ul>
                 </div>
                 <div class="col-6 col-lg-4">
-                    <h5 class="fw-bold mb-3 text-body-emphasis">
-                        <i class="fas fa-external-link-alt me-2 text-info"></i>Enlaces
-                    </h5>
-                    <ul class="list-unstyled text-body-secondary small">
+                    <h2 class="h5 fw-bold mb-3 text-body-emphasis">
+                        <i class="fas fa-external-link-alt text-info me-2"></i>Enlaces
+                    </h2>
+                    <ul class="list-unstyled small text-body-secondary">
                         <li class="mb-2">
-                            <a href="https://www.ribbi.org/" class="text-decoration-none text-reset hover-link" target="_blank">
+                            <a class="text-decoration-none text-reset hover-link" href="https://www.ribbi.org/" target="_blank" rel="noopener noreferrer">
                                 <i class="fa-solid fa-network-wired me-2"></i>RIBBI
                             </a>
                         </li>
                         <li>
-                            <a href="https://elsaucillo.org/" class="text-decoration-none text-reset hover-link" target="_blank">
+                            <a class="text-decoration-none text-reset hover-link" href="https://elsaucillo.org/" target="_blank" rel="noopener noreferrer">
                                 <i class="fa-solid fa-mountain-sun me-2"></i>El Saucillo
                             </a>
                         </li>
@@ -372,30 +362,32 @@
                 </div>
             </div>
         </div>
-        <div class="footer-bottom mt-3 pt-3 border-top border-secondary-subtle">
+        <div class="footer-bottom pt-3 mt-3 border-top">
             <div class="container">
                 <div class="row align-items-center small text-body-secondary">
                     <div class="col-md-4 text-center text-md-start mb-2 mb-md-0">
-                        <a href="privacidad.html" class="text-reset text-decoration-none">Aviso de Privacidad</a>
+                        <a class="text-decoration-none text-reset hover-link" href="privacidad.html">Aviso de Privacidad</a>
                     </div>
-                    <div class="col-md-4 text-center mb-2 mb-md-0">&copy; <span id="currentYear"></span> IBMty.</div>
+                    <div class="col-md-4 text-center mb-2 mb-md-0">
+                        &copy; <span id="currentYear"></span> IBMty.
+                    </div>
                     <div class="col-md-4 text-center text-md-end">Hecho con
                         <i id="heartIcon" class="fas fa-heart text-danger" style="cursor:pointer"></i> para
-                        <a href="salvacion.html" class="text-reset text-decoration-none">Dios</a>
+                        <a class="text-reset text-decoration-none" href="salvacion.html">Dios</a>
                     </div>
                 </div>
             </div>
-            <div class="modal fade" id="developers" tabindex="-1" aria-hidden="true">
+            <div id="developers" class="modal fade" tabindex="-1" role="dialog" aria-modal="true" aria-labelledby="developersLabel" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content text-center">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="developersLabel">Desarrolladores</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                            <h3 id="developersLabel" class="modal-title h4">Desarrolladores</h3>
+                            <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Cerrar"></button>
                         </div>
                         <div class="modal-body">
-                            <p>H.G</p>
-                            <p>E.A.R.G</p>
-                            <p>D.A.R.M</p>
+                            <p class="mb-2">H.G</p>
+                            <p class="mb-2">E.A.R.G</p>
+                            <p class="mb-0">D.A.R.M</p>
                         </div>
                     </div>
                 </div>
@@ -403,14 +395,14 @@
         </div>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous" defer></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js" integrity="sha512-A7AYk1fGKX6S2SsHywmPkrnzTZHrgiVT7GcQkLGDe2ev0aWb8zejytzS8wjo7PGEXKqJOrjQ4oORtnimIRZBtw==" crossorigin="anonymous" defer></script>
-    <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
-    <script src="context/utils.js" defer></script>
-    <script src="context/sw-registration.js" defer></script>
-    <script src="context/onesignal-init.js" defer></script>
-    <script src="context/salvacion.js" defer></script>
-    <script src="context/analytics.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous" defer="defer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js" integrity="sha512-A7AYk1fGKX6S2SsHywmPkrnzTZHrgiVT7GcQkLGDe2ev0aWb8zejytzS8wjo7PGEXKqJOrjQ4oORtnimIRZBtw==" crossorigin="anonymous" defer="defer"></script>
+    <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer="defer"></script>
+    <script src="context/utils.js" defer="defer"></script>
+    <script src="context/sw-registration.js" defer="defer"></script>
+    <script src="context/onesignal-init.js" defer="defer"></script>
+    <script src="context/salvacion.js" defer="defer"></script>
+    <script src="context/analytics.js" defer="defer"></script>
 </body>
 
 </html>

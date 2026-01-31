@@ -1,6 +1,6 @@
 /**
  * =========================================
- * MAIN.CSS - Estilos principales (Mobile First)
+ * Estilos principales (Mobile First)
  * =========================================
  *
  * Estilos globales.
@@ -71,34 +71,14 @@ img {
     --font-medium: 500;
     --font-semibold: 600;
     --font-bold: 700;
-    --space-1: 0.25rem;
-    --space-2: 0.5rem;
-    --space-3: 0.75rem;
-    --space-4: 1rem;
-    --space-5: 1.25rem;
-    --space-6: 1.5rem;
-    --space-8: 2rem;
-    --space-10: 2.5rem;
-    --space-12: 3rem;
     --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
     --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
     --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
     --shadow-premium: 0 18px 40px rgba(0, 0, 0, 0.12);
-    --radius-sm: 0.5rem;
     --radius-md: 0.75rem;
     --radius-lg: 1rem;
     --radius-xl: 1.5rem;
-    --radius-full: 9999px;
-    --blur-sm: blur(4px);
-    --blur-md: blur(8px);
     --blur-lg: blur(12px);
-    --blur-xl: blur(20px);
-    --breakpoint-sm: 576px;
-    --breakpoint-md: 768px;
-    --breakpoint-lg: 992px;
-    --breakpoint-xl: 1200px;
-    --breakpoint-xxl: 1400px;
     --nav-margin-top: 1rem;
     --nav-width-desktop: 80%;
     --nav-max-width: 1200px;
@@ -128,11 +108,6 @@ img {
     --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.5), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
     --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 4px 6px -2px rgba(0, 0, 0, 0.3);
     --shadow-premium: 0 18px 40px rgba(0, 0, 0, 0.6)
-}
-
-.glass-panel,
-[data-bs-theme=dark] .glass-panel {
-    border: 1px solid
 }
 
 /* =========================================
@@ -237,48 +212,12 @@ h3 {
 /* =========================================
    5. Clases utilitarias
    ========================================= */
-.glass-panel {
-    background: var(--bg-glass);
-    backdrop-filter: var(--blur-lg);
-    -webkit-backdrop-filter: var(--blur-lg)
-}
-
-.card-premium {
-    background: var(--bg-surface);
-    border: none;
-    border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-md);
-    transition: transform .3s, box-shadow .3s;
-    overflow: hidden
-}
-
-.card-premium:hover {
-    transform: translateY(-5px);
-    box-shadow: var(--shadow-premium)
-}
-
 .fs-7 {
     font-size: .875rem
 }
 
-.opacity-90 {
-    opacity: .9
-}
-
 .tracking-wide {
     letter-spacing: .05em
-}
-
-.ls-1 {
-    letter-spacing: 1px
-}
-
-.p-6 {
-    padding: 4rem !important
-}
-
-.border-4 {
-    border-width: 4px !important
 }
 
 /* =========================================
@@ -402,83 +341,126 @@ h3 {
 }
 
 /* =========================================
-   7. Iconos sociales
+   7. Botones Sociales y Acción (Unificados)
    ========================================= */
-.btn-social,
-.btn-social:hover {
-    background-color: var(--bg-surface)
+:root {
+    --btn-size: 40px;
+    --btn-font-size: 1.1rem;
+    --btn-transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    --btn-hover-lift: -3px;
 }
 
-.btn-social {
-    width: 40px;
-    height: 40px;
-    display: flex;
+.btn-social,
+.btn-share {
+    width: var(--btn-size) !important;
+    height: var(--btn-size) !important;
+    min-width: var(--btn-size);
+    min-height: var(--btn-size);
+    display: inline-flex !important;
     align-items: center;
     justify-content: center;
     border-radius: 50%;
-    color: var(--text-secondary);
-    border: 1px solid var(--border-light);
-    box-shadow: var(--shadow-sm);
-    transition: .3s cubic-bezier(.175, .885, .32, 1.275);
+    padding: 0 !important;
+    margin: 0;
+    background-color: var(--bg-surface, #ffffff);
+    border: 1px solid var(--border-light, #dee2e6);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    font-size: var(--btn-font-size);
+    color: var(--text-secondary, #6c757d);
     text-decoration: none;
-    font-size: 1.1rem;
-    padding: 0;
-    cursor: pointer
+    line-height: 1;
+    cursor: pointer;
+    transition: var(--btn-transition);
+    outline: none;
+    flex-shrink: 0;
+    overflow: hidden;
 }
 
-.btn-social:hover {
-    transform: translateY(-3px);
-    box-shadow: var(--shadow-md);
-    border-color: currentColor
+.btn-social i,
+.btn-share i,
+.share-icon {
+    margin: 0 !important;
+    padding: 0 !important;
+    font-size: inherit;
+    line-height: 1;
+    display: block;
 }
 
-[data-bs-theme=dark] .btn-social,
-[data-bs-theme=dark] .btn-social:hover {
-    background-color: var(--bg-surface-secondary)
+
+.btn-social:hover,
+.btn-share:hover {
+    transform: translateY(var(--btn-hover-lift));
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12);
+    border-color: currentColor !important;
+    background-color: var(--bg-surface, #ffffff);
 }
 
 .btn-social:has(.fa-facebook-f):hover,
-.btn-social[aria-label=Facebook]:hover {
-    color: #1877f2
+.btn-social[aria-label*="Facebook"]:hover {
+    color: #1877f2;
 }
 
 .btn-social:has(.fa-instagram):hover,
-.btn-social[aria-label=Instagram]:hover {
-    color: #e1306c
-}
-
-.btn-social:has(.fa-tiktok):hover,
-.btn-social[aria-label=TikTok]:hover {
-    color: #000
+.btn-social[aria-label*="Instagram"]:hover {
+    color: #e1306c;
 }
 
 .btn-social:has(.fa-whatsapp):hover,
-.btn-social[aria-label=WhatsApp]:hover {
-    color: #25d366
+.btn-social[aria-label*="WhatsApp"]:hover {
+    color: #25d366;
 }
 
 .btn-social:has(.fa-youtube):hover,
-.btn-social[aria-label=YouTube]:hover {
-    color: red
+.btn-social[aria-label*="YouTube"]:hover {
+    color: #ff0000;
+}
+
+.btn-social:has(.fa-tiktok):hover,
+.btn-social[aria-label*="TikTok"]:hover {
+    color: #000000;
 }
 
 .btn-social:has(.fa-envelope):hover,
-.btn-social[aria-label=Mail]:hover {
-    color: var(--color-primary)
+.btn-social[aria-label*="Mail"]:hover,
+.btn-share:hover,
+.btn-share[aria-label*="Share"]:hover {
+    color: var(--color-primary, #0d6efd);
 }
 
-.btn-social.btn-share:hover {
-    color: var(--color-system-gray)
+[data-bs-theme="dark"] .btn-social,
+[data-bs-theme="dark"] .btn-share {
+    background-color: var(--bg-surface-secondary, #2b3035);
+    border-color: var(--border-color, #495057);
+    color: var(--text-secondary, #adb5bd);
 }
 
-[data-bs-theme=dark] .btn-social {
-    border-color: var(--border-color);
-    color: var(--text-secondary)
+[data-bs-theme="dark"] .btn-social:hover,
+[data-bs-theme="dark"] .btn-share:hover {
+    background-color: rgba(255, 255, 255, 0.05);
 }
 
-[data-bs-theme=dark] .btn-social:has(.fa-tiktok):hover,
-[data-bs-theme=dark] .btn-social[aria-label=TikTok]:hover {
-    color: #fff
+[data-bs-theme="dark"] .btn-social:has(.fa-tiktok):hover,
+[data-bs-theme="dark"] .btn-social[aria-label*="TikTok"]:hover {
+    color: #ffffff;
+}
+
+.btn-social:active,
+.btn-share:active {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+}
+
+.btn-social:focus-visible,
+.btn-share:focus-visible {
+    outline: 2px solid var(--color-primary, #0d6efd);
+    outline-offset: 2px;
+}
+
+.btn-social:disabled,
+.btn-share:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
 }
 
 /* =========================================
