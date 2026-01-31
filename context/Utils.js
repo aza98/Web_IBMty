@@ -121,20 +121,30 @@ const isMobile = () => /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/
 const ShareManager = {
     async _urlToFile(url) {
         try {
+            console.log("ShareManager: Fetching image...", url);
+            const controller = new AbortController();
+            const timeoutId = setTimeout(() => controller.abort(), 3000); // 3s Timeout
+
             const res = await fetch(url, {
-                mode: "cors"
+                mode: "cors",
+                signal: controller.signal
             });
-            if (!res.ok) throw new Error();
+            clearTimeout(timeoutId);
+
+            if (!res.ok) throw new Error(`HTTP ${res.status}`);
+
             const blob = await res.blob();
             const ext = {
                 "image/png": "png",
                 "image/webp": "webp",
                 "image/gif": "gif"
-            } [blob.type] || "jpg";
+            }[blob.type] || "jpg";
+
             return new File([blob], `share.${ext}`, {
                 type: blob.type || "image/jpeg"
             })
-        } catch {
+        } catch (e) {
+            console.warn("ShareManager: Image fetch failed or timed out", e);
             return null
         }
     },
@@ -160,40 +170,46 @@ const ShareManager = {
         const safeTitle = title || defaultTitle;
         const safeText = text || "";
         const safeUrl = url || location.href;
+        // 1. Prepare File (if applicable)
         let file = null;
         if (imageUrl && (type === "image" || type === "auto") && isMobile()) {
             file = await this._urlToFile(imageUrl)
         }
+
+        // 2. Construct Payload Strategy
         let shareData = {};
-        if (file && navigator.canShare && navigator.canShare({
-                files: [file]
-            })) {
+
+        // Try Image Mode first if file exists
+        if (file && navigator.canShare && navigator.canShare({ files: [file] })) {
+            console.log("ShareManager: Mode IMAGE");
             shareData = {
                 files: [file],
                 title: safeTitle,
-                text: this._buildText({
-                    title: safeTitle,
-                    text: safeText,
-                    url: safeUrl
-                })
-            }
+                text: this._buildText({ title: safeTitle, text: safeText, url: safeUrl })
+            };
         } else {
+            console.log("ShareManager: Mode LINK");
             shareData = {
                 title: safeTitle,
-                text: this._buildText({
-                    title: safeTitle,
-                    text: safeText
-                }),
+                text: this._buildText({ title: safeTitle, text: safeText }), // No URL in text
                 url: safeUrl
-            }
+            };
         }
+
+        // 3. Execute Share
         if (navigator.share && navigator.canShare(shareData)) {
             try {
+                console.log("ShareManager: Calling navigator.share", shareData);
                 await navigator.share(shareData);
-                return
+                console.log("ShareManager: Shared successfully");
+                return; // Success
             } catch (err) {
-                if (err.name === "AbortError") return
+                console.error("ShareManager: Share failed", err);
+                if (err.name === "AbortError") return;
+                // If failed (e.g. internal browser error), fall through to clipboard
             }
+        } else {
+            console.log("ShareManager: Web Share API not supported or data invalid", shareData);
         }
         const fallbackText = this._buildText({
             title: safeTitle,

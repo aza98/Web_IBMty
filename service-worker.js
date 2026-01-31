@@ -38,6 +38,8 @@ if (workbox) {
     { url: '/', revision: '4.2.0' },
     { url: '/index.html', revision: '4.2.0' },
     { url: '/manifest.json', revision: '4.2.0' },
+    { url: '/styles/main.css', revision: '4.2.0' },
+    { url: '/styles/btn-whatsapp.css', revision: '4.2.0' },
     { url: '/context/utils.js', revision: '4.2.0' },
     { url: '/context/btn-install.js', revision: '4.2.0' },
     { url: '/context/sw-registration.js', revision: '4.2.0' },
@@ -47,6 +49,8 @@ if (workbox) {
     { url: '/assets/icons/IBMty_Icon_512.png', revision: '4.2.0' },
     { url: '/assets/icons/IBMty_Logo_Desktop.png', revision: '4.2.0' },
     { url: '/assets/icons/IBMty_Logo_Mobile.png', revision: '4.2.0' },
+    { url: '/assets/images/extras/Bienvenida_mobile.webp', revision: '4.2.0' },
+    { url: '/assets/images/extras/Bienvenida_desktop.webp', revision: '4.2.0' },
   ]);
 
   // ============================================
@@ -188,13 +192,13 @@ if (workbox) {
     event.waitUntil(
       (async () => {
         await self.clients.claim();
-        
+
         const clients = await self.clients.matchAll({ type: 'window' });
         clients.forEach(client => client.postMessage({ type: 'SW_UPDATED' }));
 
         const cacheNames = await caches.keys();
         const expectedCaches = Object.values(CACHE_NAMES).concat([workbox.core.cacheNames.precache]);
-        
+
         await Promise.all(
           cacheNames.map((cacheName) => {
             if (!expectedCaches.includes(cacheName) && !cacheName.includes('onesignal')) {
