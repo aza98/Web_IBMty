@@ -1,11 +1,11 @@
 /**
  * Service Worker con Workbox
  * Iglesia Bautista de Monterrey - PWA
- * Versión: 4.2.0
+ * Versión: 4.3.0
  */
 
 importScripts("https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.sw.js");
-importScripts('https://cdnjs.cloudflare.com/ajax/libs/workbox-sw/7.3.0/workbox-sw.min.js');
+importScripts("https://cdn.jsdelivr.net/npm/workbox-sw@7.4.1/build/workbox-sw.min.js");
 
 if (workbox) {
   console.log('✅ Workbox cargado correctamente');
@@ -35,22 +35,22 @@ if (workbox) {
   // 1. PRECACHING - Recursos críticos
   // ============================================
   precacheAndRoute([
-    { url: '/', revision: '4.2.0' },
-    { url: '/index.html', revision: '4.2.0' },
-    { url: '/manifest.json', revision: '4.2.0' },
-    { url: '/styles/main.css', revision: '4.2.0' },
-    { url: '/styles/btn-whatsapp.css', revision: '4.2.0' },
-    { url: '/context/utils.js', revision: '4.2.0' },
-    { url: '/context/btn-install.js', revision: '4.2.0' },
-    { url: '/context/sw-registration.js', revision: '4.2.0' },
-    { url: '/assets/icons/IBMty_Icon_32.png', revision: '4.2.0' },
-    { url: '/assets/icons/IBMty_Icon_180.png', revision: '4.2.0' },
-    { url: '/assets/icons/IBMty_Icon_192.png', revision: '4.2.0' },
-    { url: '/assets/icons/IBMty_Icon_512.png', revision: '4.2.0' },
-    { url: '/assets/icons/IBMty_Logo_Desktop.png', revision: '4.2.0' },
-    { url: '/assets/icons/IBMty_Logo_Mobile.png', revision: '4.2.0' },
-    { url: '/assets/images/extras/Bienvenida_mobile.webp', revision: '4.2.0' },
-    { url: '/assets/images/extras/Bienvenida_desktop.webp', revision: '4.2.0' },
+    { url: '/', revision: '4.3.0' },
+    { url: '/index.html', revision: '4.3.0' },
+    { url: '/manifest.json', revision: '4.3.0' },
+    { url: '/styles/main.css', revision: '4.3.0' },
+    { url: '/styles/btn-whatsapp.css', revision: '4.3.0' },
+    { url: '/context/utils.js', revision: '4.3.0' },
+    { url: '/context/btn-install.js', revision: '4.3.0' },
+    { url: '/context/sw-registration.js', revision: '4.3.0' },
+    { url: '/assets/icons/IBMty_Icon_32.png', revision: '4.3.0' },
+    { url: '/assets/icons/IBMty_Icon_180.png', revision: '4.3.0' },
+    { url: '/assets/icons/IBMty_Icon_192.png', revision: '4.3.0' },
+    { url: '/assets/icons/IBMty_Icon_512.png', revision: '4.3.0' },
+    { url: '/assets/icons/IBMty_Logo_Desktop.png', revision: '4.3.0' },
+    { url: '/assets/icons/IBMty_Logo_Mobile.png', revision: '4.3.0' },
+    { url: '/assets/images/extras/Bienvenida_mobile.webp', revision: '4.3.0' },
+    { url: '/assets/images/extras/Bienvenida_desktop.webp', revision: '4.3.0' },
   ]);
 
   // ============================================
@@ -183,7 +183,7 @@ if (workbox) {
   // EVENTOS DEL SERVICE WORKER
   // ============================================
   self.addEventListener('install', (event) => {
-    console.log('SW: Instalando v4.2.0...');
+    console.log('SW: Instalando v4.3.0...');
     event.waitUntil(self.skipWaiting());
   });
 
