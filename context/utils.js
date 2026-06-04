@@ -118,118 +118,56 @@ function initFormValidation() {
     })
 }
 const isMobile = () => /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-const ShareManager = {
-    async _urlToFile(url) {
+async function shareContent({ title, description, url, imageUrl }) {
+    const safeTitle = title || document.title || "Iglesia Bautista de Monterrey";
+    const safeDesc = description || "";
+    const safeUrl = url || location.href;
+    const fullText = `${safeTitle}\n\n${safeDesc}\n\n${safeUrl}`;
+
+    if (imageUrl && isMobile()) {
         try {
-            console.log("ShareManager: Fetching image...", url);
             const controller = new AbortController();
-            const timeoutId = setTimeout(() => controller.abort(), 3000); // 3s Timeout
-
-            const res = await fetch(url, {
-                mode: "cors",
-                signal: controller.signal
-            });
+            const timeoutId = setTimeout(() => controller.abort(), 3000);
+            const res = await fetch(imageUrl, { mode: "cors", signal: controller.signal });
             clearTimeout(timeoutId);
-
-            if (!res.ok) throw new Error(`HTTP ${res.status}`);
-
-            const blob = await res.blob();
-            const ext = {
-                "image/png": "png",
-                "image/webp": "webp",
-                "image/gif": "gif"
-            }[blob.type] || "jpg";
-
-            return new File([blob], `share.${ext}`, {
-                type: blob.type || "image/jpeg"
-            })
-        } catch (e) {
-            console.warn("ShareManager: Image fetch failed or timed out", e);
-            return null
-        }
-    },
-    _buildText({
-        title,
-        text,
-        url
-    }) {
-        const parts = [];
-        if (title) parts.push(title);
-        if (text) parts.push(text);
-        if (url) parts.push(url);
-        return parts.join("\n\n")
-    },
-    async share({
-        title,
-        text,
-        url,
-        imageUrl,
-        type = "auto"
-    }) {
-        const defaultTitle = document.title || "Iglesia Bautista de Monterrey";
-        const safeTitle = title || defaultTitle;
-        const safeText = text || "";
-        const safeUrl = url || location.href;
-        // 1. Prepare File (if applicable)
-        let file = null;
-        if (imageUrl && (type === "image" || type === "auto") && isMobile()) {
-            file = await this._urlToFile(imageUrl)
-        }
-
-        // 2. Construct Payload Strategy
-        let shareData = {};
-
-        // Try Image Mode first if file exists
-        if (file && navigator.canShare && navigator.canShare({ files: [file] })) {
-            console.log("ShareManager: Mode IMAGE");
-            shareData = {
-                files: [file],
-                title: safeTitle,
-                text: this._buildText({ title: safeTitle, text: safeText, url: safeUrl })
-            };
-        } else {
-            console.log("ShareManager: Mode LINK");
-            shareData = {
-                title: safeTitle,
-                text: this._buildText({ title: safeTitle, text: safeText }), // No URL in text
-                url: safeUrl
-            };
-        }
-
-        // 3. Execute Share
-        if (navigator.share && navigator.canShare(shareData)) {
-            try {
-                console.log("ShareManager: Calling navigator.share", shareData);
-                await navigator.share(shareData);
-                console.log("ShareManager: Shared successfully");
-                return; // Success
-            } catch (err) {
-                console.error("ShareManager: Share failed", err);
-                if (err.name === "AbortError") return;
-                // If failed (e.g. internal browser error), fall through to clipboard
+            if (res.ok) {
+                const blob = await res.blob();
+                const ext = { "image/png": "png", "image/webp": "webp", "image/gif": "gif" }[blob.type] || "jpg";
+                const file = new File([blob], `compartir.${ext}`, { type: blob.type || "image/jpeg" });
+                if (navigator.canShare && navigator.canShare({ files: [file] })) {
+                    try {
+                        await navigator.share({ files: [file], title: safeTitle, text: fullText });
+                        return;
+                    } catch (err) {
+                        if (err.name === "AbortError") return;
+                    }
+                }
             }
-        } else {
-            console.log("ShareManager: Web Share API not supported or data invalid", shareData);
-        }
-        const fallbackText = this._buildText({
-            title: safeTitle,
-            text: safeText,
-            url: safeUrl
-        });
-        try {
-            await copyToClipboard(fallbackText);
-            showCopyToast()
         } catch {
-            prompt("Copia manualmente:", fallbackText)
+
         }
     }
-};
-window.shareContent = (title, text, url, imageUrl) => ShareManager.share({
-    title,
-    text,
-    url,
-    imageUrl
-});
+
+    if (navigator.share) {
+        const shareData = { title: safeTitle, text: `${safeTitle}\n\n${safeDesc}`, url: safeUrl };
+        if (!navigator.canShare || navigator.canShare(shareData)) {
+            try {
+                await navigator.share(shareData);
+                return;
+            } catch (err) {
+                if (err.name === "AbortError") return;
+            }
+        }
+    }
+
+    try {
+        await copyToClipboard(fullText);
+        showCopyToast();
+    } catch {
+        prompt("Copia manualmente:", fullText);
+    }
+}
+window.shareContent = shareContent;
 
 function extractImageFromCard(card) {
     if (!card) return null;
@@ -247,19 +185,12 @@ function initShareButtons() {
         const btn = e.target.closest("[data-share], .btn-share");
         if (!btn) return;
         e.preventDefault();
-        const {
-            url,
-            title,
-            description,
-            shareType,
-            image
-        } = btn.dataset;
-        ShareManager.share({
+        const { url, title, description, image } = btn.dataset;
+        shareContent({
             title: title || document.title,
-            text: description || "",
+            description: description || "",
             url: url || location.href,
-            imageUrl: image || extractImageFromCard(btn.closest(".carousel-card")),
-            type: shareType || "auto"
+            imageUrl: image || extractImageFromCard(btn.closest(".carousel-card"))
         })
     })
 }

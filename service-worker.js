@@ -1,7 +1,7 @@
 /**
  * Service Worker con Workbox
  * Iglesia Bautista de Monterrey - PWA
- * Versión: 5.0.0
+ * Versión: 5.0.1
  */
 
 importScripts("https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.sw.js");
@@ -35,22 +35,22 @@ if (workbox) {
   // 1. PRECACHING - Recursos críticos
   // ============================================
   precacheAndRoute([
-    { url: '/', revision: '5.0.0' },
-    { url: '/index.html', revision: '5.0.0' },
-    { url: '/manifest.json', revision: '5.0.0' },
-    { url: '/styles/main.css', revision: '5.0.0' },
-    { url: '/styles/btn-whatsapp.css', revision: '5.0.0' },
-    { url: '/context/utils.js', revision: '5.0.0' },
-    { url: '/context/btn-install.js', revision: '5.0.0' },
-    { url: '/context/sw-registration.js', revision: '5.0.0' },
-    { url: '/assets/icons/IBMty_Icon_32.png', revision: '5.0.0' },
-    { url: '/assets/icons/IBMty_Icon_180.png', revision: '5.0.0' },
-    { url: '/assets/icons/IBMty_Icon_192.png', revision: '5.0.0' },
-    { url: '/assets/icons/IBMty_Icon_512.png', revision: '5.0.0' },
-    { url: '/assets/icons/IBMty_Logo_Desktop.png', revision: '5.0.0' },
-    { url: '/assets/icons/IBMty_Logo_Mobile.png', revision: '5.0.0' },
-    { url: '/assets/images/extras/Bienvenida_mobile.webp', revision: '5.0.0' },
-    { url: '/assets/images/extras/Bienvenida_desktop.webp', revision: '5.0.0' },
+    { url: '/', revision: '5.0.1' },
+    { url: '/index.html', revision: '5.0.1' },
+    { url: '/manifest.json', revision: '5.0.1' },
+    { url: '/styles/main.css', revision: '5.0.1' },
+    { url: '/styles/btn-whatsapp.css', revision: '5.0.1' },
+    { url: '/context/utils.js', revision: '5.0.1' },
+    { url: '/context/btn-install.js', revision: '5.0.1' },
+    { url: '/context/sw-registration.js', revision: '5.0.1' },
+    { url: '/assets/icons/IBMty_Icon_32.png', revision: '5.0.1' },
+    { url: '/assets/icons/IBMty_Icon_180.png', revision: '5.0.1' },
+    { url: '/assets/icons/IBMty_Icon_192.png', revision: '5.0.1' },
+    { url: '/assets/icons/IBMty_Icon_512.png', revision: '5.0.1' },
+    { url: '/assets/icons/IBMty_Logo_Desktop.png', revision: '5.0.1' },
+    { url: '/assets/icons/IBMty_Logo_Mobile.png', revision: '5.0.1' },
+    { url: '/assets/images/extras/Bienvenida_mobile.webp', revision: '5.0.1' },
+    { url: '/assets/images/extras/Bienvenida_desktop.webp', revision: '5.0.1' },
   ]);
 
   // ============================================
@@ -183,7 +183,7 @@ if (workbox) {
   // EVENTOS DEL SERVICE WORKER
   // ============================================
   self.addEventListener('install', (event) => {
-    console.log('SW: Instalando v5.0.0...');
+    console.log('SW: Instalando v5.0.1...');
     event.waitUntil(self.skipWaiting());
   });
 

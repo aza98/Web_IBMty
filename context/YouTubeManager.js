@@ -35,17 +35,18 @@ class YouTubeManager {
             const latestVideo = data.items[0].snippet;
             const videoId = latestVideo.resourceId.videoId;
             const videoTitle = latestVideo.title;
+            const videoDescription = latestVideo.description || "";
             const broadcastStatus = latestVideo.liveBroadcastContent;
             if (broadcastStatus === 'live') {
-                this.setUIMode('LIVE', videoId, videoTitle)
+                this.setUIMode('LIVE', videoId, videoTitle, videoDescription)
             } else {
-                this.setUIMode('OFFLINE', videoId, videoTitle)
+                this.setUIMode('OFFLINE', videoId, videoTitle, videoDescription)
             }
         } catch (error) {
             console.error("YouTube Status Check Failed:", error)
         }
     }
-    setUIMode(mode, videoId, videoTitle = "") {
+    setUIMode(mode, videoId, videoTitle = "", videoDescription = "") {
         const isLive = mode === 'LIVE';
         const embedUrl = `https://www.youtube.com/embed/${videoId}${isLive ? '?autoplay=1&mute=1' : ''}`;
         const watchUrl = `https://youtu.be/${videoId}`;
@@ -73,7 +74,11 @@ class YouTubeManager {
             }
         }
         const shareTitle = videoTitle || (isLive ? "Transmisión en vivo IBMty" : "Último mensaje IBMty");
-        this.updateShareButton(shareTitle, isLive ? "¡Únete a nuestra transmisión en vivo!" : "Escucha nuestro último mensaje.", watchUrl)
+        const defaultDesc = isLive ? "¡Únete a nuestra transmisión en vivo!" : "Escucha nuestro último mensaje.";
+        const rawDesc = videoDescription || defaultDesc;
+        const shareDesc = rawDesc.length > 120 ? rawDesc.substring(0, 117) + "..." : rawDesc;
+        const thumbnailUrl = `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
+        this.updateShareButton(shareTitle, shareDesc, watchUrl, thumbnailUrl)
     }
     async updateViewerCount(videoId) {
         if (!this.viewerCountContainer || !this.viewerCount) return;
@@ -93,26 +98,14 @@ class YouTubeManager {
             console.warn("Viewer count fetch failed", e)
         }
     }
-    updateShareButton(title, text, url) {
+    updateShareButton(title, description, url, imageUrl) {
         if (!this.shareBtn) return;
         this.shareBtn.dataset.url = url;
         this.shareBtn.dataset.title = title;
-        this.shareBtn.dataset.description = text;
-        this.shareBtn.dataset.shareType = 'link';
+        this.shareBtn.dataset.description = description;
         this.shareBtn.onclick = (e) => {
             e.preventDefault();
-            if (typeof ShareManager !== "undefined") {
-                ShareManager.share({
-                    title: title,
-                    text: text,
-                    url: url,
-                    type: 'link'
-                })
-            } else if (typeof shareContent === "function") {
-                shareContent(title, text, url)
-            } else {
-                navigator.clipboard.writeText(url).then(() => {}).catch(err => console.error('Error al copiar', err))
-            }
+            shareContent({ title, description, url, imageUrl });
         }
     }
 }
