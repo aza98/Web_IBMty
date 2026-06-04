@@ -12,8 +12,7 @@ class PwaInstaller {
         this.installBtn && this.iosPopup && this.closePopup ?
             this.isDismissed() ?
                 console.log("PwaInstaller: Prompt dismissed by user recently.") :
-                (this.registerServiceWorker(),
-                    this.addEventListeners(),
+                (this.addEventListeners(),
                     this.checkInitialDisplay()) :
             console.error(
                 "PwaInstaller: Error al inicializar. Faltan elementos DOM."
@@ -29,15 +28,6 @@ class PwaInstaller {
             .toString()),
             this.hideInstallButton(),
             this.iosPopup.classList.remove("active");
-    }
-    registerServiceWorker() {
-        "serviceWorker" in navigator &&
-            window.addEventListener("load", () => {
-                navigator.serviceWorker
-                    .register("/service-worker.js")
-                    .then((t) => console.log("SW registrado:", t.scope))
-                    .catch((t) => console.error("Error SW:", t));
-            });
     }
     showInstallButton() {
         this.installBtn.classList.add("show");

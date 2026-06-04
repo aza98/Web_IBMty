@@ -52,7 +52,7 @@
       "url": "/ministerios.html",
       "icons": [
         {
-          "src": "assets/icons/Logo_Adultos.png",
+          "src": "assets/icons/Logo_Adultos.webp",
           "sizes": "96x96"
         }
       ]
@@ -64,7 +64,7 @@
       "url": "/donativo.html",
       "icons": [
         {
-          "src": "assets/icons/Logo_Profesionistas.png",
+          "src": "assets/icons/Logo_Profesionistas.webp",
           "sizes": "96x96"
         }
       ]

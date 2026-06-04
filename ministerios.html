@@ -42,11 +42,11 @@
     <link rel="preload" href="assets/icons/IBMty_Logo_Mobile.png" as="image">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;700&display=swap">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous" referrerpolicy="no-referrer">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12.2.0/swiper-bundle.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" integrity="sha512-1cK78a1o+ht2JcaW6g8OXYwqpev9+6GqOkz9xmBN9iUUhIndKtxwILGWYOSibOKjLsEdjyjZvYDq/cZwNeak0w==" crossorigin="anonymous" referrerpolicy="no-referrer">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer">
     <link rel="stylesheet" href="styles/btn-whatsapp.css">
-    <link rel="stylesheet" href="styles/carousels.css">
+    <link rel="stylesheet" href="styles/carousel.css">
     <link rel="stylesheet" href="styles/main.css">
 </head>
 
@@ -101,19 +101,19 @@
     </nav>
 
     <main>
-        <section id="ministerios-info" class="ministerios-section py-4 py-md-5" aria-labelledby="ministerios-heading">
+        <section id="ministerios-info" class="ministerios-section carousel-section py-4 py-md-5" aria-labelledby="ministerios-heading">
             <div class="container">
                 <div class="row justify-content-center mb-4">
                     <div class="col-12 col-lg-8 text-center">
                         <div class="d-inline-flex justify-content-center align-items-center p-3 mb-3 rounded-circle bg-info-subtle text-info-emphasis" data-aos="zoom-in">
-                            <i class="fas fa-users fs-1"></i>
+                            <i class="fas fa-users fs-1" aria-hidden="true"></i>
                         </div>
-                        <h2 id="ministerios-heading" class="display-5 fw-bold mb-3 text-body-emphasis" data-aos="fade-up" data-aos-delay="100">Líderes y Ministerios</h2>
+                        <h1 id="ministerios-heading" class="display-5 fw-bold mb-3 text-body-emphasis" data-aos="fade-up" data-aos-delay="100">Líderes y Ministerios</h1>
                         <hr class="w-25 mx-auto mb-3 border-info border-3 opacity-75" data-aos="fade-up" data-aos-delay="150">
                         <p class="lead mx-auto text-body-secondary" style="max-width:700px" data-aos="fade-up" data-aos-delay="200">Personas con corazón dispuesto a servir, guiando a cada generación a conocer y seguir a Cristo.</p>
                     </div>
                 </div>
-                <div class="swiper ministerios-swiper">
+                <div class="swiper ministerios-swiper carousel-swiper" data-carousel="ministerios">
                     <div class="swiper-wrapper">
                         <div class="swiper-slide">
                             <article id="lideres" class="carousel-card h-100" data-ministry="lideres">
@@ -132,13 +132,13 @@
                                     </div>
                                     <div class="carousel-actions mt-auto pt-3 border-top d-flex justify-content-center gap-2">
                                         <a class="btn-social d-inline-flex justify-content-center align-items-center rounded-circle text-decoration-none" href="https://www.facebook.com/IBMty/" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
-                                            <i class="fab fa-facebook-f"></i>
+                                            <i class="fab fa-facebook-f" aria-hidden="true"></i>
                                         </a>
                                         <a class="btn-social d-inline-flex justify-content-center align-items-center rounded-circle text-decoration-none" href="https://www.instagram.com/iglesiabautistademonterrey?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
-                                            <i class="fab fa-instagram"></i>
+                                            <i class="fab fa-instagram" aria-hidden="true"></i>
                                         </a>
                                         <button class="btn btn-light d-flex justify-content-center align-items-center p-0 border shadow-sm rounded-circle btn-share" type="button" style="width:40px;height:40px" aria-label="Compartir" data-share data-share-type="image" data-title="Pastor Líder: " data-description="🙏 Conoce a nuestro Pastor Líder, quien guía con amor y sabiduría a nuestra comunidad. ¡Conecta y conócenos!" data-url="https://www.ibmty.com/ministerios.html#lideres" data-image="assets/icons/Logo_IBMty.png">
-                                            <i class="fas fa-share-nodes text-secondary"></i>
+                                            <i class="fa-solid fa-share text-secondary" aria-hidden="true"></i>
                                         </button>
                                     </div>
                                 </div>
@@ -161,24 +161,24 @@
                                     <div class="carousel-info-box">
                                         <div class="d-flex flex-column gap-2 text-start">
                                             <div class="carousel-info-row">
-                                                <i class="fas fa-clock"></i>
+                                                <i class="fas fa-clock" aria-hidden="true"></i>
                                                 <span class="carousel-info-text">Viernes 8:00 PM</span>
                                             </div>
                                             <div class="carousel-info-row">
-                                                <i class="fas fa-map-marker-alt"></i>
+                                                <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
                                                 <span class="carousel-info-text">Local 41</span>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="carousel-actions mt-auto pt-3 border-top d-flex justify-content-center gap-2">
                                         <a class="btn-social d-inline-flex justify-content-center align-items-center rounded-circle text-decoration-none" href="https://www.facebook.com/ministerioadultosibmty/" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
-                                            <i class="fab fa-facebook-f"></i>
+                                            <i class="fab fa-facebook-f" aria-hidden="true"></i>
                                         </a>
                                         <a class="btn-social d-inline-flex justify-content-center align-items-center rounded-circle text-decoration-none" href="https://www.instagram.com/adultosibmty?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
-                                            <i class="fab fa-instagram"></i>
+                                            <i class="fab fa-instagram" aria-hidden="true"></i>
                                         </a>
                                         <button class="btn btn-light d-flex justify-content-center align-items-center p-0 border shadow-sm rounded-circle btn-share" type="button" style="width:40px;height:40px" aria-label="Compartir" data-share data-share-type="image" data-title="Grupo de adultos: " data-description="Un espacio donde matrimonios y adultos fortalecen su fe y caminan juntos. ¡Eres bienvenido!" data-url="https://www.ibmty.com/ministerios.html#adultos" data-image="assets/icons/Logo_Adultos.webp">
-                                            <i class="fas fa-share-nodes text-secondary"></i>
+                                            <i class="fa-solid fa-share text-secondary" aria-hidden="true"></i>
                                         </button>
                                     </div>
                                 </div>
@@ -201,24 +201,24 @@
                                     <div class="carousel-info-box">
                                         <div class="d-flex flex-column gap-2 text-start">
                                             <div class="carousel-info-row">
-                                                <i class="fas fa-clock"></i>
+                                                <i class="fas fa-clock" aria-hidden="true"></i>
                                                 <span class="carousel-info-text">Viernes 8:00 PM</span>
                                             </div>
                                             <div class="carousel-info-row">
-                                                <i class="fas fa-map-marker-alt"></i>
+                                                <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
                                                 <span class="carousel-info-text">Auditorio IBMty</span>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="carousel-actions mt-auto pt-3 border-top d-flex justify-content-center gap-2">
                                         <a class="btn-social d-inline-flex justify-content-center align-items-center rounded-circle text-decoration-none" href="https://www.facebook.com/ProfesionistasIBMty/" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
-                                            <i class="fab fa-facebook-f"></i>
+                                            <i class="fab fa-facebook-f" aria-hidden="true"></i>
                                         </a>
                                         <a class="btn-social d-inline-flex justify-content-center align-items-center rounded-circle text-decoration-none" href="https://www.instagram.com/unisibmty?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
-                                            <i class="fab fa-instagram"></i>
+                                            <i class="fab fa-instagram" aria-hidden="true"></i>
                                         </a>
-                                        <button class="btn btn-light d-flex justify-content-center align-items-center p-0 border shadow-sm rounded-circle btn-share" type="button" style="width:40px;height:40px" aria-label="Compartir" data-share data-share-type="image" data-title="Grupo de Profesionistas: " data-description="💼 Un lugar para crecer espiritualmente mientras enfrentas los retos de la vida profesional. ¡Ven y conócenos!" data-url="https://www.ibmty.com/ministerios.html#profesionistas" data-image="assets/icons/Logo_Profesionistas.png">
-                                            <i class="fas fa-share-nodes text-secondary"></i>
+                                        <button class="btn btn-light d-flex justify-content-center align-items-center p-0 border shadow-sm rounded-circle btn-share" type="button" style="width:40px;height:40px" aria-label="Compartir" data-share data-share-type="image" data-title="Grupo de Profesionistas: " data-description="💼 Un lugar para crecer espiritualmente mientras enfrentas los retos de la vida profesional. ¡Ven y conócenos!" data-url="https://www.ibmty.com/ministerios.html#profesionistas" data-image="assets/icons/Logo_Profesionistas.webp">
+                                            <i class="fa-solid fa-share text-secondary" aria-hidden="true"></i>
                                         </button>
                                     </div>
                                 </div>
@@ -241,27 +241,27 @@
                                     <div class="carousel-info-box">
                                         <div class="d-flex flex-column gap-2 text-start">
                                             <div class="carousel-info-row">
-                                                <i class="fas fa-clock"></i>
+                                                <i class="fas fa-clock" aria-hidden="true"></i>
                                                 <span class="carousel-info-text">Sábado 7:00 PM</span>
                                             </div>
                                             <div class="carousel-info-row">
-                                                <i class="fas fa-map-marker-alt"></i>
+                                                <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
                                                 <span class="carousel-info-text">Local 41</span>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="carousel-actions mt-auto pt-3 border-top d-flex justify-content-center gap-2">
                                         <a class="btn-social d-inline-flex justify-content-center align-items-center rounded-circle text-decoration-none" href="https://www.facebook.com/unisibmty/" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
-                                            <i class="fab fa-facebook-f"></i>
+                                            <i class="fab fa-facebook-f" aria-hidden="true"></i>
                                         </a>
                                         <a class="btn-social d-inline-flex justify-content-center align-items-center rounded-circle text-decoration-none" href="https://www.instagram.com/unisibmty?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
-                                            <i class="fab fa-instagram"></i>
+                                            <i class="fab fa-instagram" aria-hidden="true"></i>
                                         </a>
                                         <a class="btn-social d-inline-flex justify-content-center align-items-center rounded-circle text-decoration-none" href="https://www.tiktok.com/@unis.ibmty" aria-label="TikTok" target="_blank" rel="noopener noreferrer">
-                                            <i class="fab fa-tiktok"></i>
+                                            <i class="fab fa-tiktok" aria-hidden="true"></i>
                                         </a>
                                         <button class="btn btn-light d-flex justify-content-center align-items-center p-0 border shadow-sm rounded-circle btn-share" type="button" style="width:40px;height:40px" aria-label="Compartir" data-share data-share-type="image" data-title="Grupo de Universitarios: " data-description="🎓 Un espacio para universitarios (18–24) donde crecemos en fe, comunidad y propósito. ¡Te esperamos!" data-url="https://www.ibmty.com/ministerios.html#universitarios" data-image="assets/icons/Logo_Universitarios.webp">
-                                            <i class="fas fa-share-nodes text-secondary"></i>
+                                            <i class="fa-solid fa-share text-secondary" aria-hidden="true"></i>
                                         </button>
                                     </div>
                                 </div>
@@ -284,27 +284,27 @@
                                     <div class="carousel-info-box">
                                         <div class="d-flex flex-column gap-2 text-start">
                                             <div class="carousel-info-row">
-                                                <i class="fas fa-clock"></i>
+                                                <i class="fas fa-clock" aria-hidden="true"></i>
                                                 <span class="carousel-info-text">Sábado 5:00 PM</span>
                                             </div>
                                             <div class="carousel-info-row">
-                                                <i class="fas fa-map-marker-alt"></i>
+                                                <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
                                                 <span class="carousel-info-text">Auditorio IBMty</span>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="carousel-actions mt-auto pt-3 border-top d-flex justify-content-center gap-2">
                                         <a class="btn-social d-inline-flex justify-content-center align-items-center rounded-circle text-decoration-none" href="https://www.facebook.com/JVNSMty/" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
-                                            <i class="fab fa-facebook-f"></i>
+                                            <i class="fab fa-facebook-f" aria-hidden="true"></i>
                                         </a>
                                         <a class="btn-social d-inline-flex justify-content-center align-items-center rounded-circle text-decoration-none" href="https://www.instagram.com/jvns_ibmty?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
-                                            <i class="fab fa-instagram"></i>
+                                            <i class="fab fa-instagram" aria-hidden="true"></i>
                                         </a>
                                         <a class="btn-social d-inline-flex justify-content-center align-items-center rounded-circle text-decoration-none" href="https://www.tiktok.com/@jvns_ibmty/" aria-label="TikTok" target="_blank" rel="noopener noreferrer">
-                                            <i class="fab fa-tiktok"></i>
+                                            <i class="fab fa-tiktok" aria-hidden="true"></i>
                                         </a>
                                         <button class="btn btn-light d-flex justify-content-center align-items-center p-0 border shadow-sm rounded-circle btn-share" type="button" style="width:40px;height:40px" aria-label="Compartir" data-share data-share-type="image" data-title="Grupo de Jóvenes: " data-description="Jóvenes de 14 a 18 años descubriendo juntos su propósito y fortaleciendo su fe. ¡Anímate a venir!" data-url="https://www.ibmty.com/ministerios.html#jovenes" data-image="assets/icons/Logo_Jovenes.webp">
-                                            <i class="fas fa-share-nodes text-secondary"></i>
+                                            <i class="fa-solid fa-share text-secondary" aria-hidden="true"></i>
                                         </button>
                                     </div>
                                 </div>
@@ -327,24 +327,24 @@
                                     <div class="carousel-info-box">
                                         <div class="d-flex flex-column gap-2 text-start">
                                             <div class="carousel-info-row">
-                                                <i class="fas fa-clock"></i>
+                                                <i class="fas fa-clock" aria-hidden="true"></i>
                                                 <span class="carousel-info-text">Sábado 1:00 PM</span>
                                             </div>
                                             <div class="carousel-info-row">
-                                                <i class="fas fa-map-marker-alt"></i>
+                                                <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
                                                 <span class="carousel-info-text">Local 41</span>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="carousel-actions mt-auto pt-3 border-top d-flex justify-content-center gap-2">
                                         <a class="btn-social d-inline-flex justify-content-center align-items-center rounded-circle text-decoration-none" href="https://www.facebook.com/intersibmty/" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
-                                            <i class="fab fa-facebook-f"></i>
+                                            <i class="fab fa-facebook-f" aria-hidden="true"></i>
                                         </a>
                                         <a class="btn-social d-inline-flex justify-content-center align-items-center rounded-circle text-decoration-none" href="https://www.instagram.com/intersibmty?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
-                                            <i class="fab fa-instagram"></i>
+                                            <i class="fab fa-instagram" aria-hidden="true"></i>
                                         </a>
-                                        <button class="btn btn-light d-flex justify-content-center align-items-center p-0 border shadow-sm rounded-circle btn-share" type="button" style="width:40px;height:40px" aria-label="Compartir" data-share data-share-type="image" data-title="Grupo de Intermedios: " data-description="🌱 Un grupo especial para preadolescentes (11–13) donde crecen, aprenden y se divierten. ¡Conócenos!" data-url="https://www.ibmty.com/ministerios.html#intermedios" data-image="assets/icons/Logo_Intermedios.png">
-                                            <i class="fas fa-share-nodes text-secondary"></i>
+                                        <button class="btn btn-light d-flex justify-content-center align-items-center p-0 border shadow-sm rounded-circle btn-share" type="button" style="width:40px;height:40px" aria-label="Compartir" data-share data-share-type="image" data-title="Grupo de Intermedios: " data-description="🌱 Un grupo especial para preadolescentes (11–13) donde crecen, aprenden y se divierten. ¡Conócenos!" data-url="https://www.ibmty.com/ministerios.html#intermedios" data-image="assets/icons/Logo_Intermedios.webp">
+                                            <i class="fa-solid fa-share text-secondary" aria-hidden="true"></i>
                                         </button>
                                     </div>
                                 </div>
@@ -368,18 +368,18 @@
                                     <div class="carousel-info-box">
                                         <div class="d-flex flex-column gap-2 text-start">
                                             <div class="carousel-info-row">
-                                                <i class="fas fa-clock"></i>
+                                                <i class="fas fa-clock" aria-hidden="true"></i>
                                                 <span class="carousel-info-text">Domingo, durante servicios</span>
                                             </div>
                                             <div class="carousel-info-row">
-                                                <i class="fas fa-map-marker-alt"></i>
+                                                <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
                                                 <span class="carousel-info-text">Local 41</span>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="carousel-actions mt-auto pt-3 border-top d-flex justify-content-center gap-2">
-                                        <button class="btn btn-light d-flex justify-content-center align-items-center p-0 border shadow-sm rounded-circle btn-share" type="button" style="width:40px;height:40px" aria-label="Compartir" data-share data-share-type="image" data-title="Grupo de Culto Infantil: " data-description="🧒 Niños de 6 a 10 años aprenden principios bíblicos de forma divertida y segura. ¡Los esperamos!" data-url="https://www.ibmty.com/ministerios.html#culto-infantil" data-image="assets/icons/Logo_culto_infantil.png">
-                                            <i class="fas fa-share-nodes text-secondary"></i>
+                                        <button class="btn btn-light d-flex justify-content-center align-items-center p-0 border shadow-sm rounded-circle btn-share" type="button" style="width:40px;height:40px" aria-label="Compartir" data-share data-share-type="image" data-title="Grupo de Culto Infantil: " data-description="🧒 Niños de 6 a 10 años aprenden principios bíblicos de forma divertida y segura. ¡Los esperamos!" data-url="https://www.ibmty.com/ministerios.html#culto-infantil" data-image="assets/icons/Logo_culto_infantil.webp">
+                                            <i class="fa-solid fa-share text-secondary" aria-hidden="true"></i>
                                         </button>
                                     </div>
                                 </div>
@@ -402,18 +402,18 @@
                                     <div class="carousel-info-box">
                                         <div class="d-flex flex-column gap-2 text-start">
                                             <div class="carousel-info-row">
-                                                <i class="fas fa-clock"></i>
+                                                <i class="fas fa-clock" aria-hidden="true"></i>
                                                 <span class="carousel-info-text">Domingo, durante servicios</span>
                                             </div>
                                             <div class="carousel-info-row">
-                                                <i class="fas fa-map-marker-alt"></i>
+                                                <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
                                                 <span class="carousel-info-text">Local 23 (parte superior)</span>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="carousel-actions mt-auto pt-3 border-top d-flex justify-content-center gap-2">
-                                        <button class="btn btn-light d-flex justify-content-center align-items-center p-0 border shadow-sm rounded-circle btn-share" type="button" style="width:40px;height:40px" aria-label="Compartir" data-share data-share-type="image" data-title="Parvulos: " data-description="🧸 Un espacio lleno de amor y cuidado para niños de 3 a 5 años, mientras los papás disfrutan el servicio." data-url="https://www.ibmty.com/ministerios.html#parvulos" data-image="assets/icons/Logo_Parvulos.png">
-                                            <i class="fas fa-share-nodes text-secondary"></i>
+                                        <button class="btn btn-light d-flex justify-content-center align-items-center p-0 border shadow-sm rounded-circle btn-share" type="button" style="width:40px;height:40px" aria-label="Compartir" data-share data-share-type="image" data-title="Parvulos: " data-description="🧸 Un espacio lleno de amor y cuidado para niños de 3 a 5 años, mientras los papás disfrutan el servicio." data-url="https://www.ibmty.com/ministerios.html#parvulos" data-image="assets/icons/Logo_Parvulos.webp">
+                                            <i class="fa-solid fa-share text-secondary" aria-hidden="true"></i>
                                         </button>
                                     </div>
                                 </div>
@@ -436,30 +436,30 @@
                                     <div class="carousel-info-box">
                                         <div class="d-flex flex-column gap-2 text-start">
                                             <div class="carousel-info-row">
-                                                <i class="fas fa-clock"></i>
+                                                <i class="fas fa-clock" aria-hidden="true"></i>
                                                 <span class="carousel-info-text">Domingo, durante servicios</span>
                                             </div>
                                             <div class="carousel-info-row">
-                                                <i class="fas fa-map-marker-alt"></i>
+                                                <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
                                                 <span class="carousel-info-text">Local 23 (parte inferior)</span>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="carousel-actions mt-auto pt-3 border-top d-flex justify-content-center gap-2">
-                                        <button class="btn btn-light d-flex justify-content-center align-items-center p-0 border shadow-sm rounded-circle btn-share" type="button" style="width:40px;height:40px" aria-label="Compartir" data-share data-share-type="image" data-title="Guarderia: " data-description="👶 Cuidamos con amor a bebés de 0 a 2 años para que los papás estén tranquilos y seguros." data-url="https://www.ibmty.com/ministerios.html#guarderia" data-image="assets/icons/Logo_Guarderia.png">
-                                            <i class="fas fa-share-nodes text-secondary"></i>
+                                        <button class="btn btn-light d-flex justify-content-center align-items-center p-0 border shadow-sm rounded-circle btn-share" type="button" style="width:40px;height:40px" aria-label="Compartir" data-share data-share-type="image" data-title="Guarderia: " data-description="👶 Cuidamos con amor a bebés de 0 a 2 años para que los papás estén tranquilos y seguros." data-url="https://www.ibmty.com/ministerios.html#guarderia" data-image="assets/icons/Logo_Guarderia.webp">
+                                            <i class="fa-solid fa-share text-secondary" aria-hidden="true"></i>
                                         </button>
                                     </div>
                                 </div>
                             </article>
                         </div>
                     </div>
-                    <div class="swiper-button-prev"></div>
-                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev carousel-btn carousel-btn--prev"></div>
+                    <div class="swiper-button-next carousel-btn carousel-btn--next"></div>
                 </div>
                 <div class="mt-3 mt-md-4 text-center">
                     <span class="badge px-3 py-2 shadow-sm rounded-pill bg-secondary">
-                        <i class="fas fa-users me-1"></i>
+                        <i class="fas fa-users me-1" aria-hidden="true"></i>
                         <span class="current-slide-display">1</span> / <span class="total-slides-display">9</span>
                     </span>
                 </div>
@@ -468,7 +468,7 @@
     </main>
 
     <a class="whatsapp-floating-btn" href="https://wa.me/528132503031?text=Hola,%20me%20interesa%20recibir%20informaci%c3%b3n%20de%20la%20iglesia" aria-label="Contactar por WhatsApp" target="_blank" rel="noopener noreferrer">
-        <i class="fab fa-whatsapp"></i>
+        <i class="fab fa-whatsapp" aria-hidden="true"></i>
     </a>
 
     <footer class="footer pt-4 pb-3 border-top">
@@ -476,59 +476,59 @@
             <div class="row gy-3 gy-md-4">
                 <div class="col-12 col-lg-4 text-center text-lg-start">
                     <h2 class="h5 fw-bold mb-3 text-body-emphasis">
-                        <i class="fa-solid fa-thumbs-up text-info me-2"></i>Síguenos
+                        <i class="fa-solid fa-thumbs-up text-info me-2" aria-hidden="true"></i>Síguenos
                     </h2>
                     <p class="mb-3 text-body-secondary">Mantente conectado con nosotros</p>
                     <div class="social-icons d-flex justify-content-center justify-content-lg-start gap-2">
                         <a class="btn-social" href="https://www.facebook.com/IBMty/" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
-                            <i class="fab fa-facebook-f"></i>
+                            <i class="fab fa-facebook-f" aria-hidden="true"></i>
                         </a>
                         <a class="btn-social" href="https://www.instagram.com/iglesiabautistademonterrey?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
-                            <i class="fab fa-instagram"></i>
+                            <i class="fab fa-instagram" aria-hidden="true"></i>
                         </a>
                         <a class="btn-social" href="https://www.youtube.com/channel/UCfhSTnqLb6vFO28eNm_n0qw" aria-label="YouTube" target="_blank" rel="noopener noreferrer">
-                            <i class="fab fa-youtube"></i>
+                            <i class="fab fa-youtube" aria-hidden="true"></i>
                         </a>
                         <a class="btn-social" href="mailto:oficina@ibmty.com" aria-label="Correo electrónico">
-                            <i class="fa-regular fa-envelope"></i>
+                            <i class="fa-regular fa-envelope" aria-hidden="true"></i>
                         </a>
                     </div>
                 </div>
                 <div class="col-6 col-lg-4">
                     <h2 class="h5 fw-bold mb-3 text-body-emphasis">
-                        <i class="fa-solid fa-id-badge text-info me-2"></i>Contacto
+                        <i class="fa-solid fa-id-badge text-info me-2" aria-hidden="true"></i>Contacto
                     </h2>
                     <ul class="list-unstyled small text-body-secondary">
                         <li class="mb-2">
                             <a class="text-decoration-none text-reset hover-link" href="https://www.google.com/maps?q=Iglesia+Bautista+de+Monterrey" target="_blank" rel="noopener noreferrer">
-                                <i class="fas fa-map-marker-alt me-2"></i>Av. Eugenio Garza Sada 6309, MTY.
+                                <i class="fas fa-map-marker-alt me-2" aria-hidden="true"></i>Av. Eugenio Garza Sada 6309, MTY.
                             </a>
                         </li>
                         <li class="mb-2">
                             <a class="text-decoration-none text-reset hover-link" href="tel:+528183496161">
-                                <i class="fas fa-phone-alt me-2"></i>81 83 49 61 61
+                                <i class="fas fa-phone-alt me-2" aria-hidden="true"></i>81 83 49 61 61
                             </a>
                         </li>
                         <li>
                             <a class="text-decoration-none text-reset hover-link" href="tel:+528183496263">
-                                <i class="fas fa-phone-alt me-2"></i>81 83 49 62 63
+                                <i class="fas fa-phone-alt me-2" aria-hidden="true"></i>81 83 49 62 63
                             </a>
                         </li>
                     </ul>
                 </div>
                 <div class="col-6 col-lg-4">
                     <h2 class="h5 fw-bold mb-3 text-body-emphasis">
-                        <i class="fas fa-external-link-alt text-info me-2"></i>Enlaces
+                        <i class="fas fa-external-link-alt text-info me-2" aria-hidden="true"></i>Enlaces
                     </h2>
                     <ul class="list-unstyled small text-body-secondary">
                         <li class="mb-2">
                             <a class="text-decoration-none text-reset hover-link" href="https://www.ribbi.org/" target="_blank" rel="noopener noreferrer">
-                                <i class="fa-solid fa-network-wired me-2"></i>RIBBI
+                                <i class="fa-solid fa-network-wired me-2" aria-hidden="true"></i>RIBBI
                             </a>
                         </li>
                         <li>
                             <a class="text-decoration-none text-reset hover-link" href="https://elsaucillo.org/" target="_blank" rel="noopener noreferrer">
-                                <i class="fa-solid fa-mountain-sun me-2"></i>El Saucillo
+                                <i class="fa-solid fa-mountain-sun me-2" aria-hidden="true"></i>El Saucillo
                             </a>
                         </li>
                     </ul>
@@ -545,7 +545,7 @@
                         &copy; <span id="currentYear"></span> IBMty.
                     </div>
                     <div class="col-md-4 text-center text-md-end">Hecho con
-                        <i id="heartIcon" class="fas fa-heart text-danger" style="cursor:pointer"></i> para
+                        <i id="heartIcon" class="fas fa-heart text-danger" style="cursor:pointer" aria-hidden="true"></i> para
                         <a class="text-reset text-decoration-none" href="salvacion.html">Dios</a>
                     </div>
                 </div>
@@ -569,13 +569,13 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous" defer="defer"></script>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js" defer="defer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@12.2.0/swiper-bundle.min.js" defer="defer"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js" integrity="sha512-A7AYk1fGKX6S2SsHywmPkrnzTZHrgiVT7GcQkLGDe2ev0aWb8zejytzS8wjo7PGEXKqJOrjQ4oORtnimIRZBtw==" crossorigin="anonymous" defer="defer"></script>
     <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer="defer"></script>
     <script src="context/utils.js" defer="defer"></script>
     <script src="context/sw-registration.js" defer="defer"></script>
     <script src="context/onesignal-init.js" defer="defer"></script>
-    <script src="context/carousel-manager.js" defer="defer"></script>
+    <script src="context/carousel.js" defer="defer"></script>
     <script src="context/analytics.js" defer="defer"></script>
 </body>
 

@@ -1,0 +1,337 @@
+:root {
+    --carousel-banner-height: 160px;
+    --carousel-banner-height-desktop: 180px;
+    --carousel-card-radius: var(--radius-xl, 1.5rem);
+    --carousel-card-padding: 1.25rem;
+    --carousel-card-padding-desktop: 1.5rem;
+    --carousel-transition: 0.25s ease
+}
+
+.carousel-section {
+    overflow-x: hidden;
+    overflow-y: visible
+}
+
+.carousel-swiper {
+    position: relative;
+    width: 100%;
+    padding: 1rem 0 0;
+    overflow: visible;
+    perspective: 1200px
+}
+
+.carousel-swiper .swiper-wrapper {
+    align-items: stretch
+}
+
+.carousel-swiper .swiper-slide {
+    display: flex;
+    height: auto;
+    opacity: .95;
+    transform-style: preserve-3d;
+    transition: opacity var(--carousel-transition), filter var(--carousel-transition), transform var(--carousel-transition)
+}
+
+.carousel-swiper .swiper-slide-active {
+    filter: none;
+    opacity: 1
+}
+
+.carousel-swiper .swiper-slide:not(.swiper-slide-active) {
+    filter: saturate(.9) brightness(.92)
+}
+
+.carousel-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-height: 100%;
+    overflow: hidden;
+    background: var(--bg-surface, #fff);
+    border: 1px solid var(--border-light, rgb(0 0 0 / .08));
+    border-radius: var(--carousel-card-radius);
+    box-shadow: var(--shadow-md, 0 4px 12px rgb(0 0 0 / .1));
+    color: var(--text-primary, #000);
+    font-family: var(--font-body, system-ui, sans-serif);
+    transition: box-shadow var(--carousel-transition), transform var(--carousel-transition)
+}
+
+.carousel-card:focus-within {
+    box-shadow: var(--shadow-lg, 0 10px 24px rgb(0 0 0 / .14))
+}
+
+.carousel-card-header {
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--carousel-card-radius) var(--carousel-card-radius) 0 0
+}
+
+.carousel-card-header-image img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover
+}
+
+.carousel-banner {
+    position: relative;
+    height: var(--carousel-banner-height);
+    background: linear-gradient(135deg, var(--color-primary, #00c0f7), var(--color-primary-dark, #009ac6));
+    background-position: center;
+    background-size: cover
+}
+
+.carousel-banner-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgb(0 0 0 / .08) 0%, rgb(0 0 0 / .45) 100%);
+    opacity: .75;
+    transition: opacity var(--carousel-transition)
+}
+
+.carousel-avatar {
+    position: absolute;
+    top: var(--carousel-banner-height);
+    left: 50%;
+    z-index: 2;
+    width: 80px;
+    height: 80px;
+    background-color: var(--bg-surface, #fff);
+    background-position: center;
+    background-size: cover;
+    border: 4px solid var(--bg-surface, #fff);
+    border-radius: 50%;
+    box-shadow: var(--shadow-md, 0 4px 12px rgb(0 0 0 / .1));
+    transform: translate(-50%, -50%);
+    transition: border-color var(--carousel-transition), transform var(--carousel-transition)
+}
+
+.carousel-card-body {
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 3.5rem var(--carousel-card-padding) var(--carousel-card-padding);
+    text-align: center
+}
+
+.carousel-card-body.no-avatar {
+    padding-top: var(--carousel-card-padding)
+}
+
+.carousel-title {
+    margin: 0 0 .35rem;
+    color: var(--text-primary, #000);
+    font-family: var(--font-heading, var(--font-body, system-ui, sans-serif));
+    font-size: 1.2rem;
+    font-weight: var(--font-bold, 700);
+    line-height: 1.22;
+    letter-spacing: 0;
+    overflow-wrap: anywhere
+}
+
+.carousel-subtitle {
+    margin: 0 0 .85rem;
+    color: var(--color-primary, #00c0f7);
+    font-size: .78rem;
+    font-weight: var(--font-bold, 700);
+    letter-spacing: 0;
+    line-height: 1.3;
+    text-transform: uppercase
+}
+
+.carousel-description {
+    margin: 0 0 1.25rem;
+    color: var(--text-secondary, #5c5c63);
+    font-size: .92rem;
+    line-height: 1.55;
+    overflow-wrap: anywhere
+}
+
+.carousel-info-box {
+    width: 100%;
+    margin: 0 0 1.25rem;
+    padding: 1rem;
+    background: var(--bg-body-secondary, rgb(0 0 0 / .03));
+    border: 1px solid var(--border-light, rgb(0 0 0 / .08));
+    border-radius: var(--radius-lg, 1rem)
+}
+
+.carousel-info-row {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    margin-bottom: .5rem;
+    text-align: left
+}
+
+.carousel-info-row:last-child {
+    margin-bottom: 0
+}
+
+.carousel-info-row i {
+    min-width: 20px;
+    color: var(--color-primary, #00c0f7);
+    text-align: center
+}
+
+.carousel-info-text {
+    color: var(--text-primary, #000);
+    font-size: .86rem;
+    font-style: italic;
+    font-weight: var(--font-medium, 500);
+    line-height: 1.35
+}
+
+.carousel-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: .75rem;
+    margin-top: auto;
+    padding-top: .5rem
+}
+
+.btn-carousel-action {
+    flex: 1 1 auto
+}
+
+.carousel-btn {
+    display: none
+}
+
+.carousel-toast {
+    font-family: var(--font-body, system-ui, sans-serif);
+    font-size: .9rem
+}
+
+@media (min-width:768px) {
+    .carousel-swiper {
+        padding-top: 1.5rem;
+        --swiper-navigation-top-offset: 25%
+    }
+
+    .carousel-swiper .swiper-slide:not(.swiper-slide-active) .carousel-card {
+        pointer-events: none
+    }
+
+    .carousel-swiper .swiper-slide-active .carousel-card {
+        pointer-events: auto
+    }
+
+    .carousel-swiper .swiper-slide:hover {
+        transform: translateY(-4px)
+    }
+
+    .carousel-card:hover {
+        box-shadow: var(--shadow-premium, 0 18px 40px rgb(0 0 0 / .12))
+    }
+
+    .carousel-card:hover .carousel-banner-overlay {
+        opacity: .55
+    }
+
+    .carousel-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 48px;
+        height: 48px;
+        min-width: 44px;
+        min-height: 44px;
+        background: var(--bg-surface, #fff);
+        border: 1px solid var(--border-light, rgb(0 0 0 / .08));
+        border-radius: 50%;
+        box-shadow: var(--shadow-md, 0 4px 12px rgb(0 0 0 / .1));
+        color: var(--color-primary, #00c0f7);
+        transition: background-color var(--carousel-transition), box-shadow var(--carousel-transition), color var(--carousel-transition), transform var(--carousel-transition)
+    }
+
+    .carousel-btn::after {
+        font-size: 1.1rem;
+        font-weight: var(--font-bold, 700)
+    }
+
+    .carousel-btn--prev {
+        left: .25rem
+    }
+
+    .carousel-btn--next {
+        right: .25rem
+    }
+
+    .carousel-btn:hover {
+        background: var(--color-primary, #00c0f7);
+        color: var(--text-light, #fff);
+        box-shadow: var(--shadow-lg, 0 10px 24px rgb(0 0 0 / .14));
+        transform: translateY(-1px)
+    }
+
+    .carousel-btn:focus-visible {
+        outline: 3px solid rgba(var(--color-primary-rgb, 0, 192, 247), .35);
+        outline-offset: 3px
+    }
+
+    .carousel-banner {
+        height: var(--carousel-banner-height-desktop)
+    }
+
+    .carousel-avatar {
+        top: var(--carousel-banner-height-desktop);
+        width: 88px;
+        height: 88px
+    }
+
+    .carousel-card:hover .carousel-avatar {
+        border-color: var(--color-primary, #00c0f7);
+        transform: translate(-50%, -50%) scale(1.04)
+    }
+
+    .carousel-card-body {
+        padding: 3.85rem var(--carousel-card-padding-desktop) 1.75rem
+    }
+
+    .carousel-card-body.no-avatar {
+        padding-top: 1.5rem
+    }
+
+    .carousel-title {
+        font-size: 1.3rem
+    }
+
+    .carousel-description {
+        font-size: .95rem
+    }
+}
+
+@media (min-width:1024px) {
+    .carousel-swiper {
+        padding-top: 2rem
+    }
+
+    .carousel-btn--prev {
+        left: .5rem
+    }
+
+    .carousel-btn--next {
+        right: .5rem
+    }
+}
+
+@media (prefers-reduced-motion:reduce) {
+
+    .carousel-swiper .swiper-slide,
+    .carousel-card,
+    .carousel-banner-overlay,
+    .carousel-avatar,
+    .carousel-btn {
+        transition: none
+    }
+
+    .carousel-swiper .swiper-slide:hover,
+    .carousel-card:hover .carousel-avatar,
+    .carousel-btn:hover {
+        transform: none
+    }
+}
