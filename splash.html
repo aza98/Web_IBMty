@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es" class="splash-page">
+
+<head>
+    <script>
+        (function() {
+            var saved = localStorage.getItem('theme');
+            var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            var theme = saved || (prefersDark ? 'dark' : 'light');
+            document.documentElement.setAttribute('data-theme', theme);
+        })();
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#010C18">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="IBMty">
+    <meta property="og:title" content="Iglesia Bautista de Monterrey">
+    <meta property="og:description" content="Bienvenido a la app de la Iglesia Bautista de Monterrey.">
+    <meta property="og:type" content="website">
+    <link rel="apple-touch-icon" href="assets/icons/IBMty_Icon_180.png">
+    <link rel="icon" href="assets/icons/IBMty_Icon_32.ico">
+    <link rel="manifest" href="manifest.json">
+    <link rel="preload" href="assets/fonts/League_Spartan/static/LeagueSpartan-SemiBold.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/pages/splash.css">
+    <title>IBMty</title>
+    <script src="config/config.js" defer></script>
+    <script src="js/utils/analytics.js" defer></script>
+    <script src="js/main.js" defer></script>
+    <script src="gsap-public/minified/gsap.min.js" defer></script>
+    <script src="gsap-public/minified/ScrollTrigger.min.js" defer></script>
+    <script src="js/components/animations.js" defer></script>
+</head>
+
+<body data-page="splash">
+    <div id="splash-screen">
+        <div class="splash-content">
+            <div class="splash-logo-wrap">
+                <img id="splash-logo" src="assets/icons/Logo_IBMty.png" width="512" height="512" alt="IBMty">
+            </div>
+            <div id="splash-loader" class="splash-progress-bar">
+                <div class="splash-progress-line"></div>
+            </div>
+            <p class="splash-subtitle">IBMTY</p>
+        </div>
+    </div>
+</body>
+
+</html>

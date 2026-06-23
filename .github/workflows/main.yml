@@ -26,4 +26,9 @@ jobs:
           **/.git*/**
           **/node_modules/**
           **/.github/**
-          **/.DS_Store
+          **/.DS_Store**
+          **/.claude/**
+          **/docs/**
+          **/CLAUDE.md
+          **/AGENTS.md
+          **/skills-lock.json

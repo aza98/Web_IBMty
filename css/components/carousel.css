@@ -1,0 +1,276 @@
+#eventos-swiper,
+#ministerios-swiper {
+  --carousel-transition: var(--motion-emphasized) var(--ease-standard);
+  --carousel-slide-dim: .5
+}
+
+.card-event-badge {
+  display: inline-block;
+  background: var(--color-brand);
+  color: var(--color-on-brand);
+  border-radius: var(--radius-pill);
+  font-size: var(--text-2xs);
+  font-weight: 600;
+  width: fit-content
+}
+
+.card-event-title {
+  font-family: var(--font-primary);
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.2
+}
+
+.card-event-date {
+  display: block;
+  margin-bottom: var(--space-2);
+  font-family: var(--font-primary);
+  font-weight: 700;
+  font-size: var(--text-2xs);
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--color-brand)
+}
+
+.card-ministerio-name {
+  font-family: var(--font-primary);
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.2;
+  min-height: 2.4em;
+  color: var(--color-text-primary)
+}
+
+.card-event-desc {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted)
+}
+
+.card-event-meta {
+  color: var(--color-text-muted)
+}
+
+.card-event-week {
+  padding: .6rem var(--space-2);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: rgb(var(--color-brand-rgb) / .04)
+}
+
+.card-event-week-label {
+  display: inline-flex;
+  align-items: center;
+  margin-bottom: .35rem;
+  font-family: var(--font-primary);
+  font-weight: 700;
+  font-size: var(--text-2xs);
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--color-brand)
+}
+
+.card-event-meta-link {
+  color: var(--color-text-muted);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: color var(--transition-base)
+}
+
+@media (hover:hover) {
+  .card-event-meta-link:hover {
+    color: var(--color-brand)
+  }
+}
+
+.card-event-img-fallback {
+  height: 200px;
+  background: var(--color-surface)
+}
+
+.card-event-img-icon {
+  font-size: 2rem;
+  color: var(--color-text-muted)
+}
+
+.card-ministerio {
+  padding-bottom: var(--space-4)
+}
+
+.card-ministerio-img {
+  width: 100%;
+  aspect-ratio: var(--card-media-ratio);
+  height: auto;
+  object-fit: cover;
+  display: block
+}
+
+.card-ministerio-body {
+  padding-top: var(--space-8);
+  padding-left: var(--space-3);
+  padding-right: var(--space-3)
+}
+
+@media (min-width:768px) {
+  .card-ministerio-body {
+    padding-left: var(--space-4);
+    padding-right: var(--space-4)
+  }
+}
+
+.card-ministerio-desc {
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary)
+}
+
+.card-ministerio-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .3rem;
+  padding-top: var(--space-2);
+  font-size: var(--text-xs);
+  color: var(--color-text-muted)
+}
+
+.card-ministerio-meta-item {
+  display: inline-flex;
+  align-items: center;
+  gap: .45rem
+}
+
+.card-ministerio-meta-item i {
+  flex-shrink: 0;
+  width: 1rem;
+  text-align: center;
+  color: var(--color-brand);
+  font-size: var(--text-sm)
+}
+
+#eventos,
+#lideres {
+  overflow-x: hidden
+}
+
+#eventos-swiper,
+#ministerios-swiper {
+  overflow: visible
+}
+
+.carousel-clip {
+  width: 100%;
+  margin-inline: auto;
+  overflow: hidden
+}
+
+@media (min-width:1024px) {
+  .carousel-clip {
+    max-width: 900px
+  }
+
+  #eventos-swiper .swiper-slide:not(.swiper-slide-active):not(.swiper-slide-prev):not(.swiper-slide-next),
+  #ministerios-swiper .swiper-slide:not(.swiper-slide-active):not(.swiper-slide-prev):not(.swiper-slide-next) {
+    opacity: 0;
+    visibility: hidden
+  }
+}
+
+@media (min-width:1920px) {
+  .carousel-clip {
+    max-width: 1000px
+  }
+}
+
+#eventos-swiper .swiper-wrapper,
+#ministerios-swiper .swiper-wrapper {
+  align-items: stretch
+}
+
+#eventos-swiper .swiper-slide,
+#ministerios-swiper .swiper-slide {
+  height: auto;
+  transition: opacity var(--carousel-transition);
+  opacity: var(--carousel-slide-dim)
+}
+
+#eventos-swiper .swiper-slide .card-app,
+#ministerios-swiper .swiper-slide .card-app {
+  height: 100%;
+  display: flex;
+  flex-direction: column
+}
+
+#ministerios-swiper .swiper-slide .card-ministerio-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column
+}
+
+#ministerios-swiper .swiper-slide .card-ministerio-meta {
+  margin-top: auto
+}
+
+#ministerios-swiper .swiper-slide .card-ministerio-body:not(:has(.card-ministerio-meta)) .card-social-links {
+  margin-top: auto
+}
+
+#eventos-swiper .swiper-slide-active,
+#ministerios-swiper .swiper-slide-active {
+  opacity: 1
+}
+
+#eventos-swiper .swiper-slide:not(.swiper-slide-active) .card-app,
+#ministerios-swiper .swiper-slide:not(.swiper-slide-active) .card-app {
+  pointer-events: none
+}
+
+@media (hover:hover) {
+
+  #eventos-swiper .swiper-slide:not(.swiper-slide-active) .card-app:hover,
+  #ministerios-swiper .swiper-slide:not(.swiper-slide-active) .card-app:hover {
+    transform: none;
+    box-shadow: var(--shadow-card)
+  }
+}
+
+.carousel-navigation-container {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  gap: var(--space-5);
+  margin-top: var(--space-5)
+}
+
+@media (min-width:1024px) {
+  .carousel-navigation-container {
+    display: flex
+  }
+}
+
+.carousel-indicator {
+  display: flex;
+  width: fit-content;
+  margin: var(--space-5) auto 0;
+  padding: .35rem 1rem;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  font-family: var(--font-secondary);
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  font-size: var(--text-sm);
+  letter-spacing: .05em
+}
+
+@media (min-width:1024px) {
+  .carousel-indicator {
+    margin-top: var(--space-3)
+  }
+}
+
+@media (prefers-reduced-motion:reduce) {
+
+  #eventos-swiper .swiper-slide,
+  #ministerios-swiper .swiper-slide {
+    transition: none
+  }
+}

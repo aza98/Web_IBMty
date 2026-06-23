@@ -1,101 +1,18 @@
 {
-  "name": "Iglesia Bautista de Monterrey",
-  "short_name": "IBMty",
-  "description": "Sitio oficial de la Iglesia Bautista de Monterrey. Conoce más sobre nuestra fe, ministerios y eventos.",
-  "start_url": "/?source=pwa",
-  "scope": "/",
+  "name": "IBMty",
+  "short_name": "IBMTY",
+  "description": "App oficial de IBMty, Iglesia Bautista de Monterrey. Eventos, mensajes y comunidad en un solo lugar.",
+  "id": "./",
+  "lang": "es",
+  "start_url": "index.html",
+  "scope": "./",
   "display": "standalone",
-  "display_override": [
-    "standalone",
-    "minimal-ui"
-  ],
-  "prefer_related_applications": false,
-  "background_color": "#121212",
-  "theme_color": "#121212",
-  "id": "/?source=pwa",
-  "lang": "es-MX",
-  "dir": "ltr",
-  "categories": [
-    "religion",
-    "education",
-    "lifestyle"
-  ],
+  "background_color": "#010C18",
+  "theme_color": "#00C0F6",
+  "orientation": "portrait",
   "icons": [
-    {
-      "src": "assets/icons/IBMty_Icon_32.png",
-      "sizes": "32x32",
-      "type": "image/png"
-    },
-    {
-      "src": "assets/icons/IBMty_Icon_180.png",
-      "sizes": "180x180",
-      "type": "image/png"
-    },
-    {
-      "src": "assets/icons/IBMty_Icon_192.png",
-      "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "any maskable"
-    },
-    {
-      "src": "assets/icons/IBMty_Icon_512.png",
-      "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "any maskable"
-    }
-  ],
-  "shortcuts": [
-    {
-      "name": "Ministerios",
-      "short_name": "Ministerios",
-      "description": "Descubre los ministerios de la iglesia",
-      "url": "/ministerios.html",
-      "icons": [
-        {
-          "src": "assets/icons/Logo_Adultos.webp",
-          "sizes": "96x96"
-        }
-      ]
-    },
-    {
-      "name": "Donativos",
-      "short_name": "Donativos",
-      "description": "Apoya nuestra misión",
-      "url": "/donativo.html",
-      "icons": [
-        {
-          "src": "assets/icons/Logo_Profesionistas.webp",
-          "sizes": "96x96"
-        }
-      ]
-    },
-    {
-      "name": "Eventos",
-      "short_name": "Eventos",
-      "description": "Consulta próximos eventos y actividades",
-      "url": "/index.html#eventos",
-      "icons": [
-        {
-          "src": "assets/icons/IBMty_Icon_180.png",
-          "sizes": "96x96"
-        }
-      ]
-    }
-  ],
-  "screenshots": [
-    {
-      "src": "assets/screenshots/home-mobile.png",
-      "sizes": "1080x1920",
-      "type": "image/png",
-      "form_factor": "narrow",
-      "label": "Inicio de la Iglesia Bautista de Monterrey"
-    },
-    {
-      "src": "assets/screenshots/home-desktop.png",
-      "sizes": "1920x1080",
-      "type": "image/png",
-      "form_factor": "wide",
-      "label": "Sitio oficial IBMty en escritorio"
-    }
+    { "src": "assets/icons/IBMty_Icon_192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "assets/icons/IBMty_Icon_512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "assets/icons/icon-512-maskable.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
   ]
 }
