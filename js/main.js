@@ -75,10 +75,9 @@ function toggleTheme() {
 
 function initServiceWorker() {
     if ('serviceWorker' in navigator) {
-        var refreshing = !1;
         navigator.serviceWorker.addEventListener('controllerchange', function() {
-            if (refreshing) return;
-            refreshing = !0;
+            if (sessionStorage.getItem('sw-reloaded')) return;
+            sessionStorage.setItem('sw-reloaded', '1');
             window.location.reload()
         });
         var register = function() {
@@ -116,7 +115,8 @@ function makeToast(message, opts) {
     if (opts.id) toast.id = opts.id;
     toast.setAttribute('role', 'status');
     var layout = hasAction ? 'display:flex;align-items:center;gap:.75rem;padding:.6rem .75rem .6rem 1.25rem;' : 'padding:.75rem 1.25rem;pointer-events:none;';
-    toast.style.cssText = 'position:fixed;left:50%;bottom:calc(2rem + env(safe-area-inset-bottom));' + 'transform:translateX(-50%) translateY(1rem);z-index:2000;' + 'max-width:calc(100% - 2rem);' + layout + 'background:var(--color-surface);color:var(--color-text-primary);' + 'border:1px solid var(--color-border);border-radius:var(--radius-pill);' + 'box-shadow:var(--shadow-card);font-family:var(--font-secondary);' + 'font-size:.9rem;font-weight:500;opacity:0;' + 'transition:opacity var(--motion-base) var(--ease-standard), transform var(--motion-base) var(--ease-standard);';
+    var bottom = document.body.classList.contains('is-pwa') ? 'calc(var(--tabbar-height) + 1rem + env(safe-area-inset-bottom))' : 'calc(2rem + env(safe-area-inset-bottom))';
+    toast.style.cssText = 'position:fixed;left:50%;bottom:' + bottom + ';' + 'transform:translateX(-50%) translateY(1rem);z-index:2000;' + 'max-width:calc(100% - 2rem);' + layout + 'background:var(--color-surface);color:var(--color-text-primary);' + 'border:1px solid var(--color-border);border-radius:var(--radius-pill);' + 'box-shadow:var(--shadow-card);font-family:var(--font-secondary);' + 'font-size:.9rem;font-weight:500;opacity:0;' + 'transition:opacity var(--motion-base) var(--ease-standard), transform var(--motion-base) var(--ease-standard);';
     if (hasAction) {
         var msg = document.createElement('span');
         msg.textContent = message;
@@ -155,11 +155,13 @@ function _showUpdateToast(registration) {
         id: 'sw-update-toast',
         actionLabel: 'Actualizar',
         onAction: function(btn) {
+            btn.disabled = !0;
+            var toast = document.getElementById('sw-update-toast');
+            if (toast && toast.parentNode) toast.parentNode.removeChild(toast);
             if (registration.waiting) {
-                btn.disabled = !0;
-                registration.waiting.postMessage({
-                    type: 'SKIP_WAITING'
-                })
+                registration.waiting.postMessage({ type: 'SKIP_WAITING' })
+            } else {
+                window.location.reload()
             }
         }
     })

@@ -33,10 +33,10 @@ if (workbox) {
     { url: 'css/pages/nosotros.css', revision: '7.0.0' },
     { url: 'css/pages/privacidad.css', revision: '7.0.0' },
     { url: 'css/pages/salvacion.css', revision: '7.0.0' },
-    { url: 'css/pages/settings.css', revision: '7.0.0' },
+    { url: 'css/pages/settings.css', revision: '7.0.1' },
     { url: 'css/pages/splash.css', revision: '7.0.0' },
-    { url: 'config/config.js', revision: '7.0.0' },
-    { url: 'js/main.js', revision: '7.0.0' },
+    { url: 'config/config.js', revision: '7.0.1' },
+    { url: 'js/main.js', revision: '7.0.1' },
     { url: 'js/utils/analytics.js', revision: '7.0.0' },
     { url: 'js/components/animations.js', revision: '7.0.0' },
     { url: 'js/components/carousel.js', revision: '7.0.0' },
@@ -99,9 +99,11 @@ if (workbox) {
     })
   );
 
-  // 5. Estrategia para CSS y JS de terceros o no precheados (StaleWhileRevalidate)
+  // 5. Estrategia para CSS y JS propios no precacheados (StaleWhileRevalidate)
   workbox.routing.registerRoute(
-    ({ request }) => request.destination === 'style' || request.destination === 'script',
+    ({ url, request }) =>
+      url.origin === self.location.origin &&
+      (request.destination === 'style' || request.destination === 'script'),
     new workbox.strategies.StaleWhileRevalidate({
       cacheName: 'static-resources',
     })
