@@ -90,14 +90,14 @@ function initServiceWorker() {
             var swScript = 'sw.js';
             navigator.serviceWorker.register(swScript, { updateViaCache: 'none' }).then(function(registration) {
                 if (registration.waiting && navigator.serviceWorker.controller) {
-                    _showUpdateToast(registration, registration.waiting, reloadForServiceWorkerUpdate)
+                    _maybeShowUpdateToast(registration, registration.waiting, reloadForServiceWorkerUpdate)
                 }
                 registration.addEventListener('updatefound', function() {
                     var newWorker = registration.installing;
                     if (newWorker) {
                         newWorker.addEventListener('statechange', function() {
                             if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
-                                _showUpdateToast(registration, newWorker, reloadForServiceWorkerUpdate)
+                                _maybeShowUpdateToast(registration, newWorker, reloadForServiceWorkerUpdate)
                             }
                         })
                     }
@@ -153,6 +153,56 @@ function makeToast(message, opts) {
             }, 250)
         }, opts.autoDismissMs)
     }
+}
+
+function _getWorkerVersion(worker) {
+    return new Promise(function(resolve) {
+        if (!worker || typeof MessageChannel === 'undefined') {
+            resolve(null);
+            return
+        }
+        var channel = new MessageChannel();
+        var settled = !1;
+        function finish(version) {
+            if (settled) return;
+            settled = !0;
+            resolve(version || null)
+        }
+        channel.port1.onmessage = function(e) {
+            finish(e.data)
+        };
+        try {
+            worker.postMessage({ type: 'GET_VERSION' }, [channel.port2])
+        } catch (err) {
+            finish(null);
+            return
+        }
+        setTimeout(function() {
+            finish(null)
+        }, 2000)
+    })
+}
+
+function _isNewerVersion(candidate, current) {
+    if (!candidate || !current) return !0;
+    if (candidate === current) return !1;
+    var a = String(candidate).split('.').map(Number);
+    var b = String(current).split('.').map(Number);
+    for (var i = 0; i < Math.max(a.length, b.length); i++) {
+        var x = a[i] || 0, y = b[i] || 0;
+        if (x > y) return !0;
+        if (x < y) return !1
+    }
+    return !1
+}
+
+function _maybeShowUpdateToast(registration, worker, reloadForServiceWorkerUpdate) {
+    if (document.getElementById('sw-update-toast')) return;
+    _getWorkerVersion(worker).then(function(newVersion) {
+        var currentVersion = (typeof APP_CONFIG !== 'undefined' && APP_CONFIG && APP_CONFIG.appVersion) ? APP_CONFIG.appVersion : null;
+        if (!_isNewerVersion(newVersion, currentVersion)) return;
+        _showUpdateToast(registration, worker, reloadForServiceWorkerUpdate)
+    })
 }
 
 function _showUpdateToast(registration, worker, reloadForServiceWorkerUpdate) {

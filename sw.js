@@ -4,8 +4,14 @@ try {
   // OneSignal es opcional: si el CDN falla, el resto del SW sigue funcionando
 }
 
+const APP_SW_VERSION = '7.0.4';
+
 self.addEventListener('message', (event) => {
-  if (event.data && event.data.type === 'SKIP_WAITING') self.skipWaiting();
+  if (!event.data) return;
+  if (event.data.type === 'SKIP_WAITING') self.skipWaiting();
+  if (event.data.type === 'GET_VERSION' && event.ports && event.ports[0]) {
+    event.ports[0].postMessage(APP_SW_VERSION);
+  }
 });
 self.addEventListener('activate', (event) => event.waitUntil(self.clients.claim()));
 
@@ -13,7 +19,7 @@ importScripts('js/workbox-sw.js');
 
 if (workbox) {
 
-  const PRECACHE_VERSION = '7.0.3';
+  const PRECACHE_VERSION = APP_SW_VERSION;
   // Configuración de Workbox
   workbox.setConfig({ debug: false });
   workbox.loadModule('workbox-precaching');
