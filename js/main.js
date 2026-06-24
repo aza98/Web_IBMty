@@ -75,14 +75,17 @@ function toggleTheme() {
 
 function initServiceWorker() {
     if ('serviceWorker' in navigator) {
+        var isReloadingForServiceWorker = false;
         navigator.serviceWorker.addEventListener('controllerchange', function() {
-            if (sessionStorage.getItem('sw-reloaded')) return;
-            sessionStorage.setItem('sw-reloaded', '1');
-            window.location.reload()
+            if (isReloadingForServiceWorker) return;
+            isReloadingForServiceWorker = true;
+            var updateToast = document.getElementById('sw-update-toast');
+            if (updateToast && updateToast.parentNode) updateToast.parentNode.removeChild(updateToast);
+            window.location.reload();
         });
         var register = function() {
             var swScript = 'sw.js';
-            navigator.serviceWorker.register(swScript).then(function(registration) {
+            navigator.serviceWorker.register(swScript, { updateViaCache: 'none' }).then(function(registration) {
                 if (registration.waiting && navigator.serviceWorker.controller) {
                     _showUpdateToast(registration)
                 }
@@ -151,17 +154,19 @@ function makeToast(message, opts) {
 
 function _showUpdateToast(registration) {
     if (document.getElementById('sw-update-toast')) return;
-    makeToast('Nueva versión disponible', {
+    makeToast('Nueva versión', {
         id: 'sw-update-toast',
         actionLabel: 'Actualizar',
         onAction: function(btn) {
             btn.disabled = !0;
+            btn.textContent = 'Actualizando…';
             var toast = document.getElementById('sw-update-toast');
             if (toast && toast.parentNode) toast.parentNode.removeChild(toast);
-            if (registration.waiting) {
-                registration.waiting.postMessage({ type: 'SKIP_WAITING' })
+            var waitingWorker = registration.waiting;
+            if (waitingWorker) {
+                waitingWorker.postMessage({ type: 'SKIP_WAITING' });
             } else {
-                window.location.reload()
+                window.location.reload();
             }
         }
     })
