@@ -76,25 +76,28 @@ function toggleTheme() {
 function initServiceWorker() {
     if ('serviceWorker' in navigator) {
         var isReloadingForServiceWorker = false;
-        navigator.serviceWorker.addEventListener('controllerchange', function() {
+        function reloadForServiceWorkerUpdate() {
             if (isReloadingForServiceWorker) return;
             isReloadingForServiceWorker = true;
             var updateToast = document.getElementById('sw-update-toast');
             if (updateToast && updateToast.parentNode) updateToast.parentNode.removeChild(updateToast);
             window.location.reload();
+        }
+        navigator.serviceWorker.addEventListener('controllerchange', function() {
+            reloadForServiceWorkerUpdate();
         });
         var register = function() {
             var swScript = 'sw.js';
             navigator.serviceWorker.register(swScript, { updateViaCache: 'none' }).then(function(registration) {
                 if (registration.waiting && navigator.serviceWorker.controller) {
-                    _showUpdateToast(registration)
+                    _showUpdateToast(registration, registration.waiting, reloadForServiceWorkerUpdate)
                 }
                 registration.addEventListener('updatefound', function() {
                     var newWorker = registration.installing;
                     if (newWorker) {
                         newWorker.addEventListener('statechange', function() {
                             if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
-                                _showUpdateToast(registration)
+                                _showUpdateToast(registration, newWorker, reloadForServiceWorkerUpdate)
                             }
                         })
                     }
@@ -152,7 +155,7 @@ function makeToast(message, opts) {
     }
 }
 
-function _showUpdateToast(registration) {
+function _showUpdateToast(registration, worker, reloadForServiceWorkerUpdate) {
     if (document.getElementById('sw-update-toast')) return;
     makeToast('Nueva versión', {
         id: 'sw-update-toast',
@@ -160,14 +163,7 @@ function _showUpdateToast(registration) {
         onAction: function(btn) {
             btn.disabled = !0;
             btn.textContent = 'Actualizando…';
-            var toast = document.getElementById('sw-update-toast');
-            if (toast && toast.parentNode) toast.parentNode.removeChild(toast);
-            var waitingWorker = registration.waiting;
-            if (waitingWorker) {
-                waitingWorker.postMessage({ type: 'SKIP_WAITING' });
-            } else {
-                window.location.reload();
-            }
+            worker.postMessage({ type: 'SKIP_WAITING' });
         }
     })
 }
