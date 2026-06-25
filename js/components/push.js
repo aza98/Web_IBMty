@@ -62,12 +62,13 @@ document.addEventListener('DOMContentLoaded', function() {
     initAutoPrompt();
     window.OneSignalDeferred = window.OneSignalDeferred || [];
     window.OneSignalDeferred.push(async function(OneSignal) {
+        var swDir = location.pathname.replace(/[^/]*$/, '');
         try {
             await OneSignal.init({
                 appId: appId,
-                serviceWorkerPath: 'sw.js',
+                serviceWorkerPath: swDir.replace(/^\//, '') + 'sw.js',
                 serviceWorkerParam: {
-                    scope: './'
+                    scope: swDir
                 },
                 allowLocalhostAsSecure: !0
             })
