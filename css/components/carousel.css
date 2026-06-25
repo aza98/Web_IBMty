@@ -4,16 +4,6 @@
   --carousel-slide-dim: .5
 }
 
-.card-event-badge {
-  display: inline-block;
-  background: var(--color-brand);
-  color: var(--color-on-brand);
-  border-radius: var(--radius-pill);
-  font-size: var(--text-2xs);
-  font-weight: 600;
-  width: fit-content
-}
-
 .card-event-title {
   font-family: var(--font-primary);
   font-size: 1.25rem;

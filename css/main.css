@@ -77,7 +77,6 @@
   --color-gold: #C8A96E;
   --color-danger: #D7261D;
   --color-whatsapp: #25D366;
-  --color-whatsapp-deep: #075E54;
   --color-brand-rgb: 0 192 246;
   --color-surface-rgb: 240 246 251;
   --color-text-secondary-rgb: 46 74 98;
@@ -987,11 +986,6 @@ html[data-theme="light"] .pg-hero-icon {
   }
 }
 
-#navbar-web .navbar-brand {
-  padding-top: 0;
-  padding-bottom: 0
-}
-
 #navbar-web .container-fluid {
   position: relative;
   display: grid;
@@ -1009,6 +1003,8 @@ html[data-theme="light"] .pg-hero-icon {
   z-index: 10;
   justify-self: center;
   align-self: center;
+  padding-top: 0;
+  padding-bottom: 0;
   transform: none
 }
 
@@ -1590,6 +1586,12 @@ html[data-theme="light"] #tabbar-pwa {
   animation: dropdownFadeIn var(--motion-base) var(--ease-standard)
 }
 
+@media (prefers-reduced-motion:reduce) {
+  .dropdown-menu-custom {
+    animation: none
+  }
+}
+
 html[data-theme="light"] .dropdown-menu-custom {
   background-color: rgb(var(--color-white-rgb) / .94);
   border-color: rgb(var(--color-brand-rgb) / .15)
@@ -1892,30 +1894,8 @@ html[data-theme="light"] .pg-hero-desc {
   animation: scrollBounce 2.2s ease-in-out infinite
 }
 
-html[data-theme="dark"] .scroll-hint {
-  color: var(--color-brand)
-}
-
-html[data-theme="light"] .scroll-hint {
-  color: var(--color-brand)
-}
-
-@media (prefers-color-scheme:dark) {
-  html:not([data-theme="light"]) .scroll-hint {
-    color: var(--color-brand)
-  }
-}
-
-.scroll-hint.scroll-hint--on-image,
-html[data-theme="dark"] .scroll-hint.scroll-hint--on-image,
-html[data-theme="light"] .scroll-hint.scroll-hint--on-image {
+.scroll-hint.scroll-hint--on-image {
   color: rgb(var(--color-white-rgb) / .85)
-}
-
-@media (prefers-color-scheme:dark) {
-  html:not([data-theme="light"]) .scroll-hint.scroll-hint--on-image {
-    color: rgb(var(--color-white-rgb) / .85)
-  }
 }
 
 @media (min-width:768px) {

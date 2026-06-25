@@ -84,7 +84,9 @@ function initServiceWorker() {
         });
         var register = function() {
             var swScript = 'sw.js';
-            navigator.serviceWorker.register(swScript, { updateViaCache: 'none' }).then(function(registration) {
+            navigator.serviceWorker.register(swScript, {
+                updateViaCache: 'none'
+            }).then(function(registration) {
                 if (registration.waiting && navigator.serviceWorker.controller) {
                     _maybeShowUpdateToast(registration, registration.waiting, reloadForServiceWorkerUpdate)
                 }
@@ -112,8 +114,7 @@ function initServiceWorker() {
 
 function initPersistentStorage() {
     if (!navigator.storage || !navigator.storage.persist) return;
-    var isStandalone = window.matchMedia('(display-mode: standalone)').matches ||
-                       window.navigator.standalone === !0;
+    var isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === !0;
     if (!isStandalone) return;
     navigator.storage.persisted().then(function(already) {
         if (already) return;
@@ -169,7 +170,8 @@ function _getWorkerVersion(worker) {
             return
         }
         var channel = new MessageChannel();
-        var settled = !1;
+        var settled = false;
+
         function finish(version) {
             if (settled) return;
             settled = !0;
@@ -179,7 +181,9 @@ function _getWorkerVersion(worker) {
             finish(e.data)
         };
         try {
-            worker.postMessage({ type: 'GET_VERSION' }, [channel.port2])
+            worker.postMessage({
+                type: 'GET_VERSION'
+            }, [channel.port2])
         } catch (err) {
             finish(null);
             return
@@ -196,7 +200,8 @@ function _isNewerVersion(candidate, current) {
     var a = String(candidate).split('.').map(Number);
     var b = String(current).split('.').map(Number);
     for (var i = 0; i < Math.max(a.length, b.length); i++) {
-        var x = a[i] || 0, y = b[i] || 0;
+        var x = a[i] || 0,
+            y = b[i] || 0;
         if (x > y) return !0;
         if (x < y) return !1
     }
@@ -220,7 +225,9 @@ function _showUpdateToast(registration, worker, reloadForServiceWorkerUpdate) {
         onAction: function(btn) {
             btn.disabled = !0;
             btn.textContent = 'Actualizando…';
-            worker.postMessage({ type: 'SKIP_WAITING' });
+            worker.postMessage({
+                type: 'SKIP_WAITING'
+            })
         }
     })
 }

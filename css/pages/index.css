@@ -100,7 +100,6 @@ body.is-pwa #hero-section {
   --countdown-gap: .3rem;
   --countdown-block-radius: .85rem;
   --live-red: var(--color-danger);
-  /* Local token: #000 is intentional (video letterbox bg, no theme variant needed) */
   --live-video-bg: #000
 }
 
@@ -290,7 +289,7 @@ body.is-pwa #hero-section {
   padding-bottom: 56.25%;
   height: 0;
   overflow: hidden;
-  border-radius: 1rem;
+  border-radius: var(--radius-lg);
   background: var(--live-video-bg)
 }
 
