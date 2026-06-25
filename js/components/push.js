@@ -67,7 +67,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 appId: appId,
                 serviceWorkerPath: 'sw.js',
                 serviceWorkerParam: {
-                    scope: '/'
+                    scope: './'
                 },
                 allowLocalhostAsSecure: !0
             })
