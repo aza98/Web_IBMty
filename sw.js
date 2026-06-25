@@ -1,10 +1,10 @@
 try {
-  importScripts('https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.sw.js');
+  importScripts('js/OneSignalSDK.sw.js');
 } catch (error) {
-  // OneSignal es opcional: si el CDN falla, el resto del SW sigue funcionando
+  // OneSignal es opcional: si el archivo local falla, el resto del SW sigue funcionando
 }
 
-const APP_SW_VERSION = '7.0.7';
+const APP_SW_VERSION = '7.0.8';
 
 self.addEventListener('message', (event) => {
   if (!event.data) return;

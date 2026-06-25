@@ -28,5 +28,5 @@ const APP_CONFIG = {
     appointments: {
         formspreeEndpoint: 'https://formspree.io/f/mbjzknka',
     },
-    appVersion: '7.0.7',
+    appVersion: '7.0.8',
 }
