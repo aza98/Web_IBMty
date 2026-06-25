@@ -4,7 +4,7 @@ try {
   // OneSignal es opcional: si el CDN falla, el resto del SW sigue funcionando
 }
 
-const APP_SW_VERSION = '7.0.5';
+const APP_SW_VERSION = '7.0.6';
 
 self.addEventListener('message', (event) => {
   if (!event.data) return;
