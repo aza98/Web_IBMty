@@ -166,7 +166,7 @@ html[data-theme="dark"] .theme-sw .sw-thumb {
 }
 
 #notif-toggle[data-notif="granted"] .notif-sw {
-  background: var(--color-success)
+  background: var(--color-brand)
 }
 
 #notif-toggle[data-notif="granted"] .notif-sw .sw-thumb {
@@ -197,7 +197,7 @@ html[data-theme="dark"] .theme-sw .sw-thumb {
 }
 
 #whatsapp-fab-toggle[data-fab="on"] .wa-sw {
-  background: var(--color-whatsapp)
+  background: var(--color-brand)
 }
 
 #whatsapp-fab-toggle[data-fab="on"] .wa-sw .sw-thumb {

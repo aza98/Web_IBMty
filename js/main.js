@@ -7,12 +7,6 @@ function detectEnvironment() {
     if (isStandalone) {
         body.classList.add('is-pwa');
         body.classList.remove('is-web');
-        var isIndex = pathname === '/' || pathname === '/index.html' || pathname.endsWith('/index.html');
-        if (isIndex && !sessionStorage.getItem('splashShown')) {
-            sessionStorage.setItem('splashShown', 'true');
-            window.location.href = 'splash.html';
-            return
-        }
     } else {
         body.classList.add('is-web');
         body.classList.remove('is-pwa');
@@ -75,6 +69,7 @@ function toggleTheme() {
 
 function initServiceWorker() {
     if ('serviceWorker' in navigator) {
+        var hadController = !!navigator.serviceWorker.controller;
         var isReloadingForServiceWorker = false;
         function reloadForServiceWorkerUpdate() {
             if (isReloadingForServiceWorker) return;
@@ -84,6 +79,7 @@ function initServiceWorker() {
             window.location.reload();
         }
         navigator.serviceWorker.addEventListener('controllerchange', function() {
+            if (!hadController) return;
             reloadForServiceWorkerUpdate();
         });
         var register = function() {
@@ -112,6 +108,17 @@ function initServiceWorker() {
             window.addEventListener('load', register)
         }
     }
+}
+
+function initPersistentStorage() {
+    if (!navigator.storage || !navigator.storage.persist) return;
+    var isStandalone = window.matchMedia('(display-mode: standalone)').matches ||
+                       window.navigator.standalone === !0;
+    if (!isStandalone) return;
+    navigator.storage.persisted().then(function(already) {
+        if (already) return;
+        navigator.storage.persist().catch(function() {})
+    }).catch(function() {})
 }
 
 function makeToast(message, opts) {
@@ -778,6 +785,7 @@ function initCookieBanner() {
 }
 document.addEventListener('DOMContentLoaded', function() {
     initServiceWorker();
+    initPersistentStorage();
     detectEnvironment();
     applyConfigValues();
     initTheme();

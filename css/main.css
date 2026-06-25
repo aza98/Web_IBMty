@@ -1872,7 +1872,7 @@ html[data-theme="light"] .pg-hero-desc {
 
 .scroll-hint {
   position: absolute;
-  bottom: 1.75rem;
+  bottom: 5rem;
   left: 50%;
   transform: translateX(-50%);
   z-index: 2;

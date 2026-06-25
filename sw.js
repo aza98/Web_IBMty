@@ -4,7 +4,7 @@ try {
   // OneSignal es opcional: si el CDN falla, el resto del SW sigue funcionando
 }
 
-const APP_SW_VERSION = '7.0.4';
+const APP_SW_VERSION = '7.0.5';
 
 self.addEventListener('message', (event) => {
   if (!event.data) return;
@@ -20,12 +20,13 @@ importScripts('js/workbox-sw.js');
 if (workbox) {
 
   const PRECACHE_VERSION = APP_SW_VERSION;
-  // Configuración de Workbox
-  workbox.setConfig({ debug: false });
+  // Configuración de Workbox.
+  workbox.setConfig({ debug: false, modulePathPrefix: 'workbox/' });
   workbox.loadModule('workbox-precaching');
   workbox.loadModule('workbox-routing');
   workbox.loadModule('workbox-strategies');
   workbox.loadModule('workbox-expiration');
+  workbox.loadModule('workbox-cacheable-response');
   workbox.precaching.precacheAndRoute([
     { url: 'index.html', revision: PRECACHE_VERSION },
     { url: 'nosotros.html', revision: PRECACHE_VERSION },
@@ -34,6 +35,7 @@ if (workbox) {
     { url: 'privacidad.html', revision: PRECACHE_VERSION },
     { url: 'settings.html', revision: PRECACHE_VERSION },
     { url: 'splash.html', revision: PRECACHE_VERSION },
+    { url: 'offline.html', revision: PRECACHE_VERSION },
     { url: 'manifest.json', revision: PRECACHE_VERSION },
     { url: 'css/main.css', revision: PRECACHE_VERSION },
     { url: 'css/components/carousel.css', revision: PRECACHE_VERSION },
@@ -63,10 +65,13 @@ if (workbox) {
     { url: 'assets/icons/IBMty_Logo_Desktop.webp', revision: PRECACHE_VERSION },
     { url: 'assets/icons/IBMty_Icon_192.png', revision: PRECACHE_VERSION },
     { url: 'assets/icons/IBMty_Icon_512.png', revision: PRECACHE_VERSION },
+    { url: 'assets/icons/icon-192-maskable.png', revision: PRECACHE_VERSION },
     { url: 'assets/icons/icon-512-maskable.png', revision: PRECACHE_VERSION },
     { url: 'assets/icons/IBMty_Icon_180.png', revision: PRECACHE_VERSION },
     { url: 'assets/icons/IBMty_Icon_32.png', revision: PRECACHE_VERSION },
-    { url: 'assets/icons/IBMty_Icon_32.ico', revision: PRECACHE_VERSION }
+    { url: 'assets/icons/IBMty_Icon_32.ico', revision: PRECACHE_VERSION },
+    { url: 'assets/screenshots/mobile.webp', revision: PRECACHE_VERSION },
+    { url: 'assets/screenshots/desktop.webp', revision: PRECACHE_VERSION }
   ]);
 
   workbox.precaching.cleanupOutdatedCaches();
@@ -86,9 +91,11 @@ if (workbox) {
     new workbox.strategies.CacheFirst({
       cacheName: 'cdn-resources',
       plugins: [
+        new workbox.cacheableResponse.CacheableResponsePlugin({ statuses: [0, 200] }),
         new workbox.expiration.ExpirationPlugin({
           maxEntries: 40,
           maxAgeSeconds: 30 * 24 * 60 * 60, // 30 días
+          purgeOnQuotaError: true,
         }),
       ],
     })
@@ -100,9 +107,11 @@ if (workbox) {
     new workbox.strategies.CacheFirst({
       cacheName: 'fonts-cache',
       plugins: [
+        new workbox.cacheableResponse.CacheableResponsePlugin({ statuses: [0, 200] }),
         new workbox.expiration.ExpirationPlugin({
           maxEntries: 30,
           maxAgeSeconds: 60 * 60 * 24 * 365, // 1 año
+          purgeOnQuotaError: true,
         }),
       ],
     })
@@ -124,9 +133,11 @@ if (workbox) {
     new workbox.strategies.CacheFirst({
       cacheName: 'map-tiles',
       plugins: [
+        new workbox.cacheableResponse.CacheableResponsePlugin({ statuses: [0, 200] }),
         new workbox.expiration.ExpirationPlugin({
           maxEntries: 160,
           maxAgeSeconds: 30 * 24 * 60 * 60, // 30 días
+          purgeOnQuotaError: true,
         }),
       ],
     })
@@ -138,11 +149,22 @@ if (workbox) {
     new workbox.strategies.CacheFirst({
       cacheName: 'images-cache',
       plugins: [
+        new workbox.cacheableResponse.CacheableResponsePlugin({ statuses: [0, 200] }),
         new workbox.expiration.ExpirationPlugin({
           maxEntries: 80,
           maxAgeSeconds: 30 * 24 * 60 * 60, // 30 días
+          purgeOnQuotaError: true,
         }),
       ],
     })
   );
+
+  // 7. Fallback offline para navegaciones no cacheadas (catch handler global).
+  workbox.routing.setCatchHandler(async ({ request }) => {
+    if (request.destination === 'document') {
+      const cached = await workbox.precaching.matchPrecache('offline.html');
+      if (cached) return cached;
+    }
+    return Response.error();
+  });
 }
