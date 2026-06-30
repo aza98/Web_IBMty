@@ -4,7 +4,7 @@ try {
   // OneSignal es opcional: si el archivo local falla, el resto del SW sigue funcionando
 }
 
-const APP_SW_VERSION = '7.0.11';
+const APP_SW_VERSION = '7.0.12';
 
 self.addEventListener('message', (event) => {
   if (!event.data) return;

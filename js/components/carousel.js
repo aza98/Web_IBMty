@@ -55,15 +55,20 @@ document.addEventListener('DOMContentLoaded', function() {
         setTimeout(function() {
             var target = document.getElementById(targetId);
             if (!target) return;
-            target.scrollIntoView({
+            var scrollTarget = target.closest('.carousel-clip') || swiper.el;
+            scrollTarget.scrollIntoView({
                 behavior: prefersReducedMotion ? 'auto' : 'smooth',
-                block: 'center'
+                block: 'center',
+                inline: 'nearest'
             })
         }, prefersReducedMotion ? 0 : 320)
     }
 
     function bindHashNavigation(swiper) {
         slideToHashTarget(swiper);
+        window.addEventListener('load', function() {
+            slideToHashTarget(swiper)
+        });
         window.addEventListener('hashchange', function() {
             slideToHashTarget(swiper)
         })
@@ -125,6 +130,15 @@ document.addEventListener('DOMContentLoaded', function() {
         };
         Object.assign(baseConfig, overrides);
         var swiper = new Swiper('#' + elementId, baseConfig);
+        var clip = swiper.el.closest('.carousel-clip');
+        if (clip) {
+            clip.addEventListener('scroll', function() {
+                clip.scrollLeft = 0;
+                clip.scrollTop = 0
+            }, {
+                passive: !0
+            })
+        }
         swiper.el.querySelectorAll('img').forEach(function(img) {
             if (!img.complete) {
                 img.addEventListener('load', function() {
