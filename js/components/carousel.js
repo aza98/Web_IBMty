@@ -36,6 +36,39 @@ document.addEventListener('DOMContentLoaded', function() {
             })
         }
     }
+
+    function slideToHashTarget(swiper) {
+        if (!swiper || !window.location.hash) return;
+        var targetId = decodeURIComponent(window.location.hash.slice(1));
+        if (!targetId) return;
+        var targetIndex = -1;
+        Array.from(swiper.slides).some(function(slide, index) {
+            var hasTarget = Array.from(slide.querySelectorAll('.card-ministerio[id]')).some(function(card) {
+                return card.id === targetId
+            });
+            if (!hasTarget) return !1;
+            targetIndex = index;
+            return !0
+        });
+        if (targetIndex < 0) return;
+        swiper.slideTo(targetIndex, prefersReducedMotion ? 0 : 300);
+        setTimeout(function() {
+            var target = document.getElementById(targetId);
+            if (!target) return;
+            target.scrollIntoView({
+                behavior: prefersReducedMotion ? 'auto' : 'smooth',
+                block: 'center'
+            })
+        }, prefersReducedMotion ? 0 : 320)
+    }
+
+    function bindHashNavigation(swiper) {
+        slideToHashTarget(swiper);
+        window.addEventListener('hashchange', function() {
+            slideToHashTarget(swiper)
+        })
+    }
+
     var coverflowConfig = {
         rotate: 4,
         stretch: 0,
@@ -122,8 +155,9 @@ document.addEventListener('DOMContentLoaded', function() {
         initialSlide: 3,
         breakpoints: responsiveBreakpoints
     });
-    buildCarousel('ministerios-swiper', '#lideres', {
-        loop: !0,
+    var ministeriosSwiper = buildCarousel('ministerios-swiper', '#lideres', {
+        rewind: !0,
         breakpoints: responsiveBreakpoints
-    })
+    });
+    bindHashNavigation(ministeriosSwiper)
 })

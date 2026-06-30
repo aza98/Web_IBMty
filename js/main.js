@@ -365,109 +365,289 @@ function initCopyDelegation() {
     })
 }
 
+var SHARE_IMAGE_EXT = /\.(avif|bmp|gif|ico|jpe?g|jfif|pjpeg|pjp|png|svgz?|tiff?|webp)(\?.*)?(#.*)?$/i;
+var SHARE_IMAGE_FETCH_TIMEOUT_MS = 900;
+
 function shareContent(title, text, url, imageUrl) {
-    var IMAGE_EXT = /\.(webp|jpe?g|png|gif|avif)(\?.*)?$/i;
-    var FETCH_TIMEOUT_MS = 1500;
-    var shareUrl = (typeof url === 'string' && url.trim()) ? url.trim() : window.location.href;
-    var shareText = (typeof text === 'string') ? text : '';
-    var shareTitle = title || document.title;
-    var baseData = {
+    var baseData = normalizeShareData(title, text, url);
+
+    trackShare('attempt', baseData);
+    if (!canUseNativeShare(baseData)) {
+        return copyShareFallback(baseData, 'unavailable')
+    }
+    return getBestShareData(baseData, imageUrl).then(function(shareData) {
+        return shareNatively(shareData, baseData)
+    }).catch(function() {
+        return shareNatively(baseData, baseData)
+    })
+}
+
+function normalizeShareData(title, text, url) {
+    var shareTitle = normalizeShareText(title) || document.title || (typeof APP_CONFIG !== 'undefined' && APP_CONFIG.appName) || '';
+    var shareText = normalizeShareText(text);
+    var shareUrl = normalizeShareUrl(url);
+    return compactShareData({
         title: shareTitle,
         text: shareText,
         url: shareUrl
-    };
+    })
+}
 
-    function track(action) {
-        if (typeof trackEvent === 'function') trackEvent('share', action, title || shareUrl)
+function normalizeShareText(value) {
+    return (typeof value === 'string') ? value.trim() : ''
+}
+
+function normalizeShareUrl(value) {
+    var rawUrl = normalizeShareText(value) || window.location.href;
+    try {
+        return new URL(rawUrl, window.location.href).href
+    } catch (err) {
+        return window.location.href
     }
+}
 
-    function copyLinkFallback() {
-        function onCopied() {
-            showShareToast('Enlace copiado');
-            track('share_copy_fallback')
+function compactShareData(data) {
+    var clean = {};
+    ['title', 'text', 'url', 'files'].forEach(function(key) {
+        if (key === 'files') {
+            if (data.files && data.files.length) clean.files = data.files;
+            return
         }
+        if (data[key]) clean[key] = data[key]
+    });
+    if (!clean.title && !clean.text && !clean.url && (!clean.files || !clean.files.length)) {
+        clean.url = window.location.href
+    }
+    return clean
+}
 
-        function onFailed() {
-            track('share_clipboard_error');
-            if (typeof window.prompt === 'function') {
-                var manualText = [shareTitle, shareText, shareUrl].filter(function(part) {
-                    return part && String(part).trim()
-                }).join('\n\n');
-                window.prompt('Copia manualmente:', manualText)
-            } else {
-                showShareToast('No se pudo compartir el enlace')
-            }
-        }
-        if (navigator.clipboard && navigator.clipboard.writeText) {
-            navigator.clipboard.writeText(shareUrl).then(onCopied).catch(onFailed)
-        } else {
-            onFailed()
-        }
-    }
+function canUseNativeShare(data) {
+    if (typeof navigator.share !== 'function') return !1;
+    if (!isWebShareAllowedByPolicy()) return !1;
+    return canShareData(data)
+}
 
-    function attemptShare(shareData) {
-        navigator.share(shareData).then(function() {
-            track('share_success')
-        }).catch(function(err) {
-            var name = err && err.name ? err.name : 'unknown';
-            if (name === 'AbortError') {
-                track('share_cancel');
-                return
-            }
-            if (typeof trackEvent === 'function') trackEvent('share', 'error', name);
-            copyLinkFallback()
-        }).finally(forceTabbarRepaint)
+function canShareData(data) {
+    if (typeof navigator.canShare !== 'function') return !0;
+    try {
+        return navigator.canShare(data)
+    } catch (err) {
+        return !1
     }
-    track('share_attempt');
-    if (typeof navigator.share !== 'function') {
-        copyLinkFallback();
-        return
+}
+
+function isWebShareAllowedByPolicy() {
+    var policy = document.permissionsPolicy || document.featurePolicy;
+    if (!policy || typeof policy.allowsFeature !== 'function') return !0;
+    try {
+        return policy.allowsFeature('web-share')
+    } catch (err) {
+        return !0
     }
-    if (!imageUrl || !IMAGE_EXT.test(imageUrl) || typeof window.fetch !== 'function') {
-        attemptShare(baseData);
-        return
+}
+
+function getBestShareData(baseData, imageUrl) {
+    if (!canAttemptImageShare(imageUrl)) return Promise.resolve(baseData);
+    return fileFromImageUrl(imageUrl).then(function(file) {
+        var fileData = compactShareData({
+            title: baseData.title,
+            text: baseData.text,
+            url: baseData.url,
+            files: [file]
+        });
+        if (canShareFiles(fileData.files) && canShareData(fileData)) return fileData;
+        var fileOnlyData = compactShareData({
+            title: baseData.title,
+            text: baseData.text,
+            files: [file]
+        });
+        if (canShareFiles(fileOnlyData.files) && canShareData(fileOnlyData)) return fileOnlyData;
+        return baseData
+    }).catch(function() {
+        return baseData
+    })
+}
+
+function canAttemptImageShare(imageUrl) {
+    return !!(
+        imageUrl &&
+        SHARE_IMAGE_EXT.test(imageUrl) &&
+        typeof window.fetch === 'function' &&
+        typeof window.File === 'function' &&
+        typeof navigator.canShare === 'function'
+    )
+}
+
+function canShareFiles(files) {
+    if (!files || !files.length || typeof navigator.canShare !== 'function') return !1;
+    try {
+        return navigator.canShare({
+            files: files
+        })
+    } catch (err) {
+        return !1
+    }
+}
+
+function fileFromImageUrl(imageUrl) {
+    var absoluteUrl;
+    try {
+        absoluteUrl = new URL(imageUrl, window.location.href)
+    } catch (err) {
+        return Promise.reject(err)
+    }
+    if (absoluteUrl.origin !== window.location.origin) {
+        return Promise.reject(new Error('cross-origin image share blocked'))
     }
     var controller = (typeof AbortController === 'function') ? new AbortController() : null;
     var fetchTimer = controller ? setTimeout(function() {
         controller.abort()
-    }, FETCH_TIMEOUT_MS) : null;
-    fetch(imageUrl, controller ? {
-        mode: 'same-origin',
+    }, SHARE_IMAGE_FETCH_TIMEOUT_MS) : null;
+    return fetch(absoluteUrl.href, controller ? {
+        credentials: 'same-origin',
         signal: controller.signal
     } : {
-        mode: 'same-origin'
+        credentials: 'same-origin'
     }).then(function(res) {
         if (fetchTimer) clearTimeout(fetchTimer);
-        if (!res.ok) throw new Error('imagen no disponible');
+        if (!res.ok) throw new Error('share image unavailable');
         return res.blob()
     }).then(function(blob) {
-        var segment = String(imageUrl).split('?')[0].split('#')[0].split('/').pop();
-        var filename = segment && segment.indexOf('.') > 0 ? segment : 'image.jpg';
-        var file = new File([blob], filename, {
-            type: blob.type
-        });
-        var fileData = {
-            title: shareTitle,
-            text: shareText,
-            url: shareUrl,
-            files: [file]
-        };
-        if (typeof navigator.canShare !== 'function' || !navigator.canShare(fileData)) {
-            attemptShare(baseData);
-            return
-        }
-        attemptShare(fileData)
-    }).catch(function() {
+        var type = blob.type || guessImageMimeType(absoluteUrl.pathname);
+        if (!type || type.indexOf('image/') !== 0) throw new Error('share image type unsupported');
+        return new File([blob], shareFileName(absoluteUrl.pathname, type), {
+            type: type
+        })
+    }).catch(function(err) {
         if (fetchTimer) clearTimeout(fetchTimer);
-        attemptShare(baseData)
+        throw err
     })
 }
 
-function showShareToast(message) {
-    makeToast(message, {
-        id: 'share-toast',
-        autoDismissMs: 2600
+function guessImageMimeType(pathname) {
+    var ext = String(pathname || '').split('.').pop().toLowerCase();
+    var map = {
+        avif: 'image/avif',
+        bmp: 'image/bmp',
+        gif: 'image/gif',
+        ico: 'image/x-icon',
+        jfif: 'image/jpeg',
+        jpeg: 'image/jpeg',
+        jpg: 'image/jpeg',
+        pjpeg: 'image/jpeg',
+        pjp: 'image/jpeg',
+        png: 'image/png',
+        svg: 'image/svg+xml',
+        svgz: 'image/svg+xml',
+        tif: 'image/tiff',
+        tiff: 'image/tiff',
+        webp: 'image/webp'
+    };
+    return map[ext] || ''
+}
+
+function shareFileName(pathname, mimeType) {
+    var segment = String(pathname || '').split('/').pop();
+    if (segment && segment.indexOf('.') > 0) return segment;
+    var ext = (mimeType.split('/')[1] || 'jpg').replace('jpeg', 'jpg').replace('svg+xml', 'svg');
+    return 'ibmty-share.' + ext
+}
+
+function shareNatively(shareData, fallbackData) {
+    return navigator.share(shareData).then(function() {
+        trackShare('success', fallbackData);
+        forceTabbarRepaint()
+    }).catch(function(err) {
+        var name = err && err.name ? err.name : 'unknown';
+        if (name === 'AbortError') {
+            trackShare('cancel', fallbackData);
+            forceTabbarRepaint();
+            return
+        }
+        trackShare('error_' + name, fallbackData);
+        return copyShareFallback(fallbackData, name).then(forceTabbarRepaint)
     })
+}
+
+function copyShareFallback(data, reason) {
+    var fallbackText = composeShareText(data);
+
+    function onCopied() {
+        showShareToast('Enlace copiado', {
+            actionLabel: 'WhatsApp',
+            onAction: function() {
+                openShareFallbackTarget('whatsapp', data)
+            }
+        });
+        trackShare('copy_fallback_' + reason, data)
+    }
+
+    function onFailed() {
+        trackShare('clipboard_error_' + reason, data);
+        if (typeof window.prompt === 'function') {
+            window.prompt('Copia manualmente:', fallbackText)
+        } else {
+            showShareToast('No se pudo compartir el enlace')
+        }
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+        return navigator.clipboard.writeText(fallbackText).then(onCopied).catch(onFailed)
+    }
+    onFailed();
+    return Promise.resolve()
+}
+
+function composeShareText(data) {
+    var parts = [];
+    [data.title, data.text, data.url].forEach(function(part) {
+        var value = normalizeShareText(part);
+        if (value && parts.indexOf(value) === -1) parts.push(value)
+    });
+    return parts.join('\n\n')
+}
+
+function openShareFallbackTarget(target, data) {
+    var shareText = composeShareText(data);
+    var encodedText = encodeURIComponent(shareText);
+    var encodedUrl = encodeURIComponent(data.url || window.location.href);
+    var encodedTitle = encodeURIComponent(data.title || document.title || '');
+    var fallbackUrls = {
+        whatsapp: 'https://wa.me/?text=' + encodedText,
+        telegram: 'https://t.me/share/url?url=' + encodedUrl + '&text=' + encodeURIComponent([data.title, data.text].filter(Boolean).join('\n\n')),
+        facebook: 'https://www.facebook.com/sharer/sharer.php?u=' + encodedUrl,
+        x: 'https://twitter.com/intent/tweet?url=' + encodedUrl + '&text=' + encodeURIComponent([data.title, data.text].filter(Boolean).join(' - ')),
+        linkedin: 'https://www.linkedin.com/sharing/share-offsite/?url=' + encodedUrl,
+        email: 'mailto:?subject=' + encodedTitle + '&body=' + encodedText
+    };
+    if (!fallbackUrls[target]) return;
+    window.open(fallbackUrls[target], '_blank', 'noopener,noreferrer')
+}
+
+function trackShare(action, data) {
+    if (typeof trackEvent === 'function') trackEvent('share', action, (data && (data.title || data.url)) || '')
+}
+
+function showShareToast(message, opts) {
+    opts = opts || {};
+    opts.id = 'share-toast';
+    opts.autoDismissMs = opts.autoDismissMs || 2600;
+    makeToast(message, opts)
+}
+
+function getShareUrlForTrigger(trigger) {
+    var explicitUrl = (trigger.getAttribute('data-share-url') || '').trim();
+    if (explicitUrl) return explicitUrl;
+    var card = trigger.closest('.card-ministerio[id]');
+    if (card && card.id) {
+        try {
+            var cardUrl = new URL(window.location.href);
+            cardUrl.hash = card.id;
+            return cardUrl.href
+        } catch (err) {
+            return window.location.pathname + '#' + card.id
+        }
+    }
+    return window.location.href
 }
 
 function setActiveNavItem() {
@@ -547,8 +727,7 @@ function initShareDelegation() {
         e.stopPropagation();
         var title = (trigger.getAttribute('data-share-title') || '').trim();
         var text = (trigger.getAttribute('data-share-text') || '').trim();
-        var url = (trigger.getAttribute('data-share-url') || '').trim();
-        if (!url) url = window.location.href;
+        var url = getShareUrlForTrigger(trigger);
         var imageUrl = null;
         var imageAttr = (trigger.getAttribute('data-share-image') || '').trim();
         if (imageAttr) {
