@@ -1,2 +1,9 @@
 .DS_Store
 **/.DS_Store
+AGENTS.md
+CLAUDE.md
+.gitignore
+skills-lock.json
+.claude/settings.json
+docs/canonical-patterns.md
+docs/motion-system.md

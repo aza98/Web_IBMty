@@ -52,6 +52,7 @@ function initPageTransition() {
         if (link.getAttribute('target') === '_blank' || link.getAttribute('href').indexOf('#') === 0 || link.id === 'whatsapp-fab') {
             return
         }
+        if (link.classList.contains('tabbar-item')) return;
         if (link.dataset.pageLink && link.dataset.pageLink === document.body.dataset.page) return;
         try {
             var href = link.href;
@@ -62,10 +63,7 @@ function initPageTransition() {
         }
         link.addEventListener('click', function(e) {
             if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return;
-            if (navigating) {
-                e.preventDefault();
-                return
-            }
+            if (navigating) return;
             e.preventDefault();
             navigating = !0;
             var url = link.href;

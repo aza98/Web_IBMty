@@ -1229,6 +1229,9 @@ html[data-theme="light"] #navbar-web .nav-mobile-settings {
   color: var(--color-text-muted);
   text-decoration: none;
   border-radius: var(--radius-pill);
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
   transition: color var(--transition-base), background-color var(--transition-base), transform var(--transition-spring)
 }
 
