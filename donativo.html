@@ -3,372 +3,392 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-    <title>Donativos | Iglesia Bautista de Monterrey</title>
-    <meta name="description" content="Apoya la misión de la Iglesia Bautista de Monterrey. Tu generosidad nos permite seguir llevando el mensaje de esperanza.">
-    <meta name="author" content="Iglesia Bautista de Monterrey">
-    <meta name="application-name" content="IBMty">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <script>
+        (function() {
+            var saved = localStorage.getItem('theme');
+            var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            var theme = saved || (prefersDark ? 'dark' : 'light');
+            document.documentElement.setAttribute('data-theme', theme);
+        })();
+    </script>
+    <script src="js/pwa-launch.js"></script>
+    <title>Donativos — IBMty</title>
     <link rel="canonical" href="https://www.ibmty.com/donativo.html">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://www.ibmty.com/donativo.html">
-    <meta property="og:title" content="Donativos | Iglesia Bautista de Monterrey">
-    <meta property="og:description" content="Apoya la misión de la Iglesia Bautista de Monterrey. Tu generosidad nos permite seguir llevando el mensaje de esperanza.">
-    <meta property="og:image" content="assets/icons/IBMty_Logo_Desktop.png">
-    <meta property="og:site_name" content="IBMty">
-    <meta property="og:locale" content="es_MX">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:site" content="@IglesiaBautistaDeMonterrey">
-    <meta name="twitter:creator" content="@IglesiaBautistaDeMonterrey">
-    <meta name="twitter:title" content="Donativos | Iglesia Bautista de Monterrey">
-    <meta name="twitter:description" content="Apoya la misión de la Iglesia Bautista de Monterrey. Tu generosidad nos permite seguir llevando el mensaje de esperanza.">
-    <meta name="twitter:image" content="assets/icons/IBMty_Logo_Desktop.png">
-    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
-    <meta name="theme-color" content="#121212" media="(prefers-color-scheme: dark)">
+    <meta name="description" content="Apoya a IBMty con tu donativo. Consulta aquí nuestros datos bancarios.">
+    <meta name="theme-color" content="#00C0F6">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="IBMty">
+    <link rel="apple-touch-icon" href="assets/icons/IBMty_Icon_180.png">
+    <link rel="icon" href="assets/icons/IBMty_Icon_32.ico">
     <link rel="manifest" href="manifest.json">
-    <link rel="icon" type="image/x-icon" href="assets/icons/IBMty_Icon_32.ico">
-    <link rel="icon" type="image/png" sizes="32x32" href="assets/icons/IBMty_Icon_32.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="assets/icons/IBMty_Icon_180.png">
-    <link rel="apple-touch-icon" sizes="192x192" href="assets/icons/IBMty_Icon_192.png">
-    <link rel="apple-touch-icon" sizes="512x512" href="assets/icons/IBMty_Icon_512.png">
-    <link rel="preconnect" href="https://cdn.jsdelivr.net">
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preload" href="assets/icons/IBMty_Logo_Desktop.png" as="image">
-    <link rel="preload" href="assets/icons/IBMty_Logo_Mobile.png" as="image">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;700&display=swap">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous" referrerpolicy="no-referrer">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" integrity="sha512-1cK78a1o+ht2JcaW6g8OXYwqpev9+6GqOkz9xmBN9iUUhIndKtxwILGWYOSibOKjLsEdjyjZvYDq/cZwNeak0w==" crossorigin="anonymous" referrerpolicy="no-referrer">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer">
-    <link rel="stylesheet" href="styles/btn-whatsapp.css">
-    <link rel="stylesheet" href="styles/main.css">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Donativos — IBMty">
+    <meta property="og:description" content="Apoya a IBMty con tu donativo. Consulta aquí nuestros datos bancarios.">
+    <meta property="og:image" content="https://www.ibmty.com/assets/images/extras/Bienvenida_desktop.webp">
+    <meta property="og:url" content="https://www.ibmty.com/donativo.html">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Donativos — IBMty">
+    <meta name="twitter:description" content="Apoya a IBMty con tu donativo. Consulta aquí nuestros datos bancarios.">
+    <meta name="twitter:image" content="https://www.ibmty.com/assets/images/extras/Bienvenida_desktop.webp">
+    <link rel="preload" href="assets/fonts/League_Spartan/static/LeagueSpartan-ExtraBold.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="assets/fonts/Poppins/Poppins-Regular.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.3.0/css/all.min.css" integrity="sha384-sTlsophtwz/I4myskS3OIJf5VvEojkXKZyBTWZm0YD/K1pN7C5wpBPLyrsbr1SU2" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/pages/donativo.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous" defer></script>
+    <script src="config/config.js" defer></script>
+    <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
+    <script src="js/components/push.js" defer></script>
+    <script src="js/utils/analytics.js" defer></script>
+    <script src="js/main.js" defer></script>
+    <script src="gsap-public/minified/gsap.min.js" defer></script>
+    <script src="gsap-public/minified/ScrollTrigger.min.js" defer></script>
+    <script src="js/components/animations.js" defer></script>
 </head>
 
-<body>
-    <nav class="navbar navbar-expand-lg fixed-top floating-nav" aria-label="Navegación principal">
+<body data-page="donativo">
+    <a class="skip-link visually-hidden-focusable" href="#main-content">Saltar al contenido</a>
+    <nav id="navbar-web" class="navbar navbar-expand-lg fixed-top" aria-label="Navegación principal">
         <div class="container-fluid">
-            <button class="btn theme-toggle d-lg-none me-2" type="button" aria-label="Cambiar tema de color" onclick="toggleTheme()">
-                <i id="mobile-theme-icon" class="fas fa-sun" aria-hidden="true"></i>
-            </button>
-            <a class="navbar-brand" href="index.html" aria-label="Ir a página de inicio">
-                <picture>
-                    <source media="(min-width: 992px)" srcset="assets/icons/IBMty_Logo_Desktop.png">
-                    <img class="brand-img" src="assets/icons/IBMty_Logo_Mobile.png" alt="Logotipo Iglesia Bautista de Monterrey" width="50" height="50">
-                </picture>
+            <a class="navbar-brand" href="index.html">
+                <img src="assets/icons/IBMty_Logo_Mobile.webp" width="829" height="972" alt="IBMty" class="navbar-logo-mobile d-lg-none">
+                <img src="assets/icons/IBMty_Logo_Desktop.webp" width="1794" height="570" alt="IBMty" class="navbar-logo-desktop d-none d-lg-block">
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Abrir menú de navegación">
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#nav-links" aria-controls="nav-links" aria-expanded="false" aria-label="Abrir menú">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div id="navbarNav" class="collapse navbar-collapse">
-                <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+            <div class="collapse navbar-collapse" id="nav-links">
+                <ul class="navbar-nav ms-auto align-items-center gap-2">
                     <li class="nav-item">
-                        <a class="nav-link" href="index.html" aria-label="Ir a Inicio">
-                            <i class="fas fa-home" aria-hidden="true"></i> Inicio
+                        <a class="nav-link d-flex align-items-center gap-2" href="index.html">
+                            <i class="fa-solid fa-house" aria-hidden="true"></i>Inicio
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="nosotros.html" aria-label="Ir a Nosotros">
-                            <i class="fas fa-church" aria-hidden="true"></i> Nosotros
+                        <a class="nav-link d-flex align-items-center gap-2" href="nosotros.html">
+                            <i class="fa-solid fa-church" aria-hidden="true"></i>Nosotros
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="ministerios.html" aria-label="Ir a Ministerios">
-                            <i class="fas fa-users" aria-hidden="true"></i> Ministerios
+                        <a class="nav-link d-flex align-items-center gap-2" href="salvacion.html">
+                            <i class="fa-solid fa-cross" aria-hidden="true"></i>Salvación
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="salvacion.html" aria-label="Ir a Salvación">
-                            <i class="fas fa-cross" aria-hidden="true"></i> Salvación
+                        <a class="nav-link d-flex align-items-center gap-2" href="donativo.html">
+                            <i class="fa-solid fa-hand-holding-heart" aria-hidden="true"></i>Donativo
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="donativo.html" aria-current="page" aria-label="Ir a Donativo">
-                            <i class="fas fa-donate" aria-hidden="true"></i> Donativo
+                    <li class="nav-item dropdown dropdown-settings d-none d-lg-block">
+                        <a class="nav-link dropdown-toggle d-flex align-items-center gap-2" href="#" id="desktop-settings-dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Opciones">
+                            <i class="fa-solid fa-gear" aria-hidden="true"></i>Ajustes
                         </a>
+                        <ul class="dropdown-menu dropdown-menu-end dropdown-menu-custom" aria-labelledby="desktop-settings-dropdown">
+                            <li>
+                                <button class="dropdown-item" id="nav-theme-toggle" type="button">
+                                    <span class="d-flex align-items-center gap-2">
+                                        <i class="fa-solid fa-moon" id="nav-theme-icon" aria-hidden="true"></i>
+                                        <span>Tema</span>
+                                    </span>
+                                    <span class="dropdown-badge" id="nav-theme-label">Modo claro</span>
+                                </button>
+                            </li>
+                            <li>
+                                <button class="dropdown-item" id="nav-notif-toggle" type="button">
+                                    <span class="d-flex align-items-center gap-2">
+                                        <i class="fa-solid fa-bell" id="nav-notif-icon" aria-hidden="true"></i>
+                                        <span>Notificaciones</span>
+                                    </span>
+                                    <span class="dropdown-badge" id="nav-notif-label">Activar</span>
+                                </button>
+                            </li>
+                            <li><hr class="dropdown-divider nav-install-divider"></li>
+                            <li id="nav-install-item">
+                                <button class="dropdown-item" id="nav-pwa-install-btn" type="button">
+                                    <span class="d-flex align-items-center gap-2">
+                                        <i class="fa-solid fa-download" aria-hidden="true"></i>
+                                        <span>Instalar app</span>
+                                    </span>
+                                    <span class="btn btn-primary-pill btn-sm py-1 px-3 fs-7">Instalar</span>
+                                </button>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item d-lg-none w-100 nav-mobile-settings pt-2 mt-2">
+                        <span class="nav-link disabled fs-7 text-uppercase px-3 py-1 text-center">
+                            Ajustes
+                        </span>
+                    </li>
+                    <li class="nav-item d-lg-none w-100">
+                        <button class="nav-link w-100 justify-content-center gap-2" id="mobile-theme-toggle" type="button">
+                            <i class="fa-solid fa-moon" id="mobile-theme-icon" aria-hidden="true"></i>
+                            <span>Tema:</span>
+                            <span class="dropdown-badge" id="mobile-theme-label">Modo claro</span>
+                        </button>
+                    </li>
+                    <li class="nav-item d-lg-none w-100" id="mobile-notif-item">
+                        <button class="nav-link w-100 justify-content-center gap-2" id="mobile-notif-toggle" type="button">
+                            <i class="fa-solid fa-bell" id="mobile-notif-icon" aria-hidden="true"></i>
+                            <span>Notificaciones:</span>
+                            <span class="dropdown-badge" id="mobile-notif-label">Activar</span>
+                        </button>
+                    </li>
+                    <li class="nav-item d-lg-none w-100" id="mobile-install-item">
+                        <button class="nav-link w-100 justify-content-center gap-2" id="mobile-pwa-install-btn" type="button">
+                            <i class="fa-solid fa-download" aria-hidden="true"></i>
+                            <span>Instalar app</span>
+                        </button>
                     </li>
                 </ul>
-                <button class="btn theme-toggle d-none d-lg-flex ms-2" type="button" aria-label="Cambiar tema de color" onclick="toggleTheme()">
-                    <i id="desktop-theme-icon" class="fas fa-sun" aria-hidden="true"></i>
-                </button>
             </div>
         </div>
     </nav>
 
-    <main>
-        <section id="donaciones" class="py-4 py-md-5" aria-labelledby="heading-donaciones">
-            <div class="container">
-                <div class="row justify-content-center mb-4">
-                    <div class="col-12 col-lg-8 text-center">
-                        <div class="d-inline-flex justify-content-center align-items-center p-3 mb-3 rounded-circle bg-info-subtle text-info-emphasis" data-aos="zoom-in">
-                            <i class="fas fa-donate fs-1" aria-hidden="true"></i>
-                        </div>
-                        <h1 id="heading-donaciones" class="display-5 fw-bold mb-3 text-body-emphasis" data-aos="fade-up" data-aos-delay="100">Donaciones & Misiones</h1>
-                        <hr class="w-25 mx-auto mb-3 border-info border-3 opacity-75" data-aos="fade-up" data-aos-delay="150">
-                        <p class="lead mx-auto text-body-secondary" style="max-width:700px" data-aos="fade-up" data-aos-delay="200">Tu generosidad hace posible nuestra misión.</p>
-                    </div>
+    <nav id="tabbar-pwa" class="tabbar-floating fixed-bottom d-flex justify-content-around align-items-center" aria-label="Navegación principal">
+        <a href="index.html" class="tabbar-item d-flex flex-column align-items-center" data-page-link="inicio">
+            <i class="fa-solid fa-house" aria-hidden="true"></i>
+            <span>Inicio</span>
+        </a>
+        <a href="nosotros.html" class="tabbar-item d-flex flex-column align-items-center" data-page-link="nosotros">
+            <i class="fa-solid fa-church" aria-hidden="true"></i>
+            <span>Nosotros</span>
+        </a>
+        <a href="salvacion.html" class="tabbar-item d-flex flex-column align-items-center" data-page-link="salvacion">
+            <i class="fa-solid fa-cross" aria-hidden="true"></i>
+            <span>Salvación</span>
+        </a>
+        <a href="donativo.html" class="tabbar-item d-flex flex-column align-items-center" data-page-link="donativo">
+            <i class="fa-solid fa-hand-holding-heart" aria-hidden="true"></i>
+            <span>Donativo</span>
+        </a>
+        <a href="settings.html" class="tabbar-item d-flex flex-column align-items-center" data-page-link="settings">
+            <i class="fa-solid fa-gear" aria-hidden="true"></i>
+            <span>Ajustes</span>
+        </a>
+    </nav>
+
+    <a id="whatsapp-fab" class="whatsapp-fab" href="#" data-action="open-whatsapp" target="_blank" rel="noopener" aria-label="Contáctanos por WhatsApp">
+        <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+    </a>
+
+    <main id="main-content" tabindex="-1">
+        <section class="pg-hero hero-flush" aria-labelledby="donativo-title">
+            <div class="pg-hero-bg" aria-hidden="true">
+                <span class="pg-hero-blob pg-hero-blob--1"></span>
+                <span class="pg-hero-blob pg-hero-blob--2"></span>
+            </div>
+            <div class="container pg-hero-content">
+                <div class="pg-hero-icon" aria-hidden="true">
+                    <i class="fa-solid fa-hand-holding-heart" aria-hidden="true"></i>
                 </div>
-                <div class="row justify-content-center">
-                    <div class="col-12 col-lg-10 col-xl-9">
-                        <article class="card mb-4 overflow-hidden border-0 shadow-sm rounded-4" data-aos="fade-up" data-aos-delay="250">
-                            <div class="card-header p-3 p-md-4 border-0 bg-info text-white">
-                                <div class="d-flex align-items-center gap-3">
-                                    <div class="p-2 rounded-circle bg-white bg-opacity-25"><i class="fas fa-university fs-4 text-white" aria-hidden="true"></i></div>
-                                    <div>
-                                        <h3 class="h5 fw-bold mb-0">Información Bancaria</h3>
-                                        <p class="small mb-0 opacity-75">Datos seguros para tu donativo</p>
+                <div class="pg-hero-text">
+                    <h1 id="donativo-title" class="pg-hero-title">Donativo</h1>
+                    <p class="pg-hero-desc">Apoya la obra de Dios con tu ofrenda</p>
+                </div>
+            </div>
+        </section>
+        <section class="section-padding" aria-labelledby="bank-details-title">
+            <div class="container">
+                <div class="donativo-card-wrapper content-wrapper" data-gsap="fade-up">
+                    <div class="card-app">
+                        <div class="bank-card-header">
+                            <div class="bank-card-brand">
+                                <i class="fa-solid fa-building-columns bank-card-icon" aria-hidden="true"></i>
+                                <div>
+                                    <h2 id="bank-details-title" class="bank-card-name">Banco Afirme</h2>
+                                    <div class="bank-card-holder">
+                                        <span id="bank-holder-name" class="bank-card-institution">Iglesia Bautista de Monterrey, A.R.</span>
+                                        <button class="btn-secondary-pill btn-copy bank-name-copy" type="button" data-copy="Iglesia Bautista de Monterrey, A.R." aria-describedby="bank-holder-name" aria-live="polite">
+                                            <i class="fa-solid fa-copy" aria-hidden="true"></i>
+                                            <span class="visually-hidden">Copiar nombre de la cuenta</span>
+                                        </button>
                                     </div>
                                 </div>
                             </div>
-                            <div class="card-body p-3 p-md-4 bg-body">
-                                <div class="row mb-4">
-                                    <div class="col-12">
-                                        <div class="p-3 border shadow-sm rounded-4 bg-body-tertiary">
-                                            <div class="d-flex flex-column flex-md-row justify-content-between gap-3">
-                                                <div>
-                                                    <span class="d-block small fw-semibold mb-1 text-uppercase text-body-secondary">Banco</span>
-                                                    <div class="fs-5 fw-bold text-body-emphasis">Afirme</div>
-                                                </div>
-                                                <div class="d-none d-md-block mx-3 border-start border-secondary opacity-25"></div>
-                                                <hr class="d-md-none my-2 text-secondary opacity-25">
-                                                <div>
-                                                    <span class="d-block small fw-semibold mb-1 text-uppercase text-body-secondary">Beneficiario</span>
-                                                    <div class="fs-6 fw-bold text-body-emphasis">Iglesia Bautista de Monterrey, A.R.</div>
-                                                </div>
-                                            </div>
-                                        </div>
+                        </div>
+                        <div class="bank-accounts-grid">
+                            <section class="bank-account-card" aria-labelledby="local-fund-title">
+                                <div class="bank-account-card-header">
+                                    <h3 id="local-fund-title" class="badge-outlined mb-0">Fondo Local</h3>
+                                    <i class="fa-solid fa-church bank-fund-icon" aria-hidden="true"></i>
+                                </div>
+                                <div class="field-group">
+                                    <span id="local-clabe-label" class="micro-label">CLABE</span>
+                                    <div class="field-row">
+                                        <span id="local-clabe-value" class="field-value">062580001201102921</span>
+                                        <button class="btn-secondary-pill btn-copy" type="button" data-copy="062580001201102921" aria-describedby="local-fund-title local-clabe-label local-clabe-value" aria-live="polite">
+                                            <i class="fa-solid fa-copy" aria-hidden="true"></i>Copiar
+                                        </button>
                                     </div>
                                 </div>
-                                <h4 class="h6 fw-bold mb-3 text-uppercase text-body-emphasis">
-                                    <i class="fas fa-list me-2 text-info" aria-hidden="true"></i>Cuentas Disponibles
-                                </h4>
-                                <div class="row g-3">
-                                    <div class="col-12 col-md-6">
-                                        <div class="card h-100 border-0 shadow-sm rounded-4 bg-body-tertiary">
-                                            <div class="card-body p-3 p-md-4">
-                                                <div class="d-flex justify-content-between align-items-start mb-3">
-                                                    <span class="badge px-3 py-2 rounded-pill bg-info-subtle text-info-emphasis">Fondo General</span>
-                                                    <i class="fas fa-church fs-4 text-info opacity-50" aria-hidden="true"></i>
-                                                </div>
-                                                <div class="mb-3">
-                                                    <small class="d-block fw-semibold mb-1 text-body-secondary">Número de Cuenta</small>
-                                                    <div class="input-group shadow-sm">
-                                                        <span class="form-control fw-bold font-monospace border-end-0 bg-body text-body-emphasis">000120110292</span>
-                                                        <button class="btn btn-info copy-btn text-white" type="button" aria-label="Copiar número de cuenta" data-copy="000120110292">
-                                                            <i class="fas fa-copy" aria-hidden="true"></i>
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                                <div>
-                                                    <small class="d-block fw-semibold mb-1 text-body-secondary">CLABE Interbancaria</small>
-                                                    <div class="input-group shadow-sm">
-                                                        <span class="form-control fw-bold font-monospace border-end-0 bg-body text-body-emphasis">062580001201102921</span>
-                                                        <button class="btn btn-info copy-btn text-white" type="button" aria-label="Copiar CLABE interbancaria" data-copy="062580001201102921">
-                                                            <i class="fas fa-copy" aria-hidden="true"></i>
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-md-6">
-                                        <div class="card h-100 border-0 shadow-sm rounded-4 bg-body-tertiary">
-                                            <div class="card-body p-3 p-md-4">
-                                                <div class="d-flex justify-content-between align-items-start mb-3">
-                                                    <span class="badge px-3 py-2 rounded-pill bg-info-subtle text-info-emphasis">Fondo Misiones</span>
-                                                    <i class="fas fa-globe-americas fs-4 text-info opacity-50" aria-hidden="true"></i>
-                                                </div>
-                                                <div class="mb-3">
-                                                    <small class="d-block fw-semibold mb-1 text-body-secondary">Número de Cuenta</small>
-                                                    <div class="input-group shadow-sm">
-                                                        <span class="form-control fw-bold font-monospace border-end-0 bg-body text-body-emphasis">000120110284</span>
-                                                        <button class="btn btn-info copy-btn text-white" type="button" aria-label="Copiar número de cuenta" data-copy="000120110284">
-                                                            <i class="fas fa-copy" aria-hidden="true"></i>
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                                <div>
-                                                    <small class="d-block fw-semibold mb-1 text-body-secondary">CLABE Interbancaria</small>
-                                                    <div class="input-group shadow-sm">
-                                                        <span class="form-control fw-bold font-monospace border-end-0 bg-body text-body-emphasis">062580001201102840</span>
-                                                        <button class="btn btn-info copy-btn text-white" type="button" aria-label="Copiar CLABE interbancaria" data-copy="062580001201102840">
-                                                            <i class="fas fa-copy" aria-hidden="true"></i>
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                <div>
+                                    <span id="local-account-label" class="micro-label">No. Cuenta</span>
+                                    <div class="field-row">
+                                        <span id="local-account-value" class="field-value">000120110292</span>
+                                        <button class="btn-secondary-pill btn-copy" type="button" data-copy="000120110292" aria-describedby="local-fund-title local-account-label local-account-value" aria-live="polite">
+                                            <i class="fa-solid fa-copy" aria-hidden="true"></i>Copiar
+                                        </button>
                                     </div>
                                 </div>
-                                <div class="alert alert-info d-flex align-items-start mt-4 mb-0 border-0 shadow-sm rounded-4" role="alert">
-                                    <i class="fas fa-info-circle flex-shrink-0 mt-1 me-3 fs-4" aria-hidden="true"></i>
-                                    <div>
-                                        <h5 class="alert-heading h6 fw-bold mb-1">Importante</h5>
-                                        <p class="small mb-0">Al realizar tu donativo, por favor incluye tu <strong>nombre completo en la referencia</strong> para identificar tu aportación y enviarte tu comprobante.</p>
+                            </section>
+                            <section class="bank-account-card" aria-labelledby="missions-fund-title">
+                                <div class="bank-account-card-header">
+                                    <h3 id="missions-fund-title" class="badge-outlined mb-0">Fondo Misiones</h3>
+                                    <i class="fa-solid fa-globe bank-fund-icon" aria-hidden="true"></i>
+                                </div>
+                                <div class="field-group">
+                                    <span id="missions-clabe-label" class="micro-label">CLABE</span>
+                                    <div class="field-row">
+                                        <span id="missions-clabe-value" class="field-value">062580001201102840</span>
+                                        <button class="btn-secondary-pill btn-copy" type="button" data-copy="062580001201102840" aria-describedby="missions-fund-title missions-clabe-label missions-clabe-value" aria-live="polite">
+                                            <i class="fa-solid fa-copy" aria-hidden="true"></i>Copiar
+                                        </button>
                                     </div>
                                 </div>
-                            </div>
-                        </article>
-                        <article id="gracias-generosidad" class="card border-0 shadow-sm rounded-4 bg-body" data-aos="fade-up">
-                            <div class="card-body p-3 p-md-4 p-lg-5 text-center">
-                                <div class="d-inline-flex justify-content-center align-items-center p-3 mb-3 rounded-circle bg-info-subtle text-info-emphasis" data-aos="zoom-in" data-aos-delay="100">
-                                    <i class="fas fa-hands-helping fs-2" aria-hidden="true"></i>
-                                </div>
-                                <h3 class="h2 fw-bold mb-3 text-body-emphasis" data-aos="fade-up" data-aos-delay="150">¡Gracias por tu GENEROSIDAD!</h3>
-                                <p class="lead mx-auto mb-4 mb-md-5 text-body-secondary" style="max-width: 600px;" data-aos="fade-up" data-aos-delay="200">Tus donativos son fundamentales para continuar con nuestra misión y llevar el evangelio a todo el mundo.</p>
-                                <div class="row justify-content-center mb-4 g-3 g-md-4">
-                                    <div class="col-6 col-md-4">
-                                        <div class="d-flex flex-column align-items-center">
-                                            <i class="fas fa-eye mb-2 fs-4 text-body-secondary" aria-hidden="true"></i>
-                                            <span class="d-block fw-bold text-body-emphasis">Transparente</span>
-                                            <small class="text-body-secondary">Uso responsable</small>
-                                        </div>
-                                    </div>
-                                    <div class="col-6 col-md-4">
-                                        <div class="d-flex flex-column align-items-center">
-                                            <i class="fas fa-file-invoice mb-2 fs-4 text-body-secondary" aria-hidden="true"></i>
-                                            <span class="d-block fw-bold text-body-emphasis">Comprobante</span>
-                                            <small class="text-body-secondary">Anual</small>
-                                        </div>
+                                <div>
+                                    <span id="missions-account-label" class="micro-label">No. Cuenta</span>
+                                    <div class="field-row">
+                                        <span id="missions-account-value" class="field-value">000120110284</span>
+                                        <button class="btn-secondary-pill btn-copy" type="button" data-copy="000120110284" aria-describedby="missions-fund-title missions-account-label missions-account-value" aria-live="polite">
+                                            <i class="fa-solid fa-copy" aria-hidden="true"></i>Copiar
+                                        </button>
                                     </div>
                                 </div>
-                                <div class="row justify-content-center">
-                                    <div class="col-12 col-md-auto">
-                                        <a class="btn btn-info btn-sm w-100 w-md-auto px-4 text-white shadow-sm rounded-pill" href="nosotros.html#contacto">
-                                            <i class="fas fa-envelope me-2" aria-hidden="true"></i>¿Tienes dudas? Contáctanos
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </article>
+                            </section>
+                        </div>
+                        <p class="card-notice" role="note">
+                            <i class="fa-solid fa-circle-info me-1" aria-hidden="true"></i>
+                            <strong>Aviso Importante</strong>
+                            <br> Al realizar tu transferencia, incluye tu nombre completo en el campo "Concepto" o "Referencia". Esto nos ayuda a identificar tu aportación y enviarte tu comprobante anual.
+                        </p>
                     </div>
                 </div>
             </div>
-            <div class="toast-container position-fixed bottom-0 start-50 translate-middle-x p-3 mb-3">
-                <div id="copyToast" class="toast align-items-center w-auto border shadow rounded-pill bg-body text-body-emphasis" role="alert" aria-live="assertive" aria-atomic="true">
-                    <div class="d-flex align-items-center px-2">
-                        <div class="toast-body text-nowrap">
-                            <i class="fas fa-check-circle text-info me-2" aria-hidden="true"></i>
-                            <span>¡Copiado!</span>
+        </section>
+        <section class="section-padding pt-0" aria-labelledby="donativo-thanks-title">
+            <div class="container">
+                <h2 id="donativo-thanks-title" class="visually-hidden">Gracias por tu donativo</h2>
+                <div class="donativo-card-wrapper content-wrapper">
+                    <div class="card-app p-4 p-md-5 text-center donativo-cta" data-gsap="scale-up">
+                        <div class="donativo-cta-icon" aria-hidden="true">
+                            <i class="fa-solid fa-circle-check"></i>
                         </div>
-                        <button type="button" class="btn-close ms-auto me-2" data-bs-dismiss="toast" aria-label="Close"></button>
+                        <h3 class="mb-3">Gracias por ser parte de esta misión.</h3>
+                        <p class="mb-4">Cada donativo, administrado con transparencia y responsabilidad, nos permite seguir sirviendo e impactando vidas para Cristo.</p>
+                        <a class="btn-primary-pill justify-content-center" href="#" data-action="open-whatsapp" target="_blank" rel="noopener" aria-label="Contactar por WhatsApp">
+                            <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>Contáctanos por WhatsApp
+                        </a>
                     </div>
                 </div>
             </div>
         </section>
     </main>
 
-    <a class="whatsapp-floating-btn" href="https://wa.me/528132503031?text=Hola,%20me%20interesa%20recibir%20informaci%c3%b3n%20de%20la%20iglesia" aria-label="Contactar por WhatsApp" target="_blank" rel="noopener noreferrer">
-        <i class="fab fa-whatsapp" aria-hidden="true"></i>
-    </a>
-
-    <footer class="footer pt-4 pb-3 border-top">
+    <footer id="footer-web" class="site-footer">
         <div class="container">
-            <div class="row gy-3 gy-md-4">
-                <div class="col-12 col-lg-4 text-center text-lg-start">
-                    <h2 class="h5 fw-bold mb-3 text-body-emphasis">
-                        <i class="fa-solid fa-thumbs-up text-info me-2" aria-hidden="true"></i>Síguenos
-                    </h2>
-                    <p class="mb-3 text-body-secondary">Mantente conectado con nosotros</p>
-                    <div class="social-icons d-flex justify-content-center justify-content-lg-start gap-2">
-                        <a class="btn-social" href="https://www.facebook.com/IBMty/" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
-                            <i class="fab fa-facebook-f" aria-hidden="true"></i>
+            <div class="footer-panel">
+                <div class="row g-4 g-lg-5 align-items-start">
+                    <div class="col-12 col-lg-5">
+                        <a href="index.html" class="footer-brand" aria-label="Ir al inicio de IBMty">
+                            <span class="footer-brand-mark" aria-hidden="true">
+                                <i class="fa-solid fa-church" aria-hidden="true"></i>
+                            </span>
+                            <span>
+                                <span class="footer-brand-text">Iglesia Bautista de Monterrey</span>
+                            </span>
                         </a>
-                        <a class="btn-social" href="https://www.instagram.com/iglesiabautistademonterrey?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
-                            <i class="fab fa-instagram" aria-hidden="true"></i>
-                        </a>
-                        <a class="btn-social" href="https://www.youtube.com/channel/UCfhSTnqLb6vFO28eNm_n0qw" aria-label="YouTube" target="_blank" rel="noopener noreferrer">
-                            <i class="fab fa-youtube" aria-hidden="true"></i>
-                        </a>
-                        <a class="btn-social" href="mailto:oficina@ibmty.com" aria-label="Correo electrónico">
-                            <i class="fa-regular fa-envelope" aria-hidden="true"></i>
-                        </a>
+                        <p class="footer-summary">Mantente conectado con nosotros.</p>
+                        <nav class="footer-social mt-3" aria-label="Redes sociales">
+                            <a href="#" data-config-href="facebook" class="footer-social-link" target="_blank" rel="noopener" aria-label="Facebook">
+                                <i class="fa-brands fa-facebook-f" aria-hidden="true"></i>
+                            </a>
+                            <a href="#" data-config-href="instagram" class="footer-social-link" target="_blank" rel="noopener" aria-label="Instagram">
+                                <i class="fa-brands fa-instagram" aria-hidden="true"></i>
+                            </a>
+                            <a href="#" data-config-href="youtube" class="footer-social-link" target="_blank" rel="noopener" aria-label="YouTube">
+                                <i class="fa-brands fa-youtube" aria-hidden="true"></i>
+                            </a>
+                        </nav>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <h2 class="footer-heading">Contacto</h2>
+                        <ul class="footer-contact-list">
+                            <li>
+                                <a href="#" data-config-href="addressMapUrl" target="_blank" rel="noopener" class="footer-contact-item">
+                                    <span class="footer-icon" aria-hidden="true">
+                                        <i class="fa-solid fa-location-dot"></i>
+                                    </span>
+                                    <span>
+                                        <span class="footer-contact-label">Dirección</span>
+                                        <span data-config-text="address"></span>
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="footer-contact-item">
+                                <span class="footer-icon" aria-hidden="true">
+                                    <i class="fa-solid fa-phone"></i>
+                                </span>
+                                <span>
+                                    <span class="footer-contact-label">Teléfonos</span>
+                                    <span class="footer-phone-list">
+                                        <a href="#" data-config-href="phone1" class="footer-phone-link">
+                                            <span data-config-text="phone1"></span>
+                                        </a>
+                                        <a href="#" data-config-href="phone2" class="footer-phone-link">
+                                            <span data-config-text="phone2"></span>
+                                        </a>
+                                    </span>
+                                </span>
+                            </li>
+                            <li>
+                                <a href="#" data-config-href="email" class="footer-contact-item">
+                                    <span class="footer-icon" aria-hidden="true">
+                                        <i class="fa-solid fa-envelope"></i>
+                                    </span>
+                                    <span>
+                                        <span class="footer-contact-label">Correo</span>
+                                        <span data-config-text="email"></span>
+                                    </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-3">
+                        <h2 class="footer-heading">Enlaces</h2>
+                        <ul class="footer-link-list">
+                            <li>
+                                <a href="#" data-config-href="externalLink1.url" class="footer-link" target="_blank" rel="noopener">
+                                    <span data-config-text="externalLink1.label"></span>
+                                    <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" data-config-href="externalLink2.url" class="footer-link" target="_blank" rel="noopener">
+                                    <span data-config-text="externalLink2.label"></span>
+                                    <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
+                                </a>
+                            </li>
+                        </ul>
                     </div>
                 </div>
-                <div class="col-6 col-lg-4">
-                    <h2 class="h5 fw-bold mb-3 text-body-emphasis">
-                        <i class="fa-solid fa-id-badge text-info me-2" aria-hidden="true"></i>Contacto
-                    </h2>
-                    <ul class="list-unstyled small text-body-secondary">
-                        <li class="mb-2">
-                            <a class="text-decoration-none text-reset hover-link" href="https://www.google.com/maps?q=Iglesia+Bautista+de+Monterrey" target="_blank" rel="noopener noreferrer">
-                                <i class="fas fa-map-marker-alt me-2" aria-hidden="true"></i>Av. Eugenio Garza Sada 6309, MTY.
-                            </a>
-                        </li>
-                        <li class="mb-2">
-                            <a class="text-decoration-none text-reset hover-link" href="tel:+528183496161">
-                                <i class="fas fa-phone-alt me-2" aria-hidden="true"></i>81 83 49 61 61
-                            </a>
-                        </li>
-                        <li>
-                            <a class="text-decoration-none text-reset hover-link" href="tel:+528183496263">
-                                <i class="fas fa-phone-alt me-2" aria-hidden="true"></i>81 83 49 62 63
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="col-6 col-lg-4">
-                    <h2 class="h5 fw-bold mb-3 text-body-emphasis">
-                        <i class="fas fa-external-link-alt text-info me-2" aria-hidden="true"></i>Enlaces
-                    </h2>
-                    <ul class="list-unstyled small text-body-secondary">
-                        <li class="mb-2">
-                            <a class="text-decoration-none text-reset hover-link" href="https://www.ribbi.org/" target="_blank" rel="noopener noreferrer">
-                                <i class="fa-solid fa-network-wired me-2" aria-hidden="true"></i>RIBBI
-                            </a>
-                        </li>
-                        <li>
-                            <a class="text-decoration-none text-reset hover-link" href="https://elsaucillo.org/" target="_blank" rel="noopener noreferrer">
-                                <i class="fa-solid fa-mountain-sun me-2" aria-hidden="true"></i>El Saucillo
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div class="footer-bottom pt-3 mt-3 border-top">
-            <div class="container">
-                <div class="row align-items-center small text-body-secondary">
-                    <div class="col-md-4 text-center text-md-start mb-2 mb-md-0">
-                        <a class="text-decoration-none text-reset hover-link" href="privacidad.html">Aviso de Privacidad</a>
+                <div class="footer-bottom">
+                    <div class="footer-bottom-links">
+                        <a href="privacidad.html">
+                            <i class="fa-solid fa-shield-halved me-1" aria-hidden="true"></i>Aviso de Privacidad
+                        </a>
+                        <span>Iglesia Bautista de Monterrey &copy; <span id="current-year"></span></span>
                     </div>
-                    <div class="col-md-4 text-center mb-2 mb-md-0">
-                        &copy; <span id="currentYear"></span> IBMty.
-                    </div>
-                    <div class="col-md-4 text-center text-md-end">Hecho con
-                        <i id="heartIcon" class="fas fa-heart text-danger" style="cursor:pointer" aria-hidden="true"></i> para
-                        <a class="text-reset text-decoration-none" href="salvacion.html">Dios</a>
-                    </div>
-                </div>
-            </div>
-            <div id="developers" class="modal fade" tabindex="-1" role="dialog" aria-modal="true" aria-labelledby="developersLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content text-center">
-                        <div class="modal-header">
-                            <h3 id="developersLabel" class="modal-title h4">Desarrolladores</h3>
-                            <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Cerrar"></button>
-                        </div>
-                        <div class="modal-body">
-                            <p class="mb-2">H.G</p>
-                            <p class="mb-2">E.A.R.G</p>
-                            <p class="mb-0">D.A.R.M</p>
-                        </div>
-                    </div>
+                    <span class="footer-devotion">Hecho con
+                        <i class="fa-solid fa-heart mx-1" aria-hidden="true"></i> para Dios
+                    </span>
                 </div>
             </div>
         </div>
     </footer>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous" defer="defer"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js" integrity="sha512-A7AYk1fGKX6S2SsHywmPkrnzTZHrgiVT7GcQkLGDe2ev0aWb8zejytzS8wjo7PGEXKqJOrjQ4oORtnimIRZBtw==" crossorigin="anonymous" defer="defer"></script>
-    <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer="defer"></script>
-    <script src="context/utils.js" defer="defer"></script>
-    <script src="context/sw-registration.js" defer="defer"></script>
-    <script src="context/onesignal-init.js" defer="defer"></script>
-    <script src="context/analytics.js" defer="defer"></script>
 </body>
 
 </html>

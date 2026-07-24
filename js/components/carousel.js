@@ -1,0 +1,140 @@
+document.addEventListener('DOMContentLoaded', function() {
+    var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function getTotalSlides(swiper) {
+        var indexedSlides = new Set(Array.from(swiper.slides).map(function(slide) {
+            return slide.getAttribute('data-swiper-slide-index')
+        }).filter(function(index) {
+            return index !== null
+        }));
+        return indexedSlides.size || swiper.slides.length
+    }
+
+    function updateIndicator(swiper, selector) {
+        var indicator = document.querySelector(selector);
+        if (!indicator) return;
+        indicator.setAttribute('aria-live', 'polite');
+        indicator.setAttribute('aria-atomic', 'true');
+        var total = getTotalSlides(swiper);
+        var current = swiper.params.loop ? swiper.realIndex + 1 : Math.min((swiper.snapIndex || swiper.realIndex) + 1, total);
+        indicator.textContent = current + ' / ' + total
+    }
+
+    function equalizeCardHeights(swiper) {
+        var cards = swiper.el.querySelectorAll('.card-app');
+        if (!cards.length) return;
+        cards.forEach(function(card) {
+            card.style.minHeight = ''
+        });
+        var max = 0;
+        cards.forEach(function(card) {
+            if (card.offsetHeight > max) max = card.offsetHeight
+        });
+        if (max > 0) {
+            cards.forEach(function(card) {
+                card.style.minHeight = max + 'px'
+            })
+        }
+        if (typeof ScrollTrigger !== 'undefined') ScrollTrigger.refresh()
+    }
+    var coverflowConfig = {
+        rotate: 4,
+        stretch: 0,
+        depth: 48,
+        modifier: 1,
+        slideShadows: !1,
+    };
+
+    function buildCarousel(elementId, scopeSelector, overrides) {
+        if (!document.getElementById(elementId)) return;
+        overrides = overrides || {};
+        var containerMessage = overrides.a11y && overrides.a11y.containerMessage;
+        delete overrides.a11y;
+        var baseConfig = {
+            effect: 'coverflow',
+            grabCursor: !0,
+            centeredSlides: !0,
+            slidesPerView: 1.08,
+            spaceBetween: 16,
+            loop: !1,
+            watchSlidesProgress: !0,
+            speed: prefersReducedMotion ? 0 : 400,
+            coverflowEffect: coverflowConfig,
+            keyboard: {
+                enabled: !0,
+                onlyInViewport: !0
+            },
+            a11y: {
+                enabled: !0,
+                containerMessage: containerMessage,
+                prevSlideMessage: 'Slide anterior',
+                nextSlideMessage: 'Slide siguiente',
+                firstSlideMessage: 'Este es el primer slide',
+                lastSlideMessage: 'Este es el último slide',
+            },
+            navigation: {
+                nextEl: scopeSelector + ' .carousel-btn-next',
+                prevEl: scopeSelector + ' .carousel-btn-prev',
+            },
+            on: {
+                init: function() {
+                    updateIndicator(this, scopeSelector + ' .carousel-indicator');
+                    equalizeCardHeights(this)
+                },
+                slideChange: function() {
+                    updateIndicator(this, scopeSelector + ' .carousel-indicator')
+                },
+                snapIndexChange: function() {
+                    updateIndicator(this, scopeSelector + ' .carousel-indicator')
+                },
+                resize: function() {
+                    equalizeCardHeights(this)
+                },
+                imagesReady: function() {
+                    equalizeCardHeights(this)
+                },
+            },
+        };
+        Object.assign(baseConfig, overrides);
+        var swiper = new Swiper('#' + elementId, baseConfig);
+        swiper.el.querySelectorAll('img').forEach(function(img) {
+            if (!img.complete) {
+                img.addEventListener('load', function() {
+                    equalizeCardHeights(swiper)
+                }, {
+                    once: !0
+                })
+            }
+        });
+        return swiper
+    }
+    var responsiveBreakpoints = {
+        640: {
+            slidesPerView: 2,
+            spaceBetween: 24
+        },
+        1024: {
+            slidesPerView: 3,
+            spaceBetween: 28
+        },
+        1280: {
+            slidesPerView: 3,
+            spaceBetween: 32
+        },
+    };
+    buildCarousel('eventos-swiper', '#eventos', {
+        rewind: !0,
+        initialSlide: 3,
+        breakpoints: responsiveBreakpoints,
+        a11y: {
+            containerMessage: 'Carrusel de eventos'
+        }
+    });
+    buildCarousel('ministerios-swiper', '#lideres', {
+        loop: !0,
+        breakpoints: responsiveBreakpoints,
+        a11y: {
+            containerMessage: 'Carrusel de líderes y ministerios'
+        }
+    })
+})

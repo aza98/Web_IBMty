@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es" class="splash-page">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <script>
+        (function() {
+            var saved = localStorage.getItem('theme');
+            var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            var theme = saved || (prefersDark ? 'dark' : 'light');
+            document.documentElement.setAttribute('data-theme', theme);
+        })();
+    </script>
+    <script src="js/pwa-launch.js"></script>
+    <meta name="theme-color" content="#FFFFFF" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="IBMty">
+    <meta property="og:title" content="Iglesia Bautista de Monterrey">
+    <meta property="og:description" content="Bienvenido a la app de la Iglesia Bautista de Monterrey.">
+    <meta property="og:type" content="website">
+    <link rel="apple-touch-icon" href="assets/icons/IBMty_Icon_180.png">
+    <link rel="icon" href="assets/icons/IBMty_Icon_32.ico">
+    <link rel="manifest" href="manifest.json">
+    <link rel="preload" href="assets/fonts/League_Spartan/static/LeagueSpartan-SemiBold.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/pages/splash.css">
+    <title>IBMty</title>
+    <script src="config/config.js" defer></script>
+    <script src="js/utils/analytics.js" defer></script>
+    <script src="js/main.js" defer></script>
+    <script src="gsap-public/minified/gsap.min.js" defer></script>
+    <script src="gsap-public/minified/ScrollTrigger.min.js" defer></script>
+    <script src="js/components/animations.js" defer></script>
+</head>
+
+<body data-page="splash">
+    <div id="splash-screen" aria-labelledby="splash-title">
+        <div class="splash-content">
+            <div class="splash-logo-wrap">
+                <img id="splash-logo" src="assets/icons/Logo_IBMty.png" width="512" height="512" alt="">
+            </div>
+            <div id="splash-loader" class="splash-progress-bar" aria-hidden="true">
+                <div class="splash-progress-line"></div>
+            </div>
+            <p id="splash-title" class="splash-subtitle" role="heading" aria-level="1">IBMTY</p>
+        </div>
+    </div>
+</body>
+
+</html>

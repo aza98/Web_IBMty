@@ -1,0 +1,270 @@
+.privacidad-content {
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto
+}
+
+.priv-updated {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  margin-bottom: var(--space-4);
+  padding: var(--space-1) var(--space-3);
+  background: var(--color-surface-2);
+  color: var(--color-text-secondary);
+  border-radius: var(--radius-pill);
+  font-family: var(--font-secondary);
+  font-size: var(--text-xs);
+  font-weight: 500;
+  line-height: 1
+}
+
+.priv-updated i {
+  font-size: .95em;
+  color: var(--color-brand)
+}
+
+.priv-intro {
+  margin-bottom: var(--space-5)
+}
+
+.priv-intro p:first-child {
+  font-size: var(--text-md);
+  line-height: 1.7;
+  color: var(--color-text-primary)
+}
+
+.priv-intro p:last-child {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted)
+}
+
+.priv-accordion {
+  counter-reset: priv-num
+}
+
+.priv-accordion .collapsing {
+  transition: height 0.4s cubic-bezier(.25, 1, .5, 1)
+}
+
+.priv-accordion .accordion-item {
+  position: relative;
+  overflow: hidden;
+  margin-bottom: var(--space-3);
+  border-radius: var(--radius-card);
+  counter-increment: priv-num
+}
+
+.priv-accordion .accordion-item::before {
+  content: "0" counter(priv-num);
+  position: absolute;
+  top: .25rem;
+  right: .5rem;
+  z-index: 0;
+  font-family: var(--font-primary);
+  font-weight: 800;
+  font-size: 4.5rem;
+  line-height: 1;
+  color: var(--color-brand);
+  opacity: .05;
+  pointer-events: none;
+  user-select: none
+}
+
+@media (min-width:768px) {
+  .priv-accordion .accordion-item {
+    margin-bottom: var(--space-4)
+  }
+
+  .priv-accordion .accordion-item::before {
+    right: .75rem;
+    font-size: 6.5rem;
+    opacity: .06
+  }
+}
+
+.priv-accordion .accordion-button {
+  position: relative;
+  z-index: 1;
+  padding: var(--space-4) var(--space-3);
+  background: var(--color-surface);
+  color: var(--color-text-primary);
+  font-family: var(--font-primary);
+  font-weight: 700;
+  font-size: var(--text-base);
+  border: none;
+  border-bottom: 1px solid #fff0;
+  box-shadow: none;
+  transition: background-color var(--transition-base), border-color var(--transition-base), transform var(--transition-base)
+}
+
+.priv-accordion .accordion-button>.d-flex {
+  flex-wrap: nowrap
+}
+
+.priv-accordion .accordion-button::after {
+  display: none
+}
+
+@media (hover:hover) {
+  .priv-accordion .accordion-button:hover {
+    background-color: color-mix(in srgb, var(--color-brand) 3%, var(--color-surface))
+  }
+}
+
+.priv-accordion .accordion-button:active {
+  transform: scale(.995)
+}
+
+.priv-accordion .accordion-button:focus {
+  outline: none;
+  box-shadow: none
+}
+
+.priv-accordion .accordion-button:focus-visible {
+  outline: 2px solid var(--color-brand);
+  outline-offset: -2px
+}
+
+.priv-accordion .accordion-button:not(.collapsed) {
+  background: var(--color-surface);
+  color: var(--color-text-primary);
+  border-bottom-color: var(--color-border)
+}
+
+.priv-accordion .accordion-button:not(.collapsed) .privacidad-section-title {
+  color: var(--color-brand)
+}
+
+@media (min-width:768px) {
+  .priv-section-icon {
+    width: 36px;
+    height: 36px;
+    min-width: 36px;
+    font-size: var(--text-sm);
+    border-radius: var(--radius-md)
+  }
+}
+
+.privacidad-section-title {
+  margin: 0;
+  font-family: var(--font-primary);
+  font-weight: 700;
+  font-size: var(--text-base);
+  line-height: 1.3;
+  color: var(--color-text-primary);
+  transition: color var(--transition-base)
+}
+
+.priv-accordion-chevron {
+  margin-left: auto;
+  flex-shrink: 0;
+  font-size: var(--text-xs);
+  color: var(--color-text-secondary);
+  transition: transform var(--motion-emphasized) var(--ease-standard), color var(--transition-base)
+}
+
+.priv-accordion .accordion-button:not(.collapsed) .priv-accordion-chevron {
+  transform: rotate(180deg);
+  color: var(--color-brand)
+}
+
+@media (min-width:768px) {
+  .priv-accordion .accordion-button {
+    padding: var(--space-5) var(--space-6);
+    font-size: var(--text-md)
+  }
+
+  .privacidad-section-title {
+    font-size: var(--text-md)
+  }
+}
+
+.priv-accordion .accordion-body {
+  position: relative;
+  z-index: 1;
+  padding: var(--space-4) var(--space-3)
+}
+
+@media (min-width:768px) {
+  .priv-accordion .accordion-body {
+    padding: var(--space-5) var(--space-6) var(--space-6)
+  }
+}
+
+.privacidad-content p,
+.privacidad-content li {
+  font-family: var(--font-secondary);
+  font-size: var(--text-base);
+  line-height: 1.78;
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-3)
+}
+
+.privacidad-content li {
+  margin-bottom: var(--space-1)
+}
+
+.privacidad-content p:last-child,
+.privacidad-content li:last-child {
+  margin-bottom: 0
+}
+
+.privacidad-content ul {
+  margin-bottom: var(--space-3);
+  padding-left: var(--space-4)
+}
+
+.privacidad-content strong {
+  font-weight: 600;
+  color: var(--color-text-primary)
+}
+
+.privacidad-content a:not(.btn-primary-pill):not(.btn-secondary-pill) {
+  color: var(--color-brand);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: opacity var(--transition-base), color var(--transition-base)
+}
+
+@media (hover:hover) {
+  .privacidad-content a:not(.btn-primary-pill):not(.btn-secondary-pill):hover {
+    opacity: .75
+  }
+}
+
+.priv-arco-cta {
+  margin-top: var(--space-5);
+  padding-top: var(--space-5);
+  border-top: 1px solid var(--color-border)
+}
+
+.priv-arco-cta a,
+.priv-back a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px
+}
+
+.priv-back {
+  padding-top: var(--space-5);
+  padding-bottom: var(--space-1);
+  text-align: center
+}
+
+@media (prefers-reduced-motion:reduce) {
+
+  .priv-accordion .collapsing,
+  .priv-accordion .accordion-button,
+  .priv-accordion-chevron {
+    transition: none
+  }
+}
+
+@media print {
+  .priv-accordion .accordion-collapse {
+    display: block !important;
+    height: auto !important
+  }
+}

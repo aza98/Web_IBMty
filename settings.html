@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <script>
+        (function() {
+            var saved = localStorage.getItem('theme');
+            var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            var theme = saved || (prefersDark ? 'dark' : 'light');
+            document.documentElement.setAttribute('data-theme', theme);
+        })();
+    </script>
+    <script src="js/pwa-launch.js"></script>
+    <script>
+        (function() {
+            var isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
+            if (!isStandalone) {
+                window.location.replace('index.html');
+            }
+        })();
+    </script>
+    <title>Ajustes — IBMty</title>
+    <meta name="description" content="Ajustes de la aplicación IBMty">
+    <meta name="robots" content="noindex, nofollow">
+    <meta property="og:title" content="Ajustes — IBMty">
+    <meta property="og:description" content="Configura tu experiencia en la app de la Iglesia Bautista de Monterrey.">
+    <meta property="og:type" content="website">
+    <meta name="theme-color" content="#00C0F6">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="IBMty">
+    <link rel="apple-touch-icon" href="assets/icons/IBMty_Icon_180.png">
+    <link rel="icon" href="assets/icons/IBMty_Icon_32.ico">
+    <link rel="manifest" href="manifest.json">
+    <link rel="preload" href="assets/fonts/League_Spartan/static/LeagueSpartan-ExtraBold.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="assets/fonts/Poppins/Poppins-Regular.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.3.0/css/all.min.css" integrity="sha384-sTlsophtwz/I4myskS3OIJf5VvEojkXKZyBTWZm0YD/K1pN7C5wpBPLyrsbr1SU2" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/pages/settings.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous" defer></script>
+    <script src="config/config.js" defer></script>
+    <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
+    <script src="js/components/push.js" defer></script>
+    <script src="js/utils/analytics.js" defer></script>
+    <script src="js/main.js" defer></script>
+</head>
+
+<body data-page="settings">
+    <a class="skip-link visually-hidden-focusable" href="#main-content">Saltar al contenido</a>
+    <nav id="navbar-web" class="navbar navbar-expand-lg fixed-top" aria-label="Navegación principal">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">
+                <img src="assets/icons/IBMty_Logo_Mobile.webp" width="829" height="972" alt="IBMty" class="navbar-logo-mobile d-lg-none">
+                <img src="assets/icons/IBMty_Logo_Desktop.webp" width="1794" height="570" alt="IBMty" class="navbar-logo-desktop d-none d-lg-block">
+            </a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#nav-links" aria-controls="nav-links" aria-expanded="false" aria-label="Abrir menú">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="nav-links">
+                <ul class="navbar-nav ms-auto align-items-center gap-2">
+                    <li class="nav-item">
+                        <a class="nav-link d-flex align-items-center gap-2" href="index.html">
+                            <i class="fa-solid fa-house" aria-hidden="true"></i>Inicio
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link d-flex align-items-center gap-2" href="nosotros.html">
+                            <i class="fa-solid fa-church" aria-hidden="true"></i>Nosotros
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link d-flex align-items-center gap-2" href="salvacion.html">
+                            <i class="fa-solid fa-cross" aria-hidden="true"></i>Salvación
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link d-flex align-items-center gap-2" href="donativo.html">
+                            <i class="fa-solid fa-hand-holding-heart" aria-hidden="true"></i>Donativo
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown dropdown-settings d-none d-lg-block">
+                        <a class="nav-link dropdown-toggle d-flex align-items-center gap-2" href="#" id="desktop-settings-dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Opciones">
+                            <i class="fa-solid fa-gear" aria-hidden="true"></i>Ajustes
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end dropdown-menu-custom" aria-labelledby="desktop-settings-dropdown">
+                            <li>
+                                <button class="dropdown-item" id="nav-theme-toggle" type="button">
+                                    <span class="d-flex align-items-center gap-2">
+                                        <i class="fa-solid fa-moon" id="nav-theme-icon" aria-hidden="true"></i>
+                                        <span>Tema</span>
+                                    </span>
+                                    <span class="dropdown-badge" id="nav-theme-label">Modo claro</span>
+                                </button>
+                            </li>
+                            <li>
+                                <button class="dropdown-item" id="nav-notif-toggle" type="button">
+                                    <span class="d-flex align-items-center gap-2">
+                                        <i class="fa-solid fa-bell" id="nav-notif-icon" aria-hidden="true"></i>
+                                        <span>Notificaciones</span>
+                                    </span>
+                                    <span class="dropdown-badge" id="nav-notif-label">Activar</span>
+                                </button>
+                            </li>
+                            <li>
+                                <hr class="dropdown-divider nav-install-divider">
+                            </li>
+                            <li id="nav-install-item">
+                                <button class="dropdown-item" id="nav-pwa-install-btn" type="button">
+                                    <span class="d-flex align-items-center gap-2">
+                                        <i class="fa-solid fa-download" aria-hidden="true"></i>
+                                        <span>Instalar app</span>
+                                    </span>
+                                    <span class="btn btn-primary-pill btn-sm py-1 px-3 fs-7">Instalar</span>
+                                </button>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item d-lg-none w-100 nav-mobile-settings pt-2 mt-2">
+                        <span class="nav-link disabled fs-7 text-uppercase px-3 py-1 text-center">Ajustes</span>
+                    </li>
+                    <li class="nav-item d-lg-none w-100">
+                        <button class="nav-link w-100 justify-content-center gap-2" id="mobile-theme-toggle" type="button">
+                            <i class="fa-solid fa-moon" id="mobile-theme-icon" aria-hidden="true"></i>
+                            <span>Tema:</span>
+                            <span class="dropdown-badge" id="mobile-theme-label">Modo claro</span>
+                        </button>
+                    </li>
+                    <li class="nav-item d-lg-none w-100" id="mobile-notif-item">
+                        <button class="nav-link w-100 justify-content-center gap-2" id="mobile-notif-toggle" type="button">
+                            <i class="fa-solid fa-bell" id="mobile-notif-icon" aria-hidden="true"></i>
+                            <span>Notificaciones:</span>
+                            <span class="dropdown-badge" id="mobile-notif-label">Activar</span>
+                        </button>
+                    </li>
+                    <li class="nav-item d-lg-none w-100" id="mobile-install-item">
+                        <button class="nav-link w-100 justify-content-center gap-2" id="mobile-pwa-install-btn" type="button">
+                            <i class="fa-solid fa-download" aria-hidden="true"></i>
+                            <span>Instalar app</span>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <nav id="tabbar-pwa" class="tabbar-floating fixed-bottom d-flex justify-content-around align-items-center" aria-label="Navegación principal">
+        <a href="index.html" class="tabbar-item d-flex flex-column align-items-center" data-page-link="inicio">
+            <i class="fa-solid fa-house" aria-hidden="true"></i>
+            <span>Inicio</span>
+        </a>
+        <a href="nosotros.html" class="tabbar-item d-flex flex-column align-items-center" data-page-link="nosotros">
+            <i class="fa-solid fa-church" aria-hidden="true"></i>
+            <span>Nosotros</span>
+        </a>
+        <a href="salvacion.html" class="tabbar-item d-flex flex-column align-items-center" data-page-link="salvacion">
+            <i class="fa-solid fa-cross" aria-hidden="true"></i>
+            <span>Salvación</span>
+        </a>
+        <a href="donativo.html" class="tabbar-item d-flex flex-column align-items-center" data-page-link="donativo">
+            <i class="fa-solid fa-hand-holding-heart" aria-hidden="true"></i>
+            <span>Donativo</span>
+        </a>
+        <a href="settings.html" class="tabbar-item d-flex flex-column align-items-center" data-page-link="settings">
+            <i class="fa-solid fa-gear" aria-hidden="true"></i>
+            <span>Ajustes</span>
+        </a>
+    </nav>
+
+    <a id="whatsapp-fab" class="whatsapp-fab" href="#" data-action="open-whatsapp" target="_blank" rel="noopener" aria-label="Contáctanos por WhatsApp">
+        <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+    </a>
+
+    <main id="main-content" tabindex="-1">
+        <section class="pg-hero hero-flush" aria-labelledby="settings-title">
+            <div class="pg-hero-bg" aria-hidden="true"><span class="pg-hero-blob pg-hero-blob--1"></span><span class="pg-hero-blob pg-hero-blob--2"></span></div>
+            <div class="container pg-hero-content">
+                <div class="pg-hero-icon" aria-hidden="true"><i class="fa-solid fa-gear" aria-hidden="true"></i></div>
+                <div class="pg-hero-text">
+                    <h1 id="settings-title" class="pg-hero-title">Ajustes</h1>
+                    <p class="pg-hero-desc">Personaliza tu experiencia en IBMty</p>
+                </div>
+            </div>
+        </section>
+        <div class="container settings-body">
+                <section class="settings-section" aria-labelledby="appearance-title">
+                    <h2 id="appearance-title" class="micro-label settings-section-label">Apariencia</h2>
+                    <div class="settings-card card-app">
+                        <button id="theme-toggle" class="settings-row" type="button" role="switch" aria-checked="false" aria-label="Modo oscuro">
+                            <span class="settings-row-left">
+                                <span class="settings-row-icon">
+                                    <i class="fa-solid fa-sun" id="theme-icon" aria-hidden="true"></i>
+                                </span>
+                                <span class="settings-row-info">
+                                    <span class="settings-row-title">Tema</span>
+                                    <span class="settings-row-desc" id="theme-label">Modo claro</span>
+                                </span>
+                            </span>
+                            <span class="sw-track theme-sw" aria-hidden="true">
+                                <span class="sw-thumb"></span>
+                            </span>
+                        </button>
+                        <button id="whatsapp-fab-toggle" class="settings-row settings-row--bordered" type="button" role="switch" aria-checked="true" aria-label="Botón flotante de WhatsApp">
+                            <span class="settings-row-left">
+                                <span class="settings-row-icon">
+                                    <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+                                </span>
+                                <span class="settings-row-info">
+                                    <span class="settings-row-title">Botón de WhatsApp</span>
+                                    <span class="settings-row-desc" id="whatsapp-fab-label">Visible</span>
+                                </span>
+                            </span>
+                            <span class="sw-track wa-sw" aria-hidden="true">
+                                <span class="sw-thumb"></span>
+                            </span>
+                        </button>
+                    </div>
+                </section>
+                <section class="settings-section" aria-labelledby="notifications-title">
+                    <h2 id="notifications-title" class="micro-label settings-section-label">Notificaciones</h2>
+                    <div class="settings-card card-app">
+                        <button id="notif-toggle" class="settings-row" type="button" role="switch" aria-checked="false" aria-label="Notificaciones push">
+                            <span class="settings-row-left">
+                                <span class="settings-row-icon">
+                                    <i class="fa-solid fa-bell" id="notif-icon" aria-hidden="true"></i>
+                                </span>
+                                <span class="settings-row-info">
+                                    <span class="settings-row-title">Notificaciones push</span>
+                                    <span class="settings-row-desc" id="notif-label"></span>
+                                </span>
+                            </span>
+                            <span class="sw-track notif-sw" aria-hidden="true">
+                                <span class="sw-thumb"></span>
+                            </span>
+                        </button>
+                    </div>
+                </section>
+                <section class="settings-section" aria-labelledby="about-title">
+                    <h2 id="about-title" class="micro-label settings-section-label">Acerca de</h2>
+                    <div class="settings-card card-app">
+                        <div class="settings-row settings-row--static">
+                            <span class="settings-row-left">
+                                <span class="settings-row-icon">
+                                    <i class="fa-solid fa-church" aria-hidden="true"></i>
+                                </span>
+                                <span class="settings-row-info">
+                                    <span class="settings-row-title">App</span>
+                                    <span class="settings-row-desc" data-config-text="appName">IBMty</span>
+                                </span>
+                            </span>
+                        </div>
+                        <div class="settings-row settings-row--static settings-row--bordered">
+                            <span class="settings-row-left">
+                                <span class="settings-row-icon">
+                                    <i class="fa-solid fa-code-branch" aria-hidden="true"></i>
+                                </span>
+                                <span class="settings-row-info">
+                                    <span class="settings-row-title">Versión</span>
+                                    <span class="settings-row-desc" data-config-text="appVersion">7.0.0</span>
+                                </span>
+                            </span>
+                        </div>
+                        <div class="settings-row settings-install-row settings-row--bordered">
+                            <span class="settings-row-left">
+                                <span class="settings-row-icon">
+                                    <i class="fa-solid fa-download" aria-hidden="true"></i>
+                                </span>
+                                <span class="settings-row-info">
+                                    <span class="settings-row-title">Instalar app</span>
+                                    <span class="settings-row-desc">Añadir a la pantalla de inicio</span>
+                                </span>
+                            </span>
+                            <button id="pwa-install-btn" class="btn btn-primary-pill btn-sm" type="button">Instalar</button>
+                        </div>
+                    </div>
+                </section>
+                <section class="settings-section" aria-labelledby="legal-title">
+                    <h2 id="legal-title" class="micro-label settings-section-label">Legal</h2>
+                    <div class="settings-card card-app">
+                        <a href="privacidad.html" class="settings-row" aria-label="Aviso de privacidad">
+                            <span class="settings-row-left">
+                                <span class="settings-row-icon">
+                                    <i class="fa-solid fa-shield-halved" aria-hidden="true"></i>
+                                </span>
+                                <span class="settings-row-info">
+                                    <span class="settings-row-title">Aviso de Privacidad</span>
+                                    <span class="settings-row-desc">Cómo usamos y protegemos tus datos</span>
+                                </span>
+                            </span>
+                            <i class="fa-solid fa-chevron-right settings-row-chevron" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                </section>
+        </div>
+    </main>
+</body>
+
+</html>

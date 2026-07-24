@@ -1,4 +1,9 @@
 User-agent: *
 Allow: /
 
+# Páginas internas (no destinadas a indexación):
+# settings.html redirige a inicio en web; splash.html es solo PWA.
+Disallow: /settings.html
+Disallow: /splash.html
+
 Sitemap: https://www.ibmty.com/sitemap.xml

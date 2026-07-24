@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <script>
+        (function() {
+            var saved = localStorage.getItem('theme');
+            var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            var theme = saved || (prefersDark ? 'dark' : 'light');
+            document.documentElement.setAttribute('data-theme', theme);
+        })();
+    </script>
+    <meta name="theme-color" content="#FFFFFF" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="IBMty">
+    <link rel="apple-touch-icon" href="assets/icons/IBMty_Icon_180.png">
+    <link rel="icon" href="assets/icons/IBMty_Icon_32.ico">
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="css/main.css">
+    <title>Sin conexión — IBMty</title>
+    <style>
+        .offline-wrap {
+            min-height: 100dvh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            gap: 1.25rem;
+            padding: 2rem 1.5rem calc(2rem + env(safe-area-inset-bottom));
+            font-family: var(--font-secondary, system-ui, sans-serif);
+            color: var(--color-text-primary, #010C18);
+            background: var(--color-bg, #fff)
+        }
+    
+        .offline-logo {
+            width: 96px;
+            height: 96px
+        }
+    
+        .offline-title {
+            font-family: var(--font-primary, inherit);
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin: 0
+        }
+    
+        .offline-text {
+            max-width: 22rem;
+            margin: 0;
+            font-size: 1rem;
+            line-height: 1.5;
+            color: var(--color-text-secondary, #4a5568)
+        }
+    
+        .offline-retry {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 44px;
+            margin-top: .5rem;
+            padding: .65rem 1.5rem;
+            font: inherit;
+            font-weight: 600;
+            color: #010C18;
+            background: var(--color-brand, #00C0F6);
+            border: none;
+            border-radius: var(--radius-pill, 999px);
+            cursor: pointer
+        }
+
+        .offline-retry:hover {
+            background: var(--color-brand-hover, #009DD0)
+        }
+
+        .offline-retry:active {
+            background: var(--color-brand-hover, #009DD0);
+            transform: translateY(1px)
+        }
+
+        .offline-retry:focus-visible {
+            outline: 3px solid var(--color-brand, #00C0F6);
+            outline-offset: 3px
+        }
+    </style>
+</head>
+
+<body data-page="offline">
+    <main class="offline-wrap">
+        <img class="offline-logo" src="assets/icons/Logo_IBMty.png" width="192" height="192" alt="IBMty">
+        <h1 class="offline-title">Estás sin conexión</h1>
+        <p class="offline-text">No pudimos cargar esta página porque no hay conexión a internet. Revisa tu red e inténtalo de nuevo.</p>
+        <button type="button" class="offline-retry" data-action="retry-connection">Reintentar</button>
+    </main>
+    <script>
+        document.addEventListener('click', function(event) {
+            if (event.target.closest('[data-action="retry-connection"]')) {
+                location.reload();
+            }
+        });
+        window.addEventListener('online', function() {
+            location.reload();
+        });
+    </script>
+</body>
+
+</html>
