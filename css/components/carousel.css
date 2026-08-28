@@ -1,14 +1,8 @@
 #eventos-swiper,
 #ministerios-swiper {
   --carousel-transition: var(--motion-emphasized) var(--ease-standard);
-  --carousel-slide-dim: .5
-}
-
-.card-event-title {
-  font-family: var(--font-primary);
-  font-size: 1.25rem;
-  font-weight: 700;
-  line-height: 1.2
+  --carousel-slide-dim: .72;
+  overflow: visible
 }
 
 .card-event-date {
@@ -19,7 +13,7 @@
   font-size: var(--text-2xs);
   letter-spacing: .06em;
   text-transform: uppercase;
-  color: var(--color-brand)
+  color: var(--color-text-muted-strong)
 }
 
 .card-event-desc {
@@ -27,44 +21,8 @@
   color: var(--color-text-muted)
 }
 
-.card-event-meta {
-  color: var(--color-text-muted)
-}
-
-.card-event-week {
-  padding: .6rem var(--space-2);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
-  background: rgb(var(--color-brand-rgb) / .04)
-}
-
-.card-event-week-label {
-  display: inline-flex;
-  align-items: center;
-  margin-bottom: .35rem;
-  font-family: var(--font-primary);
-  font-weight: 700;
-  font-size: var(--text-2xs);
-  letter-spacing: .08em;
-  text-transform: uppercase;
-  color: var(--color-brand)
-}
-
-.card-event-meta-link {
-  color: var(--color-text-muted);
-  text-decoration: underline;
-  text-underline-offset: 2px;
-  transition: color var(--transition-base)
-}
-
-@media (hover:hover) {
-  .card-event-meta-link:hover {
-    color: var(--color-brand)
-  }
-}
-
 .card-event-img-fallback {
-  height: 200px;
+  aspect-ratio: var(--card-media-ratio);
   background: var(--color-surface)
 }
 
@@ -86,19 +44,14 @@
 }
 
 .card-ministerio-name {
-  font-family: var(--font-primary);
-  font-size: 1.25rem;
-  font-weight: 700;
-  line-height: 1.2;
-  min-height: 2.4em;
-  color: var(--color-text-primary)
+  min-height: 2.4em
 }
 
 .card-ministerio-role {
   order: -1;
   display: inline-block;
   margin-bottom: .25rem;
-  color: var(--color-brand);
+  color: var(--color-text-muted-strong);
   font-family: var(--font-primary);
   font-weight: 700;
   font-size: var(--text-xs);
@@ -140,22 +93,17 @@
   gap: .45rem
 }
 
-.card-ministerio-meta-item i {
+.card-ministerio-meta-item .icon {
   flex-shrink: 0;
-  width: 1rem;
+  width: calc(1rem * var(--icon-ratio, 1.25));
+  margin-inline: calc((1rem - 1rem * var(--icon-ratio, 1.25)) / 2);
   text-align: center;
-  color: var(--color-brand);
   font-size: var(--text-sm)
 }
 
 #eventos,
 #lideres {
-  overflow-x: hidden
-}
-
-#eventos-swiper,
-#ministerios-swiper {
-  overflow: visible
+  overflow-x: clip
 }
 
 .carousel-clip {
@@ -163,7 +111,11 @@
   width: 100%;
   max-width: 100%;
   margin-inline: auto;
-  overflow: hidden
+  overflow: clip
+}
+
+.carousel-clip .card-app[id] {
+  scroll-margin-top: calc(var(--navbar-height) + 1rem)
 }
 
 @media (min-width:1024px) {
@@ -213,20 +165,6 @@
   opacity: 1
 }
 
-#eventos-swiper .swiper-slide:not(.swiper-slide-active) .card-app,
-#ministerios-swiper .swiper-slide:not(.swiper-slide-active) .card-app {
-  pointer-events: none
-}
-
-@media (hover:hover) {
-
-  #eventos-swiper .swiper-slide:not(.swiper-slide-active) .card-app:hover,
-  #ministerios-swiper .swiper-slide:not(.swiper-slide-active) .card-app:hover {
-    transform: none;
-    box-shadow: var(--shadow-card)
-  }
-}
-
 .carousel-navigation-container {
   display: none;
   justify-content: center;
@@ -247,7 +185,6 @@
   margin: var(--space-5) auto 0;
   padding: .35rem 1rem;
   border-radius: var(--radius-pill);
-  border: 1px solid var(--color-border);
   background: var(--color-surface);
   font-family: var(--font-secondary);
   font-weight: 600;

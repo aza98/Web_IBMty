@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+    <g transform="matrix(2.683762,0,0,2.688311,-15.162892,-16.121558)">
+        <g id="Logo_IBMty.png">
+            <path d="M196.939,386.905L6.022,196.721L196.941,5.997L387.576,196.67L196.939,386.905ZM196.987,235.917L278.623,154.287L334.326,210.018L313.378,231.312L278.582,196.368L196.906,278.177L115.41,196.353L80.126,231.18L59.063,210.066L115.336,154.104L196.987,235.917ZM181.579,126.783L181.378,95.025L166.56,94.99L166.662,65.213L181.668,65.312L181.415,50.168L211.409,50.216L211.236,65.218L226.289,65.294L226.299,94.77L211.18,94.807L211.406,127.521L239.523,155.498L218.185,176.375L196.113,154.205L174.491,176.257L153.213,155.158L181.579,126.783Z" style="fill:rgb(0,192,246);fill-opacity:1;"/>
+        </g>
+    </g>
+</svg>

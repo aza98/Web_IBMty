@@ -1,45 +1,48 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es-MX">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <script>
-        (function() {
-            var saved = localStorage.getItem('theme');
-            var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-            var theme = saved || (prefersDark ? 'dark' : 'light');
-            document.documentElement.setAttribute('data-theme', theme);
-        })();
-    </script>
+
+    <script> (function() { var saved = null; try { saved = localStorage.getItem('theme') } catch (err) {} var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches; var theme = saved || (prefersDark ? 'dark' : 'light'); document.documentElement.setAttribute('data-theme', theme); })(); </script>
     <script src="js/pwa-launch.js"></script>
-    <title>Aviso de Privacidad — IBMty</title>
+
+    <title>Aviso de privacidad | Iglesia Bautista de Monterrey</title>
     <link rel="canonical" href="https://www.ibmty.com/privacidad.html">
-    <meta name="description" content="Aviso de privacidad de IBMty conforme a la legislación mexicana.">
+    <meta name="description" content="Lee el aviso de privacidad de Iglesia Bautista de Monterrey: finalidades, derechos ARCO, cookies y cómo solicitar información sobre tus datos personales.">
+
     <meta name="theme-color" content="#FFFFFF" media="(prefers-color-scheme: light)">
     <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="IBMty">
+
     <link rel="apple-touch-icon" href="assets/icons/IBMty_Icon_180.png">
     <link rel="icon" href="assets/icons/IBMty_Icon_32.ico">
     <link rel="manifest" href="manifest.json">
+
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Aviso de Privacidad — IBMty">
-    <meta property="og:description" content="Aviso de privacidad de IBMty conforme a la legislación mexicana.">
+    <meta property="og:title" content="Aviso de privacidad | Iglesia Bautista de Monterrey">
+    <meta property="og:description" content="Lee el aviso de privacidad de Iglesia Bautista de Monterrey: finalidades, derechos ARCO, cookies y cómo solicitar información sobre tus datos personales.">
     <meta property="og:image" content="https://www.ibmty.com/assets/images/extras/Bienvenida_desktop.webp">
     <meta property="og:url" content="https://www.ibmty.com/privacidad.html">
+    <meta property="og:locale" content="es_MX">
+    <meta property="og:site_name" content="Iglesia Bautista de Monterrey">
+
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Aviso de Privacidad — IBMty">
-    <meta name="twitter:description" content="Aviso de privacidad de IBMty conforme a la legislación mexicana.">
+    <meta name="twitter:title" content="Aviso de privacidad | Iglesia Bautista de Monterrey">
+    <meta name="twitter:description" content="Lee el aviso de privacidad de Iglesia Bautista de Monterrey: finalidades, derechos ARCO, cookies y cómo solicitar información sobre tus datos personales.">
     <meta name="twitter:image" content="https://www.ibmty.com/assets/images/extras/Bienvenida_desktop.webp">
+
     <link rel="preload" href="assets/fonts/League_Spartan/static/LeagueSpartan-ExtraBold.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="assets/fonts/Poppins/Poppins-Regular.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.3.0/css/all.min.css" integrity="sha384-sTlsophtwz/I4myskS3OIJf5VvEojkXKZyBTWZm0YD/K1pN7C5wpBPLyrsbr1SU2" crossorigin="anonymous">
+    <link rel="preload" href="assets/icons/icons.svg" as="image" type="image/svg+xml">
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/pages/privacidad.css">
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous" defer></script>
     <script src="config/config.js" defer></script>
     <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
@@ -53,65 +56,87 @@
 
 <body data-page="privacidad">
     <a class="skip-link visually-hidden-focusable" href="#main-content">Saltar al contenido</a>
+
     <nav id="navbar-web" class="navbar navbar-expand-lg fixed-top" aria-label="Navegación principal">
         <div class="container-fluid">
             <a class="navbar-brand" href="index.html">
-                <img src="assets/icons/IBMty_Logo_Mobile.webp" width="829" height="972" alt="IBMty" class="navbar-logo-mobile d-lg-none">
-                <img src="assets/icons/IBMty_Logo_Desktop.webp" width="1794" height="570" alt="IBMty" class="navbar-logo-desktop d-none d-lg-block">
+                <img class="navbar-logo-mobile d-lg-none" src="assets/icons/IBMty_Logo_Mobile.webp" width="829" height="972" alt="IBMty">
+                <img class="navbar-logo-desktop d-none d-lg-block" src="assets/icons/IBMty_Logo_Desktop.webp" width="1794" height="570" alt="IBMty">
             </a>
-            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#nav-links" aria-controls="nav-links" aria-expanded="false" aria-label="Abrir menú">
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#nav-links" aria-controls="nav-links" aria-expanded="false" aria-label="Mostrar u ocultar menú">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="nav-links">
+            <div id="nav-links" class="collapse navbar-collapse">
                 <ul class="navbar-nav ms-auto align-items-center gap-2">
                     <li class="nav-item">
                         <a class="nav-link d-flex align-items-center gap-2" href="index.html">
-                            <i class="fa-solid fa-house" aria-hidden="true"></i>Inicio
+                            <svg class="icon" aria-hidden="true">
+                                <use href="assets/icons/icons.svg#i-house"></use>
+                            </svg>Inicio
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link d-flex align-items-center gap-2" href="nosotros.html">
-                            <i class="fa-solid fa-church" aria-hidden="true"></i>Nosotros
+                            <svg class="icon" aria-hidden="true">
+                                <use href="assets/icons/icons.svg#i-church"></use>
+                            </svg>Nosotros
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link d-flex align-items-center gap-2" href="salvacion.html">
-                            <i class="fa-solid fa-cross" aria-hidden="true"></i>Salvación
+                            <svg class="icon" aria-hidden="true">
+                                <use href="assets/icons/icons.svg#i-cross"></use>
+                            </svg>Salvación
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link d-flex align-items-center gap-2" href="donativo.html">
-                            <i class="fa-solid fa-hand-holding-heart" aria-hidden="true"></i>Donativo
+                            <svg class="icon" aria-hidden="true">
+                                <use href="assets/icons/icons.svg#i-hand-heart"></use>
+                            </svg>Donativo
                         </a>
                     </li>
                     <li class="nav-item dropdown dropdown-settings d-none d-lg-block">
-                        <a class="nav-link dropdown-toggle d-flex align-items-center gap-2" href="#" id="desktop-settings-dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Opciones">
-                            <i class="fa-solid fa-gear" aria-hidden="true"></i>Ajustes
-                        </a>
+                        <button id="desktop-settings-dropdown" class="nav-link dropdown-toggle d-flex align-items-center gap-2" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <svg class="icon" aria-hidden="true">
+                                <use href="assets/icons/icons.svg#i-settings"></use>
+                            </svg>Ajustes
+                        </button>
                         <ul class="dropdown-menu dropdown-menu-end dropdown-menu-custom" aria-labelledby="desktop-settings-dropdown">
                             <li>
-                                <button class="dropdown-item" id="nav-theme-toggle" type="button">
+                                <button id="nav-theme-toggle" class="dropdown-item" type="button">
                                     <span class="d-flex align-items-center gap-2">
-                                        <i class="fa-solid fa-moon" id="nav-theme-icon" aria-hidden="true"></i><span>Tema</span>
+                                        <svg id="nav-theme-icon" class="icon" aria-hidden="true">
+                                            <use href="assets/icons/icons.svg#i-moon"></use>
+                                        </svg>
+                                        <span>Tema</span>
                                     </span>
-                                    <span class="dropdown-badge" id="nav-theme-label">Modo claro</span>
+                                    <span id="nav-theme-label" class="dropdown-badge">Modo claro</span>
                                 </button>
                             </li>
                             <li>
-                                <button class="dropdown-item" id="nav-notif-toggle" type="button">
+                                <button id="nav-notif-toggle" class="dropdown-item" type="button">
                                     <span class="d-flex align-items-center gap-2">
-                                        <i class="fa-solid fa-bell" id="nav-notif-icon" aria-hidden="true"></i><span>Notificaciones</span>
+                                        <svg id="nav-notif-icon" class="icon" aria-hidden="true">
+                                            <use href="assets/icons/icons.svg#i-bell"></use>
+                                        </svg>
+                                        <span>Notificaciones</span>
                                     </span>
-                                    <span class="dropdown-badge" id="nav-notif-label">Activar</span>
+                                    <span id="nav-notif-label" class="dropdown-badge">Activar</span>
                                 </button>
                             </li>
-                            <li><hr class="dropdown-divider nav-install-divider"></li>
+                            <li>
+                                <hr class="dropdown-divider nav-install-divider">
+                            </li>
                             <li id="nav-install-item">
-                                <button class="dropdown-item" id="nav-pwa-install-btn" type="button">
+                                <button id="nav-pwa-install-btn" class="dropdown-item" type="button">
                                     <span class="d-flex align-items-center gap-2">
-                                        <i class="fa-solid fa-download" aria-hidden="true"></i><span>Instalar app</span>
+                                        <svg class="icon" aria-hidden="true">
+                                            <use href="assets/icons/icons.svg#i-download"></use>
+                                        </svg>
+                                        <span>Aplicación</span>
                                     </span>
-                                    <span class="btn btn-primary-pill btn-sm py-1 px-3 fs-7">Instalar</span>
+                                    <span class="dropdown-badge">Instalar</span>
                                 </button>
                             </li>
                         </ul>
@@ -120,20 +145,30 @@
                         <span class="nav-link disabled fs-7 text-uppercase px-3 py-1 text-center">Ajustes</span>
                     </li>
                     <li class="nav-item d-lg-none w-100">
-                        <button class="nav-link w-100 justify-content-center gap-2" id="mobile-theme-toggle" type="button">
-                            <i class="fa-solid fa-moon" id="mobile-theme-icon" aria-hidden="true"></i><span>Tema:</span>
-                            <span class="dropdown-badge" id="mobile-theme-label">Modo claro</span>
+                        <button id="mobile-theme-toggle" class="nav-link w-100 justify-content-center gap-2" type="button">
+                            <svg id="mobile-theme-icon" class="icon" aria-hidden="true">
+                                <use href="assets/icons/icons.svg#i-moon"></use>
+                            </svg>
+                            <span>Tema:</span>
+                            <span id="mobile-theme-label" class="dropdown-badge">Modo claro</span>
                         </button>
                     </li>
-                    <li class="nav-item d-lg-none w-100" id="mobile-notif-item">
-                        <button class="nav-link w-100 justify-content-center gap-2" id="mobile-notif-toggle" type="button">
-                            <i class="fa-solid fa-bell" id="mobile-notif-icon" aria-hidden="true"></i><span>Notificaciones:</span>
-                            <span class="dropdown-badge" id="mobile-notif-label">Activar</span>
+                    <li id="mobile-notif-item" class="nav-item d-lg-none w-100">
+                        <button id="mobile-notif-toggle" class="nav-link w-100 justify-content-center gap-2" type="button">
+                            <svg id="mobile-notif-icon" class="icon" aria-hidden="true">
+                                <use href="assets/icons/icons.svg#i-bell"></use>
+                            </svg>
+                            <span>Notificaciones:</span>
+                            <span id="mobile-notif-label" class="dropdown-badge">Activar</span>
                         </button>
                     </li>
-                    <li class="nav-item d-lg-none w-100" id="mobile-install-item">
-                        <button class="nav-link w-100 justify-content-center gap-2" id="mobile-pwa-install-btn" type="button">
-                            <i class="fa-solid fa-download" aria-hidden="true"></i><span>Instalar app</span>
+                    <li id="mobile-install-item" class="nav-item d-lg-none w-100">
+                        <button id="mobile-pwa-install-btn" class="nav-link w-100 justify-content-center gap-2" type="button">
+                            <svg class="icon" aria-hidden="true">
+                                <use href="assets/icons/icons.svg#i-download"></use>
+                            </svg>
+                            <span>Aplicación:</span>
+                            <span class="dropdown-badge">Instalar</span>
                         </button>
                     </li>
                 </ul>
@@ -141,70 +176,120 @@
         </div>
     </nav>
 
-    <nav id="tabbar-pwa" class="tabbar-floating fixed-bottom d-flex justify-content-around align-items-center" aria-label="Navegación principal">
-        <a href="index.html" class="tabbar-item d-flex flex-column align-items-center" data-page-link="inicio">
-            <i class="fa-solid fa-house" aria-hidden="true"></i>
+    <nav id="tabbar-pwa" class="fixed-bottom d-flex justify-content-around align-items-center" aria-label="Navegación principal">
+        <a class="tabbar-item d-flex flex-column align-items-center" href="index.html" data-page-link="inicio">
+            <svg class="icon" aria-hidden="true">
+                <use href="assets/icons/icons.svg#i-house"></use>
+            </svg>
             <span>Inicio</span>
         </a>
-        <a href="nosotros.html" class="tabbar-item d-flex flex-column align-items-center" data-page-link="nosotros">
-            <i class="fa-solid fa-church" aria-hidden="true"></i>
+        <a class="tabbar-item d-flex flex-column align-items-center" href="nosotros.html" data-page-link="nosotros">
+            <svg class="icon" aria-hidden="true">
+                <use href="assets/icons/icons.svg#i-church"></use>
+            </svg>
             <span>Nosotros</span>
         </a>
-        <a href="salvacion.html" class="tabbar-item d-flex flex-column align-items-center" data-page-link="salvacion">
-            <i class="fa-solid fa-cross" aria-hidden="true"></i>
+        <a class="tabbar-item d-flex flex-column align-items-center" href="salvacion.html" data-page-link="salvacion">
+            <svg class="icon" aria-hidden="true">
+                <use href="assets/icons/icons.svg#i-cross"></use>
+            </svg>
             <span>Salvación</span>
         </a>
-        <a href="donativo.html" class="tabbar-item d-flex flex-column align-items-center" data-page-link="donativo">
-            <i class="fa-solid fa-hand-holding-heart" aria-hidden="true"></i>
+        <a class="tabbar-item d-flex flex-column align-items-center" href="donativo.html" data-page-link="donativo">
+            <svg class="icon" aria-hidden="true">
+                <use href="assets/icons/icons.svg#i-hand-heart"></use>
+            </svg>
             <span>Donativo</span>
         </a>
-        <a href="settings.html" class="tabbar-item d-flex flex-column align-items-center" data-page-link="settings">
-            <i class="fa-solid fa-gear" aria-hidden="true"></i>
+        <a class="tabbar-item d-flex flex-column align-items-center" href="settings.html" data-page-link="settings">
+            <svg class="icon" aria-hidden="true">
+                <use href="assets/icons/icons.svg#i-settings"></use>
+            </svg>
             <span>Ajustes</span>
         </a>
     </nav>
 
-    <a id="whatsapp-fab" class="whatsapp-fab" href="#" data-action="open-whatsapp" target="_blank" rel="noopener" aria-label="Contáctanos por WhatsApp">
-        <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+    <a id="whatsapp-fab" class="ctrl-app ctrl-app--float ctrl-app--fab" href="#" target="_blank" rel="noopener" aria-label="Contáctanos por WhatsApp">
+        <svg class="icon" aria-hidden="true">
+            <use href="assets/icons/icons.svg#i-brand-whatsapp"></use>
+        </svg>
     </a>
 
     <main id="main-content" tabindex="-1">
-        <section class="pg-hero hero-flush" aria-labelledby="privacidad-title">
+        <section class="pg-hero hero-flush surface-deep" aria-labelledby="privacidad-title">
             <div class="pg-hero-bg" aria-hidden="true">
                 <span class="pg-hero-blob pg-hero-blob--1"></span>
                 <span class="pg-hero-blob pg-hero-blob--2"></span>
             </div>
-            <div class="container pg-hero-content">
+            <div class="container pg-hero-content composition composition--start">
                 <div class="pg-hero-icon" aria-hidden="true">
-                    <i class="fa-solid fa-shield-halved"></i>
+                    <svg class="icon" aria-hidden="true">
+                        <use href="assets/icons/icons.svg#i-shield-check"></use>
+                    </svg>
                 </div>
-                <div class="pg-hero-text">
-                    <h1 id="privacidad-title" class="pg-hero-title">Privacidad</h1>
-                    <p class="pg-hero-desc">Transparencia sobre el uso de tu información</p>
+                <div class="pg-hero-text heading-group">
+                    <h1 id="privacidad-title" class="pg-hero-title heading-identity">Privacidad</h1>
+                    <p class="pg-hero-desc heading-description">Transparencia sobre el uso de tu información</p>
                 </div>
             </div>
         </section>
-        <section class="section-padding" aria-labelledby="privacy-notice-title">
+        <section class="section-padding surface-base" aria-labelledby="privacy-notice-title">
             <div class="container">
-                <div class="privacidad-content">
-                    <h2 id="privacy-notice-title" class="visually-hidden">Contenido del aviso de privacidad</h2>
+                <div class="privacidad-content reading-width composition composition--start">
+                    <h2 id="privacy-notice-title" class="visually-hidden heading-chapter">Contenido del aviso de privacidad</h2>
                     <time class="priv-updated" datetime="2026-06-23" data-gsap="fade-up">
-                        <i class="fa-regular fa-clock" aria-hidden="true"></i>Última actualización: 23 de junio de 2026
+                        <svg class="icon" aria-hidden="true">
+                            <use href="assets/icons/icons.svg#i-clock"></use>
+                        </svg>Última actualización: 23 de junio de 2026
                     </time>
+                    <div class="priv-essentials surface-raised" data-gsap="fade-up">
+                        <div class="priv-essentials-heading">
+                            <h3 class="priv-essentials-title heading-local">Lo esencial</h3>
+                            <p>Resumen previo al aviso completo.</p>
+                        </div>
+                        <dl class="priv-essentials-list">
+                            <div>
+                                <dt>Datos</dt>
+                                <dd>Identificación, contacto y datos que usted comparta.</dd>
+                            </div>
+                            <div>
+                                <dt>Uso</dt>
+                                <dd>Atención, comunicaciones, estudios y visitas de cortesía.</dd>
+                            </div>
+                            <div>
+                                <dt>Control</dt>
+                                <dd>Derechos ARCO y administración de cookies.</dd>
+                            </div>
+                        </dl>
+                        <div class="priv-arco-cta">
+                            <a class="btn btn-app btn-app--secondary" href="#" data-config-href="arcoEmail" data-track-category="privacidad" data-track-action="arco_email">
+                                <svg class="icon" aria-hidden="true">
+                                    <use href="assets/icons/icons.svg#i-mail"></use>
+                                </svg>Enviar solicitud ARCO
+                            </a>
+                        </div>
+                    </div>
                     <div class="priv-intro" data-gsap="fade-up">
-                        <p>En la Iglesia Bautista de Monterrey, Asociación Religiosa (en adelante, "la Iglesia"), con domicilio en Avenida Eugenio Garza Sada, número 6309, Colonia Residencia La Hacienda, Plaza Sur, Monterrey, Nuevo León, C.P. 64890, nos comprometemos a proteger la privacidad de los datos personales que usted nos proporcione, ya sea de forma directa, a través de nuestra página de internet: <a href="https://www.ibmty.com" target="_blank" rel="noopener noreferrer">www.ibmty.com</a>, o por medio de otros mecanismos permitidos por la Ley.</p>
+                        <p>En la Iglesia Bautista de Monterrey, Asociación Religiosa (en adelante, "la Iglesia"), con domicilio en Avenida Eugenio Garza Sada, número 6309, Colonia Residencia La Hacienda, Plaza Sur, Monterrey, Nuevo León, C.P. 64890, nos
+                            comprometemos a proteger la privacidad de los datos personales que usted nos proporcione, ya sea de forma directa, a través de nuestra página de internet:
+                            <a href="https://www.ibmty.com" target="_blank" rel="noopener noreferrer">www.ibmty.com</a>, o por medio de otros mecanismos permitidos por la Ley.
+                        </p>
                         <p>Para lograrlo, contamos con procesos de seguridad de la información que incluyen protecciones físicas y lógicas para el manejo y tratamiento de sus datos personales.</p>
                     </div>
-                    <div class="priv-accordion accordion" id="accordionPrivacidad">
-                        <div class="accordion-item surface-card" data-gsap="fade-up">
-                            <h3 class="accordion-header" id="headingResponsable">
-                                <button class="accordion-button priv-accordion-btn collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseResponsable" aria-expanded="false" aria-controls="collapseResponsable">
+                    <div class="priv-accordion accordion" data-gsap="stagger-children">
+                        <div class="accordion-item surface-raised">
+                            <h3 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseResponsable" aria-expanded="false" aria-controls="collapseResponsable">
                                     <span class="d-flex align-items-center gap-3 w-100">
-                                        <span class="priv-section-icon" aria-hidden="true">
-                                            <i class="fa-solid fa-building"></i>
+                                        <span class="priv-accordion-icon" aria-hidden="true">
+                                            <svg class="icon">
+                                                <use href="assets/icons/icons.svg#i-landmark"></use>
+                                            </svg>
                                         </span>
-                                        <span class="privacidad-section-title">Quién es el responsable</span>
-                                        <i class="fa-solid fa-chevron-down priv-accordion-chevron" aria-hidden="true"></i>
+                                        <span class="privacidad-section-title heading-local">Quién es el responsable</span>
+                                        <svg class="icon priv-accordion-chevron" aria-hidden="true">
+                                            <use href="assets/icons/icons.svg#i-chevron-down"></use>
+                                        </svg>
                                     </span>
                                 </button>
                             </h3>
@@ -214,39 +299,49 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="accordion-item surface-card" data-gsap="fade-up">
-                            <h3 class="accordion-header" id="headingDatos">
-                                <button class="accordion-button priv-accordion-btn collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseDatos" aria-expanded="false" aria-controls="collapseDatos">
+                        <div class="accordion-item surface-raised">
+                            <h3 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseDatos" aria-expanded="false" aria-controls="collapseDatos">
                                     <span class="d-flex align-items-center gap-3 w-100">
-                                        <span class="priv-section-icon" aria-hidden="true">
-                                            <i class="fa-solid fa-database"></i>
+                                        <span class="priv-accordion-icon" aria-hidden="true">
+                                            <svg class="icon">
+                                                <use href="assets/icons/icons.svg#i-database"></use>
+                                            </svg>
                                         </span>
-                                        <span class="privacidad-section-title">Datos que recabamos</span>
-                                        <i class="fa-solid fa-chevron-down priv-accordion-chevron" aria-hidden="true"></i>
+                                        <span class="privacidad-section-title heading-local">Datos que recabamos</span>
+                                        <svg class="icon priv-accordion-chevron" aria-hidden="true">
+                                            <use href="assets/icons/icons.svg#i-chevron-down"></use>
+                                        </svg>
                                     </span>
                                 </button>
                             </h3>
                             <div id="collapseDatos" class="accordion-collapse collapse">
                                 <div class="accordion-body">
-                                    <p>La Iglesia Bautista de Monterrey, Asociación Religiosa, podrá recabar los siguientes datos: nombre, domicilio, correo electrónico, edad, estado civil, ocupación, profesión, estudios, fotografía, fecha de nacimiento, creencia religiosa, actividad o giro del negocio al que se dedique, así como número telefónico fijo o celular.</p>
+                                    <p>La Iglesia Bautista de Monterrey, Asociación Religiosa, podrá recabar los siguientes datos: nombre, domicilio, correo electrónico, edad, estado civil, ocupación, profesión, estudios, fotografía, fecha de nacimiento,
+                                        creencia religiosa, actividad o giro del negocio al que se dedique, así como número telefónico fijo o celular.</p>
                                     <p>Los datos personales que se recaben por solicitud, o que usted proporcione voluntariamente, serán empleados para los fines que se describen en el siguiente apartado.</p>
                                 </div>
                             </div>
                         </div>
-                        <div class="accordion-item surface-card" data-gsap="fade-up">
-                            <h3 class="accordion-header" id="headingFinalidades">
-                                <button class="accordion-button priv-accordion-btn collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFinalidades" aria-expanded="false" aria-controls="collapseFinalidades">
+                        <div class="accordion-item surface-raised">
+                            <h3 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFinalidades" aria-expanded="false" aria-controls="collapseFinalidades">
                                     <span class="d-flex align-items-center gap-3 w-100">
-                                        <span class="priv-section-icon" aria-hidden="true">
-                                            <i class="fa-solid fa-bullseye"></i>
+                                        <span class="priv-accordion-icon" aria-hidden="true">
+                                            <svg class="icon">
+                                                <use href="assets/icons/icons.svg#i-target"></use>
+                                            </svg>
                                         </span>
-                                        <span class="privacidad-section-title">Para qué los usamos</span>
-                                        <i class="fa-solid fa-chevron-down priv-accordion-chevron" aria-hidden="true"></i>
+                                        <span class="privacidad-section-title heading-local">Para qué los usamos</span>
+                                        <svg class="icon priv-accordion-chevron" aria-hidden="true">
+                                            <use href="assets/icons/icons.svg#i-chevron-down"></use>
+                                        </svg>
                                     </span>
                                 </button>
                             </h3>
                             <div id="collapseFinalidades" class="accordion-collapse collapse">
                                 <div class="accordion-body">
+                                    <h4 class="priv-panel-subtitle">Finalidades del tratamiento</h4>
                                     <p>Los datos personales que la Iglesia Bautista de Monterrey, Asociación Religiosa, recabe serán utilizados para los siguientes fines:</p>
                                     <ul>
                                         <li>Conocer la identidad del titular a fin de brindar una atención personalizada.</li>
@@ -255,26 +350,36 @@
                                         <li>Efectuar, en el domicilio que usted nos proporcionó, visitas personalizadas de cortesía y agradecimiento por haber visitado la Iglesia.</li>
                                         <li>Mantener actualizados sus datos para el envío de información referente a su visita a la Iglesia Bautista de Monterrey, Asociación Religiosa.</li>
                                     </ul>
-                                    <p>Los comunicados y/o mensajes en los que la Iglesia maneje información confidencial con titulares, terceros o familiares —ya sea enviados a domicilios o por cualquier otro medio— no estarán expuestos al público en ningún caso. Los datos incluidos en dichas comunicaciones corresponden exclusivamente a información que usted mismo proporcionó a la Iglesia Bautista de Monterrey, Asociación Religiosa.</p>
+                                    <h4 class="priv-panel-subtitle">Confidencialidad de las comunicaciones</h4>
+                                    <p>Los comunicados y/o mensajes en los que la Iglesia maneje información confidencial con titulares, terceros o familiares —ya sea enviados a domicilios o por cualquier otro medio— no estarán expuestos al público en ningún
+                                        caso. Los datos incluidos en dichas comunicaciones corresponden exclusivamente a información que usted mismo proporcionó a la Iglesia Bautista de Monterrey, Asociación Religiosa.</p>
                                 </div>
                             </div>
                         </div>
-                        <div class="accordion-item surface-card" data-gsap="fade-up">
-                            <h3 class="accordion-header" id="headingNegativa">
-                                <button class="accordion-button priv-accordion-btn collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseNegativa" aria-expanded="false" aria-controls="collapseNegativa">
+                        <div class="accordion-item surface-raised">
+                            <h3 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseNegativa" aria-expanded="false" aria-controls="collapseNegativa">
                                     <span class="d-flex align-items-center gap-3 w-100">
-                                        <span class="priv-section-icon" aria-hidden="true">
-                                            <i class="fa-solid fa-file-signature"></i>
+                                        <span class="priv-accordion-icon" aria-hidden="true">
+                                            <svg class="icon">
+                                                <use href="assets/icons/icons.svg#i-file-pen"></use>
+                                            </svg>
                                         </span>
-                                        <span class="privacidad-section-title">Ejerce tu negativa</span>
-                                        <i class="fa-solid fa-chevron-down priv-accordion-chevron" aria-hidden="true"></i>
+                                        <span class="privacidad-section-title heading-local">Ejerce tu negativa</span>
+                                        <svg class="icon priv-accordion-chevron" aria-hidden="true">
+                                            <use href="assets/icons/icons.svg#i-chevron-down"></use>
+                                        </svg>
                                     </span>
                                 </button>
                             </h3>
                             <div id="collapseNegativa" class="accordion-collapse collapse">
                                 <div class="accordion-body">
-                                    <p>Con respecto a sus datos personales, usted podrá ejercer, cuando así lo requiera, los derechos de acceso, rectificación, cancelación u oposición (derechos ARCO) que la Ley prevé, en un plazo de 30 días hábiles a partir del 06 de enero de 2012, o a partir de la fecha en que se recabaron sus datos personales, conforme a los artículos tercero y cuarto de la Ley Federal de Protección de Datos Personales en Posesión de Particulares.</p>
-                                    <p>Es responsabilidad del titular ejercer su derecho ARCO. La solicitud deberá realizarse por escrito, dirigida al responsable de los datos personales antes referido, y presentarse en las oficinas de la Iglesia. Dicha solicitud debe incluir la siguiente información:</p>
+                                    <h4 class="priv-panel-subtitle">Plazo y alcance</h4>
+                                    <p>Con respecto a sus datos personales, usted podrá ejercer, cuando así lo requiera, los derechos de acceso, rectificación, cancelación u oposición (derechos ARCO) que la Ley prevé, en un plazo de 30 días hábiles a partir
+                                        del 06 de enero de 2012, o a partir de la fecha en que se recabaron sus datos personales, conforme a los artículos tercero y cuarto de la Ley Federal de Protección de Datos Personales en Posesión de Particulares.</p>
+                                    <h4 class="priv-panel-subtitle">Cómo presentar la solicitud</h4>
+                                    <p>Es responsabilidad del titular ejercer su derecho ARCO. La solicitud deberá realizarse por escrito, dirigida al responsable de los datos personales antes referido, y presentarse en las oficinas de la Iglesia. Dicha
+                                        solicitud debe incluir la siguiente información:</p>
                                     <ul>
                                         <li>Nombre y apellidos</li>
                                         <li>Datos de contacto</li>
@@ -283,203 +388,283 @@
                                         <li>Firma autógrafa</li>
                                         <li>Copia de una identificación oficial</li>
                                     </ul>
-                                    <p>Para que su petición sea procesada, deberá cumplir con todos y cada uno de los requisitos previstos en el Artículo 29 de la Ley Federal de Protección de Datos Personales en Posesión de los Particulares, así como en los artículos 89 y 90 de su reglamento, siempre y cuando la Iglesia funge como Responsable de la información y no como Encargada.</p>
+                                    <h4 class="priv-panel-subtitle">Requisitos legales</h4>
+                                    <p>Para que su petición sea procesada, deberá cumplir con todos y cada uno de los requisitos previstos en el Artículo 29 de la Ley Federal de Protección de Datos Personales en Posesión de los Particulares, así como en
+                                        los artículos 89 y 90 de su reglamento, siempre y cuando la Iglesia funge como Responsable de la información y no como Encargada.</p>
                                 </div>
                             </div>
                         </div>
-                        <div class="accordion-item surface-card" data-gsap="fade-up">
-                            <h3 class="accordion-header" id="headingARCO">
-                                <button class="accordion-button priv-accordion-btn collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseARCO" aria-expanded="false" aria-controls="collapseARCO">
+                        <div class="accordion-item surface-raised">
+                            <h3 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseARCO" aria-expanded="false" aria-controls="collapseARCO">
                                     <span class="d-flex align-items-center gap-3 w-100">
-                                        <span class="priv-section-icon" aria-hidden="true">
-                                            <i class="fa-solid fa-shield-halved"></i>
+                                        <span class="priv-accordion-icon" aria-hidden="true">
+                                            <svg class="icon">
+                                                <use href="assets/icons/icons.svg#i-shield-check"></use>
+                                            </svg>
                                         </span>
-                                        <span class="privacidad-section-title">Tus derechos ARCO</span>
-                                        <i class="fa-solid fa-chevron-down priv-accordion-chevron" aria-hidden="true"></i>
+                                        <span class="privacidad-section-title heading-local">Tus derechos ARCO</span>
+                                        <svg class="icon priv-accordion-chevron" aria-hidden="true">
+                                            <use href="assets/icons/icons.svg#i-chevron-down"></use>
+                                        </svg>
                                     </span>
                                 </button>
                             </h3>
                             <div id="collapseARCO" class="accordion-collapse collapse">
                                 <div class="accordion-body">
+                                    <h4 class="priv-panel-subtitle">Derechos disponibles</h4>
                                     <ul>
-                                        <li><strong>Acceso:</strong> Usted podrá conocer en todo momento los datos personales que ha proporcionado y que se encuentran en posesión de la Iglesia Bautista de Monterrey, Asociación Religiosa, así como el Aviso de Privacidad correspondiente.</li>
+                                        <li><strong>Acceso:</strong> Usted podrá conocer en todo momento los datos personales que ha proporcionado y que se encuentran en posesión de la Iglesia Bautista de Monterrey, Asociación Religiosa, así como el Aviso
+                                            de Privacidad correspondiente.</li>
                                         <li><strong>Rectificación:</strong> Si alguno de sus datos es inexacto o está incompleto, podrá solicitar su modificación, adjuntando siempre la documentación que acredite dicha corrección.</li>
-                                        <li><strong>Cancelación:</strong> Usted podrá solicitar, cuando así lo considere, la cancelación de sus datos personales. En caso de ser procedente, su información entrará en un periodo de bloqueo previo a su eliminación definitiva. Durante dicho periodo, su información ya no podrá ser tratada.</li>
+                                        <li><strong>Cancelación:</strong> Usted podrá solicitar, cuando así lo considere, la cancelación de sus datos personales. En caso de ser procedente, su información entrará en un periodo de bloqueo previo a su eliminación
+                                            definitiva. Durante dicho periodo, su información ya no podrá ser tratada.</li>
                                         <li><strong>Oposición:</strong> Usted podrá, en todo momento y por causa legítima, oponerse al tratamiento de sus datos personales. Si su solicitud resulta procedente, dejaremos de hacer uso de los mismos.</li>
                                     </ul>
+                                    <h4 class="priv-panel-subtitle">Solicitud por correo electrónico</h4>
                                     <p>Para ejercer sus derechos ARCO, envíenos su solicitud por correo electrónico; le solicitaremos algunos datos para poder contactarle y dar atención a su petición.</p>
-                                    <div class="priv-arco-cta">
-                                        <a href="#" data-config-href="arcoEmail" class="btn-primary-pill" data-track-category="privacidad" data-track-action="arco_email">
-                                            <i class="fa-solid fa-envelope" aria-hidden="true"></i>Enviar solicitud ARCO
-                                        </a>
-                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="accordion-item surface-card" data-gsap="fade-up">
-                            <h3 class="accordion-header" id="headingTransferencia">
-                                <button class="accordion-button priv-accordion-btn collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTransferencia" aria-expanded="false" aria-controls="collapseTransferencia">
+                        <div class="accordion-item surface-raised">
+                            <h3 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTransferencia" aria-expanded="false" aria-controls="collapseTransferencia">
                                     <span class="d-flex align-items-center gap-3 w-100">
-                                        <span class="priv-section-icon" aria-hidden="true">
-                                            <i class="fa-solid fa-right-left"></i>
+                                        <span class="priv-accordion-icon" aria-hidden="true">
+                                            <svg class="icon">
+                                                <use href="assets/icons/icons.svg#i-share-2"></use>
+                                            </svg>
                                         </span>
-                                        <span class="privacidad-section-title">Transferencia de datos</span>
-                                        <i class="fa-solid fa-chevron-down priv-accordion-chevron" aria-hidden="true"></i>
+                                        <span class="privacidad-section-title heading-local">Transferencia de datos</span>
+                                        <svg class="icon priv-accordion-chevron" aria-hidden="true">
+                                            <use href="assets/icons/icons.svg#i-chevron-down"></use>
+                                        </svg>
                                     </span>
                                 </button>
                             </h3>
                             <div id="collapseTransferencia" class="accordion-collapse collapse">
                                 <div class="accordion-body">
-                                    <p>La Iglesia Bautista de Monterrey, Asociación Religiosa, le informa que sus datos personales pueden ser transferidos y tratados dentro y fuera del país por personas distintas a esta Iglesia. Su información podrá ser compartida con nuestras Iglesias en formación y misioneros, para fines estadísticos, promocionales o de planeación, así como con terceros mexicanos que provean servicios necesarios para la debida operación de la Iglesia, tales como: visitas domiciliarias de cortesía, envío de cartas y volantes en forma física o electrónica, SMS y mensajes de voz. También podrá ser compartida con los miembros o asociados pertenecientes a la Iglesia Bautista de Monterrey, Asociación Religiosa, para cumplir con las finalidades del tratamiento de datos personales descritas anteriormente.</p>
+                                    <p>La Iglesia Bautista de Monterrey, Asociación Religiosa, le informa que sus datos personales pueden ser transferidos y tratados dentro y fuera del país por personas distintas a esta Iglesia. Su información podrá ser
+                                        compartida con nuestras Iglesias en formación y misioneros, para fines estadísticos, promocionales o de planeación, así como con terceros mexicanos que provean servicios necesarios para la debida operación de la
+                                        Iglesia, tales como: visitas domiciliarias de cortesía, envío de cartas y volantes en forma física o electrónica, SMS y mensajes de voz. También podrá ser compartida con los miembros o asociados pertenecientes a
+                                        la Iglesia Bautista de Monterrey, Asociación Religiosa, para cumplir con las finalidades del tratamiento de datos personales descritas anteriormente.</p>
                                 </div>
                             </div>
                         </div>
-                        <div class="accordion-item surface-card" data-gsap="fade-up">
-                            <h3 class="accordion-header" id="headingCookies">
-                                <button class="accordion-button priv-accordion-btn collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseCookies" aria-expanded="false" aria-controls="collapseCookies">
+                        <div class="accordion-item surface-raised">
+                            <h3 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseCookies" aria-expanded="false" aria-controls="collapseCookies">
                                     <span class="d-flex align-items-center gap-3 w-100">
-                                        <span class="priv-section-icon" aria-hidden="true">
-                                            <i class="fa-solid fa-cookie-bite"></i>
+                                        <span class="priv-accordion-icon" aria-hidden="true">
+                                            <svg class="icon">
+                                                <use href="assets/icons/icons.svg#i-cookie"></use>
+                                            </svg>
                                         </span>
-                                        <span class="privacidad-section-title">Cookies y rastreo</span>
-                                        <i class="fa-solid fa-chevron-down priv-accordion-chevron" aria-hidden="true"></i>
+                                        <span class="privacidad-section-title heading-local">Cookies y rastreo</span>
+                                        <svg class="icon priv-accordion-chevron" aria-hidden="true">
+                                            <use href="assets/icons/icons.svg#i-chevron-down"></use>
+                                        </svg>
                                     </span>
                                 </button>
                             </h3>
                             <div id="collapseCookies" class="accordion-collapse collapse">
                                 <div class="accordion-body">
-                                    <p>Nuestro sitio web <a href="https://www.ibmty.com" target="_blank" rel="noopener noreferrer">www.ibmty.com</a> utiliza cookies y tecnologías de rastreo, entre ellas Google Analytics, un servicio de análisis web proporcionado por Google LLC. Esta herramienta nos permite recopilar información sobre el uso del sitio, como páginas visitadas, tiempo de navegación, tipo de dispositivo y ubicación geográfica aproximada, con el único fin de mejorar la experiencia del usuario y obtener estadísticas internas. Google Analytics se activa únicamente después de que aceptas el aviso de cookies que se muestra en el sitio.</p>
+                                    <h4 class="priv-panel-subtitle">Uso de cookies y Google Analytics</h4>
+                                    <p>Nuestro sitio web <a href="https://www.ibmty.com" target="_blank" rel="noopener noreferrer">www.ibmty.com</a> utiliza cookies y tecnologías de rastreo, entre ellas Google Analytics, un servicio de análisis web proporcionado
+                                        por Google LLC. Esta herramienta nos permite recopilar información sobre el uso del sitio, como páginas visitadas, tiempo de navegación, tipo de dispositivo y ubicación geográfica aproximada, con el único fin de
+                                        mejorar la experiencia del usuario y obtener estadísticas internas. Google Analytics se activa únicamente después de que aceptas el aviso de cookies que se muestra en el sitio.</p>
+                                    <h4 class="priv-panel-subtitle">Política de Google</h4>
                                     <p>Google LLC actúa como encargado del tratamiento de dichos datos y cuenta con su propia política de privacidad, disponible en: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">https://policies.google.com/privacy</a></p>
+                                    <h4 class="priv-panel-subtitle">Opciones para limitar el rastreo</h4>
                                     <p>Si usted desea impedir que Google Analytics recopile su información, puede instalar el complemento de inhabilitación disponible en: <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener noreferrer">https://tools.google.com/dlpage/gaoptout</a></p>
                                     <p>Asimismo, puede configurar su navegador para bloquear o eliminar las cookies en cualquier momento, aunque esto podría afectar la funcionalidad de algunas secciones del sitio.</p>
                                 </div>
                             </div>
                         </div>
-                        <div class="accordion-item surface-card" data-gsap="fade-up">
-                            <h3 class="accordion-header" id="headingCambios">
-                                <button class="accordion-button priv-accordion-btn collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseCambios" aria-expanded="false" aria-controls="collapseCambios">
+                        <div class="accordion-item surface-raised">
+                            <h3 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseCambios" aria-expanded="false" aria-controls="collapseCambios">
                                     <span class="d-flex align-items-center gap-3 w-100">
-                                        <span class="priv-section-icon" aria-hidden="true">
-                                            <i class="fa-solid fa-rotate"></i>
+                                        <span class="priv-accordion-icon" aria-hidden="true">
+                                            <svg class="icon">
+                                                <use href="assets/icons/icons.svg#i-refresh-cw"></use>
+                                            </svg>
                                         </span>
-                                        <span class="privacidad-section-title">Cambios al aviso</span>
-                                        <i class="fa-solid fa-chevron-down priv-accordion-chevron" aria-hidden="true"></i>
+                                        <span class="privacidad-section-title heading-local">Cambios al aviso</span>
+                                        <svg class="icon priv-accordion-chevron" aria-hidden="true">
+                                            <use href="assets/icons/icons.svg#i-chevron-down"></use>
+                                        </svg>
                                     </span>
                                 </button>
                             </h3>
                             <div id="collapseCambios" class="accordion-collapse collapse">
                                 <div class="accordion-body">
-                                    <p>Cualquier modificación al presente aviso de privacidad será publicada en el portal: <a href="https://www.ibmty.com" target="_blank" rel="noopener noreferrer">www.ibmty.com</a>, donde podrá consultar en todo momento la versión vigente del mismo.</p>
+                                    <p>Cualquier modificación al presente aviso de privacidad será publicada en el portal: <a href="https://www.ibmty.com" target="_blank" rel="noopener noreferrer">www.ibmty.com</a>, donde podrá consultar en todo momento
+                                        la versión vigente del mismo.</p>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="priv-back" data-gsap="fade-up">
-                        <a href="index.html" class="btn-secondary-pill"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i>Volver al inicio</a>
+                        <a href="index.html">
+                            <svg class="icon" aria-hidden="true">
+                                <use href="assets/icons/icons.svg#i-arrow-left"></use>
+                            </svg>Volver al inicio
+                        </a>
                     </div>
                 </div>
             </div>
         </section>
     </main>
 
-    <footer id="footer-web" class="site-footer">
+    <footer id="footer-web">
         <div class="container">
-            <div class="footer-panel">
-                <div class="row g-4 g-lg-5 align-items-start">
-                    <div class="col-12 col-lg-5">
-                        <a href="index.html" class="footer-brand" aria-label="Ir al inicio de IBMty">
-                            <span class="footer-brand-mark" aria-hidden="true">
-                                <i class="fa-solid fa-church"></i>
-                            </span>
-                            <span>
+            <div>
+                <div class="row g-3 g-lg-4">
+                    <div class="col-12 col-lg-4">
+                        <div class="footer-identity">
+                            <a class="footer-brand" href="index.html">
+                                <span class="footer-brand-mark" aria-hidden="true">
+                                    <img src="assets/icons/Logo_IBMty.png" alt="" width="44" height="44" loading="lazy" decoding="async">
+                                </span>
                                 <span class="footer-brand-text">Iglesia Bautista de Monterrey</span>
-                            </span>
-                        </a>
-                        <p class="footer-summary">Mantente conectado con nosotros.</p>
-                        <nav class="footer-social mt-3" aria-label="Redes sociales">
-                            <a href="#" data-config-href="facebook" class="footer-social-link" target="_blank" rel="noopener" aria-label="Facebook">
-                                <i class="fa-brands fa-facebook-f" aria-hidden="true"></i>
                             </a>
-                            <a href="#" data-config-href="instagram" class="footer-social-link" target="_blank" rel="noopener" aria-label="Instagram">
-                                <i class="fa-brands fa-instagram" aria-hidden="true"></i>
-                            </a>
-                            <a href="#" data-config-href="youtube" class="footer-social-link" target="_blank" rel="noopener" aria-label="YouTube">
-                                <i class="fa-brands fa-youtube" aria-hidden="true"></i>
-                            </a>
-                        </nav>
+                            <p class="footer-summary">Mantente conectado con nosotros.</p>
+                            <nav class="footer-social" aria-label="Redes sociales">
+                                <a class="ctrl-app ctrl-app--ghost ctrl-app--md" href="#" target="_blank" rel="noopener" data-config-href="facebook" aria-label="Facebook">
+                                    <svg class="icon" aria-hidden="true">
+                                        <use href="assets/icons/icons.svg#i-brand-facebook"></use>
+                                    </svg>
+                                </a>
+                                <a class="ctrl-app ctrl-app--ghost ctrl-app--md" href="#" target="_blank" rel="noopener" data-config-href="instagram" aria-label="Instagram">
+                                    <svg class="icon" aria-hidden="true">
+                                        <use href="assets/icons/icons.svg#i-brand-instagram"></use>
+                                    </svg>
+                                </a>
+                                <a class="ctrl-app ctrl-app--ghost ctrl-app--md" href="#" target="_blank" rel="noopener" data-config-href="youtube" aria-label="YouTube">
+                                    <svg class="icon" aria-hidden="true">
+                                        <use href="assets/icons/icons.svg#i-brand-youtube"></use>
+                                    </svg>
+                                </a>
+                            </nav>
+                        </div>
                     </div>
-                    <div class="col-12 col-md-6 col-lg-4">
-                        <h2 class="footer-heading">Contacto</h2>
-                        <ul class="footer-contact-list">
-                            <li>
-                                <a href="#" data-config-href="addressMapUrl" target="_blank" rel="noopener" class="footer-contact-item">
-                                    <span class="footer-icon" aria-hidden="true">
-                                        <i class="fa-solid fa-location-dot"></i>
-                                    </span>
-                                    <span>
-                                        <span class="footer-contact-label">Dirección</span>
-                                        <span data-config-text="address"></span>
-                                    </span>
-                                </a>
-                            </li>
-                            <li class="footer-contact-item">
-                                <span class="footer-icon" aria-hidden="true">
-                                    <i class="fa-solid fa-phone"></i>
-                                </span>
-                                <span>
-                                    <span class="footer-contact-label">Teléfonos</span>
-                                    <span class="footer-phone-list">
-                                        <a href="#" data-config-href="phone1" class="footer-phone-link">
-                                            <span data-config-text="phone1"></span>
-                                        </a>
-                                        <a href="#" data-config-href="phone2" class="footer-phone-link">
-                                            <span data-config-text="phone2"></span>
-                                        </a>
-                                    </span>
-                                </span>
-                            </li>
-                            <li>
-                                <a href="#" data-config-href="email" class="footer-contact-item">
-                                    <span class="footer-icon" aria-hidden="true">
-                                        <i class="fa-solid fa-envelope"></i>
-                                    </span>
-                                    <span>
-                                        <span class="footer-contact-label">Correo</span>
-                                        <span data-config-text="email"></span>
-                                    </span>
-                                </a>
-                            </li>
-                        </ul>
+                    <div class="col-12 col-md-6 col-lg-5">
+                        <div class="footer-group">
+                            <h2 class="footer-heading">Contacto</h2>
+                            <ul class="footer-row-list">
+                                <li>
+                                    <a class="footer-row" href="#" target="_blank" rel="noopener" data-config-href="addressMapUrl">
+                                        <span class="footer-row-icon" aria-hidden="true">
+                                            <svg class="icon" aria-hidden="true">
+                                                <use href="assets/icons/icons.svg#i-map-pin"></use>
+                                            </svg>
+                                        </span>
+                                        <span class="footer-row-info">
+                                            <span class="micro-label">Dirección</span>
+                                            <span class="footer-row-value" data-config-text="address"></span>
+                                        </span>
+                                        <svg class="icon footer-row-ext" aria-hidden="true">
+                                            <use href="assets/icons/icons.svg#i-external-link"></use>
+                                        </svg>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="footer-row" href="#" data-config-href="phone1">
+                                        <span class="footer-row-icon" aria-hidden="true">
+                                            <svg class="icon" aria-hidden="true">
+                                                <use href="assets/icons/icons.svg#i-phone"></use>
+                                            </svg>
+                                        </span>
+                                        <span class="footer-row-info">
+                                            <span class="micro-label">Teléfono</span>
+                                            <span class="footer-row-value" data-config-text="phone1"></span>
+                                        </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="footer-row" href="#" data-config-href="phone2">
+                                        <span class="footer-row-icon" aria-hidden="true">
+                                            <svg class="icon" aria-hidden="true">
+                                                <use href="assets/icons/icons.svg#i-phone"></use>
+                                            </svg>
+                                        </span>
+                                        <span class="footer-row-info">
+                                            <span class="micro-label">Teléfono</span>
+                                            <span class="footer-row-value" data-config-text="phone2"></span>
+                                        </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="footer-row" href="#" data-config-href="email">
+                                        <span class="footer-row-icon" aria-hidden="true">
+                                            <svg class="icon" aria-hidden="true">
+                                                <use href="assets/icons/icons.svg#i-mail"></use>
+                                            </svg>
+                                        </span>
+                                        <span class="footer-row-info">
+                                            <span class="micro-label">Correo</span>
+                                            <span class="footer-row-value" data-config-text="email"></span>
+                                        </span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                     <div class="col-12 col-md-6 col-lg-3">
-                        <h2 class="footer-heading">Enlaces</h2>
-                        <ul class="footer-link-list">
-                            <li>
-                                <a href="#" data-config-href="externalLink1.url" class="footer-link" target="_blank" rel="noopener">
-                                    <span data-config-text="externalLink1.label"></span>
-                                    <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" data-config-href="externalLink2.url" class="footer-link" target="_blank" rel="noopener">
-                                    <span data-config-text="externalLink2.label"></span>
-                                    <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
-                                </a>
-                            </li>
-                        </ul>
+                        <div class="footer-group">
+                            <h2 class="footer-heading">Enlaces</h2>
+                            <ul class="footer-row-list">
+                                <li class="footer-row-pair">
+                                    <a class="footer-row" href="#" target="_blank" rel="noopener" data-config-href="externalLink1.url">
+                                        <span class="footer-row-icon" aria-hidden="true">
+                                            <svg class="icon" aria-hidden="true">
+                                                <use href="assets/icons/icons.svg#i-link"></use>
+                                            </svg>
+                                        </span>
+                                        <span class="footer-row-info">
+                                            <span class="footer-row-value" data-config-text="externalLink1.label"></span>
+                                        </span>
+                                        <svg class="icon footer-row-ext" aria-hidden="true">
+                                            <use href="assets/icons/icons.svg#i-external-link"></use>
+                                        </svg>
+                                    </a>
+                                    <a class="footer-row" href="#" target="_blank" rel="noopener" data-config-href="externalLink2.url">
+                                        <span class="footer-row-icon" aria-hidden="true">
+                                            <svg class="icon" aria-hidden="true">
+                                                <use href="assets/icons/icons.svg#i-link"></use>
+                                            </svg>
+                                        </span>
+                                        <span class="footer-row-info">
+                                            <span class="footer-row-value" data-config-text="externalLink2.label"></span>
+                                        </span>
+                                        <svg class="icon footer-row-ext" aria-hidden="true">
+                                            <use href="assets/icons/icons.svg#i-external-link"></use>
+                                        </svg>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="footer-row" href="privacidad.html">
+                                        <span class="footer-row-icon" aria-hidden="true">
+                                            <svg class="icon" aria-hidden="true">
+                                                <use href="assets/icons/icons.svg#i-shield-check"></use>
+                                            </svg>
+                                        </span>
+                                        <span class="footer-row-info">
+                                            <span class="footer-row-value">Aviso de Privacidad</span>
+                                        </span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
-                <div class="footer-bottom">
-                    <div class="footer-bottom-links">
-                        <a href="privacidad.html">
-                            <i class="fa-solid fa-shield-halved me-1" aria-hidden="true"></i>Aviso de Privacidad
-                        </a>
-                        <span>Iglesia Bautista de Monterrey &copy; <span id="current-year"></span></span>
-                    </div>
-                    <span class="footer-devotion">Hecho con
-                        <i class="fa-solid fa-heart mx-1" aria-hidden="true"></i> para Dios
-                    </span>
-                </div>
+            </div>
+            <div class="footer-bottom">
+                <span class="footer-devotion">Hecho con <svg class="icon mx-1" aria-hidden="true">
+                        <use href="assets/icons/icons.svg#i-heart"></use>
+                    </svg> para Dios </span>
+                <span class="footer-copy">Iglesia Bautista de Monterrey &copy; <span id="current-year"></span></span>
             </div>
         </div>
     </footer>

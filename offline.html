@@ -1,29 +1,41 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es-MX">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <script>
-        (function() {
-            var saved = localStorage.getItem('theme');
-            var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-            var theme = saved || (prefersDark ? 'dark' : 'light');
-            document.documentElement.setAttribute('data-theme', theme);
-        })();
-    </script>
+
+    <script>(function() { var saved = null; try { saved = localStorage.getItem('theme') } catch (err) {} var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches; var theme = saved || (prefersDark ? 'dark' : 'light'); document.documentElement.setAttribute('data-theme', theme); })();</script>
+
     <meta name="theme-color" content="#FFFFFF" media="(prefers-color-scheme: light)">
     <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
-    <meta name="robots" content="noindex, nofollow">
+    <meta name="robots" content="noindex">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="IBMty">
+
     <link rel="apple-touch-icon" href="assets/icons/IBMty_Icon_180.png">
     <link rel="icon" href="assets/icons/IBMty_Icon_32.ico">
     <link rel="manifest" href="manifest.json">
     <link rel="stylesheet" href="css/main.css">
-    <title>Sin conexión — IBMty</title>
+
+    <title>Sin conexión | IBMty</title>
+    <meta name="description" content="Consulta esta pantalla sin conexión de IBMty y vuelve a intentar cargar la aplicación cuando tengas acceso a internet para continuar navegando en la comunidad.">
+
+    <meta property="og:title" content="Sin conexión | IBMty">
+    <meta property="og:description" content="Consulta esta pantalla sin conexión de IBMty y vuelve a intentar cargar la aplicación cuando tengas acceso a internet para continuar navegando en la comunidad.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://www.ibmty.com/assets/images/extras/Bienvenida_desktop.webp">
+    <meta property="og:url" content="https://www.ibmty.com/offline.html">
+    <meta property="og:locale" content="es_MX">
+    <meta property="og:site_name" content="Iglesia Bautista de Monterrey">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Sin conexión | IBMty">
+    <meta name="twitter:description" content="Consulta esta pantalla sin conexión de IBMty y vuelve a intentar cargar la aplicación cuando tengas acceso a internet para continuar navegando en la comunidad.">
+    <meta name="twitter:image" content="https://www.ibmty.com/assets/images/extras/Bienvenida_desktop.webp">
+
     <style>
         .offline-wrap {
             min-height: 100dvh;
@@ -38,19 +50,19 @@
             color: var(--color-text-primary, #010C18);
             background: var(--color-bg, #fff)
         }
-    
+
         .offline-logo {
             width: 96px;
             height: 96px
         }
-    
+
         .offline-title {
             font-family: var(--font-primary, inherit);
             font-size: 1.5rem;
             font-weight: 800;
             margin: 0
         }
-    
+
         .offline-text {
             max-width: 22rem;
             margin: 0;
@@ -58,35 +70,34 @@
             line-height: 1.5;
             color: var(--color-text-secondary, #4a5568)
         }
-    
+
         .offline-retry {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            min-height: 44px;
+            min-height: var(--btn-min-height, 44px);
             margin-top: .5rem;
-            padding: .65rem 1.5rem;
+            padding: .65rem var(--btn-pad-x, 20px);
             font: inherit;
             font-weight: 600;
-            color: #010C18;
-            background: var(--color-brand, #00C0F6);
             border: none;
-            border-radius: var(--radius-pill, 999px);
-            cursor: pointer
+            border-radius: var(--btn-radius, 999px);
+            cursor: pointer;
+            color: var(--btn-primary-on-fill, #fff);
+            background: var(--btn-primary-fill, #00C0F6)
         }
 
         .offline-retry:hover {
-            background: var(--color-brand-hover, #009DD0)
+            background: var(--btn-primary-fill-hover, #00A6D6)
         }
 
         .offline-retry:active {
-            background: var(--color-brand-hover, #009DD0);
-            transform: translateY(1px)
+            background: var(--btn-primary-fill-press, #008EBC)
         }
 
         .offline-retry:focus-visible {
-            outline: 3px solid var(--color-brand, #00C0F6);
-            outline-offset: 3px
+            outline: var(--btn-focus-width, 3px) solid var(--btn-focus, #005E89);
+            outline-offset: var(--btn-focus-offset, 3px)
         }
     </style>
 </head>
@@ -96,8 +107,9 @@
         <img class="offline-logo" src="assets/icons/Logo_IBMty.png" width="192" height="192" alt="IBMty">
         <h1 class="offline-title">Estás sin conexión</h1>
         <p class="offline-text">No pudimos cargar esta página porque no hay conexión a internet. Revisa tu red e inténtalo de nuevo.</p>
-        <button type="button" class="offline-retry" data-action="retry-connection">Reintentar</button>
+        <button type="button" class="btn btn-app btn-app--primary offline-retry" data-action="retry-connection">Reintentar</button>
     </main>
+
     <script>
         document.addEventListener('click', function(event) {
             if (event.target.closest('[data-action="retry-connection"]')) {

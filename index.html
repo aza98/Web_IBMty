@@ -1,153 +1,193 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es-MX">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <script>
-        (function() {
-            var saved = localStorage.getItem('theme');
-            var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-            var theme = saved || (prefersDark ? 'dark' : 'light');
-            document.documentElement.setAttribute('data-theme', theme);
-        })();
-    </script>
+
+    <script> (function() { var saved = null; try { saved = localStorage.getItem('theme') } catch (err) {} var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches; var theme = saved || (prefersDark ? 'dark' : 'light'); document.documentElement.setAttribute('data-theme', theme); })(); </script>
     <script src="js/pwa-launch.js"></script>
-    <title>Inicio — IBMty</title>
+
+    <title>Iglesia Bautista de Monterrey - IBMty</title>
     <link rel="canonical" href="https://www.ibmty.com/">
-    <meta name="description" content="Bienvenido a IBMty, Iglesia de Monterrey. Eventos, mensajes y comunidad en un solo lugar.">
+    <meta name="description" content="Iglesia Bautista de Monterrey: conoce nuestros servicios, eventos, mensajes y formas de conectar con la comunidad cristiana de IBMty en Monterrey, Nuevo León.">
+
     <meta name="theme-color" content="#00C0F6">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="IBMty">
+
     <link rel="apple-touch-icon" href="assets/icons/IBMty_Icon_180.png">
     <link rel="icon" href="assets/icons/IBMty_Icon_32.ico">
     <link rel="manifest" href="manifest.json">
+
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Inicio — IBMty">
-    <meta property="og:description" content="Bienvenido a IBMty, Iglesia de Monterrey. Eventos, mensajes y comunidad en un solo lugar.">
+    <meta property="og:title" content="Iglesia Bautista de Monterrey - IBMty">
+    <meta property="og:description" content="Iglesia Bautista de Monterrey: conoce nuestros servicios, eventos, mensajes y formas de conectar con la comunidad cristiana de IBMty en Monterrey, Nuevo León.">
     <meta property="og:image" content="https://www.ibmty.com/assets/images/extras/Bienvenida_desktop.webp">
     <meta property="og:url" content="https://www.ibmty.com/">
+    <meta property="og:locale" content="es_MX">
+    <meta property="og:site_name" content="Iglesia Bautista de Monterrey">
+
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Inicio — IBMty">
-    <meta name="twitter:description" content="Bienvenido a IBMty, Iglesia de Monterrey. Eventos, mensajes y comunidad en un solo lugar.">
+    <meta name="twitter:title" content="Iglesia Bautista de Monterrey - IBMty">
+    <meta name="twitter:description" content="Iglesia Bautista de Monterrey: conoce nuestros servicios, eventos, mensajes y formas de conectar con la comunidad cristiana de IBMty en Monterrey, Nuevo León.">
     <meta name="twitter:image" content="https://www.ibmty.com/assets/images/extras/Bienvenida_desktop.webp">
+
     <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "Church",
-        "name": "Iglesia Bautista de Monterrey",
-        "alternateName": "IBMty",
-        "url": "https://www.ibmty.com/",
-        "logo": "https://www.ibmty.com/assets/icons/IBMty_Icon_512.png",
-        "image": "https://www.ibmty.com/assets/images/extras/Bienvenida_desktop.webp",
-        "description": "Iglesia Bautista de Monterrey. Eventos, mensajes y comunidad en un solo lugar.",
-        "telephone": "+528183496161",
-        "email": "oficina@ibmty.com",
-        "address": {
-            "@type": "PostalAddress",
-            "streetAddress": "Av. Eugenio Garza Sada 6309",
-            "addressLocality": "Monterrey",
-            "addressRegion": "Nuevo León",
-            "addressCountry": "MX"
-        },
-        "sameAs": [
-            "https://www.facebook.com/IBMty/",
-            "https://www.instagram.com/iglesiabautistademonterrey",
-            "https://www.youtube.com/channel/UCfhSTnqLb6vFO28eNm_n0qw"
-        ]
-    }
+        {
+            "@context": "https://schema.org",
+            "@type": "Church",
+            "name": "Iglesia Bautista de Monterrey",
+            "alternateName": "IBMty",
+            "url": "https://www.ibmty.com/",
+            "logo": "https://www.ibmty.com/assets/icons/IBMty_Icon_512.png",
+            "image": "https://www.ibmty.com/assets/images/extras/Bienvenida_desktop.webp",
+            "description": "Iglesia Bautista de Monterrey: conoce nuestros servicios, eventos, mensajes y formas de conectar con la comunidad cristiana de IBMty en Monterrey, Nuevo León.",
+            "telephone": "+52 81 8349 6161",
+            "email": "oficina@ibmty.com",
+            "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "Avenida Eugenio Garza Sada no. 6309, Colonia Residencia La Hacienda, Plaza Sur",
+                "addressLocality": "Monterrey",
+                "addressRegion": "Nuevo León",
+                "postalCode": "64890",
+                "addressCountry": "MX"
+            },
+            "geo": {
+                "@type": "GeoCoordinates",
+                "latitude": 25.604042915100628,
+                "longitude": -100.26953752399365
+            },
+            "sameAs": ["https://www.facebook.com/IBMty/", "https://www.instagram.com/iglesiabautistademonterrey", "https://www.youtube.com/channel/UCfhSTnqLb6vFO28eNm_n0qw"],
+            "openingHoursSpecification": [{
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": "https://schema.org/Sunday",
+                "opens": "09:00"
+            }, {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": "https://schema.org/Sunday",
+                "opens": "11:00"
+            }, {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": "https://schema.org/Sunday",
+                "opens": "18:00"
+            }, {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": "https://schema.org/Friday",
+                "opens": "20:00"
+            }]
+        }
     </script>
+
     <link rel="preload" href="assets/fonts/League_Spartan/static/LeagueSpartan-ExtraBold.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="assets/fonts/Poppins/Poppins-Regular.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="assets/images/extras/Bienvenida_desktop.webp" as="image" type="image/webp" fetchpriority="high">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12.2.0/swiper-bundle.min.css" integrity="sha384-+eoVPirEHy8XSrf7sRozx+2OTKCWm1qfVFWnQ7qiXW6vAb+GUXRw4gq7sU+hq6HG" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.3.0/css/all.min.css" integrity="sha384-sTlsophtwz/I4myskS3OIJf5VvEojkXKZyBTWZm0YD/K1pN7C5wpBPLyrsbr1SU2" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@14.0.6/swiper-bundle.min.css" integrity="sha384-Z7EHipse7OAStUUuE7MmNiMJUUPPZBpD51LImQjcnGL0W7BDPj1i0ucuXmthgLd3" crossorigin="anonymous">
+    <link rel="preload" href="assets/icons/icons.svg" as="image" type="image/svg+xml">
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/components/carousel.css">
     <link rel="stylesheet" href="css/pages/index.css">
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous" defer></script>
     <script src="config/config.js" defer></script>
     <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
     <script src="js/components/push.js" defer></script>
-    <script src="js/components/youtube-api.js" defer></script>
     <script src="js/utils/analytics.js" defer></script>
     <script src="js/main.js" defer></script>
     <script src="gsap-public/minified/gsap.min.js" defer></script>
     <script src="gsap-public/minified/ScrollTrigger.min.js" defer></script>
     <script src="js/components/animations.js" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@12.2.0/swiper-bundle.min.js" integrity="sha384-TmUUNA9gRm9TspAqMh20CdxlcwkNFW3UyIOibSljonhpJ1UfGenJDyQvO/EbWwpW" crossorigin="anonymous" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@14.0.6/swiper-bundle.min.js" integrity="sha384-y7jhvQfshIEZF3HWcoFEkMyWeR1FZ80BCFIMOZam9Ua5vv5vzkfI4yz+TlxFgbFF" crossorigin="anonymous" defer></script>
     <script src="js/components/carousel.js" defer></script>
+    <script src="js/components/youtube-api.js" defer></script>
 </head>
 
 <body data-page="inicio">
     <a class="skip-link visually-hidden-focusable" href="#main-content">Saltar al contenido</a>
+
     <nav id="navbar-web" class="navbar navbar-expand-lg fixed-top" aria-label="Navegación principal">
         <div class="container-fluid">
             <a class="navbar-brand" href="index.html">
-                <img src="assets/icons/IBMty_Logo_Mobile.webp" width="829" height="972" alt="IBMty" class="navbar-logo-mobile d-lg-none">
-                <img src="assets/icons/IBMty_Logo_Desktop.webp" width="1794" height="570" alt="IBMty" class="navbar-logo-desktop d-none d-lg-block">
+                <img class="navbar-logo-mobile d-lg-none" src="assets/icons/IBMty_Logo_Mobile.webp" width="829" height="972" alt="IBMty">
+                <img class="navbar-logo-desktop d-none d-lg-block" src="assets/icons/IBMty_Logo_Desktop.webp" width="1794" height="570" alt="IBMty">
             </a>
-            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#nav-links" aria-controls="nav-links" aria-expanded="false" aria-label="Abrir menú">
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#nav-links" aria-controls="nav-links" aria-expanded="false" aria-label="Mostrar u ocultar menú">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="nav-links">
+            <div id="nav-links" class="collapse navbar-collapse">
                 <ul class="navbar-nav ms-auto align-items-center gap-2">
                     <li class="nav-item">
                         <a class="nav-link d-flex align-items-center gap-2" href="index.html">
-                            <i class="fa-solid fa-house" aria-hidden="true"></i>Inicio
+                            <svg class="icon" aria-hidden="true">
+                                <use href="assets/icons/icons.svg#i-house"></use>
+                            </svg>Inicio
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link d-flex align-items-center gap-2" href="nosotros.html">
-                            <i class="fa-solid fa-church" aria-hidden="true"></i>Nosotros
+                            <svg class="icon" aria-hidden="true">
+                                <use href="assets/icons/icons.svg#i-church"></use>
+                            </svg>Nosotros
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link d-flex align-items-center gap-2" href="salvacion.html">
-                            <i class="fa-solid fa-cross" aria-hidden="true"></i>Salvación
+                            <svg class="icon" aria-hidden="true">
+                                <use href="assets/icons/icons.svg#i-cross"></use>
+                            </svg>Salvación
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link d-flex align-items-center gap-2" href="donativo.html">
-                            <i class="fa-solid fa-hand-holding-heart" aria-hidden="true"></i>Donativo
+                            <svg class="icon" aria-hidden="true">
+                                <use href="assets/icons/icons.svg#i-hand-heart"></use>
+                            </svg>Donativo
                         </a>
                     </li>
                     <li class="nav-item dropdown dropdown-settings d-none d-lg-block">
-                        <a class="nav-link dropdown-toggle d-flex align-items-center gap-2" href="#" id="desktop-settings-dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Opciones">
-                            <i class="fa-solid fa-gear" aria-hidden="true"></i>Ajustes
-                        </a>
+                        <button id="desktop-settings-dropdown" class="nav-link dropdown-toggle d-flex align-items-center gap-2" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <svg class="icon" aria-hidden="true">
+                                <use href="assets/icons/icons.svg#i-settings"></use>
+                            </svg>Ajustes
+                        </button>
                         <ul class="dropdown-menu dropdown-menu-end dropdown-menu-custom" aria-labelledby="desktop-settings-dropdown">
                             <li>
-                                <button class="dropdown-item" id="nav-theme-toggle" type="button">
+                                <button id="nav-theme-toggle" class="dropdown-item" type="button">
                                     <span class="d-flex align-items-center gap-2">
-                                        <i class="fa-solid fa-moon" id="nav-theme-icon" aria-hidden="true"></i>
+                                        <svg id="nav-theme-icon" class="icon" aria-hidden="true">
+                                            <use href="assets/icons/icons.svg#i-moon"></use>
+                                        </svg>
                                         <span>Tema</span>
                                     </span>
-                                    <span class="dropdown-badge" id="nav-theme-label">Modo claro</span>
+                                    <span id="nav-theme-label" class="dropdown-badge">Modo claro</span>
                                 </button>
                             </li>
                             <li>
-                                <button class="dropdown-item" id="nav-notif-toggle" type="button">
+                                <button id="nav-notif-toggle" class="dropdown-item" type="button">
                                     <span class="d-flex align-items-center gap-2">
-                                        <i class="fa-solid fa-bell" id="nav-notif-icon" aria-hidden="true"></i>
+                                        <svg id="nav-notif-icon" class="icon" aria-hidden="true">
+                                            <use href="assets/icons/icons.svg#i-bell"></use>
+                                        </svg>
                                         <span>Notificaciones</span>
                                     </span>
-                                    <span class="dropdown-badge" id="nav-notif-label">Activar</span>
+                                    <span id="nav-notif-label" class="dropdown-badge">Activar</span>
                                 </button>
                             </li>
                             <li>
                                 <hr class="dropdown-divider nav-install-divider">
                             </li>
                             <li id="nav-install-item">
-                                <button class="dropdown-item" id="nav-pwa-install-btn" type="button">
+                                <button id="nav-pwa-install-btn" class="dropdown-item" type="button">
                                     <span class="d-flex align-items-center gap-2">
-                                        <i class="fa-solid fa-download" aria-hidden="true"></i>
-                                        <span>Instalar app</span>
+                                        <svg class="icon" aria-hidden="true">
+                                            <use href="assets/icons/icons.svg#i-download"></use>
+                                        </svg>
+                                        <span>Aplicación</span>
                                     </span>
-                                    <span class="btn btn-primary-pill btn-sm py-1 px-3 fs-7">Instalar</span>
+                                    <span class="dropdown-badge">Instalar</span>
                                 </button>
                             </li>
                         </ul>
@@ -156,23 +196,30 @@
                         <span class="nav-link disabled fs-7 text-uppercase px-3 py-1 text-center">Ajustes</span>
                     </li>
                     <li class="nav-item d-lg-none w-100">
-                        <button class="nav-link w-100 justify-content-center gap-2" id="mobile-theme-toggle" type="button">
-                            <i class="fa-solid fa-moon" id="mobile-theme-icon" aria-hidden="true"></i>
+                        <button id="mobile-theme-toggle" class="nav-link w-100 justify-content-center gap-2" type="button">
+                            <svg id="mobile-theme-icon" class="icon" aria-hidden="true">
+                                <use href="assets/icons/icons.svg#i-moon"></use>
+                            </svg>
                             <span>Tema:</span>
-                            <span class="dropdown-badge" id="mobile-theme-label">Modo claro</span>
+                            <span id="mobile-theme-label" class="dropdown-badge">Modo claro</span>
                         </button>
                     </li>
-                    <li class="nav-item d-lg-none w-100" id="mobile-notif-item">
-                        <button class="nav-link w-100 justify-content-center gap-2" id="mobile-notif-toggle" type="button">
-                            <i class="fa-solid fa-bell" id="mobile-notif-icon" aria-hidden="true"></i>
+                    <li id="mobile-notif-item" class="nav-item d-lg-none w-100">
+                        <button id="mobile-notif-toggle" class="nav-link w-100 justify-content-center gap-2" type="button">
+                            <svg id="mobile-notif-icon" class="icon" aria-hidden="true">
+                                <use href="assets/icons/icons.svg#i-bell"></use>
+                            </svg>
                             <span>Notificaciones:</span>
-                            <span class="dropdown-badge" id="mobile-notif-label">Activar</span>
+                            <span id="mobile-notif-label" class="dropdown-badge">Activar</span>
                         </button>
                     </li>
-                    <li class="nav-item d-lg-none w-100" id="mobile-install-item">
-                        <button class="nav-link w-100 justify-content-center gap-2" id="mobile-pwa-install-btn" type="button">
-                            <i class="fa-solid fa-download" aria-hidden="true"></i>
-                            <span>Instalar app</span>
+                    <li id="mobile-install-item" class="nav-item d-lg-none w-100">
+                        <button id="mobile-pwa-install-btn" class="nav-link w-100 justify-content-center gap-2" type="button">
+                            <svg class="icon" aria-hidden="true">
+                                <use href="assets/icons/icons.svg#i-download"></use>
+                            </svg>
+                            <span>Aplicación:</span>
+                            <span class="dropdown-badge">Instalar</span>
                         </button>
                     </li>
                 </ul>
@@ -180,114 +227,123 @@
         </div>
     </nav>
 
-    <nav id="tabbar-pwa" class="tabbar-floating fixed-bottom d-flex justify-content-around align-items-center" aria-label="Navegación principal">
-        <a href="index.html" class="tabbar-item d-flex flex-column align-items-center" data-page-link="inicio">
-            <i class="fa-solid fa-house" aria-hidden="true"></i>
+    <nav id="tabbar-pwa" class="fixed-bottom d-flex justify-content-around align-items-center" aria-label="Navegación principal">
+        <a class="tabbar-item d-flex flex-column align-items-center" href="index.html" data-page-link="inicio">
+            <svg class="icon" aria-hidden="true">
+                <use href="assets/icons/icons.svg#i-house"></use>
+            </svg>
             <span>Inicio</span>
         </a>
-        <a href="nosotros.html" class="tabbar-item d-flex flex-column align-items-center" data-page-link="nosotros">
-            <i class="fa-solid fa-church" aria-hidden="true"></i>
+        <a class="tabbar-item d-flex flex-column align-items-center" href="nosotros.html" data-page-link="nosotros">
+            <svg class="icon" aria-hidden="true">
+                <use href="assets/icons/icons.svg#i-church"></use>
+            </svg>
             <span>Nosotros</span>
         </a>
-        <a href="salvacion.html" class="tabbar-item d-flex flex-column align-items-center" data-page-link="salvacion">
-            <i class="fa-solid fa-cross" aria-hidden="true"></i>
+        <a class="tabbar-item d-flex flex-column align-items-center" href="salvacion.html" data-page-link="salvacion">
+            <svg class="icon" aria-hidden="true">
+                <use href="assets/icons/icons.svg#i-cross"></use>
+            </svg>
             <span>Salvación</span>
         </a>
-        <a href="donativo.html" class="tabbar-item d-flex flex-column align-items-center" data-page-link="donativo">
-            <i class="fa-solid fa-hand-holding-heart" aria-hidden="true"></i>
+        <a class="tabbar-item d-flex flex-column align-items-center" href="donativo.html" data-page-link="donativo">
+            <svg class="icon" aria-hidden="true">
+                <use href="assets/icons/icons.svg#i-hand-heart"></use>
+            </svg>
             <span>Donativo</span>
         </a>
-        <a href="settings.html" class="tabbar-item d-flex flex-column align-items-center" data-page-link="settings">
-            <i class="fa-solid fa-gear" aria-hidden="true"></i>
+        <a class="tabbar-item d-flex flex-column align-items-center" href="settings.html" data-page-link="settings">
+            <svg class="icon" aria-hidden="true">
+                <use href="assets/icons/icons.svg#i-settings"></use>
+            </svg>
             <span>Ajustes</span>
         </a>
     </nav>
 
-    <a id="whatsapp-fab" class="whatsapp-fab" href="#" data-action="open-whatsapp" target="_blank" rel="noopener" aria-label="Contáctanos por WhatsApp">
-        <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+    <a id="whatsapp-fab" class="ctrl-app ctrl-app--float ctrl-app--fab" href="#" target="_blank" rel="noopener" aria-label="Contáctanos por WhatsApp">
+        <svg class="icon" aria-hidden="true">
+            <use href="assets/icons/icons.svg#i-brand-whatsapp"></use>
+        </svg>
     </a>
 
     <main id="main-content" tabindex="-1">
-        <section id="hero-section" class="hero-flush" aria-labelledby="hero-title">
+        <section id="hero-section" class="hero-flush surface-deep" aria-labelledby="hero-title">
             <div id="hero-parallax-bg" aria-hidden="true"></div>
             <div id="hero-overlay" aria-hidden="true"></div>
-            <div id="hero-content" class="container">
-                <h1 id="hero-title" class="mb-3 hero-title">Iglesia Bautista de Monterrey</h1>
-                <p class="mb-4 mx-auto hero-lead">Una iglesia que piensa en ti</p>
+            <div id="hero-content" class="container composition composition--center">
+                <div class="heading-group hero-heading-group">
+                    <h1 id="hero-title" class="heading-identity hero-title">Iglesia Bautista de Monterrey</h1>
+                    <p class="heading-description hero-lead">Una iglesia que piensa en ti</p>
+                </div>
                 <div class="d-flex flex-column flex-sm-row flex-wrap justify-content-center gap-2 gap-sm-3">
-                    <a href="nosotros.html" class="btn-primary-pill justify-content-center" data-page-link="nosotros">
-                        <i class="fa-solid fa-church me-1" aria-hidden="true"></i> Conócenos
+                    <a class="btn btn-app btn-app--primary justify-content-center" href="nosotros.html">
+                        <svg class="icon me-1" aria-hidden="true">
+                            <use href="assets/icons/icons.svg#i-church"></use>
+                        </svg> Conócenos
                     </a>
                 </div>
             </div>
-            <div id="scroll-indicator" class="hint scroll-hint scroll-hint--on-image" aria-hidden="true">
+            <div class="hint scroll-hint scroll-hint--on-image" aria-hidden="true">
                 <small>Descubre más</small>
                 <span class="scroll-hint-hand">
-                    <i class="fa-solid fa-arrow-down-long scroll-hint-hand-arrow"></i>
-                    <i class="fa-solid fa-hand-pointer scroll-hint-hand-icon"></i>
+                    <svg class="icon scroll-hint-hand-arrow" aria-hidden="true">
+                        <use href="assets/icons/icons.svg#i-arrow-down"></use>
+                    </svg>
+                    <svg class="icon scroll-hint-hand-icon" aria-hidden="true">
+                        <use href="assets/icons/icons.svg#i-pointer"></use>
+                    </svg>
                 </span>
             </div>
         </section>
-        <section id="eventos" class="section-padding" aria-labelledby="eventos-title">
+        <section id="eventos" class="section-padding surface-base" aria-labelledby="eventos-title">
             <div class="container">
-                <div class="section-heading">
-                    <div class="section-heading-lead">
+                <div class="section-heading heading-group composition composition--center">
+                    <div class="section-heading-lead heading-lead">
                         <div class="section-heading-icon" aria-hidden="true">
-                            <i class="fa-solid fa-calendar-days"></i>
+                            <svg class="icon" aria-hidden="true">
+                                <use href="assets/icons/icons.svg#i-calendar-days"></use>
+                            </svg>
                         </div>
-                        <h2 id="eventos-title" class="section-heading-title">Eventos</h2>
+                        <h2 id="eventos-title" class="section-heading-title heading-chapter">Eventos</h2>
                     </div>
-                    <p class="section-heading-desc">Mantente al día con nuestras actividades</p>
+                    <p class="section-heading-desc heading-description">Mantente al día con nuestras actividades</p>
                 </div>
                 <div class="carousel-clip">
                     <div class="hint carousel-hint" aria-hidden="true">
                         <span class="carousel-hint-label">Desliza</span>
-                        <i class="fa-solid fa-hand-pointer carousel-hint-hand"></i>
+                        <svg class="icon carousel-hint-hand" aria-hidden="true">
+                            <use href="assets/icons/icons.svg#i-pointer"></use>
+                        </svg>
                     </div>
-                    <div class="swiper" id="eventos-swiper" data-gsap="fade-up" role="region" aria-roledescription="carrusel" aria-label="Eventos">
+                    <div id="eventos-swiper" class="swiper" data-gsap="fade-up" role="region" aria-roledescription="carrusel" aria-label="Eventos">
                         <div class="swiper-wrapper">
                             <div class="swiper-slide">
-                                <div class="card-app h-100 d-flex flex-column">
-                                    <img src="assets/images/eventos/Evento0.webp" width="1920" height="1080" alt="Cartel del especial de Navidad El Único Rey" class="card-img-top" loading="lazy" data-img-fallback>
+                                <div id="evento-love-fest" class="card-app surface-raised h-100 d-flex flex-column">
+                                    <img class="card-img-top" src="assets/images/eventos/Evento1.webp" width="1920" height="1080" alt="Cartel de Love Fest" loading="lazy" decoding="async" data-img-fallback>
                                     <div class="d-none align-items-center justify-content-center card-event-img-fallback">
-                                        <i class="fa-solid fa-image card-event-img-icon" aria-hidden="true"></i>
+                                        <svg class="icon card-event-img-icon" aria-hidden="true">
+                                            <use href="assets/icons/icons.svg#i-image"></use>
+                                        </svg>
                                     </div>
                                     <div class="p-3 d-flex flex-column flex-grow-1">
                                         <span class="mb-2 badge-outlined">Concluido</span>
-                                        <h3 class="mb-1 card-event-title">Especial de Navidad</h3>
-                                        <time class="card-event-date" datetime="2025-12"><i class="fa-solid fa-calendar me-1" aria-hidden="true"></i>diciembre 2025</time>
-                                        <p class="mb-2 card-event-desc">Una cantata que celebra el nacimiento de Jesús con música, teatro y esperanza.</p>
-                                        <div class="mt-auto d-flex align-items-center flex-nowrap gap-2">
-                                            <a class="btn-primary-pill flex-grow-1" href="https://www.youtube.com/live/gz5g-GRFKe8" target="_blank" rel="noopener">
-                                                <i class="fab fa-youtube me-1" aria-hidden="true"></i>Ver
-                                            </a>
-                                            <div class="card-social-links flex-nowrap flex-shrink-0 mt-0">
-                                                <button type="button" class="card-social-link" data-share-image=".card-img-top" data-share-title="Especial de Navidad 2025" data-share-text="¿Recuerdas esta noche tan especial? Revive la cantata de Navidad que celebró el nacimiento de Jesús con música, teatro y esperanza." data-share-url="https://www.youtube.com/live/gz5g-GRFKe8" aria-label="Compartir Especial de Navidad">
-                                                    <i class="fa-solid fa-share" aria-hidden="true"></i>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="card-app h-100 d-flex flex-column">
-                                    <img src="assets/images/eventos/Evento1.webp" width="1920" height="1080" alt="Cartel de Love Fest" class="card-img-top" loading="lazy" data-img-fallback>
-                                    <div class="d-none align-items-center justify-content-center card-event-img-fallback">
-                                        <i class="fa-solid fa-image card-event-img-icon" aria-hidden="true"></i>
-                                    </div>
-                                    <div class="p-3 d-flex flex-column flex-grow-1">
-                                        <span class="mb-2 badge-outlined">Concluido</span>
-                                        <h3 class="mb-1 card-event-title">Love Fest</h3>
-                                        <time class="card-event-date" datetime="2026-02"><i class="fa-solid fa-calendar me-1" aria-hidden="true"></i>febrero 2026</time>
+                                        <h3 class="mb-1 heading-local">Love Fest</h3>
+                                        <time class="card-event-date" datetime="2026-02">
+                                            <svg class="icon me-1" aria-hidden="true">
+                                                <use href="assets/icons/icons.svg#i-calendar"></use>
+                                            </svg>febrero 2026</time>
                                         <p class="mb-2 card-event-desc">¡Festeja con nosotros este Día del Amor y la Amistad! Ven a disfrutar de una tarde increíble con feria, boliche, show de magia, torito mecánico y muchas sorpresas más...</p>
                                         <div class="mt-auto">
                                             <div class="card-social-links">
-                                                <a href="https://www.instagram.com/p/DUHDHjwjryg/?utm_source=ig_web_button_share_sheet&igsh=MzRlODBiNWFlZA==" class="card-social-link" target="_blank" rel="noopener" aria-label="Ver Love Fest en Instagram">
-                                                    <i class="fa-brands fa-instagram" aria-hidden="true"></i>
+                                                <a class="ctrl-app ctrl-app--ghost ctrl-app--md card-social-link" href="https://www.instagram.com/p/DUHDHjwjryg/?utm_source=ig_web_button_share_sheet&amp;igsh=MzRlODBiNWFlZA==" target="_blank" rel="noopener" aria-label="Ver Love Fest en Instagram">
+                                                    <svg class="icon" aria-hidden="true">
+                                                        <use href="assets/icons/icons.svg#i-brand-instagram"></use>
+                                                    </svg>
                                                 </a>
-                                                <button type="button" class="card-social-link" data-share-image=".card-img-top" data-share-title="Love Fest 2026" data-share-text="¡Qué tarde tan increíble vivimos juntos! Feria, boliche, magia y mucho más. Revive este momento especial con nosotros." aria-label="Compartir Love Fest">
-                                                    <i class="fa-solid fa-share" aria-hidden="true"></i>
+                                                <button class="ctrl-app ctrl-app--ghost ctrl-app--md card-social-link" type="button" data-share-image=".card-img-top" data-share-title="Love Fest 2026" data-share-text="Te comparto algunos momentos de esta celebración en IBMty." aria-label="Compartir Love Fest">
+                                                    <svg class="icon" aria-hidden="true">
+                                                        <use href="assets/icons/icons.svg#i-share-2"></use>
+                                                    </svg>
                                                 </button>
                                             </div>
                                         </div>
@@ -295,23 +351,33 @@
                                 </div>
                             </div>
                             <div class="swiper-slide">
-                                <div class="card-app h-100 d-flex flex-column">
-                                    <img src="assets/images/eventos/Evento2.webp" width="1920" height="1080" alt="Cartel de Vístete de Diseñador" class="card-img-top" loading="lazy" data-img-fallback>
+                                <div id="evento-vistete-de-disenador" class="card-app surface-raised h-100 d-flex flex-column">
+                                    <img class="card-img-top" src="assets/images/eventos/Evento2.webp" width="1920" height="1080" alt="Cartel de Vístete de Diseñador" loading="lazy" decoding="async" data-img-fallback>
                                     <div class="d-none align-items-center justify-content-center card-event-img-fallback">
-                                        <i class="fa-solid fa-image card-event-img-icon" aria-hidden="true"></i>
+                                        <svg class="icon card-event-img-icon" aria-hidden="true">
+                                            <use href="assets/icons/icons.svg#i-image"></use>
+                                        </svg>
                                     </div>
                                     <div class="p-3 d-flex flex-column flex-grow-1">
                                         <span class="mb-2 badge-outlined">Concluido</span>
-                                        <h3 class="mb-1 card-event-title">Vístete de Diseñador</h3>
-                                        <time class="card-event-date" datetime="2026-03"><i class="fa-solid fa-calendar me-1" aria-hidden="true"></i>marzo 2026</time>
+                                        <h3 class="mb-1 heading-local">Vístete de Diseñador</h3>
+                                        <time class="card-event-date" datetime="2026-03">
+                                            <svg class="icon me-1" aria-hidden="true">
+                                                <use href="assets/icons/icons.svg#i-calendar"></use>
+                                            </svg>marzo 2026
+                                        </time>
                                         <p class="mb-2 card-event-desc">Una conferencia para mujeres que buscan reencontrarse con la identidad y el diseño de Su Creador.</p>
                                         <div class="mt-auto">
                                             <div class="card-social-links">
-                                                <a href="https://www.instagram.com/vistetededisenador?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="card-social-link" target="_blank" rel="noopener" aria-label="Ver Vístete de Diseñador en Instagram">
-                                                    <i class="fa-brands fa-instagram" aria-hidden="true"></i>
+                                                <a class="ctrl-app ctrl-app--ghost ctrl-app--md card-social-link" href="https://www.instagram.com/vistetededisenador?utm_source=ig_web_button_share_sheet&amp;igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener" aria-label="Ver Vístete de Diseñador en Instagram">
+                                                    <svg class="icon" aria-hidden="true">
+                                                        <use href="assets/icons/icons.svg#i-brand-instagram"></use>
+                                                    </svg>
                                                 </a>
-                                                <button type="button" class="card-social-link" data-share-image=".card-img-top" data-share-title="Vístete de Diseñador" data-share-text="Una conferencia que tocó corazones. Revive estos momentos junto a mujeres que se reencontraron con su identidad y el diseño de su Creador." aria-label="Compartir Vístete de Diseñador">
-                                                    <i class="fa-solid fa-share" aria-hidden="true"></i>
+                                                <button class="ctrl-app ctrl-app--ghost ctrl-app--md card-social-link" type="button" data-share-image=".card-img-top" data-share-title="Vístete de Diseñador" data-share-text="Te comparto algunos momentos de esta conferencia para mujeres." aria-label="Compartir Vístete de Diseñador">
+                                                    <svg class="icon" aria-hidden="true">
+                                                        <use href="assets/icons/icons.svg#i-share-2"></use>
+                                                    </svg>
                                                 </button>
                                             </div>
                                         </div>
@@ -319,56 +385,77 @@
                                 </div>
                             </div>
                             <div class="swiper-slide">
-                                <div class="card-app h-100 d-flex flex-column">
-                                    <img src="assets/images/eventos/Evento3.webp" width="1920" height="1080" alt="Cartel de Summer Camp Estación Iluminación" class="card-img-top" loading="lazy" data-img-fallback>
+                                <div id="evento-summer-camp" class="card-app surface-raised h-100 d-flex flex-column">
+                                    <img class="card-img-top" src="assets/images/eventos/Evento3.webp" width="1920" height="1080" alt="Cartel de Summer Camp Estación Iluminación" loading="lazy" decoding="async" data-img-fallback>
                                     <div class="d-none align-items-center justify-content-center card-event-img-fallback">
-                                        <i class="fa-solid fa-image card-event-img-icon" aria-hidden="true"></i>
+                                        <svg class="icon card-event-img-icon" aria-hidden="true">
+                                            <use href="assets/icons/icons.svg#i-image"></use>
+                                        </svg>
                                     </div>
                                     <div class="p-3 d-flex flex-column flex-grow-1">
-                                        <h3 class="mb-1 card-event-title">¡Summer Camp para tus hijos! ☀️</h3>
+                                        <span class="mb-2 badge-outlined">Concluido</span>
+                                        <h3 class="mb-1 heading-local">Summer Camp</h3>
+                                        <time class="card-event-date" datetime="2026-03">
+                                            <svg class="icon me-1" aria-hidden="true">
+                                                <use href="assets/icons/icons.svg#i-calendar"></use>
+                                            </svg>julio 2026
+                                        </time>
                                         <p class="mb-3 card-event-desc">Invitamos a niños de 3 a 11 años a una experiencia inolvidable llena de juegos, amigos y enseñanza. ¡Inscríbelos ahora!</p>
-                                        <div class="d-flex flex-column gap-2 mb-3">
-                                            <section class="card-event-week" aria-label="Información de la Semana 1">
-                                                <span class="card-event-week-label">
-                                                    <i class="fa-solid fa-calendar-week me-1" aria-hidden="true"></i>Semana 1
-                                                </span>
-                                                <small class="d-block card-event-meta">
-                                                    <i class="fa-solid fa-calendar me-1" aria-hidden="true"></i>20 al 24 de Julio 2026
-                                                </small>
-                                                <small class="d-block card-event-meta">
-                                                    <i class="fa-solid fa-clock me-1" aria-hidden="true"></i>9:00 am - 1:00 pm
-                                                </small>
-                                                <small class="d-block card-event-meta">
-                                                    <i class="fa-solid fa-location-dot me-1" aria-hidden="true"></i>
-                                                    <a href="https://maps.app.goo.gl/oWTqb7r5sMm4ZUBG8" target="_blank" rel="noopener" class="card-event-meta-link">Iglesia Bautista de Monterrey</a>
-                                                </small>
-                                            </section>
-                                            <section class="card-event-week" aria-label="Información de la Semana 2">
-                                                <span class="card-event-week-label">
-                                                    <i class="fa-solid fa-calendar-week me-1" aria-hidden="true"></i>Semana 2
-                                                </span>
-                                                <small class="d-block card-event-meta">
-                                                    <i class="fa-solid fa-calendar me-1" aria-hidden="true"></i>27 al 31 de Julio 2026
-                                                </small>
-                                                <small class="d-block card-event-meta">
-                                                    <i class="fa-solid fa-clock me-1" aria-hidden="true"></i>9:00 am - 1:00 pm
-                                                </small>
-                                                <small class="d-block card-event-meta">
-                                                    <i class="fa-solid fa-location-dot me-1" aria-hidden="true"></i>
-                                                    de <a href="https://maps.app.goo.gl/EKCQMeyBLxMREyZ97" target="_blank" rel="noopener" class="card-event-meta-link">Iglesia Bautista de Santiago</a>
-                                                </small>
-                                            </section>
-                                        </div>
-                                        <div class="mt-auto d-flex align-items-center flex-nowrap gap-2">
-                                            <a class="btn-primary-pill flex-grow-1" href="https://forms.gle/xw5pEf93VqmmZ51p8" target="_blank" rel="noopener">
-                                                <i class="fa-solid fa-user-plus me-1" aria-hidden="true"></i>Registro
-                                            </a>
-                                            <div class="card-social-links flex-nowrap flex-shrink-0 mt-0">
-                                                <a class="card-social-link" href="#" data-action="open-whatsapp" target="_blank" rel="noopener" aria-label="Consultar sobre Summer Camp por WhatsApp">
-                                                    <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+                                        <div class="mt-auto">
+                                            <div class="card-social-links">
+                                                <a class="ctrl-app ctrl-app--ghost ctrl-app--md card-social-link" href="https://www.instagram.com/vistetededisenador?utm_source=ig_web_button_share_sheet&amp;igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener" aria-label="Ver Vístete de Diseñador en Instagram">
+                                                    <svg class="icon" aria-hidden="true">
+                                                        <use href="assets/icons/icons.svg#i-brand-instagram"></use>
+                                                    </svg>
                                                 </a>
-                                                <button type="button" class="card-social-link" data-share-image=".card-img-top" data-share-title="¡Summer Camp para tus hijos! ☀️" data-share-text="¡No te lo pierdas! Inscribe a tus hijos de 3 a 11 años al Summer Camp más esperado del verano. Juegos, amigos y enseñanza del 20 al 31 de julio. ¡Regístralos ahora!" data-share-url="https://forms.gle/xw5pEf93VqmmZ51p8" aria-label="Compartir Summer Camp">
-                                                    <i class="fa-solid fa-share" aria-hidden="true"></i>
+                                                <button class="ctrl-app ctrl-app--ghost ctrl-app--md card-social-link" type="button" data-share-image=".card-img-top" data-share-title="Summer Camp 2026" data-share-text="Te comparto algunos momentos de este campamento para niños." aria-label="Compartir Summer Camp">
+                                                    <svg class="icon" aria-hidden="true">
+                                                        <use href="assets/icons/icons.svg#i-share-2"></use>
+                                                    </svg>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div id="evento-cima-2026" class="card-app surface-raised h-100 d-flex flex-column">
+                                    <img class="card-img-top" src="assets/images/eventos/Evento4.webp" width="1920" height="1080" alt="Cartel de CIMA 2026" loading="lazy" decoding="async" data-img-fallback>
+                                    <div class="d-none align-items-center justify-content-center card-event-img-fallback">
+                                        <svg class="icon card-event-img-icon" aria-hidden="true">
+                                            <use href="assets/icons/icons.svg#i-image"></use>
+                                        </svg>
+                                    </div>
+                                    <div class="p-3 d-flex flex-column flex-grow-1">
+                                        <span class="mb-2 badge-outlined">Próximamente</span>
+                                        <h3 class="mb-1 heading-local">¡CIMA 2026 | DESPLIEGUE!</h3>
+                                        <time class="card-event-date" datetime="2026-11-13">
+                                            <svg class="icon me-1" aria-hidden="true">
+                                                <use href="assets/icons/icons.svg#i-calendar"></use>
+                                            </svg>13 al 16 de noviembre de 2026
+                                        </time>
+                                        <p class="card-event-date">
+                                            <svg class="icon me-1" aria-hidden="true">
+                                                <use href="assets/icons/icons.svg#i-map-pin"></use>
+                                            </svg>San Luis Potosí
+                                        </p>
+                                        <p class="mb-3 card-event-desc">Celebra el llamado de Dios. El llamado que nos mueve a salir de lo desconocido y extendernos a lo inexplorado.</p>
+                                        <div class="mt-auto">
+                                            <div class="card-social-links">
+                                                <a class="ctrl-app ctrl-app--ghost ctrl-app--md card-social-link" href="#" target="_blank" rel="noopener" data-config-href="externalLink1.url" aria-label="Visitar el sitio de RIBBI">
+                                                    <svg class="icon" aria-hidden="true">
+                                                        <use href="assets/icons/icons.svg#i-link"></use>
+                                                    </svg>
+                                                </a>
+                                                <a class="ctrl-app ctrl-app--ghost ctrl-app--md card-social-link" href="assets/calendar/CIMA_2026.ics" type="text/calendar" target="_blank" rel="noopener" aria-label="Agregar CIMA 2026 al calendario">
+                                                    <svg class="icon" aria-hidden="true">
+                                                        <use href="assets/icons/icons.svg#i-calendar-check"></use>
+                                                    </svg>
+                                                </a>
+                                                <button class="ctrl-app ctrl-app--ghost ctrl-app--md card-social-link" type="button" data-share-image=".card-img-top" data-share-title="CIMA 2026" data-share-text="Te comparto la información de CIMA 2026, la Celebración de Impulso Misionero en las Américas." aria-label="Compartir CIMA 2026">
+                                                    <svg class="icon" aria-hidden="true">
+                                                        <use href="assets/icons/icons.svg#i-share-2"></use>
+                                                    </svg>
                                                 </button>
                                             </div>
                                         </div>
@@ -377,11 +464,15 @@
                             </div>
                         </div>
                         <div class="carousel-navigation-container">
-                            <button class="carousel-btn-prev" type="button" aria-label="Anterior">
-                                <i class="fa-solid fa-chevron-left" aria-hidden="true"></i>
+                            <button class="ctrl-app ctrl-app--surface ctrl-app--lg carousel-btn-prev" type="button" aria-label="Anterior">
+                                <svg class="icon" aria-hidden="true">
+                                    <use href="assets/icons/icons.svg#i-chevron-left"></use>
+                                </svg>
                             </button>
-                            <button class="carousel-btn-next" type="button" aria-label="Siguiente">
-                                <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+                            <button class="ctrl-app ctrl-app--surface ctrl-app--lg carousel-btn-next" type="button" aria-label="Siguiente">
+                                <svg class="icon" aria-hidden="true">
+                                    <use href="assets/icons/icons.svg#i-chevron-right"></use>
+                                </svg>
                             </button>
                         </div>
                         <div class="carousel-indicator text-center"></div>
@@ -389,20 +480,22 @@
                 </div>
             </div>
         </section>
-        <section id="youtube" class="section-padding" aria-labelledby="youtube-title">
+        <section id="youtube" class="section-padding section-padding--continuation surface-base" aria-labelledby="youtube-title">
             <div class="container">
-                <div class="section-heading">
-                    <div class="section-heading-lead">
+                <div class="section-heading heading-group composition composition--center">
+                    <div class="section-heading-lead heading-lead">
                         <div class="section-heading-icon" aria-hidden="true">
-                            <i class="fa-solid fa-circle-play"></i>
+                            <svg class="icon" aria-hidden="true">
+                                <use href="assets/icons/icons.svg#i-circle-play"></use>
+                            </svg>
                         </div>
-                        <h2 id="youtube-title" class="section-heading-title">Transmisión en vivo</h2>
+                        <h2 id="youtube-title" class="section-heading-title heading-chapter">Transmisión en vivo</h2>
                     </div>
-                    <p class="section-heading-desc">Únete a nuestro servicio en tiempo real desde cualquier lugar</p>
+                    <p class="section-heading-desc heading-description">Únete a nuestro servicio en tiempo real desde cualquier lugar</p>
                 </div>
                 <div class="content-wrapper" data-gsap="fade-up">
-                    <div id="live-stream" class="live-stream">
-                        <div class="live-card surface-card">
+                    <div id="live-stream">
+                        <div class="live-card surface-raised">
                             <div id="live-video-block" class="live-video-block" aria-live="polite">
                                 <div class="live-video live-video--loading">
                                     <span class="spinner-border text-brand" role="status" aria-label="Cargando video"></span>
@@ -410,32 +503,36 @@
                             </div>
                             <div class="countdown-block">
                                 <p class="live-kicker">
-                                    <i class="fa-regular fa-calendar-check" aria-hidden="true"></i>
+                                    <svg class="icon" aria-hidden="true">
+                                        <use href="assets/icons/icons.svg#i-calendar-check"></use>
+                                    </svg>
                                     <span id="live-kicker-text">Próxima transmisión en vivo</span>
                                 </p>
-                                <div class="countdown" id="countdown" role="timer" aria-label="Cuenta regresiva para la próxima transmisión en vivo">
+                                <div id="countdown" class="countdown" role="timer" aria-label="Cuenta regresiva para la próxima transmisión en vivo">
                                     <div class="countdown-unit">
-                                        <span class="countdown-digit" id="cd-days">--</span>
+                                        <span id="cd-days" class="countdown-digit">--</span>
                                         <span class="countdown-label">Días</span>
                                     </div>
                                     <span class="countdown-sep" aria-hidden="true">:</span>
                                     <div class="countdown-unit">
-                                        <span class="countdown-digit" id="cd-hours">--</span>
+                                        <span id="cd-hours" class="countdown-digit">--</span>
                                         <span class="countdown-label">Horas</span>
                                     </div>
                                     <span class="countdown-sep" aria-hidden="true">:</span>
                                     <div class="countdown-unit">
-                                        <span class="countdown-digit" id="cd-mins">--</span>
+                                        <span id="cd-mins" class="countdown-digit">--</span>
                                         <span class="countdown-label">Minutos</span>
                                     </div>
                                     <span class="countdown-sep" aria-hidden="true">:</span>
                                     <div class="countdown-unit">
-                                        <span class="countdown-digit" id="cd-secs">--</span>
+                                        <span id="cd-secs" class="countdown-digit">--</span>
                                         <span class="countdown-label">Segundos</span>
                                     </div>
                                 </div>
                                 <p class="live-foot">
-                                    <i class="fa-solid fa-church" aria-hidden="true"></i> Domingos · 11:00&nbsp;AM · Hora de Monterrey
+                                    <svg class="icon" aria-hidden="true">
+                                        <use href="assets/icons/icons.svg#i-church"></use>
+                                    </svg> Domingos · 11:00&nbsp;AM · Hora de Monterrey
                                 </p>
                             </div>
                         </div>
@@ -443,106 +540,185 @@
                 </div>
             </div>
         </section>
+        <section id="youversion" class="section-padding section-padding--continuation surface-base" aria-labelledby="youversion-title">
+            <div class="container">
+                <div class="section-heading heading-group composition composition--center">
+                    <div class="section-heading-lead heading-lead">
+                        <div class="section-heading-icon" aria-hidden="true">
+                            <svg class="icon" aria-hidden="true">
+                                <use href="assets/icons/icons.svg#i-book-open"></use>
+                            </svg>
+                        </div>
+                        <h2 id="youversion-title" class="section-heading-title heading-chapter">Síguenos en YouVersion</h2>
+                    </div>
+                    <p class="section-heading-desc heading-description">Planes de lectura, notas del mensaje y eventos directamente en tu Biblia</p>
+                </div>
+                <div class="youversion-card surface-raised" data-gsap="fade-up">
+                    <div>
+                        <p class="youversion-text">Conéctate con la iglesia desde la app de la Biblia: recibe nuestros planes de lectura, sigue el mensaje del domingo y guarda tus notas.</p>
+                        <a class="btn btn-app btn-app--secondary" href="#" target="_blank" rel="noopener" data-config-href="youversion">
+                            <svg class="icon" aria-hidden="true">
+                                <use href="assets/icons/icons.svg#i-book-open"></use>
+                            </svg> Abrir nuestro canal en YouVersion
+                        </a>
+                    </div>
+                    <figure class="youversion-qr">
+                        <img src="assets/images/extras/YouVersion_QR.png" width="1080" height="1080" alt="Código QR que abre el canal de la Iglesia Bautista de Monterrey en YouVersion" loading="lazy" decoding="async">
+                        <figcaption class="youversion-qr-caption">Escanea con tu teléfono</figcaption>
+                    </figure>
+                </div>
+            </div>
+        </section>
     </main>
 
-    <footer id="footer-web" class="site-footer">
+    <footer id="footer-web">
         <div class="container">
-            <div class="footer-panel">
-                <div class="row g-4 g-lg-5 align-items-start">
-                    <div class="col-12 col-lg-5">
-                        <a href="index.html" class="footer-brand" aria-label="Ir al inicio de IBMty">
-                            <span class="footer-brand-mark" aria-hidden="true">
-                                <i class="fa-solid fa-church" aria-hidden="true"></i>
-                            </span>
-                            <span>
+            <div>
+                <div class="row g-3 g-lg-4">
+                    <div class="col-12 col-lg-4">
+                        <div class="footer-identity">
+                            <a class="footer-brand" href="index.html">
+                                <span class="footer-brand-mark" aria-hidden="true">
+                                    <img src="assets/icons/Logo_IBMty.png" alt="" width="44" height="44" loading="lazy" decoding="async">
+                                </span>
                                 <span class="footer-brand-text">Iglesia Bautista de Monterrey</span>
-                            </span>
-                        </a>
-                        <p class="footer-summary">Mantente conectado con nosotros.</p>
-                        <nav class="footer-social mt-3" aria-label="Redes sociales">
-                            <a href="#" data-config-href="facebook" class="footer-social-link" target="_blank" rel="noopener" aria-label="Facebook">
-                                <i class="fa-brands fa-facebook-f" aria-hidden="true"></i>
                             </a>
-                            <a href="#" data-config-href="instagram" class="footer-social-link" target="_blank" rel="noopener" aria-label="Instagram">
-                                <i class="fa-brands fa-instagram" aria-hidden="true"></i>
-                            </a>
-                            <a href="#" data-config-href="youtube" class="footer-social-link" target="_blank" rel="noopener" aria-label="YouTube">
-                                <i class="fa-brands fa-youtube" aria-hidden="true"></i>
-                            </a>
-                        </nav>
+                            <p class="footer-summary">Mantente conectado con nosotros.</p>
+                            <nav class="footer-social" aria-label="Redes sociales">
+                                <a class="ctrl-app ctrl-app--ghost ctrl-app--md" href="#" target="_blank" rel="noopener" data-config-href="facebook" aria-label="Facebook">
+                                    <svg class="icon" aria-hidden="true">
+                                        <use href="assets/icons/icons.svg#i-brand-facebook"></use>
+                                    </svg>
+                                </a>
+                                <a class="ctrl-app ctrl-app--ghost ctrl-app--md" href="#" target="_blank" rel="noopener" data-config-href="instagram" aria-label="Instagram">
+                                    <svg class="icon" aria-hidden="true">
+                                        <use href="assets/icons/icons.svg#i-brand-instagram"></use>
+                                    </svg>
+                                </a>
+                                <a class="ctrl-app ctrl-app--ghost ctrl-app--md" href="#" target="_blank" rel="noopener" data-config-href="youtube" aria-label="YouTube">
+                                    <svg class="icon" aria-hidden="true">
+                                        <use href="assets/icons/icons.svg#i-brand-youtube"></use>
+                                    </svg>
+                                </a>
+                            </nav>
+                        </div>
                     </div>
-                    <div class="col-12 col-md-6 col-lg-4">
-                        <h2 class="footer-heading">Contacto</h2>
-                        <ul class="footer-contact-list">
-                            <li>
-                                <a href="#" data-config-href="addressMapUrl" target="_blank" rel="noopener" class="footer-contact-item">
-                                    <span class="footer-icon" aria-hidden="true">
-                                        <i class="fa-solid fa-location-dot"></i>
-                                    </span>
-                                    <span>
-                                        <span class="footer-contact-label">Dirección</span>
-                                        <span data-config-text="address"></span>
-                                    </span>
-                                </a>
-                            </li>
-                            <li class="footer-contact-item">
-                                <span class="footer-icon" aria-hidden="true">
-                                    <i class="fa-solid fa-phone"></i>
-                                </span>
-                                <span>
-                                    <span class="footer-contact-label">Teléfonos</span>
-                                    <span class="footer-phone-list">
-                                        <a href="#" data-config-href="phone1" class="footer-phone-link">
-                                            <span data-config-text="phone1"></span>
-                                        </a>
-                                        <a href="#" data-config-href="phone2" class="footer-phone-link">
-                                            <span data-config-text="phone2"></span>
-                                        </a>
-                                    </span>
-                                </span>
-                            </li>
-                            <li>
-                                <a href="#" data-config-href="email" class="footer-contact-item">
-                                    <span class="footer-icon" aria-hidden="true">
-                                        <i class="fa-solid fa-envelope"></i>
-                                    </span>
-                                    <span>
-                                        <span class="footer-contact-label">Correo</span>
-                                        <span data-config-text="email"></span>
-                                    </span>
-                                </a>
-                            </li>
-                        </ul>
+                    <div class="col-12 col-md-6 col-lg-5">
+                        <div class="footer-group">
+                            <h2 class="footer-heading">Contacto</h2>
+                            <ul class="footer-row-list">
+                                <li>
+                                    <a class="footer-row" href="#" target="_blank" rel="noopener" data-config-href="addressMapUrl">
+                                        <span class="footer-row-icon" aria-hidden="true">
+                                            <svg class="icon" aria-hidden="true">
+                                                <use href="assets/icons/icons.svg#i-map-pin"></use>
+                                            </svg>
+                                        </span>
+                                        <span class="footer-row-info">
+                                            <span class="micro-label">Dirección</span>
+                                            <span class="footer-row-value" data-config-text="address"></span>
+                                        </span>
+                                        <svg class="icon footer-row-ext" aria-hidden="true">
+                                            <use href="assets/icons/icons.svg#i-external-link"></use>
+                                        </svg>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="footer-row" href="#" data-config-href="phone1">
+                                        <span class="footer-row-icon" aria-hidden="true">
+                                            <svg class="icon" aria-hidden="true">
+                                                <use href="assets/icons/icons.svg#i-phone"></use>
+                                            </svg>
+                                        </span>
+                                        <span class="footer-row-info">
+                                            <span class="micro-label">Teléfono</span>
+                                            <span class="footer-row-value" data-config-text="phone1"></span>
+                                        </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="footer-row" href="#" data-config-href="phone2">
+                                        <span class="footer-row-icon" aria-hidden="true">
+                                            <svg class="icon" aria-hidden="true">
+                                                <use href="assets/icons/icons.svg#i-phone"></use>
+                                            </svg>
+                                        </span>
+                                        <span class="footer-row-info">
+                                            <span class="micro-label">Teléfono</span>
+                                            <span class="footer-row-value" data-config-text="phone2"></span>
+                                        </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="footer-row" href="#" data-config-href="email">
+                                        <span class="footer-row-icon" aria-hidden="true">
+                                            <svg class="icon" aria-hidden="true">
+                                                <use href="assets/icons/icons.svg#i-mail"></use>
+                                            </svg>
+                                        </span>
+                                        <span class="footer-row-info">
+                                            <span class="micro-label">Correo</span>
+                                            <span class="footer-row-value" data-config-text="email"></span>
+                                        </span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                     <div class="col-12 col-md-6 col-lg-3">
-                        <h2 class="footer-heading">Enlaces</h2>
-                        <ul class="footer-link-list">
-                            <li>
-                                <a href="#" data-config-href="externalLink1.url" class="footer-link" target="_blank" rel="noopener">
-                                    <span data-config-text="externalLink1.label"></span>
-                                    <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" data-config-href="externalLink2.url" class="footer-link" target="_blank" rel="noopener">
-                                    <span data-config-text="externalLink2.label"></span>
-                                    <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
-                                </a>
-                            </li>
-                        </ul>
+                        <div class="footer-group">
+                            <h2 class="footer-heading">Enlaces</h2>
+                            <ul class="footer-row-list">
+                                <li class="footer-row-pair">
+                                    <a class="footer-row" href="#" target="_blank" rel="noopener" data-config-href="externalLink1.url">
+                                        <span class="footer-row-icon" aria-hidden="true">
+                                            <svg class="icon" aria-hidden="true">
+                                                <use href="assets/icons/icons.svg#i-link"></use>
+                                            </svg>
+                                        </span>
+                                        <span class="footer-row-info">
+                                            <span class="footer-row-value" data-config-text="externalLink1.label"></span>
+                                        </span>
+                                        <svg class="icon footer-row-ext" aria-hidden="true">
+                                            <use href="assets/icons/icons.svg#i-external-link"></use>
+                                        </svg>
+                                    </a>
+                                    <a class="footer-row" href="#" target="_blank" rel="noopener" data-config-href="externalLink2.url">
+                                        <span class="footer-row-icon" aria-hidden="true">
+                                            <svg class="icon" aria-hidden="true">
+                                                <use href="assets/icons/icons.svg#i-link"></use>
+                                            </svg>
+                                        </span>
+                                        <span class="footer-row-info">
+                                            <span class="footer-row-value" data-config-text="externalLink2.label"></span>
+                                        </span>
+                                        <svg class="icon footer-row-ext" aria-hidden="true">
+                                            <use href="assets/icons/icons.svg#i-external-link"></use>
+                                        </svg>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="footer-row" href="privacidad.html">
+                                        <span class="footer-row-icon" aria-hidden="true">
+                                            <svg class="icon" aria-hidden="true">
+                                                <use href="assets/icons/icons.svg#i-shield-check"></use>
+                                            </svg>
+                                        </span>
+                                        <span class="footer-row-info">
+                                            <span class="footer-row-value">Aviso de Privacidad</span>
+                                        </span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
-                <div class="footer-bottom">
-                    <div class="footer-bottom-links">
-                        <a href="privacidad.html">
-                            <i class="fa-solid fa-shield-halved me-1" aria-hidden="true"></i>Aviso de Privacidad
-                        </a>
-                        <span>Iglesia Bautista de Monterrey &copy; <span id="current-year"></span></span>
-                    </div>
-                    <span class="footer-devotion">Hecho con
-                        <i class="fa-solid fa-heart mx-1" aria-hidden="true"></i> para Dios
-                    </span>
-                </div>
+            </div>
+            <div class="footer-bottom">
+                <span class="footer-devotion">Hecho con <svg class="icon mx-1" aria-hidden="true">
+                        <use href="assets/icons/icons.svg#i-heart"></use>
+                    </svg> para Dios </span>
+                <span class="footer-copy">Iglesia Bautista de Monterrey &copy; <span id="current-year"></span></span>
             </div>
         </div>
     </footer>

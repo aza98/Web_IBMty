@@ -11,7 +11,9 @@ document.addEventListener('DOMContentLoaded', function() {
     var TICK_MS = 1000;
     var LATEST_CACHE_KEY = 'ibmty_latest_video';
     var LATEST_TTL_MS = 30 * 60 * 1000;
+    var config = (typeof APP_CONFIG !== 'undefined' && APP_CONFIG) ? APP_CONFIG : {};
     var videoBlock = document.getElementById('live-video-block');
+    if (!videoBlock) return;
     var kickerTextEl = document.getElementById('live-kicker-text');
     var digitEls = {
         days: document.getElementById('cd-days'),
@@ -109,7 +111,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function getWindowCloseUtc() {
         var now = getZonedNowParts();
-        return zonedWallToUtc(now.year, now.month, now.day, Math.floor(LIVE_WINDOW_END_MIN / 60), LIVE_WINDOW_END_MIN % 60, 0)
+        var closeMin = LIVE_WINDOW_END_MIN + 1;
+        return zonedWallToUtc(now.year, now.month, now.day, Math.floor(closeMin / 60), closeMin % 60, 0)
     }
 
     function getNextWindowOpenUtc() {
@@ -222,17 +225,14 @@ document.addEventListener('DOMContentLoaded', function() {
         videoWrap.appendChild(iframe);
         var actions = document.createElement('div');
         actions.className = 'live-actions';
-        var channelUrl = APP_CONFIG.youtube || 'https://www.youtube.com';
+        var channelUrl = config.youtube || 'https://www.youtube.com';
         var subscribeUrl = channelUrl + (channelUrl.includes('?') ? '&' : '?') + 'sub_confirmation=1';
         var subscribe = document.createElement('a');
-        subscribe.className = 'btn-primary-pill';
+        subscribe.className = 'btn btn-app btn-app--secondary';
         subscribe.href = subscribeUrl;
         subscribe.target = '_blank';
         subscribe.rel = 'noopener';
-        var ytIcon = document.createElement('i');
-        ytIcon.className = 'fa-brands fa-youtube me-1';
-        ytIcon.setAttribute('aria-hidden', 'true');
-        subscribe.appendChild(ytIcon);
+        if (typeof makeIcon === 'function') subscribe.appendChild(makeIcon('brand-youtube', 'me-1'));
         subscribe.appendChild(document.createTextNode('Suscríbete'));
         subscribe.setAttribute('data-track-category', 'youtube');
         subscribe.setAttribute('data-track-action', 'subscribe_click');
@@ -240,15 +240,12 @@ document.addEventListener('DOMContentLoaded', function() {
         actions.appendChild(subscribe);
         var share = document.createElement('button');
         share.type = 'button';
-        share.className = 'btn-secondary-pill';
+        share.className = 'btn btn-app btn-app--secondary';
         share.setAttribute('aria-label', 'Compartir');
         share.setAttribute('data-share-title', safeTitle);
-        share.setAttribute('data-share-text', (isLive ? 'Transmisión en vivo de ' : 'Mira esto en ') + (APP_CONFIG.appName || 'IBMty'));
+        share.setAttribute('data-share-text', (isLive ? 'Transmisión en vivo de ' : 'Mira esto en ') + (config.appName || 'IBMty'));
         share.setAttribute('data-share-url', watchUrl);
-        var shareIcon = document.createElement('i');
-        shareIcon.className = 'fa-solid fa-share';
-        shareIcon.setAttribute('aria-hidden', 'true');
-        share.appendChild(shareIcon);
+        if (typeof makeIcon === 'function') share.appendChild(makeIcon('share-2'));
         share.appendChild(document.createTextNode(' Compartir'));
         actions.appendChild(share);
         target.appendChild(head);
@@ -260,8 +257,8 @@ document.addEventListener('DOMContentLoaded', function() {
         var box = document.createElement('div');
         box.className = 'live-video live-video--loading';
         var link = document.createElement('a');
-        link.className = 'btn-secondary-pill';
-        link.href = APP_CONFIG.youtube || 'https://www.youtube.com';
+        link.className = 'btn btn-app btn-app--secondary';
+        link.href = config.youtube || 'https://www.youtube.com';
         link.target = '_blank';
         link.rel = 'noopener';
         link.textContent = 'Visítanos en YouTube';
@@ -292,12 +289,12 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function apiAvailable() {
-        return !!((APP_CONFIG.youtubeApiKey || '').trim() && APP_CONFIG.youtubeChannelId)
+        return !!(typeof window.fetch === 'function' && typeof config.youtubeApiKey === 'string' && config.youtubeApiKey.trim() && config.youtubeChannelId)
     }
 
     function ytFetch(params) {
-        var key = APP_CONFIG.youtubeApiKey.trim();
-        var url = 'https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&channelId=' + APP_CONFIG.youtubeChannelId + '&key=' + key + params;
+        var key = config.youtubeApiKey.trim();
+        var url = 'https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&channelId=' + config.youtubeChannelId + '&key=' + key + params;
         return fetch(url).then(function(r) {
             if (!r.ok) throw new Error('YouTube API ' + r.status);
             return r.json()
@@ -307,12 +304,12 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function uploadsPlaylistId() {
-        var ch = (APP_CONFIG.youtubeChannelId || '');
+        var ch = (config.youtubeChannelId || '');
         return ch.indexOf('UC') === 0 ? 'UU' + ch.slice(2) : ch
     }
 
     function plFetch() {
-        var key = APP_CONFIG.youtubeApiKey.trim();
+        var key = config.youtubeApiKey.trim();
         var url = 'https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=1&playlistId=' + uploadsPlaylistId() + '&key=' + key;
         return fetch(url).then(function(r) {
             if (!r.ok) throw new Error('YouTube API ' + r.status);

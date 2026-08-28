@@ -1,8 +1,5 @@
 const APP_CONFIG = {
-    brandColor: '#00C0F6',
     appName: 'IBMty',
-    appShortName: 'IBMTY',
-    logoPath: 'assets/icons/Logo_IBMty.png',
     whatsappNumber: '528132503031',
     address: 'Av. Eugenio Garza Sada 6309, MTY.',
     addressMapUrl: 'https://maps.google.com/?q=Iglesia+Bautista+de+Monterrey',
@@ -11,6 +8,7 @@ const APP_CONFIG = {
     facebook: 'https://www.facebook.com/IBMty/',
     instagram: 'https://www.instagram.com/iglesiabautistademonterrey?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==',
     youtube: 'https://www.youtube.com/channel/UCfhSTnqLb6vFO28eNm_n0qw',
+    youversion: 'https://www.bible.com/organizations/eb81cf60-79a0-496a-b2f4-13d0f42e0a15',
     email: 'oficina@ibmty.com',
     arcoEmail: 'mailto:avisoprivacidad@ibmty.com?subject=Solicitud%20de%20Derechos%20ARCO&body=Nombre%3A%0ATel%C3%A9fono%3A%0AMotivo%3A',
     externalLink1: {
@@ -29,5 +27,8 @@ const APP_CONFIG = {
     appointments: {
         formspreeEndpoint: 'https://formspree.io/f/mbjzknka',
     },
-    appVersion: '7.0.0',
+    salvationFollowup: {
+        formspreeEndpoint: 'https://formspree.io/f/mbjzknka',
+    },
+    appVersion: '7.1.3',
 }

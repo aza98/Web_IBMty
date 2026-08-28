@@ -2,53 +2,60 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin: var(--space-4) var(--space-4) 0;
   padding: var(--space-4);
-  border-bottom: 1px solid rgb(var(--color-brand-rgb) / .12)
+  border-radius: calc(var(--radius-card) - .375rem);
+  background: var(--color-surface-2);
+  border: 1px solid var(--color-border)
 }
 
 .bank-card-brand {
   display: flex;
   align-items: center;
-  gap: var(--space-2);
-  min-width: 0
+  gap: var(--space-3);
+  min-width: 0;
+  width: 100%
 }
 
 .bank-card-icon {
-  flex-shrink: 0;
-  font-size: 1.75rem;
-  color: var(--color-brand)
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 10px;
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  color: var(--color-text-secondary);
+  border: 1px solid var(--color-border);
+  flex-shrink: 0
 }
 
 .bank-card-name {
-  margin: 0;
   font-family: var(--font-primary);
   font-weight: 700;
   font-size: var(--text-lg);
   line-height: 1.2;
-  color: var(--color-text-primary)
+  color: var(--color-heading);
+  margin: 0
 }
 
 .bank-card-holder {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  gap: var(--space-1);
-  margin-top: .15rem
+  gap: var(--space-2);
+  margin-top: .35rem
 }
 
 .bank-card-institution {
   margin: 0;
-  font-size: var(--text-xs);
-  color: var(--color-text-muted)
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+  line-height: 1.4
 }
 
 .bank-name-copy {
-  flex: 0 0 auto;
-  min-height: 0;
-  padding: .35rem .55rem
-}
-
-.bank-name-copy i {
-  font-size: var(--text-2xs)
+  flex: 0 0 auto
 }
 
 .bank-accounts-grid {
@@ -58,54 +65,62 @@
   padding: var(--space-4)
 }
 
-@media (min-width:576px) {
+@media (min-width:768px) {
   .bank-accounts-grid {
-    grid-template-columns: 1fr 1fr
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-4)
   }
 }
 
 .bank-account-card {
-  padding: var(--space-3);
+  padding: var(--space-4);
   border-radius: calc(var(--radius-card) - .375rem);
-  background: rgb(var(--color-brand-rgb) / .05);
-  border: 1px solid rgb(var(--color-brand-rgb) / .14)
+  background: var(--color-surface-2);
+  border: 1px solid var(--color-border)
 }
 
 .bank-account-card-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: var(--space-3)
+  margin-bottom: var(--space-4)
 }
 
 .bank-fund-icon {
-  font-size: var(--text-xl);
-  color: var(--color-brand);
-  opacity: .22
+  width: 32px;
+  height: 32px;
+  min-width: 32px;
+  min-height: 32px;
+  padding: 6px;
+  border-radius: var(--radius-pill);
+  background: var(--color-surface);
+  color: var(--color-text-secondary);
+  border: 1px solid var(--color-border);
+  flex-shrink: 0
 }
 
-.field-group {
+.field-group:not(:last-child) {
   margin-bottom: var(--space-4)
 }
 
 .bank-account-card .micro-label {
-  margin-bottom: .3rem
-}
-
-.field-value {
-  font-family: var(--font-mono);
-  font-weight: 500;
-  font-size: var(--text-md);
-  letter-spacing: .04em;
-  font-variant-numeric: tabular-nums;
-  color: var(--color-text-primary)
+  margin-bottom: .25rem;
+  font-size: var(--text-2xs);
+  font-weight: 600;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--color-text-muted-strong)
 }
 
 .field-row {
   display: flex;
   flex-wrap: nowrap;
   align-items: center;
-  gap: .625rem var(--space-2)
+  gap: var(--space-2);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: .375rem .5rem .375rem .75rem
 }
 
 .field-row .field-value {
@@ -113,45 +128,51 @@
   min-width: 0;
   white-space: nowrap;
   overflow: hidden;
-  text-overflow: ellipsis
+  text-overflow: ellipsis;
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: var(--text-sm);
+  letter-spacing: .04em;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-text-primary)
 }
 
-.field-row .btn-copy {
+.field-row .btn-app--compact {
   margin-left: auto;
   flex-shrink: 0
 }
 
-.bank-account-card .field-value {
-  font-size: var(--text-sm)
-}
-
 .card-notice {
   margin: 0;
-  padding: var(--space-2) var(--space-4) var(--space-4);
+  padding: var(--space-3) var(--space-4) var(--space-4);
   font-size: var(--text-xs);
   line-height: 1.55;
-  color: var(--color-text-muted);
-  border-top: 1px solid rgb(var(--color-brand-rgb) / .12)
-}
-
-.donativo-cta {
-  position: relative
-}
-
-.donativo-cta::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(ellipse 80% 50% at 50% 0%, rgb(var(--color-brand-rgb) / .06) 0%, transparent 70%);
-  pointer-events: none
-}
-
-.donativo-cta>* {
-  position: relative;
-  z-index: 1
+  color: var(--color-text-muted-strong);
+  border-top: 1px solid var(--color-border)
 }
 
 .donativo-cta-icon {
-  margin-bottom: var(--space-5);
-  filter: drop-shadow(0 0 14px rgb(var(--color-brand-rgb) / .32))
+  margin-bottom: var(--space-5)
+}
+
+.bank-card-header .btn-app--secondary,
+.bank-account-card .btn-app--secondary {
+  --bs-btn-bg: var(--color-surface-2);
+  --bs-btn-color: var(--color-text-primary);
+  --bs-btn-border-width: 1px;
+  --bs-btn-border-color: var(--color-border-strong);
+  --bs-btn-hover-bg: var(--btn-secondary-tint-hover);
+  --bs-btn-hover-color: var(--color-text-primary);
+  --bs-btn-hover-border-color: var(--color-border-strong);
+  --bs-btn-active-bg: var(--btn-secondary-tint-press);
+  --bs-btn-active-color: var(--color-text-primary)
+}
+
+.donativo-cta .heading-group {
+  margin-inline: auto
+}
+
+.donativo-cta .btn-app:not(.btn-app--compact) {
+  display: inline-flex;
+  width: auto
 }

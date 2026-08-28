@@ -2,13 +2,15 @@ var _analyticsStarted = !1;
 
 function startAnalytics() {
     if (_analyticsStarted) return;
-    if (!APP_CONFIG.gaEnabled || !APP_CONFIG.gaTrackingId || APP_CONFIG.gaTrackingId.trim() === '') {
+    var config = (typeof APP_CONFIG !== 'undefined' && APP_CONFIG) ? APP_CONFIG : {};
+    if (!config.gaEnabled || typeof config.gaTrackingId !== 'string' || config.gaTrackingId.trim() === '') {
         return
     }
+    var trackingId = config.gaTrackingId.trim();
     _analyticsStarted = !0;
     var script = document.createElement('script');
     script.async = !0;
-    script.src = 'https://www.googletagmanager.com/gtag/js?id=' + APP_CONFIG.gaTrackingId;
+    script.src = 'https://www.googletagmanager.com/gtag/js?id=' + trackingId;
     document.head.appendChild(script);
     window.dataLayer = window.dataLayer || [];
 
@@ -17,19 +19,18 @@ function startAnalytics() {
     }
     window.gtag = gtag;
     gtag('js', new Date());
-    gtag('config', APP_CONFIG.gaTrackingId, {
+    gtag('config', trackingId, {
         send_page_view: !1
     });
     trackPageView()
 }
 
-function trackEvent(category, action, label, value) {
+function trackEvent(category, action, label) {
     if (typeof window.gtag === 'function') {
         var eventParams = {
             event_category: category
         };
         if (label !== undefined) eventParams.event_label = label;
-        if (value !== undefined) eventParams.value = value;
         window.gtag('event', action, eventParams)
     }
 }
@@ -57,5 +58,9 @@ function initAnalyticsEvents() {
 }
 document.addEventListener('DOMContentLoaded', function() {
     initAnalyticsEvents();
-    if (localStorage.getItem('cookieConsent') === 'accepted') startAnalytics()
+    var consent = null;
+    try {
+        consent = localStorage.getItem('cookieConsent')
+    } catch (err) {}
+    if (consent === 'accepted') startAnalytics()
 })

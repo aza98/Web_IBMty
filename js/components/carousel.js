@@ -1,23 +1,30 @@
 document.addEventListener('DOMContentLoaded', function() {
     var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    function getTotalSlides(swiper) {
-        var indexedSlides = new Set(Array.from(swiper.slides).map(function(slide) {
-            return slide.getAttribute('data-swiper-slide-index')
-        }).filter(function(index) {
-            return index !== null
-        }));
-        return indexedSlides.size || swiper.slides.length
+    function newestSlideIndex(elementId) {
+        var el = document.getElementById(elementId);
+        if (!el) return 0;
+        return Math.max(0, el.querySelectorAll('.swiper-slide').length - 1)
     }
 
-    function updateIndicator(swiper, selector) {
-        var indicator = document.querySelector(selector);
+    function updateIndicator(swiper, indicator) {
         if (!indicator) return;
-        indicator.setAttribute('aria-live', 'polite');
-        indicator.setAttribute('aria-atomic', 'true');
-        var total = getTotalSlides(swiper);
-        var current = swiper.params.loop ? swiper.realIndex + 1 : Math.min((swiper.snapIndex || swiper.realIndex) + 1, total);
-        indicator.textContent = current + ' / ' + total
+        indicator.textContent = (swiper.realIndex + 1) + ' / ' + swiper.slides.length
+    }
+
+    function syncSlideInteractivity(swiper) {
+        var activeSlide = swiper.slides[swiper.activeIndex];
+        if (!activeSlide) return;
+        var focused = document.activeElement;
+        var moveFocus = Array.from(swiper.slides).some(function(slide) {
+            return slide !== activeSlide && slide.contains(focused)
+        });
+        Array.from(swiper.slides).forEach(function(slide) {
+            slide.inert = slide !== activeSlide
+        });
+        if (moveFocus) swiper.el.focus({
+            preventScroll: !0
+        })
     }
 
     function equalizeCardHeights(swiper) {
@@ -28,7 +35,8 @@ document.addEventListener('DOMContentLoaded', function() {
         });
         var max = 0;
         cards.forEach(function(card) {
-            if (card.offsetHeight > max) max = card.offsetHeight
+            var height = card.offsetHeight;
+            if (height > max) max = height
         });
         if (max > 0) {
             cards.forEach(function(card) {
@@ -37,40 +45,66 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         if (typeof ScrollTrigger !== 'undefined') ScrollTrigger.refresh()
     }
-    var coverflowConfig = {
-        rotate: 4,
-        stretch: 0,
-        depth: 48,
-        modifier: 1,
-        slideShadows: !1,
-    };
 
     function buildCarousel(elementId, scopeSelector, overrides) {
-        if (!document.getElementById(elementId)) return;
+        var element = document.getElementById(elementId);
+        if (!element || typeof Swiper === 'undefined' || (element.swiper && !element.swiper.destroyed)) return;
+        var indicator = document.querySelector(scopeSelector + ' .carousel-indicator');
+        if (indicator) {
+            indicator.setAttribute('aria-live', 'polite');
+            indicator.setAttribute('aria-atomic', 'true')
+        }
         overrides = overrides || {};
-        var containerMessage = overrides.a11y && overrides.a11y.containerMessage;
-        delete overrides.a11y;
+        var heightFrame = 0;
+        var swiper;
+        var keyboardVisibility;
+        var originalTabindex = element.getAttribute('tabindex');
+        element.setAttribute('tabindex', '-1');
+
+        function scheduleHeights() {
+            if (heightFrame) return;
+            heightFrame = requestAnimationFrame(function() {
+                heightFrame = 0;
+                if (swiper && !swiper.destroyed) equalizeCardHeights(swiper)
+            })
+        }
+
+        function linkedSlideIndex() {
+            var target;
+            try {
+                target = document.getElementById(decodeURIComponent(window.location.hash.slice(1)))
+            } catch (err) {}
+            return Array.from(element.querySelectorAll('.swiper-slide')).findIndex(function(slide) {
+                return target && (slide === target || slide.contains(target))
+            })
+        }
+
+        function followHash() {
+            var index = linkedSlideIndex();
+            if (index < 0 || swiper.destroyed) return;
+            swiper.slideTo(index, 0);
+            syncSlideInteractivity(swiper)
+        }
         var baseConfig = {
-            effect: 'coverflow',
+            effect: 'slide',
             grabCursor: !0,
             centeredSlides: !0,
-            slidesPerView: 1.08,
+            slidesPerView: 1.15,
             spaceBetween: 16,
             loop: !1,
-            watchSlidesProgress: !0,
+            touchEventsTarget: 'container',
             speed: prefersReducedMotion ? 0 : 400,
-            coverflowEffect: coverflowConfig,
             keyboard: {
-                enabled: !0,
-                onlyInViewport: !0
+                enabled: !1,
+                onlyInViewport: !1
             },
             a11y: {
                 enabled: !0,
-                containerMessage: containerMessage,
-                prevSlideMessage: 'Slide anterior',
-                nextSlideMessage: 'Slide siguiente',
-                firstSlideMessage: 'Este es el primer slide',
-                lastSlideMessage: 'Este es el último slide',
+                prevSlideMessage: 'Diapositiva anterior',
+                nextSlideMessage: 'Diapositiva siguiente',
+                firstSlideMessage: 'Esta es la primera diapositiva',
+                lastSlideMessage: 'Esta es la última diapositiva',
+                slideLabelMessage: 'Diapositiva {{index}} de {{slidesLength}}',
             },
             navigation: {
                 nextEl: scopeSelector + ' .carousel-btn-next',
@@ -78,35 +112,54 @@ document.addEventListener('DOMContentLoaded', function() {
             },
             on: {
                 init: function() {
-                    updateIndicator(this, scopeSelector + ' .carousel-indicator');
+                    updateIndicator(this, indicator);
+                    syncSlideInteractivity(this);
                     equalizeCardHeights(this)
                 },
                 slideChange: function() {
-                    updateIndicator(this, scopeSelector + ' .carousel-indicator')
+                    updateIndicator(this, indicator)
                 },
-                snapIndexChange: function() {
-                    updateIndicator(this, scopeSelector + ' .carousel-indicator')
+                activeIndexChange: function() {
+                    syncSlideInteractivity(this)
                 },
-                resize: function() {
-                    equalizeCardHeights(this)
+                loopFix: function() {
+                    syncSlideInteractivity(this)
                 },
-                imagesReady: function() {
-                    equalizeCardHeights(this)
+                transitionEnd: function() {
+                    syncSlideInteractivity(this)
+                },
+                resize: scheduleHeights,
+                destroy: function() {
+                    cancelAnimationFrame(heightFrame);
+                    if (keyboardVisibility) keyboardVisibility.disconnect();
+                    element.removeEventListener('load', scheduleHeights, !0);
+                    window.removeEventListener('hashchange', followHash);
+                    Array.from(this.slides).forEach(function(slide) {
+                        slide.inert = !1
+                    });
+                    element.querySelectorAll('.card-app').forEach(function(card) {
+                        card.style.minHeight = ''
+                    });
+                    if (originalTabindex === null) element.removeAttribute('tabindex');
+                    else element.setAttribute('tabindex', originalTabindex)
                 },
             },
         };
         Object.assign(baseConfig, overrides);
-        var swiper = new Swiper('#' + elementId, baseConfig);
-        swiper.el.querySelectorAll('img').forEach(function(img) {
-            if (!img.complete) {
-                img.addEventListener('load', function() {
-                    equalizeCardHeights(swiper)
-                }, {
-                    once: !0
-                })
-            }
+        var linkedIndex = linkedSlideIndex();
+        if (linkedIndex >= 0) baseConfig.initialSlide = linkedIndex;
+        swiper = new Swiper(element, baseConfig);
+        keyboardVisibility = new IntersectionObserver(function(entries) {
+            if (swiper.destroyed) return;
+            if (entries[0].isIntersecting) swiper.keyboard.enable();
+            else swiper.keyboard.disable()
         });
-        return swiper
+        keyboardVisibility.observe(element);
+        element.addEventListener('load', scheduleHeights, !0);
+        window.addEventListener('hashchange', followHash);
+        if (document.fonts) document.fonts.ready.then(function() {
+            if (!swiper.destroyed) scheduleHeights()
+        })
     }
     var responsiveBreakpoints = {
         640: {
@@ -124,17 +177,11 @@ document.addEventListener('DOMContentLoaded', function() {
     };
     buildCarousel('eventos-swiper', '#eventos', {
         rewind: !0,
-        initialSlide: 3,
-        breakpoints: responsiveBreakpoints,
-        a11y: {
-            containerMessage: 'Carrusel de eventos'
-        }
+        initialSlide: newestSlideIndex('eventos-swiper'),
+        breakpoints: responsiveBreakpoints
     });
     buildCarousel('ministerios-swiper', '#lideres', {
         loop: !0,
-        breakpoints: responsiveBreakpoints,
-        a11y: {
-            containerMessage: 'Carrusel de líderes y ministerios'
-        }
+        breakpoints: responsiveBreakpoints
     })
 })

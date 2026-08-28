@@ -5,14 +5,13 @@ function isStandaloneMode() {
 function detectEnvironment() {
     var isStandalone = isStandaloneMode();
     var body = document.body;
-    var pathname = window.location.pathname;
     if (isStandalone) {
         body.classList.add('is-pwa');
         body.classList.remove('is-web')
     } else {
         body.classList.add('is-web');
         body.classList.remove('is-pwa');
-        if (pathname.includes('settings.html')) {
+        if (window.location.pathname.includes('settings.html')) {
             window.location.replace('index.html');
             return
         }
@@ -20,15 +19,20 @@ function detectEnvironment() {
 }
 
 function applyConfigValues() {
+    var config = (typeof APP_CONFIG !== 'undefined' && APP_CONFIG) ? APP_CONFIG : {};
+
     function resolve(path) {
         return path.split('.').reduce(function(obj, key) {
             return obj != null && obj[key] !== undefined ? obj[key] : null
-        }, APP_CONFIG)
+        }, config)
     }
     document.querySelectorAll('[data-config-href]').forEach(function(el) {
         var key = el.dataset.configHref;
         var value = resolve(key);
-        if (!value) return;
+        if (!value) {
+            if (el.tagName === 'A') el.hidden = !0;
+            return
+        }
         if (key === 'email') {
             el.href = 'mailto:' + value
         } else if (key === 'phone1' || key === 'phone2') {
@@ -44,23 +48,44 @@ function applyConfigValues() {
 }
 
 function initTheme() {
-    var saved = localStorage.getItem('theme');
+    var saved = null;
+    try {
+        saved = localStorage.getItem('theme')
+    } catch (err) {}
     var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
     var theme = saved || (prefersDark ? 'dark' : 'light');
     document.documentElement.setAttribute('data-theme', theme);
     _updateThemeIcon(theme)
 }
+var ICON_SPRITE = 'assets/icons/icons.svg#i-';
+
+function setIcon(el, name) {
+    if (!el) return;
+    var use = el.querySelector ? el.querySelector('use') : null;
+    if (use) use.setAttribute('href', ICON_SPRITE + name)
+}
+
+function makeIcon(name, cls) {
+    var NS = 'http://www.w3.org/2000/svg';
+    var svg = document.createElementNS(NS, 'svg');
+    svg.setAttribute('class', cls ? 'icon ' + cls : 'icon');
+    svg.setAttribute('aria-hidden', 'true');
+    var use = document.createElementNS(NS, 'use');
+    use.setAttribute('href', ICON_SPRITE + name);
+    svg.appendChild(use);
+    return svg
+}
 
 function _updateThemeIcon(theme) {
     var isDark = theme === 'dark';
-    var iconCls = isDark ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
+    var iconName = isDark ? 'sun' : 'moon';
     [
         ['theme-icon', 'theme-label', 'Modo oscuro', 'Modo claro'],
         ['nav-theme-icon', 'nav-theme-label', 'Oscuro', 'Claro'],
         ['mobile-theme-icon', 'mobile-theme-label', 'Oscuro', 'Claro']
     ].forEach(function(g) {
         var ic = document.getElementById(g[0]);
-        if (ic) ic.className = iconCls;
+        setIcon(ic, iconName);
         var lb = document.getElementById(g[1]);
         if (lb) lb.textContent = isDark ? g[2] : g[3]
     });
@@ -71,18 +96,24 @@ function _updateThemeIcon(theme) {
 function toggleTheme() {
     var current = document.documentElement.getAttribute('data-theme');
     var next = current === 'dark' ? 'light' : 'dark';
-    localStorage.setItem('theme', next);
+    try {
+        localStorage.setItem('theme', next)
+    } catch (err) {}
     document.documentElement.setAttribute('data-theme', next);
     _updateThemeIcon(next)
 }
 
 function makeToast(message, opts) {
     opts = opts || {};
+    if (opts.id) {
+        var existing = document.getElementById(opts.id);
+        if (existing) existing.remove()
+    }
     var hasAction = !!opts.actionLabel;
     var toast = document.createElement('div');
     if (opts.id) toast.id = opts.id;
     var layout = hasAction ? 'display:flex;align-items:center;gap:.75rem;padding:.6rem .75rem .6rem 1.25rem;' : 'padding:.75rem 1.25rem;pointer-events:none;';
-    var bottom = document.body.classList.contains('is-pwa') ? 'calc(var(--tabbar-height) + 1rem + env(safe-area-inset-bottom))' : 'calc(2rem + env(safe-area-inset-bottom))';
+    var bottom = document.body.classList.contains('is-pwa') ? 'calc(var(--tabbar-height) + max(1rem, env(safe-area-inset-bottom)) + 1rem)' : 'calc(2rem + env(safe-area-inset-bottom))';
     toast.style.cssText = 'position:fixed;left:50%;bottom:' + bottom + ';' + 'transform:translateX(-50%) translateY(1rem);z-index:2000;' + 'max-width:calc(100% - 2rem);' + layout + 'background:var(--color-surface);color:var(--color-text-primary);' + 'border:1px solid var(--color-border);border-radius:var(--radius-pill);' + 'box-shadow:var(--shadow-card);font-family:var(--font-secondary);' + 'font-size:.9rem;font-weight:500;opacity:0;' + 'transition:opacity var(--motion-base) var(--ease-standard), transform var(--motion-base) var(--ease-standard);';
     if (hasAction) {
         var msg = document.createElement('span');
@@ -90,9 +121,9 @@ function makeToast(message, opts) {
         toast.appendChild(msg);
         var btn = document.createElement('button');
         btn.type = 'button';
-        btn.className = 'btn-primary-pill';
+        btn.className = 'btn btn-app btn-app--primary btn-app--compact';
         btn.textContent = opts.actionLabel;
-        btn.style.cssText = 'padding:.35rem .9rem;font-size:.85rem;white-space:nowrap;';
+        btn.style.whiteSpace = 'nowrap';
         btn.addEventListener('click', function() {
             if (typeof opts.onAction === 'function') opts.onAction(btn)
         });
@@ -134,14 +165,14 @@ function initServiceWorker() {
                 updateViaCache: 'none'
             }).then(function(registration) {
                 if (registration.waiting && navigator.serviceWorker.controller) {
-                    _maybeShowUpdateToast(registration, registration.waiting)
+                    _maybeShowUpdateToast(registration.waiting)
                 }
                 registration.addEventListener('updatefound', function() {
                     var newWorker = registration.installing;
                     if (newWorker) {
                         newWorker.addEventListener('statechange', function() {
                             if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
-                                _maybeShowUpdateToast(registration, newWorker)
+                                _maybeShowUpdateToast(newWorker)
                             }
                         })
                     }
@@ -159,9 +190,8 @@ function initServiceWorker() {
 }
 
 function initPersistentStorage() {
-    if (!navigator.storage || !navigator.storage.persist) return;
-    var isStandalone = isStandaloneMode();
-    if (!isStandalone) return;
+    if (!navigator.storage || typeof navigator.storage.persist !== 'function' || typeof navigator.storage.persisted !== 'function') return;
+    if (!isStandaloneMode()) return;
     navigator.storage.persisted().then(function(already) {
         if (already) return;
         navigator.storage.persist().catch(function() {})
@@ -213,10 +243,11 @@ function _isNewerVersion(candidate, current) {
     return !1
 }
 
-function _maybeShowUpdateToast(registration, worker) {
+function _maybeShowUpdateToast(worker) {
     if (document.getElementById('sw-update-toast')) return;
     _getWorkerVersion(worker).then(function(newVersion) {
-        var currentVersion = (typeof APP_CONFIG !== 'undefined' && APP_CONFIG && APP_CONFIG.appVersion) ? APP_CONFIG.appVersion : null;
+        var config = (typeof APP_CONFIG !== 'undefined' && APP_CONFIG) ? APP_CONFIG : {};
+        var currentVersion = config.appVersion || null;
         if (!_isNewerVersion(newVersion, currentVersion)) return;
         _showUpdateToast(worker)
     })
@@ -247,8 +278,7 @@ function _applyUpdate(worker, btn) {
     _swUpdateInitiated = !0;
     btn.disabled = !0;
     btn.setAttribute('aria-busy', 'true');
-    var spinnerClass = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'fa-solid fa-spinner me-1' : 'fa-solid fa-spinner fa-spin me-1';
-    btn.innerHTML = '<i class="' + spinnerClass + '" aria-hidden="true"></i>Actualizando…';
+    btn.innerHTML = '<svg class="icon icon-spin me-1" aria-hidden="true"><use href="' + ICON_SPRITE + 'loader-circle"></use></svg>Actualizando…';
     var toast = document.getElementById('sw-update-toast');
     var msg = toast ? toast.querySelector('span') : null;
     if (msg) msg.textContent = 'Aplicando actualización…';
@@ -264,7 +294,7 @@ function _applyUpdate(worker, btn) {
         if (msg) msg.textContent = 'Está tardando más de lo normal';
         btn.disabled = !1;
         btn.removeAttribute('aria-busy');
-        btn.innerHTML = '<i class="fa-solid fa-rotate-right me-1" aria-hidden="true"></i>Reintentar'
+        btn.innerHTML = '<svg class="icon me-1" aria-hidden="true"><use href="assets/icons/icons.svg#i-rotate-cw"></use></svg>Reintentar'
     }, 15000)
 }
 
@@ -298,7 +328,7 @@ function _markUpdateReady() {
     if (btn) {
         btn.disabled = !1;
         btn.removeAttribute('aria-busy');
-        btn.innerHTML = '<i class="fa-solid fa-house me-1" aria-hidden="true"></i>Abrir inicio'
+        btn.innerHTML = '<svg class="icon me-1" aria-hidden="true"><use href="assets/icons/icons.svg#i-house"></use></svg>Abrir inicio'
     }
 }
 
@@ -307,8 +337,7 @@ function _openUpdatedHome(btn) {
     window.location.replace('index.html')
 }
 
-function _restartApp(btn) {
-    if (btn) btn.disabled = !0;
+function _restartApp() {
     if (typeof trackEvent === 'function') trackEvent('pwa', 'update_restart');
     window.location.replace('splash.html')
 }
@@ -323,14 +352,13 @@ function isIOSStandaloneEligible() {
 var deferredPrompt = null;
 
 function initPWAInstall() {
-    var isIOS = isIOSStandaloneEligible();
     window.addEventListener('beforeinstallprompt', function(e) {
         e.preventDefault();
         deferredPrompt = e;
         setInstallUIVisible(!0);
         if (typeof trackEvent === 'function') trackEvent('pwa', 'install_prompted', installPlatform());
     });
-    if (isIOS) {
+    if (isIOSStandaloneEligible()) {
         setInstallUIVisible(!0)
     }
     window.addEventListener('appinstalled', function() {
@@ -338,19 +366,13 @@ function initPWAInstall() {
         setInstallUIVisible(!1);
         if (typeof trackEvent === 'function') trackEvent('pwa', 'installed', installPlatform());
     });
-    ['pwa-install-btn', 'nav-pwa-install-btn', 'mobile-pwa-install-btn'].forEach(function(id) {
+    ['nav-pwa-install-btn', 'mobile-pwa-install-btn'].forEach(function(id) {
         var b = document.getElementById(id);
         if (b) b.addEventListener('click', handlePWAInstallClick)
     });
 }
 
 function setInstallUIVisible(show) {
-    var btn = document.getElementById('pwa-install-btn');
-    if (btn) {
-        btn.style.display = show ? 'inline-flex' : 'none';
-        var row = btn.closest('.settings-install-row');
-        if (row) row.style.display = show ? 'flex' : 'none'
-    }
     var navItem = document.getElementById('nav-install-item');
     if (navItem) navItem.style.display = show ? 'block' : 'none';
     var navDivider = document.querySelector('.nav-install-divider');
@@ -372,7 +394,8 @@ function handlePWAInstallClick() {
                     trackEvent('pwa', 'install_dismissed', platform)
                 }
             }
-            deferredPrompt = null
+            deferredPrompt = null;
+            setInstallUIVisible(!1)
         })
     } else if (isIOS) {
         showIOSInstallModal()
@@ -382,6 +405,7 @@ function handlePWAInstallClick() {
 function showIOSInstallModal() {
     if (document.getElementById('ios-install-modal')) return;
     if (typeof trackEvent === 'function') trackEvent('pwa', 'ios_modal_shown', 'ios');
+    var config = (typeof APP_CONFIG !== 'undefined' && APP_CONFIG) ? APP_CONFIG : {};
     var overlay = document.createElement('div');
     overlay.id = 'ios-install-modal';
     overlay.setAttribute('role', 'dialog');
@@ -391,7 +415,7 @@ function showIOSInstallModal() {
     var panel = document.createElement('div');
     panel.setAttribute('tabindex', '-1');
     panel.style.cssText = 'background:var(--color-surface);border-radius:1.5rem;' + 'padding:1.75rem;width:100%;max-width:400px;' + 'color:var(--color-text-primary);font-family:var(--font-secondary),-apple-system,sans-serif;font-size:0.95rem;' + 'border:1px solid var(--color-border);' + 'box-shadow:var(--shadow-card);' + 'backdrop-filter:blur(20px) saturate(180%);' + '-webkit-backdrop-filter:blur(20px) saturate(180%);';
-    panel.innerHTML = '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.25rem;">' + '<strong id="ios-install-title" style="font-size:1.05rem;">Instalar ' + APP_CONFIG.appName + '</strong>' + '<button data-action="close-ios-install" aria-label="Cerrar" style="background:none;border:none;' + 'color:var(--color-text-muted);font-size:1.5rem;cursor:pointer;padding:0;line-height:1;">' + '&times;' + '</button>' + '</div>' + '<ol style="padding:0;list-style:none;margin:0;display:flex;flex-direction:column;gap:1.1rem;">' + '<li style="display:flex;align-items:center;gap:0.9rem;">' + '<i class="fa-solid fa-arrow-up-from-bracket" style="color:var(--color-brand);font-size:1.2rem;width:24px;text-align:center;flex-shrink:0;"></i>' + '<span>Toca el botón <strong>Compartir</strong> en Safari</span>' + '</li>' + '<li style="display:flex;align-items:center;gap:0.9rem;">' + '<i class="fa-solid fa-plus-square" style="color:var(--color-brand);font-size:1.2rem;width:24px;text-align:center;flex-shrink:0;"></i>' + '<span>Selecciona <strong>Agregar a pantalla de inicio</strong></span>' + '</li>' + '<li style="display:flex;align-items:center;gap:0.9rem;">' + '<i class="fa-solid fa-check" style="color:var(--color-brand);font-size:1.2rem;width:24px;text-align:center;flex-shrink:0;"></i>' + '<span>Toca <strong>Agregar</strong> para confirmar</span>' + '</li>' + '</ol>';
+    panel.innerHTML = '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.25rem;">' + '<strong id="ios-install-title" style="font-size:1.05rem;">Instalar ' + (config.appName || 'IBMty') + '</strong>' + '<button type="button" class="ctrl-app ctrl-app--ghost ctrl-app--md" data-action="close-ios-install" aria-label="Cerrar">' + '<svg class="icon" aria-hidden="true"><use href="' + ICON_SPRITE + 'x"></use></svg>' + '</button>' + '</div>' + '<ol style="padding:0;list-style:none;margin:0;display:flex;flex-direction:column;gap:1.1rem;">' + '<li style="display:flex;align-items:center;gap:0.9rem;">' + '<svg class="icon ios-install-step-icon" aria-hidden="true"><use href="assets/icons/icons.svg#i-share"></use></svg>' + '<span>Toca el botón <strong>Compartir</strong> en Safari</span>' + '</li>' + '<li style="display:flex;align-items:center;gap:0.9rem;">' + '<svg class="icon ios-install-step-icon" aria-hidden="true"><use href="assets/icons/icons.svg#i-square-plus"></use></svg>' + '<span>Selecciona <strong>Agregar a pantalla de inicio</strong></span>' + '</li>' + '<li style="display:flex;align-items:center;gap:0.9rem;">' + '<svg class="icon ios-install-step-icon" aria-hidden="true"><use href="assets/icons/icons.svg#i-check"></use></svg>' + '<span>Toca <strong>Agregar</strong> para confirmar</span>' + '</li>' + '</ol>';
     overlay.addEventListener('click', function(e) {
         if (e.target === overlay || e.target.closest('[data-action="close-ios-install"]')) closeIOSInstallModal();
     });
@@ -432,23 +456,28 @@ function closeIOSInstallModal() {
     if (restore && typeof restore.focus === 'function') restore.focus()
 }
 
+function handleCurrentTabClick(e) {
+    if (e.defaultPrevented || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return;
+    var item = e.target.closest('.tabbar-item[aria-current="page"]');
+    if (!item) return;
+    e.preventDefault();
+    window.scrollTo({
+        top: 0,
+        behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'
+    })
+}
+
 function setActiveNavItem() {
     var currentPage = document.body.dataset.page;
     if (!currentPage) return;
     var tabItems = document.querySelectorAll('#tabbar-pwa .tabbar-item');
+    var tabbar = document.getElementById('tabbar-pwa');
+    if (tabbar) tabbar.addEventListener('click', handleCurrentTabClick);
     tabItems.forEach(function(item) {
         var match = item.dataset.pageLink === currentPage;
         item.classList.toggle('active', match);
         if (match) {
-            item.setAttribute('aria-current', 'page');
-            item.addEventListener('click', function(e) {
-                e.preventDefault();
-                var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-                window.scrollTo({
-                    top: 0,
-                    behavior: reducedMotion ? 'auto' : 'smooth'
-                })
-            })
+            item.setAttribute('aria-current', 'page')
         } else {
             item.removeAttribute('aria-current')
         }
@@ -471,48 +500,27 @@ function setActiveNavItem() {
     })
 }
 
-function forceTabbarRepaint() {
-    var tabbar = document.getElementById('tabbar-pwa');
-    if (!tabbar || !document.body.classList.contains('is-pwa')) return;
-    var display = tabbar.style.display;
-    tabbar.style.display = 'none';
-    void tabbar.offsetHeight;
-    tabbar.style.display = display
-}
-
-function initTabbarStability() {
-    if (!document.getElementById('tabbar-pwa')) return;
-    window.addEventListener('pageshow', forceTabbarRepaint);
-    window.addEventListener('orientationchange', forceTabbarRepaint);
-    var resizeTicking = !1;
-    window.addEventListener('resize', function() {
-        if (resizeTicking) return;
-        resizeTicking = !0;
-        requestAnimationFrame(function() {
-            resizeTicking = !1;
-            forceTabbarRepaint()
-        })
-    });
-    document.addEventListener('visibilitychange', function() {
-        if (document.visibilityState === 'visible') forceTabbarRepaint()
-    })
-}
-
 function copyToClipboard(text, buttonElement) {
-    var originalHTML = buttonElement ? buttonElement.innerHTML : null;
+    var originalHTML = buttonElement ? (buttonElement._copyOriginalHTML === undefined ? buttonElement.innerHTML : buttonElement._copyOriginalHTML) : null;
+    if (buttonElement) buttonElement._copyOriginalHTML = originalHTML;
 
     function onSuccess() {
         if (!buttonElement) return;
-        buttonElement.innerHTML = '<i class="fa-solid fa-check me-1"></i>¡Copiado!';
-        setTimeout(function() {
-            buttonElement.innerHTML = originalHTML
-        }, 2000)
+        if (buttonElement._copyResetTimer) clearTimeout(buttonElement._copyResetTimer);
+        buttonElement.innerHTML = '<svg class="icon me-1" aria-hidden="true"><use href="assets/icons/icons.svg#i-check"></use></svg>¡Copiado!';
+        var resetTimer = setTimeout(function() {
+            buttonElement.innerHTML = originalHTML;
+            if (buttonElement._copyResetTimer !== resetTimer) return;
+            delete buttonElement._copyOriginalHTML;
+            delete buttonElement._copyResetTimer
+        }, 2000);
+        buttonElement._copyResetTimer = resetTimer
     }
 
     function onFailure() {
         console.warn('copyToClipboard: Clipboard API no disponible')
     }
-    if (navigator.clipboard && navigator.clipboard.writeText) {
+    if (navigator.clipboard && typeof navigator.clipboard.writeText === 'function') {
         navigator.clipboard.writeText(text).then(onSuccess).catch(onFailure)
     } else {
         onFailure()
@@ -540,7 +548,8 @@ function shareContent(title, text, url, imageUrl) {
 }
 
 function normalizeShareData(title, text, url) {
-    var shareTitle = normalizeShareText(title) || document.title || (typeof APP_CONFIG !== 'undefined' && APP_CONFIG.appName) || '';
+    var config = (typeof APP_CONFIG !== 'undefined' && APP_CONFIG) ? APP_CONFIG : {};
+    var shareTitle = normalizeShareText(title) || document.title || config.appName || '';
     var shareText = normalizeShareText(text);
     var shareUrl = normalizeShareUrl(url);
     return compactShareData({
@@ -708,17 +717,15 @@ function shareFileName(pathname, mimeType) {
 
 function shareNatively(shareData, fallbackData) {
     return navigator.share(shareData).then(function() {
-        trackShare('success', fallbackData);
-        forceTabbarRepaint()
+        trackShare('success', fallbackData)
     }).catch(function(err) {
         var name = err && err.name ? err.name : 'unknown';
         if (name === 'AbortError') {
             trackShare('cancel', fallbackData);
-            forceTabbarRepaint();
             return
         }
         trackShare('error_' + name, fallbackData);
-        return copyShareFallback(fallbackData, name).then(forceTabbarRepaint)
+        return copyShareFallback(fallbackData, name)
     })
 }
 
@@ -729,7 +736,7 @@ function copyShareFallback(data, reason) {
         showShareToast('Enlace copiado', {
             actionLabel: 'WhatsApp',
             onAction: function() {
-                openShareFallbackTarget('whatsapp', data)
+                openShareFallbackTarget(data)
             }
         });
         trackShare('copy_fallback_' + reason, data)
@@ -743,7 +750,7 @@ function copyShareFallback(data, reason) {
             showShareToast('No se pudo compartir el enlace')
         }
     }
-    if (navigator.clipboard && navigator.clipboard.writeText) {
+    if (navigator.clipboard && typeof navigator.clipboard.writeText === 'function') {
         return navigator.clipboard.writeText(fallbackText).then(onCopied).catch(onFailed)
     }
     onFailed();
@@ -759,21 +766,10 @@ function composeShareText(data) {
     return parts.join('\n\n')
 }
 
-function openShareFallbackTarget(target, data) {
+function openShareFallbackTarget(data) {
     var shareText = composeShareText(data);
     var encodedText = encodeURIComponent(shareText);
-    var encodedUrl = encodeURIComponent(data.url || window.location.href);
-    var encodedTitle = encodeURIComponent(data.title || document.title || '');
-    var fallbackUrls = {
-        whatsapp: 'https://wa.me/?text=' + encodedText,
-        telegram: 'https://t.me/share/url?url=' + encodedUrl + '&text=' + encodeURIComponent([data.title, data.text].filter(Boolean).join('\n\n')),
-        facebook: 'https://www.facebook.com/sharer/sharer.php?u=' + encodedUrl,
-        x: 'https://twitter.com/intent/tweet?url=' + encodedUrl + '&text=' + encodeURIComponent([data.title, data.text].filter(Boolean).join(' - ')),
-        linkedin: 'https://www.linkedin.com/sharing/share-offsite/?url=' + encodedUrl,
-        email: 'mailto:?subject=' + encodedTitle + '&body=' + encodedText
-    };
-    if (!fallbackUrls[target]) return;
-    window.open(fallbackUrls[target], '_blank', 'noopener,noreferrer')
+    window.open('https://wa.me/?text=' + encodedText, '_blank', 'noopener,noreferrer')
 }
 
 function trackShare(action, data) {
@@ -790,7 +786,7 @@ function showShareToast(message, opts) {
 function getShareUrlForTrigger(trigger) {
     var explicitUrl = (trigger.getAttribute('data-share-url') || '').trim();
     if (explicitUrl) return explicitUrl;
-    var card = trigger.closest('.card-ministerio[id]');
+    var card = trigger.closest('.swiper-slide .card-app[id]');
     if (card && card.id) {
         try {
             var cardUrl = new URL(window.location.href);
@@ -837,7 +833,9 @@ function initShareDelegation() {
 }
 
 function initWhatsAppLinks() {
-    var url = 'https://wa.me/' + APP_CONFIG.whatsappNumber;
+    var config = (typeof APP_CONFIG !== 'undefined' && APP_CONFIG) ? APP_CONFIG : {};
+    if (!config.whatsappNumber) return;
+    var url = 'https://wa.me/' + config.whatsappNumber;
     var fab = document.getElementById('whatsapp-fab');
     if (fab) fab.href = url;
     document.querySelectorAll('[data-action="open-whatsapp"]').forEach(function(el) {
@@ -846,7 +844,10 @@ function initWhatsAppLinks() {
 }
 
 function initWhatsAppFabToggle() {
-    var enabled = localStorage.getItem('whatsappFab') !== 'off';
+    var enabled = !0;
+    try {
+        enabled = localStorage.getItem('whatsappFab') !== 'off'
+    } catch (err) {}
     var fab = document.getElementById('whatsapp-fab');
     if (fab) fab.style.display = enabled ? '' : 'none';
     var toggle = document.getElementById('whatsapp-fab-toggle');
@@ -861,7 +862,9 @@ function initWhatsAppFabToggle() {
     render();
     toggle.addEventListener('click', function() {
         enabled = !enabled;
-        localStorage.setItem('whatsappFab', enabled ? 'on' : 'off');
+        try {
+            localStorage.setItem('whatsappFab', enabled ? 'on' : 'off')
+        } catch (err) {}
         if (fab) fab.style.display = enabled ? '' : 'none';
         render()
     })
@@ -878,8 +881,7 @@ function _validateField(field) {
 }
 
 function initFormValidation() {
-    var forms = document.querySelectorAll('form[data-validate]');
-    forms.forEach(function(form) {
+    document.querySelectorAll('form[data-validate]').forEach(function(form) {
         form.addEventListener('submit', function(e) {
             e.preventDefault();
             clearFormErrors(form);
@@ -1032,19 +1034,23 @@ function initImageFallbacks() {
 
 function initCookieBanner() {
     if (document.getElementById('splash-screen')) return;
-    if (localStorage.getItem('cookieConsent')) return;
+    try {
+        if (localStorage.getItem('cookieConsent')) return
+    } catch (err) {}
     if (document.getElementById('cookie-banner')) return;
     var banner = document.createElement('div');
     banner.id = 'cookie-banner';
     banner.className = 'cookie-banner';
     banner.setAttribute('role', 'region');
-    banner.setAttribute('aria-label', 'Aviso de cookies');
-    banner.innerHTML = '<p class="cookie-banner-text">Utilizamos cookies de Google Analytics para entender cómo se utiliza nuestro sitio y seguir mejorándolo. Al continuar navegando aceptas su uso. Consulta nuestro <a href="privacidad.html">Aviso de Privacidad</a>.</p>' + '<button type="button" class="btn-primary-pill cookie-banner-accept">Aceptar</button>';
+    banner.setAttribute('aria-labelledby', 'cookie-banner-title');
+    banner.innerHTML = '<span class="cookie-banner-icon" aria-hidden="true">' + '<svg class="cookie-banner-cookie" viewBox="0 0 32 32" role="presentation" focusable="false">' + '<circle cx="16" cy="16" r="13" fill="currentColor"/>' + '<g class="cookie-banner-chips">' + '<circle cx="11.6" cy="12.2" r="2.1"/>' + '<circle cx="20.6" cy="10.9" r="1.5"/>' + '<circle cx="19.9" cy="18.4" r="2.4"/>' + '<circle cx="11.2" cy="20.6" r="1.7"/>' + '<circle cx="16.1" cy="15.2" r="1.1"/>' + '</g>' + '</svg>' + '</span>' + '<div class="cookie-banner-body">' + '<h2 id="cookie-banner-title" class="cookie-banner-title">Usamos cookies</h2>' + '<p class="cookie-banner-text">Usamos cookies para mejorar un sitio que piensa en ti. Consulta el <a href="privacidad.html">Aviso de Privacidad</a>.</p>' + '</div>' + '<button type="button" class="btn btn-app btn-app--primary cookie-banner-accept">Aceptar</button>';
     document.body.appendChild(banner);
     document.body.classList.add('cookie-banner-open');
 
     function dismiss() {
-        localStorage.setItem('cookieConsent', 'accepted');
+        try {
+            localStorage.setItem('cookieConsent', 'accepted')
+        } catch (err) {}
         if (typeof startAnalytics === 'function') startAnalytics();
         if (typeof trackEvent === 'function') trackEvent('consent', 'cookies_accepted', 'banner');
         document.body.classList.remove('cookie-banner-open');
@@ -1075,7 +1081,6 @@ document.addEventListener('DOMContentLoaded', function() {
     initPWAInstall();
     setCurrentYear();
     setActiveNavItem();
-    initTabbarStability();
     initWhatsAppLinks();
     initWhatsAppFabToggle();
     initShareDelegation();

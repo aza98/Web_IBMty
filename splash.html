@@ -1,35 +1,45 @@
 <!DOCTYPE html>
-<html lang="es" class="splash-page">
+<html lang="es-MX" class="splash-page">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <script>
-        (function() {
-            var saved = localStorage.getItem('theme');
-            var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-            var theme = saved || (prefersDark ? 'dark' : 'light');
-            document.documentElement.setAttribute('data-theme', theme);
-        })();
-    </script>
+
+    <script>(function() { var saved = null; try { saved = localStorage.getItem('theme') } catch (err) {} var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches; var theme = saved || (prefersDark ? 'dark' : 'light'); document.documentElement.setAttribute('data-theme', theme); })();</script>
     <script src="js/pwa-launch.js"></script>
+
     <meta name="theme-color" content="#FFFFFF" media="(prefers-color-scheme: light)">
     <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
-    <meta name="robots" content="noindex, nofollow">
+
+    <title>Inicio de la app | IBMty</title>
+    <meta name="description" content="Pantalla de inicio de la aplicación IBMty para acceder rápidamente a recursos, mensajes y la comunidad de Iglesia Bautista de Monterrey en Nuevo León.">
+    <meta name="robots" content="noindex">
+
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="IBMty">
-    <meta property="og:title" content="Iglesia Bautista de Monterrey">
-    <meta property="og:description" content="Bienvenido a la app de la Iglesia Bautista de Monterrey.">
+
+    <meta property="og:title" content="Inicio de la app | IBMty">
+    <meta property="og:description" content="Pantalla de inicio de la aplicación IBMty para acceder rápidamente a recursos, mensajes y la comunidad de Iglesia Bautista de Monterrey en Nuevo León.">
     <meta property="og:type" content="website">
+    <meta property="og:image" content="https://www.ibmty.com/assets/images/extras/Bienvenida_desktop.webp">
+    <meta property="og:url" content="https://www.ibmty.com/splash.html">
+    <meta property="og:locale" content="es_MX">
+    <meta property="og:site_name" content="Iglesia Bautista de Monterrey">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Inicio de la app | IBMty">
+    <meta name="twitter:description" content="Pantalla de inicio de la aplicación IBMty para acceder rápidamente a recursos, mensajes y la comunidad de Iglesia Bautista de Monterrey en Nuevo León.">
+    <meta name="twitter:image" content="https://www.ibmty.com/assets/images/extras/Bienvenida_desktop.webp">
+
     <link rel="apple-touch-icon" href="assets/icons/IBMty_Icon_180.png">
     <link rel="icon" href="assets/icons/IBMty_Icon_32.ico">
     <link rel="manifest" href="manifest.json">
     <link rel="preload" href="assets/fonts/League_Spartan/static/LeagueSpartan-SemiBold.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/pages/splash.css">
-    <title>IBMty</title>
+
     <script src="config/config.js" defer></script>
     <script src="js/utils/analytics.js" defer></script>
     <script src="js/main.js" defer></script>
@@ -39,17 +49,17 @@
 </head>
 
 <body data-page="splash">
-    <div id="splash-screen" aria-labelledby="splash-title">
-        <div class="splash-content">
+    <main id="splash-screen" class="surface-base" aria-labelledby="splash-title">
+        <div class="splash-content composition composition--center">
             <div class="splash-logo-wrap">
-                <img id="splash-logo" src="assets/icons/Logo_IBMty.png" width="512" height="512" alt="">
+                <img id="splash-logo" src="assets/icons/IBMTY.svg" width="112" height="112" alt="IBMty">
             </div>
             <div id="splash-loader" class="splash-progress-bar" aria-hidden="true">
                 <div class="splash-progress-line"></div>
             </div>
-            <p id="splash-title" class="splash-subtitle" role="heading" aria-level="1">IBMTY</p>
+            <h1 id="splash-title" class="splash-subtitle micro-label">IBMty</h1>
         </div>
-    </div>
+    </main>
 </body>
 
 </html>

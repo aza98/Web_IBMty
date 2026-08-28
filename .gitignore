@@ -1,2 +1,14 @@
 .DS_Store
 **/.DS_Store
+
+# Development tooling — never shipped.
+# Mirrors the FTP denylist in .github/workflows/main.yml so that git and the
+# deploy sync cover the same paths. Both mechanisms are required.
+.claude/
+.claude/settings.local.json
+.agents/
+.codex/
+.gemini/
+.impeccable/
+node_modules/
+skills-lock.json

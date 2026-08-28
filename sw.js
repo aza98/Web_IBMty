@@ -1,7 +1,8 @@
+importScripts('config/config.js');
 try {
     importScripts('js/OneSignalSDK.sw.js')
 } catch (error) {}
-const APP_SW_VERSION = '7.0.0';
+const APP_SW_VERSION = APP_CONFIG.appVersion;
 self.addEventListener('message', (event) => {
     if (!event.data) return;
     if (event.data.type === 'SKIP_WAITING') self.skipWaiting();
@@ -62,6 +63,8 @@ if (workbox) {
         'gsap-public/minified/ScrollTrigger.min.js',
         'leaflet/dist/leaflet.js',
         'leaflet/dist/leaflet.css',
+        'assets/icons/icons.svg',
+        'assets/icons/IBMTY.svg',
         'assets/icons/Logo_IBMty.png',
         'assets/icons/IBMty_Logo_Mobile.webp',
         'assets/icons/IBMty_Logo_Desktop.webp',
@@ -69,8 +72,9 @@ if (workbox) {
         'assets/icons/IBMty_Icon_512.png',
         'assets/icons/icon-512-maskable.png',
         'assets/icons/IBMty_Icon_180.png',
-        'assets/icons/IBMty_Icon_32.png',
         'assets/icons/IBMty_Icon_32.ico',
+        'assets/images/extras/YouVersion_QR.png',
+        'assets/calendar/CIMA_2026.ics',
     ];
     workbox.precaching.precacheAndRoute(PRECACHE_URLS.map((url) => ({
         url,

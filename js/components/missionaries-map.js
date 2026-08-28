@@ -184,12 +184,12 @@ function _buildGroupItem(m) {
         img.src = m.image;
         img.addEventListener('error', function() {
             thumb.classList.add('missionary-group-thumb--empty');
-            thumb.innerHTML = '<i class="fa-solid fa-people-group" aria-hidden="true"></i>'
+            thumb.innerHTML = '<svg class="icon" aria-hidden="true"><use href="assets/icons/icons.svg#i-users"></use></svg>'
         });
         thumb.appendChild(img)
     } else {
         thumb.classList.add('missionary-group-thumb--empty');
-        thumb.innerHTML = '<i class="fa-solid fa-people-group" aria-hidden="true"></i>'
+        thumb.innerHTML = '<svg class="icon" aria-hidden="true"><use href="assets/icons/icons.svg#i-users"></use></svg>'
     }
     li.appendChild(thumb);
     var info = document.createElement('div');
@@ -207,7 +207,7 @@ function _buildGroupItem(m) {
     if (m.date) {
         var date = document.createElement('p');
         date.className = 'missionary-card-meta missionary-card-date';
-        date.innerHTML = '<i class="fa-regular fa-calendar" aria-hidden="true"></i>';
+        date.innerHTML = '<svg class="icon" aria-hidden="true"><use href="assets/icons/icons.svg#i-calendar"></use></svg>';
         date.appendChild(document.createTextNode(' ' + m.date));
         info.appendChild(date)
     }
@@ -219,9 +219,9 @@ function _buildPopupContent(g, map) {
     var items = g.items;
     var close = document.createElement('button');
     close.type = 'button';
-    close.className = 'popup-close';
+    close.className = 'ctrl-app ctrl-app--surface ctrl-app--md popup-close';
     close.setAttribute('aria-label', 'Cerrar');
-    close.innerHTML = '<i class="fa-solid fa-xmark" aria-hidden="true"></i>';
+    close.innerHTML = '<svg class="icon" aria-hidden="true"><use href="assets/icons/icons.svg#i-x"></use></svg>';
     close.addEventListener('click', function() {
         map.closePopup()
     });
@@ -264,7 +264,7 @@ function _buildPopupContent(g, map) {
     var fallback = document.createElement('div');
     fallback.className = 'missionary-card-fallback';
     fallback.setAttribute('aria-hidden', 'true');
-    fallback.innerHTML = '<i class="fa-solid fa-people-group"></i>';
+    fallback.innerHTML = '<svg class="icon" aria-hidden="true"><use href="assets/icons/icons.svg#i-users"></use></svg>';
     img.addEventListener('error', function() {
         media.classList.add('missionary-card-media--empty')
     });
@@ -288,14 +288,14 @@ function _buildPopupContent(g, map) {
     if (m.country) {
         var country = document.createElement('p');
         country.className = 'missionary-card-meta missionary-card-country';
-        country.innerHTML = '<i class="fa-solid fa-location-dot" aria-hidden="true"></i>';
+        country.innerHTML = '<svg class="icon" aria-hidden="true"><use href="assets/icons/icons.svg#i-map-pin"></use></svg>';
         country.appendChild(document.createTextNode(' ' + m.country));
         body.appendChild(country)
     }
     if (m.date) {
         var date = document.createElement('p');
         date.className = 'missionary-card-meta missionary-card-date';
-        date.innerHTML = '<i class="fa-regular fa-calendar" aria-hidden="true"></i>';
+        date.innerHTML = '<svg class="icon" aria-hidden="true"><use href="assets/icons/icons.svg#i-calendar"></use></svg>';
         date.appendChild(document.createTextNode(' ' + m.date));
         body.appendChild(date)
     }
@@ -306,7 +306,7 @@ function _buildPopupContent(g, map) {
 function _makeContinentBtn(label, count) {
     var b = document.createElement('button');
     b.type = 'button';
-    b.className = 'misioneros-continent-btn';
+    b.className = 'btn btn-app btn-app--secondary btn-app--compact misioneros-continent-btn';
     b.appendChild(document.createTextNode(label));
     var badge = document.createElement('span');
     badge.className = 'misioneros-continent-count';
@@ -367,6 +367,30 @@ function _initContinentNav(map, allBounds, byContinent, reducedMotion, isMobile)
     setActive(isMobile ? null : allBtn)
 }
 
+function _initTwoFingerPan(map, container) {
+    if (!window.matchMedia('(hover: none)').matches) return;
+    map.dragging.disable();
+
+    function endTouch(ev) {
+        if (ev.touches.length < 2) map.dragging.disable()
+    }
+    container.addEventListener('touchstart', function(ev) {
+        if (ev.touches.length > 1) {
+            map.dragging.enable()
+        } else {
+            map.dragging.disable()
+        }
+    }, {
+        passive: !0
+    });
+    container.addEventListener('touchend', endTouch, {
+        passive: !0
+    });
+    container.addEventListener('touchcancel', endTouch, {
+        passive: !0
+    })
+}
+
 function initMissionariesMap() {
     var container = document.getElementById('missionaries-map');
     if (!container || typeof L === 'undefined') return;
@@ -379,13 +403,18 @@ function initMissionariesMap() {
         markerZoomAnimation: !reducedMotion,
         minZoom: 2,
         maxBounds: WORLD_BOUNDS,
-        maxBoundsViscosity: 1.0
+        maxBoundsViscosity: 1.0,
+        zoomControl: !1
     });
+    L.control.zoom({
+        zoomInTitle: 'Acercar',
+        zoomOutTitle: 'Alejar'
+    }).addTo(map);
     var activeTheme = _currentMapTheme();
     var tileLayer = L.tileLayer(TILE_THEMES[activeTheme], TILE_OPTIONS).addTo(map);
-    var markerIcon = _pin('<span class="missionary-marker-pin">' + '<i class="fa-solid fa-location-dot" aria-hidden="true"></i>' + '</span>', 32);
+    var markerIcon = _pin('<span class="missionary-marker-pin">' + '<svg class="icon" aria-hidden="true"><use href="assets/icons/icons.svg#i-map-pin"></use></svg>' + '</span>', 44);
     var clusterIcon = function(n) {
-        return _pin('<span class="missionary-marker-pin missionary-marker-pin--cluster">' + n + '</span>', 34)
+        return _pin('<span class="missionary-marker-pin missionary-marker-pin--cluster">' + n + '</span>', 44)
     };
     var byContinent = {};
     var valid = MISSIONARIES.filter(function(m) {
@@ -406,7 +435,7 @@ function initMissionariesMap() {
             title: label,
             alt: label,
             keyboard: !0
-        }).addTo(map);
+        });
         marker.bindPopup(function() {
             return _buildPopupContent(g, map)
         }, {
@@ -414,18 +443,18 @@ function initMissionariesMap() {
             maxWidth: 280,
             autoPanPadding: [24, 24]
         });
-        var el = marker.getElement();
-        if (el) {
-            el.setAttribute('role', 'button');
+        marker.on('add', function() {
+            var el = marker.getElement();
+            if (!el) return;
             el.setAttribute('aria-label', label);
-            if (!el.hasAttribute('tabindex')) el.setAttribute('tabindex', '0');
             el.addEventListener('keydown', function(ev) {
-                if (ev.key === 'Enter' || ev.key === ' ' || ev.key === 'Spacebar') {
+                if (ev.key === ' ' || ev.key === 'Spacebar') {
                     ev.preventDefault();
                     marker.openPopup()
                 }
             })
-        }
+        });
+        marker.addTo(map);
         bounds.push(g.center)
     });
     if (isMobile) {
@@ -442,6 +471,9 @@ function initMissionariesMap() {
     } else {
         map.setView([20, 0], 2)
     }
+    map.whenReady(function() {
+        _initTwoFingerPan(map, container)
+    });
     if (bounds.length) {
         _initContinentNav(map, L.latLngBounds(bounds), byContinent, reducedMotion, isMobile)
     }
@@ -458,17 +490,19 @@ function initMissionariesMap() {
             if (srcEl) srcEl.focus();
         }
     });
-    var themeObserver = new MutationObserver(function() {
-        var next = _currentMapTheme();
-        if (next === activeTheme) return;
-        activeTheme = next;
-        map.removeLayer(tileLayer);
-        tileLayer = L.tileLayer(TILE_THEMES[next], TILE_OPTIONS).addTo(map)
-    });
-    themeObserver.observe(document.documentElement, {
-        attributes: !0,
-        attributeFilter: ['data-theme']
-    })
+    if (typeof MutationObserver !== 'undefined') {
+        var themeObserver = new MutationObserver(function() {
+            var next = _currentMapTheme();
+            if (next === activeTheme) return;
+            activeTheme = next;
+            map.removeLayer(tileLayer);
+            tileLayer = L.tileLayer(TILE_THEMES[next], TILE_OPTIONS).addTo(map)
+        });
+        themeObserver.observe(document.documentElement, {
+            attributes: !0,
+            attributeFilter: ['data-theme']
+        })
+    }
 }
 document.addEventListener('DOMContentLoaded', function() {
     if (document.getElementById('missionaries-map')) initMissionariesMap();

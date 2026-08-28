@@ -1,22 +1,23 @@
 var ANIM = {
-    duration: 0.7,
+    durationReveal: 0.42,
     durationFast: 0.35,
     durationExit: 0.2,
-    durationSlow: 1.2,
-    durationSplash: 1.0,
-    ease: 'power3.out',
-    easeSpring: 'back.out(1.4)',
+    durationSlow: 0.8,
+    ease: 'expo.out',
+    easeFeedback: 'power2.out',
     easeInOut: 'power2.inOut',
+    easeLinear: 'none',
     stagger: 0.1,
+    staggerCap: 0.6,
     staggerWords: 0.04,
     delayChrome: 0.1,
-    delayHero: 0.2,
+    heroLead: 0.18,
+    heroAction: 0.28,
     scrollStart: 'top 85%',
+    scrollStartTall: 'top 70%',
     y: 40,
     ySm: 20,
-    yHero: 60,
     xSlide: 60,
-    xNudge: 20,
     scaleIn: 0.85,
     scaleExit: 0.9,
 };
@@ -26,6 +27,7 @@ var SCROLL_TRIGGER_DEFAULTS = {
 };
 
 function initAnimations() {
+    if (typeof ScrollTrigger === 'undefined') return;
     gsap.registerPlugin(ScrollTrigger);
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
         gsap.set('[data-gsap]', {
@@ -52,7 +54,7 @@ function initPageTransition() {
     gsap.from('main', {
         opacity: 0,
         y: ANIM.ySm,
-        duration: ANIM.duration,
+        duration: ANIM.durationReveal,
         ease: ANIM.ease,
         clearProps: 'all',
     });
@@ -97,31 +99,28 @@ function initPageTransition() {
 function initHeroAnimation() {
     if (!document.getElementById('hero-section')) return;
     var heroTl = gsap.timeline({
-        delay: ANIM.delayHero,
+        delay: ANIM.delayChrome,
         defaults: {
-            duration: ANIM.duration,
+            duration: ANIM.durationReveal,
             ease: ANIM.ease,
         },
     });
     heroTl.from('#hero-content h1', {
-        opacity: 0,
-        y: ANIM.yHero,
+        clipPath: 'inset(-15% 100% -15% 0%)',
         duration: ANIM.durationSlow,
-        ease: ANIM.easeSpring,
-    }).from('#hero-content p', {
+    }, 0).from('#hero-parallax-bg', {
+        scale: 1.06,
+        duration: ANIM.durationSlow,
+    }, 0).from('#hero-content p', {
         opacity: 0,
-        y: ANIM.y,
-    }, '-=0.6').from('#hero-content .btn-primary-pill', {
+        y: ANIM.ySm,
+    }, ANIM.heroLead).from('#hero-content .btn-app', {
         opacity: 0,
-        x: -ANIM.xNudge,
-        ease: ANIM.easeSpring,
-    }, '-=0.4').from('#scroll-indicator', {
-        opacity: 0,
-        clearProps: 'opacity',
-    }, '-=0.2');
+        y: ANIM.ySm,
+    }, ANIM.heroAction);
     gsap.to('#hero-parallax-bg', {
         yPercent: 30,
-        ease: 'none',
+        ease: ANIM.easeLinear,
         scrollTrigger: {
             trigger: '#hero-section',
             start: 'top top',
@@ -134,29 +133,24 @@ function initHeroAnimation() {
 function initSalvacionHero() {
     if (!document.querySelector('.salvacion-hero')) return;
     var heroTl = gsap.timeline({
-        delay: ANIM.delayHero,
+        delay: ANIM.delayChrome,
         defaults: {
-            duration: ANIM.duration,
+            duration: ANIM.durationReveal,
         },
     });
-    heroTl.from('.salvacion-hero .badge-outlined', {
-        autoAlpha: 0,
-        y: ANIM.ySm,
-        ease: ANIM.ease,
-    }).from('.salvacion-hero-title', {
-        autoAlpha: 0,
-        y: ANIM.yHero,
+    heroTl.from('.salvacion-hero-title', {
+        clipPath: 'inset(-15% 100% -15% 0%)',
         duration: ANIM.durationSlow,
-        ease: ANIM.easeSpring,
-    }, '-=0.4').from('.salvacion-hero-lead', {
+        ease: ANIM.ease,
+    }, 0).from('.salvacion-hero .badge-outlined', {
         autoAlpha: 0,
         y: ANIM.ySm,
         ease: ANIM.ease,
-    }, '-=0.6').from('.salvacion-hero .scroll-hint', {
+    }, 0).from('.salvacion-hero-lead', {
         autoAlpha: 0,
-        duration: ANIM.durationFast,
-        clearProps: 'opacity,visibility',
-    }, '-=0.2')
+        y: ANIM.ySm,
+        ease: ANIM.ease,
+    }, ANIM.heroLead)
 }
 
 function initScrollAnimations() {
@@ -171,19 +165,20 @@ function initScrollAnimations() {
             x: -ANIM.xSlide
         },
         'scale-up': {
-            scale: ANIM.scaleIn,
-            ease: ANIM.easeSpring
+            scale: ANIM.scaleIn
         }
     };
     Object.keys(SCROLL_VARIANTS).forEach(function(kind) {
         gsap.utils.toArray('[data-gsap="' + kind + '"]').forEach(function(el) {
             gsap.from(el, Object.assign({
                 opacity: 0,
-                duration: ANIM.duration,
+                duration: ANIM.durationReveal,
                 ease: ANIM.ease,
                 scrollTrigger: Object.assign({
                     trigger: el
-                }, SCROLL_TRIGGER_DEFAULTS)
+                }, SCROLL_TRIGGER_DEFAULTS, {
+                    start: _revealStart(el)
+                })
             }, SCROLL_VARIANTS[kind]))
         })
     });
@@ -191,16 +186,67 @@ function initScrollAnimations() {
         gsap.from(container.children, {
             opacity: 0,
             y: ANIM.y,
-            duration: ANIM.duration,
+            duration: ANIM.durationReveal,
             ease: ANIM.ease,
-            stagger: ANIM.stagger,
+            stagger: Math.min(ANIM.stagger, ANIM.staggerCap / container.children.length),
             scrollTrigger: Object.assign({
                 trigger: container
-            }, SCROLL_TRIGGER_DEFAULTS),
+            }, SCROLL_TRIGGER_DEFAULTS, {
+                start: _revealStart(container)
+            }),
         })
     });
+    initClipReveals();
+    initScrollLinked();
     initSalvacionTimeline();
     initCollapseRefresh()
+}
+
+function _revealStart(el) {
+    return function() {
+        return el.offsetHeight > window.innerHeight * 0.8 ? ANIM.scrollStartTall : ANIM.scrollStart
+    }
+}
+
+function initClipReveals() {
+    var wipe = function(el, trigger) {
+        gsap.from(el, {
+            clipPath: 'inset(-15% 100% -15% 0%)',
+            duration: ANIM.durationReveal,
+            ease: ANIM.ease,
+            scrollTrigger: Object.assign({
+                trigger: trigger || el
+            }, SCROLL_TRIGGER_DEFAULTS, {
+                start: _revealStart(trigger || el)
+            }),
+        })
+    };
+    gsap.utils.toArray('.section-heading-title').forEach(function(el) {
+        wipe(el, el.closest('.section-heading') || el)
+    });
+    gsap.utils.toArray('.misioneros-legend').forEach(function(el) {
+        wipe(el)
+    })
+}
+
+function initScrollLinked() {
+    var histImg = document.querySelector('.historia-img img');
+    if (!histImg) return;
+    gsap.fromTo(histImg, {
+        clipPath: 'inset(0% 0% 100% 0%)',
+        scale: 1.08,
+    }, {
+        clipPath: 'inset(0% 0% 0% 0%)',
+        scale: 1,
+        ease: ANIM.easeLinear,
+        scrollTrigger: {
+            trigger: '.historia-media',
+            start: 'top 90%',
+            end: 'top 45%',
+            scrub: .5,
+            invalidateOnRefresh: !0,
+        },
+    })
 }
 
 function initSalvacionTimeline() {
@@ -221,25 +267,25 @@ function initSalvacionTimeline() {
                 scale: 0,
                 opacity: 0,
                 duration: ANIM.durationFast,
-                ease: ANIM.easeSpring,
+                ease: ANIM.ease,
             })
         }
         var cardPos = node ? '-=0.3' : 0;
         if (innerImg) {
             tl.from(card, {
                 y: ANIM.y,
-                duration: ANIM.duration,
+                duration: ANIM.durationReveal,
                 ease: ANIM.ease,
             }, cardPos).from(innerImg, {
                 scale: 1.15,
                 opacity: 0,
-                duration: ANIM.duration + 0.1,
+                duration: ANIM.durationReveal + 0.1,
                 ease: ANIM.ease,
             }, '-=0.6')
         } else {
             tl.from(card, {
                 y: ANIM.y,
-                duration: ANIM.duration,
+                duration: ANIM.durationReveal,
                 ease: ANIM.ease,
             }, cardPos)
         }
@@ -261,7 +307,9 @@ function initSectionHeadingAnimations() {
         var tl = gsap.timeline({
             scrollTrigger: Object.assign({
                 trigger: heading
-            }, SCROLL_TRIGGER_DEFAULTS),
+            }, SCROLL_TRIGGER_DEFAULTS, {
+                start: _revealStart(heading)
+            }),
             defaults: {
                 ease: ANIM.ease,
             },
@@ -270,7 +318,7 @@ function initSectionHeadingAnimations() {
             tl.from(lead, {
                 opacity: 0,
                 y: ANIM.ySm,
-                duration: ANIM.duration,
+                duration: ANIM.durationReveal,
             })
         }
         if (desc) {
@@ -289,13 +337,13 @@ function initTextSplitAnimations() {
         if (el.closest('#hero-section') || el.closest('.salvacion-hero') || el.closest('.section-heading') || el.querySelector('button') || el.querySelector('a')) return;
         if (el.children.length > 0) return;
         var words = el.textContent.trim().split(/\s+/);
-        if (words.length === 0 || (words.length === 1 && words[0] === '')) return;
+        if (!words[0]) return;
         el.innerHTML = words.map(function(w) {
             return '<span class="sv-wrap"><span class="sv-inner">' + w + '</span></span>'
         }).join(' ');
         gsap.from(el.querySelectorAll('.sv-inner'), {
             y: '110%',
-            duration: ANIM.duration,
+            duration: ANIM.durationReveal,
             stagger: {
                 each: ANIM.staggerWords,
                 from: 'start'
@@ -303,7 +351,9 @@ function initTextSplitAnimations() {
             ease: ANIM.ease,
             scrollTrigger: Object.assign({
                 trigger: el
-            }, SCROLL_TRIGGER_DEFAULTS),
+            }, SCROLL_TRIGGER_DEFAULTS, {
+                start: _revealStart(el)
+            }),
         })
     })
 }
@@ -311,13 +361,17 @@ function initTextSplitAnimations() {
 function initNavbarAnimation() {
     var navbar = document.getElementById('navbar-web');
     if (!navbar) return;
-    if (!sessionStorage.getItem('navIntroShown')) {
-        sessionStorage.setItem('navIntroShown', '1');
+    var navIntroShown = !1;
+    try {
+        navIntroShown = !!sessionStorage.getItem('navIntroShown');
+        if (!navIntroShown) sessionStorage.setItem('navIntroShown', '1')
+    } catch (err) {}
+    if (!navIntroShown) {
         gsap.from(navbar, {
             y: -80,
             autoAlpha: 0,
-            duration: ANIM.duration,
-            ease: ANIM.easeSpring,
+            duration: ANIM.durationReveal,
+            ease: ANIM.ease,
             delay: ANIM.delayChrome,
         })
     }
@@ -329,7 +383,7 @@ function initNavbarAnimation() {
                     y: 0,
                     autoAlpha: 1,
                     duration: ANIM.durationFast,
-                    ease: ANIM.ease,
+                    ease: ANIM.easeFeedback,
                     overwrite: 'auto',
                 })
             } else {
@@ -337,7 +391,7 @@ function initNavbarAnimation() {
                     y: -100,
                     autoAlpha: 0,
                     duration: ANIM.durationFast,
-                    ease: ANIM.ease,
+                    ease: ANIM.easeFeedback,
                     overwrite: 'auto',
                 })
             }
@@ -348,13 +402,14 @@ function initNavbarAnimation() {
             y: 0,
             autoAlpha: 1,
             duration: ANIM.durationFast,
-            ease: ANIM.ease,
+            ease: ANIM.easeFeedback,
             overwrite: 'auto',
         })
     })
 }
 
 function initModalAnimations() {
+    if (typeof bootstrap === 'undefined' || !bootstrap.Modal) return;
     document.querySelectorAll('.modal').forEach(function(modalEl) {
         modalEl.addEventListener('show.bs.modal', function() {
             gsap.set(modalEl.querySelector('.modal-dialog'), {
@@ -368,8 +423,8 @@ function initModalAnimations() {
                 scale: 1,
                 opacity: 1,
                 y: 0,
-                duration: ANIM.duration,
-                ease: ANIM.easeSpring,
+                duration: ANIM.durationReveal,
+                ease: ANIM.ease,
             })
         });
         modalEl.addEventListener('hide.bs.modal', function(e) {
@@ -407,13 +462,13 @@ function goToIndex() {
 }
 
 function initSplashFailsafe() {
-    setTimeout(goToIndex, 4500)
+    setTimeout(goToIndex, 2500)
 }
 
 function initSplashAnimation() {
     if (!document.getElementById('splash-screen')) return;
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-        setTimeout(goToIndex, 400);
+        setTimeout(goToIndex, 200);
         return
     }
     var splashTl = gsap.timeline({
@@ -428,20 +483,20 @@ function initSplashAnimation() {
     });
     splashTl.from('#splash-logo', {
         opacity: 0,
-        scale: 0.6,
-        duration: ANIM.duration,
-        ease: ANIM.easeSpring,
+        scale: 0.92,
+        duration: ANIM.durationReveal,
+        ease: ANIM.easeFeedback,
     }).from('#splash-loader', {
         opacity: 0,
-        duration: ANIM.durationFast,
-    }, '-=0.2').to('.splash-progress-line', {
+        duration: ANIM.durationExit,
+    }, '-=0.15').to('.splash-progress-line', {
         scaleX: 1,
-        duration: ANIM.durationSplash,
+        duration: 0.45,
         ease: ANIM.ease,
     }, '-=0.1').from('.splash-subtitle', {
         opacity: 0,
-        y: 6,
-        duration: ANIM.duration,
+        y: 4,
+        duration: ANIM.durationReveal,
         ease: ANIM.ease,
     }, '<')
 }
@@ -449,10 +504,9 @@ function initSplashAnimation() {
 function initHintAnimations() {
     var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    function setupHint(hintEl, observeEl, stopTarget, stopEvents, options) {
-        if (!hintEl || !observeEl) return;
+    function setupHint(hintEl, observeEl, stopTarget, stopEvents) {
+        if (!hintEl || !observeEl || reduce || typeof IntersectionObserver === 'undefined') return;
         var interacted = !1;
-        var threshold = (options && options.threshold) || 0.3;
 
         function stop() {
             interacted = !0;
@@ -493,7 +547,7 @@ function initHintAnimations() {
                 }
             })
         }, {
-            threshold: threshold
+            threshold: 0.3
         });
         io.observe(observeEl)
     }
@@ -525,7 +579,7 @@ function initHintAnimations() {
         var mapHint = document.createElement('div');
         mapHint.className = 'hint map-hint';
         mapHint.setAttribute('aria-hidden', 'true');
-        mapHint.innerHTML = '<i class="fa-solid fa-hand-pointer" aria-hidden="true"></i>Toca los pines o haz zoom';
+        mapHint.innerHTML = '<svg class="icon" aria-hidden="true"><use href="assets/icons/icons.svg#i-pointer"></use></svg>Toca los pines o haz zoom';
         mapEl.appendChild(mapHint);
         setupHint(mapHint, mapEl, mapEl, ['pointerdown', 'keydown'])
     }
@@ -533,7 +587,11 @@ function initHintAnimations() {
 document.addEventListener('DOMContentLoaded', function() {
     var splash = document.getElementById('splash-screen');
     if (splash) initSplashFailsafe();
-    if (typeof gsap === 'undefined') return;
+    if (typeof gsap === 'undefined') {
+        var progress = splash ? splash.querySelector('.splash-progress-line') : null;
+        if (progress) progress.style.transform = 'scaleX(1)';
+        return
+    }
     initAnimations();
     initHintAnimations();
     if (splash) initSplashAnimation()

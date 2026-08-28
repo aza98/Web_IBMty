@@ -1,47 +1,50 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es-MX">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <script>
-        (function() {
-            var saved = localStorage.getItem('theme');
-            var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-            var theme = saved || (prefersDark ? 'dark' : 'light');
-            document.documentElement.setAttribute('data-theme', theme);
-        })();
-    </script>
+
+    <script>(function() { var saved = null; try { saved = localStorage.getItem('theme') } catch (err) {} var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches; var theme = saved || (prefersDark ? 'dark' : 'light'); document.documentElement.setAttribute('data-theme', theme); })();</script>
     <script src="js/pwa-launch.js"></script>
-    <title>Nosotros — IBMty</title>
+
+    <title>Nosotros | Iglesia Bautista de Monterrey</title>
     <link rel="canonical" href="https://www.ibmty.com/nosotros.html">
-    <meta name="description" content="Conoce nuestra misión, historia y equipo de líderes en IBMty, Iglesia de Monterrey.">
+    <meta name="description" content="Conoce la misión, visión, historia, líderes, ministerios y formas de contacto de la Iglesia Bautista de Monterrey, comunidad cristiana IBMty en Nuevo León.">
+
     <meta name="theme-color" content="#00C0F6">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="IBMty">
+
     <link rel="apple-touch-icon" href="assets/icons/IBMty_Icon_180.png">
     <link rel="icon" href="assets/icons/IBMty_Icon_32.ico">
     <link rel="manifest" href="manifest.json">
+
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Nosotros — IBMty">
-    <meta property="og:description" content="Conoce nuestra misión, historia y equipo de líderes en IBMty, Iglesia de Monterrey.">
+    <meta property="og:title" content="Nosotros | Iglesia Bautista de Monterrey">
+    <meta property="og:description" content="Conoce la misión, visión, historia, líderes, ministerios y formas de contacto de la Iglesia Bautista de Monterrey, comunidad cristiana IBMty en Nuevo León.">
     <meta property="og:image" content="https://www.ibmty.com/assets/images/extras/Bienvenida_desktop.webp">
     <meta property="og:url" content="https://www.ibmty.com/nosotros.html">
+    <meta property="og:locale" content="es_MX">
+    <meta property="og:site_name" content="Iglesia Bautista de Monterrey">
+
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Nosotros — IBMty">
-    <meta name="twitter:description" content="Conoce nuestra misión, historia y equipo de líderes en IBMty, Iglesia de Monterrey.">
+    <meta name="twitter:title" content="Nosotros | Iglesia Bautista de Monterrey">
+    <meta name="twitter:description" content="Conoce la misión, visión, historia, líderes, ministerios y formas de contacto de la Iglesia Bautista de Monterrey, comunidad cristiana IBMty en Nuevo León.">
     <meta name="twitter:image" content="https://www.ibmty.com/assets/images/extras/Bienvenida_desktop.webp">
+
     <link rel="preload" href="assets/fonts/League_Spartan/static/LeagueSpartan-ExtraBold.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="assets/fonts/Poppins/Poppins-Regular.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12.2.0/swiper-bundle.min.css" integrity="sha384-+eoVPirEHy8XSrf7sRozx+2OTKCWm1qfVFWnQ7qiXW6vAb+GUXRw4gq7sU+hq6HG" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.3.0/css/all.min.css" integrity="sha384-sTlsophtwz/I4myskS3OIJf5VvEojkXKZyBTWZm0YD/K1pN7C5wpBPLyrsbr1SU2" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@14.0.6/swiper-bundle.min.css" integrity="sha384-Z7EHipse7OAStUUuE7MmNiMJUUPPZBpD51LImQjcnGL0W7BDPj1i0ucuXmthgLd3" crossorigin="anonymous">
     <link rel="stylesheet" href="leaflet/dist/leaflet.css">
+    <link rel="preload" href="assets/icons/icons.svg" as="image" type="image/svg+xml">
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/components/carousel.css">
     <link rel="stylesheet" href="css/pages/nosotros.css">
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous" defer></script>
     <script src="config/config.js" defer></script>
     <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
@@ -51,7 +54,7 @@
     <script src="gsap-public/minified/gsap.min.js" defer></script>
     <script src="gsap-public/minified/ScrollTrigger.min.js" defer></script>
     <script src="js/components/animations.js" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@12.2.0/swiper-bundle.min.js" integrity="sha384-TmUUNA9gRm9TspAqMh20CdxlcwkNFW3UyIOibSljonhpJ1UfGenJDyQvO/EbWwpW" crossorigin="anonymous" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@14.0.6/swiper-bundle.min.js" integrity="sha384-y7jhvQfshIEZF3HWcoFEkMyWeR1FZ80BCFIMOZam9Ua5vv5vzkfI4yz+TlxFgbFF" crossorigin="anonymous" defer></script>
     <script src="js/components/carousel.js" defer></script>
     <script src="js/pages/nosotros.js" defer></script>
     <script src="leaflet/dist/leaflet.js" defer></script>
@@ -60,65 +63,87 @@
 
 <body data-page="nosotros">
     <a class="skip-link visually-hidden-focusable" href="#main-content">Saltar al contenido</a>
+
     <nav id="navbar-web" class="navbar navbar-expand-lg fixed-top" aria-label="Navegación principal">
         <div class="container-fluid">
             <a class="navbar-brand" href="index.html">
-                <img src="assets/icons/IBMty_Logo_Mobile.webp" width="829" height="972" alt="IBMty" class="navbar-logo-mobile d-lg-none">
-                <img src="assets/icons/IBMty_Logo_Desktop.webp" width="1794" height="570" alt="IBMty" class="navbar-logo-desktop d-none d-lg-block">
+                <img class="navbar-logo-mobile d-lg-none" src="assets/icons/IBMty_Logo_Mobile.webp" width="829" height="972" alt="IBMty">
+                <img class="navbar-logo-desktop d-none d-lg-block" src="assets/icons/IBMty_Logo_Desktop.webp" width="1794" height="570" alt="IBMty">
             </a>
-            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#nav-links" aria-controls="nav-links" aria-expanded="false" aria-label="Abrir menú">
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#nav-links" aria-controls="nav-links" aria-expanded="false" aria-label="Mostrar u ocultar menú">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="nav-links">
+            <div id="nav-links" class="collapse navbar-collapse">
                 <ul class="navbar-nav ms-auto align-items-center gap-2">
                     <li class="nav-item">
                         <a class="nav-link d-flex align-items-center gap-2" href="index.html">
-                            <i class="fa-solid fa-house" aria-hidden="true"></i>Inicio
+                            <svg class="icon" aria-hidden="true">
+                                <use href="assets/icons/icons.svg#i-house"></use>
+                            </svg>Inicio
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link d-flex align-items-center gap-2" href="nosotros.html">
-                            <i class="fa-solid fa-church" aria-hidden="true"></i>Nosotros
+                            <svg class="icon" aria-hidden="true">
+                                <use href="assets/icons/icons.svg#i-church"></use>
+                            </svg>Nosotros
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link d-flex align-items-center gap-2" href="salvacion.html">
-                            <i class="fa-solid fa-cross" aria-hidden="true"></i>Salvación
+                            <svg class="icon" aria-hidden="true">
+                                <use href="assets/icons/icons.svg#i-cross"></use>
+                            </svg>Salvación
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link d-flex align-items-center gap-2" href="donativo.html">
-                            <i class="fa-solid fa-hand-holding-heart" aria-hidden="true"></i>Donativo
+                            <svg class="icon" aria-hidden="true">
+                                <use href="assets/icons/icons.svg#i-hand-heart"></use>
+                            </svg>Donativo
                         </a>
                     </li>
                     <li class="nav-item dropdown dropdown-settings d-none d-lg-block">
-                        <a class="nav-link dropdown-toggle d-flex align-items-center gap-2" href="#" id="desktop-settings-dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Opciones">
-                            <i class="fa-solid fa-gear" aria-hidden="true"></i>Ajustes
-                        </a>
+                        <button id="desktop-settings-dropdown" class="nav-link dropdown-toggle d-flex align-items-center gap-2" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <svg class="icon" aria-hidden="true">
+                                <use href="assets/icons/icons.svg#i-settings"></use>
+                            </svg>Ajustes
+                        </button>
                         <ul class="dropdown-menu dropdown-menu-end dropdown-menu-custom" aria-labelledby="desktop-settings-dropdown">
                             <li>
-                                <button class="dropdown-item" id="nav-theme-toggle" type="button">
+                                <button id="nav-theme-toggle" class="dropdown-item" type="button">
                                     <span class="d-flex align-items-center gap-2">
-                                        <i class="fa-solid fa-moon" id="nav-theme-icon" aria-hidden="true"></i><span>Tema</span>
+                                        <svg id="nav-theme-icon" class="icon" aria-hidden="true">
+                                            <use href="assets/icons/icons.svg#i-moon"></use>
+                                        </svg>
+                                        <span>Tema</span>
                                     </span>
-                                    <span class="dropdown-badge" id="nav-theme-label">Modo claro</span>
+                                    <span id="nav-theme-label" class="dropdown-badge">Modo claro</span>
                                 </button>
                             </li>
                             <li>
-                                <button class="dropdown-item" id="nav-notif-toggle" type="button">
+                                <button id="nav-notif-toggle" class="dropdown-item" type="button">
                                     <span class="d-flex align-items-center gap-2">
-                                        <i class="fa-solid fa-bell" id="nav-notif-icon" aria-hidden="true"></i><span>Notificaciones</span>
+                                        <svg id="nav-notif-icon" class="icon" aria-hidden="true">
+                                            <use href="assets/icons/icons.svg#i-bell"></use>
+                                        </svg>
+                                        <span>Notificaciones</span>
                                     </span>
-                                    <span class="dropdown-badge" id="nav-notif-label">Activar</span>
+                                    <span id="nav-notif-label" class="dropdown-badge">Activar</span>
                                 </button>
                             </li>
-                            <li><hr class="dropdown-divider nav-install-divider"></li>
+                            <li>
+                                <hr class="dropdown-divider nav-install-divider">
+                            </li>
                             <li id="nav-install-item">
-                                <button class="dropdown-item" id="nav-pwa-install-btn" type="button">
+                                <button id="nav-pwa-install-btn" class="dropdown-item" type="button">
                                     <span class="d-flex align-items-center gap-2">
-                                        <i class="fa-solid fa-download" aria-hidden="true"></i><span>Instalar app</span>
+                                        <svg class="icon" aria-hidden="true">
+                                            <use href="assets/icons/icons.svg#i-download"></use>
+                                        </svg>
+                                        <span>Aplicación</span>
                                     </span>
-                                    <span class="btn btn-primary-pill btn-sm py-1 px-3 fs-7">Instalar</span>
+                                    <span class="dropdown-badge">Instalar</span>
                                 </button>
                             </li>
                         </ul>
@@ -127,20 +152,30 @@
                         <span class="nav-link disabled fs-7 text-uppercase px-3 py-1 text-center">Ajustes</span>
                     </li>
                     <li class="nav-item d-lg-none w-100">
-                        <button class="nav-link w-100 justify-content-center gap-2" id="mobile-theme-toggle" type="button">
-                            <i class="fa-solid fa-moon" id="mobile-theme-icon" aria-hidden="true"></i><span>Tema:</span>
-                            <span class="dropdown-badge" id="mobile-theme-label">Modo claro</span>
+                        <button id="mobile-theme-toggle" class="nav-link w-100 justify-content-center gap-2" type="button">
+                            <svg id="mobile-theme-icon" class="icon" aria-hidden="true">
+                                <use href="assets/icons/icons.svg#i-moon"></use>
+                            </svg>
+                            <span>Tema:</span>
+                            <span id="mobile-theme-label" class="dropdown-badge">Modo claro</span>
                         </button>
                     </li>
-                    <li class="nav-item d-lg-none w-100" id="mobile-notif-item">
-                        <button class="nav-link w-100 justify-content-center gap-2" id="mobile-notif-toggle" type="button">
-                            <i class="fa-solid fa-bell" id="mobile-notif-icon" aria-hidden="true"></i><span>Notificaciones:</span>
-                            <span class="dropdown-badge" id="mobile-notif-label">Activar</span>
+                    <li id="mobile-notif-item" class="nav-item d-lg-none w-100">
+                        <button id="mobile-notif-toggle" class="nav-link w-100 justify-content-center gap-2" type="button">
+                            <svg id="mobile-notif-icon" class="icon" aria-hidden="true">
+                                <use href="assets/icons/icons.svg#i-bell"></use>
+                            </svg>
+                            <span>Notificaciones:</span>
+                            <span id="mobile-notif-label" class="dropdown-badge">Activar</span>
                         </button>
                     </li>
-                    <li class="nav-item d-lg-none w-100" id="mobile-install-item">
-                        <button class="nav-link w-100 justify-content-center gap-2" id="mobile-pwa-install-btn" type="button">
-                            <i class="fa-solid fa-download" aria-hidden="true"></i><span>Instalar app</span>
+                    <li id="mobile-install-item" class="nav-item d-lg-none w-100">
+                        <button id="mobile-pwa-install-btn" class="nav-link w-100 justify-content-center gap-2" type="button">
+                            <svg class="icon" aria-hidden="true">
+                                <use href="assets/icons/icons.svg#i-download"></use>
+                            </svg>
+                            <span>Aplicación:</span>
+                            <span class="dropdown-badge">Instalar</span>
                         </button>
                     </li>
                 </ul>
@@ -148,60 +183,76 @@
         </div>
     </nav>
 
-    <nav id="tabbar-pwa" class="tabbar-floating fixed-bottom d-flex justify-content-around align-items-center" aria-label="Navegación principal">
-        <a href="index.html" class="tabbar-item d-flex flex-column align-items-center" data-page-link="inicio">
-            <i class="fa-solid fa-house" aria-hidden="true"></i>
+    <nav id="tabbar-pwa" class="fixed-bottom d-flex justify-content-around align-items-center" aria-label="Navegación principal">
+        <a class="tabbar-item d-flex flex-column align-items-center" href="index.html" data-page-link="inicio">
+            <svg class="icon" aria-hidden="true">
+                <use href="assets/icons/icons.svg#i-house"></use>
+            </svg>
             <span>Inicio</span>
         </a>
-        <a href="nosotros.html" class="tabbar-item d-flex flex-column align-items-center" data-page-link="nosotros">
-            <i class="fa-solid fa-church" aria-hidden="true"></i>
+        <a class="tabbar-item d-flex flex-column align-items-center" href="nosotros.html" data-page-link="nosotros">
+            <svg class="icon" aria-hidden="true">
+                <use href="assets/icons/icons.svg#i-church"></use>
+            </svg>
             <span>Nosotros</span>
         </a>
-        <a href="salvacion.html" class="tabbar-item d-flex flex-column align-items-center" data-page-link="salvacion">
-            <i class="fa-solid fa-cross" aria-hidden="true"></i>
+        <a class="tabbar-item d-flex flex-column align-items-center" href="salvacion.html" data-page-link="salvacion">
+            <svg class="icon" aria-hidden="true">
+                <use href="assets/icons/icons.svg#i-cross"></use>
+            </svg>
             <span>Salvación</span>
         </a>
-        <a href="donativo.html" class="tabbar-item d-flex flex-column align-items-center" data-page-link="donativo">
-            <i class="fa-solid fa-hand-holding-heart" aria-hidden="true"></i>
+        <a class="tabbar-item d-flex flex-column align-items-center" href="donativo.html" data-page-link="donativo">
+            <svg class="icon" aria-hidden="true">
+                <use href="assets/icons/icons.svg#i-hand-heart"></use>
+            </svg>
             <span>Donativo</span>
         </a>
-        <a href="settings.html" class="tabbar-item d-flex flex-column align-items-center" data-page-link="settings">
-            <i class="fa-solid fa-gear" aria-hidden="true"></i>
+        <a class="tabbar-item d-flex flex-column align-items-center" href="settings.html" data-page-link="settings">
+            <svg class="icon" aria-hidden="true">
+                <use href="assets/icons/icons.svg#i-settings"></use>
+            </svg>
             <span>Ajustes</span>
         </a>
     </nav>
 
-    <a id="whatsapp-fab" class="whatsapp-fab" href="#" data-action="open-whatsapp" target="_blank" rel="noopener" aria-label="Contáctanos por WhatsApp">
-        <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+    <a id="whatsapp-fab" class="ctrl-app ctrl-app--float ctrl-app--fab" href="#" target="_blank" rel="noopener" aria-label="Contáctanos por WhatsApp">
+        <svg class="icon" aria-hidden="true">
+            <use href="assets/icons/icons.svg#i-brand-whatsapp"></use>
+        </svg>
     </a>
 
     <main id="main-content" tabindex="-1">
-        <section class="pg-hero hero-flush" aria-labelledby="nosotros-title">
+        <section class="pg-hero hero-flush surface-deep" aria-labelledby="nosotros-title">
             <div class="pg-hero-bg" aria-hidden="true">
                 <span class="pg-hero-blob pg-hero-blob--1"></span>
                 <span class="pg-hero-blob pg-hero-blob--2"></span>
             </div>
-            <div class="container pg-hero-content">
+            <div class="container pg-hero-content composition composition--start">
                 <div class="pg-hero-icon" aria-hidden="true">
-                    <i class="fa-solid fa-church"></i>
+                    <svg class="icon" aria-hidden="true">
+                        <use href="assets/icons/icons.svg#i-church"></use>
+                    </svg>
                 </div>
-                <div class="pg-hero-text">
-                    <h1 id="nosotros-title" class="pg-hero-title">Nuestro Propósito</h1>
-                    <p class="pg-hero-desc">Descubre la esencia que nos impulsa y nos define como iglesia</p>
+                <div class="pg-hero-text heading-group">
+                    <h1 id="nosotros-title" class="pg-hero-title heading-identity">Nuestro Propósito</h1>
+                    <p class="pg-hero-desc heading-description">Descubre la esencia que nos impulsa y nos define como iglesia</p>
                 </div>
             </div>
         </section>
-        <section id="filosofia" class="section-padding" aria-labelledby="filosofia-title">
+        <section id="filosofia" class="section-padding surface-base" aria-labelledby="filosofia-title">
             <div class="container">
-                <h2 id="filosofia-title" class="visually-hidden">Nuestra filosofía</h2>
+                <h2 id="filosofia-title" class="visually-hidden heading-chapter">Nuestra filosofía</h2>
                 <div class="row row-cols-1 row-cols-md-3 g-4" data-gsap="stagger-children">
                     <div class="col">
-                        <article class="card-app card-app--padded h-100 d-flex flex-column filosofia-card">
+                        <article class="card-app card-app--padded surface-raised h-100 d-flex flex-column filosofia-card">
                             <div class="filosofia-card-header">
                                 <div class="icon-box icon-box--md filosofia-icon-box" aria-hidden="true">
-                                    <i class="fa-solid fa-bullseye"></i>
+                                    <svg class="icon" aria-hidden="true">
+                                        <use href="assets/icons/icons.svg#i-target"></use>
+                                    </svg>
                                 </div>
-                                <h3 class="filosofia-card-title">Misión</h3>
+                                <h3 class="filosofia-card-title heading-local">Misión</h3>
                             </div>
                             <div class="filosofia-card-body">
                                 <p class="filosofia-body-label">Multiplicar ministros por todo Monterrey, México y el mundo.</p>
@@ -225,12 +276,14 @@
                         </article>
                     </div>
                     <div class="col">
-                        <article class="card-app card-app--padded h-100 d-flex flex-column filosofia-card">
+                        <article class="card-app card-app--padded surface-raised h-100 d-flex flex-column filosofia-card">
                             <div class="filosofia-card-header">
                                 <div class="icon-box icon-box--md filosofia-icon-box" aria-hidden="true">
-                                    <i class="fa-solid fa-eye"></i>
+                                    <svg class="icon" aria-hidden="true">
+                                        <use href="assets/icons/icons.svg#i-eye"></use>
+                                    </svg>
                                 </div>
-                                <h3 class="filosofia-card-title">Visión</h3>
+                                <h3 class="filosofia-card-title heading-local">Visión</h3>
                             </div>
                             <div class="filosofia-card-body">
                                 <p class="filosofia-body-label">Plan de crecimiento</p>
@@ -256,12 +309,14 @@
                         </article>
                     </div>
                     <div class="col">
-                        <article class="card-app card-app--padded h-100 d-flex flex-column filosofia-card">
+                        <article class="card-app card-app--padded surface-raised h-100 d-flex flex-column filosofia-card">
                             <div class="filosofia-card-header">
                                 <div class="icon-box icon-box--md filosofia-icon-box" aria-hidden="true">
-                                    <i class="fa-solid fa-heart"></i>
+                                    <svg class="icon" aria-hidden="true">
+                                        <use href="assets/icons/icons.svg#i-heart"></use>
+                                    </svg>
                                 </div>
-                                <h3 class="filosofia-card-title">Valores</h3>
+                                <h3 class="filosofia-card-title heading-local">Valores</h3>
                             </div>
                             <div class="filosofia-card-body">
                                 <p class="filosofia-body-label">Servimos y amamos con el mismo amor que Jesús nos ha mostrado.</p>
@@ -287,335 +342,418 @@
                 </div>
             </div>
         </section>
-        <section id="historia" class="section-padding" aria-labelledby="historia-title">
+        <section id="historia" class="section-padding surface-base" aria-labelledby="historia-title">
             <div class="container">
-                <div class="section-heading">
-                    <div class="section-heading-lead">
+                <div class="section-heading heading-group composition composition--center">
+                    <div class="section-heading-lead heading-lead">
                         <div class="section-heading-icon" aria-hidden="true">
-                            <i class="fa-solid fa-book-open"></i>
+                            <svg class="icon" aria-hidden="true">
+                                <use href="assets/icons/icons.svg#i-book-open"></use>
+                            </svg>
                         </div>
-                        <h2 id="historia-title" class="section-heading-title">Historia</h2>
+                        <h2 id="historia-title" class="section-heading-title heading-chapter">Historia</h2>
                     </div>
-                    <p class="section-heading-desc">Un camino de fe, servicio y relación que sigue creciendo día a día</p>
+                    <p class="section-heading-desc heading-description">Un camino de fe, servicio y relación que sigue creciendo día a día</p>
                 </div>
-                <div class="historia-layout">
-                    <div class="historia-stone" data-gsap="fade-right">
+                <div class="historia-layout composition composition--start">
+                    <div data-gsap="fade-right">
                         <p class="historia-year">1988</p>
                         <p class="historia-tagline">37 años sirviendo a Monterrey</p>
                         <svg class="historia-ridge" viewBox="0 0 320 40" aria-hidden="true" focusable="false" preserveAspectRatio="none">
                             <polyline points="0,38 50,38 105,16 150,28 205,10 260,38 320,38"></polyline>
                         </svg>
-                        <p class="historia-narrative text-muted-custom">La Iglesia Bautista de Monterrey ha proclamado el evangelio y formado seguidores de Jesús.
-                            Formamos parte de RIBBI (Red de Iglesias Bíblicas Bautistas Interdependientes), una red comprometida con la sana doctrina y la cooperación mutua.
-                        </p>
+                        <p class="historia-narrative text-muted-custom reading-width">La Iglesia Bautista de Monterrey ha proclamado el evangelio y formado seguidores de Jesús. Formamos parte de RIBBI (Red de Iglesias Bíblicas Bautistas Interdependientes), una red comprometida con la sana doctrina y la cooperación
+                            mutua. </p>
                     </div>
-                    <div class="historia-media" data-gsap="fade-left">
+                    <div class="historia-media">
                         <div class="historia-img">
-                            <img src="assets/images/extras/Historia.webp" width="1920" height="1080" alt="Dos miembros de la iglesia compartiendo la Biblia al aire libre" loading="lazy">
+                            <img src="assets/images/extras/Historia.webp" width="1920" height="1080" alt="Dos miembros de la iglesia compartiendo la Biblia al aire libre" loading="lazy" decoding="async">
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-        <section id="misioneros" class="section-padding" aria-labelledby="misioneros-title">
+        <section id="misioneros" class="section-padding section-padding--continuation surface-base" aria-labelledby="misioneros-title">
             <div class="container">
-                <div class="section-heading">
-                    <div class="section-heading-lead">
+                <div class="section-heading heading-group composition composition--center">
+                    <div class="section-heading-lead heading-lead">
                         <div class="section-heading-icon" aria-hidden="true">
-                            <i class="fa-solid fa-earth-americas"></i>
+                            <svg class="icon" aria-hidden="true">
+                                <use href="assets/icons/icons.svg#i-earth"></use>
+                            </svg>
                         </div>
-                        <h2 id="misioneros-title" class="section-heading-title">Máxima meta</h2>
+                        <h2 id="misioneros-title" class="section-heading-title heading-chapter">Máxima meta</h2>
                     </div>
-                    <blockquote class="misioneros-legend" data-gsap="fade-up">
+                    <blockquote class="misioneros-legend">
                         <p class="misioneros-legend-text">«Id por todo el mundo y predicad el evangelio a toda criatura.»</p>
                         <cite class="misioneros-legend-cite">Marcos 16:15</cite>
                     </blockquote>
                 </div>
-                <div id="missionaries-map" class="missionaries-map" role="region" aria-label="Mapa de las familias misioneras que apoyamos alrededor del mundo" data-gsap="fade-up"></div>
+                <div id="missionaries-map" class="missionaries-map surface-raised" role="region" aria-label="Mapa de las familias misioneras que apoyamos alrededor del mundo" data-gsap="fade-up"></div>
                 <div id="misioneros-continents" class="misioneros-continents" role="group" aria-label="Filtrar misioneros por continente" data-gsap="fade-up"></div>
             </div>
         </section>
-        <section id="lideres" class="section-padding" aria-labelledby="lideres-title">
+        <section id="lideres" class="section-padding section-padding--continuation surface-base" aria-labelledby="lideres-title">
             <div class="container">
-                <div class="section-heading">
-                    <div class="section-heading-lead">
+                <div class="section-heading heading-group composition composition--center">
+                    <div class="section-heading-lead heading-lead">
                         <div class="section-heading-icon" aria-hidden="true">
-                            <i class="fa-solid fa-users"></i>
+                            <svg class="icon" aria-hidden="true">
+                                <use href="assets/icons/icons.svg#i-users"></use>
+                            </svg>
                         </div>
-                        <h2 id="lideres-title" class="section-heading-title">Líderes y Ministerios</h2>
+                        <h2 id="lideres-title" class="section-heading-title heading-chapter">Líderes y Ministerios</h2>
                     </div>
-                    <p class="section-heading-desc">Personas con corazón dispuesto a servir, guiando a cada generación a conocer y seguir a Cristo</p>
+                    <p class="section-heading-desc heading-description">Personas con corazón dispuesto a servir, guiando a cada generación a conocer y seguir a Cristo</p>
                 </div>
                 <div class="carousel-clip">
                     <div class="hint carousel-hint" aria-hidden="true">
                         <span class="carousel-hint-label">Desliza</span>
-                        <i class="fa-solid fa-hand-pointer carousel-hint-hand"></i>
+                        <svg class="icon carousel-hint-hand" aria-hidden="true">
+                            <use href="assets/icons/icons.svg#i-pointer"></use>
+                        </svg>
                     </div>
-                    <div class="swiper" id="ministerios-swiper" data-gsap="fade-up" role="region" aria-roledescription="carrusel" aria-label="Líderes">
+                    <div id="ministerios-swiper" class="swiper" data-gsap="fade-up" role="region" aria-roledescription="carrusel" aria-label="Líderes y Ministerios">
                         <div class="swiper-wrapper">
                             <div class="swiper-slide">
-                                <div class="card-app text-center card-ministerio" id="ministerio-pastor-lider">
+                                <div id="ministerio-pastor-lider" class="card-app surface-raised text-center card-ministerio">
                                     <div class="card-avatar-wrapper">
-                                        <img src="assets/images/lideres/Lideres_Iglesia.webp" width="1920" height="1080" alt="Brian y Jaidy Brown, pastores líderes de IBMty" class="card-ministerio-img" loading="lazy">
-                                        <img src="assets/icons/Logo_IBMty.png" width="512" height="512" alt="" class="card-avatar">
+                                        <img class="card-ministerio-img" src="assets/images/lideres/Lideres_Iglesia.png" width="1920" height="1080" alt="Brian y Jaidy Brown, pastores líderes de IBMty" loading="lazy" decoding="async">
+                                        <img class="card-avatar" src="assets/icons/Logo_IBMty.png" width="512" height="512" alt="" loading="lazy" decoding="async">
                                     </div>
                                     <div class="card-ministerio-body">
-                                        <h3 class="mb-0 card-ministerio-name">Brian & Jaidy<br>Brown</h3>
+                                        <h3 class="mb-0 card-ministerio-name heading-local">Brian &amp; Jaidy<br>Brown</h3>
                                         <small class="card-ministerio-role">Pastor Líder</small>
                                         <p class="mt-2 mb-2 card-ministerio-desc">Comprometidos en enseñar la Palabra de Dios y acompañarte con sabiduría y amor en tu vida espiritual.</p>
                                         <div class="card-social-links">
-                                            <a href="https://www.facebook.com/IBMty/" class="card-social-link" target="_blank" rel="noopener" aria-label="Facebook">
-                                                <i class="fa-brands fa-facebook-f" aria-hidden="true"></i>
+                                            <a class="ctrl-app ctrl-app--ghost ctrl-app--md card-social-link" href="https://www.facebook.com/IBMty/" target="_blank" rel="noopener" aria-label="Facebook">
+                                                <svg class="icon" aria-hidden="true">
+                                                    <use href="assets/icons/icons.svg#i-brand-facebook"></use>
+                                                </svg>
                                             </a>
-                                            <a href="https://www.instagram.com/iglesiabautistademonterrey?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="card-social-link" target="_blank" rel="noopener" aria-label="Instagram">
-                                                <i class="fa-brands fa-instagram" aria-hidden="true"></i>
+                                            <a class="ctrl-app ctrl-app--ghost ctrl-app--md card-social-link" href="https://www.instagram.com/iglesiabautistademonterrey?utm_source=ig_web_button_share_sheet&amp;igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener" aria-label="Instagram">
+                                                <svg class="icon" aria-hidden="true">
+                                                    <use href="assets/icons/icons.svg#i-brand-instagram"></use>
+                                                </svg>
                                             </a>
-                                            <button type="button" class="card-social-link" data-share-image=".card-ministerio-img" data-share-title="Líderes Brian Brown &amp; Jaidy Brown" data-share-text="Estamos para servirte en la Iglesia Bautista de Monterrey" aria-label="Compartir información de Brian y Jaidy Brown">
-                                                <i class="fa-solid fa-share" aria-hidden="true"></i>
+                                            <button class="ctrl-app ctrl-app--ghost ctrl-app--md card-social-link" type="button" data-share-image=".card-ministerio-img" data-share-title="Pastores líderes de IBMty" data-share-text="Brian y Jaidy Brown sirven como pastores líderes de IBMty, ofreciendo enseñanza bíblica y acompañamiento espiritual para personas y familias que desean crecer en su fe." aria-label="Compartir información de Brian y Jaidy Brown">
+                                                <svg class="icon" aria-hidden="true">
+                                                    <use href="assets/icons/icons.svg#i-share-2"></use>
+                                                </svg>
                                             </button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="swiper-slide">
-                                <div class="card-app text-center card-ministerio" id="ministerio-adultos">
+                                <div id="ministerio-adultos" class="card-app surface-raised text-center card-ministerio">
                                     <div class="card-avatar-wrapper">
-                                        <img src="assets/images/lideres/Lideres_Adultos.webp" width="1920" height="1080" alt="Alberto y Mariana De Agüero con su familia" class="card-ministerio-img" loading="lazy">
-                                        <img src="assets/icons/Logo_Adultos.webp" width="500" height="500" alt="" class="card-avatar">
+                                        <img class="card-ministerio-img" src="assets/images/lideres/Lideres_Adultos.webp" width="1920" height="1080" alt="Alberto y Mariana De Agüero con su familia" loading="lazy" decoding="async">
+                                        <img class="card-avatar" src="assets/icons/Logo_Adultos.webp" width="500" height="500" alt="" loading="lazy" decoding="async">
                                     </div>
                                     <div class="card-ministerio-body">
-                                        <h3 class="mb-0 card-ministerio-name">Alberto &amp; Mariana<br>De Agüero</h3>
+                                        <h3 class="mb-0 card-ministerio-name heading-local">Alberto &amp; Mariana<br>De Agüero</h3>
                                         <small class="card-ministerio-role">Adultos</small>
                                         <p class="mt-2 mb-2 card-ministerio-desc">Para matrimonios y adultos que desean fortalecer su fe y reflejar a Cristo en su día a día.</p>
                                         <div class="card-ministerio-meta">
                                             <span class="card-ministerio-meta-item">
-                                                <i class="fa-solid fa-location-dot" aria-hidden="true"></i>Local 41
-                                            </span>
+                                                <svg class="icon" aria-hidden="true">
+                                                    <use href="assets/icons/icons.svg#i-map-pin"></use>
+                                                </svg>Local 41 </span>
                                             <span class="card-ministerio-meta-item">
-                                                <i class="fa-solid fa-clock" aria-hidden="true"></i>Viernes 8:00 PM
+                                                <svg class="icon" aria-hidden="true">
+                                                    <use href="assets/icons/icons.svg#i-clock"></use>
+                                                </svg>Viernes 8:00 PM
                                             </span>
                                         </div>
                                         <div class="card-social-links">
-                                            <a href="https://www.facebook.com/ministerioadultosibmty/" class="card-social-link" target="_blank" rel="noopener" aria-label="Facebook">
-                                                <i class="fa-brands fa-facebook-f" aria-hidden="true"></i>
+                                            <a class="ctrl-app ctrl-app--ghost ctrl-app--md card-social-link" href="https://www.facebook.com/ministerioadultosibmty/" target="_blank" rel="noopener" aria-label="Facebook">
+                                                <svg class="icon" aria-hidden="true">
+                                                    <use href="assets/icons/icons.svg#i-brand-facebook"></use>
+                                                </svg>
                                             </a>
-                                            <a href="https://www.instagram.com/adultosibmty?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="card-social-link" target="_blank" rel="noopener" aria-label="Instagram">
-                                                <i class="fa-brands fa-instagram" aria-hidden="true"></i>
+                                            <a class="ctrl-app ctrl-app--ghost ctrl-app--md card-social-link" href="https://www.instagram.com/adultosibmty?utm_source=ig_web_button_share_sheet&amp;igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener" aria-label="Instagram">
+                                                <svg class="icon" aria-hidden="true">
+                                                    <use href="assets/icons/icons.svg#i-brand-instagram"></use>
+                                                </svg>
                                             </a>
-                                            <button type="button" class="card-social-link" data-share-image=".card-ministerio-img" data-share-title="Líderes Alberto &amp; Mariana De Agüero" data-share-text="Ven y conoce al grupo de adultos en IBMty" aria-label="Compartir información de Alberto y Mariana De Agüero">
-                                                <i class="fa-solid fa-share" aria-hidden="true"></i>
+                                            <button class="ctrl-app ctrl-app--ghost ctrl-app--md card-social-link" type="button" data-share-image=".card-ministerio-img" data-share-title="Adultos en IBMty" data-share-text="✨ Adultos en IBMty: fortalece tu fe, tu matrimonio y tus relaciones en comunidad. ¡Ven a crecer con nosotros! 8:00 PM | Viernes | Local 41" aria-label="Compartir información de Alberto y Mariana De Agüero">
+                                                <svg class="icon" aria-hidden="true">
+                                                    <use href="assets/icons/icons.svg#i-share-2"></use>
+                                                </svg>
                                             </button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="swiper-slide">
-                                <div class="card-app text-center card-ministerio" id="ministerio-profesionistas">
+                                <div id="ministerio-profesionistas" class="card-app surface-raised text-center card-ministerio">
                                     <div class="card-avatar-wrapper">
-                                        <img src="assets/images/lideres/Lideres_Profesionistas.webp" width="1920" height="1080" alt="Edgar y Esther Zamarrón junto a Alma Barrera" class="card-ministerio-img" loading="lazy">
-                                        <img src="assets/icons/Logo_Profesionistas.webp" width="1080" height="1080" alt="" class="card-avatar">
+                                        <img class="card-ministerio-img" src="assets/images/lideres/Lideres_Profesionistas.webp" width="1920" height="1080" alt="Edgar y Esther Zamarrón junto a Alma Barrera" loading="lazy" decoding="async">
+                                        <img class="card-avatar" src="assets/icons/Logo_Profesionistas.webp" width="1080" height="1080" alt="" loading="lazy" decoding="async">
                                     </div>
                                     <div class="card-ministerio-body">
-                                        <h3 class="mb-0 card-ministerio-name">Edgar &amp; Esther<br>Zamarrón<br>Alma Barrera</h3>
+                                        <h3 class="mb-0 card-ministerio-name heading-local">Edgar &amp; Esther<br>Zamarrón<br>Alma Barrera</h3>
                                         <small class="card-ministerio-role">Profesionistas</small>
                                         <p class="mt-2 mb-2 card-ministerio-desc">Un espacio para mayores de 25 años que buscan crecer espiritualmente mientras desarrollan propósito en su vida profesional.</p>
                                         <div class="card-ministerio-meta">
                                             <span class="card-ministerio-meta-item">
-                                                <i class="fa-solid fa-location-dot" aria-hidden="true"></i>Auditorio IBMty
+                                                <svg class="icon" aria-hidden="true">
+                                                    <use href="assets/icons/icons.svg#i-map-pin"></use>
+                                                </svg>Auditorio IBMty
                                             </span>
                                             <span class="card-ministerio-meta-item">
-                                                <i class="fa-solid fa-clock" aria-hidden="true"></i>Viernes 8:00 PM
+                                                <svg class="icon" aria-hidden="true">
+                                                    <use href="assets/icons/icons.svg#i-clock"></use>
+                                                </svg>Viernes 8:00 PM
                                             </span>
                                         </div>
                                         <div class="card-social-links">
-                                            <a href="https://www.facebook.com/ProfesionistasIBMty/" class="card-social-link" target="_blank" rel="noopener" aria-label="Facebook">
-                                                <i class="fa-brands fa-facebook-f" aria-hidden="true"></i>
+                                            <a class="ctrl-app ctrl-app--ghost ctrl-app--md card-social-link" href="https://www.facebook.com/ProfesionistasIBMty/" target="_blank" rel="noopener" aria-label="Facebook">
+                                                <svg class="icon" aria-hidden="true">
+                                                    <use href="assets/icons/icons.svg#i-brand-facebook"></use>
+                                                </svg>
                                             </a>
-                                            <a href="https://www.instagram.com/unisibmty?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="card-social-link" target="_blank" rel="noopener" aria-label="Instagram">
-                                                <i class="fa-brands fa-instagram" aria-hidden="true"></i>
+                                            <a class="ctrl-app ctrl-app--ghost ctrl-app--md card-social-link" href="https://www.instagram.com/unisibmty?utm_source=ig_web_button_share_sheet&amp;igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener" aria-label="Instagram">
+                                                <svg class="icon" aria-hidden="true">
+                                                    <use href="assets/icons/icons.svg#i-brand-instagram"></use>
+                                                </svg>
                                             </a>
-                                            <button type="button" class="card-social-link" data-share-image=".card-ministerio-img" data-share-title="Líderes Edgar &amp; Esther Zamarrón" data-share-text="Ven y conoce al grupo de profesionistas en IBMty" aria-label="Compartir información de líderes de Profesionistas">
-                                                <i class="fa-solid fa-share" aria-hidden="true"></i>
+                                            <button class="ctrl-app ctrl-app--ghost ctrl-app--md card-social-link" type="button" data-share-image=".card-ministerio-img" data-share-title="Profesionistas en IBMty" data-share-text="💼 Profesionistas IBMty: conecta tu propósito con tu profesión y encuentra una comunidad que impulsa tu fe. ¡Tu semana puede empezar distinto! 8:00 PM | Viernes | Auditorio IBMty" aria-label="Compartir información de líderes de Profesionistas">
+                                                <svg class="icon" aria-hidden="true">
+                                                    <use href="assets/icons/icons.svg#i-share-2"></use>
+                                                </svg>
                                             </button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="swiper-slide">
-                                <div class="card-app text-center card-ministerio" id="ministerio-universitarios">
+                                <div id="ministerio-universitarios" class="card-app surface-raised text-center card-ministerio">
                                     <div class="card-avatar-wrapper">
-                                        <img src="assets/images/lideres/Lideres_Universitarios.webp" width="1920" height="1080" alt="Hugo y Thalía Guerrero, líderes de Universitarios" class="card-ministerio-img" loading="lazy">
-                                        <img src="assets/icons/Logo_Universitarios.webp" width="500" height="500" alt="" class="card-avatar">
+                                        <img class="card-ministerio-img" src="assets/images/lideres/Lideres_Universitarios.webp" width="1920" height="1080" alt="Hugo y Thalía Guerrero, líderes de Universitarios" loading="lazy" decoding="async">
+                                        <img class="card-avatar" src="assets/icons/Logo_Universitarios.webp" width="500" height="500" alt="" loading="lazy" decoding="async">
                                     </div>
                                     <div class="card-ministerio-body">
-                                        <h3 class="mb-0 card-ministerio-name">Hugo &amp; Thalía<br>Guerrero</h3>
+                                        <h3 class="mb-0 card-ministerio-name heading-local">Hugo &amp; Thalía<br>Guerrero</h3>
                                         <small class="card-ministerio-role">Universitarios</small>
                                         <p class="mt-2 mb-2 card-ministerio-desc">Jóvenes de 18 a 24 años construyendo una fe firme y relaciones auténticas centradas en Jesús.</p>
                                         <div class="card-ministerio-meta">
                                             <span class="card-ministerio-meta-item">
-                                                <i class="fa-solid fa-location-dot" aria-hidden="true"></i>Local 41
-                                            </span>
+                                                <svg class="icon" aria-hidden="true">
+                                                    <use href="assets/icons/icons.svg#i-map-pin"></use>
+                                                </svg>Local 41 </span>
                                             <span class="card-ministerio-meta-item">
-                                                <i class="fa-solid fa-clock" aria-hidden="true"></i>Sábado 7:00 PM
+                                                <svg class="icon" aria-hidden="true">
+                                                    <use href="assets/icons/icons.svg#i-clock"></use>
+                                                </svg>Sábado 7:00 PM
                                             </span>
                                         </div>
                                         <div class="card-social-links">
-                                            <a href="https://www.facebook.com/unisibmty/" class="card-social-link" target="_blank" rel="noopener" aria-label="Facebook">
-                                                <i class="fa-brands fa-facebook-f" aria-hidden="true"></i>
+                                            <a class="ctrl-app ctrl-app--ghost ctrl-app--md card-social-link" href="https://www.facebook.com/unisibmty/" target="_blank" rel="noopener" aria-label="Facebook">
+                                                <svg class="icon" aria-hidden="true">
+                                                    <use href="assets/icons/icons.svg#i-brand-facebook"></use>
+                                                </svg>
                                             </a>
-                                            <a href="https://www.instagram.com/unisibmty?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="card-social-link" target="_blank" rel="noopener" aria-label="Instagram">
-                                                <i class="fa-brands fa-instagram" aria-hidden="true"></i>
+                                            <a class="ctrl-app ctrl-app--ghost ctrl-app--md card-social-link" href="https://www.instagram.com/unisibmty?utm_source=ig_web_button_share_sheet&amp;igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener" aria-label="Instagram">
+                                                <svg class="icon" aria-hidden="true">
+                                                    <use href="assets/icons/icons.svg#i-brand-instagram"></use>
+                                                </svg>
                                             </a>
-                                            <a href="https://www.tiktok.com/@unis.ibmty" class="card-social-link" target="_blank" rel="noopener" aria-label="TikTok">
-                                                <i class="fa-brands fa-tiktok" aria-hidden="true"></i>
+                                            <a class="ctrl-app ctrl-app--ghost ctrl-app--md card-social-link" href="https://www.tiktok.com/@unis.ibmty" target="_blank" rel="noopener" aria-label="TikTok">
+                                                <svg class="icon" aria-hidden="true">
+                                                    <use href="assets/icons/icons.svg#i-brand-tiktok"></use>
+                                                </svg>
                                             </a>
-                                            <button type="button" class="card-social-link" data-share-image=".card-ministerio-img" data-share-title="Líderes Hugo &amp; Thalía Guerrero" data-share-text="Ven y conoce al grupo de jóvenes en IBMty" aria-label="Compartir información de Hugo y Thalía Guerrero">
-                                                <i class="fa-solid fa-share" aria-hidden="true"></i>
+                                            <button class="ctrl-app ctrl-app--ghost ctrl-app--md card-social-link" type="button" data-share-image=".card-ministerio-img" data-share-title="Universitarios en IBMty" data-share-text="🎓 Universitarios IBMty: haz de tus años de carrera una aventura con propósito, amistades reales y fe viva. ¿Te unes? 7:00 PM | Sábado | Local 41" aria-label="Compartir información de Hugo y Thalía Guerrero">
+                                                <svg class="icon" aria-hidden="true">
+                                                    <use href="assets/icons/icons.svg#i-share-2"></use>
+                                                </svg>
                                             </button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="swiper-slide">
-                                <div class="card-app text-center card-ministerio" id="ministerio-jovenes">
+                                <div id="ministerio-jovenes" class="card-app surface-raised text-center card-ministerio">
                                     <div class="card-avatar-wrapper">
-                                        <img src="assets/images/lideres/Lideres_Jovenes.webp" width="1920" height="1080" alt="Ricardo y Daniela Silva, líderes de Jóvenes" class="card-ministerio-img" loading="lazy">
-                                        <img src="assets/icons/Logo_Jovenes.webp" width="500" height="500" alt="" class="card-avatar">
+                                        <img class="card-ministerio-img" src="assets/images/lideres/Lideres_Jovenes.webp" width="1920" height="1080" alt="Ricardo y Daniela Silva, líderes de Jóvenes" loading="lazy" decoding="async">
+                                        <img class="card-avatar" src="assets/icons/Logo_Jovenes.webp" width="500" height="500" alt="" loading="lazy" decoding="async">
                                     </div>
                                     <div class="card-ministerio-body">
-                                        <h3 class="mb-0 card-ministerio-name">Ricardo &amp; Daniela<br>Silva</h3>
+                                        <h3 class="mb-0 card-ministerio-name heading-local">Ricardo &amp; Daniela<br>Silva</h3>
                                         <small class="card-ministerio-role">Jóvenes</small>
                                         <p class="mt-2 mb-2 card-ministerio-desc">Adolescentes de 14 a 18 años descubriendo su identidad y aprendiendo a vivir con propósito.</p>
                                         <div class="card-ministerio-meta">
                                             <span class="card-ministerio-meta-item">
-                                                <i class="fa-solid fa-location-dot" aria-hidden="true"></i>Auditorio IBMty
+                                                <svg class="icon" aria-hidden="true">
+                                                    <use href="assets/icons/icons.svg#i-map-pin"></use>
+                                                </svg>Auditorio IBMty
                                             </span>
                                             <span class="card-ministerio-meta-item">
-                                                <i class="fa-solid fa-clock" aria-hidden="true"></i>Sábado 5:00 PM
+                                                <svg class="icon" aria-hidden="true">
+                                                    <use href="assets/icons/icons.svg#i-clock"></use>
+                                                </svg>Sábado 5:00 PM
                                             </span>
                                         </div>
                                         <div class="card-social-links">
-                                            <a href="https://www.facebook.com/JVNSMty/" class="card-social-link" target="_blank" rel="noopener" aria-label="Facebook">
-                                                <i class="fa-brands fa-facebook-f" aria-hidden="true"></i>
+                                            <a class="ctrl-app ctrl-app--ghost ctrl-app--md card-social-link" href="https://www.facebook.com/JVNSMty/" target="_blank" rel="noopener" aria-label="Facebook">
+                                                <svg class="icon" aria-hidden="true">
+                                                    <use href="assets/icons/icons.svg#i-brand-facebook"></use>
+                                                </svg>
                                             </a>
-                                            <a href="https://www.instagram.com/jvns_ibmty?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="card-social-link" target="_blank" rel="noopener" aria-label="Instagram">
-                                                <i class="fa-brands fa-instagram" aria-hidden="true"></i>
+                                            <a class="ctrl-app ctrl-app--ghost ctrl-app--md card-social-link" href="https://www.instagram.com/jvns_ibmty?utm_source=ig_web_button_share_sheet&amp;igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener" aria-label="Instagram">
+                                                <svg class="icon" aria-hidden="true">
+                                                    <use href="assets/icons/icons.svg#i-brand-instagram"></use>
+                                                </svg>
                                             </a>
-                                            <a href="https://www.tiktok.com/@jvns_ibmty/" class="card-social-link" target="_blank" rel="noopener" aria-label="TikTok">
-                                                <i class="fa-brands fa-tiktok" aria-hidden="true"></i>
+                                            <a class="ctrl-app ctrl-app--ghost ctrl-app--md card-social-link" href="https://www.tiktok.com/@jvns_ibmty/" target="_blank" rel="noopener" aria-label="TikTok">
+                                                <svg class="icon" aria-hidden="true">
+                                                    <use href="assets/icons/icons.svg#i-brand-tiktok"></use>
+                                                </svg>
                                             </a>
-                                            <button type="button" class="card-social-link" data-share-image="assets/images/volantes/v_jovenes.webp" data-share-title="Líderes Ricardo &amp; Daniela Silva" data-share-text="Ven y conoce al grupo de jóvenes en IBMty" aria-label="Compartir información de Ricardo y Daniela Silva">
-                                                <i class="fa-solid fa-share" aria-hidden="true"></i>
+                                            <button class="ctrl-app ctrl-app--ghost ctrl-app--md card-social-link" type="button" data-share-image="assets/images/volantes/volantes_Jovenes.jpg" data-share-title="Jóvenes en IBMty" data-share-text="🔥 Jóvenes IBMty: un lugar para ser tú, hacer amigos y descubrir que tu historia tiene propósito. ¡No te lo pierdas! 5:00 PM | Sábado | Auditorio IBMty" aria-label="Compartir información de Ricardo y Daniela Silva">
+                                                <svg class="icon" aria-hidden="true">
+                                                    <use href="assets/icons/icons.svg#i-share-2"></use>
+                                                </svg>
                                             </button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="swiper-slide">
-                                <div class="card-app text-center card-ministerio" id="ministerio-intermedios">
+                                <div id="ministerio-intermedios" class="card-app surface-raised text-center card-ministerio">
                                     <div class="card-avatar-wrapper">
-                                        <img src="assets/images/lideres/Lideres_Intermedios.webp" width="1920" height="1080" alt="Rafael y Karina Reyna, líderes de Intermedios" class="card-ministerio-img" loading="lazy">
-                                        <img src="assets/icons/Logo_Intermedios.webp" width="500" height="500" alt="" class="card-avatar">
+                                        <img class="card-ministerio-img" src="assets/images/lideres/Lideres_Intermedios.webp" width="1920" height="1080" alt="Rafael y Karina Reyna, líderes de Intermedios" loading="lazy" decoding="async">
+                                        <img class="card-avatar" src="assets/icons/Logo_Intermedios.webp" width="500" height="500" alt="" loading="lazy" decoding="async">
                                     </div>
                                     <div class="card-ministerio-body">
-                                        <h3 class="mb-0 card-ministerio-name">Rafael &amp; Karina<br>Reyna</h3>
+                                        <h3 class="mb-0 card-ministerio-name heading-local">Rafael &amp; Karina<br>Reyna</h3>
                                         <small class="card-ministerio-role">Intermedios</small>
                                         <p class="mt-2 mb-2 card-ministerio-desc">Preadolescentes de 11 a 13 años creciendo en su relación con Dios e impactando su entorno.</p>
                                         <div class="card-ministerio-meta">
                                             <span class="card-ministerio-meta-item">
-                                                <i class="fa-solid fa-location-dot" aria-hidden="true"></i>Local 10
+                                                <svg class="icon" aria-hidden="true">
+                                                    <use href="assets/icons/icons.svg#i-map-pin"></use>
+                                                </svg>Local 10
                                             </span>
                                             <span class="card-ministerio-meta-item">
-                                                <i class="fa-solid fa-clock" aria-hidden="true"></i>Sábado 1:00 PM
+                                                <svg class="icon" aria-hidden="true">
+                                                    <use href="assets/icons/icons.svg#i-clock"></use>
+                                                </svg>Sábado 1:00 PM
                                             </span>
                                         </div>
                                         <div class="card-social-links">
-                                            <a href="https://www.facebook.com/intersibmty/" class="card-social-link" target="_blank" rel="noopener" aria-label="Facebook">
-                                                <i class="fa-brands fa-facebook-f" aria-hidden="true"></i>
+                                            <a class="ctrl-app ctrl-app--ghost ctrl-app--md card-social-link" href="https://www.facebook.com/intersibmty/" target="_blank" rel="noopener" aria-label="Facebook">
+                                                <svg class="icon" aria-hidden="true">
+                                                    <use href="assets/icons/icons.svg#i-brand-facebook"></use>
+                                                </svg>
                                             </a>
-                                            <a href="https://www.instagram.com/intersibmty?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="card-social-link" target="_blank" rel="noopener" aria-label="Instagram">
-                                                <i class="fa-brands fa-instagram" aria-hidden="true"></i>
+                                            <a class="ctrl-app ctrl-app--ghost ctrl-app--md card-social-link" href="https://www.instagram.com/intersibmty?utm_source=ig_web_button_share_sheet&amp;igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener" aria-label="Instagram">
+                                                <svg class="icon" aria-hidden="true">
+                                                    <use href="assets/icons/icons.svg#i-brand-instagram"></use>
+                                                </svg>
                                             </a>
-                                            <button type="button" class="card-social-link" data-share-image=".card-ministerio-img" data-share-title="Líderes Rafael &amp; Karina Reyna" data-share-text="Conoce a Rafael &amp; Karina Reyna en IBMty" aria-label="Compartir información de Rafael y Karina Reyna">
-                                                <i class="fa-solid fa-share" aria-hidden="true"></i>
+                                            <button class="ctrl-app ctrl-app--ghost ctrl-app--md card-social-link" type="button" data-share-image=".card-ministerio-img" data-share-title="Intermedios en IBMty" data-share-text="🚀 Intermedios IBMty: retos, diversión y una fe que se vive de verdad. ¡Es tiempo de dar el siguiente paso! 1:00 PM | Sábado | Local 10" aria-label="Compartir información de Rafael y Karina Reyna">
+                                                <svg class="icon" aria-hidden="true">
+                                                    <use href="assets/icons/icons.svg#i-share-2"></use>
+                                                </svg>
                                             </button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="swiper-slide">
-                                <div class="card-app text-center card-ministerio" id="ministerio-culto-infantil">
+                                <div id="ministerio-culto-infantil" class="card-app surface-raised text-center card-ministerio">
                                     <div class="card-avatar-wrapper">
-                                        <img src="assets/images/lideres/Lideres_CultoInfantil.webp" width="1920" height="1080" alt="Laura Munguía, líder de Culto Infantil" class="card-ministerio-img" loading="lazy">
-                                        <img src="assets/icons/Logo_culto_infantil.webp" width="500" height="500" alt="" class="card-avatar">
+                                        <img class="card-ministerio-img" src="assets/images/lideres/Lideres_CultoInfantil.webp" width="1920" height="1080" alt="Laura Munguía, líder de Culto Infantil" loading="lazy" decoding="async">
+                                        <img class="card-avatar" src="assets/icons/Logo_culto_infantil.webp" width="500" height="500" alt="" loading="lazy" decoding="async">
                                     </div>
                                     <div class="card-ministerio-body">
-                                        <h3 class="mb-0 card-ministerio-name">Laura Munguía</h3>
+                                        <h3 class="mb-0 card-ministerio-name heading-local">Laura Munguía</h3>
                                         <small class="card-ministerio-role">Culto Infantil</small>
                                         <p class="mt-2 mb-2 card-ministerio-desc">Niños de 6 a 10 años aprendiendo principios bíblicos mediante juegos, historias y actividades dinámicas.</p>
                                         <div class="card-ministerio-meta">
                                             <span class="card-ministerio-meta-item">
-                                                <i class="fa-solid fa-location-dot" aria-hidden="true"></i>Local 23 (parte superior)
+                                                <svg class="icon" aria-hidden="true">
+                                                    <use href="assets/icons/icons.svg#i-map-pin"></use>
+                                                </svg>Local 23 (parte superior)
                                             </span>
                                             <span class="card-ministerio-meta-item">
-                                                <i class="fa-solid fa-clock" aria-hidden="true"></i>Domingo, durante servicios
+                                                <svg class="icon" aria-hidden="true">
+                                                    <use href="assets/icons/icons.svg#i-clock"></use>
+                                                </svg>Domingo, durante servicios
                                             </span>
                                         </div>
                                         <div class="card-social-links">
-                                            <button type="button" class="card-social-link" data-share-image=".card-ministerio-img" data-share-title="Líder Laura Munguía" data-share-text="Conoce a Laura Munguía en IBMty" aria-label="Compartir información de Laura Munguía">
-                                                <i class="fa-solid fa-share" aria-hidden="true"></i>
+                                            <button class="ctrl-app ctrl-app--ghost ctrl-app--md card-social-link" type="button" data-share-image=".card-ministerio-img" data-share-title="Culto Infantil en IBMty" data-share-text="Culto Infantil ofrece a niños de 6 a 10 años un espacio seguro para aprender principios bíblicos a través de historias, juegos y actividades durante los servicios dominicales." aria-label="Compartir información de Laura Munguía">
+                                                <svg class="icon" aria-hidden="true">
+                                                    <use href="assets/icons/icons.svg#i-share-2"></use>
+                                                </svg>
                                             </button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="swiper-slide">
-                                <div class="card-app text-center card-ministerio" id="ministerio-parvulos">
+                                <div id="ministerio-parvulos" class="card-app surface-raised text-center card-ministerio">
                                     <div class="card-avatar-wrapper">
-                                        <img src="assets/images/lideres/Lideres_Parvulos.webp" width="1920" height="1080" alt="José y Xóchitl Munguía, líderes de Párvulos" class="card-ministerio-img" loading="lazy">
-                                        <img src="assets/icons/Logo_Parvulos.webp" width="500" height="500" alt="" class="card-avatar">
+                                        <img class="card-ministerio-img" src="assets/images/lideres/Lideres_Parvulos.webp" width="1920" height="1080" alt="José y Xóchitl Munguía, líderes de Párvulos" loading="lazy" decoding="async">
+                                        <img class="card-avatar" src="assets/icons/Logo_Parvulos.webp" width="500" height="500" alt="" loading="lazy" decoding="async">
                                     </div>
                                     <div class="card-ministerio-body">
-                                        <h3 class="mb-0 card-ministerio-name">José &amp; Xóchitl<br>Munguía</h3>
+                                        <h3 class="mb-0 card-ministerio-name heading-local">José &amp; Xóchitl<br>Munguía</h3>
                                         <small class="card-ministerio-role">Párvulos</small>
                                         <p class="mt-2 mb-2 card-ministerio-desc">Pequeños de 3 a 5 años descubriendo la Biblia de forma creativa y participativa.</p>
                                         <div class="card-ministerio-meta">
                                             <span class="card-ministerio-meta-item">
-                                                <i class="fa-solid fa-location-dot" aria-hidden="true"></i>Local 10
+                                                <svg class="icon" aria-hidden="true">
+                                                    <use href="assets/icons/icons.svg#i-map-pin"></use>
+                                                </svg>Local 10
                                             </span>
                                             <span class="card-ministerio-meta-item">
-                                                <i class="fa-solid fa-clock" aria-hidden="true"></i>Domingo, durante servicios
+                                                <svg class="icon" aria-hidden="true">
+                                                    <use href="assets/icons/icons.svg#i-clock"></use>
+                                                </svg>Domingo, durante servicios
                                             </span>
                                         </div>
                                         <div class="card-social-links">
-                                            <button type="button" class="card-social-link" data-share-image=".card-ministerio-img" data-share-title="Líderes José &amp; Xóchitl Munguía" data-share-text="Conoce a José &amp; Xóchitl Munguía en IBMty" aria-label="Compartir información de José y Xóchitl Munguía">
-                                                <i class="fa-solid fa-share" aria-hidden="true"></i>
+                                            <button class="ctrl-app ctrl-app--ghost ctrl-app--md card-social-link" type="button" data-share-image=".card-ministerio-img" data-share-title="Párvulos en IBMty" data-share-text="Párvulos está pensado para pequeños de 3 a 5 años: un ambiente cuidado, creativo y participativo donde descubren la Biblia durante los servicios dominicales." aria-label="Compartir información de José y Xóchitl Munguía">
+                                                <svg class="icon" aria-hidden="true">
+                                                    <use href="assets/icons/icons.svg#i-share-2"></use>
+                                                </svg>
                                             </button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="swiper-slide">
-                                <div class="card-app text-center card-ministerio" id="ministerio-guarderia">
+                                <div id="ministerio-guarderia" class="card-app surface-raised text-center card-ministerio">
                                     <div class="card-avatar-wrapper">
-                                        <img src="assets/images/lideres/Lideres_Guarderia.webp" width="1920" height="1080" alt="Gustavo y Emelina Pérez, líderes de Guardería" class="card-ministerio-img" loading="lazy">
-                                        <img src="assets/icons/Logo_Guarderia.webp" width="500" height="500" alt="" class="card-avatar">
+                                        <img class="card-ministerio-img" src="assets/images/lideres/Lideres_Guarderia.webp" width="1920" height="1080" alt="Gustavo y Emelina Pérez, líderes de Guardería" loading="lazy" decoding="async">
+                                        <img class="card-avatar" src="assets/icons/Logo_Guarderia.webp" width="500" height="500" alt="" loading="lazy" decoding="async">
                                     </div>
                                     <div class="card-ministerio-body">
-                                        <h3 class="mb-0 card-ministerio-name">Gustavo &amp; Emelina<br>Pérez</h3>
+                                        <h3 class="mb-0 card-ministerio-name heading-local">Gustavo &amp; Emelina<br>Pérez</h3>
                                         <small class="card-ministerio-role">Guardería</small>
                                         <p class="mt-2 mb-2 card-ministerio-desc">Un espacio seguro y lleno de cuidado para bebés de 0 a 2 años, para que puedas disfrutar cada reunión con tranquilidad.</p>
                                         <div class="card-ministerio-meta">
                                             <span class="card-ministerio-meta-item">
-                                                <i class="fa-solid fa-location-dot" aria-hidden="true"></i>Local 23 (parte inferior)
+                                                <svg class="icon" aria-hidden="true">
+                                                    <use href="assets/icons/icons.svg#i-map-pin"></use>
+                                                </svg>Local 23 (parte inferior)
                                             </span>
                                             <span class="card-ministerio-meta-item">
-                                                <i class="fa-solid fa-clock" aria-hidden="true"></i>Domingo, durante servicios
+                                                <svg class="icon" aria-hidden="true">
+                                                    <use href="assets/icons/icons.svg#i-clock"></use>
+                                                </svg>Domingo, durante servicios
                                             </span>
                                         </div>
                                         <div class="card-social-links">
-                                            <button type="button" class="card-social-link" data-share-image=".card-ministerio-img" data-share-title="Líderes Gustavo &amp; Emelina Pérez" data-share-text="Conoce a Gustavo &amp; Emelina Pérez en IBMty" aria-label="Compartir información de Gustavo y Emelina Pérez">
-                                                <i class="fa-solid fa-share" aria-hidden="true"></i>
+                                            <button class="ctrl-app ctrl-app--ghost ctrl-app--md card-social-link" type="button" data-share-image=".card-ministerio-img" data-share-title="Guardería en IBMty" data-share-text="La Guardería de IBMty brinda cuidado seguro y cariñoso para bebés de 0 a 2 años, para que sus familias puedan disfrutar los servicios con tranquilidad." aria-label="Compartir información de Gustavo y Emelina Pérez">
+                                                <svg class="icon" aria-hidden="true">
+                                                    <use href="assets/icons/icons.svg#i-share-2"></use>
+                                                </svg>
                                             </button>
                                         </div>
                                     </div>
@@ -623,11 +761,15 @@
                             </div>
                         </div>
                         <div class="carousel-navigation-container">
-                            <button type="button" class="carousel-btn-prev" aria-label="Anterior">
-                                <i class="fa-solid fa-chevron-left" aria-hidden="true"></i>
+                            <button class="ctrl-app ctrl-app--surface ctrl-app--lg carousel-btn-prev" type="button" aria-label="Anterior">
+                                <svg class="icon" aria-hidden="true">
+                                    <use href="assets/icons/icons.svg#i-chevron-left"></use>
+                                </svg>
                             </button>
-                            <button type="button" class="carousel-btn-next" aria-label="Siguiente">
-                                <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+                            <button class="ctrl-app ctrl-app--surface ctrl-app--lg carousel-btn-next" type="button" aria-label="Siguiente">
+                                <svg class="icon" aria-hidden="true">
+                                    <use href="assets/icons/icons.svg#i-chevron-right"></use>
+                                </svg>
                             </button>
                         </div>
                         <div class="carousel-indicator text-center"></div>
@@ -635,50 +777,62 @@
                 </div>
             </div>
         </section>
-        <section id="localizacion" class="section-padding" aria-labelledby="localizacion-title">
+        <section id="localizacion" class="section-padding surface-base" aria-labelledby="localizacion-title">
             <div class="container">
-                <div class="section-heading">
-                    <div class="section-heading-lead">
+                <div class="section-heading heading-group composition composition--center">
+                    <div class="section-heading-lead heading-lead">
                         <div class="section-heading-icon" aria-hidden="true">
-                            <i class="fa-solid fa-map-location"></i>
+                            <svg class="icon" aria-hidden="true">
+                                <use href="assets/icons/icons.svg#i-map"></use>
+                            </svg>
                         </div>
-                        <h2 id="localizacion-title" class="section-heading-title">Ubicación</h2>
+                        <h2 id="localizacion-title" class="section-heading-title heading-chapter">Ubicación</h2>
                     </div>
-                    <p class="section-heading-desc">Encuéntranos y ven a visitarnos</p>
+                    <p class="section-heading-desc heading-description">Encuéntranos y ven a visitarnos</p>
                 </div>
                 <div class="loc-grid">
-                    <div class="loc-card loc-card--map surface-card" data-gsap="fade-right">
+                    <div class="loc-card loc-card--map surface-raised" data-gsap="fade-right">
                         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3598.0262815539513!2d-100.26953752399365!3d25.604042915100628!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8662bf5d6fb29c59%3A0xeeec73c82d8bcd32!2sIglesia%20Bautista%20de%20Monterrey!5e0!3m2!1ses-419!2sus!4v1778716210873!5m2!1ses-419!2sus" title="Mapa de ubicación de Iglesia Bautista de Monterrey" class="loc-map-frame" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </div>
-                    <aside class="loc-card loc-card--info surface-card" data-gsap="fade-left">
+                    <div class="loc-card loc-card--info surface-raised" data-gsap="fade-left">
                         <div class="loc-info-head">
-                            <span class="icon-box icon-box--md loc-kicker-icon" aria-hidden="true">
-                                <i class="fa-solid fa-hand-holding-heart"></i>
+                            <span class="icon-box icon-box--md" aria-hidden="true">
+                                <svg class="icon" aria-hidden="true">
+                                    <use href="assets/icons/icons.svg#i-hand-heart"></use>
+                                </svg>
                             </span>
-                            <h3 class="loc-kicker">Te esperamos</h3>
+                            <h3 class="loc-kicker heading-local">Te esperamos</h3>
                         </div>
                         <div class="loc-schedule">
                             <span class="micro-label loc-schedule-label">
-                                <i class="fa-regular fa-calendar-check" aria-hidden="true"></i> Servicios · Domingos
+                                <svg class="icon" aria-hidden="true">
+                                    <use href="assets/icons/icons.svg#i-calendar-check"></use>
+                                </svg> Servicios · Domingos
                             </span>
                             <div class="loc-service-grid">
-                                <div class="loc-service loc-service--am">
+                                <div class="loc-service">
                                     <span class="loc-service-chip" aria-hidden="true">
-                                        <i class="fa-solid fa-sun"></i>
+                                        <svg class="icon" aria-hidden="true">
+                                            <use href="assets/icons/icons.svg#i-sun"></use>
+                                        </svg>
                                     </span>
                                     <span class="loc-service-time">9:00</span>
                                     <span class="loc-service-period">AM</span>
                                 </div>
-                                <div class="loc-service loc-service--am">
+                                <div class="loc-service">
                                     <span class="loc-service-chip" aria-hidden="true">
-                                        <i class="fa-solid fa-sun"></i>
+                                        <svg class="icon" aria-hidden="true">
+                                            <use href="assets/icons/icons.svg#i-sun"></use>
+                                        </svg>
                                     </span>
                                     <span class="loc-service-time">11:00</span>
                                     <span class="loc-service-period">AM</span>
                                 </div>
-                                <div class="loc-service loc-service--pm">
+                                <div class="loc-service">
                                     <span class="loc-service-chip" aria-hidden="true">
-                                        <i class="fa-solid fa-moon"></i>
+                                        <svg class="icon" aria-hidden="true">
+                                            <use href="assets/icons/icons.svg#i-moon"></use>
+                                        </svg>
                                     </span>
                                     <span class="loc-service-time">6:00</span>
                                     <span class="loc-service-period">PM</span>
@@ -687,7 +841,9 @@
                         </div>
                         <div class="loc-address">
                             <span class="loc-address-icon" aria-hidden="true">
-                                <i class="fa-solid fa-location-dot"></i>
+                                <svg class="icon" aria-hidden="true">
+                                    <use href="assets/icons/icons.svg#i-map-pin"></use>
+                                </svg>
                             </span>
                             <span class="loc-address-body">
                                 <span class="micro-label">Dónde estamos</span>
@@ -695,91 +851,114 @@
                             </span>
                         </div>
                         <div class="loc-actions">
-                            <a class="btn-primary-pill" href="#" data-config-href="addressMapUrl" target="_blank" rel="noopener">
-                                <i class="fa-solid fa-diamond-turn-right" aria-hidden="true"></i> Cómo llegar
+                            <a class="btn btn-app btn-app--primary" href="#" data-config-href="addressMapUrl" target="_blank" rel="noopener">
+                                <svg class="icon" aria-hidden="true">
+                                    <use href="assets/icons/icons.svg#i-navigation"></use>
+                                </svg> Cómo llegar
                             </a>
-                            <button type="button" class="btn-secondary-pill" data-share-title="Iglesia Bautista de Monterrey" data-share-text="Te invito a visitar la Iglesia Bautista de Monterrey" data-share-url="https://maps.google.com/?q=Iglesia+Bautista+de+Monterrey">
-                                <i class="fa-solid fa-share" aria-hidden="true"></i> Compartir
+                            <button type="button" class="btn btn-app btn-app--secondary" data-share-title="Cómo llegar a IBMty" data-share-text="Te comparto la ubicación para que sepas cómo llegar." data-share-url="https://maps.google.com/?q=Iglesia+Bautista+de+Monterrey">
+                                <svg class="icon" aria-hidden="true">
+                                    <use href="assets/icons/icons.svg#i-share-2"></use>
+                                </svg> Compartir
                             </button>
                         </div>
-                    </aside>
+                    </div>
                 </div>
             </div>
         </section>
-        <section id="contacto" class="section-padding" aria-labelledby="contacto-title">
+        <section id="contacto" class="section-padding section-padding--continuation surface-base" aria-labelledby="contacto-title">
             <div class="container">
-                <div class="section-heading">
-                    <div class="section-heading-lead">
+                <div class="section-heading heading-group composition composition--center">
+                    <div class="section-heading-lead heading-lead">
                         <div class="section-heading-icon" aria-hidden="true">
-                            <i class="fa-solid fa-envelope"></i>
+                            <svg class="icon" aria-hidden="true">
+                                <use href="assets/icons/icons.svg#i-mail"></use>
+                            </svg>
                         </div>
-                        <h2 id="contacto-title" class="section-heading-title">Contacto</h2>
+                        <h2 id="contacto-title" class="section-heading-title heading-chapter">Contacto</h2>
                     </div>
-                    <p class="section-heading-desc">Estamos aquí para escucharte</p>
+                    <p class="section-heading-desc heading-description">Estamos aquí para escucharte</p>
                 </div>
                 <div class="contact-layout">
-                    <aside class="contact-channels" data-gsap="fade-right">
-                        <h3 class="contact-channels-title">Hablemos</h3>
-                        <p class="contact-channels-desc">¿Tienes una pregunta o quieres que oremos por ti? Escríbenos por el medio que prefieras o usa el formulario.</p>
+                    <div class="contact-channels composition composition--start" data-gsap="fade-right">
+                        <h3 class="contact-channels-title heading-local">Hablemos</h3>
+                        <p class="contact-channels-desc reading-width reading-width--narrow">¿Tienes una pregunta o quieres que oremos por ti? Escríbenos por el medio que prefieras o usa el formulario.</p>
                         <a class="contact-channel" href="#" data-action="open-whatsapp" target="_blank" rel="noopener">
-                            <span class="icon-box icon-box--circle contact-channel-icon--wa" aria-hidden="true">
-                                <i class="fa-brands fa-whatsapp"></i>
+                            <span class="icon-box icon-box--circle" aria-hidden="true">
+                                <svg class="icon" aria-hidden="true">
+                                    <use href="assets/icons/icons.svg#i-brand-whatsapp"></use>
+                                </svg>
                             </span>
                             <span class="contact-channel-body">
                                 <span class="contact-channel-label">WhatsApp</span>
                                 <span class="contact-channel-value">Respuesta rápida</span>
                             </span>
-                            <i class="fa-solid fa-chevron-right contact-channel-arrow" aria-hidden="true"></i>
+                            <svg class="icon contact-channel-arrow" aria-hidden="true">
+                                <use href="assets/icons/icons.svg#i-chevron-right"></use>
+                            </svg>
                         </a>
                         <a class="contact-channel" href="#" data-config-href="phone1">
                             <span class="icon-box icon-box--circle" aria-hidden="true">
-                                <i class="fa-solid fa-phone"></i>
+                                <svg class="icon" aria-hidden="true">
+                                    <use href="assets/icons/icons.svg#i-phone"></use>
+                                </svg>
                             </span>
                             <span class="contact-channel-body">
                                 <span class="contact-channel-label">Llámanos</span>
                                 <span class="contact-channel-value" data-config-text="phone1"></span>
                             </span>
-                            <i class="fa-solid fa-chevron-right contact-channel-arrow" aria-hidden="true"></i>
+                            <svg class="icon contact-channel-arrow" aria-hidden="true">
+                                <use href="assets/icons/icons.svg#i-chevron-right"></use>
+                            </svg>
                         </a>
                         <a class="contact-channel" href="#" data-config-href="email">
                             <span class="icon-box icon-box--circle" aria-hidden="true">
-                                <i class="fa-solid fa-envelope"></i>
+                                <svg class="icon" aria-hidden="true">
+                                    <use href="assets/icons/icons.svg#i-mail"></use>
+                                </svg>
                             </span>
                             <span class="contact-channel-body">
                                 <span class="contact-channel-label">Correo</span>
                                 <span class="contact-channel-value" data-config-text="email"></span>
                             </span>
-                            <i class="fa-solid fa-chevron-right contact-channel-arrow" aria-hidden="true"></i>
+                            <svg class="icon contact-channel-arrow" aria-hidden="true">
+                                <use href="assets/icons/icons.svg#i-chevron-right"></use>
+                            </svg>
                         </a>
-                    </aside>
-                    <div class="contact-form-card card-app card-app--padded" data-gsap="fade-left">
+                    </div>
+                    <div class="card-app card-app--padded surface-raised" data-gsap="fade-left">
                         <form id="contact-form" method="POST" data-validate novalidate>
                             <input type="hidden" name="_subject" value="Nuevo mensaje desde ibmty.com">
                             <input type="text" name="_gotcha" class="d-none" tabindex="-1" autocomplete="off" aria-hidden="true">
                             <div class="field">
-                                <input type="text" id="contact-nombre" name="nombre" class="form-control form-input" placeholder=" " required>
+                                <input type="text" id="contact-nombre" name="nombre" class="form-control form-input" placeholder=" " autocomplete="name" required>
                                 <label for="contact-nombre">Nombre completo</label>
                             </div>
                             <div class="field">
-                                <input type="email" id="contact-correo" name="email" class="form-control form-input" placeholder=" " required>
+                                <input type="email" id="contact-correo" name="email" class="form-control form-input" placeholder=" " autocomplete="email" required>
                                 <label for="contact-correo">Correo electrónico</label>
                             </div>
                             <div class="field">
-                                <input type="tel" id="contact-telefono" name="telefono" class="form-control form-input" placeholder=" ">
-                                <label for="contact-telefono">Teléfono <span class="field-optional">(opcional)</span>
+                                <input type="tel" id="contact-telefono" name="telefono" class="form-control form-input" placeholder=" " autocomplete="tel">
+                                <label for="contact-telefono">Teléfono
+                                    <span class="field-optional">(opcional)</span>
                                 </label>
                             </div>
                             <div class="field">
                                 <textarea id="contact-mensaje" name="mensaje" class="form-control form-input form-textarea" rows="4" placeholder=" " required minlength="10"></textarea>
                                 <label for="contact-mensaje">¿En qué podemos ayudarte?</label>
                             </div>
-                            <button type="submit" class="btn-primary-pill contact-submit">
-                                <i class="fa-solid fa-paper-plane" aria-hidden="true"></i> Enviar mensaje
+                            <button type="submit" class="btn btn-app btn-app--primary contact-submit">
+                                <svg class="icon" aria-hidden="true">
+                                    <use href="assets/icons/icons.svg#i-send"></use>
+                                </svg> Enviar mensaje
                             </button>
                         </form>
                         <div id="contact-success" class="text-center d-none" role="status">
-                            <i class="fa-solid fa-circle-check mb-3 contact-success-icon" aria-hidden="true"></i>
-                            <h3>¡Mensaje enviado!</h3>
+                            <svg class="icon mb-3 contact-success-icon" aria-hidden="true">
+                                <use href="assets/icons/icons.svg#i-circle-check"></use>
+                            </svg>
+                            <h3 class="heading-local">¡Mensaje enviado!</h3>
                             <p class="mb-0 text-muted-custom">Nos pondremos en contacto contigo pronto.</p>
                         </div>
                     </div>
@@ -788,104 +967,154 @@
         </section>
     </main>
 
-    <footer id="footer-web" class="site-footer">
+    <footer id="footer-web">
         <div class="container">
-            <div class="footer-panel">
-                <div class="row g-4 g-lg-5 align-items-start">
-                    <div class="col-12 col-lg-5">
-                        <a href="index.html" class="footer-brand" aria-label="Ir al inicio de IBMty">
-                            <span class="footer-brand-mark" aria-hidden="true">
-                                <i class="fa-solid fa-church"></i>
-                            </span>
-                            <span>
+            <div>
+                <div class="row g-3 g-lg-4">
+                    <div class="col-12 col-lg-4">
+                        <div class="footer-identity">
+                            <a class="footer-brand" href="index.html">
+                                <span class="footer-brand-mark" aria-hidden="true">
+                                    <img src="assets/icons/Logo_IBMty.png" alt="" width="44" height="44" loading="lazy" decoding="async">
+                                </span>
                                 <span class="footer-brand-text">Iglesia Bautista de Monterrey</span>
-                            </span>
-                        </a>
-                        <p class="footer-summary">Mantente conectado con nosotros.</p>
-                        <nav class="footer-social mt-3" aria-label="Redes sociales">
-                            <a href="#" data-config-href="facebook" class="footer-social-link" target="_blank" rel="noopener" aria-label="Facebook">
-                                <i class="fa-brands fa-facebook-f" aria-hidden="true"></i>
                             </a>
-                            <a href="#" data-config-href="instagram" class="footer-social-link" target="_blank" rel="noopener" aria-label="Instagram">
-                                <i class="fa-brands fa-instagram" aria-hidden="true"></i>
-                            </a>
-                            <a href="#" data-config-href="youtube" class="footer-social-link" target="_blank" rel="noopener" aria-label="YouTube">
-                                <i class="fa-brands fa-youtube" aria-hidden="true"></i>
-                            </a>
-                        </nav>
+                            <p class="footer-summary">Mantente conectado con nosotros.</p>
+                            <nav class="footer-social" aria-label="Redes sociales">
+                                <a class="ctrl-app ctrl-app--ghost ctrl-app--md" href="#" target="_blank" rel="noopener" data-config-href="facebook" aria-label="Facebook">
+                                    <svg class="icon" aria-hidden="true">
+                                        <use href="assets/icons/icons.svg#i-brand-facebook"></use>
+                                    </svg>
+                                </a>
+                                <a class="ctrl-app ctrl-app--ghost ctrl-app--md" href="#" target="_blank" rel="noopener" data-config-href="instagram" aria-label="Instagram">
+                                    <svg class="icon" aria-hidden="true">
+                                        <use href="assets/icons/icons.svg#i-brand-instagram"></use>
+                                    </svg>
+                                </a>
+                                <a class="ctrl-app ctrl-app--ghost ctrl-app--md" href="#" target="_blank" rel="noopener" data-config-href="youtube" aria-label="YouTube">
+                                    <svg class="icon" aria-hidden="true">
+                                        <use href="assets/icons/icons.svg#i-brand-youtube"></use>
+                                    </svg>
+                                </a>
+                            </nav>
+                        </div>
                     </div>
-                    <div class="col-12 col-md-6 col-lg-4">
-                        <h2 class="footer-heading">Contacto</h2>
-                        <ul class="footer-contact-list">
-                            <li>
-                                <a href="#" data-config-href="addressMapUrl" target="_blank" rel="noopener" class="footer-contact-item">
-                                    <span class="footer-icon" aria-hidden="true">
-                                        <i class="fa-solid fa-location-dot"></i>
-                                    </span>
-                                    <span>
-                                        <span class="footer-contact-label">Dirección</span>
-                                        <span data-config-text="address"></span>
-                                    </span>
-                                </a>
-                            </li>
-                            <li class="footer-contact-item">
-                                <span class="footer-icon" aria-hidden="true">
-                                    <i class="fa-solid fa-phone"></i>
-                                </span>
-                                <span>
-                                    <span class="footer-contact-label">Teléfonos</span>
-                                    <span class="footer-phone-list">
-                                        <a href="#" data-config-href="phone1" class="footer-phone-link">
-                                            <span data-config-text="phone1"></span>
-                                        </a>
-                                        <a href="#" data-config-href="phone2" class="footer-phone-link">
-                                            <span data-config-text="phone2"></span>
-                                        </a>
-                                    </span>
-                                </span>
-                            </li>
-                            <li>
-                                <a href="#" data-config-href="email" class="footer-contact-item">
-                                    <span class="footer-icon" aria-hidden="true">
-                                        <i class="fa-solid fa-envelope"></i>
-                                    </span>
-                                    <span>
-                                        <span class="footer-contact-label">Correo</span>
-                                        <span data-config-text="email"></span>
-                                    </span>
-                                </a>
-                            </li>
-                        </ul>
+                    <div class="col-12 col-md-6 col-lg-5">
+                        <div class="footer-group">
+                            <h2 class="footer-heading">Contacto</h2>
+                            <ul class="footer-row-list">
+                                <li>
+                                    <a class="footer-row" href="#" target="_blank" rel="noopener" data-config-href="addressMapUrl">
+                                        <span class="footer-row-icon" aria-hidden="true">
+                                            <svg class="icon" aria-hidden="true">
+                                                <use href="assets/icons/icons.svg#i-map-pin"></use>
+                                            </svg>
+                                        </span>
+                                        <span class="footer-row-info">
+                                            <span class="micro-label">Dirección</span>
+                                            <span class="footer-row-value" data-config-text="address"></span>
+                                        </span>
+                                        <svg class="icon footer-row-ext" aria-hidden="true">
+                                            <use href="assets/icons/icons.svg#i-external-link"></use>
+                                        </svg>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="footer-row" href="#" data-config-href="phone1">
+                                        <span class="footer-row-icon" aria-hidden="true">
+                                            <svg class="icon" aria-hidden="true">
+                                                <use href="assets/icons/icons.svg#i-phone"></use>
+                                            </svg>
+                                        </span>
+                                        <span class="footer-row-info">
+                                            <span class="micro-label">Teléfono</span>
+                                            <span class="footer-row-value" data-config-text="phone1"></span>
+                                        </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="footer-row" href="#" data-config-href="phone2">
+                                        <span class="footer-row-icon" aria-hidden="true">
+                                            <svg class="icon" aria-hidden="true">
+                                                <use href="assets/icons/icons.svg#i-phone"></use>
+                                            </svg>
+                                        </span>
+                                        <span class="footer-row-info">
+                                            <span class="micro-label">Teléfono</span>
+                                            <span class="footer-row-value" data-config-text="phone2"></span>
+                                        </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="footer-row" href="#" data-config-href="email">
+                                        <span class="footer-row-icon" aria-hidden="true">
+                                            <svg class="icon" aria-hidden="true">
+                                                <use href="assets/icons/icons.svg#i-mail"></use>
+                                            </svg>
+                                        </span>
+                                        <span class="footer-row-info">
+                                            <span class="micro-label">Correo</span>
+                                            <span class="footer-row-value" data-config-text="email"></span>
+                                        </span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                     <div class="col-12 col-md-6 col-lg-3">
-                        <h2 class="footer-heading">Enlaces</h2>
-                        <ul class="footer-link-list">
-                            <li>
-                                <a href="#" data-config-href="externalLink1.url" class="footer-link" target="_blank" rel="noopener">
-                                    <span data-config-text="externalLink1.label"></span>
-                                    <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" data-config-href="externalLink2.url" class="footer-link" target="_blank" rel="noopener">
-                                    <span data-config-text="externalLink2.label"></span>
-                                    <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
-                                </a>
-                            </li>
-                        </ul>
+                        <div class="footer-group">
+                            <h2 class="footer-heading">Enlaces</h2>
+                            <ul class="footer-row-list">
+                                <li class="footer-row-pair">
+                                    <a class="footer-row" href="#" target="_blank" rel="noopener" data-config-href="externalLink1.url">
+                                        <span class="footer-row-icon" aria-hidden="true">
+                                            <svg class="icon" aria-hidden="true">
+                                                <use href="assets/icons/icons.svg#i-link"></use>
+                                            </svg>
+                                        </span>
+                                        <span class="footer-row-info">
+                                            <span class="footer-row-value" data-config-text="externalLink1.label"></span>
+                                        </span>
+                                        <svg class="icon footer-row-ext" aria-hidden="true">
+                                            <use href="assets/icons/icons.svg#i-external-link"></use>
+                                        </svg>
+                                    </a>
+                                    <a class="footer-row" href="#" target="_blank" rel="noopener" data-config-href="externalLink2.url">
+                                        <span class="footer-row-icon" aria-hidden="true">
+                                            <svg class="icon" aria-hidden="true">
+                                                <use href="assets/icons/icons.svg#i-link"></use>
+                                            </svg>
+                                        </span>
+                                        <span class="footer-row-info">
+                                            <span class="footer-row-value" data-config-text="externalLink2.label"></span>
+                                        </span>
+                                        <svg class="icon footer-row-ext" aria-hidden="true">
+                                            <use href="assets/icons/icons.svg#i-external-link"></use>
+                                        </svg>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="footer-row" href="privacidad.html">
+                                        <span class="footer-row-icon" aria-hidden="true">
+                                            <svg class="icon" aria-hidden="true">
+                                                <use href="assets/icons/icons.svg#i-shield-check"></use>
+                                            </svg>
+                                        </span>
+                                        <span class="footer-row-info">
+                                            <span class="footer-row-value">Aviso de Privacidad</span>
+                                        </span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
-                <div class="footer-bottom">
-                    <div class="footer-bottom-links">
-                        <a href="privacidad.html">
-                            <i class="fa-solid fa-shield-halved me-1" aria-hidden="true"></i>Aviso de Privacidad
-                        </a>
-                        <span>Iglesia Bautista de Monterrey &copy; <span id="current-year"></span></span>
-                    </div>
-                    <span class="footer-devotion">Hecho con
-                        <i class="fa-solid fa-heart mx-1" aria-hidden="true"></i> para Dios
-                    </span>
-                </div>
+            </div>
+            <div class="footer-bottom">
+                <span class="footer-devotion">Hecho con <svg class="icon mx-1" aria-hidden="true">
+                        <use href="assets/icons/icons.svg#i-heart"></use>
+                    </svg> para Dios </span>
+                <span class="footer-copy">Iglesia Bautista de Monterrey &copy; <span id="current-year"></span></span>
             </div>
         </div>
     </footer>

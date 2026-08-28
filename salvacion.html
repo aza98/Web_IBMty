@@ -1,44 +1,47 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es-MX">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <script>
-        (function() {
-            var saved = localStorage.getItem('theme');
-            var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-            var theme = saved || (prefersDark ? 'dark' : 'light');
-            document.documentElement.setAttribute('data-theme', theme);
-        })();
-    </script>
+
+    <script>(function() { var saved = null; try { saved = localStorage.getItem('theme') } catch (err) {} var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches; var theme = saved || (prefersDark ? 'dark' : 'light'); document.documentElement.setAttribute('data-theme', theme); })();</script>
     <script src="js/pwa-launch.js"></script>
-    <title>Salvación — IBMty</title>
+
+    <title>Salvación | Iglesia Bautista de Monterrey</title>
     <link rel="canonical" href="https://www.ibmty.com/salvacion.html">
-    <meta name="description" content="Descubre el camino de la salvación y da el primer paso de fe en IBMty.">
+    <meta name="description" content="Conoce el plan de Dios para tu vida a través de cinco pasos sobre la salvación, versículos bíblicos y oración de invitación en Iglesia Bautista de Monterrey.">
+
     <meta name="theme-color" content="#00C0F6">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="IBMty">
+
     <link rel="apple-touch-icon" href="assets/icons/IBMty_Icon_180.png">
     <link rel="icon" href="assets/icons/IBMty_Icon_32.ico">
     <link rel="manifest" href="manifest.json">
+
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Salvación — IBMty">
-    <meta property="og:description" content="Descubre el camino de la salvación y da el primer paso de fe en IBMty.">
+    <meta property="og:title" content="Salvación | Iglesia Bautista de Monterrey">
+    <meta property="og:description" content="Conoce el plan de Dios para tu vida a través de cinco pasos sobre la salvación, versículos bíblicos y oración de invitación en Iglesia Bautista de Monterrey.">
     <meta property="og:image" content="https://www.ibmty.com/assets/images/extras/Bienvenida_desktop.webp">
     <meta property="og:url" content="https://www.ibmty.com/salvacion.html">
+    <meta property="og:locale" content="es_MX">
+    <meta property="og:site_name" content="Iglesia Bautista de Monterrey">
+
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Salvación — IBMty">
-    <meta name="twitter:description" content="Descubre el camino de la salvación y da el primer paso de fe en IBMty.">
+    <meta name="twitter:title" content="Salvación | Iglesia Bautista de Monterrey">
+    <meta name="twitter:description" content="Conoce el plan de Dios para tu vida a través de cinco pasos sobre la salvación, versículos bíblicos y oración de invitación en Iglesia Bautista de Monterrey.">
     <meta name="twitter:image" content="https://www.ibmty.com/assets/images/extras/Bienvenida_desktop.webp">
+
     <link rel="preload" href="assets/fonts/League_Spartan/static/LeagueSpartan-ExtraBold.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="assets/fonts/Poppins/Poppins-Regular.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.3.0/css/all.min.css" integrity="sha384-sTlsophtwz/I4myskS3OIJf5VvEojkXKZyBTWZm0YD/K1pN7C5wpBPLyrsbr1SU2" crossorigin="anonymous">
+    <link rel="preload" href="assets/icons/icons.svg" as="image" type="image/svg+xml">
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/pages/salvacion.css">
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous" defer></script>
     <script src="config/config.js" defer></script>
     <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
@@ -48,70 +51,93 @@
     <script src="gsap-public/minified/gsap.min.js" defer></script>
     <script src="gsap-public/minified/ScrollTrigger.min.js" defer></script>
     <script src="js/components/animations.js" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.4/dist/confetti.browser.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.4/dist/confetti.browser.min.js" defer></script>
     <script src="js/pages/salvacion.js" defer></script>
 </head>
 
 <body data-page="salvacion">
     <a class="skip-link visually-hidden-focusable" href="#main-content">Saltar al contenido</a>
+
     <nav id="navbar-web" class="navbar navbar-expand-lg fixed-top" aria-label="Navegación principal">
         <div class="container-fluid">
             <a class="navbar-brand" href="index.html">
-                <img src="assets/icons/IBMty_Logo_Mobile.webp" width="829" height="972" alt="IBMty" class="navbar-logo-mobile d-lg-none">
-                <img src="assets/icons/IBMty_Logo_Desktop.webp" width="1794" height="570" alt="IBMty" class="navbar-logo-desktop d-none d-lg-block">
+                <img class="navbar-logo-mobile d-lg-none" src="assets/icons/IBMty_Logo_Mobile.webp" width="829" height="972" alt="IBMty">
+                <img class="navbar-logo-desktop d-none d-lg-block" src="assets/icons/IBMty_Logo_Desktop.webp" width="1794" height="570" alt="IBMty">
             </a>
-            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#nav-links" aria-controls="nav-links" aria-expanded="false" aria-label="Abrir menú">
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#nav-links" aria-controls="nav-links" aria-expanded="false" aria-label="Mostrar u ocultar menú">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="nav-links">
+            <div id="nav-links" class="collapse navbar-collapse">
                 <ul class="navbar-nav ms-auto align-items-center gap-2">
                     <li class="nav-item">
                         <a class="nav-link d-flex align-items-center gap-2" href="index.html">
-                            <i class="fa-solid fa-house" aria-hidden="true"></i>Inicio
+                            <svg class="icon" aria-hidden="true">
+                                <use href="assets/icons/icons.svg#i-house"></use>
+                            </svg>Inicio
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link d-flex align-items-center gap-2" href="nosotros.html">
-                            <i class="fa-solid fa-church" aria-hidden="true"></i>Nosotros
+                            <svg class="icon" aria-hidden="true">
+                                <use href="assets/icons/icons.svg#i-church"></use>
+                            </svg>Nosotros
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link d-flex align-items-center gap-2" href="salvacion.html">
-                            <i class="fa-solid fa-cross" aria-hidden="true"></i>Salvación
+                            <svg class="icon" aria-hidden="true">
+                                <use href="assets/icons/icons.svg#i-cross"></use>
+                            </svg>Salvación
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link d-flex align-items-center gap-2" href="donativo.html">
-                            <i class="fa-solid fa-hand-holding-heart" aria-hidden="true"></i>Donativo
+                            <svg class="icon" aria-hidden="true">
+                                <use href="assets/icons/icons.svg#i-hand-heart"></use>
+                            </svg>Donativo
                         </a>
                     </li>
                     <li class="nav-item dropdown dropdown-settings d-none d-lg-block">
-                        <a class="nav-link dropdown-toggle d-flex align-items-center gap-2" href="#" id="desktop-settings-dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Opciones">
-                            <i class="fa-solid fa-gear" aria-hidden="true"></i>Ajustes
-                        </a>
+                        <button id="desktop-settings-dropdown" class="nav-link dropdown-toggle d-flex align-items-center gap-2" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <svg class="icon" aria-hidden="true">
+                                <use href="assets/icons/icons.svg#i-settings"></use>
+                            </svg>Ajustes
+                        </button>
                         <ul class="dropdown-menu dropdown-menu-end dropdown-menu-custom" aria-labelledby="desktop-settings-dropdown">
                             <li>
-                                <button class="dropdown-item" id="nav-theme-toggle" type="button">
+                                <button id="nav-theme-toggle" class="dropdown-item" type="button">
                                     <span class="d-flex align-items-center gap-2">
-                                        <i class="fa-solid fa-moon" id="nav-theme-icon" aria-hidden="true"></i><span>Tema</span>
+                                        <svg id="nav-theme-icon" class="icon" aria-hidden="true">
+                                            <use href="assets/icons/icons.svg#i-moon"></use>
+                                        </svg>
+                                        <span>Tema</span>
                                     </span>
-                                    <span class="dropdown-badge" id="nav-theme-label">Modo claro</span>
+                                    <span id="nav-theme-label" class="dropdown-badge">Modo claro</span>
                                 </button>
                             </li>
                             <li>
-                                <button class="dropdown-item" id="nav-notif-toggle" type="button">
+                                <button id="nav-notif-toggle" class="dropdown-item" type="button">
                                     <span class="d-flex align-items-center gap-2">
-                                        <i class="fa-solid fa-bell" id="nav-notif-icon" aria-hidden="true"></i><span>Notificaciones</span>
-                                    </span><span class="dropdown-badge" id="nav-notif-label">Activar</span>
+                                        <svg id="nav-notif-icon" class="icon" aria-hidden="true">
+                                            <use href="assets/icons/icons.svg#i-bell"></use>
+                                        </svg>
+                                        <span>Notificaciones</span>
+                                    </span>
+                                    <span id="nav-notif-label" class="dropdown-badge">Activar</span>
                                 </button>
                             </li>
-                            <li><hr class="dropdown-divider nav-install-divider"></li>
+                            <li>
+                                <hr class="dropdown-divider nav-install-divider">
+                            </li>
                             <li id="nav-install-item">
-                                <button class="dropdown-item" id="nav-pwa-install-btn" type="button">
+                                <button id="nav-pwa-install-btn" class="dropdown-item" type="button">
                                     <span class="d-flex align-items-center gap-2">
-                                        <i class="fa-solid fa-download" aria-hidden="true"></i><span>Instalar app</span>
+                                        <svg class="icon" aria-hidden="true">
+                                            <use href="assets/icons/icons.svg#i-download"></use>
+                                        </svg>
+                                        <span>Aplicación</span>
                                     </span>
-                                    <span class="btn btn-primary-pill btn-sm py-1 px-3 fs-7">Instalar</span>
+                                    <span class="dropdown-badge">Instalar</span>
                                 </button>
                             </li>
                         </ul>
@@ -120,23 +146,30 @@
                         <span class="nav-link disabled fs-7 text-uppercase px-3 py-1 text-center">Ajustes</span>
                     </li>
                     <li class="nav-item d-lg-none w-100">
-                        <button class="nav-link w-100 justify-content-center gap-2" id="mobile-theme-toggle" type="button">
-                            <i class="fa-solid fa-moon" id="mobile-theme-icon" aria-hidden="true"></i>
+                        <button id="mobile-theme-toggle" class="nav-link w-100 justify-content-center gap-2" type="button">
+                            <svg id="mobile-theme-icon" class="icon" aria-hidden="true">
+                                <use href="assets/icons/icons.svg#i-moon"></use>
+                            </svg>
                             <span>Tema:</span>
-                            <span class="dropdown-badge" id="mobile-theme-label">Modo claro</span>
+                            <span id="mobile-theme-label" class="dropdown-badge">Modo claro</span>
                         </button>
                     </li>
-                    <li class="nav-item d-lg-none w-100" id="mobile-notif-item">
-                        <button class="nav-link w-100 justify-content-center gap-2" id="mobile-notif-toggle" type="button">
-                            <i class="fa-solid fa-bell" id="mobile-notif-icon" aria-hidden="true"></i>
+                    <li id="mobile-notif-item" class="nav-item d-lg-none w-100">
+                        <button id="mobile-notif-toggle" class="nav-link w-100 justify-content-center gap-2" type="button">
+                            <svg id="mobile-notif-icon" class="icon" aria-hidden="true">
+                                <use href="assets/icons/icons.svg#i-bell"></use>
+                            </svg>
                             <span>Notificaciones:</span>
-                            <span class="dropdown-badge" id="mobile-notif-label">Activar</span>
+                            <span id="mobile-notif-label" class="dropdown-badge">Activar</span>
                         </button>
                     </li>
-                    <li class="nav-item d-lg-none w-100" id="mobile-install-item">
-                        <button class="nav-link w-100 justify-content-center gap-2" id="mobile-pwa-install-btn" type="button">
-                            <i class="fa-solid fa-download" aria-hidden="true"></i>
-                            <span>Instalar app</span>
+                    <li id="mobile-install-item" class="nav-item d-lg-none w-100">
+                        <button id="mobile-pwa-install-btn" class="nav-link w-100 justify-content-center gap-2" type="button">
+                            <svg class="icon" aria-hidden="true">
+                                <use href="assets/icons/icons.svg#i-download"></use>
+                            </svg>
+                            <span>Aplicación:</span>
+                            <span class="dropdown-badge">Instalar</span>
                         </button>
                     </li>
                 </ul>
@@ -144,66 +177,85 @@
         </div>
     </nav>
 
-    <nav id="tabbar-pwa" class="tabbar-floating fixed-bottom d-flex justify-content-around align-items-center" aria-label="Navegación principal">
-        <a href="index.html" class="tabbar-item d-flex flex-column align-items-center" data-page-link="inicio">
-            <i class="fa-solid fa-house" aria-hidden="true"></i>
+    <nav id="tabbar-pwa" class="fixed-bottom d-flex justify-content-around align-items-center" aria-label="Navegación principal">
+        <a class="tabbar-item d-flex flex-column align-items-center" href="index.html" data-page-link="inicio">
+            <svg class="icon" aria-hidden="true">
+                <use href="assets/icons/icons.svg#i-house"></use>
+            </svg>
             <span>Inicio</span>
         </a>
-        <a href="nosotros.html" class="tabbar-item d-flex flex-column align-items-center" data-page-link="nosotros">
-            <i class="fa-solid fa-church" aria-hidden="true"></i>
+        <a class="tabbar-item d-flex flex-column align-items-center" href="nosotros.html" data-page-link="nosotros">
+            <svg class="icon" aria-hidden="true">
+                <use href="assets/icons/icons.svg#i-church"></use>
+            </svg>
             <span>Nosotros</span>
         </a>
-        <a href="salvacion.html" class="tabbar-item d-flex flex-column align-items-center" data-page-link="salvacion">
-            <i class="fa-solid fa-cross" aria-hidden="true"></i>
+        <a class="tabbar-item d-flex flex-column align-items-center" href="salvacion.html" data-page-link="salvacion">
+            <svg class="icon" aria-hidden="true">
+                <use href="assets/icons/icons.svg#i-cross"></use>
+            </svg>
             <span>Salvación</span>
         </a>
-        <a href="donativo.html" class="tabbar-item d-flex flex-column align-items-center" data-page-link="donativo">
-            <i class="fa-solid fa-hand-holding-heart" aria-hidden="true"></i>
+        <a class="tabbar-item d-flex flex-column align-items-center" href="donativo.html" data-page-link="donativo">
+            <svg class="icon" aria-hidden="true">
+                <use href="assets/icons/icons.svg#i-hand-heart"></use>
+            </svg>
             <span>Donativo</span>
         </a>
-        <a href="settings.html" class="tabbar-item d-flex flex-column align-items-center" data-page-link="settings">
-            <i class="fa-solid fa-gear" aria-hidden="true"></i>
+        <a class="tabbar-item d-flex flex-column align-items-center" href="settings.html" data-page-link="settings">
+            <svg class="icon" aria-hidden="true">
+                <use href="assets/icons/icons.svg#i-settings"></use>
+            </svg>
             <span>Ajustes</span>
         </a>
     </nav>
 
-    <a id="whatsapp-fab" class="whatsapp-fab" href="#" data-action="open-whatsapp" target="_blank" rel="noopener" aria-label="Contáctanos por WhatsApp">
-        <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+    <a id="whatsapp-fab" class="ctrl-app ctrl-app--float ctrl-app--fab" href="#" target="_blank" rel="noopener" aria-label="Contáctanos por WhatsApp">
+        <svg class="icon" aria-hidden="true">
+            <use href="assets/icons/icons.svg#i-brand-whatsapp"></use>
+        </svg>
     </a>
 
     <main id="main-content" tabindex="-1">
-        <section class="salvacion-hero hero-flush" aria-labelledby="salvacion-title">
+        <section class="salvacion-hero hero-flush surface-deep" aria-labelledby="salvacion-title">
             <div class="salvacion-hero-gfx" aria-hidden="true">
-                <i class="fa-solid fa-cross"></i>
+                <svg class="icon" aria-hidden="true">
+                    <use href="assets/icons/icons.svg#i-cross"></use>
+                </svg>
             </div>
-            <div class="container salvacion-hero-content">
-                <span class="d-inline-block px-3 py-1 mb-3 badge-outlined">El mensaje más importante</span>
-                <h1 id="salvacion-title" class="mb-3 salvacion-hero-title">Conoce el plan de Dios para tu vida</h1>
-                <p class="mx-auto mb-0 salvacion-hero-lead">
-                    ¡Dios te ama y tiene un plan genial para ti! Al enviar a su Hijo Jesús a la cruz, pagó un precio altísimo para
-                    ofrecernos un regalo único.<br><strong>¿Te animas a aceptar este regalo?</strong>
+            <div class="container salvacion-hero-content heading-group composition composition--center">
+                <span class="d-inline-block px-3 py-1 badge-outlined heading-lead">El mensaje más importante</span>
+                <h1 id="salvacion-title" class="salvacion-hero-title heading-identity">Conoce el plan de Dios para tu vida</h1>
+                <p class="mx-auto salvacion-hero-lead heading-description reading-width reading-width--narrow"> ¡Dios te ama y tiene un plan genial para ti! Al enviar a su Hijo Jesús a la cruz, pagó un precio altísimo para ofrecernos un regalo único.
+                    <br><strong>¿Te animas a aceptar este regalo?</strong>
                 </p>
             </div>
             <div class="hint scroll-hint" aria-hidden="true">
                 <small>Descubre más</small>
                 <span class="scroll-hint-hand">
-                    <i class="fa-solid fa-arrow-down-long scroll-hint-hand-arrow"></i>
-                    <i class="fa-solid fa-hand-pointer scroll-hint-hand-icon"></i>
+                    <svg class="icon scroll-hint-hand-arrow" aria-hidden="true">
+                        <use href="assets/icons/icons.svg#i-arrow-down"></use>
+                    </svg>
+                    <svg class="icon scroll-hint-hand-icon" aria-hidden="true">
+                        <use href="assets/icons/icons.svg#i-pointer"></use>
+                    </svg>
                 </span>
             </div>
         </section>
-        <section class="section-padding" aria-labelledby="salvacion-steps-title">
+        <section class="section-padding surface-base" aria-labelledby="salvacion-steps-title">
             <div class="container">
-                <h2 id="salvacion-steps-title" class="visually-hidden">Cinco pasos hacia la salvación</h2>
-                <div class="timeline content-wrapper content-wrapper--narrow">
+                <h2 id="salvacion-steps-title" class="heading-chapter text-center mb-5">Cinco pasos hacia la salvación</h2>
+                <div class="timeline content-wrapper content-wrapper--narrow composition composition--start">
                     <div class="timeline-item">
-                        <div class="card-app overflow-hidden">
+                        <div class="card-app surface-raised overflow-hidden">
                             <div class="timeline-node" aria-hidden="true">1</div>
                             <div class="timeline-image-wrapper overflow-hidden">
-                                <img src="assets/images/salvacion/pecador.webp" width="1081" height="1081" alt="" class="w-100 timeline-inner-image" loading="lazy">
+                                <img class="w-100 timeline-inner-image" src="assets/images/salvacion/pecador.webp" width="1081" height="1081" alt="Ilustración de una mano sosteniendo un corazón roto" loading="lazy" decoding="async">
                             </div>
                             <div class="p-3 p-md-4">
-                                <h3 class="timeline-step-title"><span class="visually-hidden">Paso 1: </span>Reconoce tu condición</h3>
+                                <h3 class="timeline-step-title heading-local">
+                                    <span class="visually-hidden">Paso 1: </span>Reconoce tu condición
+                                </h3>
                                 <p class="timeline-step-text">Necesitas reconocer que, como todos los seres humanos, has fallado y eres pecador.</p>
                                 <blockquote class="verse-block mb-0 ms-0 me-0">
                                     <p>"Por cuanto todos pecaron, y están destituidos de la gloria de Dios."</p>
@@ -213,13 +265,15 @@
                         </div>
                     </div>
                     <div class="timeline-item">
-                        <div class="card-app overflow-hidden">
+                        <div class="card-app surface-raised overflow-hidden">
                             <div class="timeline-node" aria-hidden="true">2</div>
                             <div class="timeline-image-wrapper overflow-hidden">
-                                <img src="assets/images/salvacion/paga.webp" width="1081" height="1081" alt="" class="w-100 timeline-inner-image" loading="lazy">
+                                <img class="w-100 timeline-inner-image" src="assets/images/salvacion/paga.webp" width="1081" height="1081" alt="Ilustración de una mano sosteniendo billetes" loading="lazy" decoding="async">
                             </div>
                             <div class="p-3 p-md-4">
-                                <h3 class="timeline-step-title"><span class="visually-hidden">Paso 2: </span>Entiende la consecuencia</h3>
+                                <h3 class="timeline-step-title heading-local">
+                                    <span class="visually-hidden">Paso 2: </span>Entiende la consecuencia
+                                </h3>
                                 <p class="timeline-step-text">El pecado tiene un costo espiritual alto: la separación de Dios, que es la muerte espiritual.</p>
                                 <blockquote class="verse-block mb-0 ms-0 me-0">
                                     <p>"Porque la paga del pecado es muerte..."</p>
@@ -229,13 +283,15 @@
                         </div>
                     </div>
                     <div class="timeline-item">
-                        <div class="card-app overflow-hidden">
+                        <div class="card-app surface-raised overflow-hidden">
                             <div class="timeline-node" aria-hidden="true">3</div>
                             <div class="timeline-image-wrapper overflow-hidden">
-                                <img src="assets/images/salvacion/regalo.webp" width="1081" height="1081" alt="" class="w-100 timeline-inner-image" loading="lazy">
+                                <img class="w-100 timeline-inner-image" src="assets/images/salvacion/regalo.webp" width="1081" height="1081" alt="Ilustración de una caja de regalo abierta" loading="lazy" decoding="async">
                             </div>
                             <div class="p-3 p-md-4">
-                                <h3 class="timeline-step-title"><span class="visually-hidden">Paso 3: </span>El regalo de Dios</h3>
+                                <h3 class="timeline-step-title heading-local">
+                                    <span class="visually-hidden">Paso 3: </span>El regalo de Dios
+                                </h3>
                                 <p class="timeline-step-text">Pero Dios no nos dejó sin esperanza. Él quiere darte vida eterna totalmente gratis.</p>
                                 <blockquote class="verse-block mb-0 ms-0 me-0">
                                     <p>"...mas la dádiva de Dios es vida eterna en Cristo Jesús Señor nuestro."</p>
@@ -245,13 +301,15 @@
                         </div>
                     </div>
                     <div class="timeline-item">
-                        <div class="card-app overflow-hidden">
+                        <div class="card-app surface-raised overflow-hidden">
                             <div class="timeline-node" aria-hidden="true">4</div>
                             <div class="timeline-image-wrapper overflow-hidden">
-                                <img src="assets/images/salvacion/Jesus_Salvador.webp" width="1081" height="1081" alt="" class="w-100 timeline-inner-image" loading="lazy">
+                                <img class="w-100 timeline-inner-image" src="assets/images/salvacion/Jesus_Salvador.webp" width="1081" height="1081" alt="Ilustración de Jesús sosteniendo un corazón" loading="lazy" decoding="async">
                             </div>
                             <div class="p-3 p-md-4">
-                                <h3 class="timeline-step-title"><span class="visually-hidden">Paso 4: </span>Acepta a Jesús</h3>
+                                <h3 class="timeline-step-title heading-local">
+                                    <span class="visually-hidden">Paso 4: </span>Acepta a Jesús
+                                </h3>
                                 <p class="timeline-step-text">No es por obras, es por fe. Acepta a Cristo Jesús como tu Salvador personal.</p>
                                 <blockquote class="verse-block mb-0 ms-0 me-0">
                                     <p>"Mas a todos los que le recibieron, a los que creen en su nombre, les dio potestad de ser hechos hijos de Dios."</p>
@@ -261,13 +319,15 @@
                         </div>
                     </div>
                     <div class="timeline-item">
-                        <div class="card-app overflow-hidden">
+                        <div class="card-app surface-raised overflow-hidden">
                             <div class="timeline-node" aria-hidden="true">5</div>
                             <div class="timeline-image-wrapper overflow-hidden">
-                                <img src="assets/images/salvacion/puerta.webp" width="1081" height="1081" alt="" class="w-100 timeline-inner-image" loading="lazy">
+                                <img class="w-100 timeline-inner-image" src="assets/images/salvacion/puerta.webp" width="1081" height="1081" alt="Ilustración de una puerta abierta" loading="lazy" decoding="async">
                             </div>
                             <div class="p-3 p-md-4">
-                                <h3 class="timeline-step-title"><span class="visually-hidden">Paso 5: </span>Abre la puerta</h3>
+                                <h3 class="timeline-step-title heading-local">
+                                    <span class="visually-hidden">Paso 5: </span>Abre la puerta
+                                </h3>
                                 <p class="timeline-step-text">Jesús es un caballero; Él toca a la puerta de tu corazón, pero tú debes abrirle.</p>
                                 <blockquote class="verse-block mb-0 ms-0 me-0">
                                     <p>"He aquí, yo estoy a la puerta y llamo: si alguno oye mi voz y abre la puerta, entraré a él, y cenaré con él, y él conmigo."</p>
@@ -277,161 +337,271 @@
                         </div>
                     </div>
                     <div class="timeline-item">
-                        <div class="card-app p-4 p-md-5 text-center salvacion-cta-card">
-                            <h2>¿Estás listo para dar el paso?</h2>
-                            <p>La decisión más importante de tu vida te está esperando. Dios te ama y quiere tener una relación personal contigo hoy mismo.</p>
-                            <blockquote class="verse-block text-start mb-4 ms-0 me-0">
-                                <p>"Si confesares con tu boca que Jesús es el Señor, y creyeres en tu corazón que Dios le levantó de los muertos, serás salvo."</p>
-                                <cite class="verse-ref fst-normal">Romanos 10:9</cite>
-                            </blockquote>
+                        <div class="card-app surface-raised overflow-hidden">
                             <div class="timeline-image-wrapper overflow-hidden">
-                                <img src="assets/images/salvacion/oracion.webp" width="1081" height="1081" alt="" class="w-100 timeline-inner-image" loading="lazy">
+                                <img class="w-100 timeline-inner-image" src="assets/images/salvacion/oracion.webp" width="1081" height="1081" alt="Ilustración de manos en oración" loading="lazy" decoding="async">
                             </div>
-                            <button class="btn-primary-pill w-100 mt-4" type="button" data-bs-toggle="modal" data-bs-target="#salvacion-modal">
-                                <i class="fa-solid fa-heart me-1" aria-hidden="true"></i>Aceptar a Jesús ahora
-                            </button>
+                            <div class="p-3 p-md-4">
+                                <h3 class="timeline-step-title heading-local">
+                                    <span class="visually-hidden">Paso 6: </span>¿Estás listo para dar el paso?
+                                </h3>
+                                <p class="timeline-step-text">La decisión más importante de tu vida te está esperando. Dios te ama y quiere tener una relación personal contigo hoy mismo.</p>
+                                <blockquote class="verse-block mb-0 ms-0 me-0">
+                                    <p>"Si confesares con tu boca que Jesús es el Señor, y creyeres en tu corazón que Dios le levantó de los muertos, serás salvo."</p>
+                                    <cite class="verse-ref fst-normal">Romanos 10:9</cite>
+                                </blockquote>
+                                <button class="btn btn-app btn-app--primary w-100 mt-4" type="button" data-bs-toggle="modal" data-bs-target="#salvacion-modal">
+                                    <svg class="icon me-1" aria-hidden="true">
+                                        <use href="assets/icons/icons.svg#i-heart"></use>
+                                    </svg>Aceptar a Jesús ahora
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-        <div class="modal fade modal-salvacion" id="salvacion-modal" tabindex="-1" aria-labelledby="salvacion-modal-label" aria-hidden="true" data-bs-backdrop="static">
+        <div id="salvacion-modal" class="modal fade modal-salvacion" tabindex="-1" data-bs-backdrop="static" aria-labelledby="salvacion-modal-label" aria-describedby="salvacion-modal-instruction" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-                <div class="modal-content">
-                    <div class="modal-header border-0 pb-0">
-                        <button type="button" class="btn-close ms-auto" data-bs-dismiss="modal" aria-label="Cerrar"></button>
-                    </div>
-                    <div class="modal-body pt-0">
-                        <div class="text-center mb-3">
-                            <i class="fa-solid fa-hands-praying mb-2 salvacion-cta-icon" aria-hidden="true"></i>
-                            <h3 id="salvacion-modal-label">Oración de Invitación</h3>
-                            <small class="text-muted-custom d-block">Lee con fe y sinceridad</small>
+                <form id="salvacion-followup-form" class="modal-content surface-raised" method="POST" novalidate>
+                    <div class="modal-header border-0">
+                        <div class="salvacion-modal-heading">
+                            <div class="salvacion-cta-icon" aria-hidden="true">
+                                <svg class="icon" aria-hidden="true">
+                                    <use href="assets/icons/icons.svg#i-heart-handshake"></use>
+                                </svg>
+                            </div>
+                            <div>
+                                <h2 id="salvacion-modal-label" class="salvacion-modal-title" tabindex="-1">Oración de Invitación</h2>
+                                <p id="salvacion-modal-instruction" class="salvacion-modal-instruction">Lee con fe y sinceridad</p>
+                            </div>
                         </div>
-                        <p class="prayer-quote">Señor Jesús, reconozco que soy pecador y te necesito.
-                            <br> Gracias por morir en la cruz por mí.
-                            <br> Hoy abro la puerta de mi vida y te recibo como mi Señor y Salvador.
-                            <br> Perdona mis pecados y hazme tu hijo.
-                            <br> En tu nombre, Amén.
-                        </p>
-                        <hr>
-                        <div class="text-center">
-                            <h4>¡Felicidades!</h4>
-                            <blockquote class="verse-block text-start mb-3 ms-0 me-0">
-                                <p>"El que tiene al Hijo, tiene la vida; el que no tiene al Hijo de Dios no tiene la vida."</p>
-                                <cite class="verse-ref fst-normal">1 Juan 5:12</cite>
-                            </blockquote>
-                            <p class="modal-note mb-0">Esta oración es el inicio de una relación personal con Dios. No estás solo en este camino.</p>
-                        </div>
-                    </div>
-                    <div class="modal-footer border-0 flex-nowrap gap-2">
-                        <button class="btn-secondary-pill justify-content-center flex-fill m-0" type="button" data-track-category="salvacion" data-track-action="share_click" data-share-title="Tengo un regalo muy especial para ti" data-share-text="Quiero invitarte a conocer el camino a la salvación que cambió mi vida." data-share-url="">
-                            <i class="fa-solid fa-share me-1" aria-hidden="true"></i>Compartir
+                        <button class="ctrl-app ctrl-app--ghost ctrl-app--md ms-auto" type="button" data-bs-dismiss="modal" aria-label="Cerrar">
+                            <svg class="icon" aria-hidden="true">
+                                <use href="assets/icons/icons.svg#i-x"></use>
+                            </svg>
                         </button>
-                        <button id="amen-btn" class="btn-primary-pill justify-content-center flex-fill m-0" type="button">Amén</button>
                     </div>
-                </div>
+                    <div class="modal-body">
+                        <div id="salvacion-prayer-stage" class="salvacion-modal-stage">
+                            <p class="prayer-quote">Señor Jesús, reconozco que soy pecador y te necesito.
+                                <br> Gracias por morir en la cruz por mí.
+                                <br> Hoy abro la puerta de mi vida y te recibo como mi Señor y Salvador.
+                                <br> Perdona mis pecados y hazme tu hijo.
+                                <br> En tu nombre, Amén.
+                            </p>
+                            <div class="salvacion-modal-promise">
+                                <h3 class="salvacion-modal-subtitle">Una promesa para ti</h3>
+                                <blockquote class="verse-block text-start mb-3 ms-0 me-0">
+                                    <p>"El que tiene al Hijo, tiene la vida; el que no tiene al Hijo de Dios no tiene la vida."</p>
+                                    <cite class="verse-ref fst-normal">1 Juan 5:12</cite>
+                                </blockquote>
+                                <p class="modal-note mb-0">Esta oración es el inicio de una relación personal con Dios. No estás solo en este camino.</p>
+                            </div>
+                        </div>
+                        <div id="salvacion-followup-stage" class="salvacion-modal-stage" hidden>
+                            <div class="salvacion-followup-intro">
+                                <p><strong>¿Te gustaría conocer IBMty?</strong> Déjanos tus datos y te enviaremos información e invitación para visitarnos.</p>
+                            </div>
+                            <input type="hidden" name="_subject" value="Nueva decisión de fe — seguimiento">
+                            <input type="hidden" name="origen" value="salvacion.html">
+                            <input type="text" name="_gotcha" class="d-none" tabindex="-1" autocomplete="off" aria-hidden="true">
+                            <div class="salvacion-fields-grid">
+                                <div class="salvacion-field">
+                                    <label for="salvacion-followup-name">Nombre</label>
+                                    <input id="salvacion-followup-name" class="form-control form-input" type="text" name="nombre" autocomplete="name" maxlength="100" required>
+                                </div>
+                                <div class="salvacion-field">
+                                    <label for="salvacion-followup-age">Edad <span>(opcional)</span></label>
+                                    <input id="salvacion-followup-age" class="form-control form-input" type="number" name="edad" min="1" max="120" inputmode="numeric">
+                                </div>
+                                <div class="salvacion-field">
+                                    <label for="salvacion-followup-phone">Teléfono</label>
+                                    <input id="salvacion-followup-phone" class="form-control form-input" type="tel" name="telefono" autocomplete="tel" inputmode="tel" maxlength="30" aria-describedby="salvacion-contact-hint">
+                                </div>
+                                <div class="salvacion-field">
+                                    <label for="salvacion-followup-email">Correo electrónico</label>
+                                    <input id="salvacion-followup-email" class="form-control form-input" type="email" name="email" autocomplete="email" maxlength="120" aria-describedby="salvacion-contact-hint">
+                                </div>
+                            </div>
+                            <p id="salvacion-contact-hint" class="salvacion-form-hint">Escribe al menos un teléfono o correo para poder contactarte.</p>
+                            <div class="salvacion-consent">
+                                <input id="salvacion-followup-consent" class="form-check-input" type="checkbox" name="consentimiento" value="aceptado" required>
+                                <label for="salvacion-followup-consent">Acepto que IBMty use estos datos únicamente para contactarme. Si soy menor de edad, confirmo que cuento con autorización de mi madre, padre o tutor. Consulta el <a href="privacidad.html" target="_blank" rel="noopener">Aviso de Privacidad</a>.</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer border-0">
+                        <div id="salvacion-prayer-actions" class="salvacion-modal-actions">
+                            <button class="btn btn-app btn-app--secondary justify-content-center m-0" type="button" data-track-category="salvacion" data-track-action="share_click" data-share-title="Un mensaje sobre la salvación" data-share-text="Quiero compartirlo contigo con cariño; puedes leerlo cuando quieras.">
+                                <svg class="icon me-1" aria-hidden="true">
+                                    <use href="assets/icons/icons.svg#i-share-2"></use>
+                                </svg>Compartir
+                            </button>
+                            <button id="amen-btn" class="btn btn-app btn-app--primary justify-content-center m-0" type="button">Amén</button>
+                        </div>
+                        <div id="salvacion-followup-actions" class="salvacion-modal-actions" hidden>
+                            <button id="salvacion-followup-skip" class="btn btn-app btn-app--secondary justify-content-center m-0" type="button">Ahora no</button>
+                            <button class="btn btn-app btn-app--primary justify-content-center m-0" type="submit">
+                                <svg class="icon me-1" aria-hidden="true">
+                                    <use href="assets/icons/icons.svg#i-send"></use>
+                                </svg>Enviar y celebrar
+                            </button>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
     </main>
 
-    <footer id="footer-web" class="site-footer">
+    <footer id="footer-web">
         <div class="container">
-            <div class="footer-panel">
-                <div class="row g-4 g-lg-5 align-items-start">
-                    <div class="col-12 col-lg-5">
-                        <a href="index.html" class="footer-brand" aria-label="Ir al inicio de IBMty">
-                            <span class="footer-brand-mark" aria-hidden="true">
-                                <i class="fa-solid fa-church"></i>
-                            </span>
-                            <span>
+            <div>
+                <div class="row g-3 g-lg-4">
+                    <div class="col-12 col-lg-4">
+                        <div class="footer-identity">
+                            <a class="footer-brand" href="index.html">
+                                <span class="footer-brand-mark" aria-hidden="true">
+                                    <img src="assets/icons/Logo_IBMty.png" alt="" width="44" height="44" loading="lazy" decoding="async">
+                                </span>
                                 <span class="footer-brand-text">Iglesia Bautista de Monterrey</span>
-                            </span>
-                        </a>
-                        <p class="footer-summary">Mantente conectado con nosotros.</p>
-                        <nav class="footer-social mt-3" aria-label="Redes sociales">
-                            <a href="#" data-config-href="facebook" class="footer-social-link" target="_blank" rel="noopener" aria-label="Facebook">
-                                <i class="fa-brands fa-facebook-f" aria-hidden="true"></i>
                             </a>
-                            <a href="#" data-config-href="instagram" class="footer-social-link" target="_blank" rel="noopener" aria-label="Instagram">
-                                <i class="fa-brands fa-instagram" aria-hidden="true"></i>
-                            </a>
-                            <a href="#" data-config-href="youtube" class="footer-social-link" target="_blank" rel="noopener" aria-label="YouTube">
-                                <i class="fa-brands fa-youtube" aria-hidden="true"></i>
-                            </a>
-                        </nav>
+                            <p class="footer-summary">Mantente conectado con nosotros.</p>
+                            <nav class="footer-social" aria-label="Redes sociales">
+                                <a class="ctrl-app ctrl-app--ghost ctrl-app--md" href="#" target="_blank" rel="noopener" data-config-href="facebook" aria-label="Facebook">
+                                    <svg class="icon" aria-hidden="true">
+                                        <use href="assets/icons/icons.svg#i-brand-facebook"></use>
+                                    </svg>
+                                </a>
+                                <a class="ctrl-app ctrl-app--ghost ctrl-app--md" href="#" target="_blank" rel="noopener" data-config-href="instagram" aria-label="Instagram">
+                                    <svg class="icon" aria-hidden="true">
+                                        <use href="assets/icons/icons.svg#i-brand-instagram"></use>
+                                    </svg>
+                                </a>
+                                <a class="ctrl-app ctrl-app--ghost ctrl-app--md" href="#" target="_blank" rel="noopener" data-config-href="youtube" aria-label="YouTube">
+                                    <svg class="icon" aria-hidden="true">
+                                        <use href="assets/icons/icons.svg#i-brand-youtube"></use>
+                                    </svg>
+                                </a>
+                            </nav>
+                        </div>
                     </div>
-                    <div class="col-12 col-md-6 col-lg-4">
-                        <h2 class="footer-heading">Contacto</h2>
-                        <ul class="footer-contact-list">
-                            <li>
-                                <a href="#" data-config-href="addressMapUrl" target="_blank" rel="noopener" class="footer-contact-item">
-                                    <span class="footer-icon" aria-hidden="true">
-                                        <i class="fa-solid fa-location-dot"></i>
-                                    </span>
-                                    <span>
-                                        <span class="footer-contact-label">Dirección</span>
-                                        <span data-config-text="address"></span>
-                                    </span>
-                                </a>
-                            </li>
-                            <li class="footer-contact-item">
-                                <span class="footer-icon" aria-hidden="true">
-                                    <i class="fa-solid fa-phone"></i>
-                                </span>
-                                <span>
-                                    <span class="footer-contact-label">Teléfonos</span>
-                                    <span class="footer-phone-list">
-                                        <a href="#" data-config-href="phone1" class="footer-phone-link">
-                                            <span data-config-text="phone1"></span>
-                                        </a>
-                                        <a href="#" data-config-href="phone2" class="footer-phone-link">
-                                            <span data-config-text="phone2"></span>
-                                        </a>
-                                    </span>
-                                </span>
-                            </li>
-                            <li>
-                                <a href="#" data-config-href="email" class="footer-contact-item">
-                                    <span class="footer-icon" aria-hidden="true">
-                                        <i class="fa-solid fa-envelope"></i>
-                                    </span>
-                                    <span>
-                                        <span class="footer-contact-label">Correo</span>
-                                        <span data-config-text="email"></span>
-                                    </span>
-                                </a>
-                            </li>
-                        </ul>
+                    <div class="col-12 col-md-6 col-lg-5">
+                        <div class="footer-group">
+                            <h2 class="footer-heading">Contacto</h2>
+                            <ul class="footer-row-list">
+                                <li>
+                                    <a class="footer-row" href="#" target="_blank" rel="noopener" data-config-href="addressMapUrl">
+                                        <span class="footer-row-icon" aria-hidden="true">
+                                            <svg class="icon" aria-hidden="true">
+                                                <use href="assets/icons/icons.svg#i-map-pin"></use>
+                                            </svg>
+                                        </span>
+                                        <span class="footer-row-info">
+                                            <span class="micro-label">Dirección</span>
+                                            <span class="footer-row-value" data-config-text="address"></span>
+                                        </span>
+                                        <svg class="icon footer-row-ext" aria-hidden="true">
+                                            <use href="assets/icons/icons.svg#i-external-link"></use>
+                                        </svg>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="footer-row" href="#" data-config-href="phone1">
+                                        <span class="footer-row-icon" aria-hidden="true">
+                                            <svg class="icon" aria-hidden="true">
+                                                <use href="assets/icons/icons.svg#i-phone"></use>
+                                            </svg>
+                                        </span>
+                                        <span class="footer-row-info">
+                                            <span class="micro-label">Teléfono</span>
+                                            <span class="footer-row-value" data-config-text="phone1"></span>
+                                        </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="footer-row" href="#" data-config-href="phone2">
+                                        <span class="footer-row-icon" aria-hidden="true">
+                                            <svg class="icon" aria-hidden="true">
+                                                <use href="assets/icons/icons.svg#i-phone"></use>
+                                            </svg>
+                                        </span>
+                                        <span class="footer-row-info">
+                                            <span class="micro-label">Teléfono</span>
+                                            <span class="footer-row-value" data-config-text="phone2"></span>
+                                        </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="footer-row" href="#" data-config-href="email">
+                                        <span class="footer-row-icon" aria-hidden="true">
+                                            <svg class="icon" aria-hidden="true">
+                                                <use href="assets/icons/icons.svg#i-mail"></use>
+                                            </svg>
+                                        </span>
+                                        <span class="footer-row-info">
+                                            <span class="micro-label">Correo</span>
+                                            <span class="footer-row-value" data-config-text="email"></span>
+                                        </span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                     <div class="col-12 col-md-6 col-lg-3">
-                        <h2 class="footer-heading">Enlaces</h2>
-                        <ul class="footer-link-list">
-                            <li>
-                                <a href="#" data-config-href="externalLink1.url" class="footer-link" target="_blank" rel="noopener">
-                                    <span data-config-text="externalLink1.label"></span>
-                                    <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" data-config-href="externalLink2.url" class="footer-link" target="_blank" rel="noopener">
-                                    <span data-config-text="externalLink2.label"></span>
-                                    <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
-                                </a>
-                            </li>
-                        </ul>
+                        <div class="footer-group">
+                            <h2 class="footer-heading">Enlaces</h2>
+                            <ul class="footer-row-list">
+                                <li class="footer-row-pair">
+                                    <a class="footer-row" href="#" target="_blank" rel="noopener" data-config-href="externalLink1.url">
+                                        <span class="footer-row-icon" aria-hidden="true">
+                                            <svg class="icon" aria-hidden="true">
+                                                <use href="assets/icons/icons.svg#i-link"></use>
+                                            </svg>
+                                        </span>
+                                        <span class="footer-row-info">
+                                            <span class="footer-row-value" data-config-text="externalLink1.label"></span>
+                                        </span>
+                                        <svg class="icon footer-row-ext" aria-hidden="true">
+                                            <use href="assets/icons/icons.svg#i-external-link"></use>
+                                        </svg>
+                                    </a>
+                                    <a class="footer-row" href="#" target="_blank" rel="noopener" data-config-href="externalLink2.url">
+                                        <span class="footer-row-icon" aria-hidden="true">
+                                            <svg class="icon" aria-hidden="true">
+                                                <use href="assets/icons/icons.svg#i-link"></use>
+                                            </svg>
+                                        </span>
+                                        <span class="footer-row-info">
+                                            <span class="footer-row-value" data-config-text="externalLink2.label"></span>
+                                        </span>
+                                        <svg class="icon footer-row-ext" aria-hidden="true">
+                                            <use href="assets/icons/icons.svg#i-external-link"></use>
+                                        </svg>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="footer-row" href="privacidad.html">
+                                        <span class="footer-row-icon" aria-hidden="true">
+                                            <svg class="icon" aria-hidden="true">
+                                                <use href="assets/icons/icons.svg#i-shield-check"></use>
+                                            </svg>
+                                        </span>
+                                        <span class="footer-row-info">
+                                            <span class="footer-row-value">Aviso de Privacidad</span>
+                                        </span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
-                <div class="footer-bottom">
-                    <div class="footer-bottom-links">
-                        <a href="privacidad.html">
-                            <i class="fa-solid fa-shield-halved me-1" aria-hidden="true"></i>Aviso de Privacidad
-                        </a>
-                        <span>Iglesia Bautista de Monterrey &copy; <span id="current-year"></span></span>
-                    </div>
-                    <span class="footer-devotion">Hecho con
-                        <i class="fa-solid fa-heart mx-1" aria-hidden="true"></i> para Dios
-                    </span>
-                </div>
+            </div>
+            <div class="footer-bottom">
+                <span class="footer-devotion">Hecho con <svg class="icon mx-1" aria-hidden="true">
+                        <use href="assets/icons/icons.svg#i-heart"></use>
+                    </svg> para Dios </span>
+                <span class="footer-copy">Iglesia Bautista de Monterrey &copy; <span id="current-year"></span></span>
             </div>
         </div>
     </footer>

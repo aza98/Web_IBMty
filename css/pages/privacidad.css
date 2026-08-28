@@ -1,7 +1,5 @@
 .privacidad-content {
-  max-width: 700px;
-  margin-left: auto;
-  margin-right: auto
+  margin-inline: auto
 }
 
 .priv-updated {
@@ -19,9 +17,9 @@
   line-height: 1
 }
 
-.priv-updated i {
+.priv-updated .icon {
   font-size: .95em;
-  color: var(--color-brand)
+  color: var(--color-text-muted-strong)
 }
 
 .priv-intro {
@@ -35,12 +33,92 @@
 }
 
 .priv-intro p:last-child {
+  max-width: 560px;
   font-size: var(--text-sm);
-  color: var(--color-text-muted)
+  color: var(--color-text-secondary)
 }
 
-.priv-accordion {
-  counter-reset: priv-num
+.priv-essentials {
+  margin-bottom: var(--space-5);
+  padding: var(--space-3)
+}
+
+.priv-essentials-heading {
+  margin-bottom: var(--space-3)
+}
+
+.priv-essentials-title {
+  margin: 0 0 var(--space-1);
+  color: var(--color-heading);
+  font-size: var(--text-lg)
+}
+
+.priv-essentials-heading p {
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+  line-height: 1.6
+}
+
+.priv-essentials-list {
+  display: grid;
+  margin: 0;
+  padding: 0
+}
+
+.priv-essentials-list>div {
+  display: grid;
+  grid-template-columns: 4.5rem minmax(0, 1fr);
+  gap: var(--space-2);
+  padding: var(--space-2) 0;
+  border-top: 1px solid var(--color-border)
+}
+
+.priv-essentials-list dt {
+  margin: 0;
+  color: var(--color-text-primary);
+  font-family: var(--font-primary);
+  font-size: var(--text-sm);
+  font-weight: 700
+}
+
+.priv-essentials-list dd {
+  margin: 0;
+  color: var(--color-text-secondary);
+  font-family: var(--font-secondary);
+  font-size: var(--text-sm);
+  line-height: 1.5
+}
+
+@media (min-width:768px) {
+  .priv-essentials {
+    padding: var(--space-5)
+  }
+
+  .priv-essentials-list {
+    grid-template-columns: repeat(3, 1fr)
+  }
+
+  .priv-essentials-list>div {
+    display: block;
+    padding: var(--space-3) var(--space-4)
+  }
+
+  .priv-essentials-list dt {
+    margin-bottom: var(--space-1)
+  }
+
+  .priv-essentials-list>div:first-child {
+    padding-left: 0
+  }
+
+  .priv-essentials-list>div+div {
+    border-left: 1px solid var(--color-border)
+  }
+
+  .priv-essentials-list>div:last-child {
+    padding-right: 0
+  }
 }
 
 .priv-accordion .collapsing {
@@ -50,36 +128,14 @@
 .priv-accordion .accordion-item {
   position: relative;
   overflow: hidden;
+  border: 0;
   margin-bottom: var(--space-3);
-  border-radius: var(--radius-card);
-  counter-increment: priv-num
-}
-
-.priv-accordion .accordion-item::before {
-  content: "0" counter(priv-num);
-  position: absolute;
-  top: .25rem;
-  right: .5rem;
-  z-index: 0;
-  font-family: var(--font-primary);
-  font-weight: 800;
-  font-size: 4.5rem;
-  line-height: 1;
-  color: var(--color-brand);
-  opacity: .05;
-  pointer-events: none;
-  user-select: none
+  border-radius: var(--radius-card)
 }
 
 @media (min-width:768px) {
   .priv-accordion .accordion-item {
     margin-bottom: var(--space-4)
-  }
-
-  .priv-accordion .accordion-item::before {
-    right: .75rem;
-    font-size: 6.5rem;
-    opacity: .06
   }
 }
 
@@ -92,10 +148,12 @@
   font-family: var(--font-primary);
   font-weight: 700;
   font-size: var(--text-base);
+  min-height: var(--btn-min-height);
+  border-radius: 0 !important;
   border: none;
   border-bottom: 1px solid #fff0;
   box-shadow: none;
-  transition: background-color var(--transition-base), border-color var(--transition-base), transform var(--transition-base)
+  transition: background-color var(--transition-base), border-color var(--transition-base), transform var(--motion-instant) var(--ease-standard)
 }
 
 .priv-accordion .accordion-button>.d-flex {
@@ -108,12 +166,12 @@
 
 @media (hover:hover) {
   .priv-accordion .accordion-button:hover {
-    background-color: color-mix(in srgb, var(--color-brand) 3%, var(--color-surface))
+    background-color: var(--color-surface-2)
   }
 }
 
 .priv-accordion .accordion-button:active {
-  transform: scale(.995)
+  transform: scale(var(--btn-press-scale))
 }
 
 .priv-accordion .accordion-button:focus {
@@ -122,37 +180,27 @@
 }
 
 .priv-accordion .accordion-button:focus-visible {
-  outline: 2px solid var(--color-brand);
+  outline: 2px solid var(--btn-focus);
   outline-offset: -2px
 }
 
 .priv-accordion .accordion-button:not(.collapsed) {
   background: var(--color-surface);
-  color: var(--color-text-primary);
   border-bottom-color: var(--color-border)
 }
 
 .priv-accordion .accordion-button:not(.collapsed) .privacidad-section-title {
-  color: var(--color-brand)
+  color: var(--color-brand-strong)
 }
 
 @media (min-width:768px) {
-  .priv-section-icon {
-    width: 36px;
-    height: 36px;
-    min-width: 36px;
-    font-size: var(--text-sm);
-    border-radius: var(--radius-md)
+  .priv-accordion .accordion-button {
+    padding: var(--space-5) var(--space-6);
+    font-size: var(--text-md)
   }
 }
 
 .privacidad-section-title {
-  margin: 0;
-  font-family: var(--font-primary);
-  font-weight: 700;
-  font-size: var(--text-base);
-  line-height: 1.3;
-  color: var(--color-text-primary);
   transition: color var(--transition-base)
 }
 
@@ -166,18 +214,7 @@
 
 .priv-accordion .accordion-button:not(.collapsed) .priv-accordion-chevron {
   transform: rotate(180deg);
-  color: var(--color-brand)
-}
-
-@media (min-width:768px) {
-  .priv-accordion .accordion-button {
-    padding: var(--space-5) var(--space-6);
-    font-size: var(--text-md)
-  }
-
-  .privacidad-section-title {
-    font-size: var(--text-md)
-  }
+  color: var(--color-brand-strong)
 }
 
 .priv-accordion .accordion-body {
@@ -220,22 +257,36 @@
   color: var(--color-text-primary)
 }
 
-.privacidad-content a:not(.btn-primary-pill):not(.btn-secondary-pill) {
-  color: var(--color-brand);
+.priv-panel-subtitle {
+  margin: var(--space-5) 0 var(--space-2);
+  color: var(--color-text-primary);
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  font-weight: 700;
+  line-height: 1.4
+}
+
+.priv-panel-subtitle:first-child {
+  margin-top: 0
+}
+
+.privacidad-content a:not(.btn-app) {
+  color: var(--color-brand-strong);
   text-decoration: underline;
   text-underline-offset: 3px;
-  transition: opacity var(--transition-base), color var(--transition-base)
+  overflow-wrap: anywhere;
+  transition: color var(--transition-base)
 }
 
 @media (hover:hover) {
-  .privacidad-content a:not(.btn-primary-pill):not(.btn-secondary-pill):hover {
-    opacity: .75
+  .privacidad-content a:not(.btn-app):hover {
+    color: var(--color-text-primary)
   }
 }
 
 .priv-arco-cta {
-  margin-top: var(--space-5);
-  padding-top: var(--space-5);
+  margin-top: var(--space-3);
+  padding-top: var(--space-4);
   border-top: 1px solid var(--color-border)
 }
 
@@ -245,6 +296,16 @@
   align-items: center;
   justify-content: center;
   min-height: 44px
+}
+
+.priv-essentials .priv-arco-cta a {
+  width: 100%
+}
+
+@media (min-width:576px) {
+  .priv-essentials .priv-arco-cta a {
+    width: auto
+  }
 }
 
 .priv-back {
@@ -260,6 +321,10 @@
   .priv-accordion-chevron {
     transition: none
   }
+
+  .priv-accordion .accordion-button:active {
+    transform: none
+  }
 }
 
 @media print {
@@ -267,4 +332,16 @@
     display: block !important;
     height: auto !important
   }
+}
+
+.priv-accordion-icon {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: var(--radius-md);
+  background: var(--color-surface-2);
+  color: var(--color-text-secondary);
+  transition: background var(--transition-base), color var(--transition-base)
 }

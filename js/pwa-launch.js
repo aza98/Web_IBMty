@@ -14,4 +14,4 @@
         return
     }
     window.location.replace('splash.html')
-})();
+})()

@@ -1,44 +1,47 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es-MX">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <script>
-        (function() {
-            var saved = localStorage.getItem('theme');
-            var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-            var theme = saved || (prefersDark ? 'dark' : 'light');
-            document.documentElement.setAttribute('data-theme', theme);
-        })();
-    </script>
+
+    <script> (function() { var saved = null; try { saved = localStorage.getItem('theme') } catch (err) {} var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches; var theme = saved || (prefersDark ? 'dark' : 'light'); document.documentElement.setAttribute('data-theme', theme); })(); </script>
     <script src="js/pwa-launch.js"></script>
-    <title>Donativos — IBMty</title>
+
+    <title>Donativos | Iglesia Bautista de Monterrey</title>
     <link rel="canonical" href="https://www.ibmty.com/donativo.html">
-    <meta name="description" content="Apoya a IBMty con tu donativo. Consulta aquí nuestros datos bancarios.">
+    <meta name="description" content="Consulta los datos bancarios para hacer un donativo al Fondo Local o de Misiones de la Iglesia Bautista de Monterrey y apoyar su misión en la comunidad.">
+
     <meta name="theme-color" content="#00C0F6">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="IBMty">
+
     <link rel="apple-touch-icon" href="assets/icons/IBMty_Icon_180.png">
     <link rel="icon" href="assets/icons/IBMty_Icon_32.ico">
     <link rel="manifest" href="manifest.json">
+
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Donativos — IBMty">
-    <meta property="og:description" content="Apoya a IBMty con tu donativo. Consulta aquí nuestros datos bancarios.">
+    <meta property="og:title" content="Donativos | Iglesia Bautista de Monterrey">
+    <meta property="og:description" content="Consulta los datos bancarios para hacer un donativo al Fondo Local o de Misiones de la Iglesia Bautista de Monterrey y apoyar su misión en la comunidad.">
     <meta property="og:image" content="https://www.ibmty.com/assets/images/extras/Bienvenida_desktop.webp">
     <meta property="og:url" content="https://www.ibmty.com/donativo.html">
+    <meta property="og:locale" content="es_MX">
+    <meta property="og:site_name" content="Iglesia Bautista de Monterrey">
+
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Donativos — IBMty">
-    <meta name="twitter:description" content="Apoya a IBMty con tu donativo. Consulta aquí nuestros datos bancarios.">
+    <meta name="twitter:title" content="Donativos | Iglesia Bautista de Monterrey">
+    <meta name="twitter:description" content="Consulta los datos bancarios para hacer un donativo al Fondo Local o de Misiones de la Iglesia Bautista de Monterrey y apoyar su misión en la comunidad.">
     <meta name="twitter:image" content="https://www.ibmty.com/assets/images/extras/Bienvenida_desktop.webp">
+
     <link rel="preload" href="assets/fonts/League_Spartan/static/LeagueSpartan-ExtraBold.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="assets/fonts/Poppins/Poppins-Regular.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.3.0/css/all.min.css" integrity="sha384-sTlsophtwz/I4myskS3OIJf5VvEojkXKZyBTWZm0YD/K1pN7C5wpBPLyrsbr1SU2" crossorigin="anonymous">
+    <link rel="preload" href="assets/icons/icons.svg" as="image" type="image/svg+xml">
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/pages/donativo.css">
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous" defer></script>
     <script src="config/config.js" defer></script>
     <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
@@ -52,95 +55,119 @@
 
 <body data-page="donativo">
     <a class="skip-link visually-hidden-focusable" href="#main-content">Saltar al contenido</a>
+
     <nav id="navbar-web" class="navbar navbar-expand-lg fixed-top" aria-label="Navegación principal">
         <div class="container-fluid">
             <a class="navbar-brand" href="index.html">
-                <img src="assets/icons/IBMty_Logo_Mobile.webp" width="829" height="972" alt="IBMty" class="navbar-logo-mobile d-lg-none">
-                <img src="assets/icons/IBMty_Logo_Desktop.webp" width="1794" height="570" alt="IBMty" class="navbar-logo-desktop d-none d-lg-block">
+                <img class="navbar-logo-mobile d-lg-none" src="assets/icons/IBMty_Logo_Mobile.webp" width="829" height="972" alt="IBMty">
+                <img class="navbar-logo-desktop d-none d-lg-block" src="assets/icons/IBMty_Logo_Desktop.webp" width="1794" height="570" alt="IBMty">
             </a>
-            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#nav-links" aria-controls="nav-links" aria-expanded="false" aria-label="Abrir menú">
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#nav-links" aria-controls="nav-links" aria-expanded="false" aria-label="Mostrar u ocultar menú">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="nav-links">
+            <div id="nav-links" class="collapse navbar-collapse">
                 <ul class="navbar-nav ms-auto align-items-center gap-2">
                     <li class="nav-item">
                         <a class="nav-link d-flex align-items-center gap-2" href="index.html">
-                            <i class="fa-solid fa-house" aria-hidden="true"></i>Inicio
+                            <svg class="icon" aria-hidden="true">
+                                <use href="assets/icons/icons.svg#i-house"></use>
+                            </svg>Inicio
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link d-flex align-items-center gap-2" href="nosotros.html">
-                            <i class="fa-solid fa-church" aria-hidden="true"></i>Nosotros
+                            <svg class="icon" aria-hidden="true">
+                                <use href="assets/icons/icons.svg#i-church"></use>
+                            </svg>Nosotros
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link d-flex align-items-center gap-2" href="salvacion.html">
-                            <i class="fa-solid fa-cross" aria-hidden="true"></i>Salvación
+                            <svg class="icon" aria-hidden="true">
+                                <use href="assets/icons/icons.svg#i-cross"></use>
+                            </svg>Salvación
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link d-flex align-items-center gap-2" href="donativo.html">
-                            <i class="fa-solid fa-hand-holding-heart" aria-hidden="true"></i>Donativo
+                            <svg class="icon" aria-hidden="true">
+                                <use href="assets/icons/icons.svg#i-hand-heart"></use>
+                            </svg>Donativo
                         </a>
                     </li>
                     <li class="nav-item dropdown dropdown-settings d-none d-lg-block">
-                        <a class="nav-link dropdown-toggle d-flex align-items-center gap-2" href="#" id="desktop-settings-dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Opciones">
-                            <i class="fa-solid fa-gear" aria-hidden="true"></i>Ajustes
-                        </a>
+                        <button id="desktop-settings-dropdown" class="nav-link dropdown-toggle d-flex align-items-center gap-2" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <svg class="icon" aria-hidden="true">
+                                <use href="assets/icons/icons.svg#i-settings"></use>
+                            </svg>Ajustes
+                        </button>
                         <ul class="dropdown-menu dropdown-menu-end dropdown-menu-custom" aria-labelledby="desktop-settings-dropdown">
                             <li>
-                                <button class="dropdown-item" id="nav-theme-toggle" type="button">
+                                <button id="nav-theme-toggle" class="dropdown-item" type="button">
                                     <span class="d-flex align-items-center gap-2">
-                                        <i class="fa-solid fa-moon" id="nav-theme-icon" aria-hidden="true"></i>
+                                        <svg id="nav-theme-icon" class="icon" aria-hidden="true">
+                                            <use href="assets/icons/icons.svg#i-moon"></use>
+                                        </svg>
                                         <span>Tema</span>
                                     </span>
-                                    <span class="dropdown-badge" id="nav-theme-label">Modo claro</span>
+                                    <span id="nav-theme-label" class="dropdown-badge">Modo claro</span>
                                 </button>
                             </li>
                             <li>
-                                <button class="dropdown-item" id="nav-notif-toggle" type="button">
+                                <button id="nav-notif-toggle" class="dropdown-item" type="button">
                                     <span class="d-flex align-items-center gap-2">
-                                        <i class="fa-solid fa-bell" id="nav-notif-icon" aria-hidden="true"></i>
+                                        <svg id="nav-notif-icon" class="icon" aria-hidden="true">
+                                            <use href="assets/icons/icons.svg#i-bell"></use>
+                                        </svg>
                                         <span>Notificaciones</span>
                                     </span>
-                                    <span class="dropdown-badge" id="nav-notif-label">Activar</span>
+                                    <span id="nav-notif-label" class="dropdown-badge">Activar</span>
                                 </button>
                             </li>
-                            <li><hr class="dropdown-divider nav-install-divider"></li>
+                            <li>
+                                <hr class="dropdown-divider nav-install-divider">
+                            </li>
                             <li id="nav-install-item">
-                                <button class="dropdown-item" id="nav-pwa-install-btn" type="button">
+                                <button id="nav-pwa-install-btn" class="dropdown-item" type="button">
                                     <span class="d-flex align-items-center gap-2">
-                                        <i class="fa-solid fa-download" aria-hidden="true"></i>
-                                        <span>Instalar app</span>
+                                        <svg class="icon" aria-hidden="true">
+                                            <use href="assets/icons/icons.svg#i-download"></use>
+                                        </svg>
+                                        <span>Aplicación</span>
                                     </span>
-                                    <span class="btn btn-primary-pill btn-sm py-1 px-3 fs-7">Instalar</span>
+                                    <span class="dropdown-badge">Instalar</span>
                                 </button>
                             </li>
                         </ul>
                     </li>
                     <li class="nav-item d-lg-none w-100 nav-mobile-settings pt-2 mt-2">
-                        <span class="nav-link disabled fs-7 text-uppercase px-3 py-1 text-center">
-                            Ajustes
-                        </span>
+                        <span class="nav-link disabled fs-7 text-uppercase px-3 py-1 text-center">Ajustes</span>
                     </li>
                     <li class="nav-item d-lg-none w-100">
-                        <button class="nav-link w-100 justify-content-center gap-2" id="mobile-theme-toggle" type="button">
-                            <i class="fa-solid fa-moon" id="mobile-theme-icon" aria-hidden="true"></i>
+                        <button id="mobile-theme-toggle" class="nav-link w-100 justify-content-center gap-2" type="button">
+                            <svg id="mobile-theme-icon" class="icon" aria-hidden="true">
+                                <use href="assets/icons/icons.svg#i-moon"></use>
+                            </svg>
                             <span>Tema:</span>
-                            <span class="dropdown-badge" id="mobile-theme-label">Modo claro</span>
+                            <span id="mobile-theme-label" class="dropdown-badge">Modo claro</span>
                         </button>
                     </li>
-                    <li class="nav-item d-lg-none w-100" id="mobile-notif-item">
-                        <button class="nav-link w-100 justify-content-center gap-2" id="mobile-notif-toggle" type="button">
-                            <i class="fa-solid fa-bell" id="mobile-notif-icon" aria-hidden="true"></i>
+                    <li id="mobile-notif-item" class="nav-item d-lg-none w-100">
+                        <button id="mobile-notif-toggle" class="nav-link w-100 justify-content-center gap-2" type="button">
+                            <svg id="mobile-notif-icon" class="icon" aria-hidden="true">
+                                <use href="assets/icons/icons.svg#i-bell"></use>
+                            </svg>
                             <span>Notificaciones:</span>
-                            <span class="dropdown-badge" id="mobile-notif-label">Activar</span>
+                            <span id="mobile-notif-label" class="dropdown-badge">Activar</span>
                         </button>
                     </li>
-                    <li class="nav-item d-lg-none w-100" id="mobile-install-item">
-                        <button class="nav-link w-100 justify-content-center gap-2" id="mobile-pwa-install-btn" type="button">
-                            <i class="fa-solid fa-download" aria-hidden="true"></i>
-                            <span>Instalar app</span>
+                    <li id="mobile-install-item" class="nav-item d-lg-none w-100">
+                        <button id="mobile-pwa-install-btn" class="nav-link w-100 justify-content-center gap-2" type="button">
+                            <svg class="icon" aria-hidden="true">
+                                <use href="assets/icons/icons.svg#i-download"></use>
+                            </svg>
+                            <span>Aplicación:</span>
+                            <span class="dropdown-badge">Instalar</span>
                         </button>
                     </li>
                 </ul>
@@ -148,63 +175,80 @@
         </div>
     </nav>
 
-    <nav id="tabbar-pwa" class="tabbar-floating fixed-bottom d-flex justify-content-around align-items-center" aria-label="Navegación principal">
-        <a href="index.html" class="tabbar-item d-flex flex-column align-items-center" data-page-link="inicio">
-            <i class="fa-solid fa-house" aria-hidden="true"></i>
+    <nav id="tabbar-pwa" class="fixed-bottom d-flex justify-content-around align-items-center" aria-label="Navegación principal">
+        <a class="tabbar-item d-flex flex-column align-items-center" href="index.html" data-page-link="inicio">
+            <svg class="icon" aria-hidden="true">
+                <use href="assets/icons/icons.svg#i-house"></use>
+            </svg>
             <span>Inicio</span>
         </a>
-        <a href="nosotros.html" class="tabbar-item d-flex flex-column align-items-center" data-page-link="nosotros">
-            <i class="fa-solid fa-church" aria-hidden="true"></i>
+        <a class="tabbar-item d-flex flex-column align-items-center" href="nosotros.html" data-page-link="nosotros">
+            <svg class="icon" aria-hidden="true">
+                <use href="assets/icons/icons.svg#i-church"></use>
+            </svg>
             <span>Nosotros</span>
         </a>
-        <a href="salvacion.html" class="tabbar-item d-flex flex-column align-items-center" data-page-link="salvacion">
-            <i class="fa-solid fa-cross" aria-hidden="true"></i>
+        <a class="tabbar-item d-flex flex-column align-items-center" href="salvacion.html" data-page-link="salvacion">
+            <svg class="icon" aria-hidden="true">
+                <use href="assets/icons/icons.svg#i-cross"></use>
+            </svg>
             <span>Salvación</span>
         </a>
-        <a href="donativo.html" class="tabbar-item d-flex flex-column align-items-center" data-page-link="donativo">
-            <i class="fa-solid fa-hand-holding-heart" aria-hidden="true"></i>
+        <a class="tabbar-item d-flex flex-column align-items-center" href="donativo.html" data-page-link="donativo">
+            <svg class="icon" aria-hidden="true">
+                <use href="assets/icons/icons.svg#i-hand-heart"></use>
+            </svg>
             <span>Donativo</span>
         </a>
-        <a href="settings.html" class="tabbar-item d-flex flex-column align-items-center" data-page-link="settings">
-            <i class="fa-solid fa-gear" aria-hidden="true"></i>
+        <a class="tabbar-item d-flex flex-column align-items-center" href="settings.html" data-page-link="settings">
+            <svg class="icon" aria-hidden="true">
+                <use href="assets/icons/icons.svg#i-settings"></use>
+            </svg>
             <span>Ajustes</span>
         </a>
     </nav>
 
-    <a id="whatsapp-fab" class="whatsapp-fab" href="#" data-action="open-whatsapp" target="_blank" rel="noopener" aria-label="Contáctanos por WhatsApp">
-        <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+    <a id="whatsapp-fab" class="ctrl-app ctrl-app--float ctrl-app--fab" href="#" target="_blank" rel="noopener" aria-label="Contáctanos por WhatsApp">
+        <svg class="icon" aria-hidden="true">
+            <use href="assets/icons/icons.svg#i-brand-whatsapp"></use>
+        </svg>
     </a>
 
     <main id="main-content" tabindex="-1">
-        <section class="pg-hero hero-flush" aria-labelledby="donativo-title">
+        <section class="pg-hero hero-flush surface-deep" aria-labelledby="donativo-title">
             <div class="pg-hero-bg" aria-hidden="true">
                 <span class="pg-hero-blob pg-hero-blob--1"></span>
                 <span class="pg-hero-blob pg-hero-blob--2"></span>
             </div>
-            <div class="container pg-hero-content">
+            <div class="container pg-hero-content composition composition--start">
                 <div class="pg-hero-icon" aria-hidden="true">
-                    <i class="fa-solid fa-hand-holding-heart" aria-hidden="true"></i>
+                    <svg class="icon" aria-hidden="true">
+                        <use href="assets/icons/icons.svg#i-hand-heart"></use>
+                    </svg>
                 </div>
-                <div class="pg-hero-text">
-                    <h1 id="donativo-title" class="pg-hero-title">Donativo</h1>
-                    <p class="pg-hero-desc">Apoya la obra de Dios con tu ofrenda</p>
+                <div class="pg-hero-text heading-group">
+                    <h1 id="donativo-title" class="pg-hero-title heading-identity">Donativo</h1>
+                    <p class="pg-hero-desc heading-description">Apoya la obra de Dios con tu ofrenda</p>
                 </div>
             </div>
         </section>
-        <section class="section-padding" aria-labelledby="bank-details-title">
+        <section class="section-padding surface-base" aria-labelledby="bank-details-title">
             <div class="container">
-                <div class="donativo-card-wrapper content-wrapper" data-gsap="fade-up">
-                    <div class="card-app">
+                <div class="content-wrapper composition composition--start" data-gsap="fade-up">
+                    <div class="card-app surface-raised">
                         <div class="bank-card-header">
                             <div class="bank-card-brand">
-                                <i class="fa-solid fa-building-columns bank-card-icon" aria-hidden="true"></i>
+                                <svg class="icon bank-card-icon" aria-hidden="true">
+                                    <use href="assets/icons/icons.svg#i-landmark"></use>
+                                </svg>
                                 <div>
-                                    <h2 id="bank-details-title" class="bank-card-name">Banco Afirme</h2>
+                                    <h2 id="bank-details-title" class="bank-card-name heading-local">Banco Afirme</h2>
                                     <div class="bank-card-holder">
                                         <span id="bank-holder-name" class="bank-card-institution">Iglesia Bautista de Monterrey, A.R.</span>
-                                        <button class="btn-secondary-pill btn-copy bank-name-copy" type="button" data-copy="Iglesia Bautista de Monterrey, A.R." aria-describedby="bank-holder-name" aria-live="polite">
-                                            <i class="fa-solid fa-copy" aria-hidden="true"></i>
-                                            <span class="visually-hidden">Copiar nombre de la cuenta</span>
+                                        <button class="btn btn-app btn-app--secondary btn-app--compact bank-name-copy" type="button" data-copy="Iglesia Bautista de Monterrey, A.R." aria-describedby="bank-holder-name" aria-live="polite">
+                                            <svg class="icon" aria-hidden="true">
+                                                <use href="assets/icons/icons.svg#i-copy"></use>
+                                            </svg>Copiar
                                         </button>
                                     </div>
                                 </div>
@@ -213,74 +257,93 @@
                         <div class="bank-accounts-grid">
                             <section class="bank-account-card" aria-labelledby="local-fund-title">
                                 <div class="bank-account-card-header">
-                                    <h3 id="local-fund-title" class="badge-outlined mb-0">Fondo Local</h3>
-                                    <i class="fa-solid fa-church bank-fund-icon" aria-hidden="true"></i>
+                                    <h3 id="local-fund-title" class="badge-outlined heading-local mb-0">Fondo Local</h3>
+                                    <svg class="icon bank-fund-icon" aria-hidden="true">
+                                        <use href="assets/icons/icons.svg#i-church"></use>
+                                    </svg>
                                 </div>
                                 <div class="field-group">
                                     <span id="local-clabe-label" class="micro-label">CLABE</span>
                                     <div class="field-row">
                                         <span id="local-clabe-value" class="field-value">062580001201102921</span>
-                                        <button class="btn-secondary-pill btn-copy" type="button" data-copy="062580001201102921" aria-describedby="local-fund-title local-clabe-label local-clabe-value" aria-live="polite">
-                                            <i class="fa-solid fa-copy" aria-hidden="true"></i>Copiar
+                                        <button class="btn btn-app btn-app--secondary btn-app--compact" type="button" data-copy="062580001201102921" aria-describedby="local-fund-title local-clabe-label local-clabe-value" aria-live="polite">
+                                            <svg class="icon" aria-hidden="true">
+                                                <use href="assets/icons/icons.svg#i-copy"></use>
+                                            </svg>Copiar
                                         </button>
                                     </div>
                                 </div>
-                                <div>
+                                <div class="field-group">
                                     <span id="local-account-label" class="micro-label">No. Cuenta</span>
                                     <div class="field-row">
                                         <span id="local-account-value" class="field-value">000120110292</span>
-                                        <button class="btn-secondary-pill btn-copy" type="button" data-copy="000120110292" aria-describedby="local-fund-title local-account-label local-account-value" aria-live="polite">
-                                            <i class="fa-solid fa-copy" aria-hidden="true"></i>Copiar
+                                        <button class="btn btn-app btn-app--secondary btn-app--compact" type="button" data-copy="000120110292" aria-describedby="local-fund-title local-account-label local-account-value" aria-live="polite">
+                                            <svg class="icon" aria-hidden="true">
+                                                <use href="assets/icons/icons.svg#i-copy"></use>
+                                            </svg>Copiar
                                         </button>
                                     </div>
                                 </div>
                             </section>
                             <section class="bank-account-card" aria-labelledby="missions-fund-title">
                                 <div class="bank-account-card-header">
-                                    <h3 id="missions-fund-title" class="badge-outlined mb-0">Fondo Misiones</h3>
-                                    <i class="fa-solid fa-globe bank-fund-icon" aria-hidden="true"></i>
+                                    <h3 id="missions-fund-title" class="badge-outlined heading-local mb-0">Fondo Misiones</h3>
+                                    <svg class="icon bank-fund-icon" aria-hidden="true">
+                                        <use href="assets/icons/icons.svg#i-globe"></use>
+                                    </svg>
                                 </div>
                                 <div class="field-group">
                                     <span id="missions-clabe-label" class="micro-label">CLABE</span>
                                     <div class="field-row">
                                         <span id="missions-clabe-value" class="field-value">062580001201102840</span>
-                                        <button class="btn-secondary-pill btn-copy" type="button" data-copy="062580001201102840" aria-describedby="missions-fund-title missions-clabe-label missions-clabe-value" aria-live="polite">
-                                            <i class="fa-solid fa-copy" aria-hidden="true"></i>Copiar
+                                        <button class="btn btn-app btn-app--secondary btn-app--compact" type="button" data-copy="062580001201102840" aria-describedby="missions-fund-title missions-clabe-label missions-clabe-value" aria-live="polite">
+                                            <svg class="icon" aria-hidden="true">
+                                                <use href="assets/icons/icons.svg#i-copy"></use>
+                                            </svg>Copiar
                                         </button>
                                     </div>
                                 </div>
-                                <div>
+                                <div class="field-group">
                                     <span id="missions-account-label" class="micro-label">No. Cuenta</span>
                                     <div class="field-row">
                                         <span id="missions-account-value" class="field-value">000120110284</span>
-                                        <button class="btn-secondary-pill btn-copy" type="button" data-copy="000120110284" aria-describedby="missions-fund-title missions-account-label missions-account-value" aria-live="polite">
-                                            <i class="fa-solid fa-copy" aria-hidden="true"></i>Copiar
+                                        <button class="btn btn-app btn-app--secondary btn-app--compact" type="button" data-copy="000120110284" aria-describedby="missions-fund-title missions-account-label missions-account-value" aria-live="polite">
+                                            <svg class="icon" aria-hidden="true">
+                                                <use href="assets/icons/icons.svg#i-copy"></use>
+                                            </svg>Copiar
                                         </button>
                                     </div>
                                 </div>
                             </section>
                         </div>
-                        <p class="card-notice" role="note">
-                            <i class="fa-solid fa-circle-info me-1" aria-hidden="true"></i>
-                            <strong>Aviso Importante</strong>
+                        <p class="card-notice content-wrapper content-wrapper--narrow" role="note">
+                            <svg class="icon me-1" aria-hidden="true">
+                                <use href="assets/icons/icons.svg#i-info"></use>
+                            </svg><strong>Aviso Importante</strong>
                             <br> Al realizar tu transferencia, incluye tu nombre completo en el campo "Concepto" o "Referencia". Esto nos ayuda a identificar tu aportación y enviarte tu comprobante anual.
                         </p>
                     </div>
                 </div>
             </div>
         </section>
-        <section class="section-padding pt-0" aria-labelledby="donativo-thanks-title">
+        <section class="section-padding section-padding--continuation surface-base" aria-labelledby="donativo-thanks-title">
             <div class="container">
-                <h2 id="donativo-thanks-title" class="visually-hidden">Gracias por tu donativo</h2>
-                <div class="donativo-card-wrapper content-wrapper">
-                    <div class="card-app p-4 p-md-5 text-center donativo-cta" data-gsap="scale-up">
+                <h2 id="donativo-thanks-title" class="visually-hidden heading-chapter">Gracias por tu donativo</h2>
+                <div class="content-wrapper">
+                    <div class="card-app surface-raised p-4 p-md-5 text-center donativo-cta" data-gsap="scale-up">
                         <div class="donativo-cta-icon" aria-hidden="true">
-                            <i class="fa-solid fa-circle-check"></i>
+                            <svg class="icon" aria-hidden="true">
+                                <use href="assets/icons/icons.svg#i-circle-check"></use>
+                            </svg>
                         </div>
-                        <h3 class="mb-3">Gracias por ser parte de esta misión.</h3>
-                        <p class="mb-4">Cada donativo, administrado con transparencia y responsabilidad, nos permite seguir sirviendo e impactando vidas para Cristo.</p>
-                        <a class="btn-primary-pill justify-content-center" href="#" data-action="open-whatsapp" target="_blank" rel="noopener" aria-label="Contactar por WhatsApp">
-                            <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>Contáctanos por WhatsApp
+                        <div class="heading-group composition composition--center mb-4">
+                            <h3 class="heading-chapter">Gracias por ser parte de esta misión.</h3>
+                            <p class="heading-description reading-width reading-width--narrow">Cada donativo, administrado con transparencia y responsabilidad, nos permite seguir sirviendo e impactando vidas para Cristo.</p>
+                        </div>
+                        <a class="btn btn-app btn-app--secondary justify-content-center" href="#" data-action="open-whatsapp" target="_blank" rel="noopener">
+                            <svg class="icon" aria-hidden="true">
+                                <use href="assets/icons/icons.svg#i-brand-whatsapp"></use>
+                            </svg>Contáctanos por WhatsApp
                         </a>
                     </div>
                 </div>
@@ -288,104 +351,154 @@
         </section>
     </main>
 
-    <footer id="footer-web" class="site-footer">
+    <footer id="footer-web">
         <div class="container">
-            <div class="footer-panel">
-                <div class="row g-4 g-lg-5 align-items-start">
-                    <div class="col-12 col-lg-5">
-                        <a href="index.html" class="footer-brand" aria-label="Ir al inicio de IBMty">
-                            <span class="footer-brand-mark" aria-hidden="true">
-                                <i class="fa-solid fa-church" aria-hidden="true"></i>
-                            </span>
-                            <span>
+            <div>
+                <div class="row g-3 g-lg-4">
+                    <div class="col-12 col-lg-4">
+                        <div class="footer-identity">
+                            <a class="footer-brand" href="index.html">
+                                <span class="footer-brand-mark" aria-hidden="true">
+                                    <img src="assets/icons/Logo_IBMty.png" alt="" width="44" height="44" loading="lazy" decoding="async">
+                                </span>
                                 <span class="footer-brand-text">Iglesia Bautista de Monterrey</span>
-                            </span>
-                        </a>
-                        <p class="footer-summary">Mantente conectado con nosotros.</p>
-                        <nav class="footer-social mt-3" aria-label="Redes sociales">
-                            <a href="#" data-config-href="facebook" class="footer-social-link" target="_blank" rel="noopener" aria-label="Facebook">
-                                <i class="fa-brands fa-facebook-f" aria-hidden="true"></i>
                             </a>
-                            <a href="#" data-config-href="instagram" class="footer-social-link" target="_blank" rel="noopener" aria-label="Instagram">
-                                <i class="fa-brands fa-instagram" aria-hidden="true"></i>
-                            </a>
-                            <a href="#" data-config-href="youtube" class="footer-social-link" target="_blank" rel="noopener" aria-label="YouTube">
-                                <i class="fa-brands fa-youtube" aria-hidden="true"></i>
-                            </a>
-                        </nav>
+                            <p class="footer-summary">Mantente conectado con nosotros.</p>
+                            <nav class="footer-social" aria-label="Redes sociales">
+                                <a class="ctrl-app ctrl-app--ghost ctrl-app--md" href="#" target="_blank" rel="noopener" data-config-href="facebook" aria-label="Facebook">
+                                    <svg class="icon" aria-hidden="true">
+                                        <use href="assets/icons/icons.svg#i-brand-facebook"></use>
+                                    </svg>
+                                </a>
+                                <a class="ctrl-app ctrl-app--ghost ctrl-app--md" href="#" target="_blank" rel="noopener" data-config-href="instagram" aria-label="Instagram">
+                                    <svg class="icon" aria-hidden="true">
+                                        <use href="assets/icons/icons.svg#i-brand-instagram"></use>
+                                    </svg>
+                                </a>
+                                <a class="ctrl-app ctrl-app--ghost ctrl-app--md" href="#" target="_blank" rel="noopener" data-config-href="youtube" aria-label="YouTube">
+                                    <svg class="icon" aria-hidden="true">
+                                        <use href="assets/icons/icons.svg#i-brand-youtube"></use>
+                                    </svg>
+                                </a>
+                            </nav>
+                        </div>
                     </div>
-                    <div class="col-12 col-md-6 col-lg-4">
-                        <h2 class="footer-heading">Contacto</h2>
-                        <ul class="footer-contact-list">
-                            <li>
-                                <a href="#" data-config-href="addressMapUrl" target="_blank" rel="noopener" class="footer-contact-item">
-                                    <span class="footer-icon" aria-hidden="true">
-                                        <i class="fa-solid fa-location-dot"></i>
-                                    </span>
-                                    <span>
-                                        <span class="footer-contact-label">Dirección</span>
-                                        <span data-config-text="address"></span>
-                                    </span>
-                                </a>
-                            </li>
-                            <li class="footer-contact-item">
-                                <span class="footer-icon" aria-hidden="true">
-                                    <i class="fa-solid fa-phone"></i>
-                                </span>
-                                <span>
-                                    <span class="footer-contact-label">Teléfonos</span>
-                                    <span class="footer-phone-list">
-                                        <a href="#" data-config-href="phone1" class="footer-phone-link">
-                                            <span data-config-text="phone1"></span>
-                                        </a>
-                                        <a href="#" data-config-href="phone2" class="footer-phone-link">
-                                            <span data-config-text="phone2"></span>
-                                        </a>
-                                    </span>
-                                </span>
-                            </li>
-                            <li>
-                                <a href="#" data-config-href="email" class="footer-contact-item">
-                                    <span class="footer-icon" aria-hidden="true">
-                                        <i class="fa-solid fa-envelope"></i>
-                                    </span>
-                                    <span>
-                                        <span class="footer-contact-label">Correo</span>
-                                        <span data-config-text="email"></span>
-                                    </span>
-                                </a>
-                            </li>
-                        </ul>
+                    <div class="col-12 col-md-6 col-lg-5">
+                        <div class="footer-group">
+                            <h2 class="footer-heading">Contacto</h2>
+                            <ul class="footer-row-list">
+                                <li>
+                                    <a class="footer-row" href="#" target="_blank" rel="noopener" data-config-href="addressMapUrl">
+                                        <span class="footer-row-icon" aria-hidden="true">
+                                            <svg class="icon" aria-hidden="true">
+                                                <use href="assets/icons/icons.svg#i-map-pin"></use>
+                                            </svg>
+                                        </span>
+                                        <span class="footer-row-info">
+                                            <span class="micro-label">Dirección</span>
+                                            <span class="footer-row-value" data-config-text="address"></span>
+                                        </span>
+                                        <svg class="icon footer-row-ext" aria-hidden="true">
+                                            <use href="assets/icons/icons.svg#i-external-link"></use>
+                                        </svg>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="footer-row" href="#" data-config-href="phone1">
+                                        <span class="footer-row-icon" aria-hidden="true">
+                                            <svg class="icon" aria-hidden="true">
+                                                <use href="assets/icons/icons.svg#i-phone"></use>
+                                            </svg>
+                                        </span>
+                                        <span class="footer-row-info">
+                                            <span class="micro-label">Teléfono</span>
+                                            <span class="footer-row-value" data-config-text="phone1"></span>
+                                        </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="footer-row" href="#" data-config-href="phone2">
+                                        <span class="footer-row-icon" aria-hidden="true">
+                                            <svg class="icon" aria-hidden="true">
+                                                <use href="assets/icons/icons.svg#i-phone"></use>
+                                            </svg>
+                                        </span>
+                                        <span class="footer-row-info">
+                                            <span class="micro-label">Teléfono</span>
+                                            <span class="footer-row-value" data-config-text="phone2"></span>
+                                        </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="footer-row" href="#" data-config-href="email">
+                                        <span class="footer-row-icon" aria-hidden="true">
+                                            <svg class="icon" aria-hidden="true">
+                                                <use href="assets/icons/icons.svg#i-mail"></use>
+                                            </svg>
+                                        </span>
+                                        <span class="footer-row-info">
+                                            <span class="micro-label">Correo</span>
+                                            <span class="footer-row-value" data-config-text="email"></span>
+                                        </span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                     <div class="col-12 col-md-6 col-lg-3">
-                        <h2 class="footer-heading">Enlaces</h2>
-                        <ul class="footer-link-list">
-                            <li>
-                                <a href="#" data-config-href="externalLink1.url" class="footer-link" target="_blank" rel="noopener">
-                                    <span data-config-text="externalLink1.label"></span>
-                                    <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" data-config-href="externalLink2.url" class="footer-link" target="_blank" rel="noopener">
-                                    <span data-config-text="externalLink2.label"></span>
-                                    <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
-                                </a>
-                            </li>
-                        </ul>
+                        <div class="footer-group">
+                            <h2 class="footer-heading">Enlaces</h2>
+                            <ul class="footer-row-list">
+                                <li class="footer-row-pair">
+                                    <a class="footer-row" href="#" target="_blank" rel="noopener" data-config-href="externalLink1.url">
+                                        <span class="footer-row-icon" aria-hidden="true">
+                                            <svg class="icon" aria-hidden="true">
+                                                <use href="assets/icons/icons.svg#i-link"></use>
+                                            </svg>
+                                        </span>
+                                        <span class="footer-row-info">
+                                            <span class="footer-row-value" data-config-text="externalLink1.label"></span>
+                                        </span>
+                                        <svg class="icon footer-row-ext" aria-hidden="true">
+                                            <use href="assets/icons/icons.svg#i-external-link"></use>
+                                        </svg>
+                                    </a>
+                                    <a class="footer-row" href="#" target="_blank" rel="noopener" data-config-href="externalLink2.url">
+                                        <span class="footer-row-icon" aria-hidden="true">
+                                            <svg class="icon" aria-hidden="true">
+                                                <use href="assets/icons/icons.svg#i-link"></use>
+                                            </svg>
+                                        </span>
+                                        <span class="footer-row-info">
+                                            <span class="footer-row-value" data-config-text="externalLink2.label"></span>
+                                        </span>
+                                        <svg class="icon footer-row-ext" aria-hidden="true">
+                                            <use href="assets/icons/icons.svg#i-external-link"></use>
+                                        </svg>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="footer-row" href="privacidad.html">
+                                        <span class="footer-row-icon" aria-hidden="true">
+                                            <svg class="icon" aria-hidden="true">
+                                                <use href="assets/icons/icons.svg#i-shield-check"></use>
+                                            </svg>
+                                        </span>
+                                        <span class="footer-row-info">
+                                            <span class="footer-row-value">Aviso de Privacidad</span>
+                                        </span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
-                <div class="footer-bottom">
-                    <div class="footer-bottom-links">
-                        <a href="privacidad.html">
-                            <i class="fa-solid fa-shield-halved me-1" aria-hidden="true"></i>Aviso de Privacidad
-                        </a>
-                        <span>Iglesia Bautista de Monterrey &copy; <span id="current-year"></span></span>
-                    </div>
-                    <span class="footer-devotion">Hecho con
-                        <i class="fa-solid fa-heart mx-1" aria-hidden="true"></i> para Dios
-                    </span>
-                </div>
+            </div>
+            <div class="footer-bottom">
+                <span class="footer-devotion">Hecho con <svg class="icon mx-1" aria-hidden="true">
+                        <use href="assets/icons/icons.svg#i-heart"></use>
+                    </svg> para Dios </span>
+                <span class="footer-copy">Iglesia Bautista de Monterrey &copy; <span id="current-year"></span></span>
             </div>
         </div>
     </footer>
