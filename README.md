@@ -76,7 +76,7 @@ Abre en tu navegador: `http://localhost:8080`
 
 ## Despliegue
 
-El despliegue es **completamente automatizado**: al realizar un `push` a la rama `main`, **GitHub Actions** (`.github/workflows/main.yml`) sincroniza los archivos vía FTP con el servidor de producción.
+El despliegue es **completamente automatizado**: al realizar un `push` a la rama `main`, **GitHub Actions** sincroniza los archivos vía FTP con el servidor de producción.
 
 ---
 

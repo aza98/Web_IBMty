@@ -32,12 +32,12 @@
   z-index: 2;
   text-align: center;
   padding-top: calc(var(--navbar-height) + 2rem);
-  padding-bottom: 3rem;
+  padding-bottom: var(--space-8);
   width: 100%
 }
 
 .hero-heading-group {
-  max-width: 900px
+  max-width: var(--shell-max)
 }
 
 @media (min-width:768px) {
@@ -59,8 +59,9 @@
   max-width: 500px
 }
 
-body.is-pwa #hero-section {
-  height: 100vh
+:is(html, body).is-pwa #hero-section {
+  height: 100vh;
+  height: 100dvh
 }
 
 #live-stream {
@@ -88,7 +89,7 @@ body.is-pwa #hero-section {
 .live-video.live-video--loading {
   height: auto;
   padding-bottom: 0;
-  aspect-ratio: 16 / 9;
+  aspect-ratio: var(--card-media-ratio);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -271,7 +272,7 @@ body.is-pwa #hero-section {
   padding-bottom: 56.25%;
   height: 0;
   overflow: hidden;
-  border-radius: 1rem;
+  border-radius: var(--radius-lg);
   background: var(--live-video-bg)
 }
 
@@ -285,16 +286,14 @@ body.is-pwa #hero-section {
 
 .live-actions {
   display: flex;
-  gap: var(--space-2);
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  justify-content: center;
   margin-top: var(--space-3)
 }
 
-.live-actions .btn-app--primary {
+.live-actions .btn-app {
   flex: 1 1 auto
-}
-
-.live-actions .btn-app--secondary {
-  flex: 0 0 auto
 }
 
 @media (min-width:768px) {
@@ -318,7 +317,7 @@ body.is-pwa #hero-section {
     font-size: var(--text-xl)
   }
 
-  .live-actions .btn-app--primary {
+  .live-actions .btn-app {
     flex: 0 0 auto;
     width: auto
   }
@@ -331,10 +330,35 @@ body.is-pwa #hero-section {
   }
 }
 
+.card-event-date {
+  display: block;
+  margin-bottom: var(--space-2);
+  font-family: var(--font-primary);
+  font-weight: 700;
+  font-size: var(--text-2xs);
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--color-text-muted-strong)
+}
+
+.card-event-desc {
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary)
+}
+
+.card-event-img-fallback {
+  aspect-ratio: var(--card-media-ratio);
+  background: var(--color-surface)
+}
+
+.card-event-img-icon {
+  font-size: var(--text-2xl);
+  color: var(--color-text-muted)
+}
+
 .youversion-card {
   display: grid;
   gap: var(--space-5);
-  justify-items: center;
   padding: var(--space-5) var(--space-4);
   text-align: center
 }
@@ -347,15 +371,25 @@ body.is-pwa #hero-section {
   color: var(--color-text-secondary)
 }
 
+.youversion-card .btn-app {
+  --bs-btn-padding-y: var(--space-1);
+  display: flex;
+  width: 100%
+}
+
 .youversion-qr {
+  display: none;
   margin: 0;
-  display: grid;
   justify-items: center;
   gap: var(--space-2)
 }
 
+:is(html, body).is-pwa .youversion-qr {
+  display: none
+}
+
 .youversion-qr img {
-  width: min(220px, 60vw);
+  width: 200px;
   height: auto;
   padding: var(--space-2);
   border-radius: var(--radius-lg);
@@ -368,25 +402,55 @@ body.is-pwa #hero-section {
   font-size: var(--text-2xs);
   letter-spacing: .08em;
   text-transform: uppercase;
-  color: var(--color-text-muted)
+  color: var(--color-text-muted-strong)
+}
+
+.youversion-bible {
+  display: grid;
+  gap: var(--space-3);
+  padding-top: var(--space-5);
+  border-top: 1px solid var(--color-border)
+}
+
+.youversion-bible-text {
+  margin: 0 auto;
+  max-width: var(--reading-width-narrow);
+  font-size: var(--text-sm);
+  line-height: 1.6;
+  text-wrap: balance;
+  color: var(--color-text-secondary)
 }
 
 @media (min-width:768px) {
   .youversion-card {
     grid-template-columns: 1fr auto;
     align-items: center;
-    justify-items: stretch;
     gap: var(--space-6);
     padding: var(--space-6);
     text-align: start
   }
 
-  .youversion-text {
+  :is(html, body).is-pwa .youversion-card {
+    grid-template-columns: 1fr
+  }
+
+  .youversion-text,
+  .youversion-bible-text {
     margin-inline: 0
   }
 
-  .youversion-qr img {
-    width: 200px
+  .youversion-card .btn-app {
+    display: inline-flex;
+    width: auto
+  }
+
+  .youversion-qr {
+    display: grid
+  }
+
+  .youversion-bible {
+    justify-items: start;
+    padding-top: var(--space-6)
   }
 }
 

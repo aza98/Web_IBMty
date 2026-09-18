@@ -21,12 +21,50 @@ function initSalvacionStack() {
     if (!timeline) return;
     const cards = gsap.utils.toArray('.timeline-item');
     if (!cards.length) return;
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     if (cards.length < 2) return;
-    const pinned = cards.slice(0, -1);
-    if (_tallestCard(pinned) > window.innerHeight - STACK_MIN_OFFSET * 2) return;
-    pinned.forEach(function(wrapper, i) {
-        _pinStackCard(wrapper, i, cards)
+    gsap.registerPlugin(ScrollTrigger);
+    gsap.matchMedia().add('(prefers-reduced-motion: no-preference)', function() {
+        const pinned = cards.slice(0, -1);
+        let stackContext = null;
+        let frame = 0;
+        let active = !0;
+
+        function update() {
+            frame = 0;
+            if (!active) return;
+            const fits = _tallestCard(pinned) <= window.innerHeight - STACK_MIN_OFFSET * 2;
+            if (fits === !!stackContext) return;
+            if (stackContext) {
+                stackContext.revert();
+                stackContext = null
+            }
+            if (fits) {
+                stackContext = gsap.context(function() {
+                    pinned.forEach(function(wrapper, i) {
+                        _pinStackCard(wrapper, i, cards)
+                    })
+                })
+            }
+            ScrollTrigger.refresh()
+        }
+
+        function schedule() {
+            if (!frame && active) frame = requestAnimationFrame(update)
+        }
+        const observer = new ResizeObserver(schedule);
+        pinned.forEach(function(wrapper) {
+            observer.observe(wrapper.querySelector('.card-app'))
+        });
+        window.addEventListener('resize', schedule);
+        if (document.fonts) document.fonts.ready.then(schedule);
+        update();
+        return function() {
+            active = !1;
+            cancelAnimationFrame(frame);
+            observer.disconnect();
+            window.removeEventListener('resize', schedule);
+            if (stackContext) stackContext.revert()
+        }
     })
 }
 
@@ -40,7 +78,6 @@ function _pinStackCard(wrapper, i, cards) {
         scale: 0.9 + 0.025 * i,
         rotationX: -10,
         transformOrigin: 'top center',
-        willChange: 'transform',
         ease: 'none',
         scrollTrigger: {
             trigger: wrapper,
@@ -55,12 +92,15 @@ function _pinStackCard(wrapper, i, cards) {
         },
     })
 }
+var amenConfettiFrame = 0;
 
 function launchAmenConfetti() {
     if (typeof confetti !== 'function') return;
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    cancelAnimationFrame(amenConfettiFrame);
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || document.hidden) return;
     const colors = ['#FFD700', '#FFFFFF', '#00C0F6', '#FFF3B0', '#A8D8EA'];
-    const end = Date.now() + 3000;
+    const end = performance.now() + 3000;
+    let lastBurst = 0;
     confetti({
         particleCount: 90,
         spread: 80,
@@ -68,35 +108,34 @@ function launchAmenConfetti() {
             y: .55
         },
         colors: colors,
-        scalar: 1.1
+        scalar: 1.1,
+        disableForReducedMotion: !0
     });
-    (function burst() {
-        confetti({
-            particleCount: 4,
-            angle: 58,
-            spread: 50,
-            origin: {
-                x: 0,
-                y: .6
-            },
-            colors: colors
-        });
-        confetti({
-            particleCount: 4,
-            angle: 122,
-            spread: 50,
-            origin: {
-                x: 1,
-                y: .6
-            },
-            colors: colors
-        });
-        if (Date.now() < end) {
-            requestAnimationFrame(burst)
-        } else {
-            confetti.reset()
+
+    function burst(now) {
+        if (document.hidden || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            confetti.reset();
+            return
         }
-    })()
+        if (now - lastBurst >= 80) {
+            lastBurst = now;
+            [0, 1].forEach(function(x) {
+                confetti({
+                    particleCount: 4,
+                    angle: x ? 122 : 58,
+                    spread: 50,
+                    origin: {
+                        x: x,
+                        y: .6
+                    },
+                    colors: colors,
+                    disableForReducedMotion: !0
+                })
+            })
+        }
+        if (now < end) amenConfettiFrame = requestAnimationFrame(burst)
+    }
+    amenConfettiFrame = requestAnimationFrame(burst)
 }
 
 function _appendDescribedBy(field, id) {

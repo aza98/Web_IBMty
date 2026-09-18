@@ -1,10 +1,14 @@
+@view-transition {
+  navigation: none
+}
+
 html.splash-page,
 html.splash-page body {
   margin: 0;
   padding: 0;
   height: 100%;
   overflow: hidden;
-  background-color: var(--color-bg)
+  background-color: #010C18
 }
 
 #splash-screen {
@@ -13,8 +17,8 @@ html.splash-page body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: var(--color-bg);
-  padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+  background-color: #010C18;
+  padding: max(0px, env(safe-area-inset-top, 0px)) max(0px, env(safe-area-inset-right, 0px)) max(0px, env(safe-area-inset-bottom, 0px)) max(0px, env(safe-area-inset-left, 0px));
   z-index: 9999
 }
 
@@ -78,10 +82,10 @@ html[data-theme="dark"] #splash-logo {
   position: fixed;
   left: 0;
   right: 0;
-  bottom: calc(var(--space-6) + env(safe-area-inset-bottom));
+  bottom: calc(var(--space-6) + max(0px, env(safe-area-inset-bottom, 0px)));
   text-align: center;
   font-family: var(--font-primary);
-  color: var(--color-text-muted);
+  color: rgb(var(--color-white-rgb) / .7);
   font-size: var(--text-2xs);
   font-weight: 600;
   letter-spacing: .12em;
@@ -90,6 +94,8 @@ html[data-theme="dark"] #splash-logo {
 }
 
 @media (prefers-reduced-motion:reduce) {
+
+  #splash-logo,
   .splash-subtitle {
     opacity: 1;
     transform: none

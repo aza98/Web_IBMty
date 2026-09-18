@@ -85,22 +85,21 @@
     <link rel="preload" href="assets/fonts/Poppins/Poppins-Regular.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="assets/images/extras/Bienvenida_desktop.webp" as="image" type="image/webp" fetchpriority="high">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@14.0.6/swiper-bundle.min.css" integrity="sha384-Z7EHipse7OAStUUuE7MmNiMJUUPPZBpD51LImQjcnGL0W7BDPj1i0ucuXmthgLd3" crossorigin="anonymous">
-    <link rel="preload" href="assets/icons/icons.svg" as="image" type="image/svg+xml">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@14.2.0/swiper-bundle.min.css" integrity="sha384-AR6M/55P6iB8bej/EgONjLv4RiBc7Ln04qqPLrEvIcFP0aq6I4rJHd88m8xP0d4E" crossorigin="anonymous">
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/components/carousel.css">
     <link rel="stylesheet" href="css/pages/index.css">
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous" defer></script>
     <script src="config/config.js" defer></script>
-    <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
+    <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" async></script>
     <script src="js/components/push.js" defer></script>
     <script src="js/utils/analytics.js" defer></script>
     <script src="js/main.js" defer></script>
     <script src="gsap-public/minified/gsap.min.js" defer></script>
     <script src="gsap-public/minified/ScrollTrigger.min.js" defer></script>
     <script src="js/components/animations.js" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@14.0.6/swiper-bundle.min.js" integrity="sha384-y7jhvQfshIEZF3HWcoFEkMyWeR1FZ80BCFIMOZam9Ua5vv5vzkfI4yz+TlxFgbFF" crossorigin="anonymous" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@14.2.0/swiper-bundle.min.js" integrity="sha384-/RHqZ3SjkuPxoYsTTu11J3Ox7DmtTwPr2AJVTYqdoD7k+mRDlf6LhNkm1kP7pQpn" crossorigin="anonymous" defer></script>
     <script src="js/components/carousel.js" defer></script>
     <script src="js/components/youtube-api.js" defer></script>
 </head>
@@ -556,16 +555,24 @@
                 <div class="youversion-card surface-raised" data-gsap="fade-up">
                     <div>
                         <p class="youversion-text">Conéctate con la iglesia desde la app de la Biblia: recibe nuestros planes de lectura, sigue el mensaje del domingo y guarda tus notas.</p>
-                        <a class="btn btn-app btn-app--secondary" href="#" target="_blank" rel="noopener" data-config-href="youversion">
+                        <a class="btn btn-app btn-app--primary" href="#" target="_blank" rel="noopener" data-config-href="youversion">
                             <svg class="icon" aria-hidden="true">
-                                <use href="assets/icons/icons.svg#i-book-open"></use>
-                            </svg> Abrir nuestro canal en YouVersion
+                                <use href="assets/icons/icons.svg#i-church"></use>
+                            </svg> Abrir nuestra página en YouVersion
                         </a>
                     </div>
                     <figure class="youversion-qr">
-                        <img src="assets/images/extras/YouVersion_QR.png" width="1080" height="1080" alt="Código QR que abre el canal de la Iglesia Bautista de Monterrey en YouVersion" loading="lazy" decoding="async">
+                        <img src="assets/images/extras/YouVersion_QR.png" width="1080" height="1080" alt="Código QR que abre la página de la Iglesia Bautista de Monterrey en YouVersion" loading="lazy" decoding="async">
                         <figcaption class="youversion-qr-caption">Escanea con tu teléfono</figcaption>
                     </figure>
+                    <div class="youversion-bible">
+                        <p class="youversion-bible-text">Todo lo que hacemos se guía por la Palabra de Dios.<br>Haz clic en el botón de abajo para descargarlo.</p>
+                        <a class="btn btn-app btn-app--secondary" href="https://www.bible.com/es/versions/149-rvr1960-biblia-reina-valera-1960" target="_blank" rel="noopener">
+                            <svg class="icon" aria-hidden="true">
+                                <use href="assets/icons/icons.svg#i-book-open"></use>
+                            </svg> Leer la Biblia RVR1960
+                        </a>
+                    </div>
                 </div>
             </div>
         </section>

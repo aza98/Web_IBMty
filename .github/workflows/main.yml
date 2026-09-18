@@ -19,6 +19,8 @@ jobs:
         server: ${{ secrets.FRPHOSTNAME }}
         username: ${{ secrets.FTPUSERNAME }}
         password: ${{ secrets.FTPPASSWORD }}
+        protocol: ftps
+        security: strict
         server-dir: /ibmty/
         log-level: verbose
         exclude: |

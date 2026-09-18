@@ -1,4 +1,8 @@
-.privacidad-content {
+#main-content {
+  scroll-margin-top: calc(var(--navbar-height) + 1rem)
+}
+
+.privacidad-content.reading-width {
   margin-inline: auto
 }
 
@@ -33,7 +37,7 @@
 }
 
 .priv-intro p:last-child {
-  max-width: 560px;
+  max-width: var(--reading-width-narrow);
   font-size: var(--text-sm);
   color: var(--color-text-secondary)
 }
@@ -55,7 +59,7 @@
 
 .priv-essentials-heading p {
   margin: 0;
-  color: var(--color-text-muted);
+  color: var(--color-text-muted-strong);
   font-size: var(--text-sm);
   line-height: 1.6
 }
@@ -122,7 +126,7 @@
 }
 
 .priv-accordion .collapsing {
-  transition: height 0.4s cubic-bezier(.25, 1, .5, 1)
+  transition: height var(--motion-emphasized) var(--ease-standard)
 }
 
 .priv-accordion .accordion-item {
@@ -180,7 +184,7 @@
 }
 
 .priv-accordion .accordion-button:focus-visible {
-  outline: 2px solid var(--btn-focus);
+  outline: var(--btn-focus-width) solid var(--btn-focus);
   outline-offset: -2px
 }
 
@@ -278,6 +282,11 @@
   transition: color var(--transition-base)
 }
 
+.privacidad-content a:not(.btn-app):focus-visible {
+  outline: var(--btn-focus-width) solid var(--btn-focus);
+  outline-offset: var(--btn-focus-offset)
+}
+
 @media (hover:hover) {
   .privacidad-content a:not(.btn-app):hover {
     color: var(--color-text-primary)
@@ -295,7 +304,13 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 44px
+  min-height: var(--btn-min-height)
+}
+
+.priv-back a:focus-visible {
+  outline: var(--btn-focus-width) solid var(--btn-focus);
+  outline-offset: var(--btn-focus-offset);
+  border-radius: var(--radius-pill)
 }
 
 .priv-essentials .priv-arco-cta a {
@@ -328,9 +343,59 @@
 }
 
 @media print {
+
+  #navbar-web,
+  #tabbar-pwa,
+  #whatsapp-fab,
+  .skip-link,
+  .priv-updated,
+  .priv-arco-cta,
+  .priv-back,
+  #footer-web,
+  #cookie-banner,
+  .cookie-banner,
+  #notification-install-prompt,
+  #notification-denied-prompt,
+  .pg-hero-bg,
+  .priv-accordion-chevron {
+    display: none !important
+  }
+
+  body {
+    background: #fff !important;
+    color: #000 !important
+  }
+
+  .privacidad-content,
+  .privacidad-content * {
+    color: #000 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    text-shadow: none !important
+  }
+
+  .priv-essentials,
+  .priv-accordion .accordion-item {
+    break-inside: avoid;
+    box-shadow: none !important;
+    border: 1px solid #ccc !important;
+    background: transparent !important
+  }
+
   .priv-accordion .accordion-collapse {
     display: block !important;
-    height: auto !important
+    height: auto !important;
+    visibility: visible !important
+  }
+
+  .priv-accordion .accordion-button {
+    cursor: default;
+    border-bottom: 1px solid #ccc !important
+  }
+
+  .privacidad-content a[href^="http"]::after {
+    content: " (" attr(href) ")";
+    font-size: .85em
   }
 }
 

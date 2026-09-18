@@ -1,19 +1,21 @@
 document.addEventListener('DOMContentLoaded', function() {
     var root = document.getElementById('live-stream');
     if (!root) return;
+    var videoBlock = document.getElementById('live-video-block');
+    if (!videoBlock) return;
     var TIME_ZONE = 'America/Monterrey';
     var SERVICE_DAY = 0;
     var SERVICE_HOUR = 11;
     var SERVICE_MIN = 0;
     var LIVE_WINDOW_START_MIN = 650;
     var LIVE_WINDOW_END_MIN = 820;
-    var POLL_MS = 900000;
+    var POLL_MS = 15 * 60 * 1000;
     var TICK_MS = 1000;
-    var LATEST_CACHE_KEY = 'ibmty_latest_video';
-    var LATEST_TTL_MS = 30 * 60 * 1000;
+    var CACHE_KEY_SESSION = 'ibmty_latest_video';
+    var CACHE_KEY_LOCAL = 'ibmty_latest_video_persistent';
+    var CACHE_KEY_QUOTA = 'ibmty_yt_quota_exceeded';
+    var CACHE_TTL_MS = 30 * 60 * 1000;
     var config = (typeof APP_CONFIG !== 'undefined' && APP_CONFIG) ? APP_CONFIG : {};
-    var videoBlock = document.getElementById('live-video-block');
-    if (!videoBlock) return;
     var kickerTextEl = document.getElementById('live-kicker-text');
     var digitEls = {
         days: document.getElementById('cd-days'),
@@ -21,7 +23,7 @@ document.addEventListener('DOMContentLoaded', function() {
         mins: document.getElementById('cd-mins'),
         secs: document.getElementById('cd-secs')
     };
-    var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var motionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
     var tickTimer = null;
     var pollTimer = null;
     var windowTimer = null;
@@ -136,7 +138,7 @@ document.addEventListener('DOMContentLoaded', function() {
         var text = String(value).padStart(2, '0');
         if (el.textContent === text) return;
         el.textContent = text;
-        if (!prefersReducedMotion) {
+        if (!motionPreference.matches) {
             el.classList.remove('countdown-digit--tick');
             void el.offsetWidth;
             el.classList.add('countdown-digit--tick')
@@ -174,11 +176,11 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function refreshScrollTrigger() {
-        if (typeof ScrollTrigger !== 'undefined') ScrollTrigger.refresh()
+        if (typeof ScrollTrigger !== 'undefined') ScrollTrigger.refresh();
     }
 
     function setVideoContent(buildFn) {
-        if (prefersReducedMotion) {
+        if (motionPreference.matches) {
             videoBlock.innerHTML = '';
             buildFn(videoBlock);
             refreshScrollTrigger();
@@ -196,8 +198,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function buildVideo(target, videoId, title, isLive) {
         var safeTitle = title || (isLive ? 'Transmisión en vivo' : 'Último video');
-        var src = 'https://www.youtube.com/embed/' + encodeURIComponent(videoId) + '?rel=0&modestbranding=1&playsinline=1' + (isLive ? '&autoplay=1&mute=1' : '');
-        var watchUrl = 'https://www.youtube.com/watch?v=' + videoId;
+        var encodedId = encodeURIComponent(videoId);
+        var origin = encodeURIComponent(window.location.origin || '');
+        var src = 'https://www.youtube-nocookie.com/embed/' + encodedId + '?rel=0&modestbranding=1&playsinline=1&enablejsapi=1' + (origin ? '&origin=' + origin : '') + (isLive ? '&autoplay=1&mute=1' : '');
+        var watchUrl = 'https://www.youtube.com/watch?v=' + encodedId;
         var head = document.createElement('div');
         head.className = 'live-player-head';
         if (isLive) {
@@ -219,9 +223,10 @@ document.addEventListener('DOMContentLoaded', function() {
         var iframe = document.createElement('iframe');
         iframe.src = src;
         iframe.title = safeTitle;
-        iframe.allow = 'autoplay; encrypted-media; picture-in-picture';
         iframe.loading = 'lazy';
         iframe.setAttribute('allowfullscreen', '');
+        iframe.referrerPolicy = 'strict-origin-when-cross-origin';
+        iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
         videoWrap.appendChild(iframe);
         var actions = document.createElement('div');
         actions.className = 'live-actions';
@@ -261,7 +266,8 @@ document.addEventListener('DOMContentLoaded', function() {
         link.href = config.youtube || 'https://www.youtube.com';
         link.target = '_blank';
         link.rel = 'noopener';
-        link.textContent = 'Visítanos en YouTube';
+        if (typeof makeIcon === 'function') link.appendChild(makeIcon('brand-youtube', 'me-1'));
+        link.appendChild(document.createTextNode(' Visítanos en YouTube'));
         box.appendChild(link);
         target.appendChild(box)
     }
@@ -288,64 +294,123 @@ document.addEventListener('DOMContentLoaded', function() {
         setVideoContent(buildFallback)
     }
 
-    function apiAvailable() {
-        return !!(typeof window.fetch === 'function' && typeof config.youtubeApiKey === 'string' && config.youtubeApiKey.trim() && config.youtubeChannelId)
+    function isQuotaExceeded() {
+        try {
+            return sessionStorage.getItem(CACHE_KEY_QUOTA) === '1'
+        } catch {
+            return !1
+        }
     }
 
-    function ytFetch(params) {
-        var key = config.youtubeApiKey.trim();
-        var url = 'https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&channelId=' + config.youtubeChannelId + '&key=' + key + params;
-        return fetch(url).then(function(r) {
-            if (!r.ok) throw new Error('YouTube API ' + r.status);
-            return r.json()
-        }).then(function(data) {
-            return data.items && data.items[0]
-        })
-    }
-
-    function uploadsPlaylistId() {
-        var ch = (config.youtubeChannelId || '');
-        return ch.indexOf('UC') === 0 ? 'UU' + ch.slice(2) : ch
-    }
-
-    function plFetch() {
-        var key = config.youtubeApiKey.trim();
-        var url = 'https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=1&playlistId=' + uploadsPlaylistId() + '&key=' + key;
-        return fetch(url).then(function(r) {
-            if (!r.ok) throw new Error('YouTube API ' + r.status);
-            return r.json()
-        }).then(function(data) {
-            return data.items && data.items[0]
-        })
+    function markQuotaExceeded() {
+        try {
+            sessionStorage.setItem(CACHE_KEY_QUOTA, '1');
+            console.warn('YouTube API: Cuota diaria alcanzada o restringida. Usando caché local.')
+        } catch {}
     }
 
     function readLatestCache() {
         try {
-            var obj = JSON.parse(sessionStorage.getItem(LATEST_CACHE_KEY) || 'null');
-            if (!obj || !obj.id || !obj.ts) return null;
-            if (Date.now() - obj.ts > LATEST_TTL_MS) return null;
-            return {
-                id: obj.id,
-                title: obj.title
+            var session = sessionStorage.getItem(CACHE_KEY_SESSION);
+            if (session) {
+                var sObj = JSON.parse(session);
+                if (sObj && sObj.id && (Date.now() - sObj.ts < CACHE_TTL_MS)) {
+                    return sObj
+                }
             }
-        } catch (e) {
-            return null
-        }
+            var persistent = localStorage.getItem(CACHE_KEY_LOCAL);
+            if (persistent) {
+                var pObj = JSON.parse(persistent);
+                if (pObj && pObj.id) {
+                    return pObj
+                }
+            }
+        } catch {}
+        return null
     }
 
     function writeLatestCache(video) {
+        if (!video || !video.id) return;
+        var payload = JSON.stringify({
+            id: video.id,
+            title: video.title || '',
+            ts: Date.now()
+        });
         try {
-            sessionStorage.setItem(LATEST_CACHE_KEY, JSON.stringify({
-                id: video.id,
-                title: video.title,
-                ts: Date.now()
-            }))
-        } catch (e) {}
+            sessionStorage.setItem(CACHE_KEY_SESSION, payload)
+        } catch {}
+        try {
+            localStorage.setItem(CACHE_KEY_LOCAL, payload)
+        } catch {}
+    }
+
+    function apiAvailable() {
+        if (isQuotaExceeded()) return !1;
+        if (navigator.onLine === !1) return !1;
+        return !!(typeof window.fetch === 'function' && typeof config.youtubeApiKey === 'string' && config.youtubeApiKey.trim() && config.youtubeChannelId)
+    }
+
+    function uploadsPlaylistId() {
+        var ch = (config.youtubeChannelId || '');
+        return ch.startsWith('UC') ? 'UU' + ch.slice(2) : ch
+    }
+
+    function plFetch() {
+        var key = encodeURIComponent(config.youtubeApiKey.trim());
+        var playlistId = encodeURIComponent(uploadsPlaylistId());
+        var url = 'https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=1&playlistId=' + playlistId + '&fields=items(snippet(title,resourceId/videoId))&key=' + key;
+        return fetch(url).then(function(r) {
+            if (r.status === 403) {
+                markQuotaExceeded();
+                throw new Error('YouTube API quota exceeded (403)')
+            }
+            if (!r.ok) throw new Error('YouTube API ' + r.status);
+            return r.json()
+        }).then(function(data) {
+            return data && data.items && data.items[0]
+        })
+    }
+
+    function videoLiveDetailsFetch(videoId) {
+        var key = encodeURIComponent(config.youtubeApiKey.trim());
+        var vid = encodeURIComponent(videoId);
+        var url = 'https://www.googleapis.com/youtube/v3/videos?part=snippet,liveStreamingDetails&id=' + vid + '&fields=items(id,snippet(title,liveBroadcastContent),liveStreamingDetails(actualStartTime,actualEndTime))&key=' + key;
+        return fetch(url).then(function(r) {
+            if (r.status === 403) {
+                markQuotaExceeded();
+                throw new Error('YouTube API quota exceeded (403)')
+            }
+            if (!r.ok) throw new Error('YouTube API ' + r.status);
+            return r.json()
+        }).then(function(data) {
+            return data && data.items && data.items[0]
+        })
+    }
+
+    function ytSearchLive() {
+        var key = encodeURIComponent(config.youtubeApiKey.trim());
+        var ch = encodeURIComponent(config.youtubeChannelId);
+        var url = 'https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&eventType=live&channelId=' + ch + '&fields=items(id/videoId,snippet/title)&key=' + key;
+        return fetch(url).then(function(r) {
+            if (r.status === 403) {
+                markQuotaExceeded();
+                throw new Error('YouTube API quota exceeded (403)')
+            }
+            if (!r.ok) throw new Error('YouTube API ' + r.status);
+            return r.json()
+        }).then(function(data) {
+            return data && data.items && data.items[0]
+        })
     }
 
     function fetchLatest() {
         if (!apiAvailable()) {
-            showFallback();
+            var cached = readLatestCache();
+            if (cached) {
+                showVideo(cached.id, cached.title, !1)
+            } else {
+                showFallback()
+            }
             return
         }
         plFetch().then(function(item) {
@@ -362,8 +427,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 showFallback()
             }
         }).catch(function(err) {
-            console.error('Latest video error:', err);
-            if (currentMode !== 'live' && !currentVideoId) showFallback();
+            var fallback = readLatestCache();
+            if (fallback && currentMode !== 'live') {
+                showVideo(fallback.id, fallback.title, !1)
+            } else if (currentMode !== 'live' && !currentVideoId) {
+                showFallback()
+            }
         })
     }
 
@@ -382,25 +451,53 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function fallbackToLatest() {
-        if (currentMode === 'live' || currentMode === null) showLatest()
+        if (currentMode === 'live' || currentMode === null) showLatest();
     }
 
     function checkLive() {
         if (!apiAvailable()) {
-            showFallback();
+            fallbackToLatest();
             return
         }
-        ytFetch('&eventType=live').then(function(item) {
-            var vid = item && item.id && item.id.videoId;
-            if (vid) {
+        plFetch().then(function(item) {
+            var snip = item && item.snippet;
+            var vid = snip && snip.resourceId && snip.resourceId.videoId;
+            if (!vid) return null;
+            return videoLiveDetailsFetch(vid).then(function(vDetails) {
+                if (!vDetails) return null;
+                var vSnip = vDetails.snippet;
+                var vLive = vDetails.liveStreamingDetails;
+                var isLiveNow = (vSnip && vSnip.liveBroadcastContent === 'live') || (vLive && vLive.actualStartTime && !vLive.actualEndTime);
+                if (isLiveNow) {
+                    return {
+                        id: vid,
+                        title: (vSnip && vSnip.title) || snip.title
+                    }
+                }
+                return null
+            })
+        }).then(function(liveFound) {
+            if (liveFound) {
                 latestVideo = null;
-                showVideo(vid, item.snippet && item.snippet.title, !0);
-                stopLivePolling()
+                showVideo(liveFound.id, liveFound.title, !0);
+                stopLivePolling();
+                return
+            }
+            if (apiAvailable()) {
+                return ytSearchLive().then(function(searchItem) {
+                    var liveId = searchItem && searchItem.id && searchItem.id.videoId;
+                    if (liveId) {
+                        latestVideo = null;
+                        showVideo(liveId, searchItem.snippet && searchItem.snippet.title, !0);
+                        stopLivePolling()
+                    } else {
+                        fallbackToLatest()
+                    }
+                })
             } else {
                 fallbackToLatest()
             }
         }).catch(function(err) {
-            console.error('Live check error:', err);
             fallbackToLatest()
         })
     }

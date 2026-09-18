@@ -1,7 +1,14 @@
+function hasAnalyticsConsent() {
+    try {
+        return localStorage.getItem('cookieConsent') === 'accepted'
+    } catch (error) {
+        return !1
+    }
+}
 var _analyticsStarted = !1;
 
 function startAnalytics() {
-    if (_analyticsStarted) return;
+    if (_analyticsStarted || !hasAnalyticsConsent()) return;
     var config = (typeof APP_CONFIG !== 'undefined' && APP_CONFIG) ? APP_CONFIG : {};
     if (!config.gaEnabled || typeof config.gaTrackingId !== 'string' || config.gaTrackingId.trim() === '') {
         return
@@ -26,7 +33,7 @@ function startAnalytics() {
 }
 
 function trackEvent(category, action, label) {
-    if (typeof window.gtag === 'function') {
+    if (hasAnalyticsConsent() && typeof window.gtag === 'function') {
         var eventParams = {
             event_category: category
         };
@@ -36,7 +43,7 @@ function trackEvent(category, action, label) {
 }
 
 function trackPageView() {
-    if (typeof window.gtag === 'function') {
+    if (hasAnalyticsConsent() && typeof window.gtag === 'function') {
         window.gtag('event', 'page_view', {
             page_title: document.title,
             page_path: window.location.pathname

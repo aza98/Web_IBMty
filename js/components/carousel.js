@@ -1,71 +1,40 @@
 document.addEventListener('DOMContentLoaded', function() {
-    var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (typeof Swiper === 'undefined') return;
+    var motion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
-    function newestSlideIndex(elementId) {
-        var el = document.getElementById(elementId);
-        if (!el) return 0;
-        return Math.max(0, el.querySelectorAll('.swiper-slide').length - 1)
-    }
-
-    function updateIndicator(swiper, indicator) {
-        if (!indicator) return;
-        indicator.textContent = (swiper.realIndex + 1) + ' / ' + swiper.slides.length
-    }
-
-    function syncSlideInteractivity(swiper) {
-        var activeSlide = swiper.slides[swiper.activeIndex];
-        if (!activeSlide) return;
-        var focused = document.activeElement;
-        var moveFocus = Array.from(swiper.slides).some(function(slide) {
-            return slide !== activeSlide && slide.contains(focused)
-        });
-        Array.from(swiper.slides).forEach(function(slide) {
-            slide.inert = slide !== activeSlide
-        });
-        if (moveFocus) swiper.el.focus({
-            preventScroll: !0
-        })
-    }
-
-    function equalizeCardHeights(swiper) {
-        var cards = swiper.el.querySelectorAll('.card-app');
-        if (!cards.length) return;
-        cards.forEach(function(card) {
-            card.style.minHeight = ''
-        });
-        var max = 0;
-        cards.forEach(function(card) {
-            var height = card.offsetHeight;
-            if (height > max) max = height
-        });
-        if (max > 0) {
-            cards.forEach(function(card) {
-                card.style.minHeight = max + 'px'
-            })
-        }
-        if (typeof ScrollTrigger !== 'undefined') ScrollTrigger.refresh()
-    }
-
-    function buildCarousel(elementId, scopeSelector, overrides) {
-        var element = document.getElementById(elementId);
-        if (!element || typeof Swiper === 'undefined' || (element.swiper && !element.swiper.destroyed)) return;
-        var indicator = document.querySelector(scopeSelector + ' .carousel-indicator');
+    function buildCarousel(id, scope, loop) {
+        var element = document.getElementById(id);
+        if (!element || (element.swiper && !element.swiper.destroyed)) return;
+        var indicator = document.querySelector(scope + ' .carousel-indicator');
+        var originalTabindex = element.getAttribute('tabindex');
+        var frame = 0,
+            swiper;
+        element.setAttribute('tabindex', '-1');
         if (indicator) {
             indicator.setAttribute('aria-live', 'polite');
             indicator.setAttribute('aria-atomic', 'true')
         }
-        overrides = overrides || {};
-        var heightFrame = 0;
-        var swiper;
-        var keyboardVisibility;
-        var originalTabindex = element.getAttribute('tabindex');
-        element.setAttribute('tabindex', '-1');
 
-        function scheduleHeights() {
-            if (heightFrame) return;
-            heightFrame = requestAnimationFrame(function() {
-                heightFrame = 0;
-                if (swiper && !swiper.destroyed) equalizeCardHeights(swiper)
+        function sync() {
+            var active = this.slides[this.activeIndex];
+            if (!active) return;
+            if (indicator) indicator.textContent = (this.realIndex + 1) + ' / ' + this.slides.length;
+            var moveFocus = this.slides.some(function(slide) {
+                return slide !== active && slide.contains(document.activeElement)
+            });
+            this.slides.forEach(function(slide) {
+                slide.inert = slide !== active
+            });
+            if (moveFocus) element.focus({
+                preventScroll: !0
+            })
+        }
+
+        function scheduleRefresh() {
+            if (frame) return;
+            frame = requestAnimationFrame(function() {
+                frame = 0;
+                if (!swiper.destroyed && typeof ScrollTrigger !== 'undefined') ScrollTrigger.refresh()
             })
         }
 
@@ -73,7 +42,7 @@ document.addEventListener('DOMContentLoaded', function() {
             var target;
             try {
                 target = document.getElementById(decodeURIComponent(window.location.hash.slice(1)))
-            } catch (err) {}
+            } catch (error) {}
             return Array.from(element.querySelectorAll('.swiper-slide')).findIndex(function(slide) {
                 return target && (slide === target || slide.contains(target))
             })
@@ -82,106 +51,103 @@ document.addEventListener('DOMContentLoaded', function() {
         function followHash() {
             var index = linkedSlideIndex();
             if (index < 0 || swiper.destroyed) return;
+            if (swiper.animating) settle();
             swiper.slideTo(index, 0);
-            syncSlideInteractivity(swiper)
+            sync.call(swiper)
         }
-        var baseConfig = {
+
+        function settle() {
+            swiper.wrapperEl.getAnimations().forEach(function(animation) {
+                animation.finish()
+            });
+            swiper.setTransition(0);
+            swiper.setTranslate(swiper.translate);
+            swiper.transitionEnd()
+        }
+
+        function syncMotion() {
+            swiper.params.speed = motion.matches ? 0 : 400;
+            if (motion.matches) settle()
+        }
+        var linked = linkedSlideIndex();
+        swiper = new Swiper(element, {
             effect: 'slide',
-            grabCursor: !0,
             centeredSlides: !0,
             slidesPerView: 1.15,
             spaceBetween: 16,
-            loop: !1,
+            loop: loop,
+            rewind: !loop,
+            initialSlide: linked >= 0 ? linked : loop ? 0 : element.querySelectorAll('.swiper-slide').length - 1,
+            grabCursor: !0,
             touchEventsTarget: 'container',
-            speed: prefersReducedMotion ? 0 : 400,
+            speed: motion.matches ? 0 : 400,
+            preventInteractionOnTransition: !0,
             keyboard: {
                 enabled: !1,
                 onlyInViewport: !1
             },
             a11y: {
-                enabled: !0,
                 prevSlideMessage: 'Diapositiva anterior',
                 nextSlideMessage: 'Diapositiva siguiente',
                 firstSlideMessage: 'Esta es la primera diapositiva',
                 lastSlideMessage: 'Esta es la última diapositiva',
-                slideLabelMessage: 'Diapositiva {{index}} de {{slidesLength}}',
+                slideLabelMessage: 'Diapositiva {{index}} de {{slidesLength}}'
             },
             navigation: {
-                nextEl: scopeSelector + ' .carousel-btn-next',
-                prevEl: scopeSelector + ' .carousel-btn-prev',
+                nextEl: scope + ' .carousel-btn-next',
+                prevEl: scope + ' .carousel-btn-prev'
+            },
+            breakpoints: {
+                640: {
+                    slidesPerView: 2,
+                    spaceBetween: 24
+                },
+                1024: {
+                    slidesPerView: 3,
+                    spaceBetween: 28
+                },
+                1280: {
+                    slidesPerView: 3,
+                    spaceBetween: 32
+                }
             },
             on: {
                 init: function() {
-                    updateIndicator(this, indicator);
-                    syncSlideInteractivity(this);
-                    equalizeCardHeights(this)
+                    sync.call(this);
+                    scheduleRefresh()
                 },
-                slideChange: function() {
-                    updateIndicator(this, indicator)
-                },
-                activeIndexChange: function() {
-                    syncSlideInteractivity(this)
-                },
-                loopFix: function() {
-                    syncSlideInteractivity(this)
-                },
-                transitionEnd: function() {
-                    syncSlideInteractivity(this)
-                },
-                resize: scheduleHeights,
+                slideChange: sync,
+                activeIndexChange: sync,
+                loopFix: sync,
+                transitionEnd: sync,
+                resize: scheduleRefresh,
                 destroy: function() {
-                    cancelAnimationFrame(heightFrame);
-                    if (keyboardVisibility) keyboardVisibility.disconnect();
-                    element.removeEventListener('load', scheduleHeights, !0);
+                    cancelAnimationFrame(frame);
+                    motion.removeEventListener('change', syncMotion);
+                    keyboardVisibility.disconnect();
+                    element.removeEventListener('load', scheduleRefresh, !0);
                     window.removeEventListener('hashchange', followHash);
-                    Array.from(this.slides).forEach(function(slide) {
+                    this.slides.forEach(function(slide) {
                         slide.inert = !1
-                    });
-                    element.querySelectorAll('.card-app').forEach(function(card) {
-                        card.style.minHeight = ''
                     });
                     if (originalTabindex === null) element.removeAttribute('tabindex');
                     else element.setAttribute('tabindex', originalTabindex)
-                },
-            },
-        };
-        Object.assign(baseConfig, overrides);
-        var linkedIndex = linkedSlideIndex();
-        if (linkedIndex >= 0) baseConfig.initialSlide = linkedIndex;
-        swiper = new Swiper(element, baseConfig);
-        keyboardVisibility = new IntersectionObserver(function(entries) {
+                }
+            }
+        });
+        var keyboardVisibility = new IntersectionObserver(function(entries) {
             if (swiper.destroyed) return;
             if (entries[0].isIntersecting) swiper.keyboard.enable();
             else swiper.keyboard.disable()
         });
         keyboardVisibility.observe(element);
-        element.addEventListener('load', scheduleHeights, !0);
+        motion.addEventListener('change', syncMotion);
+        element.addEventListener('load', scheduleRefresh, !0);
         window.addEventListener('hashchange', followHash);
         if (document.fonts) document.fonts.ready.then(function() {
-            if (!swiper.destroyed) scheduleHeights()
+            if (!swiper.destroyed) scheduleRefresh()
         })
     }
-    var responsiveBreakpoints = {
-        640: {
-            slidesPerView: 2,
-            spaceBetween: 24
-        },
-        1024: {
-            slidesPerView: 3,
-            spaceBetween: 28
-        },
-        1280: {
-            slidesPerView: 3,
-            spaceBetween: 32
-        },
-    };
-    buildCarousel('eventos-swiper', '#eventos', {
-        rewind: !0,
-        initialSlide: newestSlideIndex('eventos-swiper'),
-        breakpoints: responsiveBreakpoints
-    });
-    buildCarousel('ministerios-swiper', '#lideres', {
-        loop: !0,
-        breakpoints: responsiveBreakpoints
-    })
+    buildCarousel('eventos-swiper', '#eventos', !1);
+    buildCarousel('ministerios-swiper', '#lideres', !0)
 })

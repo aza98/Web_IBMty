@@ -78,16 +78,15 @@ var MISSIONARIES = [{
     lng: 151.2093,
     image: 'assets/images/misioneros/Misioneros_Australia.webp'
 }];
-var TILE_THEMES = {
-    light: 'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png',
-    dark: 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png'
-};
+var TILE_URL = 'https://tile.openstreetmap.org/{z}/{x}/{y}.png';
 var TILE_OPTIONS = {
-    subdomains: 'abcd',
-    maxZoom: 20,
-    detectRetina: !0,
+    maxZoom: 19,
     noWrap: !0,
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>'
+    bounds: [
+        [-85.05112878, -180],
+        [85.05112878, 180]
+    ],
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 };
 var WORLD_BOUNDS = [
     [-90, -180],
@@ -99,30 +98,8 @@ var LATAM_BOUNDS = [
 ];
 var CONTINENT_ORDER = ['Norteamérica', 'Sudamérica', 'Europa', 'África', 'Asia', 'Oceanía'];
 
-function _isMobileViewport() {
-    return window.matchMedia('(max-width: 767.98px)').matches
-}
-
-function _currentMapTheme() {
-    return document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light'
-}
-
-function _pin(html, size) {
-    var h = size / 2;
-    return L.divIcon({
-        className: 'missionary-marker',
-        html: html,
-        iconSize: [size, size],
-        iconAnchor: [h, h],
-        popupAnchor: [0, -h]
-    })
-}
-
 function _missionaryLabel(m, prefix) {
-    var parts = [];
-    if (m.family) parts.push('Familia ' + m.family);
-    if (m.name) parts.push(m.name);
-    var label = parts.join(': ');
+    var label = [m.family && 'Familia ' + m.family, m.name].filter(Boolean).join(': ');
     if (m.country) label += (label ? ' — ' : '') + m.country;
     return (prefix || '') + (label || 'Familia misionera')
 }
@@ -130,380 +107,298 @@ function _missionaryLabel(m, prefix) {
 function _groupByLocation(list, threshold) {
     var groups = [];
     list.forEach(function(m) {
-        var found = null;
-        for (var i = 0; i < groups.length; i++) {
-            var c = groups[i].center;
-            if (Math.abs(c[0] - m.lat) < threshold && Math.abs(c[1] - m.lng) < threshold) {
-                found = groups[i];
-                break
-            }
-        }
-        if (!found) {
-            found = {
+        var group = groups.find(function(g) {
+            return Math.abs(g.center[0] - m.lat) < threshold && Math.abs(g.center[1] - m.lng) < threshold
+        });
+        if (!group) {
+            group = {
                 items: [],
                 center: [m.lat, m.lng]
             };
-            groups.push(found)
+            groups.push(group)
         }
-        found.items.push(m);
-        var la = 0,
-            ln = 0;
-        found.items.forEach(function(x) {
-            la += x.lat;
-            ln += x.lng
+        group.items.push(m);
+        var lat = 0,
+            lng = 0;
+        group.items.forEach(function(item) {
+            lat += item.lat;
+            lng += item.lng
         });
-        found.center = [la / found.items.length, ln / found.items.length]
+        group.center = [lat / group.items.length, lng / group.items.length]
     });
-    groups.forEach(function(g) {
-        var counts = {},
-            best = '',
-            bestN = 0;
-        g.items.forEach(function(x) {
-            var k = x.country || '';
-            counts[k] = (counts[k] || 0) + 1;
-            if (counts[k] > bestN) {
-                bestN = counts[k];
-                best = k
+    groups.forEach(function(group) {
+        var counts = Object.create(null),
+            best = 0;
+        group.label = '';
+        group.items.forEach(function(m) {
+            var country = m.country || '';
+            counts[country] = (counts[country] || 0) + 1;
+            if (counts[country] > best) {
+                best = counts[country];
+                group.label = country
             }
-        });
-        g.label = best
+        })
     });
     return groups
 }
 
-function _buildGroupItem(m) {
-    var li = document.createElement('li');
-    li.className = 'missionary-group-item';
-    var thumb = document.createElement('div');
-    thumb.className = 'missionary-group-thumb';
-    if (m.image) {
-        var img = document.createElement('img');
-        img.loading = 'lazy';
-        img.decoding = 'async';
-        img.alt = _missionaryLabel(m, 'Fotografía de ');
-        img.src = m.image;
-        img.addEventListener('error', function() {
-            thumb.classList.add('missionary-group-thumb--empty');
-            thumb.innerHTML = '<svg class="icon" aria-hidden="true"><use href="assets/icons/icons.svg#i-users"></use></svg>'
-        });
-        thumb.appendChild(img)
-    } else {
-        thumb.classList.add('missionary-group-thumb--empty');
-        thumb.innerHTML = '<svg class="icon" aria-hidden="true"><use href="assets/icons/icons.svg#i-users"></use></svg>'
-    }
-    li.appendChild(thumb);
-    var info = document.createElement('div');
-    info.className = 'missionary-group-info';
-    if (m.family) {
-        var fam = document.createElement('p');
-        fam.className = 'missionary-card-family';
-        fam.textContent = 'Familia ' + m.family;
-        info.appendChild(fam)
-    }
-    var name = document.createElement('p');
-    name.className = 'missionary-group-name';
-    name.textContent = m.name || (m.family ? 'Familia ' + m.family : 'Familia misionera');
-    info.appendChild(name);
-    if (m.date) {
-        var date = document.createElement('p');
-        date.className = 'missionary-card-meta missionary-card-date';
-        date.innerHTML = '<svg class="icon" aria-hidden="true"><use href="assets/icons/icons.svg#i-calendar"></use></svg>';
-        date.appendChild(document.createTextNode(' ' + m.date));
-        info.appendChild(date)
-    }
-    li.appendChild(info);
-    return li
+function _mapElement(tag, className, text) {
+    var element = document.createElement(tag);
+    element.className = className;
+    if (text !== undefined) element.textContent = text;
+    return element
 }
 
-function _buildPopupContent(g, map) {
-    var items = g.items;
-    var close = document.createElement('button');
+function _missionaryImage(m) {
+    var image = _mapElement('img', '');
+    image.loading = 'lazy';
+    image.decoding = 'async';
+    image.alt = _missionaryLabel(m, 'Fotografía de ');
+    if (m.image) image.src = m.image;
+    return image
+}
+
+function _missionaryMeta(parent, className, icon, text) {
+    if (!text) return;
+    var line = _mapElement('p', 'missionary-card-meta ' + className);
+    line.append(makeIcon(icon), document.createTextNode(' ' + text));
+    parent.appendChild(line)
+}
+
+function _missionaryName(parent, m, grouped) {
+    if (m.family) parent.appendChild(_mapElement('p', 'missionary-card-family', 'Familia ' + m.family));
+    parent.appendChild(_mapElement(grouped ? 'p' : 'h3', grouped ? 'missionary-group-name' : 'missionary-card-name', m.name || (m.family ? 'Familia ' + m.family : 'Familia misionera')))
+}
+
+function _buildGroupItem(m) {
+    var item = _mapElement('li', 'missionary-group-item');
+    var thumb = _mapElement('div', 'missionary-group-thumb');
+
+    function fallback() {
+        thumb.classList.add('missionary-group-thumb--empty');
+        thumb.replaceChildren(makeIcon('users'))
+    }
+    if (m.image) {
+        var image = _missionaryImage(m);
+        image.addEventListener('error', fallback, {
+            once: !0
+        });
+        thumb.appendChild(image)
+    } else fallback();
+    var info = _mapElement('div', 'missionary-group-info');
+    _missionaryName(info, m, !0);
+    _missionaryMeta(info, 'missionary-card-date', 'calendar', m.date);
+    item.append(thumb, info);
+    return item
+}
+
+function _buildPopupContent(group, map) {
+    var multiple = group.items.length > 1;
+    var card = _mapElement('div', 'missionary-card' + (multiple ? ' missionary-card--group' : ''));
+    var close = _mapElement('button', 'ctrl-app ctrl-app--surface ctrl-app--md popup-close');
     close.type = 'button';
-    close.className = 'ctrl-app ctrl-app--surface ctrl-app--md popup-close';
     close.setAttribute('aria-label', 'Cerrar');
-    close.innerHTML = '<svg class="icon" aria-hidden="true"><use href="assets/icons/icons.svg#i-x"></use></svg>';
+    close.appendChild(makeIcon('x'));
     close.addEventListener('click', function() {
         map.closePopup()
     });
-    if (items.length > 1) {
-        var group = document.createElement('div');
-        group.className = 'missionary-card missionary-card--group';
-        group.appendChild(close);
-        var head = document.createElement('div');
-        head.className = 'missionary-group-head';
-        var hk = document.createElement('p');
-        hk.className = 'missionary-card-family';
-        hk.textContent = items.length + ' familias';
-        head.appendChild(hk);
-        var hl = document.createElement('h3');
-        hl.className = 'missionary-card-name';
-        hl.textContent = g.label || 'Misioneros';
-        head.appendChild(hl);
-        group.appendChild(head);
-        var list = document.createElement('ul');
-        list.className = 'missionary-group-list';
-        items.forEach(function(m) {
+    if (multiple) {
+        var heading = _mapElement('div', 'missionary-group-head');
+        heading.append(_mapElement('p', 'missionary-card-family', group.items.length + ' familias'), _mapElement('h3', 'missionary-card-name', group.label || 'Misioneros'));
+        var list = _mapElement('ul', 'missionary-group-list');
+        group.items.forEach(function(m) {
             list.appendChild(_buildGroupItem(m))
         });
-        group.appendChild(list);
-        return group
+        card.append(close, heading, list);
+        return card
     }
-    var m = items[0];
-    var card = document.createElement('div');
-    card.className = 'missionary-card';
-    var media = document.createElement('div');
-    media.className = 'missionary-card-media';
-    var img = document.createElement('img');
-    img.className = 'missionary-card-img';
-    img.loading = 'lazy';
-    img.decoding = 'async';
-    img.width = 965;
-    img.height = 1080;
-    img.alt = _missionaryLabel(m, 'Fotografía de ');
-    if (m.image) img.src = m.image;
-    var fallback = document.createElement('div');
-    fallback.className = 'missionary-card-fallback';
-    fallback.setAttribute('aria-hidden', 'true');
-    fallback.innerHTML = '<svg class="icon" aria-hidden="true"><use href="assets/icons/icons.svg#i-users"></use></svg>';
-    img.addEventListener('error', function() {
+    var m = group.items[0];
+    var media = _mapElement('div', 'missionary-card-media');
+    var image = _missionaryImage(m);
+    image.className = 'missionary-card-img';
+    image.width = 965;
+    image.height = 1080;
+    image.addEventListener('error', function() {
         media.classList.add('missionary-card-media--empty')
+    }, {
+        once: !0
     });
     if (!m.image) media.classList.add('missionary-card-media--empty');
-    media.appendChild(img);
-    media.appendChild(fallback);
-    card.appendChild(media);
-    card.appendChild(close);
-    var body = document.createElement('div');
-    body.className = 'missionary-card-body';
-    if (m.family) {
-        var fam = document.createElement('p');
-        fam.className = 'missionary-card-family';
-        fam.textContent = 'Familia ' + m.family;
-        body.appendChild(fam)
-    }
-    var name = document.createElement('h3');
-    name.className = 'missionary-card-name';
-    name.textContent = m.name || (m.family ? 'Familia ' + m.family : 'Familia misionera');
-    body.appendChild(name);
-    if (m.country) {
-        var country = document.createElement('p');
-        country.className = 'missionary-card-meta missionary-card-country';
-        country.innerHTML = '<svg class="icon" aria-hidden="true"><use href="assets/icons/icons.svg#i-map-pin"></use></svg>';
-        country.appendChild(document.createTextNode(' ' + m.country));
-        body.appendChild(country)
-    }
-    if (m.date) {
-        var date = document.createElement('p');
-        date.className = 'missionary-card-meta missionary-card-date';
-        date.innerHTML = '<svg class="icon" aria-hidden="true"><use href="assets/icons/icons.svg#i-calendar"></use></svg>';
-        date.appendChild(document.createTextNode(' ' + m.date));
-        body.appendChild(date)
-    }
-    card.appendChild(body);
+    var fallback = _mapElement('div', 'missionary-card-fallback');
+    fallback.setAttribute('aria-hidden', 'true');
+    fallback.appendChild(makeIcon('users'));
+    media.append(image, fallback);
+    var body = _mapElement('div', 'missionary-card-body');
+    _missionaryName(body, m, !1);
+    _missionaryMeta(body, 'missionary-card-country', 'map-pin', m.country);
+    _missionaryMeta(body, 'missionary-card-date', 'calendar', m.date);
+    card.append(media, close, body);
     return card
 }
 
-function _makeContinentBtn(label, count) {
-    var b = document.createElement('button');
-    b.type = 'button';
-    b.className = 'btn btn-app btn-app--secondary btn-app--compact misioneros-continent-btn';
-    b.appendChild(document.createTextNode(label));
-    var badge = document.createElement('span');
-    badge.className = 'misioneros-continent-count';
-    badge.textContent = count;
-    b.appendChild(badge);
-    b.setAttribute('aria-label', label + ': ' + count + ' misioneros');
-    b.setAttribute('aria-pressed', 'false');
-    return b
-}
-
-function _initContinentNav(map, allBounds, byContinent, reducedMotion, isMobile) {
+function _initContinentNav(map, allBounds, byContinent, isMobile) {
     var nav = document.getElementById('misioneros-continents');
     if (!nav) return;
-    nav.innerHTML = '';
-    var buttons = [];
+    nav.replaceChildren();
 
-    function setActive(active) {
-        buttons.forEach(function(b) {
-            b.setAttribute('aria-pressed', b === active ? 'true' : 'false')
-        })
-    }
-
-    function go(targetBounds, maxZoom, btn) {
-        setActive(btn);
-        if (!targetBounds || !targetBounds.isValid()) return;
-        var opts = {
-            padding: [40, 40],
-            maxZoom: maxZoom
-        };
-        if (reducedMotion) {
-            map.fitBounds(targetBounds, opts)
-        } else {
-            map.flyToBounds(targetBounds, opts)
-        }
+    function addButton(label, count, bounds, maxZoom, all) {
+        var button = _mapElement('button', 'btn btn-app btn-app--secondary btn-app--compact misioneros-continent-btn', label);
+        button.type = 'button';
+        button.appendChild(_mapElement('span', 'misioneros-continent-count', count));
+        button.setAttribute('aria-label', label + ': ' + count + ' misioneros');
+        button.setAttribute('aria-pressed', all && !isMobile ? 'true' : 'false');
+        if (all) button.classList.add('misioneros-continent-btn--all');
+        button.addEventListener('click', function() {
+            Array.from(nav.children).forEach(function(item) {
+                item.setAttribute('aria-pressed', item === button ? 'true' : 'false')
+            });
+            if (!bounds.isValid()) return;
+            var options = {
+                padding: [40, 40],
+                maxZoom: maxZoom
+            };
+            map.stop();
+            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                options.animate = !1;
+                map.fitBounds(bounds, options)
+            } else map.flyToBounds(bounds, options)
+        });
+        nav.appendChild(button)
     }
     var total = 0;
-    CONTINENT_ORDER.forEach(function(cont) {
-        if (byContinent[cont]) total += byContinent[cont].length
+    CONTINENT_ORDER.forEach(function(continent) {
+        total += (byContinent[continent] || []).length
     });
-    var allBtn = _makeContinentBtn('Mapa completo', total);
-    allBtn.classList.add('misioneros-continent-btn--all');
-    allBtn.addEventListener('click', function() {
-        go(allBounds, 6, allBtn)
-    });
-    buttons.push(allBtn);
-    nav.appendChild(allBtn);
-    CONTINENT_ORDER.forEach(function(cont) {
-        var pts = byContinent[cont];
-        if (!pts || !pts.length) return;
-        var contBounds = L.latLngBounds(pts);
-        var btn = _makeContinentBtn(cont, pts.length);
-        btn.addEventListener('click', function() {
-            go(contBounds, 5, btn)
-        });
-        buttons.push(btn);
-        nav.appendChild(btn)
-    });
-    setActive(isMobile ? null : allBtn)
+    addButton('Mapa completo', total, allBounds, 6, !0);
+    CONTINENT_ORDER.forEach(function(continent) {
+        var points = byContinent[continent];
+        if (points && points.length) addButton(continent, points.length, L.latLngBounds(points), 5, !1)
+    })
 }
 
 function _initTwoFingerPan(map, container) {
     if (!window.matchMedia('(hover: none)').matches) return;
     map.dragging.disable();
 
-    function endTouch(ev) {
-        if (ev.touches.length < 2) map.dragging.disable()
-    }
-    container.addEventListener('touchstart', function(ev) {
-        if (ev.touches.length > 1) {
-            map.dragging.enable()
-        } else {
-            map.dragging.disable()
-        }
-    }, {
-        passive: !0
-    });
-    container.addEventListener('touchend', endTouch, {
-        passive: !0
-    });
-    container.addEventListener('touchcancel', endTouch, {
-        passive: !0
+    function syncDragging(event) {
+        if (event.touches.length > 1) map.dragging.enable();
+        else map.dragging.disable()
+    } ['touchstart', 'touchend', 'touchcancel'].forEach(function(event) {
+        container.addEventListener(event, syncDragging, {
+            passive: !0
+        })
+    })
+    map.on('unload', function() {
+        ['touchstart', 'touchend', 'touchcancel'].forEach(function(event) {
+            container.removeEventListener(event, syncDragging)
+        })
     })
 }
 
 function initMissionariesMap() {
     var container = document.getElementById('missionaries-map');
     if (!container || typeof L === 'undefined') return;
-    var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    var isMobile = _isMobileViewport();
+    var motion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    var isMobile = window.matchMedia('(max-width: 767.98px)').matches;
     var map = L.map(container, {
         scrollWheelZoom: !1,
-        zoomAnimation: !reducedMotion,
-        fadeAnimation: !reducedMotion,
-        markerZoomAnimation: !reducedMotion,
+        zoomSnap: .25,
+        zoomDelta: .5,
+        inertia: !motion.matches,
+        zoomAnimation: !motion.matches,
+        fadeAnimation: !motion.matches,
+        markerZoomAnimation: !motion.matches,
         minZoom: 2,
         maxBounds: WORLD_BOUNDS,
-        maxBoundsViscosity: 1.0,
+        maxBoundsViscosity: 1,
         zoomControl: !1
     });
+
+    function syncMotion() {
+        map.stop();
+        map.options.inertia = !motion.matches;
+        container.classList.toggle('leaflet-fade-anim', !motion.matches)
+    }
+    motion.addEventListener('change', syncMotion);
     L.control.zoom({
+        position: 'bottomright',
         zoomInTitle: 'Acercar',
         zoomOutTitle: 'Alejar'
     }).addTo(map);
-    var activeTheme = _currentMapTheme();
-    var tileLayer = L.tileLayer(TILE_THEMES[activeTheme], TILE_OPTIONS).addTo(map);
-    var markerIcon = _pin('<span class="missionary-marker-pin">' + '<svg class="icon" aria-hidden="true"><use href="assets/icons/icons.svg#i-map-pin"></use></svg>' + '</span>', 44);
-    var clusterIcon = function(n) {
-        return _pin('<span class="missionary-marker-pin missionary-marker-pin--cluster">' + n + '</span>', 44)
-    };
-    var byContinent = {};
+    L.tileLayer(TILE_URL, TILE_OPTIONS).addTo(map);
     var valid = MISSIONARIES.filter(function(m) {
         return typeof m.lat === 'number' && typeof m.lng === 'number'
     });
+    var byContinent = {};
     valid.forEach(function(m) {
         if (!m.continent) return;
         if (!byContinent[m.continent]) byContinent[m.continent] = [];
         byContinent[m.continent].push([m.lat, m.lng])
     });
-    var groups = _groupByLocation(valid, 0.6);
-    var bounds = [];
-    groups.forEach(function(g) {
-        var multiple = g.items.length > 1;
-        var label = multiple ? (g.items.length + ' familias misioneras en ' + g.label) : _missionaryLabel(g.items[0], '');
-        var marker = L.marker(g.center, {
-            icon: multiple ? clusterIcon(g.items.length) : markerIcon,
+    var groups = _groupByLocation(valid, .6);
+    var bounds = groups.map(function(group) {
+        return group.center
+    });
+    groups.forEach(function(group) {
+        var multiple = group.items.length > 1;
+        var pin = _mapElement('span', 'missionary-marker-pin' + (multiple ? ' missionary-marker-pin--cluster' : ''));
+        if (multiple) pin.textContent = group.items.length;
+        else pin.appendChild(makeIcon('map-pin'));
+        var label = multiple ? group.items.length + ' familias misioneras en ' + group.label : _missionaryLabel(group.items[0]);
+        var marker = L.marker(group.center, {
+            icon: L.divIcon({
+                className: 'missionary-marker',
+                html: pin,
+                iconSize: [44, 44],
+                iconAnchor: [22, 22],
+                popupAnchor: [0, -22]
+            }),
             title: label,
             alt: label,
             keyboard: !0
-        });
-        marker.bindPopup(function() {
-            return _buildPopupContent(g, map)
+        }).bindPopup(function() {
+            return _buildPopupContent(group, map)
         }, {
             closeButton: !1,
             maxWidth: 280,
-            autoPanPadding: [24, 24]
+            autoPanPadding: [24, 24],
+            autoPanPaddingTopLeft: [24, 68],
+            autoPanPaddingBottomRight: [24, 64]
         });
         marker.on('add', function() {
-            var el = marker.getElement();
-            if (!el) return;
-            el.setAttribute('aria-label', label);
-            el.addEventListener('keydown', function(ev) {
-                if (ev.key === ' ' || ev.key === 'Spacebar') {
-                    ev.preventDefault();
+            var element = marker.getElement();
+            element.setAttribute('aria-label', label);
+            element.addEventListener('keydown', function(event) {
+                if (event.key === ' ' || event.key === 'Spacebar') {
+                    event.preventDefault();
                     marker.openPopup()
                 }
             })
         });
-        marker.addTo(map);
-        bounds.push(g.center)
+        marker.on('popupopen', function() {
+            marker.getPopup().getElement().querySelector('.popup-close').focus()
+        });
+        marker.on('popupclose', function() {
+            var element = marker.getElement();
+            if (element) element.focus()
+        });
+        marker.addTo(map)
     });
-    if (isMobile) {
-        map.fitBounds(LATAM_BOUNDS, {
-            padding: [20, 20]
-        })
-    } else if (bounds.length > 1) {
-        map.fitBounds(bounds, {
-            padding: [40, 40],
-            maxZoom: 6
-        })
-    } else if (bounds.length === 1) {
-        map.setView(bounds[0], 5)
-    } else {
-        map.setView([20, 0], 2)
-    }
+    if (isMobile) map.fitBounds(LATAM_BOUNDS, {
+        padding: [20, 20]
+    });
+    else if (bounds.length > 1) map.fitBounds(bounds, {
+        padding: [40, 40],
+        maxZoom: 6
+    });
+    else if (bounds.length) map.setView(bounds[0], 5);
+    else map.setView([20, 0], 2);
     map.whenReady(function() {
         _initTwoFingerPan(map, container)
     });
-    if (bounds.length) {
-        _initContinentNav(map, L.latLngBounds(bounds), byContinent, reducedMotion, isMobile)
-    }
-    map.on('popupopen', function(e) {
-        var popupEl = e.popup.getElement();
-        if (!popupEl) return;
-        var btn = popupEl.querySelector('.popup-close');
-        if (btn) btn.focus();
-    });
-    map.on('popupclose', function(e) {
-        var src = e.popup._source;
-        if (src && typeof src.getElement === 'function') {
-            var srcEl = src.getElement();
-            if (srcEl) srcEl.focus();
-        }
-    });
-    if (typeof MutationObserver !== 'undefined') {
-        var themeObserver = new MutationObserver(function() {
-            var next = _currentMapTheme();
-            if (next === activeTheme) return;
-            activeTheme = next;
-            map.removeLayer(tileLayer);
-            tileLayer = L.tileLayer(TILE_THEMES[next], TILE_OPTIONS).addTo(map)
-        });
-        themeObserver.observe(document.documentElement, {
-            attributes: !0,
-            attributeFilter: ['data-theme']
-        })
-    }
+    if (bounds.length) _initContinentNav(map, L.latLngBounds(bounds), byContinent, isMobile);
+    map.on('unload', function() {
+        motion.removeEventListener('change', syncMotion)
+    })
 }
-document.addEventListener('DOMContentLoaded', function() {
-    if (document.getElementById('missionaries-map')) initMissionariesMap();
-})
+document.addEventListener('DOMContentLoaded', initMissionariesMap)
