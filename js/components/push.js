@@ -55,8 +55,8 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function subscribed() {
-        const current = subscription || (sdk && sdk.User.PushSubscription);
-        return permission() === 'granted' && !!current && current.optedIn === !0 && !!current.id && !!current.token
+        const current = (sdk && sdk.User.PushSubscription) || subscription;
+        return permission() === 'granted' && !!current && current.optedIn === !0
     }
 
     function state() {
@@ -65,9 +65,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (fault) return fault;
         if (permission() !== 'granted') return 'default';
         if (!sdk) return 'loading';
-        const current = subscription || sdk.User.PushSubscription;
-        if (!current || current.optedIn !== !0) return 'default';
-        return subscribed() ? 'granted' : 'loading'
+        return subscribed() ? 'granted' : 'default'
     }
 
     function fail(kind, error) {
@@ -248,6 +246,7 @@ document.addEventListener('DOMContentLoaded', function() {
             clearTimeout(loadingTimer);
             loadingTimer = null
         }
+        const checked = next === 'loading' && operation && (!operation.enable || permission() === 'granted') ? operation.enable : subscribed();
         const copy = next === 'loading' && operation ? [operation.enable ? 'Activando…' : 'Desactivando…', operation.enable ? 'Activando…' : 'Desactivando…', 'loader-circle'] : COPY[next];
         controls.forEach(({
             button,
@@ -260,7 +259,7 @@ document.addEventListener('DOMContentLoaded', function() {
             button.disabled = next === 'loading' || next === 'unavailable';
             if (next === 'error' && faultCause) button.setAttribute('title', 'Causa: ' + faultCause);
             else button.removeAttribute('title');
-            button.setAttribute(button.getAttribute('role') === 'switch' ? 'aria-checked' : 'aria-pressed', String(subscribed()));
+            button.setAttribute(button.getAttribute('role') === 'switch' ? 'aria-checked' : 'aria-pressed', String(checked));
             button.setAttribute('aria-busy', String(next === 'loading'));
             if (label) label.textContent = copy[wide ? 0 : 1];
             if (icon && typeof setIcon === 'function') setIcon(icon, copy[2]);
@@ -275,6 +274,7 @@ document.addEventListener('DOMContentLoaded', function() {
             subscription = null;
             if (current.enable && permission() === 'default') await Notification.requestPermission();
             if (permission() === 'granted') {
+                sync();
                 const ready = sdk || await sdkReady;
                 if (!ready || current.expired || fault) return;
                 await ready.User.PushSubscription[current.enable ? 'optIn' : 'optOut']()

@@ -12,7 +12,7 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v6
-    
+
     - name: Deploy via FTP (Sync Changes Only)
       uses: SamKirkland/FTP-Deploy-Action@v4.4.0
       with:
@@ -32,6 +32,7 @@ jobs:
           **/.claude/**
           **/.agents/**
           **/.codex/**
+          **/.gemini/**
           **/.impeccable/**
           **/design-handoff/**
           **/docs/**

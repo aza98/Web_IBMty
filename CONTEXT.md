@@ -13,7 +13,7 @@ Versions come from HTML references, library headers, and executable configuratio
 
 | Technology | Version in source | Source and use |
 | --- | --- | --- |
-| Application | `7.1.1` | `APP_CONFIG.appVersion`; also the fallback in `sw.js` |
+| Application | `7.1.2` | `APP_CONFIG.appVersion`; also the fallback in `sw.js` |
 | HTML, CSS, and JavaScript | No language edition pinned | HTML with classic scripts, plain CSS, and browser APIs |
 | Bootstrap | `5.3.8` | CDN CSS and JS bundle on the six main pages |
 | Swiper | `14.2.0` | CDN CSS and JS bundle in `index.html` and `nosotros.html` |
@@ -47,8 +47,7 @@ Poppins and League Spartan are distributed as local fonts; the application decla
 ├── manifest.json                  # PWA identity, start URL, scope, and icons
 ├── sw.js                          # Precache, runtime caches, and update protocol
 ├── config/
-│   ├── config.js                  # APP_CONFIG shared by pages and worker
-│   └── precache-manifest.js        # Generated inventory: self.APP_RELEASE
+│   └── config.js                  # APP_CONFIG shared by pages and worker
 ├── css/
 │   ├── main.css                   # Fonts, tokens, themes, and shared components
 │   ├── components/carousel.css    # Carousel presentation
@@ -78,7 +77,6 @@ Poppins and League Spartan are distributed as local fonts; the application decla
 ├── workbox/                       # core, routing, strategies, expiration,
 │                                  # cacheable-response, and precaching distributions
 ├── .github/
-│   ├── scripts/build-release.py   # Inventory and hashes; does not compile the application
 │   ├── tests/update-flow.cjs      # Node/Playwright test using temporary copies
 │   └── workflows/main.yml         # Publishing on a push to main
 ├── docs/                         # Previous audit artifacts; not executable source
@@ -120,8 +118,6 @@ flowchart TD
     Common --> Push[OneSignal and browser permissions]
     Common <-->|MessageChannel and messages| SW[sw.js]
     Config --> SW
-    Build[build-release.py] --> Inventory[config/precache-manifest.js]
-    Inventory --> SW
     SW --> WB[Local Workbox and OneSignal bridge]
     SW --> Cache[Cache Storage; expiration metadata in IndexedDB]
     SW --> Network[Network and navigation fallback]
@@ -152,7 +148,7 @@ The OneSignal SDK is remote; `OneSignalDeferred` coordinates its availability. T
 | `donativo.html`, `privacidad.html`, `settings.html` | Shared sequence and page CSS; settings also redirects early outside standalone mode |
 | `splash.html` | Configuration, analytics, main, GSAP, ScrollTrigger, and animations; no Bootstrap or push SDK |
 | `offline.html` | `main.css`, inline theme, and inline retry code for clicks or `online`; does not load `main.js` |
-| `sw.js` | Configuration → optional inventory → OneSignal bridge guarded by try/catch → Workbox loader → six local modules |
+| `sw.js` | Configuration → OneSignal bridge guarded by try/catch → Workbox loader → six local modules |
 
 ### Symbols and connection points
 
@@ -168,7 +164,6 @@ The OneSignal SDK is remote; `OneSignalDeferred` coordinates its availability. T
 | `components/missionaries-map.js` | Leaflet global `L`, `makeIcon`, document theme, and local records | `MISSIONARIES`, `initMissionariesMap`; proximity grouping, continent filters, and popups |
 | `pages/nosotros.js` | APP_CONFIG, `#contact-form`, and `form-success` | Sets action, hides the form, and displays confirmation |
 | `pages/salvacion.js` | GSAP/ScrollTrigger, Bootstrap.Modal, confetti, APP_CONFIG, `submitFormData`, optional analytics | Card stack, prayer/follow-up modal, specialized validation, and celebration |
-| `.github/scripts/build-release.py` | HTML, configuration, and static files | `build(root=ROOT)`; writes `self.APP_RELEASE` into a JS file |
 | `.github/tests/update-flow.cjs` | Node, Playwright Chromium, and Python generator | Local fixtures/server, simulated faults, assertions, and temporary evidence |
 
 Contracts to preserve:
@@ -181,7 +176,7 @@ Contracts to preserve:
 - `data-track-category`, `data-track-action`, and `data-track-label` connect interactions to analytics.
 - `MISSIONARIES` records use name, family, country, continent, coordinates, date, and image properties. Do not reproduce personal records in documentation or fixtures.
 - `AppPopups` in `main.js` queues cookie/push notices and coordinates dismissal and floating controls.
-- `APP_RELEASE` contains `version`, `id`, and `files`; each local file has `url`, `sha256`, and `bytes`; inventoried CDN dependencies have `url` and `integrity`.
+- There is no generated inventory: every `CORE_PRECACHE_URLS` entry uses `APP_CONFIG.appVersion` as its precache revision, and the release identifier equals that version. **Bump `appVersion` in `config/config.js` on every deploy that changes a precached file**; otherwise installed clients keep the old copies.
 - The worker accepts `GET_VERSION`, `GET_UPDATE_STATUS`, `PREPARE_UPDATE`, and `SKIP_WAITING`. Status includes `version`, `release`, `ready`, `completed`, `total`, and `cache`. Notices carry `type: IBM_APP_UPDATE` and `phase`. Do not assume additional fields merely because the client or test anticipates them.
 
 ## 6. Design system
@@ -306,11 +301,11 @@ For every such change, include the exact official URLs consulted and consultatio
 
 ### Precache and updates
 
-The generator calculates SHA-256 and local file sizes and captures jsDelivr scripts/styles with SRI. It derives a release identifier from the version and inventory hash. **The worker does not precache all of `APP_RELEASE.files`: it uses a separate 52-entry `CORE_PRECACHE_URLS` list.** Revisions and integrity come from matching inventory entries; other assets depend on runtime caching.
+The worker precaches the 52-entry `CORE_PRECACHE_URLS` list in `sw.js`. Each entry's revision is `APP_CONFIG.appVersion` and the release identifier is that same version; there is no hash inventory and no integrity check (a stale inventory once made every install fail in production). A new release therefore requires bumping `appVersion`; other assets depend on runtime caching.
 
 Workbox installs entries with `precacheAndRoute`, ignoring URL parameters and enabling directory index and clean URLs. `GET_UPDATE_STATUS.ready` checks the presence of responses for those 52 entries; it does not recompute every hash. `PREPARE_UPDATE` attempts to recover missing entries. `SKIP_WAITING` checks candidate identity and completeness before activation.
 
-The client compares numeric major/minor/patch components: a ready 7.1.1 candidate is accepted over 7.1.0, but rejected against an active 7.1.3 worker. `sw.js` checks release identity and readiness, not numeric downgrade order; closing all clients can permit natural activation. This source finding is not a device-tested migration guarantee.
+The client compares numeric major/minor/patch components: a ready 7.1.2 candidate is accepted over 7.1.0, but rejected against an active 7.1.3 worker. `sw.js` checks release identity and readiness, not numeric downgrade order; closing all clients can permit natural activation. This source finding is not a device-tested migration guarantee.
 
 The UI presents downloading, ready, error, and activating states. Reloading checks the version/controller; some version mismatches cause automatic reload when no input or textarea has focus. Activation claims clients and removes specific legacy cache names and prefixes. The current worker does not implement per-tab resource isolation.
 
@@ -363,7 +358,7 @@ There is no `.env.example`, application `.env` file, or frontend environment loa
 | Property | Type | Use |
 | --- | --- | --- |
 | `appName` | string | UI and sharing name |
-| `appVersion` | `major.minor.patch` string | Version identity and inventory generation |
+| `appVersion` | `major.minor.patch` string | Version identity and precache revision; bump to release |
 | `whatsappNumber` | string | Contact-link construction |
 | `address` | string | Location text |
 | `addressMapUrl` | URL string | Map link |
@@ -405,11 +400,11 @@ Run from the repository root. Serving the site requires Python 3 and a modern br
 | --- | --- |
 | Install application | No package installation: downloading or cloning the repository provides the frontend |
 | Development | `python3 -m http.server 8000 --bind 127.0.0.1` |
-| Build / inventory | `python3 .github/scripts/build-release.py` |
+| Build | None: bump `appVersion` in `config/config.js` to release |
 | Update test | `node .github/tests/update-flow.cjs` |
 | Lint | Not implemented: no application linter script or configuration |
 
-The development server serves the static root over HTTP without hot reload. The generator **overwrites `config/precache-manifest.js`** and produces neither a bundle nor a build directory. The test creates copies, a server, and evidence in the system temporary directory. It can use `PLAYWRIGHT_MODULE` when Playwright comes from another installation; the repository has no test-dependency installer.
+The development server serves the static root over HTTP without hot reload. There is no generator, bundle, or build directory. The test creates copies, a server, and evidence in the system temporary directory. It can use `PLAYWRIGHT_MODULE` when Playwright comes from another installation; the repository has no test-dependency installer.
 
 Additional syntax checking, distinct from linting:
 
@@ -441,13 +436,13 @@ Follow the existing patterns:
 - Keep repeated HTML navigation, footer, and preferences consistent; no central component regenerates them.
 - Use existing tokens, component classes, and utilities; preserve early theme application, safe areas, touch controls, focus, ARIA, and motion preferences.
 - Preserve the DOM contracts, events, and configuration names above. Use `textContent`/node creation for dynamic data, as the map and video components do.
-- Treat version, inventory, and precache as related but distinct. Regenerate the inventory after included-file changes only when authorized by the task; check the worker list when adding offline dependencies.
+- The version is the precache revision: bump `appVersion` when precached files change, and check the worker list when adding offline dependencies.
 - Preserve SRI when changing jsDelivr resources and retain workflow publication ordering. Apply the WebKit/PWA protocol in section 8 to release-affecting adjustments.
 - Review existing working changes before editing; do not revert other work or confuse it with the current task's changes.
 
 Do not assume a backend, router, npm scripts, Tailwind, complete caching, offline synchronization, or per-tab isolation. Never introduce secrets into browser-served code, examples, screenshots, logs, or tests. Do not submit real forms or change subscriptions during documentation reviews.
 
-Files to preserve: do not manually edit generated `config/precache-manifest.js`, minified GSAP/Leaflet/Workbox distributions, fonts, or their licenses for ordinary UI work. Do not incidentally change integration identifiers, personal content, or deployment workflows. Changes in those areas require corresponding task scope and validation. The September 17 release pass changes documentation and release configuration; existing application/style edits are preserved.
+Files to preserve: do not manually edit minified GSAP/Leaflet/Workbox distributions, fonts, or their licenses for ordinary UI work. Do not incidentally change integration identifiers, personal content, or deployment workflows. Changes in those areas require corresponding task scope and validation. The September 17 release pass changes documentation and release configuration; existing application/style edits are preserved.
 
 ### Skills and capabilities
 

@@ -1,19 +1,12 @@
 importScripts('config/config.js');
 try {
-    importScripts('config/precache-manifest.js')
-} catch (error) {
-    console.warn('Precache manifest no disponible en este entorno.')
-}
-try {
     importScripts('js/OneSignalSDK.sw.js')
 } catch (error) {
     console.warn('OneSignal no está disponible.', error)
 }
 importScripts('js/workbox-sw.js');
-const APP_SW_VERSION = typeof APP_CONFIG !== 'undefined' && APP_CONFIG.appVersion ? APP_CONFIG.appVersion : '7.1.1';
-const RELEASE = self.APP_RELEASE;
-if (RELEASE && RELEASE.version !== APP_SW_VERSION) throw new Error('La configuración y el inventario pertenecen a versiones distintas.');
-const RELEASE_ID = RELEASE && RELEASE.id ? RELEASE.id : APP_SW_VERSION;
+const APP_SW_VERSION = typeof APP_CONFIG !== 'undefined' && APP_CONFIG.appVersion ? APP_CONFIG.appVersion : '7.1.2';
+const RELEASE_ID = APP_SW_VERSION;
 let preparing = null;
 workbox.setConfig({
     debug: !1,
@@ -21,15 +14,10 @@ workbox.setConfig({
 });
 ['core', 'routing', 'strategies', 'expiration', 'cacheable-response', 'precaching'].forEach(name => workbox.loadModule('workbox-' + name));
 const CORE_PRECACHE_URLS = ['index.html', 'nosotros.html', 'salvacion.html', 'donativo.html', 'privacidad.html', 'settings.html', 'splash.html', 'offline.html', 'manifest.json', 'config/config.js', 'css/main.css', 'css/components/carousel.css', 'css/pages/donativo.css', 'css/pages/index.css', 'css/pages/nosotros.css', 'css/pages/privacidad.css', 'css/pages/salvacion.css', 'css/pages/settings.css', 'css/pages/splash.css', 'js/pwa-launch.js', 'js/main.js', 'js/utils/analytics.js', 'js/components/animations.js', 'js/components/carousel.js', 'js/components/missionaries-map.js', 'js/components/push.js', 'js/components/youtube-api.js', 'js/pages/nosotros.js', 'js/pages/salvacion.js', 'workbox/workbox-core.prod.js', 'workbox/workbox-precaching.prod.js', 'workbox/workbox-routing.prod.js', 'workbox/workbox-strategies.prod.js', 'workbox/workbox-expiration.prod.js', 'workbox/workbox-cacheable-response.prod.js', 'gsap-public/minified/gsap.min.js', 'gsap-public/minified/ScrollTrigger.min.js', 'leaflet/dist/leaflet.js', 'leaflet/dist/leaflet.css', 'assets/icons/icons.svg', 'assets/icons/IBMTY.svg', 'assets/icons/Logo_IBMty.png', 'assets/icons/IBMty_Logo_Mobile.webp', 'assets/icons/IBMty_Logo_Desktop.webp', 'assets/icons/IBMty_Icon_192.png', 'assets/icons/IBMty_Icon_512.png', 'assets/icons/icon-512-maskable.png', 'assets/icons/IBMty_Icon_180.png', 'assets/icons/IBMty_Icon_32.ico', 'assets/images/extras/YouVersion_QR.png', 'assets/calendar/CIMA_2026.ics', 'assets/fonts/League_Spartan/static/LeagueSpartan-SemiBold.woff2'];
-const precacheEntries = CORE_PRECACHE_URLS.map(url => {
-    const file = RELEASE && RELEASE.files && RELEASE.files.find(file => file.url === url);
-    const entry = {
-        url,
-        revision: file ? file.sha256 || file.integrity : APP_SW_VERSION
-    };
-    if (file && file.sha256) entry.integrity = 'sha256-' + btoa(file.sha256.match(/../g).map(byte => String.fromCharCode(parseInt(byte, 16))).join(''));
-    return entry
-});
+const precacheEntries = CORE_PRECACHE_URLS.map(url => ({
+    url,
+    revision: APP_SW_VERSION
+}));
 workbox.precaching.addPlugins([{
     cacheDidUpdate: () => announce('downloading').catch(() => {}),
     handlerDidError: async ({
@@ -137,8 +125,7 @@ async function prepareUpdate() {
         const key = workbox.precaching.getCacheKeyForURL(entry.url);
         if (await cache.match(key)) continue;
         const response = await fetch(new URL(entry.url, self.registration.scope), {
-            cache: 'reload',
-            integrity: entry.integrity || ''
+            cache: 'reload'
         });
         if (!response.ok) throw new Error('No se pudo descargar ' + entry.url);
         await cache.put(key, response);

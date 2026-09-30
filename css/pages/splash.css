@@ -8,7 +8,7 @@ html.splash-page body {
   padding: 0;
   height: 100%;
   overflow: hidden;
-  background-color: #010C18
+  background-color: var(--color-bg)
 }
 
 #splash-screen {
@@ -17,7 +17,7 @@ html.splash-page body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #010C18;
+  background-color: var(--color-bg);
   padding: max(0px, env(safe-area-inset-top, 0px)) max(0px, env(safe-area-inset-right, 0px)) max(0px, env(safe-area-inset-bottom, 0px)) max(0px, env(safe-area-inset-left, 0px));
   z-index: 9999
 }
@@ -85,7 +85,7 @@ html[data-theme="dark"] #splash-logo {
   bottom: calc(var(--space-6) + max(0px, env(safe-area-inset-bottom, 0px)));
   text-align: center;
   font-family: var(--font-primary);
-  color: rgb(var(--color-white-rgb) / .7);
+  color: var(--color-text-muted);
   font-size: var(--text-2xs);
   font-weight: 600;
   letter-spacing: .12em;
