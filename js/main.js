@@ -932,40 +932,6 @@ function initWhatsAppFabToggle() {
     })
 }
 
-function initWhatsAppFabPosition() {
-    var fab = document.getElementById('whatsapp-fab');
-    if (!fab || !window.ResizeObserver || !window.MutationObserver) return;
-    var notices = [];
-
-    function position() {
-        var bottom = 0;
-        notices.forEach(function(notice) {
-            var style = getComputedStyle(notice);
-            if (style.display === 'none' || !notice.offsetHeight) return;
-            bottom = Math.max(bottom, parseFloat(style.bottom) + notice.offsetHeight + 8)
-        });
-        if (bottom) fab.style.setProperty('--whatsapp-notice-bottom', bottom + 'px');
-        else fab.style.removeProperty('--whatsapp-notice-bottom')
-    }
-    var resize = new ResizeObserver(position);
-
-    function refresh() {
-        resize.disconnect();
-        notices = Array.from(document.querySelectorAll('#notification-install-prompt, #notification-denied-prompt'));
-        notices.forEach(function(notice) {
-            resize.observe(notice)
-        });
-        position()
-    }
-    new MutationObserver(refresh).observe(document.body, {
-        childList: !0,
-        attributes: !0,
-        attributeFilter: ['class']
-    });
-    window.addEventListener('resize', position);
-    refresh()
-}
-
 function _validateField(field) {
     var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     var telRegex = /^[0-9\s+()\-]+$/;
@@ -1246,12 +1212,6 @@ function initCookieBanner() {
         if (['accepted', 'rejected'].includes(localStorage.getItem('cookieConsent'))) return
     } catch (err) {}
     if (document.getElementById('cookie-banner')) return;
-    if (isStandaloneMode() && window.__notifPromptPending === !0) {
-        window.addEventListener('notifpromptdone', initCookieBanner, {
-            once: !0
-        });
-        return
-    }
     var banner = document.createElement('section');
     banner.id = 'cookie-banner';
     banner.className = 'popup-card popup-card--compact popup-card--plain';
@@ -1300,7 +1260,6 @@ document.addEventListener('DOMContentLoaded', function() {
     setActiveNavItem();
     initWhatsAppLinks();
     initWhatsAppFabToggle();
-    initWhatsAppFabPosition();
     initShareDelegation();
     initImageFallbacks();
     initFormValidation();

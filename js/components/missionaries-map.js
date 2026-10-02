@@ -33,7 +33,7 @@ var MISSIONARIES = [{
     date: 'Noviembre 2023',
     lat: 37.3826,
     lng: -5.9963,
-    image: 'assets/images/misioneros/Misioneros_España_1.webp'
+    image: 'assets/images/misioneros/Misioneros_Espana_1.webp'
 }, {
     family: 'Zamarrón López',
     name: 'Josué, Yessenia y Carolina',
@@ -42,7 +42,7 @@ var MISSIONARIES = [{
     date: 'Noviembre 2023',
     lat: 37.3946,
     lng: -5.9683,
-    image: 'assets/images/misioneros/Misioneros_España_2.webp'
+    image: 'assets/images/misioneros/Misioneros_Espana_2.webp'
 }, {
     family: 'Belenguer Puente',
     name: 'Andrés, Jocely, Carlos y Andrea',
@@ -51,7 +51,7 @@ var MISSIONARIES = [{
     date: 'Diciembre 2025',
     lat: 37.4046,
     lng: -6.0083,
-    image: 'assets/images/misioneros/Misioneros_España_3.webp'
+    image: 'assets/images/misioneros/Misioneros_Espana_3.webp'
 }, {
     name: 'Yeni Chaires Rodríguez',
     country: 'Sevilla, España',
@@ -59,7 +59,7 @@ var MISSIONARIES = [{
     date: '2026',
     lat: 37.3726,
     lng: -5.9603,
-    image: 'assets/images/misioneros/Misioneros_España_4.webp'
+    image: 'assets/images/misioneros/Misioneros_Espana_4.webp'
 }, {
     name: 'Loredana Rodríguez Sarmiento',
     country: 'Eslovaquia',

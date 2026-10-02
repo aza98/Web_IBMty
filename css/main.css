@@ -190,8 +190,6 @@
   --fab-bottom: 1.5rem;
   --fab-right: 1.5rem;
   --z-cookie: 1010;
-  --z-notification-prompt: 1020;
-  --z-notification-fab: 1030;
   --z-whatsapp-fab: 1040;
   --shell-gutter: 1rem;
   --shell-safe-gutter: max(var(--shell-gutter), env(safe-area-inset-left, 0px), env(safe-area-inset-right, 0px));
@@ -563,7 +561,7 @@ main {
 }
 
 :is(html, body).is-pwa #whatsapp-fab {
-  bottom: var(--whatsapp-notice-bottom, calc(var(--tabbar-height) + var(--fab-bottom) + env(safe-area-inset-bottom)))
+  bottom: calc(var(--tabbar-height) + var(--fab-bottom) + env(safe-area-inset-bottom))
 }
 
 main .container,
@@ -1934,34 +1932,11 @@ a.settings-row:focus-visible .settings-row-chevron {
   will-change: transform;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
-  bottom: var(--whatsapp-notice-bottom, calc(var(--fab-bottom) + env(safe-area-inset-bottom)));
+  bottom: calc(var(--fab-bottom) + env(safe-area-inset-bottom));
   z-index: var(--z-whatsapp-fab);
   right: var(--fab-right);
   right: max(var(--fab-right), env(safe-area-inset-right));
   box-shadow: 0 4px 12px rgb(var(--shadow-color-rgb-dark) / .18), 0 2px 6px rgb(var(--shadow-color-rgb-dark) / .12)
-}
-
-#notification-fab {
-  z-index: var(--z-notification-fab);
-  --ctrl-float-bg: var(--btn-primary-fill);
-  --ctrl-float-bg-hover: var(--btn-primary-fill-hover);
-  right: var(--fab-right);
-  right: max(var(--fab-right), env(safe-area-inset-right));
-  bottom: calc(var(--fab-bottom) + env(safe-area-inset-bottom))
-}
-
-#notification-fab[data-whatsapp-visible="true"] {
-  bottom: calc(var(--fab-bottom) + var(--ctrl-size-fab) + var(--space-2) + env(safe-area-inset-bottom))
-}
-
-:is(html, body).is-pwa #notification-fab {
-  bottom: calc(var(--tabbar-height) + var(--fab-bottom));
-  bottom: calc(var(--tabbar-height) + var(--fab-bottom) + env(safe-area-inset-bottom))
-}
-
-:is(html, body).is-pwa #notification-fab[data-whatsapp-visible="true"] {
-  bottom: calc(var(--tabbar-height) + var(--fab-bottom) + var(--ctrl-size-fab) + var(--space-2));
-  bottom: calc(var(--tabbar-height) + var(--fab-bottom) + var(--ctrl-size-fab) + var(--space-2) + env(safe-area-inset-bottom))
 }
 
 #nav-install-item,
@@ -2522,14 +2497,9 @@ body.cookie-banner-open .scroll-hint {
   white-space: nowrap
 }
 
-#whatsapp-fab,
-#notification-fab {
+#whatsapp-fab {
   translate: 0 calc(-1 * var(--popup-lift, 0px));
   transition: translate var(--motion-base) var(--ease-standard)
-}
-
-body.cookie-banner-open .notification-permission-prompt {
-  display: none !important
 }
 
 #sw-update-toast {
@@ -2589,105 +2559,6 @@ body.cookie-banner-open #sw-update-toast {
   display: none
 }
 
-.notification-permission-prompt {
-  position: fixed;
-  right: 0;
-  bottom: max(var(--space-3), env(safe-area-inset-bottom, 0px));
-  left: 0;
-  z-index: var(--z-notification-prompt);
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: var(--space-1);
-  width: calc(100% - 2 * var(--shell-safe-gutter));
-  max-width: var(--shell-max-pwa);
-  margin-inline: auto;
-  padding: var(--space-2);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-lg);
-  background: var(--color-surface);
-  box-shadow: var(--shadow-card);
-  color: var(--color-text-primary);
-  font-family: var(--font-secondary);
-  animation: popupRise var(--motion-emphasized) var(--ease-standard) both
-}
-
-:is(html, body).is-pwa .notification-permission-prompt {
-  bottom: calc(var(--tabbar-height) + max(var(--space-3), env(safe-area-inset-bottom, 0px)) + var(--space-1))
-}
-
-#notification-denied-prompt {
-  bottom: calc(var(--fab-bottom) + var(--ctrl-size-fab) + var(--space-2) + env(safe-area-inset-bottom))
-}
-
-#notification-denied-prompt[data-whatsapp-visible="true"] {
-  bottom: calc(var(--fab-bottom) + var(--ctrl-size-fab) + var(--space-2) + var(--ctrl-size-fab) + var(--space-2) + env(safe-area-inset-bottom))
-}
-
-:is(html, body).is-pwa #notification-denied-prompt {
-  bottom: calc(var(--tabbar-height) + var(--fab-bottom) + var(--ctrl-size-fab) + var(--space-2));
-  bottom: calc(var(--tabbar-height) + var(--fab-bottom) + var(--ctrl-size-fab) + var(--space-2) + env(safe-area-inset-bottom))
-}
-
-:is(html, body).is-pwa #notification-denied-prompt[data-whatsapp-visible="true"] {
-  bottom: calc(var(--tabbar-height) + var(--fab-bottom) + var(--ctrl-size-fab) + var(--space-2) + var(--ctrl-size-fab) + var(--space-2));
-  bottom: calc(var(--tabbar-height) + var(--fab-bottom) + var(--ctrl-size-fab) + var(--space-2) + var(--ctrl-size-fab) + var(--space-2) + env(safe-area-inset-bottom))
-}
-
-.notification-permission-prompt-heading {
-  display: flex;
-  flex: 1 1 auto;
-  align-items: center;
-  gap: var(--space-1);
-  min-width: 0
-}
-
-.notification-permission-prompt-icon {
-  display: inline-flex;
-  flex: 0 0 auto;
-  font-size: var(--icon-fab);
-  color: var(--color-success-strong)
-}
-
-#notification-denied-prompt .notification-permission-prompt-icon {
-  color: var(--color-text-muted-strong)
-}
-
-.notification-permission-prompt-title {
-  margin: 0;
-  font-family: var(--font-secondary);
-  font-size: var(--text-sm);
-  font-weight: 600;
-  letter-spacing: normal;
-  line-height: 1.2;
-  color: var(--color-text-primary)
-}
-
-.notification-permission-prompt-copy {
-  flex: 1 1 100%;
-  margin: 0;
-  padding-inline-start: calc(var(--icon-fab) + var(--space-1));
-  font-size: var(--text-xs);
-  line-height: 1.45;
-  color: var(--color-text-secondary)
-}
-
-#notification-install-prompt .notification-permission-prompt-copy {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  overflow: hidden;
-  clip-path: inset(50%);
-  white-space: nowrap
-}
-
-.notification-permission-prompt-actions {
-  display: flex;
-  gap: var(--space-1);
-  margin-inline-start: auto
-}
-
 @keyframes popupSweep {
   from {
     transform: translateX(-100%)
@@ -2701,13 +2572,6 @@ body.cookie-banner-open #sw-update-toast {
 @keyframes popupPulse {
   from {
     opacity: .35
-  }
-}
-
-@keyframes popupRise {
-  from {
-    opacity: 0;
-    transform: translateY(var(--space-3))
   }
 }
 
@@ -2747,17 +2611,12 @@ body.cookie-banner-open #sw-update-toast {
     transform: none
   }
 
-  .notification-permission-prompt {
-    animation: none
-  }
-
   #sw-update-toast[aria-busy="true"]::after {
     width: 100%;
     animation: popupPulse 2s var(--ease-standard) infinite alternate
   }
 
-  #whatsapp-fab,
-  #notification-fab {
+  #whatsapp-fab {
     transition: none
   }
 }

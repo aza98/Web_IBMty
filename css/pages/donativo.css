@@ -82,7 +82,7 @@
 
 .field-row {
   flex-wrap: nowrap;
-  gap: var(--space-1)
+  gap: var(--space-2)
 }
 
 .bank-card-holder {
@@ -140,7 +140,11 @@
 }
 
 :where(.field-row) .btn-app--compact {
+  --bs-btn-padding-x: 0;
   flex: 0 0 auto;
+  justify-content: center;
+  width: var(--btn-min-height);
+  gap: 0;
   margin-left: auto
 }
 
@@ -153,17 +157,13 @@
   white-space: nowrap
 }
 
-@container (max-width: 280px) {
-  .field-row {
-    padding: calc(var(--space-2) / 2) calc(var(--space-1) / 2) calc(var(--space-2) / 2) var(--space-1)
-  }
-
-  :where(.field-row) .btn-app--compact {
-    --bs-btn-padding-x: 9px
-  }
-}
-
 @container (min-width: 300px) {
+  :where(.field-row) .btn-app--compact {
+    --bs-btn-padding-x: 14px;
+    width: auto;
+    gap: var(--btn-gap)
+  }
+
   :where(.field-row) .btn-label {
     position: static;
     width: auto;

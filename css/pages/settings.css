@@ -182,19 +182,6 @@ html[data-theme="dark"] .theme-sw .sw-thumb {
   box-shadow: inset 3px 0 0 var(--color-border-strong)
 }
 
-#notif-toggle[data-notif="error"] {
-  cursor: pointer;
-  box-shadow: inset 3px 0 0 var(--color-danger-strong)
-}
-
-#notif-toggle[data-notif="error"] .settings-row-icon {
-  color: var(--color-danger-strong)
-}
-
-#notif-toggle[data-notif="error"] .notif-sw {
-  box-shadow: inset 0 0 0 2px var(--color-danger-strong)
-}
-
 #notif-toggle[data-notif="loading"] {
   cursor: progress
 }
@@ -234,14 +221,6 @@ html[data-theme="dark"] .theme-sw .sw-thumb {
 }
 
 #whatsapp-fab-toggle[data-fab="on"] .wa-sw .sw-thumb {
-  transform: translateX(var(--sw-travel))
-}
-
-#notif-fab-toggle[data-fab="on"] .notif-fab-sw {
-  background: var(--btn-primary-fill)
-}
-
-#notif-fab-toggle[data-fab="on"] .notif-fab-sw .sw-thumb {
   transform: translateX(var(--sw-travel))
 }
 

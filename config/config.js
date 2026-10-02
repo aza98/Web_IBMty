@@ -30,5 +30,5 @@ const APP_CONFIG = {
     salvationFollowup: {
         formspreeEndpoint: 'https://formspree.io/f/mbjzknka',
     },
-    appVersion: '7.1.2',
+    appVersion: '7.1.3',
 }

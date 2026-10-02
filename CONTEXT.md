@@ -13,7 +13,7 @@ Versions come from HTML references, library headers, and executable configuratio
 
 | Technology | Version in source | Source and use |
 | --- | --- | --- |
-| Application | `7.1.2` | `APP_CONFIG.appVersion`; also the fallback in `sw.js` |
+| Application | `7.1.3` | `APP_CONFIG.appVersion`; also the fallback in `sw.js` |
 | HTML, CSS, and JavaScript | No language edition pinned | HTML with classic scripts, plain CSS, and browser APIs |
 | Bootstrap | `5.3.8` | CDN CSS and JS bundle on the six main pages |
 | Swiper | `14.2.0` | CDN CSS and JS bundle in `index.html` and `nosotros.html` |
@@ -157,7 +157,7 @@ The OneSignal SDK is remote; `OneSignalDeferred` coordinates its availability. T
 | `config/config.js` | Configuration written in code | `const APP_CONFIG`, a classic-script global binding; not declared as `window.APP_CONFIG` |
 | `main.js` | APP_CONFIG, DOM, browser APIs, and optional analytics functions | `isStandaloneMode`, `makeIcon`, `setIcon`, `makeToast`, `toggleTheme`, `shareContent`, `copyToClipboard`, `submitFormData`, `clearFormErrors`; initializes preferences, forms, and worker |
 | `utils/analytics.js` | APP_CONFIG and `cookieConsent` | `startAnalytics`, `trackEvent`, `trackPageView`, `trackFormSubmit`; creates `window.gtag` and `dataLayer` on startup |
-| `components/push.js` | APP_CONFIG, OneSignalDeferred, `isStandaloneMode`, DOM controls | Notification state; `window.__notifPromptPending` and `notifpromptdone` coordinate the cookie notice |
+| `components/push.js` | APP_CONFIG, OneSignalDeferred, `isStandaloneMode`, `makeIcon`, `setIcon`, `makeToast`, `AppPopups`, DOM controls | Toggle state from the live SDK subscription; one-time PWA offer queued through `AppPopups` as `notifications`; denied/error feedback via toast |
 | `components/animations.js` | GSAP, ScrollTrigger, and page selectors | Globals `ANIM`, `SCROLL_TRIGGER_DEFAULTS`, initializers, and `goToIndex`; refreshes after fonts and Bootstrap collapse events |
 | `components/carousel.js` | Swiper, optional ScrollTrigger, and hashes | Local initialization of `eventos-swiper` and `ministerios-swiper`; instance available on `element.swiper` |
 | `components/youtube-api.js` | APP_CONFIG, `#live-stream`, fetch, storage, and optional ScrollTrigger | Countdown and video blocks; functions enclosed in the load listener |
@@ -305,7 +305,7 @@ The worker precaches the 52-entry `CORE_PRECACHE_URLS` list in `sw.js`. Each ent
 
 Workbox installs entries with `precacheAndRoute`, ignoring URL parameters and enabling directory index and clean URLs. `GET_UPDATE_STATUS.ready` checks the presence of responses for those 52 entries; it does not recompute every hash. `PREPARE_UPDATE` attempts to recover missing entries. `SKIP_WAITING` checks candidate identity and completeness before activation.
 
-The client compares numeric major/minor/patch components: a ready 7.1.2 candidate is accepted over 7.1.0, but rejected against an active 7.1.3 worker. `sw.js` checks release identity and readiness, not numeric downgrade order; closing all clients can permit natural activation. This source finding is not a device-tested migration guarantee.
+The client compares numeric major/minor/patch components: a ready 7.1.3 candidate is accepted over 7.1.0, but rejected against an active 7.1.3 worker. `sw.js` checks release identity and readiness, not numeric downgrade order; closing all clients can permit natural activation. This source finding is not a device-tested migration guarantee.
 
 The UI presents downloading, ready, error, and activating states. Reloading checks the version/controller; some version mismatches cause automatic reload when no input or textarea has focus. Activation claims clients and removes specific legacy cache names and prefixes. The current worker does not implement per-tab resource isolation.
 
@@ -330,7 +330,7 @@ All runtime caches use a 604800-second (7-day) expiration and `purgeOnQuotaError
 | --- | --- | --- |
 | localStorage | `theme`, `whatsappFab` | Theme and floating contact control visibility |
 | localStorage | `cookieConsent` | Accepted consent enables analytics; the accept button saves `accepted`, and the close control labelled “Rechazar cookies” saves `rejected` |
-| localStorage | `notifInstallPromptShown`, `notifFab` | Notification installation notice and floating control preference |
+| localStorage | `notifInstallPromptShown` | One-time PWA notification offer already shown |
 | localStorage | `ibmty_latest_video_persistent` | JSON containing `id`, `title`, `ts`; persistent reads do not apply a TTL |
 | sessionStorage | `ibmty_latest_video` | Same format; reads have a 30-minute TTL |
 | sessionStorage | `ibmty_yt_quota_exceeded` | Stops further API use after a 403 response during the session |

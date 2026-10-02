@@ -4,46 +4,21 @@ PRODID:-//Iglesia Bautista de Monterrey//Eventos//ES
 CALSCALE:GREGORIAN
 METHOD:PUBLISH
 X-WR-CALNAME:CIMA 2026 | Despliegue
-X-WR-CALDESC:Celebración de Impulso Misionero en las Américas - Iglesia B
- autista de Monterrey
-X-WR-TIMEZONE:America/Monterrey
-BEGIN:VTIMEZONE
-TZID:America/Monterrey
-X-LIC-LOCATION:America/Monterrey
-BEGIN:STANDARD
-TZOFFSETFROM:-0500
-TZOFFSETTO:-0600
-TZNAME:CST
-DTSTART:19701025T020000
-RRULE:FREQ=YEARLY;BYMONTH=10;BYDAY=-1SU
-END:STANDARD
-BEGIN:DAYLIGHT
-TZOFFSETFROM:-0600
-TZOFFSETTO:-0500
-TZNAME:CDT
-DTSTART:19700405T020000
-RRULE:FREQ=YEARLY;BYMONTH=4;BYDAY=1SU
-END:DAYLIGHT
-END:VTIMEZONE
 BEGIN:VEVENT
 UID:cima-2026@ibmty.com
-DTSTAMP:20260826T000000Z
+DTSTAMP:20261002T000000Z
 DTSTART;VALUE=DATE:20261113
 DTEND;VALUE=DATE:20261117
 SUMMARY:CIMA 2026 | Despliegue
-DESCRIPTION:Celebración de Impulso Misionero en las Américas. Celebra el 
- llamado de Dios\, el llamado que nos mueve a salir de lo desconocido y ex
- tendernos a lo inexplorado.
+DESCRIPTION:Del 13 al 16 de noviembre de 2026.\n\nCelebración de Impulso M
+ isionero en las Américas. Celebra el llamado de Dios\, el llamado que nos
+  mueve a salir de lo desconocido y extendernos a lo inexplorado.\n\nOrgani
+ za: Iglesia Bautista de Monterrey (oficina@ibmty.com)\nMás información: 
+ https://www.ribbi.org/
 LOCATION:San Luis Potosí\, México
+URL:https://www.ribbi.org/
 STATUS:CONFIRMED
 TRANSP:TRANSPARENT
-ORGANIZER;CN=Iglesia Bautista de Monterrey:mailto:oficina@ibmty.com
-CATEGORIES:Misiones,Iglesia,Congreso,CIMA
-CLASS:PUBLIC
-PRIORITY:3
-SEQUENCE:0
-CREATED:20260826T000000Z
-LAST-MODIFIED:20260826T000000Z
-URL:https://www.ribbi.org/
+SEQUENCE:1
 END:VEVENT
 END:VCALENDAR

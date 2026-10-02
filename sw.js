@@ -5,7 +5,7 @@ try {
     console.warn('OneSignal no está disponible.', error)
 }
 importScripts('js/workbox-sw.js');
-const APP_SW_VERSION = typeof APP_CONFIG !== 'undefined' && APP_CONFIG.appVersion ? APP_CONFIG.appVersion : '7.1.2';
+const APP_SW_VERSION = typeof APP_CONFIG !== 'undefined' && APP_CONFIG.appVersion ? APP_CONFIG.appVersion : '7.1.3';
 const RELEASE_ID = APP_SW_VERSION;
 let preparing = null;
 workbox.setConfig({
