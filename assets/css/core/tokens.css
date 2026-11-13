@@ -1,0 +1,221 @@
+/*
+ * Design tokens. Single source of truth for color, type and spacing.
+ * Theme is selected with <html data-bs-theme="light|dark"> (shared with Bootstrap).
+ *
+ * Color has two layers:
+ * - Primitives (--stone-*, --cyan-*, --clay-*, ...): the raw palette, the same in
+ *   both themes. Use them directly only where a color must not follow the theme
+ *   (theme previews, Leaflet popups, photo overlays, illustrations).
+ * - Semantic roles (--color-*): what components use. Each theme maps them on its own.
+ *
+ * Palette, "cielo y tierra": brand cyan is the sky and the only bright color; warm
+ * stone neutrals are the ground; clay is the quiet second voice for verses and dates.
+ */
+:root {
+  color-scheme: light;
+  --stone-50: #fcfaf7;
+  --stone-100: #f6f1ec;
+  --stone-200: #ede6de;
+  --stone-300: #ded6cd;
+  --stone-350: #c4bcb4;
+  --stone-400: #9e978f;
+  --stone-500: #867f77;
+  --stone-550: #77706a;
+  --stone-600: #68625b;
+  --stone-700: #4c4741;
+  --stone-800: #342f2a;
+  --stone-850: #26221e;
+  --stone-900: #1c1915;
+  --stone-950: #14110e;
+  --stone-975: #0d0b08;
+  --cyan-50: #e8f8ff;
+  --cyan-100: #c8edfe;
+  --cyan-300: #74d2fa;
+  --cyan-500: #00c0f6;
+  --cyan-700: #006e92;
+  --cyan-850: #193a48;
+  --cyan-900: #142a33;
+  --clay-50: #fef1e8;
+  --clay-300: #efac8d;
+  --clay-400: #db7a58;
+  --clay-600: #ab4a2b;
+  --clay-900: #2c1e17;
+  --green-300: #7ad59c;
+  --green-500: #429c5a;
+  --green-700: #1e7546;
+  --red-300: #f28885;
+  --red-600: #c9302d;
+  --white: #ffffff;
+  --whatsapp: #25d366;
+  --font-primary: "League Spartan", system-ui, sans-serif;
+  --font-secondary: "Poppins", system-ui, sans-serif;
+  --color-brand: var(--cyan-500);
+  --color-brand-hover: var(--cyan-700);
+  --color-on-brand: var(--white);
+  --color-on-brand-ink: var(--stone-950);
+  --color-focus: var(--color-brand-strong);
+  --color-brand-strong: var(--cyan-700);
+  --color-brand-tint: var(--cyan-50);
+  --color-brand-tint-strong: var(--cyan-100);
+  --color-bg: var(--stone-50);
+  --color-surface: var(--stone-100);
+  --color-surface-2: var(--stone-200);
+  --color-heading: var(--stone-900);
+  --color-text-primary: var(--stone-800);
+  --color-text-secondary: var(--stone-700);
+  --color-text-muted: var(--stone-600);
+  --color-border: var(--stone-300);
+  --color-control-border: var(--stone-500);
+  --color-success-strong: var(--green-700);
+  --color-danger: var(--red-600);
+  --color-accent-warm: var(--clay-600);
+  --color-warm-surface: var(--clay-50);
+  --color-chrome-bg: rgb(252 250 247 / 0.94);
+  --color-chrome-line: rgb(28 25 21 / 0.12);
+  --color-ornament: rgb(0 110 146 / 0.13);
+  --color-band: var(--stone-900);
+  --color-band-deep: var(--stone-850);
+  --color-on-band: var(--stone-50);
+  --color-on-band-muted: var(--stone-350);
+  --color-on-band-warm: var(--clay-300);
+  --color-band-raised: rgb(255 255 255 / 0.08);
+  --color-band-line: rgb(255 255 255 / 0.12);
+  --color-ornament-band: rgb(0 192 246 / 0.2);
+  --color-scrim: rgb(13 11 8 / 0.55);
+  --gradient-photo-scrim: linear-gradient(to top, rgb(13 11 8 / 0.9) 0%, rgb(13 11 8 / 0.5) 52%, rgb(13 11 8 / 0.12) 100%);
+  --color-ornament-photo: rgb(0 192 246 / 0.45);
+  --gradient-hero-surface: linear-gradient(170deg, var(--cyan-50) 0%, var(--stone-100) 72%);
+  --color-status-bar: var(--cyan-50);
+  --gradient-band: linear-gradient(160deg, var(--color-band) 0%, var(--color-band-deep) 100%);
+  --ill-skin: #d98a63;
+  --ill-skin-light: #efc0a5;
+  --ill-skin-deep: #b36642;
+  --ill-cuff: var(--stone-700);
+  --ill-cuff-trim: var(--stone-50);
+  --ill-heart: var(--red-600);
+  --ill-heart-deep: #941e1c;
+  --ill-heart-light: #f7a6a4;
+  --ill-bill: var(--green-700);
+  --ill-bill-light: var(--green-500);
+  --ill-bill-paper: #e6f5ec;
+  --ill-gift-box: var(--cyan-700);
+  --ill-gift-box-ribbon: var(--stone-50);
+  --ill-gift-lid: var(--cyan-300);
+  --ill-gift-lid-ribbon: var(--cyan-700);
+  --ill-wood: #966132;
+  --ill-wood-deep: #683f1b;
+  --ill-wood-light: #bc8756;
+  --ill-arch: var(--stone-300);
+  --ill-shadow: rgb(28 25 21 / 0.12);
+  --ill-card: var(--color-bg);
+  --ill-card-line: var(--color-border);
+  --ill-row: var(--color-surface);
+  --ill-muted: var(--stone-300);
+  --ill-line: var(--stone-300);
+  --shadow-raised: 0 12px 32px -12px rgb(13 11 8 / 0.24);
+  --shadow-chrome: 0 0 0 1px var(--color-chrome-line), 0 2px 6px -2px rgb(13 11 8 / 0.12), var(--shadow-raised);
+  --shadow-card: 0 8px 24px -10px rgb(13 11 8 / 0.14);
+  --shadow-sheet: 0 -20px 44px -28px rgb(13 11 8 / 0.2);
+  --shadow-brand-glow: 0 2px 6px -1px rgb(13 11 8 / 0.18);
+  --shadow-brand-lift: 0 10px 24px -10px rgb(13 11 8 / 0.28);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-fast: 0.2s;
+  --dur-base: 0.3s;
+  --dur-slow: 0.4s;
+  --dur-slower: 0.6s;
+  --bs-body-bg: var(--color-bg);
+  --bs-body-color: var(--color-text-primary);
+  --bs-emphasis-color: var(--color-heading);
+  --bs-border-color: var(--color-border);
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 1rem;
+  --space-4: 1.5rem;
+  --space-5: 2.5rem;
+  --space-6: 4rem;
+  --radius-sm: 0.5rem;
+  --radius-md: 1rem;
+  --radius-lg: 1.5rem;
+  --radius-pill: 999px;
+  --text-display: clamp(2.5rem, 4.2vw + 1.4rem, 4.75rem);
+  --text-title: clamp(1.75rem, 2vw + 1.2rem, 2.75rem);
+  --text-lead: clamp(1.0625rem, 0.5vw + 0.95rem, 1.3125rem);
+  --text-heading-sm: clamp(1.375rem, 1vw + 1.1rem, 1.75rem);
+  --text-numeral: clamp(3.25rem, 9vw + 1rem, 7.5rem);
+  --text-compact: 0.9375rem;
+  --text-small: 0.8125rem;
+  --leading-display: .92;
+  --leading-title: 1;
+  --leading-heading: 1.05;
+  --control-min-height: 44px;
+  --button-height: 48px;
+  --nav-height: 56px;
+  --tabbar-height: 52px;
+  --shell-max: 1140px;
+  --gutter: var(--space-3);
+  --reading-max: 68ch;
+  --section-space: clamp(3.5rem, 6vw + 1.5rem, 7rem);
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-right: env(safe-area-inset-right, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-left: env(safe-area-inset-left, 0px)
+}
+
+@media (max-width:575.98px) {
+  :root {
+    --leading-display: 1;
+    --leading-title: 1.1;
+    --leading-heading: 1.15
+  }
+}
+
+@media (min-width:768px) {
+  :root {
+    --gutter: var(--space-4)
+  }
+}
+
+[data-bs-theme="dark"] {
+  color-scheme: dark;
+  --color-brand-strong: var(--cyan-300);
+  --color-brand-tint: var(--cyan-900);
+  --color-brand-tint-strong: var(--cyan-850);
+  --color-bg: var(--stone-950);
+  --color-surface: var(--stone-900);
+  --color-surface-2: var(--stone-850);
+  --color-heading: var(--stone-50);
+  --color-text-primary: var(--stone-200);
+  --color-text-secondary: var(--stone-350);
+  --color-text-muted: var(--stone-400);
+  --color-border: var(--stone-800);
+  --color-control-border: var(--stone-550);
+  --color-success-strong: var(--green-300);
+  --color-danger: var(--red-300);
+  --color-accent-warm: var(--clay-300);
+  --color-warm-surface: var(--clay-900);
+  --color-chrome-bg: rgb(38 34 30 / 0.94);
+  --color-chrome-line: rgb(255 255 255 / 0.14);
+  --color-ornament: rgb(116 210 250 / 0.1);
+  --ill-cuff: var(--stone-400);
+  --ill-cuff-trim: var(--stone-100);
+  --ill-bill-paper: #d0ebda;
+  --ill-gift-box: var(--cyan-500);
+  --ill-gift-lid-ribbon: var(--stone-50);
+  --ill-arch: var(--stone-700);
+  --ill-shadow: rgb(0 0 0 / 0.36);
+  --ill-card: var(--stone-850);
+  --ill-card-line: var(--stone-700);
+  --ill-row: var(--stone-900);
+  --ill-muted: var(--stone-600);
+  --ill-line: var(--stone-700);
+  --color-band: var(--stone-975);
+  --color-band-deep: var(--cyan-900);
+  --gradient-hero-surface: linear-gradient(170deg, var(--cyan-900) 0%, var(--stone-900) 72%);
+  --color-status-bar: var(--cyan-900);
+  --shadow-raised: 0 12px 32px -12px rgb(0 0 0 / 0.6);
+  --shadow-chrome: 0 0 0 1px var(--color-chrome-line), 0 2px 6px -2px rgb(0 0 0 / 0.4), var(--shadow-raised);
+  --shadow-card: 0 8px 24px -10px rgb(0 0 0 / 0.5);
+  --shadow-sheet: 0 -20px 44px -28px rgb(0 0 0 / 0.7);
+  --shadow-brand-glow: 0 2px 8px -1px rgb(0 0 0 / 0.45);
+  --shadow-brand-lift: 0 10px 24px -10px rgb(0 0 0 / 0.55)
+}

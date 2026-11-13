@@ -1,0 +1,632 @@
+/*
+ * Styles specific to pages/salvation.html. The path is one sheet
+ * (components/sheets.css) that slides over the hero; it ends on the decision
+ * band, and the footer sheet lands on that band.
+ */
+.salvation-hero {
+  padding-bottom: calc(var(--space-6) + var(--sheet-overlap))
+}
+
+.salvation-hero .hero__diamonds span:nth-child(1) {
+  width: clamp(8rem, 18vw, 16rem);
+  left: -3%;
+  top: 18%
+}
+
+.salvation-hero .hero__diamonds span:nth-child(2) {
+  width: clamp(4rem, 8vw, 7rem);
+  right: 8%;
+  top: 8%;
+  border-width: 1.5px
+}
+
+.salvation-hero .hero__diamonds span:nth-child(3) {
+  width: clamp(3rem, 5vw, 4.5rem);
+  right: 30%;
+  bottom: 14%;
+  border-width: 1px
+}
+
+.steps-section.sheet {
+  padding-bottom: 0
+}
+
+.steps-section .step--decision {
+  padding-bottom: calc(var(--space-6) + var(--sheet-overlap))
+}
+
+[data-display="standalone"] [data-sheets] main>.steps-section.sheet {
+  padding-bottom: 0
+}
+
+[data-display="standalone"] .steps-section .step--decision {
+  padding-bottom: var(--tabbar-reserve)
+}
+
+.salvation-hero__art {
+  display: block;
+  width: min(12rem, 58%);
+  margin: var(--space-3) auto var(--space-4)
+}
+
+.salvation-hero__art .ill__ground {
+  fill: var(--color-bg);
+  fill-opacity: .72
+}
+
+.salvation-hero__title {
+  max-width: 14ch
+}
+
+.salvation-hero__plan {
+  margin-bottom: var(--space-4);
+  color: var(--color-brand-strong);
+  font-family: var(--font-primary);
+  font-size: var(--text-heading-sm);
+  font-weight: 700;
+  line-height: var(--leading-heading)
+}
+
+.salvation-hero__text {
+  max-width: 52ch;
+  color: var(--color-text-secondary);
+  font-size: var(--text-lead)
+}
+
+.salvation-hero__question {
+  margin-bottom: var(--space-4);
+  color: var(--color-heading);
+  font-size: var(--text-lead);
+  font-weight: 600
+}
+
+.steps-path {
+  --node: 2.75rem;
+  position: relative;
+  margin-top: var(--space-5)
+}
+
+.steps-path::before,
+.steps-path__progress {
+  content: "";
+  position: absolute;
+  top: calc(var(--node) / 2);
+  bottom: 0;
+  z-index: 1;
+  left: calc(var(--node) / 2 - 1px);
+  width: 2px;
+  background: var(--color-border)
+}
+
+.steps-path__progress {
+  background: var(--color-brand);
+  opacity: 0;
+  transform-origin: 50% 0%
+}
+
+.steps {
+  display: grid;
+  gap: var(--space-6);
+  margin: 0;
+  padding: 0;
+  list-style: none
+}
+
+.step {
+  position: relative;
+  display: grid;
+  grid-template-columns: var(--node) minmax(0, 1fr);
+  column-gap: var(--space-3)
+}
+
+@media (min-width:768px) {
+  .step {
+    column-gap: var(--space-4)
+  }
+}
+
+.step__node {
+  z-index: 2;
+  grid-row: 1 / span 2
+}
+
+.step.is-reached .step__node,
+.step--decision .step__node {
+  --node-ink: var(--color-on-brand-ink);
+  --node-fill: var(--color-brand);
+  --node-line: var(--color-brand)
+}
+
+.step.is-reached .step__node::before {
+  transform: rotate(45deg) scale(1.12)
+}
+
+.step__art {
+  width: min(15rem, 100%);
+  margin: 0 0 var(--space-3)
+}
+
+.ill {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+  color: var(--color-heading);
+  fill: currentColor
+}
+
+.ill__ring {
+  fill: none;
+  stroke: var(--color-ornament);
+  stroke-width: 1.5;
+  transition: stroke var(--dur-slow) var(--ease-out)
+}
+
+.is-reached .ill__ring {
+  stroke: rgb(0 192 246 / .28)
+}
+
+.ill__ground {
+  fill: var(--color-surface);
+  transition: fill var(--dur-slow) var(--ease-out)
+}
+
+.is-reached .ill__ground {
+  fill: var(--color-brand-tint)
+}
+
+.ill__hand,
+[data-scene="pray"] .ill__object {
+  color: var(--ill-skin)
+}
+
+[data-scene="condition"] .ill__whole,
+[data-scene="condition"] .ill__object {
+  color: var(--ill-heart)
+}
+
+[data-scene="consequence"] .ill__object {
+  color: var(--ill-bill)
+}
+
+[data-scene="consequence"] .ill__object+.ill__object {
+  color: var(--ill-bill-light)
+}
+
+[data-scene="gift"] .ill__object,
+.salvation-hero__art .ill__object {
+  color: var(--ill-gift-box)
+}
+
+[data-scene="gift"] .ill__lid,
+.salvation-hero__art .ill__lid {
+  color: var(--ill-gift-lid)
+}
+
+.ill__object .ill__ribbon {
+  fill: var(--ill-gift-box-ribbon)
+}
+
+.ill__lid .ill__ribbon {
+  fill: var(--ill-gift-lid-ribbon)
+}
+
+.ill__ribbon-fold {
+  fill: var(--cyan-300)
+}
+
+.ill__shadow {
+  fill: var(--ill-shadow)
+}
+
+.ill__halo {
+  fill: var(--color-brand)
+}
+
+.ill__sheen {
+  fill: var(--white)
+}
+
+.ill__shade {
+  fill: rgb(13 11 8 / .17)
+}
+
+.ill__heart {
+  fill: var(--ill-heart)
+}
+
+.ill__heart-deep {
+  fill: var(--ill-heart-deep)
+}
+
+.ill__heart-shine {
+  fill: none;
+  stroke: var(--ill-heart-light);
+  stroke-linecap: round;
+  stroke-width: 4.5
+}
+
+.ill__heart-fissure {
+  fill: none;
+  stroke: var(--ill-heart-deep);
+  stroke-linejoin: round;
+  stroke-width: 2.5
+}
+
+.ill__bill-paper {
+  fill: var(--ill-bill-paper)
+}
+
+.ill__bill-frame {
+  fill: none;
+  stroke: var(--ill-bill);
+  stroke-width: 1.5
+}
+
+.ill__bill-band {
+  fill: var(--stone-100)
+}
+
+.ill__bill-band-edge {
+  stroke: var(--clay-400);
+  stroke-width: 1.5
+}
+
+.ill__cyan-deep {
+  fill: var(--cyan-700)
+}
+
+.ill__white-shine {
+  fill: none;
+  stroke: var(--white);
+  stroke-linecap: round;
+  stroke-width: 4.5
+}
+
+.ill__arch {
+  fill: var(--ill-arch)
+}
+
+.ill__keystone {
+  fill: var(--stone-400)
+}
+
+.ill__door-sky {
+  fill: url(#ill-door-sky)
+}
+
+.ill__sky-top {
+  stop-color: var(--cyan-100)
+}
+
+.ill__sky-bottom {
+  stop-color: var(--cyan-50)
+}
+
+[data-bs-theme="dark"] .ill__sky-top {
+  stop-color: var(--cyan-700)
+}
+
+[data-bs-theme="dark"] .ill__sky-bottom {
+  stop-color: var(--cyan-850)
+}
+
+.ill__beam-top,
+.ill__beam-bottom {
+  stop-color: var(--color-brand)
+}
+
+.ill__wood {
+  fill: var(--ill-wood)
+}
+
+.ill__wood-deep {
+  fill: var(--ill-wood-deep)
+}
+
+.ill__wood-seam {
+  stroke: var(--ill-wood-light);
+  stroke-width: 1.5
+}
+
+.ill__knob {
+  fill: var(--clay-300)
+}
+
+.ill__sill {
+  fill: var(--stone-500)
+}
+
+.ill__sill-top {
+  fill: var(--stone-200)
+}
+
+.ill__skin {
+  fill: var(--ill-skin)
+}
+
+.ill__skin-deep {
+  fill: var(--ill-skin-deep)
+}
+
+.ill__skin-light {
+  fill: var(--ill-skin-light)
+}
+
+.ill__skin-edge {
+  fill: none;
+  stroke: var(--ill-skin-light);
+  stroke-linecap: round;
+  stroke-width: 3
+}
+
+.ill__skin-crease {
+  fill: none;
+  stroke: var(--ill-skin-deep);
+  stroke-linecap: round
+}
+
+.ill__cuff-trim {
+  fill: var(--stone-100)
+}
+
+.ill__cuff-brand {
+  fill: var(--cyan-700)
+}
+
+[data-bs-theme="dark"] .ill__cuff-brand {
+  fill: var(--cyan-500)
+}
+
+.ill__cuff-dot {
+  fill: var(--cyan-100)
+}
+
+.ill__ray:not(.ill__spark) {
+  stroke: var(--color-brand);
+  stroke-linecap: round;
+  stroke-width: 4.5
+}
+
+.ill__spark {
+  fill: var(--color-brand);
+  stroke: none
+}
+
+[data-scene="accept"] {
+  --ill-cuff: var(--cyan-700)
+}
+
+[data-bs-theme="dark"] [data-scene="accept"] {
+  --ill-cuff: var(--cyan-500)
+}
+
+.ill__accent,
+[data-scene="accept"] .ill__object {
+  color: var(--color-brand)
+}
+
+[data-scene="door"] .ill__closed,
+[data-scene="door"] .ill__object {
+  color: var(--ill-wood)
+}
+
+.ill__light {
+  fill: url(#ill-door-beam)
+}
+
+.ill__whole,
+.ill__closed {
+  opacity: 0
+}
+
+.step__title {
+  margin-bottom: var(--space-2)
+}
+
+.step__label {
+  color: var(--color-brand-strong)
+}
+
+.step__text {
+  max-width: 52ch;
+  color: var(--color-text-secondary)
+}
+
+.step__verse {
+  max-width: 44ch;
+  margin: var(--space-4) 0 0;
+  padding: var(--space-3) var(--space-4)
+}
+
+.step__verse p {
+  font-size: var(--text-heading-sm);
+  line-height: 1.35
+}
+
+.step--decision {
+  overflow-x: visible;
+  overflow-y: clip;
+  padding-block: var(--space-6);
+  background-color: var(--color-band);
+  border-image: linear-gradient(90deg, var(--color-band) 0%, var(--color-band) 25%, var(--color-band-deep) 100%) fill 0 / 0 / 0 100vmax;
+  color: var(--color-on-band)
+}
+
+.step--decision .step__node::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: calc(50% - 3px);
+  width: 6px;
+  height: 200vh;
+  background: var(--color-band)
+}
+
+.step--decision .ill__ring {
+  stroke: var(--color-ornament-band)
+}
+
+.step--decision .ill__ground {
+  fill: var(--color-band-raised)
+}
+
+.decision__action {
+  position: relative;
+  z-index: 3;
+  width: calc(100% + var(--node) + var(--space-3));
+  max-width: none;
+  min-height: 3.5rem;
+  margin-top: var(--space-5);
+  margin-left: calc(-1 * (var(--node) + var(--space-3)));
+  padding-inline: 1rem;
+  font-size: var(--text-lead)
+}
+
+@media (min-width:576px) {
+  .decision__action {
+    width: auto;
+    margin-left: 0;
+    padding-inline: 2rem
+  }
+}
+
+.prayer-modal .modal-dialog {
+  align-items: flex-end;
+  min-height: calc(100% - var(--space-3));
+  margin: var(--space-3) 0 0
+}
+
+.prayer-modal .modal-content {
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  box-shadow: var(--shadow-raised)
+}
+
+@media (min-width:576px) {
+  .prayer-modal .modal-dialog {
+    align-items: center;
+    min-height: calc(100% - var(--bs-modal-margin) * 2);
+    margin: var(--bs-modal-margin) auto
+  }
+
+  .prayer-modal .modal-content {
+    border-radius: var(--radius-lg)
+  }
+}
+
+.prayer-modal__close {
+  position: absolute;
+  top: var(--space-3);
+  right: var(--space-3);
+  width: var(--control-min-height);
+  height: var(--control-min-height);
+  padding: 0
+}
+
+.prayer-modal__body {
+  padding: clamp(1.5rem, 3vw + 1rem, 2.5rem);
+  padding-bottom: calc(clamp(1.5rem, 3vw + 1rem, 2.5rem) + var(--safe-bottom))
+}
+
+.prayer-modal__stage {
+  display: grid;
+  gap: var(--space-3)
+}
+
+.prayer-modal .btn-row {
+  margin-top: var(--space-2)
+}
+
+.prayer-modal__title {
+  margin: 0;
+  padding-right: var(--space-5)
+}
+
+.prayer-modal__title:focus {
+  outline: none
+}
+
+.prayer-modal__prayer {
+  margin: 0;
+  padding: var(--space-4);
+  border-radius: var(--radius-md);
+  background: var(--gradient-hero-surface)
+}
+
+.prayer-modal__prayer p {
+  color: var(--color-heading);
+  font-size: var(--text-lead);
+  font-weight: 500;
+  line-height: 1.5
+}
+
+.prayer-modal__prayer p:last-child {
+  margin-bottom: 0
+}
+
+.field--check {
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: start;
+  column-gap: var(--space-3)
+}
+
+.field--check label {
+  cursor: pointer
+}
+
+.field__check {
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-top: .1rem;
+  cursor: pointer
+}
+
+.field__check:is([aria-invalid="true"], :user-invalid) {
+  outline: 2px solid var(--color-danger);
+  outline-offset: 1px
+}
+
+.field--check .field__error {
+  grid-column: 1 / -1
+}
+
+@media (min-width:1024px) {
+  .steps-path {
+    --node: 3.5rem
+  }
+
+  .step {
+    grid-template-columns: var(--node) minmax(0, 18rem) minmax(0, 1fr);
+    align-items: center;
+    column-gap: var(--space-5)
+  }
+
+  .step__node {
+    grid-row: 1;
+    align-self: start
+  }
+
+  .step__art {
+    margin: 0
+  }
+
+  .salvation-hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 24rem);
+    column-gap: var(--space-6);
+    align-items: center
+  }
+
+  .salvation-hero>:not(.salvation-hero__art, .hero__diamonds) {
+    grid-column: 1
+  }
+
+  .salvation-hero__art {
+    grid-column: 2;
+    grid-row: 1 / span 5;
+    width: 100%;
+    margin: 0
+  }
+}

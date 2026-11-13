@@ -1,0 +1,21 @@
+{
+  "id": "./",
+  "name": "Iglesia Bautista de Monterrey",
+  "short_name": "IBMty",
+  "description": "Eventos, mensajes, ministerios y misiones de la Iglesia Bautista de Monterrey.",
+  "lang": "es-MX",
+  "dir": "ltr",
+  "start_url": "./app/splash.html?source=pwa",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#1C1915",
+  "theme_color": "#1C1915",
+  "categories": ["lifestyle", "education"],
+  "icons": [
+    { "src": "assets/icons/app/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "assets/icons/app/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "assets/icons/app/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" },
+    { "src": "assets/icons/app/logo.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ]
+}

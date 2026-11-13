@@ -1,0 +1,302 @@
+/*
+ * Styles specific to app/settings.html. Ajustes uses the site's own pieces instead of a
+ * look of its own: the hero rising into a sheet, groups titled with the section diamond,
+ * elevated rounded cards (as the contact form and the map list), a tinted icon tile per row
+ * (as the Bible resources), hairlines between rows, a muted note under each group and a pill
+ * button for the action. The gear panel (components/settings-panel.css) shares the group look.
+ */
+.settings-hero .hero__diamonds span:nth-child(1) {
+  width: clamp(7rem, 15vw, 13rem);
+  right: 5%;
+  top: 20%
+}
+
+.settings-hero .hero__diamonds span:nth-child(2) {
+  width: clamp(3.5rem, 7vw, 6rem);
+  right: 27%;
+  bottom: 18%;
+  border-width: 1.5px
+}
+
+.settings-hero .hero__diamonds span:nth-child(3) {
+  width: clamp(3rem, 5vw, 4.5rem);
+  left: -2%;
+  top: 32%;
+  border-width: 1px
+}
+
+.settings-hero__art {
+  width: min(13rem, 60%)
+}
+
+.settings-ill__tile-light {
+  fill: var(--stone-50);
+  stroke: var(--color-brand);
+  stroke-width: 1.8
+}
+
+[data-bs-theme="dark"] .settings-ill__tile-light {
+  stroke: var(--stone-600);
+  stroke-width: 1.5
+}
+
+.settings-ill__tile-light-ink {
+  fill: var(--stone-800)
+}
+
+.settings-ill__tile-light-muted {
+  fill: var(--stone-350)
+}
+
+.settings-ill__tile-dark {
+  fill: var(--stone-900);
+  stroke: var(--stone-300);
+  stroke-width: 1.5
+}
+
+[data-bs-theme="dark"] .settings-ill__tile-dark {
+  stroke: var(--color-brand);
+  stroke-width: 1.8
+}
+
+.settings-ill__tile-dark-head {
+  fill: var(--cyan-900)
+}
+
+.settings-ill__tile-dark-ink {
+  fill: var(--stone-200)
+}
+
+.settings-ill__tile-dark-muted {
+  fill: var(--stone-550)
+}
+
+.settings-ill__active-dark {
+  opacity: 0
+}
+
+[data-bs-theme="dark"] .settings-ill__active-light {
+  opacity: 0
+}
+
+[data-bs-theme="dark"] .settings-ill__active-dark {
+  opacity: 1
+}
+
+.settings-ill__warm-tint {
+  fill: var(--color-warm-surface)
+}
+
+.settings-ill__knob-ring {
+  fill: var(--white);
+  stroke: var(--clay-400);
+  stroke-width: 2
+}
+
+.settings-ill__hub {
+  fill: var(--ill-card)
+}
+
+.settings-ill__hub-ring {
+  fill: none;
+  stroke: var(--clay-400);
+  stroke-width: 2.4
+}
+
+.settings {
+  --settings-canvas: var(--color-surface);
+  --settings-card: var(--color-bg);
+  padding-top: var(--space-4)
+}
+
+[data-bs-theme="dark"] .settings {
+  --settings-canvas: var(--color-bg);
+  --settings-card: var(--color-surface)
+}
+
+.settings.sheet {
+  background: var(--settings-canvas)
+}
+
+.settings-group {
+  max-width: 40rem;
+  padding-bottom: var(--space-4);
+  break-inside: avoid
+}
+
+.settings-group__title {
+  margin-top: 0;
+  font-size: var(--text-heading-sm)
+}
+
+.settings-group__card,
+.settings-list {
+  border-radius: var(--radius-lg);
+  background: var(--settings-card);
+  box-shadow: var(--shadow-card)
+}
+
+.settings-group__card {
+  padding: var(--space-4) var(--space-3)
+}
+
+.settings-group__card:has(>.settings-switch:only-child) {
+  padding-block: var(--space-2)
+}
+
+.settings-group__card .theme-option__preview {
+  background-clip: padding-box
+}
+
+.settings-group>.settings-panel__note,
+.settings-group__card .settings-panel__note {
+  color: var(--color-text-muted)
+}
+
+.settings-group>.settings-panel__note {
+  padding-inline: var(--space-2)
+}
+
+.settings-switch--first {
+  padding-top: 0
+}
+
+.settings-list {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  list-style: none
+}
+
+.settings-list>*+* {
+  border-top: 1px solid var(--color-border)
+}
+
+.settings-row,
+.settings-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  min-height: 3.5rem;
+  padding: var(--space-2) var(--space-3)
+}
+
+.settings-row dt {
+  color: var(--color-heading);
+  font-weight: 600
+}
+
+.settings-row dd {
+  margin: 0;
+  color: var(--color-text-secondary);
+  text-align: right
+}
+
+.settings-link {
+  justify-content: flex-start;
+  color: var(--color-heading);
+  font-weight: 600;
+  text-decoration: none;
+  transition: background-color var(--dur-fast) var(--ease-out)
+}
+
+.settings-link .settings-link__arrow {
+  margin-left: auto;
+  color: var(--color-text-muted);
+  font-size: var(--text-small)
+}
+
+.settings-link:hover {
+  background: var(--color-brand-tint)
+}
+
+.settings-link:active {
+  background: var(--color-brand-tint-strong)
+}
+
+.settings-link:focus-visible {
+  outline-offset: -3px
+}
+
+summary.settings-link::-webkit-details-marker {
+  display: none
+}
+
+summary .settings-link__arrow {
+  transition: transform var(--dur-fast) var(--ease-out)
+}
+
+[open]>summary .settings-link__arrow {
+  transform: rotate(90deg)
+}
+
+.settings-list details>:not(summary) {
+  margin: 0 var(--space-3) var(--space-3)
+}
+
+.settings-group>.btn-app {
+  margin-top: var(--space-3)
+}
+
+[data-check-update]:disabled .icon {
+  animation: settings-spin 1s linear infinite
+}
+
+@keyframes settings-spin {
+  to {
+    transform: rotate(360deg)
+  }
+}
+
+.settings-status:empty {
+  display: none
+}
+
+[data-display="standalone"] [aria-labelledby="page-help"] {
+  display: none
+}
+
+[data-display="standalone"] .settings-hero {
+  padding-top: calc(var(--safe-top) + var(--space-4));
+  padding-bottom: calc(var(--space-3) + var(--sheet-overlap))
+}
+
+[data-display="standalone"] .settings-hero__title {
+  margin-bottom: var(--space-2);
+  font-size: var(--text-title)
+}
+
+[data-display="standalone"] .settings-hero__art {
+  width: min(10.5rem, 50%);
+  margin-top: var(--space-2)
+}
+
+[data-display="standalone"] .settings-group:last-child {
+  padding-bottom: 0
+}
+
+@media (min-width:768px) {
+  [data-display="standalone"] .settings-hero__title {
+    margin-bottom: var(--space-3);
+    font-size: var(--text-display)
+  }
+}
+
+@media (min-width:1024px) {
+
+  .settings-hero__art,
+  [data-display="standalone"] .settings-hero__art {
+    width: 100%;
+    margin: 0
+  }
+
+  .settings>.container {
+    columns: 2;
+    column-gap: var(--space-5)
+  }
+
+  .settings-group {
+    max-width: none
+  }
+}

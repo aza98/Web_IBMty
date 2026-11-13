@@ -1,0 +1,34 @@
+.DS_Store
+._*
+Thumbs.db
+Desktop.ini
+*.log
+*.swp
+*.swo
+*~
+*.bak
+*.old
+*.orig
+.idea/
+.vscode/
+node_modules/
+.env
+.env.*
+
+# Package output (tools/package.sh, deploy workflow) and scratch space.
+/build/
+*.tar.gz
+tmp/
+temp/
+scratch/
+
+# State file written by FTP-Deploy-Action.
+.ftp-deploy-sync-state.json
+
+# Personal tool settings stay local; shared agent files (.agents/, .claude/skills,
+# .claude/agents, AGENTS.md, CLAUDE.md, GEMINI.md, skills-lock.json) are tracked.
+.claude/settings.local.json
+
+# Impeccable engine binary: the launcher downloads it again when missing.
+.claude/skills/impeccable/scripts/bin/
+.agents/skills/impeccable/scripts/bin/

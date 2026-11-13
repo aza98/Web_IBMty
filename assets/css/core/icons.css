@@ -1,0 +1,234 @@
+/*!
+ * Subset of Font Awesome Free 7.3.1 (https://fontawesome.com): only the icons this site uses.
+ * License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)
+ * Copyright 2026 Fonticons, Inc.
+ * New icon: copy its `.fa-name{--fa:"..."}` rule from vendor/fontawesome/7.3.1/css/.
+ * tools/verify.project.mjs fails when a page uses an icon missing here.
+ */
+.fa-brands,
+.fa-solid {
+    --_fa-family: var(--fa-family, var(--fa-style-family, "Font Awesome 7 Free"));
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    display: var(--fa-display, inline-block);
+    font-family: var(--_fa-family);
+    font-feature-settings: normal;
+    font-style: normal;
+    font-synthesis: none;
+    font-variant: normal;
+    font-weight: var(--fa-style, 900);
+    line-height: 1;
+    text-align: center;
+    text-rendering: auto;
+    width: var(--fa-width, 1.25em)
+}
+
+:is(.fa-solid, .fa-brands):before {
+    content: var(--fa)/""
+}
+
+@supports not (content:"" /"") {
+    :is(.fa-solid, .fa-brands):before {
+        content: var(--fa)
+    }
+}
+
+.fa-chart-simple {
+    --fa: "\e473"
+}
+
+.fa-heart {
+    --fa: "\f004"
+}
+
+.fa-check {
+    --fa: "\f00c"
+}
+
+.fa-xmark {
+    --fa: "\f00d"
+}
+
+.fa-gear {
+    --fa: "\f013"
+}
+
+.fa-house {
+    --fa: "\f015"
+}
+
+.fa-clock {
+    --fa: "\f017"
+}
+
+.fa-download {
+    --fa: "\f019"
+}
+
+.fa-arrows-rotate {
+    --fa: "\f021"
+}
+
+.fa-chevron-right {
+    --fa: "\f054"
+}
+
+.fa-circle-info {
+    --fa: "\f05a"
+}
+
+.fa-arrow-right {
+    --fa: "\f061"
+}
+
+.fa-arrow-down {
+    --fa: "\f063"
+}
+
+.fa-share {
+    --fa: "\f064"
+}
+
+.fa-eye {
+    --fa: "\f06e"
+}
+
+.fa-calendar-days {
+    --fa: "\f073"
+}
+
+.fa-comment {
+    --fa: "\f075"
+}
+
+.fa-arrow-up-right-from-square {
+    --fa: "\f08e"
+}
+
+.fa-phone {
+    --fa: "\f095"
+}
+
+.fa-copy {
+    --fa: "\f0c5"
+}
+
+.fa-envelope {
+    --fa: "\f0e0"
+}
+
+.fa-bell {
+    --fa: "\f0f3"
+}
+
+.fa-angles-down {
+    --fa: "\f103"
+}
+
+.fa-compass {
+    --fa: "\f14e"
+}
+
+.fa-paper-plane {
+    --fa: "\f1d8"
+}
+
+.fa-wifi {
+    --fa: "\f1eb"
+}
+
+.fa-location-dot {
+    --fa: "\f3c5"
+}
+
+.fa-mobile-screen {
+    --fa: "\f3cf"
+}
+
+.fa-shield-halved {
+    --fa: "\f3ed"
+}
+
+.fa-hand-holding-heart {
+    --fa: "\f4be"
+}
+
+.fa-book-open {
+    --fa: "\f518"
+}
+
+.fa-church {
+    --fa: "\f51d"
+}
+
+.fa-earth-americas {
+    --fa: "\f57d"
+}
+
+.fa-diamond-turn-right {
+    --fa: "\f5eb"
+}
+
+.fa-book-bible {
+    --fa: "\f647"
+}
+
+.fa-hands-praying {
+    --fa: "\f684"
+}
+
+:root {
+    --fa-family-classic: "Font Awesome 7 Free";
+    --fa-font-solid: normal 900 1em/1 var(--fa-family-classic);
+    --fa-style-family-classic: var(--fa-family-classic)
+}
+
+@font-face {
+    font-family: "Font Awesome 7 Free";
+    font-style: normal;
+    font-weight: 900;
+    font-display: block;
+    src: url(../../../vendor/fontawesome/7.3.1/webfonts/fa-solid-900.woff2)
+}
+
+.fa-solid {
+    --fa-style: 900
+}
+
+:root {
+    --fa-family-brands: "Font Awesome 7 Brands";
+    --fa-font-brands: normal 400 1em/1 var(--fa-family-brands)
+}
+
+@font-face {
+    font-family: "Font Awesome 7 Brands";
+    font-style: normal;
+    font-weight: 400;
+    font-display: block;
+    src: url(../../../vendor/fontawesome/7.3.1/webfonts/fa-brands-400.woff2)
+}
+
+.fa-brands {
+    --fa-family: var(--fa-family-brands);
+    --fa-style: 400
+}
+
+.fa-youtube {
+    --fa: "\f167"
+}
+
+.fa-facebook {
+    --fa: "\f09a"
+}
+
+.fa-instagram {
+    --fa: "\f16d"
+}
+
+.fa-tiktok {
+    --fa: "\e07b"
+}
+
+.fa-whatsapp {
+    --fa: "\f232"
+}

@@ -1,0 +1,205 @@
+{
+  "version": 1,
+  "note": "Written by the pairing install; computedHash = sha256 over sorted (path, sha256(file)) of the installed folder.",
+  "skills": {
+    "accessibility": {
+      "source": "addyosmani/web-quality-skills",
+      "sourceType": "github",
+      "ref": "afa8da942115f2961fdbfa80807ea0b232ff6c00",
+      "skillPath": "skills/accessibility/SKILL.md",
+      "computedHash": "267fb2a0707d6142f2871f22688203a42ba21291a2aa200fb740936e41362b5d"
+    },
+    "best-practices": {
+      "source": "addyosmani/web-quality-skills",
+      "sourceType": "github",
+      "ref": "afa8da942115f2961fdbfa80807ea0b232ff6c00",
+      "skillPath": "skills/best-practices/SKILL.md",
+      "computedHash": "9d1f10a08cd7a94176ce160ec860dbd3ecfadad75d46546001883f1f907c5c3e"
+    },
+    "core-web-vitals": {
+      "source": "addyosmani/web-quality-skills",
+      "sourceType": "github",
+      "ref": "afa8da942115f2961fdbfa80807ea0b232ff6c00",
+      "skillPath": "skills/core-web-vitals/SKILL.md",
+      "computedHash": "731aa78c0347e8b3e191b75962175bee058ce73817278e610ac0fe546e685914"
+    },
+    "gsap-core": {
+      "source": "greensock/gsap-skills",
+      "sourceType": "github",
+      "ref": "aed9cfd3277740755f6bfc1155c7aa645403b760",
+      "skillPath": "skills/gsap-core/SKILL.md",
+      "computedHash": "3887b47e050ab5afbe2a9a820f23d39fa02ab785e06a343be44c6f91d84d12b3"
+    },
+    "gsap-frameworks": {
+      "source": "greensock/gsap-skills",
+      "sourceType": "github",
+      "ref": "aed9cfd3277740755f6bfc1155c7aa645403b760",
+      "skillPath": "skills/gsap-frameworks/SKILL.md",
+      "computedHash": "842d9d3659ec3ddc8abbdc524708f8facf81f468ac25d0577f48c759c4fa31e6"
+    },
+    "gsap-performance": {
+      "source": "greensock/gsap-skills",
+      "sourceType": "github",
+      "ref": "aed9cfd3277740755f6bfc1155c7aa645403b760",
+      "skillPath": "skills/gsap-performance/SKILL.md",
+      "computedHash": "cb5408d6fba707aabcbfe3320317a14c1f8fca6070074e5261047930f50d441e"
+    },
+    "gsap-plugins": {
+      "source": "greensock/gsap-skills",
+      "sourceType": "github",
+      "ref": "aed9cfd3277740755f6bfc1155c7aa645403b760",
+      "skillPath": "skills/gsap-plugins/SKILL.md",
+      "computedHash": "5838b856c74c07fbc9fa99b6dfd1eee34ea554c3e530c30e0d58014b707d70a4"
+    },
+    "gsap-react": {
+      "source": "greensock/gsap-skills",
+      "sourceType": "github",
+      "ref": "aed9cfd3277740755f6bfc1155c7aa645403b760",
+      "skillPath": "skills/gsap-react/SKILL.md",
+      "computedHash": "88e2a5312b45e8cc7b3c496637ff5bc9af2ae9c925b555c8b235b34cbc989d74"
+    },
+    "gsap-scrolltrigger": {
+      "source": "greensock/gsap-skills",
+      "sourceType": "github",
+      "ref": "aed9cfd3277740755f6bfc1155c7aa645403b760",
+      "skillPath": "skills/gsap-scrolltrigger/SKILL.md",
+      "computedHash": "9351b6666a4749c0740406ea363aaccb99a087ff45cc5e8b99a0f367facf3ef4"
+    },
+    "gsap-timeline": {
+      "source": "greensock/gsap-skills",
+      "sourceType": "github",
+      "ref": "aed9cfd3277740755f6bfc1155c7aa645403b760",
+      "skillPath": "skills/gsap-timeline/SKILL.md",
+      "computedHash": "1a8b0f39cc4be3ed3d834b89672e4ae2f151b901dc3450bebf10bbc45379fe02"
+    },
+    "gsap-utils": {
+      "source": "greensock/gsap-skills",
+      "sourceType": "github",
+      "ref": "aed9cfd3277740755f6bfc1155c7aa645403b760",
+      "skillPath": "skills/gsap-utils/SKILL.md",
+      "computedHash": "1927bcc4ea95b38203404ad5ea1d060b15c4a886c65ae53e885ff1793aabe0ba"
+    },
+    "impeccable": {
+      "source": "pbakaus/impeccable",
+      "sourceType": "github",
+      "ref": "5af4319c4e7a7ee3e5e2b9fe899bcfb21c6190cb",
+      "skillPath": ".agents/skills/impeccable/SKILL.md",
+      "computedHash": "a4e1d0a8f805a2e5bb0bc83c32f2a2d2b22f3b90febad5a14510ba443a2f267d",
+      "claudeAdapter": {
+        "skillPath": ".claude/skills/impeccable/SKILL.md",
+        "computedHash": "fdf820fc86861a9b26c1a9471e9b777ee7b7e2daf9f5ecd205932ead34166a49"
+      }
+    },
+    "laws-of-ux-design": {
+      "source": "local authoring: laws-of-ux-design (English, 2026-10-23)",
+      "sourceType": "local",
+      "skillPath": ".agents/skills/laws-of-ux-design/SKILL.md",
+      "computedHash": "ef73f81c30ebe14d1c8151b9fa186b81db7c37cbb0373744fbdb2c561fa09e98"
+    },
+    "onesignal-iam-html-composer": {
+      "source": "OneSignal/onesignal-ai-skills",
+      "sourceType": "github",
+      "ref": "2de24743855043b2225b86ce8deda96ff16d2d61",
+      "skillPath": "skills/iam-html-composer/SKILL.md",
+      "computedHash": "36a8d31da758060c6b22732e42048ec0af19871acc88fba4cac4fea33ef4a870"
+    },
+    "onesignal-journeys": {
+      "source": "OneSignal/onesignal-ai-skills",
+      "sourceType": "github",
+      "ref": "2de24743855043b2225b86ce8deda96ff16d2d61",
+      "skillPath": "skills/journeys/SKILL.md",
+      "computedHash": "29eed32f43a939c4a9ddcf4d36cef19c8f9d87ea3383383ac7f71c9460de1eb9"
+    },
+    "onesignal-mobile-sdk-setup": {
+      "source": "OneSignal/onesignal-ai-skills",
+      "sourceType": "github",
+      "ref": "2de24743855043b2225b86ce8deda96ff16d2d61",
+      "skillPath": "skills/mobile-sdk-setup/SKILL.md",
+      "computedHash": "7780494500c99b722e51e8f00dfed69d1980fce91534f77c7159e921be1083a0"
+    },
+    "onesignal-segments": {
+      "source": "OneSignal/onesignal-ai-skills",
+      "sourceType": "github",
+      "ref": "2de24743855043b2225b86ce8deda96ff16d2d61",
+      "skillPath": "skills/segments/SKILL.md",
+      "computedHash": "f19e17ab6501fd683bea3554572bde2f531e43ef2814f262bb1618269ddd79f3"
+    },
+    "onesignal-skill-creator": {
+      "source": "OneSignal/onesignal-ai-skills",
+      "sourceType": "github",
+      "ref": "2de24743855043b2225b86ce8deda96ff16d2d61",
+      "skillPath": "skills/skill-creator/SKILL.md",
+      "computedHash": "8c5fa8dbe6ca7d1ff2c24ef8b61f053366ed10c40e04aea69fa283dbadc63a68"
+    },
+    "performance": {
+      "source": "addyosmani/web-quality-skills",
+      "sourceType": "github",
+      "ref": "afa8da942115f2961fdbfa80807ea0b232ff6c00",
+      "skillPath": "skills/performance/SKILL.md",
+      "computedHash": "b0c220185d88c61f7770eb127d8facf86c86d2dd1fd82b86e15a4965a0137265"
+    },
+    "ponytail": {
+      "source": "DietrichGebert/ponytail",
+      "sourceType": "github",
+      "ref": "96608e078b2d5ea607c5c3b8b5a54d1c1fba6846",
+      "skillPath": "skills/ponytail/SKILL.md",
+      "computedHash": "9badd22a32e19cb884e46dfa8d3aae82bb81dfa5484105b8b4f0262df823a509"
+    },
+    "ponytail-audit": {
+      "source": "DietrichGebert/ponytail",
+      "sourceType": "github",
+      "ref": "96608e078b2d5ea607c5c3b8b5a54d1c1fba6846",
+      "skillPath": "skills/ponytail-audit/SKILL.md",
+      "computedHash": "2b3223a02c386d1263e1b08343cb8eb3a53e444cdafb1d79e26c8ec2a8fcad28"
+    },
+    "ponytail-debt": {
+      "source": "DietrichGebert/ponytail",
+      "sourceType": "github",
+      "ref": "96608e078b2d5ea607c5c3b8b5a54d1c1fba6846",
+      "skillPath": "skills/ponytail-debt/SKILL.md",
+      "computedHash": "b5ec2762f6ba8c4af9ea7173aa6c9f91b88655a25e43f9de0264f6ce8722b25f"
+    },
+    "ponytail-gain": {
+      "source": "DietrichGebert/ponytail",
+      "sourceType": "github",
+      "ref": "96608e078b2d5ea607c5c3b8b5a54d1c1fba6846",
+      "skillPath": "skills/ponytail-gain/SKILL.md",
+      "computedHash": "231034a896d6762e4b5c8468287083422c56b499119976ec9f76821f7d083090"
+    },
+    "ponytail-help": {
+      "source": "DietrichGebert/ponytail",
+      "sourceType": "github",
+      "ref": "96608e078b2d5ea607c5c3b8b5a54d1c1fba6846",
+      "skillPath": "skills/ponytail-help/SKILL.md",
+      "computedHash": "86ab0ce0af70cbeeeef499d5c884873b393f87f86401dcc45553662ce2c1eff9"
+    },
+    "ponytail-review": {
+      "source": "DietrichGebert/ponytail",
+      "sourceType": "github",
+      "ref": "96608e078b2d5ea607c5c3b8b5a54d1c1fba6846",
+      "skillPath": "skills/ponytail-review/SKILL.md",
+      "computedHash": "33fe4ebe22a460924e5d4a261e223df22e409cc94ab76182bee9fb91a3ef022e"
+    },
+    "security-audit": {
+      "source": "cloudflare/security-audit-skill",
+      "sourceType": "github",
+      "ref": "c1c8a8c1471069fb0e188eeaff69b8e8db6564a8",
+      "skillPath": "skills/security-audit/SKILL.md",
+      "computedHash": "4e4bf6ac4c728d12f249299a9619d240ea9555d7f59aa64b1375436b90da697d"
+    },
+    "seo": {
+      "source": "addyosmani/web-quality-skills",
+      "sourceType": "github",
+      "ref": "afa8da942115f2961fdbfa80807ea0b232ff6c00",
+      "skillPath": "skills/seo/SKILL.md",
+      "computedHash": "57cd16566c2c706186b643644dec2884da89c42f296843364c65a40a4d566ae6"
+    },
+    "web-quality-audit": {
+      "source": "addyosmani/web-quality-skills",
+      "sourceType": "github",
+      "ref": "afa8da942115f2961fdbfa80807ea0b232ff6c00",
+      "skillPath": "skills/web-quality-audit/SKILL.md",
+      "computedHash": "1903cfb4dcba987d50dc7a51f6c19ec43830ff924c2c8f78979d8775fbe20f91"
+    }
+  }
+}

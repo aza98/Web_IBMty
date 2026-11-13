@@ -1,0 +1,131 @@
+/*
+ * app/splash.html: three diamond ripples burst from the centre, the logo lands with a
+ * small overshoot, then the name and a cyan rule rise in. The sequence ends by 0.9s,
+ * inside the 1s redirect (meta refresh and splash.js): it never delays the app, and the
+ * rule is an accent, not a progress meter.
+ *
+ * Follows the theme: light is the sky-over-ground hero surface, dark is the night band.
+ * The gradient lives on the canvas itself (background-attachment: fixed covers the full
+ * viewport, including iOS safe areas) and body takes the color it ends in as a fallback;
+ * the status bar takes the color it starts with.
+ */
+body[data-page="splash"] {
+  --splash-ground: var(--gradient-hero-surface);
+  --color-status-bar: var(--cyan-50);
+  background: var(--splash-ground) fixed var(--stone-100)
+}
+
+[data-bs-theme="dark"] body[data-page="splash"] {
+  --splash-ground: var(--gradient-band);
+  --color-status-bar: var(--color-band);
+  background: var(--splash-ground) fixed var(--color-band-deep)
+}
+
+.splash {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-content: center;
+  align-content: safe center;
+  justify-items: center;
+  gap: var(--space-4);
+  padding: calc(var(--safe-top) + var(--space-5)) calc(var(--safe-right) + var(--space-4)) calc(var(--safe-bottom) + var(--space-5)) calc(var(--safe-left) + var(--space-4));
+  overflow: hidden;
+  color: var(--color-text-primary);
+  text-align: center
+}
+
+.splash__mark {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 9rem;
+  height: 9rem
+}
+
+.splash__ring {
+  position: absolute;
+  inset: 22%;
+  border: 2px solid var(--color-brand);
+  border-radius: 14%;
+  opacity: 0;
+  transform: rotate(45deg) scale(.4);
+  animation: splash-ripple 0.9s var(--ease-out) forwards
+}
+
+.splash__ring:nth-child(1) {
+  animation-delay: 0.05s
+}
+
+.splash__ring:nth-child(2) {
+  animation-delay: 0.15s;
+  border-width: 1.5px
+}
+
+.splash__ring:nth-child(3) {
+  animation-delay: 0.25s;
+  border-width: 1px
+}
+
+.splash__logo {
+  position: relative;
+  width: 7rem;
+  height: 7rem;
+  filter: drop-shadow(0 10px 24px rgb(0 192 246 / .35));
+  animation: splash-logo 0.5s cubic-bezier(.34, 1.56, .64, 1) both
+}
+
+.splash__name {
+  max-width: 12ch;
+  margin: 0;
+  color: var(--color-heading);
+  animation: splash-rise 0.45s 0.25s var(--ease-out) both
+}
+
+.splash__bar {
+  width: 3rem;
+  height: 4px;
+  overflow: hidden;
+  border-radius: var(--radius-pill)
+}
+
+.splash__bar span {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: var(--color-brand);
+  animation: splash-draw 0.4s 0.45s var(--ease-out) both;
+  transform-origin: 50% 50%
+}
+
+@keyframes splash-ripple {
+  0% {
+    opacity: .9;
+    transform: rotate(45deg) scale(.4)
+  }
+
+  100% {
+    opacity: 0;
+    transform: rotate(45deg) scale(3.2)
+  }
+}
+
+@keyframes splash-logo {
+  from {
+    opacity: 0;
+    transform: scale(.3) rotate(-45deg)
+  }
+}
+
+@keyframes splash-rise {
+  from {
+    opacity: 0;
+    transform: translateY(.75rem)
+  }
+}
+
+@keyframes splash-draw {
+  from {
+    transform: scaleX(0)
+  }
+}

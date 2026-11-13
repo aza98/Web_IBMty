@@ -1,0 +1,90 @@
+/*
+ * Shared parts of the scene illustrations (page heroes, offline, consent and push prompts).
+ * Stroke widths stay in each SVG; parts unique to a scene live in its own stylesheet.
+ */
+.art__ring {
+  fill: none;
+  stroke: var(--color-ornament);
+  stroke-width: 1.5
+}
+
+.art__ground {
+  fill: var(--color-bg);
+  fill-opacity: .76
+}
+
+.art__shadow {
+  fill: var(--ill-shadow)
+}
+
+.art__card {
+  fill: var(--ill-card);
+  stroke: var(--ill-card-line);
+  stroke-width: 1.5
+}
+
+.art__row {
+  fill: var(--ill-row)
+}
+
+.art__tint {
+  fill: var(--color-brand-tint-strong)
+}
+
+.art__brand {
+  fill: var(--color-brand)
+}
+
+.art__brand-deep {
+  fill: var(--cyan-700)
+}
+
+.art__ink {
+  fill: var(--color-heading)
+}
+
+.art__ink-soft {
+  fill: var(--color-brand-strong)
+}
+
+.art__muted {
+  fill: var(--ill-muted)
+}
+
+.art__line {
+  fill: var(--ill-line)
+}
+
+.art__warm {
+  fill: var(--clay-400)
+}
+
+.art__white {
+  fill: var(--white)
+}
+
+.art__notif {
+  fill: var(--clay-400);
+  stroke: var(--ill-card)
+}
+
+.art__check {
+  fill: none;
+  stroke: var(--white);
+  stroke-linecap: round;
+  stroke-linejoin: round
+}
+
+.art__shine {
+  fill: none;
+  stroke: var(--cyan-100);
+  stroke-linecap: round
+}
+
+.art__arc {
+  fill: none;
+  stroke: var(--color-brand);
+  stroke-dasharray: 4 4;
+  stroke-linecap: round;
+  stroke-width: 2.2
+}

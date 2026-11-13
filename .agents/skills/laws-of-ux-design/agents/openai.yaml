@@ -1,0 +1,4 @@
+interface:
+  display_name: "Laws of UX — Design"
+  short_description: "Design and audit with all 30 Laws of UX principles"
+  default_prompt: "Use $laws-of-ux-design to improve this interface with relevant principles and explain how to verify the decisions."

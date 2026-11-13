@@ -1,0 +1,340 @@
+/* Floating notices (assets/js/components/notices.js): offline state and app updates. */
+.notices {
+  position: fixed;
+  inset: auto 0 0;
+  z-index: 1040;
+  display: grid;
+  justify-items: center;
+  gap: var(--space-2);
+  max-height: calc(100dvh - var(--tabbar-clearance) - var(--safe-top) - 1rem);
+  padding: 0 calc(var(--safe-right) + var(--gutter)) calc(var(--safe-bottom) + var(--space-3)) calc(var(--safe-left) + var(--gutter));
+  overflow-y: auto;
+  pointer-events: none
+}
+
+[data-display="standalone"] .notices {
+  bottom: var(--tabbar-clearance);
+  padding-bottom: 0
+}
+
+.notice {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2) var(--space-3);
+  width: min(100%, 32rem);
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-band-line);
+  background: var(--color-band);
+  box-shadow: var(--shadow-raised);
+  color: var(--color-on-band);
+  pointer-events: auto;
+  animation: notice-in var(--dur-slow) var(--ease-out)
+}
+
+.notice__text {
+  flex: 1 1 14rem;
+  margin: 0;
+  font-weight: 500
+}
+
+.notice__text a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: .2em
+}
+
+.notice__actions {
+  display: flex;
+  width: 100%;
+  gap: var(--space-2)
+}
+
+.notice__button {
+  flex: 1 1 0%;
+  min-height: var(--control-min-height);
+  padding: .5rem 1rem
+}
+
+@media (min-width:576px) {
+  .notice__actions {
+    width: auto
+  }
+
+  .notice__button {
+    flex: none
+  }
+}
+
+@keyframes notice-in {
+  from {
+    opacity: 0;
+    transform: translateY(.75rem)
+  }
+}
+
+.prompt-card {
+  position: fixed;
+  right: calc(var(--safe-right) + var(--gutter));
+  bottom: var(--fab-bottom);
+  left: calc(var(--safe-left) + var(--gutter));
+  z-index: 1032;
+  display: grid;
+  gap: var(--space-3);
+  max-height: calc(100dvh - var(--fab-bottom) - var(--safe-top) - 1rem);
+  padding: var(--space-3);
+  overflow-y: auto;
+  border-radius: var(--radius-lg);
+  background-color: var(--color-bg);
+  background-image: linear-gradient(165deg, var(--color-brand-tint) 0%, var(--color-bg) 48%);
+  box-shadow: var(--shadow-raised);
+  color: var(--color-text-primary);
+  animation: prompt-card-in var(--dur-slow) var(--ease-out)
+}
+
+[data-bs-theme="dark"] .prompt-card {
+  border: 1px solid var(--color-border);
+  background-color: var(--stone-850);
+  background-image: linear-gradient(165deg, var(--cyan-900) 0%, var(--stone-850) 52%)
+}
+
+.prompt-card[hidden] {
+  display: none
+}
+
+.prompt-card__close {
+  position: absolute;
+  top: var(--space-2);
+  right: var(--space-2);
+  color: var(--color-text-muted);
+  font-size: 1rem
+}
+
+.prompt-card__close:hover {
+  background: var(--color-surface-2)
+}
+
+.prompt-card__body {
+  display: grid;
+  grid-template-columns: 4.75rem minmax(0, 1fr);
+  gap: var(--space-3);
+  align-items: center
+}
+
+.prompt-card__art {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible
+}
+
+.prompt-card__title {
+  margin: 0 0 var(--space-1);
+  font-size: var(--text-heading-sm);
+  letter-spacing: -.02em
+}
+
+.prompt-card--dismissible .prompt-card__title {
+  padding-right: 2.25rem
+}
+
+.prompt-card__text {
+  margin: 0;
+  color: var(--color-text-secondary);
+  font-size: var(--text-compact);
+  line-height: 1.45
+}
+
+.prompt-card__text a {
+  color: var(--color-brand-strong);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: .2em
+}
+
+.prompt-card__note {
+  margin: 0;
+  color: var(--color-accent-warm);
+  font-size: var(--text-small);
+  font-weight: 600;
+  line-height: 1.35
+}
+
+.prompt-card__note:empty {
+  display: none
+}
+
+.prompt-card__actions {
+  display: flex;
+  gap: var(--space-2)
+}
+
+.prompt-card__actions .btn-app {
+  flex: 1 1 0%;
+  gap: .4rem;
+  min-height: var(--control-min-height);
+  padding: .5rem .75rem;
+  font-size: var(--text-compact)
+}
+
+.prompt-ill__ground {
+  fill: var(--color-bg);
+  fill-opacity: .82
+}
+
+[data-bs-theme="dark"] .prompt-ill__ground {
+  fill: var(--stone-900);
+  fill-opacity: .76
+}
+
+.prompt-ill__cookie {
+  fill: var(--clay-300);
+  stroke: var(--ill-wood);
+  stroke-width: 1.5
+}
+
+.prompt-ill__cookie-shade,
+.prompt-ill__cookie-crumb {
+  fill: var(--ill-wood-light)
+}
+
+.prompt-ill__chip {
+  fill: var(--ill-wood-deep)
+}
+
+.prompt-ill__wave {
+  fill: none;
+  stroke: var(--color-brand);
+  stroke-linecap: round;
+  stroke-width: 2
+}
+
+@media (max-width:359.98px) {
+  .prompt-card__body {
+    grid-template-columns: 4rem minmax(0, 1fr);
+    gap: var(--space-2)
+  }
+}
+
+@media (min-width:576px) {
+  .prompt-card {
+    right: auto;
+    width: min(25.5rem, calc(100vw - var(--gutter) * 2 - var(--safe-left) - var(--safe-right)));
+    padding: var(--space-4)
+  }
+}
+
+@keyframes prompt-card-in {
+  from {
+    opacity: 0;
+    transform: translateY(.85rem)
+  }
+}
+
+.float-btn {
+  position: fixed;
+  right: calc(var(--safe-right) + var(--gutter));
+  bottom: var(--fab-bottom);
+  z-index: 1020;
+  display: grid;
+  place-items: center;
+  width: var(--fab-size);
+  height: var(--fab-size);
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  box-shadow: var(--shadow-raised);
+  color: var(--color-on-brand-ink);
+  cursor: pointer;
+  transition: transform var(--dur-fast) var(--ease-out), background-color var(--dur-fast) var(--ease-out)
+}
+
+.float-btn[hidden] {
+  display: none
+}
+
+.float-btn:hover {
+  transform: scale(1.06)
+}
+
+.float-btn:active {
+  transform: scale(.96)
+}
+
+.whatsapp-fab {
+  background: var(--whatsapp);
+  color: var(--white);
+  font-size: 1.75rem;
+  text-decoration: none
+}
+
+.push-fab {
+  background: var(--color-chrome-bg);
+  box-shadow: var(--shadow-chrome);
+  color: var(--color-brand-strong);
+  animation: push-fab-in var(--dur-base) var(--ease-out)
+}
+
+body:has(.whatsapp-fab:not([hidden])) .push-fab {
+  bottom: calc(var(--fab-bottom) + var(--fab-size) + var(--space-2))
+}
+
+[data-display="standalone"]:has(.float-btn:not([hidden])) {
+  --tabbar-reserve: calc(var(--fab-bottom) + var(--fab-size) + var(--space-3))
+}
+
+[data-display="standalone"]:has(.whatsapp-fab:not([hidden])):has(.push-fab:not([hidden])) {
+  --tabbar-reserve: calc(var(--fab-bottom) + var(--fab-size) * 2 + var(--space-2) + var(--space-3))
+}
+
+.push-fab:hover {
+  background: var(--color-surface-2);
+  color: var(--color-heading)
+}
+
+.push-fab__svg {
+  width: 1.75rem;
+  height: 1.75rem;
+  overflow: visible
+}
+
+.push-fab__dot {
+  fill: var(--clay-400);
+  stroke: var(--white);
+  stroke-width: 1.75
+}
+
+@keyframes push-fab-in {
+  from {
+    opacity: 0;
+    transform: scale(.75)
+  }
+}
+
+body:is([data-page="settings"], [data-page="privacy"]) .float-btn,
+body:has(main :focus-visible, form :focus, .settings-panel:not([hidden])) .float-btn {
+  visibility: hidden;
+  pointer-events: none
+}
+
+@media (max-height:480px) {
+
+  .float-btn,
+  .prompt-card__art {
+    display: none
+  }
+
+  .prompt-card__body {
+    grid-template-columns: minmax(0, 1fr)
+  }
+}
+
+@media print {
+
+  .notices,
+  .prompt-card,
+  .float-btn {
+    display: none !important
+  }
+}

@@ -1,0 +1,437 @@
+/*
+ * Styles specific to pages/donate.html. After the hero, the transfer steps and
+ * the thanks band are sheets (components/sheets.css); the footer closes the stack.
+ */
+.donate-hero .hero__diamonds span:nth-child(1) {
+  width: clamp(8rem, 18vw, 16rem);
+  right: 4%;
+  top: 22%
+}
+
+.donate-hero .hero__diamonds span:nth-child(2) {
+  width: clamp(4rem, 8vw, 7rem);
+  right: 26%;
+  bottom: 18%;
+  border-width: 1.5px
+}
+
+.donate-hero .hero__diamonds span:nth-child(3) {
+  width: clamp(3rem, 5vw, 4.5rem);
+  left: -2%;
+  top: 30%;
+  border-width: 1px
+}
+
+.donate-hero__title {
+  max-width: 16ch
+}
+
+.donate-ill__phone {
+  fill: var(--stone-850);
+  stroke: var(--stone-700);
+  stroke-width: 1.5
+}
+
+[data-bs-theme="dark"] .donate-ill__phone {
+  fill: var(--stone-950);
+  stroke: var(--stone-600)
+}
+
+.donate-ill__screen {
+  fill: var(--color-bg)
+}
+
+[data-bs-theme="dark"] .donate-ill__screen {
+  fill: var(--stone-900)
+}
+
+.donate-ill__slot {
+  fill: var(--stone-400)
+}
+
+.donate-ill__arc-head {
+  fill: none;
+  stroke: var(--color-brand);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 2.2
+}
+
+.donate-ill__heart-deep {
+  fill: var(--clay-600)
+}
+
+.donate-ill__heart-shine {
+  fill: none;
+  stroke: var(--clay-50);
+  stroke-linecap: round;
+  stroke-width: 3
+}
+
+.donate-ill__cradle {
+  fill: none;
+  stroke: var(--color-brand);
+  stroke-linecap: round;
+  stroke-width: 3.5
+}
+
+.transfer {
+  padding-top: var(--space-6)
+}
+
+.transfer-steps {
+  --node: 2.75rem;
+  --gap: var(--space-5);
+  display: grid;
+  gap: var(--gap);
+  margin: 0;
+  padding: 0;
+  list-style: none
+}
+
+.transfer-step {
+  position: relative
+}
+
+.transfer-step:not(:last-child)::after {
+  content: none;
+  position: absolute;
+  top: var(--node);
+  bottom: calc(var(--gap) * -1);
+  left: calc(var(--node) / 2 - 1px);
+  z-index: -1;
+  width: 2px;
+  background: var(--color-border);
+  transition: background-color var(--dur-base) var(--ease-out)
+}
+
+.transfer-step__head {
+  display: grid;
+  grid-template-columns: var(--node) minmax(0, 1fr);
+  align-items: center;
+  gap: var(--space-2) var(--space-3);
+  margin-bottom: var(--space-4)
+}
+
+.transfer-step__head>.form-note {
+  grid-column: 1 / -1
+}
+
+.transfer-step__node {
+  z-index: 0
+}
+
+.transfer-step:first-child .transfer-step__node,
+.transfer-steps:has(.fund__input:checked) .transfer-step:nth-child(2) .transfer-step__node,
+.transfer-steps:has([data-copied]) .transfer-step:nth-child(3) .transfer-step__node {
+  --node-ink: var(--color-on-brand-ink);
+  --node-fill: var(--color-brand);
+  --node-line: var(--color-brand)
+}
+
+.transfer-steps:has(.fund__input:checked) .transfer-step:nth-child(1)::after,
+.transfer-steps:has([data-copied]) .transfer-step:nth-child(2)::after {
+  background: var(--color-brand)
+}
+
+.transfer-step__title {
+  margin: 0
+}
+
+.transfer-step__text {
+  max-width: 52ch;
+  margin: 0;
+  padding: var(--space-4);
+  border-radius: var(--radius-md);
+  background: var(--color-warm-surface);
+  color: var(--color-heading);
+  font-size: var(--text-lead)
+}
+
+.funds {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-2);
+  margin: 0;
+  padding: 0;
+  border: 0
+}
+
+.fund {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-2);
+  min-height: 4.5rem;
+  padding: var(--space-3);
+  border: 2px solid var(--color-control-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  cursor: pointer;
+  transition: border-color var(--dur-fast) var(--ease-out), background-color var(--dur-fast) var(--ease-out)
+}
+
+@media (min-width:576px) {
+  .funds {
+    gap: var(--space-3)
+  }
+
+  .fund {
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: var(--space-3);
+    padding: var(--space-3) var(--space-5) var(--space-3) var(--space-4)
+  }
+}
+
+.fund__input {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  cursor: pointer
+}
+
+.fund__name {
+  color: var(--color-heading);
+  font-family: var(--font-primary);
+  font-size: var(--text-heading-sm);
+  font-weight: 700;
+  line-height: var(--leading-heading)
+}
+
+.fund__icon {
+  font-size: 1.35rem;
+  color: var(--color-brand-strong);
+  transition: color var(--dur-fast) var(--ease-out)
+}
+
+.fund:hover {
+  border-color: var(--color-brand-strong);
+  background: var(--color-brand-tint)
+}
+
+.fund:has(:checked) {
+  --color-heading: var(--color-on-band);
+  --color-brand-strong: var(--color-brand);
+  border-color: var(--color-brand);
+  background: var(--gradient-band);
+  box-shadow: var(--shadow-raised)
+}
+
+.fund:has(:checked)::after {
+  content: "";
+  position: absolute;
+  top: var(--space-3);
+  right: var(--space-3);
+  width: .75rem;
+  height: .75rem;
+  border-radius: 2px;
+  background: var(--color-brand);
+  transform: rotate(45deg)
+}
+
+.fund:has(:focus-visible) {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 3px
+}
+
+.transfer-steps:has(#fund-missions:checked) [data-fund="local"],
+.transfer-steps:not(:has(#fund-missions:checked)) [data-fund="missions"] {
+  display: none
+}
+
+.bank {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-top: var(--space-4);
+  padding: var(--space-4);
+  border-radius: var(--radius-lg);
+  background: var(--color-brand-tint)
+}
+
+.bank__name {
+  margin: 0;
+  color: var(--color-heading);
+  font-family: var(--font-primary);
+  font-size: var(--text-heading-sm);
+  font-weight: 700
+}
+
+.bank__holder {
+  margin: 0;
+  color: var(--color-text-secondary)
+}
+
+.account {
+  container-type: inline-size;
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-card)
+}
+
+.account__row {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  padding-block: var(--space-3)
+}
+
+.account__row+.account__row {
+  border-top: 1px solid var(--color-border)
+}
+
+.account__label {
+  margin-bottom: var(--space-2);
+  color: var(--color-text-secondary);
+  font-size: var(--text-small);
+  font-weight: 600
+}
+
+.digits {
+  margin: 0;
+  font-size: min(5.1cqi, 1.75rem)
+}
+
+.digits__cells {
+  display: flex;
+  align-items: center;
+  -webkit-user-select: all;
+  user-select: all
+}
+
+.digits .visually-hidden {
+  -webkit-user-select: none;
+  user-select: none
+}
+
+.digit {
+  display: inline-grid;
+  place-items: center;
+  width: .86em;
+  height: 1.3em;
+  margin-right: .12em;
+  border-radius: .16em;
+  background: var(--color-brand-tint-strong);
+  color: var(--color-heading);
+  font-family: var(--font-primary);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  line-height: 1
+}
+
+.digits__gap {
+  width: .4em
+}
+
+.copy-btn {
+  flex: none
+}
+
+.copy-btn .icon+.icon,
+.copy-btn.is-copied .icon:first-child {
+  display: none
+}
+
+.copy-btn.is-copied .icon+.icon {
+  display: inline-block
+}
+
+.copy-btn.is-copied,
+.copy-btn.is-copied:hover {
+  border-color: var(--color-success-strong);
+  background: #fff0;
+  color: var(--color-success-strong)
+}
+
+.thanks__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start
+}
+
+.thanks__icon {
+  font-size: 3rem;
+  margin-bottom: var(--space-4);
+  color: var(--color-brand)
+}
+
+.thanks__title {
+  margin-bottom: var(--space-3)
+}
+
+.thanks__lead {
+  margin-bottom: var(--space-2);
+  font-size: var(--text-lead);
+  font-weight: 600
+}
+
+.thanks__text {
+  max-width: 48ch;
+  margin-bottom: var(--space-5);
+  color: var(--color-on-band-muted)
+}
+
+@media (min-width:768px) {
+  .transfer-steps {
+    --gap: var(--space-6)
+  }
+
+  .transfer-step>:not(.transfer-step__head),
+  .thanks__inner {
+    margin-left: calc(var(--node) + var(--space-3))
+  }
+
+  .transfer-step__head>.form-note {
+    grid-column: 2
+  }
+
+  .transfer-step:not(:last-child)::after {
+    content: ""
+  }
+
+  .funds {
+    max-width: 36rem
+  }
+}
+
+@media (min-width:1024px) {
+  .transfer-step,
+  .thanks__inner {
+    display: grid;
+    grid-template-columns: minmax(0, 20rem) minmax(0, 46rem);
+    column-gap: var(--space-6)
+  }
+
+  .transfer-step {
+    align-items: start
+  }
+
+  .transfer-step__head {
+    margin-bottom: 0
+  }
+
+  .transfer-step>:not(.transfer-step__head) {
+    grid-column: 2;
+    margin-left: 0
+  }
+
+  .account__row,
+  .bank {
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between
+  }
+
+  .thanks__inner {
+    margin-left: 0
+  }
+}

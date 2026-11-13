@@ -1,0 +1,205 @@
+/*
+ * Carousels built on Swiper (assets/js/components/carousel.js),
+ * the month line used as their pagination, and the slide card (events, ministries).
+ */
+.carousel-app {
+  overflow: visible
+}
+
+@media (min-width:1200px) {
+  .carousel-app {
+    overflow: hidden
+  }
+}
+
+.nowrap {
+  white-space: nowrap
+}
+
+.carousel-app:not(.swiper-initialized) .swiper-wrapper {
+  gap: var(--space-3);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding-bottom: var(--space-2)
+}
+
+.carousel-app:not(.swiper-initialized) .swiper-slide {
+  width: min(88%, 34rem);
+  scroll-snap-align: center
+}
+
+.month-line {
+  --marker-x: -2rem;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  margin-block: var(--space-4);
+  padding-top: 1.5rem
+}
+
+.month-line:empty {
+  display: none
+}
+
+.month-line::before {
+  content: "";
+  position: absolute;
+  inset-inline: 0;
+  top: .55rem;
+  height: 2px;
+  background: var(--color-border)
+}
+
+.month-line::after {
+  content: "";
+  position: absolute;
+  top: .15rem;
+  left: 0;
+  width: .9rem;
+  height: .9rem;
+  margin-left: -.45rem;
+  border-radius: 2px;
+  background: var(--color-brand);
+  box-shadow: var(--shadow-brand-glow);
+  transform: translateX(var(--marker-x)) rotate(45deg);
+  transition: transform var(--dur-slower) var(--ease-out)
+}
+
+.month-line__item {
+  position: relative;
+  min-width: var(--control-min-height);
+  min-height: var(--control-min-height);
+  padding: 0 var(--space-1);
+  border: 0;
+  border-radius: var(--radius-sm);
+  background: none;
+  color: var(--color-text-muted);
+  font-size: var(--text-compact);
+  font-weight: 500;
+  cursor: pointer
+}
+
+.month-line__item::before {
+  content: "";
+  position: absolute;
+  top: -1.2rem;
+  left: 50%;
+  width: .6rem;
+  height: .6rem;
+  margin-left: -.3rem;
+  border-radius: 1px;
+  background: var(--color-border);
+  transform: rotate(45deg)
+}
+
+.month-line__item[data-status="upcoming"]::before {
+  background: var(--color-bg);
+  box-shadow: inset 0 0 0 2px var(--color-brand)
+}
+
+.month-line__item:hover,
+.month-line__item.is-active {
+  color: var(--color-heading)
+}
+
+.month-line__item.is-active {
+  font-weight: 700
+}
+
+.slide-card {
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  padding: var(--space-3);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+  transition: background-color var(--dur-slow) var(--ease-out), box-shadow var(--dur-slow) var(--ease-out)
+}
+
+.swiper-slide-active.slide-card,
+.carousel-app:not(.swiper-initialized) .event-card[data-status="upcoming"] {
+  background: var(--color-brand-tint);
+  box-shadow: var(--shadow-raised)
+}
+
+.slide-card__media {
+  position: relative;
+  margin: 0
+}
+
+.slide-card__photo {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: var(--radius-md);
+  background: var(--color-surface-2);
+  transition: opacity var(--dur-slow) var(--ease-out)
+}
+
+.swiper-initialized .event-card:not(.swiper-slide-active) .slide-card__photo {
+  opacity: .78
+}
+
+.slide-card__body {
+  display: flex;
+  flex: 1;
+  flex-direction: column
+}
+
+.slide-card__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-top: auto;
+  padding-top: var(--space-3)
+}
+
+.event-status {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  width: fit-content;
+  margin-bottom: var(--space-2);
+  padding: .2rem .65rem;
+  border-radius: var(--radius-pill);
+  background: var(--color-surface-2);
+  color: var(--color-text-secondary);
+  font-size: var(--text-small);
+  font-weight: 600
+}
+
+.event-status--upcoming {
+  background: var(--color-band);
+  color: var(--color-on-band)
+}
+
+.event-status--upcoming::before {
+  content: "";
+  width: .5rem;
+  height: .5rem;
+  background: var(--color-brand);
+  transform: rotate(45deg)
+}
+
+.event-card__body {
+  padding: var(--space-4) var(--space-1) 0
+}
+
+.event-card__title {
+  margin-bottom: var(--space-1);
+  font-size: var(--text-heading-sm)
+}
+
+.event-card__meta {
+  margin-bottom: var(--space-3);
+  color: var(--color-brand-strong);
+  font-weight: 600
+}
+
+.event-card__text {
+  max-width: 60ch;
+  margin: 0 0 var(--space-3);
+  color: var(--color-text-secondary)
+}

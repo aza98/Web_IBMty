@@ -1,0 +1,173 @@
+/*
+ * Sheets: a page whose body carries [data-sheets] reads as one stack. Every
+ * section.sheet (and the footer) has rounded top corners and slides over the one
+ * before it. --sheet-overlap is how far it tucks under: the corner radius plus the lift
+ * of its entrance (animations.js starts a sheet --sheet-lift lower and raises it). The
+ * section above pads its bottom by --sheet-overlap so nothing hides under the overlap
+ * and, while a sheet rises, only that section's own ground shows through its corners and
+ * above it, never the page background. Outlined rotated squares (.sheet__diamonds and
+ * .hero__diamonds, the logo's shape, the system's only ornament) drift across
+ * the sheets. Motion: assets/js/components/animations.js.
+ */
+[data-sheets] {
+  --sheet-radius: clamp(1.75rem, 1rem + 3vw, 3rem);
+  --sheet-lift: 72px;
+  --sheet-overlap: calc(var(--sheet-radius) + var(--sheet-lift));
+  overflow-x: clip
+}
+
+.sheet,
+[data-sheets] .site-footer {
+  position: relative;
+  z-index: 1;
+  margin-top: calc(var(--sheet-overlap) * -1);
+  border-radius: var(--sheet-radius) var(--sheet-radius) 0 0;
+  box-shadow: var(--shadow-sheet)
+}
+
+.sheet {
+  padding-bottom: calc(var(--section-space) + var(--sheet-overlap));
+  overflow: clip
+}
+
+.sheet>.container {
+  position: relative;
+  z-index: 1
+}
+
+.sheet--paper {
+  background: var(--color-bg)
+}
+
+.sheet--surface {
+  background: var(--color-surface)
+}
+
+.sheet--tint {
+  background: var(--color-brand-tint)
+}
+
+.sheet--atmosphere {
+  background: var(--gradient-hero-surface)
+}
+
+.sheet--band {
+  background: var(--gradient-band);
+  color: var(--color-on-band)
+}
+
+.hero__diamonds,
+.sheet__diamonds {
+  position: absolute;
+  inset: 0;
+  overflow: clip;
+  color: var(--color-ornament);
+  pointer-events: none
+}
+
+.hero__diamonds span,
+.sheet__diamonds span {
+  position: absolute;
+  aspect-ratio: 1;
+  border: 2px solid currentColor;
+  border-radius: 14%;
+  rotate: 45deg
+}
+
+@media (prefers-reduced-motion:no-preference) {
+
+  .hero__diamonds span,
+  .sheet__diamonds span {
+    will-change: transform
+  }
+}
+
+.sheet__diamonds span:nth-child(1) {
+  width: clamp(10rem, 24vw, 22rem);
+  right: -6%;
+  top: 8%
+}
+
+.sheet__diamonds span:nth-child(2) {
+  width: clamp(4rem, 9vw, 8rem);
+  left: -1.5rem;
+  bottom: 12%;
+  border-width: 1.5px
+}
+
+@media print {
+
+  .sheet,
+  [data-sheets] .site-footer {
+    margin-top: 0;
+    padding-bottom: var(--section-space);
+    border-radius: 0;
+    box-shadow: none;
+    transform: none !important
+  }
+
+  .hero__diamonds,
+  .sheet__diamonds {
+    display: none
+  }
+
+  [data-reveal] {
+    visibility: visible !important;
+    opacity: 1 !important;
+    transform: none !important
+  }
+}
+
+.page-hero {
+  position: relative;
+  padding-top: calc(var(--safe-top) + var(--nav-height) + var(--space-6));
+  padding-bottom: calc(var(--space-5) + var(--sheet-overlap));
+  background-color: var(--color-brand-tint);
+  border-image: var(--gradient-hero-surface) fill 0 / 0 / 0 100vmax
+}
+
+.page-hero>:not(.hero__diamonds) {
+  position: relative
+}
+
+.page-hero .hero__diamonds {
+  left: 50%;
+  width: 100vw;
+  translate: -50% 0
+}
+
+.page-hero__art {
+  display: block;
+  width: min(13.5rem, 62%);
+  height: auto;
+  margin: var(--space-3) auto 0;
+  overflow: visible
+}
+
+@media (min-width:1024px) {
+  .page-hero--art {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 22rem);
+    column-gap: var(--space-6);
+    align-items: center
+  }
+
+  .page-hero--art>:not(.page-hero__art, .hero__diamonds) {
+    grid-column: 1
+  }
+
+  .page-hero--art .title-display {
+    align-self: end
+  }
+
+  .page-hero--art .section-lead {
+    align-self: start
+  }
+
+  .page-hero__art {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    width: 100%;
+    margin: 0
+  }
+}

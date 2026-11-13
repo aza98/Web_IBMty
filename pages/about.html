@@ -1,0 +1,390 @@
+<!doctype html>
+<html lang=es-MX data-bs-theme=light>
+
+<head>
+    <meta charset=utf-8>
+    <meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover">
+    <meta name=robots content="noindex, nofollow">
+    <title>Nosotros · Iglesia Bautista de Monterrey</title>
+    <meta name=description content="Nuestro propósito, historia, misioneros, líderes y ministerios de la Iglesia Bautista de Monterrey, y cómo visitarnos.">
+    <meta name=theme-color content=#FCFAF7>
+    <meta name=apple-mobile-web-app-title content=IBMty>
+    <meta name=apple-mobile-web-app-status-bar-style content=black-translucent>
+    <meta name=mobile-web-app-capable content=yes>
+    <link rel=manifest href=../manifest.webmanifest>
+    <link rel=icon href=../assets/icons/app/logo.svg type=image/svg+xml>
+    <link rel=apple-touch-icon href=../assets/icons/app/apple-touch-icon.png>
+    <script src=../assets/js/boot/theme.js></script>
+    <script src=../assets/js/boot/pwa-launch.js></script>
+    <link rel=stylesheet href=../assets/css/core/bootstrap-subset.css>
+    <link rel=stylesheet href=../vendor/swiper/14.3.0/swiper-bundle.min.css>
+    <link rel=stylesheet href=../vendor/leaflet/1.9.4/leaflet.css>
+    <link rel=stylesheet href=../vendor/leaflet-markercluster/1.5.3/MarkerCluster.css>
+    <link rel=stylesheet href=../assets/css/core/icons.css>
+    <link rel=stylesheet href=../assets/css/core/tokens.css>
+    <link rel=stylesheet href=../assets/css/core/fonts.css>
+    <link rel=stylesheet href=../assets/css/core/base.css>
+    <link rel=stylesheet href=../assets/css/core/layout.css>
+    <link rel=stylesheet href=../assets/css/components/navigation.css>
+    <link rel=stylesheet href=../assets/css/components/settings-panel.css>
+    <link rel=stylesheet href=../assets/css/components/footer.css>
+    <link rel=stylesheet href=../assets/css/components/sheets.css>
+    <link rel=stylesheet href=../assets/css/components/illustrations.css>
+    <link rel=stylesheet href=../assets/css/components/buttons.css>
+    <link rel=stylesheet href=../assets/css/components/carousel.css>
+    <link rel=stylesheet href=../assets/css/components/tabs.css>
+    <link rel=stylesheet href=../assets/css/components/forms.css>
+    <link rel=stylesheet href=../assets/css/components/floating.css>
+    <link rel=stylesheet href=../assets/css/pages/about.css>
+    <script defer src=../vendor/bootstrap/5.3.8/js/bootstrap.bundle.min.js></script>
+    <script defer src=../vendor/swiper/14.3.0/swiper-bundle.min.js></script>
+    <script defer src=../vendor/leaflet/1.9.4/leaflet.js></script>
+    <script defer src=../vendor/leaflet-markercluster/1.5.3/leaflet.markercluster.js></script>
+    <script defer src=../vendor/gsap/3.15.0/gsap.min.js></script>
+    <script defer src=../vendor/gsap/3.15.0/ScrollTrigger.min.js></script>
+    <script defer src=../assets/js/core/version.js></script>
+    <script defer src=../assets/js/core/config.js></script>
+    <script defer src=../assets/js/core/app.js></script>
+    <script defer src=../assets/js/core/storage.js></script>
+    <script defer src=../assets/js/core/i18n.js></script>
+    <script defer src=../assets/js/i18n/en/common.js></script>
+    <script defer src=../assets/js/i18n/en/about.js></script>
+    <script defer src=../assets/js/pwa/register.js></script>
+    <script defer src=../assets/js/pwa/updates.js></script>
+    <script defer src=../assets/js/pwa/connectivity.js></script>
+    <script defer src=../assets/js/pwa/install.js></script>
+    <script defer src=../assets/js/components/navigation.js></script>
+    <script defer src=../assets/js/components/share.js></script>
+    <script defer src=../assets/js/services/push.js></script>
+    <script defer src=../assets/js/components/whatsapp.js></script>
+    <script defer src=../assets/js/components/settings-panel.js></script>
+    <script defer src=../assets/js/components/notices.js></script>
+    <script defer src=../assets/js/services/analytics.js></script>
+    <script defer src=../assets/js/components/consent.js></script>
+    <script defer src=../assets/js/components/push-offer.js></script>
+    <script defer src=../assets/js/components/config-bindings.js></script>
+    <script defer src=../assets/js/components/tabs.js></script>
+    <script defer src=../assets/js/components/carousel.js></script>
+    <script defer src=../assets/js/components/map.js></script>
+    <script defer src=../assets/js/components/animations.js></script>
+    <script defer src=../assets/js/services/forms.js></script>
+    <script defer src=../assets/js/services/content.js></script>
+    <script defer src=../assets/js/pages/about.js></script>
+</head>
+
+<body data-page=about data-sheets>
+    <a class="skip-link visually-hidden-focusable" href=#main>Saltar al contenido</a>
+    <header class=site-header>
+        <nav class="navbar navbar-expand-md" aria-label=Principal>
+            <div class=container-fluid>
+                <a class=navbar-brand href=../index.html>
+                    <img src=../assets/icons/app/logo.svg alt="" width=28 height=28> IBMty
+                </a>
+                <button class="navbar-settings icon-btn" type=button aria-label=Ajustes aria-haspopup=dialog aria-expanded=false aria-controls=settings-panel data-settings-toggle>
+                    <i class="fa-solid fa-gear icon" aria-hidden="true"></i>
+                </button>
+                <button class=navbar-toggler type=button data-bs-toggle=collapse data-bs-target=#main-nav aria-controls=main-nav aria-expanded=false aria-label="Abrir menú">
+                    <span class=navbar-toggler-icon></span>
+                </button>
+                <div class="collapse navbar-collapse" id=main-nav>
+                    <ul class="navbar-nav ms-auto">
+                        <li>
+                            <a class=nav-link href=../index.html data-page-link=home>
+                                <i class="fa-solid fa-house icon" aria-hidden="true"></i>Inicio</a>
+                        </li>
+                        <li>
+                            <a class=nav-link href=about.html data-page-link=about aria-current=page>
+                                <i class="fa-solid fa-church icon" aria-hidden="true"></i>Nosotros</a>
+                        </li>
+                        <li>
+                            <a class=nav-link href=salvation.html data-page-link=salvation>
+                                <i class="fa-solid fa-hands-praying icon" aria-hidden="true"></i>Salvación</a>
+                        </li>
+                        <li>
+                            <a class=nav-link href=donate.html data-page-link=donate>
+                                <i class="fa-solid fa-hand-holding-heart icon" aria-hidden="true"></i>Donativos</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main id=main>
+        <section class="page-hero about-hero container" aria-labelledby=about-title>
+            <div class=hero__diamonds aria-hidden=true data-diamonds-lean><span></span><span></span><span></span></div>
+            <h1 class=title-display id=about-title data-reveal>Nuestro Propósito</h1>
+            <p class=section-lead data-reveal>Descubre la esencia que nos impulsa y nos define como iglesia</p>
+            <nav class=page-index aria-label="En esta página" data-reveal>
+                <ul class=page-index__list>
+                    <li><a class=page-index__link href=#historia>Historia</a></li>
+                    <li><a class=page-index__link href=#misiones>Misiones</a></li>
+                    <li><a class=page-index__link href=#ministerios>Ministerios</a></li>
+                    <li><a class=page-index__link href=#ubicacion>Ubicación</a></li>
+                    <li><a class=page-index__link href=#contacto>Contacto</a></li>
+                </ul>
+            </nav>
+            <div class=philosophy data-tabs data-reveal>
+                <h2 class="section-title philosophy__title">Nuestra filosofía</h2>
+                <div class=diamond-tabs__list role=tablist aria-label="Nuestra filosofía">
+                    <button class=diamond-tab type=button role=tab id=tab-mission aria-controls=facet-mission aria-selected=true><span class=diamond-tab__gem aria-hidden=true><i class="fa-solid fa-compass icon" aria-hidden="true"></i></span>Misión</button>
+                    <button class=diamond-tab type=button role=tab id=tab-vision aria-controls=facet-vision aria-selected=false><span class=diamond-tab__gem aria-hidden=true><i class="fa-solid fa-eye icon" aria-hidden="true"></i></span>Visión</button>
+                    <button class=diamond-tab type=button role=tab id=tab-values aria-controls=facet-values aria-selected=false><span class=diamond-tab__gem aria-hidden=true><i class="fa-solid fa-heart icon" aria-hidden="true"></i></span>Valores</button>
+                </div>
+                <div class=diamond-tabs__panel role=tabpanel id=facet-mission aria-labelledby=tab-mission tabindex=0>
+                    <h3 class=facet__name>Misión</h3>
+                    <p class=facet__statement>Multiplicar ministros por todo Monterrey, México y el mundo.</p>
+                    <ul class=facet__pills>
+                        <li>Hacer Discípulos</li>
+                        <li>Multiplicar Ministros</li>
+                        <li>Alcanzar el mundo</li>
+                    </ul>
+                </div>
+                <div class=diamond-tabs__panel role=tabpanel id=facet-vision aria-labelledby=tab-vision tabindex=0>
+                    <h3 class=facet__name>Visión</h3>
+                    <p class=facet__statement>Plan de crecimiento</p>
+                    <ol class=plan>
+                        <li class=plan__step><span class=plan__years>3<small>años</small></span>
+                            <p class=plan__text>Alcanzar el área metropolitana de Monterrey</p>
+                        </li>
+                        <li class=plan__step><span class=plan__years>5<small>años</small></span>
+                            <p class=plan__text>Extender el impacto a todo México</p>
+                        </li>
+                        <li class=plan__step><span class=plan__years>7<small>años</small></span>
+                            <p class=plan__text>Llegar a países de habla hispana</p>
+                        </li>
+                        <li class=plan__step><span class=plan__years>10<small>años</small></span>
+                            <p class=plan__text>Llevar el evangelio al mundo entero</p>
+                        </li>
+                    </ol>
+                    <p class=plan__world>Visión Mundial <strong>3 · 5 · 7 · 10</strong></p>
+                </div>
+                <div class=diamond-tabs__panel role=tabpanel id=facet-values aria-labelledby=tab-values tabindex=0>
+                    <h3 class=facet__name>Valores</h3>
+                    <p class=facet__statement>Servimos y amamos con el mismo amor que Jesús nos ha mostrado.</p>
+                    <ul class=facet__pills>
+                        <li>Ve con Fe</li>
+                        <li>Sirve con humildad</li>
+                        <li>Ama como Cristo</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <section class="section journey sheet sheet--tint" id=historia aria-labelledby=journey-title>
+            <div class=sheet__diamonds aria-hidden=true><span></span><span></span></div>
+            <div class=container>
+                <div class=origin data-reveal>
+                    <div class=origin__head>
+                        <h2 class=section-title id=journey-title>De Monterrey al mundo</h2>
+                        <p class=section-lead>Un camino de fe, servicio y relación que sigue creciendo día a día</p>
+                    </div>
+                    <p class=origin__year>1988<span class=origin__since><span data-years-since=1988>38</span> años sirviendo a Monterrey</span>
+                    </p>
+                    <p class=origin__text>La Iglesia Bautista de Monterrey ha proclamado el evangelio y formado seguidores de Jesús. Formamos parte de RIBBI (Red de Iglesias Bíblicas Bautistas Interdependientes), una red comprometida con la sana doctrina y la cooperación mutua.</p>
+                    <img class=origin__photo src=../assets/images/shared/history.webp alt="Dos miembros de la iglesia compartiendo la Biblia al aire libre" width=1920 height=1080 loading=lazy decoding=async>
+                </div>
+                <div class=sendings id=misiones data-reveal>
+                    <h3 class=sendings__title>Máxima meta: nuestros misioneros</h3>
+                    <div class=stage data-stage>
+                        <div class=stage__map data-map data-map-list=missionaries data-root=../ role=region aria-label="Mapa de nuestros misioneros" hidden></div>
+                        <div class=stage__card data-map-cover>
+                            <ol class=sendings__list id=missionaries data-content=missionaries aria-label="Nuestros misioneros">
+                            </ol>
+                            <div class=stage__nav data-stage-nav hidden>
+                                <p class=stage__count data-stage-count aria-live=polite>1 de 9</p>
+                                <span class=stage__line data-stage-line aria-hidden=true></span>
+                                <button class="carousel-nav__button carousel-nav__button--prev" type=button data-stage-prev aria-label="Misionero anterior">
+                                    <i class="fa-solid fa-arrow-right icon" aria-hidden="true"></i>
+                                </button>
+                                <button class=carousel-nav__button type=button data-stage-next aria-label="Misionero siguiente">
+                                    <i class="fa-solid fa-arrow-right icon" aria-hidden="true"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class=journey__close data-reveal>
+                    <blockquote class="verse journey__verse">
+                        <p>«Id por todo el mundo y predicad el evangelio a toda criatura.»</p>
+                        <cite>Marcos 16:15</cite>
+                    </blockquote>
+                    <a class="btn-app btn-app--primary btn-app--block" href=donate.html#fund-missions>Ofrendar para misiones</a>
+                </div>
+            </div>
+        </section>
+        <section class="section leaders sheet sheet--paper" id=ministerios aria-labelledby=leaders-title>
+            <div class=sheet__diamonds aria-hidden=true><span></span><span></span></div>
+            <div class=container>
+                <div class=leaders__head data-reveal>
+                    <h2 class=section-title id=leaders-title>Líderes y Ministerios</h2>
+                    <p class=section-lead>Personas con corazón dispuesto a servir, guiando a cada generación a conocer y seguir a Cristo</p>
+                </div>
+                <div class="carousel-app swiper" data-reveal data-carousel data-carousel-align=start aria-label="Líderes y ministerios">
+                    <div class=swiper-wrapper data-content=ministries>
+                    </div>
+                </div>
+                <div class=carousel-nav data-carousel-nav data-reveal>
+                    <span class=carousel-nav__count data-carousel-count aria-hidden=true>Desliza</span>
+                    <button class="carousel-nav__button carousel-nav__button--prev" type=button data-carousel-prev aria-label="Ministerio anterior">
+                        <i class="fa-solid fa-arrow-right icon" aria-hidden="true"></i>
+                    </button>
+                    <button class=carousel-nav__button type=button data-carousel-next aria-label="Ministerio siguiente">
+                        <i class="fa-solid fa-arrow-right icon" aria-hidden="true"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+        <section class="section visit sheet sheet--surface" id=ubicacion aria-labelledby=visit-title>
+            <div class=sheet__diamonds aria-hidden=true><span></span><span></span></div>
+            <div class=container>
+                <h2 class=section-title id=visit-title data-reveal>Ubicación</h2>
+                <p class=section-lead data-reveal>Encuéntranos y ven a visitarnos</p>
+                <div class=visit__grid data-reveal>
+                    <iframe class=visit__map data-config=church.mapEmbedUrl data-config-as=src title="Mapa de Google con la ubicación de la iglesia" loading=lazy referrerpolicy=no-referrer-when-downgrade hidden></iframe>
+                    <div class=visit__card>
+                        <div>
+                            <h3 class=title-lg>Te esperamos</h3>
+                            <p class=services-label>Servicios · Domingos</p>
+                            <ul class=services-times>
+                                <li>9:00 AM</li>
+                                <li>11:00 AM</li>
+                                <li>6:00 PM</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <p class=visit__where>
+                                <i class="fa-solid fa-location-dot icon" aria-hidden="true"></i><span><strong>Dónde estamos</strong><span data-config=church.address>Monterrey, Nuevo León</span></span>
+                            </p>
+                            <div class=btn-row>
+                                <a class="btn-app btn-app--primary" data-config=church.directionsUrl data-config-as=href target=_blank rel=noopener aria-disabled=true>
+                                    <i class="fa-solid fa-diamond-turn-right icon" aria-hidden="true"></i>Cómo llegar</a>
+                                <button class="btn-app btn-app--outline btn-app--icon" type=button title=Compartir data-share data-share-status=share-status hidden>
+                                    <i class="fa-solid fa-share icon" aria-hidden="true"></i><span class=visually-hidden>Compartir</span></button>
+                            </div>
+                            <p class=share-status id=share-status role=status></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="section contact sheet sheet--atmosphere" id=contacto aria-labelledby=contact-title>
+            <div class=sheet__diamonds aria-hidden=true><span></span><span></span></div>
+            <div class=container>
+                <h2 class=section-title id=contact-title data-reveal>Contacto</h2>
+                <p class=section-lead data-reveal>Estamos aquí para escucharte</p>
+                <div class=contact__grid data-reveal>
+                    <div class=contact__intro>
+                        <h3 class=title-lg>Hablemos</h3>
+                        <p>¿Tienes una pregunta o quieres que oremos por ti? Escríbenos por el medio que prefieras o usa el formulario.</p>
+                        <p class=config-pending data-config-pending=church.whatsapp>WhatsApp aún no está disponible. Mientras tanto, llámanos o escríbenos con los datos al pie de esta página.</p>
+                        <ul class=contact-links>
+                            <li>
+                                <a class="btn-app btn-app--primary contact-link" data-config=church.whatsapp data-config-as=whatsapp target=_blank rel=noopener aria-disabled=true>
+                                    <i class="fa-brands fa-whatsapp icon" aria-hidden="true"></i>WhatsApp <small>Respuesta rápida</small></a>
+                            </li>
+                            <li>
+                                <a class="btn-app btn-app--outline contact-link" data-config=church.phone data-config-as=tel aria-disabled=true>
+                                    <i class="fa-solid fa-phone icon" aria-hidden="true"></i>Llámanos</a>
+                            </li>
+                            <li>
+                                <a class="btn-app btn-app--outline contact-link" data-config=church.email data-config-as=mailto aria-disabled=true>
+                                    <i class="fa-solid fa-envelope icon" aria-hidden="true"></i>Correo</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <form class="form-app contact__form" data-form=contact method=post aria-labelledby=contact-form-title>
+                        <h3 class=visually-hidden id=contact-form-title>Formulario de contacto</h3>
+                        <div class=field>
+                            <label class=field__label for=contact-name>Nombre completo</label>
+                            <input class=field__input id=contact-name name=nombre autocomplete=name required aria-describedby=contact-name-error>
+                            <p class=field__error id=contact-name-error></p>
+                        </div>
+                        <div class=field>
+                            <label class=field__label for=contact-email>Correo electrónico</label>
+                            <input class=field__input id=contact-email name=email type=email autocomplete=email required aria-describedby=contact-email-error>
+                            <p class=field__error id=contact-email-error></p>
+                        </div>
+                        <div class=field>
+                            <label class=field__label for=contact-phone>Teléfono <span class=field__hint>(opcional)</span></label>
+                            <input class=field__input id=contact-phone name=telefono type=tel autocomplete=tel aria-describedby=contact-phone-error>
+                            <p class=field__error id=contact-phone-error></p>
+                        </div>
+                        <div class=field>
+                            <label class=field__label for=contact-message>¿En qué podemos ayudarte?</label>
+                            <textarea class=field__input id=contact-message name=mensaje rows=5 required aria-describedby=contact-message-error></textarea>
+                            <p class=field__error id=contact-message-error></p>
+                        </div>
+                        <input class=form-trap name=_gotcha tabindex=-1 autocomplete=off aria-hidden=true>
+                        <p class=form-note>Responsable: Iglesia Bautista de Monterrey, Asociación Religiosa. Usaremos tus datos solo para responderte. Puedes limitar su uso o ejercer tus derechos ARCO cuando quieras; consulta nuestro <a href=privacy.html>aviso de privacidad</a>.</p>
+                        <button class="btn-app--block btn-app btn-app--primary" type=submit>
+                            <i class="fa-solid fa-paper-plane icon" aria-hidden="true"></i>Enviar mensaje</button>
+                        <p class=form-status data-form-status role=status></p>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class=site-footer>
+        <div class="container site-footer__grid">
+            <div class=footer-brand>
+                <a class=footer-brand__name href=../index.html><img src=../assets/icons/app/logo.svg alt="" width=36 height=36>Iglesia Bautista de Monterrey</a>
+                <p class=footer-brand__tagline>Una iglesia que piensa en ti</p>
+            </div>
+            <nav class=footer-col aria-labelledby=footer-pages>
+                <h2 class=footer-col__title id=footer-pages>Página</h2>
+                <ul class=footer-list>
+                    <li><a class=footer-link href=../index.html data-page-link=home><i class="fa-solid fa-house icon" aria-hidden="true"></i>Inicio</a></li>
+                    <li><a class=footer-link href=../pages/about.html data-page-link=about aria-current=page><i class="fa-solid fa-church icon" aria-hidden="true"></i>Nosotros</a></li>
+                    <li><a class=footer-link href=../pages/salvation.html data-page-link=salvation><i class="fa-solid fa-hands-praying icon" aria-hidden="true"></i>Salvación</a></li>
+                    <li><a class=footer-link href=../pages/donate.html data-page-link=donate><i class="fa-solid fa-hand-holding-heart icon" aria-hidden="true"></i>Donativos</a></li>
+                </ul>
+            </nav>
+            <div class=footer-col>
+                <h2 class=footer-col__title id=footer-contact>Contacto</h2>
+                <ul class=footer-list aria-labelledby=footer-contact>
+                    <li><a class=footer-link href=https://maps.app.goo.gl/uekoBnmFoU2Vxx7K7 target=_blank rel=noopener><i class="fa-solid fa-location-dot icon" aria-hidden="true"></i>Cómo llegar</a></li>
+                    <li><a class=footer-link href=tel:+528183496161><i class="fa-solid fa-phone icon" aria-hidden="true"></i>81 8349 6161</a></li>
+                    <li><a class=footer-link href=tel:+528183496263><i class="fa-solid fa-phone icon" aria-hidden="true"></i>81 8349 6263</a></li>
+                    <li><a class=footer-link href=mailto:oficina@ibmty.com><i class="fa-solid fa-envelope icon" aria-hidden="true"></i>oficina@ibmty.com</a></li>
+                </ul>
+            </div>
+            <nav class=footer-col aria-labelledby=footer-links>
+                <h2 class=footer-col__title id=footer-links>Enlaces</h2>
+                <ul class=footer-list>
+                    <li><a class=footer-link href=https://www.ribbi.org/ target=_blank rel=noopener><i class="fa-solid fa-earth-americas icon" aria-hidden="true"></i>RIBBI</a></li>
+                    <li><a class=footer-link href=https://www.saucillo.org.mx/ target=_blank rel=noopener><i class="fa-solid fa-earth-americas icon" aria-hidden="true"></i>El Saucillo</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="container site-footer__bottom">
+            <p class=footer-copy>Iglesia Bautista de Monterrey © <span data-current-year>2026</span></p>
+            <a class=footer-link href=../pages/privacy.html data-page-link=privacy><i class="fa-solid fa-shield-halved icon" aria-hidden="true"></i>Aviso de privacidad</a>
+            <p class=footer-made>Hecho con <i class="fa-solid fa-heart icon footer-made__heart" aria-hidden="true"></i><span class=visually-hidden>amor</span> para Dios</p>
+        </div>
+    </footer>
+    <nav class=tabbar aria-label=Aplicación>
+        <ul class=tabbar__list>
+            <li class=tabbar__item>
+                <a class=tabbar__link href=../index.html data-page-link=home>
+                    <i class="fa-solid fa-house icon" aria-hidden="true"></i>Inicio</a>
+            </li>
+            <li class=tabbar__item>
+                <a class=tabbar__link href=about.html data-page-link=about aria-current=page>
+                    <i class="fa-solid fa-church icon" aria-hidden="true"></i>Nosotros</a>
+            </li>
+            <li class=tabbar__item>
+                <a class=tabbar__link href=salvation.html data-page-link=salvation>
+                    <i class="fa-solid fa-hands-praying icon" aria-hidden="true"></i>Salvación</a>
+            </li>
+            <li class=tabbar__item>
+                <a class=tabbar__link href=donate.html data-page-link=donate>
+                    <i class="fa-solid fa-hand-holding-heart icon" aria-hidden="true"></i>Donativos</a>
+            </li>
+            <li class=tabbar__item>
+                <a class=tabbar__link href=../app/settings.html data-page-link=settings>
+                    <i class="fa-solid fa-gear icon" aria-hidden="true"></i>Ajustes</a>
+            </li>
+        </ul>
+    </nav>
+</body>
+
+</html>

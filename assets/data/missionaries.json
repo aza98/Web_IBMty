@@ -1,0 +1,110 @@
+[
+  {
+    "title": "Familia Gómez",
+    "names": "Pablo, Karina, Joey, Tony y Kenny",
+    "place": "TX, Estados Unidos",
+    "since": "Febrero 2025",
+    "region": "América",
+    "location": {
+      "lat": 30.2672,
+      "lng": -97.7431
+    },
+    "image": "assets/images/missionaries/eu.webp"
+  },
+  {
+    "title": "Familia Arreola Valente",
+    "names": "Eugenio, Socorro, Jeremy y Steven",
+    "place": "Panamá",
+    "since": "Agosto 2014",
+    "region": "América",
+    "location": {
+      "lat": 8.9824,
+      "lng": -79.5199
+    },
+    "image": "assets/images/missionaries/panama.webp"
+  },
+  {
+    "title": "Familia Barbosa Ramírez",
+    "names": "Daniel, Marlen, Christopher, Christian y Darlene",
+    "place": "República Dominicana",
+    "since": "Julio 2005",
+    "region": "América",
+    "location": {
+      "lat": 18.4861,
+      "lng": -69.9312
+    },
+    "image": "assets/images/missionaries/repdom.webp"
+  },
+  {
+    "title": "Familia Zamarrón Carmona",
+    "names": "Joel, Sandra, Joelito y Sofía",
+    "place": "Sevilla, España",
+    "since": "Noviembre 2023",
+    "region": "Europa",
+    "location": {
+      "lat": 37.3826,
+      "lng": -5.9963
+    },
+    "image": "assets/images/missionaries/espana-1.webp"
+  },
+  {
+    "title": "Familia Zamarrón López",
+    "names": "Josué, Yessenia y Carolina",
+    "place": "Sevilla, España",
+    "since": "Noviembre 2023",
+    "region": "Europa",
+    "location": {
+      "lat": 37.3946,
+      "lng": -5.9683
+    },
+    "image": "assets/images/missionaries/espana-2.webp"
+  },
+  {
+    "title": "Familia Belenguer Puente",
+    "names": "Andrés, Jocely, Carlos y Andrea",
+    "place": "Sevilla, España",
+    "since": "Diciembre 2025",
+    "region": "Europa",
+    "location": {
+      "lat": 37.4046,
+      "lng": -6.0083
+    },
+    "image": "assets/images/missionaries/espana-3.webp"
+  },
+  {
+    "title": "Yeni Chaires Rodríguez",
+    "names": null,
+    "place": "Sevilla, España",
+    "since": "2026",
+    "region": "Europa",
+    "location": {
+      "lat": 37.3726,
+      "lng": -5.9603
+    },
+    "image": "assets/images/missionaries/espana-4.webp"
+  },
+  {
+    "title": "Loredana Rodríguez Sarmiento",
+    "names": null,
+    "place": "Eslovaquia",
+    "since": "Enero 2017",
+    "region": "Europa",
+    "location": {
+      "lat": 48.1486,
+      "lng": 17.1077
+    },
+    "image": "assets/images/missionaries/eslovakia.webp"
+  },
+  {
+    "title": "Familia Brown Karam",
+    "names": "Kyle, Salma y Alexander",
+    "place": "Sydney, Australia",
+    "since": "Noviembre 2024",
+    "region": "Oceanía",
+    "location": {
+      "lat": -33.8688,
+      "lng": 151.2093
+    },
+    "image": "assets/images/missionaries/australia.webp"
+  }
+]

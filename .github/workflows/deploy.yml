@@ -1,0 +1,71 @@
+# Verify, package and upload the site to the shared hosting on every push to main.
+# Needs repository secrets FTP_SERVER, FTP_USERNAME, FTP_PASSWORD (SFTP account) and the
+# repository variable FTP_SERVER_DIR (remote folder, ending in "/").
+name: Deploy
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ftp-deploy
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - name: Check out
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Verify project
+        run: node tools/verify.mjs
+
+      # The archive is written outside the checkout: the verifier scans the project tree.
+      - name: Package site
+        run: |
+          sh tools/package.sh "$RUNNER_TEMP/ibmty.tar.gz"
+          mkdir -p build/site
+          tar -xzf "$RUNNER_TEMP/ibmty.tar.gz" -C build/site
+
+      # Only the public site may reach the server. Markdown ships only as license notices.
+      - name: Check package contents
+        working-directory: build/site
+        run: |
+          bad=$(find . ! -type d \
+            | grep -E '^\./(docs|tools|\.claude|\.agents|\.impeccable|\.github)(/|$)|/\.DS_Store$|\.md$' \
+            | grep -v -x -E '\./THIRD_PARTY_NOTICES\.md|\./vendor/[^/]+/[^/]+/LICENSE\.md' \
+            || true)
+          if [ -n "$bad" ]; then
+            printf '%s\n' "$bad" | sed 's/^/::error::Not allowed in the package: /'
+            exit 1
+          fi
+          if [ ! -f .htaccess ]; then
+            echo '::error::.htaccess is missing from the package'
+            exit 1
+          fi
+          echo "Package OK: $(find . ! -type d | wc -l) files"
+
+      # SFTP (SSH, port 22): credentials and files travel encrypted. lftp comes from the
+      # Ubuntu repositories, so no third-party action receives the secrets. Files are
+      # added or updated; nothing is deleted on the server.
+      - name: Deploy over SFTP
+        env:
+          FTP_SERVER: ${{ secrets.FTP_SERVER }}
+          FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
+          FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
+          FTP_SERVER_DIR: ${{ vars.FTP_SERVER_DIR }}
+        run: |
+          sudo apt-get update && sudo apt-get install -y --no-install-recommends lftp
+          lftp -u "$FTP_USERNAME","$FTP_PASSWORD" "sftp://$FTP_SERVER" <<EOF
+          set sftp:auto-confirm yes
+          set net:max-retries 2
+          mirror --reverse --verbose --parallel=2 build/site/ "$FTP_SERVER_DIR"
+          bye
+          EOF

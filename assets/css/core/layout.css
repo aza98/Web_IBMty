@@ -1,0 +1,114 @@
+/*
+ * Page shell, mobile first. Design tiers: base, 768px, 1024px, 1200px.
+ * [data-display="standalone"] is set by boot/pwa-launch.js for installed mode.
+ */
+body {
+  padding-inline: var(--safe-left) var(--safe-right)
+}
+
+.container {
+  --bs-gutter-x: 0;
+  max-width: calc(var(--shell-max) + var(--gutter) * 2);
+  padding-inline: var(--gutter)
+}
+
+html {
+  scroll-padding-top: calc(var(--nav-height) + var(--space-5))
+}
+
+.icon {
+  display: inline-block;
+  flex: none;
+  width: 1em;
+  height: 1em;
+  pointer-events: none
+}
+
+.section {
+  padding-block: var(--section-space)
+}
+
+.section-title {
+  display: flex;
+  align-items: center;
+  gap: .6em;
+  margin-bottom: var(--space-2);
+  font-size: var(--text-title);
+  line-height: var(--leading-title);
+  letter-spacing: -.02em
+}
+
+.section-title::before {
+  content: "";
+  flex: none;
+  width: .38em;
+  height: .38em;
+  border-radius: .06em;
+  background: var(--color-brand);
+  box-shadow: var(--shadow-brand-glow);
+  transform: rotate(45deg)
+}
+
+.section-lead {
+  max-width: var(--reading-max);
+  margin-bottom: 0;
+  color: var(--color-text-secondary);
+  font-size: var(--text-lead)
+}
+
+.title-display {
+  margin-bottom: var(--space-3);
+  font-size: var(--text-display);
+  line-height: var(--leading-display);
+  letter-spacing: -.03em
+}
+
+.title-lg {
+  font-size: var(--text-title);
+  line-height: var(--leading-title);
+  letter-spacing: -.02em
+}
+
+.verse {
+  border-radius: var(--radius-md);
+  background: var(--color-warm-surface)
+}
+
+.verse p {
+  margin-bottom: var(--space-2);
+  color: var(--color-heading);
+  font-family: var(--font-primary);
+  font-weight: 600
+}
+
+.verse cite {
+  color: var(--color-accent-warm);
+  font-style: normal;
+  font-weight: 600
+}
+
+.step-node {
+  position: relative;
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: var(--node);
+  height: var(--node);
+  color: var(--node-ink, var(--color-heading));
+  font-family: var(--font-primary);
+  font-size: var(--text-heading-sm);
+  font-weight: 700;
+  transition: color var(--dur-slow) var(--ease-out)
+}
+
+.step-node::before {
+  content: "";
+  position: absolute;
+  inset: .35rem;
+  z-index: -1;
+  border: 2px solid var(--node-line, var(--color-border));
+  border-radius: var(--radius-sm);
+  background: var(--node-fill, var(--color-bg));
+  transform: rotate(45deg);
+  transition: background-color var(--dur-slow) var(--ease-out), border-color var(--dur-slow) var(--ease-out), transform var(--dur-slow) var(--ease-out)
+}

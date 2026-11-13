@@ -1,0 +1,103 @@
+/* Form fields, validation and status (assets/js/services/forms.js). */
+.form-app {
+  display: grid;
+  gap: var(--space-4)
+}
+
+.field {
+  display: grid;
+  gap: var(--space-2)
+}
+
+.field__label {
+  color: var(--color-heading);
+  font-weight: 600
+}
+
+.field__hint {
+  color: var(--color-text-muted);
+  font-weight: 400
+}
+
+.field__input {
+  width: 100%;
+  min-height: var(--button-height);
+  padding: .75rem 1rem;
+  border: 1.5px solid var(--color-control-border);
+  border-radius: var(--radius-sm);
+  background: var(--color-bg);
+  color: var(--color-text-primary);
+  font: inherit;
+  transition: border-color var(--dur-fast) var(--ease-out)
+}
+
+.field__input::placeholder {
+  color: var(--color-text-muted)
+}
+
+.field__input:hover {
+  border-color: var(--color-text-secondary)
+}
+
+.field__input:focus-visible {
+  border-color: var(--color-brand-strong);
+  outline-offset: 2px
+}
+
+.field__input:disabled {
+  border-color: var(--color-border);
+  background: var(--color-surface-2);
+  color: var(--color-text-muted);
+  cursor: not-allowed
+}
+
+textarea.field__input {
+  min-height: 8rem;
+  resize: vertical
+}
+
+.field__input:is([aria-invalid="true"], :user-invalid) {
+  border-color: var(--color-danger)
+}
+
+.field__error {
+  margin: 0;
+  color: var(--color-danger);
+  font-size: 1rem
+}
+
+.field__error:empty {
+  display: none
+}
+
+.form-status {
+  margin: 0;
+  font-weight: 600
+}
+
+.form-status:empty {
+  display: none
+}
+
+.form-status[data-state="success"] {
+  color: var(--color-success-strong)
+}
+
+.form-status[data-state="error"] {
+  color: var(--color-danger)
+}
+
+.form-status[data-state="pending"] {
+  color: var(--color-text-secondary)
+}
+
+.form-note {
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: var(--text-small)
+}
+
+.form-trap {
+  position: absolute;
+  left: -100vw
+}

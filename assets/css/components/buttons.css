@@ -1,0 +1,193 @@
+/*
+ * Application buttons. Usage: <a class="btn-app btn-app--primary">.
+ * Variants: primary (brand), outline (on page grounds; light outline on bands), light (on photos and bands).
+ * Brand cyan uses ink labels so primary actions remain legible in both themes.
+ */
+.btn-app {
+  max-width: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .45rem;
+  min-height: var(--button-height);
+  padding: .75rem 1rem;
+  border: 2px solid #fff0;
+  border-radius: var(--radius-pill);
+  background: #fff0;
+  font-family: var(--font-secondary);
+  font-size: var(--text-compact);
+  font-weight: 600;
+  line-height: 1.2;
+  text-align: center;
+  overflow-wrap: break-word;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color var(--dur-fast) var(--ease-out), border-color var(--dur-fast) var(--ease-out), color var(--dur-fast) var(--ease-out), transform var(--dur-fast) var(--ease-out)
+}
+
+.btn-app .icon {
+  font-size: 1.1em
+}
+
+@media (min-width:360px) {
+  .btn-app {
+    gap: .55rem;
+    padding-inline: 1.25rem;
+    font-size: 1rem
+  }
+}
+
+@media (min-width:576px) {
+  .btn-app {
+    padding-inline: 1.5rem
+  }
+}
+
+@media (pointer:coarse) {
+  .btn-app {
+    min-height: 3.125rem
+  }
+}
+
+.btn-app--icon {
+  --icon-size: var(--control-min-height);
+  flex: none;
+  width: var(--icon-size);
+  min-height: var(--icon-size);
+  padding: 0;
+  font-size: 1.125rem
+}
+
+.btn-row .btn-app.btn-app--icon {
+  --icon-size: var(--button-height);
+  flex: none;
+  padding: 0;
+  font-size: 1.125rem
+}
+
+@media (pointer:coarse) {
+  .btn-row .btn-app.btn-app--icon {
+    --icon-size: 3.125rem
+  }
+}
+
+.btn-app:active {
+  transform: translateY(1px)
+}
+
+.btn-app:disabled,
+.btn-app[aria-disabled="true"] {
+  border-color: var(--color-border);
+  background: var(--color-surface-2);
+  color: var(--color-text-muted);
+  pointer-events: none
+}
+
+.btn-app--block {
+  width: 100%
+}
+
+@media (min-width:576px) {
+  .btn-app--block {
+    width: auto
+  }
+}
+
+.btn-app--primary {
+  background: var(--color-brand);
+  color: var(--color-on-brand-ink)
+}
+
+.btn-app--primary:hover {
+  color: var(--color-on-brand);
+  background: var(--color-brand-hover)
+}
+
+.btn-app--outline {
+  border-color: var(--outline-line, var(--color-heading));
+  color: var(--color-heading)
+}
+
+.btn-app--outline:hover {
+  border-color: var(--color-heading);
+  background: var(--color-heading);
+  color: var(--outline-hover-ink, var(--color-bg))
+}
+
+.btn-app--light {
+  border-color: var(--white);
+  background: var(--color-scrim);
+  color: var(--white)
+}
+
+.btn-app--light:hover {
+  background: var(--white);
+  color: var(--stone-900)
+}
+
+.btn-app--light:focus-visible {
+  outline-color: var(--white)
+}
+
+/* Round icon-only button without a fill: navbar gear, panel and prompt close. */
+.icon-btn {
+  display: grid;
+  place-items: center;
+  width: var(--control-min-height);
+  height: var(--control-min-height);
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: #fff0;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  transition: background-color var(--dur-fast) var(--ease-out), color var(--dur-fast) var(--ease-out)
+}
+
+.icon-btn:hover,
+.icon-btn[aria-expanded="true"] {
+  background: var(--color-surface);
+  color: var(--color-heading)
+}
+
+.btn-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2)
+}
+
+.btn-row .btn-app {
+  flex: 1 1 max-content;
+  min-width: 0;
+  gap: .35rem;
+  padding-inline: .75rem;
+  font-size: var(--text-compact);
+  white-space: normal
+}
+
+@media (min-width:576px) {
+  .btn-row {
+    gap: var(--space-3)
+  }
+
+  .btn-row .btn-app {
+    flex: 0 0 auto;
+    gap: .55rem;
+    padding-inline: 1.5rem;
+    font-size: 1rem
+  }
+}
+
+.config-pending {
+  max-width: 44ch;
+  margin: 0 0 var(--space-3);
+  color: var(--color-text-secondary);
+  font-size: var(--text-small);
+  font-weight: 600
+}
+
+.btn-app--compact {
+  min-height: var(--control-min-height);
+  padding: .5rem 1rem;
+  font-size: var(--text-compact)
+}

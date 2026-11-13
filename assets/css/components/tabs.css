@@ -1,0 +1,100 @@
+/*
+ * Diamond tabs (assets/js/components/tabs.js): each tab is the logo's rotated
+ * square; the selected one fills cyan. Without JavaScript the tab list hides
+ * and every panel reads in sequence.
+ */
+.diamond-tabs__list {
+  display: flex;
+  justify-content: space-around;
+  max-width: 34rem;
+  margin: var(--space-5) auto var(--space-4)
+}
+
+[data-tabs]:not([data-tabs-ready]) .diamond-tabs__list {
+  display: none
+}
+
+.diamond-tab {
+  display: flex;
+  flex: 1 1 0%;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-4);
+  min-width: 0;
+  padding: var(--space-3) var(--space-2) var(--space-2);
+  border: 0;
+  border-radius: var(--radius-md);
+  background: none;
+  color: var(--color-text-muted);
+  font-family: var(--font-secondary);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer
+}
+
+.diamond-tab__gem {
+  position: relative;
+  z-index: 0;
+  display: grid;
+  place-items: center;
+  width: clamp(3.25rem, 6vw + 1.5rem, 4.5rem);
+  aspect-ratio: 1;
+  color: var(--color-brand-strong);
+  font-size: clamp(1.25rem, 1.5vw + 0.9rem, 1.55rem);
+  transition: color var(--dur-slow) var(--ease-out)
+}
+
+.diamond-tab__gem::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: 22%;
+  background: var(--color-bg);
+  box-shadow: var(--shadow-card);
+  transform: rotate(45deg);
+  transition: background-color var(--dur-slow) var(--ease-out), box-shadow var(--dur-slow) var(--ease-out), transform var(--dur-slow) var(--ease-out)
+}
+
+.diamond-tab:hover {
+  color: var(--color-heading)
+}
+
+.diamond-tab:hover .diamond-tab__gem::before {
+  transform: rotate(45deg) scale(1.06)
+}
+
+.diamond-tab[aria-selected="true"] {
+  color: var(--color-heading)
+}
+
+.diamond-tab[aria-selected="true"] .diamond-tab__gem {
+  color: var(--color-on-brand-ink)
+}
+
+.diamond-tab[aria-selected="true"] .diamond-tab__gem::before {
+  background: var(--color-brand);
+  box-shadow: var(--shadow-brand-lift)
+}
+
+.diamond-tabs__panel {
+  padding: clamp(1.5rem, 3vw + 0.75rem, 3rem);
+  border-radius: var(--radius-lg);
+  background: var(--color-bg);
+  box-shadow: var(--shadow-raised)
+}
+
+[data-tabs]:not([data-tabs-ready]) .diamond-tabs__panel+.diamond-tabs__panel {
+  margin-top: var(--space-4)
+}
+
+[data-tabs-ready] .diamond-tabs__panel:not([hidden]) {
+  animation: panel-in var(--dur-slow) var(--ease-out)
+}
+
+@keyframes panel-in {
+  from {
+    opacity: 0;
+    transform: translateY(.5rem)
+  }
+}

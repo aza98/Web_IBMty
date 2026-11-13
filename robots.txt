@@ -1,0 +1,3 @@
+# Indexing is disabled while content is prepared (pages also carry noindex).
+User-agent: *
+Disallow: /

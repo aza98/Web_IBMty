@@ -1,0 +1,554 @@
+<!doctype html>
+<html lang=es-MX data-bs-theme=light>
+
+<head>
+    <meta charset=utf-8>
+    <meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover">
+    <meta name=robots content="noindex, nofollow">
+    <title>Salvación · Iglesia Bautista de Monterrey</title>
+    <meta name=description content="Conoce el plan de Dios para tu vida en cinco pasos hacia la salvación.">
+    <meta name=theme-color content=#FCFAF7>
+    <meta name=apple-mobile-web-app-title content=IBMty>
+    <meta name=apple-mobile-web-app-status-bar-style content=black-translucent>
+    <meta name=mobile-web-app-capable content=yes>
+    <link rel=manifest href=../manifest.webmanifest>
+    <link rel=icon href=../assets/icons/app/logo.svg type=image/svg+xml>
+    <link rel=apple-touch-icon href=../assets/icons/app/apple-touch-icon.png>
+    <script src=../assets/js/boot/theme.js></script>
+    <script src=../assets/js/boot/pwa-launch.js></script>
+    <link rel=stylesheet href=../assets/css/core/bootstrap-subset.css>
+    <link rel=stylesheet href=../assets/css/core/icons.css>
+    <link rel=stylesheet href=../assets/css/core/tokens.css>
+    <link rel=stylesheet href=../assets/css/core/fonts.css>
+    <link rel=stylesheet href=../assets/css/core/base.css>
+    <link rel=stylesheet href=../assets/css/core/layout.css>
+    <link rel=stylesheet href=../assets/css/components/navigation.css>
+    <link rel=stylesheet href=../assets/css/components/settings-panel.css>
+    <link rel=stylesheet href=../assets/css/components/footer.css>
+    <link rel=stylesheet href=../assets/css/components/sheets.css>
+    <link rel=stylesheet href=../assets/css/components/illustrations.css>
+    <link rel=stylesheet href=../assets/css/components/buttons.css>
+    <link rel=stylesheet href=../assets/css/components/carousel.css>
+    <link rel=stylesheet href=../assets/css/components/tabs.css>
+    <link rel=stylesheet href=../assets/css/components/forms.css>
+    <link rel=stylesheet href=../assets/css/components/floating.css>
+    <link rel=stylesheet href=../assets/css/pages/salvation.css>
+    <script defer src=../vendor/bootstrap/5.3.8/js/bootstrap.bundle.min.js></script>
+    <script defer src=../vendor/gsap/3.15.0/gsap.min.js></script>
+    <script defer src=../vendor/gsap/3.15.0/ScrollTrigger.min.js></script>
+    <script defer src=../vendor/canvas-confetti/1.9.4/confetti.browser.js></script>
+    <script defer src=../assets/js/core/version.js></script>
+    <script defer src=../assets/js/core/config.js></script>
+    <script defer src=../assets/js/core/app.js></script>
+    <script defer src=../assets/js/core/storage.js></script>
+    <script defer src=../assets/js/core/i18n.js></script>
+    <script defer src=../assets/js/i18n/en/common.js></script>
+    <script defer src=../assets/js/i18n/en/salvation.js></script>
+    <script defer src=../assets/js/pwa/register.js></script>
+    <script defer src=../assets/js/pwa/updates.js></script>
+    <script defer src=../assets/js/pwa/connectivity.js></script>
+    <script defer src=../assets/js/pwa/install.js></script>
+    <script defer src=../assets/js/components/navigation.js></script>
+    <script defer src=../assets/js/components/animations.js></script>
+    <script defer src=../assets/js/components/share.js></script>
+    <script defer src=../assets/js/services/push.js></script>
+    <script defer src=../assets/js/components/whatsapp.js></script>
+    <script defer src=../assets/js/components/settings-panel.js></script>
+    <script defer src=../assets/js/components/notices.js></script>
+    <script defer src=../assets/js/services/analytics.js></script>
+    <script defer src=../assets/js/components/consent.js></script>
+    <script defer src=../assets/js/components/push-offer.js></script>
+    <script defer src=../assets/js/services/forms.js></script>
+    <script defer src=../assets/js/pages/salvation.js></script>
+</head>
+
+<body data-page=salvation data-sheets>
+    <svg xmlns=http://www.w3.org/2000/svg width=0 height=0 style=position:absolute;overflow:hidden aria-hidden=true focusable=false>
+        <symbol id=ill-hand viewBox="0 0 180 100">
+            <ellipse cx=98 cy=90 rx=56 ry=6.5 style=fill:var(--ill-shadow) />
+            <path d="M104 52 L149 33 C155 30.5 161.5 33.5 163.5 39 C165.5 44.5 162.5 50.5 156.5 53.5 L112 71 Z" style=fill:var(--ill-skin-deep) />
+            <path d="M40 53 C51 41 65 35 81 35 L112 35 C119 35 124 39.5 124 45 C124 50.5 119 55 112 55 L91 55 C86.5 55 86.5 61 91.5 61 L117 61 L156 41.5 C162.5 38 170 40.5 173 46.5 C176 52.5 173.5 60 167 63.5 L126 84 C115 89.5 102 92 89 92 L40 92 Z" style=fill:var(--ill-skin) />
+            <path d="M54 45.5 C63 39 73 37 83 37 L111 37 C115.5 37 118.5 39.2 118.5 42 C118.5 44.2 116 45.5 112 45.5 L82 45.5 C72 45.5 62.5 47.5 54 51.5 Z" opacity=.65 style=fill:var(--ill-skin-light) />
+            <path d="M40 84 L89 84 C102 84 114 81 125 75.5 L166.5 54.5 C169.8 52.8 171.8 50.2 172.8 47.2 C175 53.2 172.5 60.2 167 63.5 L126 84 C115 89.5 102 92 89 92 L40 92 Z" opacity=.34 style=fill:var(--ill-skin-deep) />
+            <path d="M87 58 C87 63 92 65.5 99 65.5 L119 65.5 L158 45.5" fill=none stroke-width=2.4 stroke-linecap=round opacity=.52 style=stroke:var(--ill-skin-deep) />
+            <rect x=34 y=49 width=11 height=45 rx=4 style=fill:var(--ill-cuff-trim) />
+            <rect x=8 y=46 width=30 height=50 rx=8 style=fill:var(--ill-cuff) />
+            <path d="M8 75 L38 75 L38 88 C38 92.4 34.4 96 30 96 L16 96 C11.6 96 8 92.4 8 88 Z" style="fill:rgb(13 11 8 / 0.16)" />
+            <circle cx=27 cy=84 r=3 opacity=.88 style=fill:var(--ill-cuff-trim) />
+        </symbol>
+    </svg>
+    <a class="skip-link visually-hidden-focusable" href=#main>Saltar al contenido</a>
+    <header class=site-header>
+        <nav class="navbar navbar-expand-md" aria-label=Principal>
+            <div class=container-fluid>
+                <a class=navbar-brand href=../index.html>
+                    <img src=../assets/icons/app/logo.svg alt="" width=28 height=28> IBMty
+                </a>
+                <button class="navbar-settings icon-btn" type=button aria-label=Ajustes aria-haspopup=dialog aria-expanded=false aria-controls=settings-panel data-settings-toggle>
+                    <i class="fa-solid fa-gear icon" aria-hidden="true"></i>
+                </button>
+                <button class=navbar-toggler type=button data-bs-toggle=collapse data-bs-target=#main-nav aria-controls=main-nav aria-expanded=false aria-label="Abrir menú">
+                    <span class=navbar-toggler-icon></span>
+                </button>
+                <div class="collapse navbar-collapse" id=main-nav>
+                    <ul class="navbar-nav ms-auto">
+                        <li>
+                            <a class=nav-link href=../index.html data-page-link=home>
+                                <i class="fa-solid fa-house icon" aria-hidden="true"></i>Inicio</a>
+                        </li>
+                        <li>
+                            <a class=nav-link href=about.html data-page-link=about>
+                                <i class="fa-solid fa-church icon" aria-hidden="true"></i>Nosotros</a>
+                        </li>
+                        <li>
+                            <a class=nav-link href=salvation.html data-page-link=salvation aria-current=page>
+                                <i class="fa-solid fa-hands-praying icon" aria-hidden="true"></i>Salvación</a>
+                        </li>
+                        <li>
+                            <a class=nav-link href=donate.html data-page-link=donate>
+                                <i class="fa-solid fa-hand-holding-heart icon" aria-hidden="true"></i>Donativos</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main id=main>
+        <section class="page-hero salvation-hero container" aria-labelledby=salvation-title data-intro>
+            <div class=hero__diamonds aria-hidden=true data-diamonds-lean><span></span><span></span><span></span></div>
+            <h1 class="title-display salvation-hero__title" id=salvation-title>El mensaje más importante</h1>
+            <p class=salvation-hero__plan>Conoce el plan de Dios para tu vida</p>
+            <p class=salvation-hero__text>¡Dios te ama y tiene un plan genial para ti! Al enviar a su Hijo Jesús a la cruz, pagó un precio altísimo para ofrecernos un regalo único.</p>
+            <p class=salvation-hero__question>¿Te animas a aceptar este regalo?</p>
+            <svg class="ill salvation-hero__art" viewBox="0 0 240 240" aria-hidden=true focusable=false>
+                <rect class=ill__ring x=48 y=48 width=144 height=144 rx=28 transform="rotate(45 120 120)" />
+                <rect class=ill__ground x=58 y=58 width=124 height=124 rx=22 transform="rotate(45 120 120)" />
+                <ellipse class=ill__shadow cx=120 cy=188 rx=48 ry=7.5 />
+                <ellipse class=ill__halo cx=120 cy=114 rx=42 ry=24 opacity=.18 />
+                <g>
+                    <line class=ill__ray x1=120 y1=42 x2=120 y2=24 />
+                    <line class=ill__ray x1=82 y1=52 x2=70 y2=38 />
+                    <line class=ill__ray x1=158 y1=52 x2=170 y2=38 />
+                    <path class=ill__spark d="M98 30 Q98 37 105 37 Q98 37 98 44 Q98 37 91 37 Q98 37 98 30 Z" />
+                    <path class=ill__spark d="M144 33 Q144 39 150 39 Q144 39 144 45 Q144 39 138 39 Q144 39 144 33 Z" />
+                    <path class=ill__spark d="M180 76 Q180 82 186 82 Q180 82 180 88 Q180 82 174 82 Q180 82 180 76 Z" />
+                </g>
+                <g class=ill__object>
+                    <rect x=74 y=120 width=92 height=66 rx=8 />
+                    <path class=ill__sheen d="M82 120 L120 120 L120 186 L82 186 C77.6 186 74 182.4 74 178 L74 128 C74 123.6 77.6 120 82 120 Z" opacity=.11 />
+                    <rect class=ill__ribbon x=74 y=147 width=92 height=12 />
+                    <rect class=ill__ribbon x=113 y=120 width=14 height=66 />
+                    <rect class=ill__ribbon-fold x=113 y=147 width=14 height=12 opacity=.25 />
+                    <rect class=ill__shade x=74 y=120 width=92 height=6 rx=3 />
+                </g>
+                <g class=ill__lid transform="translate(-8 -16) rotate(-16 72 114)">
+                    <path class=ill__ribbon d="M114 96 L95 85 L101 96 Z M126 96 L145 85 L139 96 Z" opacity=.78 />
+                    <path class=ill__ribbon d="M118 96 C108 73 81 74 83 89 C84.5 97 104 97 118 96 Z M122 96 C132 73 159 74 157 89 C155.5 97 136 97 122 96 Z" />
+                    <path class=ill__shade d="M113 92 C106 81 91 81 92 88.5 C93 93 104 93 113 92 Z M127 92 C134 81 149 81 148 88.5 C147 93 136 93 127 92 Z" />
+                    <rect class=ill__ribbon x=113 y=88 width=14 height=10 rx=4 />
+                    <rect x=66 y=96 width=108 height=22 rx=6 />
+                    <rect class=ill__sheen x=70 y=98 width=100 height=4 rx=2 opacity=.38 />
+                    <rect class=ill__ribbon x=113 y=96 width=14 height=22 />
+                </g>
+            </svg>
+            <div class="salvation-hero__actions btn-row">
+                <a class="btn-app btn-app--primary" href=#pasos>
+                    <i class="fa-solid fa-arrow-down icon" aria-hidden="true"></i>Ver el plan</a>
+                <button class="btn-app btn-app--outline btn-app--icon" type=button title=Compartir data-share-item data-share-title="El mensaje más importante" data-share-text="¡Dios te ama y tiene un plan para ti! Conoce el plan de Dios para tu vida." data-share-url=salvation.html hidden><i class="fa-solid fa-share icon" aria-hidden="true"></i><span class=visually-hidden>Compartir</span></button>
+            </div>
+        </section>
+        <section class="section steps-section sheet sheet--paper" id=pasos aria-labelledby=steps-title>
+            <div class=sheet__diamonds aria-hidden=true><span></span><span></span></div>
+            <div class=container>
+                <h2 class=section-title id=steps-title data-reveal>Cinco pasos hacia la salvación</h2>
+                <div class=steps-path data-path>
+                    <span class=steps-path__progress data-path-progress aria-hidden=true></span>
+                    <ol class=steps>
+                        <li class=step data-step>
+                            <span class="step-node step__node" aria-hidden=true>1</span>
+                            <figure class=step__art>
+                                <svg class=ill data-scene=condition viewBox="0 0 240 240" role=img aria-label="Ilustración de una mano sosteniendo un corazón roto">
+                                    <rect class=ill__ring x=48 y=48 width=144 height=144 rx=28 transform="rotate(45 120 120)" />
+                                    <rect class=ill__ground x=58 y=58 width=124 height=124 rx=22 transform="rotate(45 120 120)" />
+                                    <g class=ill__hand>
+                                        <use href=#ill-hand x=28 y=118 width=184 height=102 />
+                                    </g>
+                                    <g class=ill__whole>
+                                        <path class=ill__heart d="M120 62 C111 47 89 45 81 59 C72 73 80 92 120 118 C160 92 168 73 159 59 C151 45 129 47 120 62 Z" />
+                                        <path class=ill__heart-deep d="M120 62 C129 47 151 45 159 59 C168 73 160 92 120 118 Z" opacity=.28 />
+                                        <path class=ill__heart-shine d="M89 64 C93 55 103 54 110 59" opacity=.88 />
+                                    </g>
+                                    <g class=ill__object>
+                                        <g transform="translate(-2.5 0) rotate(-3.5 120 118)">
+                                            <path class=ill__heart d="M119 62 C110 47 89 45 81 59 C72 73 80 92 119 118 L113 101 L123 87 L112 75 Z" />
+                                            <path class=ill__heart-shine d="M89 64 C93 55 103 54 110 59" opacity=.88 />
+                                        </g>
+                                        <g transform="translate(2.5 1) rotate(4 120 118)">
+                                            <path class=ill__heart d="M121 62 L115 75 L126 87 L116 101 L121 118 C160 92 168 73 159 59 C151 45 130 47 121 62 Z" />
+                                            <path class=ill__heart-deep d="M121 62 L115 75 L126 87 L116 101 L121 118 C160 92 168 73 159 59 C151 45 130 47 121 62 Z" opacity=.3 />
+                                            <path class=ill__heart-fissure d="M121 62 L115 75 L126 87 L116 101 L121 118" />
+                                        </g>
+                                        <rect class=ill__heart x=104 y=44 width=5 height=5 rx=1 transform="rotate(28 106 46)" opacity=.75 />
+                                        <rect class=ill__heart-deep x=133 y=47 width=4.5 height=4.5 rx=1 transform="rotate(55 135 49)" opacity=.7 />
+                                    </g>
+                                </svg>
+                            </figure>
+                            <div class=step__body>
+                                <h3 class="title-lg step__title"><span class=step__label>Paso 1:</span> Reconoce tu condición</h3>
+                                <p class=step__text>Necesitas reconocer que, como todos los seres humanos, has fallado y eres pecador.</p>
+                                <blockquote class="verse step__verse">
+                                    <p>“Por cuanto todos pecaron, y están destituidos de la gloria de Dios.”</p>
+                                    <cite>Romanos 3:23</cite>
+                                </blockquote>
+                            </div>
+                        </li>
+                        <li class=step data-step>
+                            <span class="step-node step__node" aria-hidden=true>2</span>
+                            <figure class=step__art>
+                                <svg class=ill data-scene=consequence viewBox="0 0 240 240" role=img aria-label="Ilustración de una mano sosteniendo billetes">
+                                    <rect class=ill__ring x=48 y=48 width=144 height=144 rx=28 transform="rotate(45 120 120)" />
+                                    <rect class=ill__ground x=58 y=58 width=124 height=124 rx=22 transform="rotate(45 120 120)" />
+                                    <g class=ill__hand>
+                                        <use href=#ill-hand x=28 y=118 width=184 height=102 />
+                                    </g>
+                                    <g class=ill__object>
+                                        <g transform="rotate(-11 108 82)">
+                                            <rect class=ill__shadow x=68 y=61 width=84 height=48 rx=6 />
+                                            <rect x=66 y=58 width=84 height=48 rx=6 />
+                                            <rect class=ill__bill-paper x=71 y=63 width=74 height=38 rx=3.5 />
+                                            <rect class=ill__bill-frame x=75 y=67 width=66 height=30 rx=2 opacity=.55 />
+                                            <ellipse cx=108 cy=82 rx=10.5 ry=12.5 opacity=.88 />
+                                            <rect class=ill__bill-paper x=104 y=78 width=8 height=8 rx=1.5 transform="rotate(45 108 82)" />
+                                        </g>
+                                    </g>
+                                    <g class=ill__object>
+                                        <g transform="rotate(7 130 96)">
+                                            <rect class=ill__shadow x=88 y=75 width=86 height=48 rx=6 />
+                                            <rect x=86 y=72 width=86 height=48 rx=6 />
+                                            <rect class=ill__bill-paper x=91 y=77 width=76 height=38 rx=3.5 />
+                                            <rect class=ill__bill-frame x=95 y=81 width=68 height=30 rx=2 opacity=.5 />
+                                            <ellipse cx=129 cy=96 rx=10.5 ry=12.5 />
+                                            <circle cx=105 cy=96 r=3 opacity=.65 />
+                                            <circle cx=153 cy=96 r=3 opacity=.65 />
+                                            <rect class=ill__bill-band x=121 y=72 width=16 height=48 opacity=.92 />
+                                            <line class=ill__bill-band-edge x1=121 y1=72 x2=121 y2=120 />
+                                            <line class=ill__bill-band-edge x1=137 y1=72 x2=137 y2=120 />
+                                        </g>
+                                    </g>
+                                </svg>
+                            </figure>
+                            <div class=step__body>
+                                <h3 class="title-lg step__title"><span class=step__label>Paso 2:</span> Entiende la consecuencia</h3>
+                                <p class=step__text>El pecado tiene un costo espiritual alto: la separación de Dios, que es la muerte espiritual.</p>
+                                <blockquote class="verse step__verse">
+                                    <p>“Porque la paga del pecado es muerte...”</p>
+                                    <cite>Romanos 6:23a</cite>
+                                </blockquote>
+                            </div>
+                        </li>
+                        <li class=step data-step>
+                            <span class="step-node step__node" aria-hidden=true>3</span>
+                            <figure class=step__art>
+                                <svg class=ill data-scene=gift viewBox="0 0 240 240" role=img aria-label="Ilustración de una caja de regalo abierta">
+                                    <rect class=ill__ring x=48 y=48 width=144 height=144 rx=28 transform="rotate(45 120 120)" />
+                                    <rect class=ill__ground x=58 y=58 width=124 height=124 rx=22 transform="rotate(45 120 120)" />
+                                    <ellipse class=ill__shadow cx=120 cy=188 rx=48 ry=7.5 />
+                                    <ellipse class=ill__halo cx=120 cy=114 rx=42 ry=24 opacity=.16 />
+                                    <g>
+                                        <line class=ill__ray x1=120 y1=42 x2=120 y2=24 />
+                                        <line class=ill__ray x1=82 y1=52 x2=70 y2=38 />
+                                        <line class=ill__ray x1=158 y1=52 x2=170 y2=38 />
+                                        <line class=ill__ray x1=60 y1=86 x2=44 y2=80 />
+                                        <line class=ill__ray x1=180 y1=86 x2=196 y2=80 />
+                                        <path class="ill__ray ill__spark" d="M98 30 Q98 37 105 37 Q98 37 98 44 Q98 37 91 37 Q98 37 98 30 Z" />
+                                        <path class="ill__ray ill__spark" d="M144 33 Q144 39 150 39 Q144 39 144 45 Q144 39 138 39 Q144 39 144 33 Z" />
+                                    </g>
+                                    <g class=ill__object>
+                                        <rect x=74 y=120 width=92 height=66 rx=8 />
+                                        <path class=ill__sheen d="M82 120 L120 120 L120 186 L82 186 C77.6 186 74 182.4 74 178 L74 128 C74 123.6 77.6 120 82 120 Z" opacity=.11 />
+                                        <rect class=ill__ribbon x=74 y=147 width=92 height=12 />
+                                        <rect class=ill__ribbon x=113 y=120 width=14 height=66 />
+                                        <rect class=ill__ribbon-fold x=113 y=147 width=14 height=12 opacity=.25 />
+                                        <rect class=ill__shade x=74 y=120 width=92 height=6 rx=3 />
+                                    </g>
+                                    <g class=ill__lid transform="translate(-8 -16) rotate(-16 72 114)">
+                                        <path class=ill__ribbon d="M114 96 L95 85 L101 96 Z M126 96 L145 85 L139 96 Z" opacity=.78 />
+                                        <path class=ill__ribbon d="M118 96 C108 73 81 74 83 89 C84.5 97 104 97 118 96 Z M122 96 C132 73 159 74 157 89 C155.5 97 136 97 122 96 Z" />
+                                        <path class=ill__shade d="M113 92 C106 81 91 81 92 88.5 C93 93 104 93 113 92 Z M127 92 C134 81 149 81 148 88.5 C147 93 136 93 127 92 Z" />
+                                        <rect class=ill__ribbon x=113 y=88 width=14 height=10 rx=4 />
+                                        <rect x=66 y=96 width=108 height=22 rx=6 />
+                                        <rect class=ill__sheen x=70 y=98 width=100 height=4 rx=2 opacity=.38 />
+                                        <rect class=ill__ribbon x=113 y=96 width=14 height=22 />
+                                    </g>
+                                </svg>
+                            </figure>
+                            <div class=step__body>
+                                <h3 class="title-lg step__title"><span class=step__label>Paso 3:</span> El regalo de Dios</h3>
+                                <p class=step__text>Pero Dios no nos dejó sin esperanza. Él quiere darte vida eterna totalmente gratis.</p>
+                                <blockquote class="verse step__verse">
+                                    <p>“...mas la dádiva de Dios es vida eterna en Cristo Jesús Señor nuestro.”</p>
+                                    <cite>Romanos 6:23b</cite>
+                                </blockquote>
+                            </div>
+                        </li>
+                        <li class=step data-step>
+                            <span class="step-node step__node" aria-hidden=true>4</span>
+                            <figure class=step__art>
+                                <svg class=ill data-scene=accept viewBox="0 0 240 240" role=img aria-label="Ilustración de Jesús sosteniendo un corazón">
+                                    <rect class=ill__ring x=48 y=48 width=144 height=144 rx=28 transform="rotate(45 120 120)" />
+                                    <rect class=ill__ground x=58 y=58 width=124 height=124 rx=22 transform="rotate(45 120 120)" />
+                                    <circle class=ill__halo cx=120 cy=82 r=42 opacity=.11 />
+                                    <circle class=ill__halo cx=120 cy=82 r=28 opacity=.13 />
+                                    <g class=ill__hand>
+                                        <use href=#ill-hand x=28 y=118 width=184 height=102 />
+                                    </g>
+                                    <g class="ill__object ill__accent">
+                                        <path d="M120 62 C111 47 89 45 81 59 C72 73 80 92 120 118 C160 92 168 73 159 59 C151 45 129 47 120 62 Z" />
+                                        <path class=ill__cyan-deep d="M120 62 C129 47 151 45 159 59 C168 73 160 92 120 118 Z" opacity=.22 />
+                                        <path class=ill__white-shine d="M89 64 C93 55 103 54 110 59" opacity=.92 />
+                                        <path class=ill__spark d="M68 48 Q68 55 75 55 Q68 55 68 62 Q68 55 61 55 Q68 55 68 48 Z" />
+                                        <path class=ill__spark d="M171 54 Q171 60 177 60 Q171 60 171 66 Q171 60 165 60 Q171 60 171 54 Z" />
+                                        <path class=ill__spark d="M120 30 Q120 36 126 36 Q120 36 120 42 Q120 36 114 36 Q120 36 120 30 Z" />
+                                    </g>
+                                </svg>
+                            </figure>
+                            <div class=step__body>
+                                <h3 class="title-lg step__title"><span class=step__label>Paso 4:</span> Acepta a Jesús</h3>
+                                <p class=step__text>No es por obras, es por fe. Acepta a Cristo Jesús como tu Salvador personal.</p>
+                                <blockquote class="verse step__verse">
+                                    <p>“Mas a todos los que le recibieron, a los que creen en su nombre, les dio potestad de ser hechos hijos de Dios.”</p>
+                                    <cite>Juan 1:12</cite>
+                                </blockquote>
+                            </div>
+                        </li>
+                        <li class=step data-step>
+                            <span class="step-node step__node" aria-hidden=true>5</span>
+                            <figure class=step__art>
+                                <svg class=ill data-scene=door viewBox="0 0 240 240" role=img aria-label="Ilustración de una puerta abierta">
+                                    <defs>
+                                        <linearGradient id=ill-door-sky x1=0 y1=0 x2=0 y2=1>
+                                            <stop class=ill__sky-top offset=0% />
+                                            <stop class=ill__sky-bottom offset=100% />
+                                        </linearGradient>
+                                        <linearGradient id=ill-door-beam x1=0 y1=0 x2=0 y2=1>
+                                            <stop class=ill__beam-top offset=0% stop-opacity=.42 />
+                                            <stop class=ill__beam-bottom offset=100% stop-opacity=0 />
+                                        </linearGradient>
+                                    </defs>
+                                    <rect class=ill__ring x=48 y=48 width=144 height=144 rx=28 transform="rotate(45 120 120)" />
+                                    <rect class=ill__ground x=58 y=58 width=124 height=124 rx=22 transform="rotate(45 120 120)" />
+                                    <polygon class=ill__light points="82,172 158,172 198,214 42,214" />
+                                    <path class=ill__arch d="M72 172 L72 95 A48 48 0 0 1 168 95 L168 172 Z" />
+                                    <path class=ill__keystone d="M113 46 L127 46 L124 58 L116 58 Z" opacity=.7 />
+                                    <path class=ill__door-sky d="M82 172 L82 95 A38 38 0 0 1 158 95 L158 172 Z" />
+                                    <circle class=ill__halo cx=132 cy=104 r=18 opacity=.22 />
+                                    <path class=ill__spark d="M132 95 Q132 104 141 104 Q132 104 132 113 Q132 104 123 104 Q132 104 132 95 Z" />
+                                    <g class=ill__closed>
+                                        <path class=ill__wood d="M82 171 L82 95 A38 38 0 0 1 158 95 L158 171 Z" />
+                                        <path class=ill__wood-deep d="M90 97 A30 30 0 0 1 116 68 L116 115 L90 115 Z M124 68 A30 30 0 0 1 150 97 L150 115 L124 115 Z" opacity=.52 />
+                                        <rect class=ill__wood-deep x=90 y=123 width=26 height=38 rx=2.5 opacity=.52 />
+                                        <rect class=ill__wood-deep x=124 y=123 width=26 height=38 rx=2.5 opacity=.52 />
+                                        <line class=ill__wood-seam x1=120 y1=60 x2=120 y2=170 opacity=.45 />
+                                        <rect class=ill__wood-deep x=142 y=114 width=6 height=16 rx=3 />
+                                        <circle class=ill__knob cx=145 cy=120 r=4 />
+                                        <circle class=ill__sheen cx=144 cy=119 r=1.4 opacity=.75 />
+                                    </g>
+                                    <g class=ill__object>
+                                        <path class=ill__wood-deep d="M111 66 L116 68 L116 165 L111 168 Z" />
+                                        <path class=ill__wood d="M82 171 L82 95 C82 76 94 63 111 66 L111 168 Z" />
+                                        <path class=ill__wood-deep d="M87 97 C87 84 95 75 105 77 L105 114 L87 116 Z" opacity=.55 />
+                                        <path class=ill__wood-deep d="M87 123 L105 121 L105 157 L87 161 Z" opacity=.55 />
+                                        <ellipse class=ill__knob cx=105 cy=118 rx=2.8 ry=3.8 />
+                                    </g>
+                                    <rect class=ill__sill x=64 y=170 width=112 height=8 rx=4 />
+                                    <rect class=ill__sill-top x=66 y=170 width=108 height=2.5 rx=1.25 opacity=.75 />
+                                </svg>
+                            </figure>
+                            <div class=step__body>
+                                <h3 class="title-lg step__title"><span class=step__label>Paso 5:</span> Abre la puerta</h3>
+                                <p class=step__text>Jesús es un caballero; Él toca a la puerta de tu corazón, pero tú debes abrirle.</p>
+                                <blockquote class="verse step__verse">
+                                    <p>“He aquí, yo estoy a la puerta y llamo: si alguno oye mi voz y abre la puerta, entraré a él, y cenaré con él, y él conmigo.”</p>
+                                    <cite>Apocalipsis 3:20</cite>
+                                </blockquote>
+                            </div>
+                        </li>
+                        <li class="step step--decision" data-step>
+                            <span class="step-node step__node" aria-hidden=true>6</span>
+                            <figure class=step__art>
+                                <svg class=ill data-scene=pray viewBox="0 0 240 240" role=img aria-label="Ilustración de manos en oración">
+                                    <rect class=ill__ring x=48 y=48 width=144 height=144 rx=28 transform="rotate(45 120 120)" />
+                                    <rect class=ill__ground x=58 y=58 width=124 height=124 rx=22 transform="rotate(45 120 120)" />
+                                    <circle class=ill__halo cx=120 cy=114 r=44 opacity=.14 />
+                                    <circle class=ill__halo cx=120 cy=114 r=26 opacity=.12 />
+                                    <g>
+                                        <line class=ill__ray x1=120 y1=40 x2=120 y2=22 />
+                                        <line class=ill__ray x1=82 y1=52 x2=70 y2=38 />
+                                        <line class=ill__ray x1=158 y1=52 x2=170 y2=38 />
+                                        <line class=ill__ray x1=58 y1=84 x2=42 y2=78 />
+                                        <line class=ill__ray x1=182 y1=84 x2=198 y2=78 />
+                                        <path class="ill__ray ill__spark" d="M98 30 Q98 36 104 36 Q98 36 98 42 Q98 36 92 36 Q98 36 98 30 Z" />
+                                        <path class="ill__ray ill__spark" d="M142 30 Q142 36 148 36 Q142 36 142 42 Q142 36 136 36 Q142 36 142 30 Z" />
+                                    </g>
+                                    <g class=ill__object>
+                                        <path class=ill__skin-deep d="M119.5 60 C115.5 60 112.5 64 111 71 L101 118 L119.5 128 Z M120.5 60 C124.5 60 127.5 64 129 71 L139 118 L120.5 128 Z" />
+                                        <path class=ill__skin d="M119 65 C115 65 112 68.5 110.5 75 L108.5 74.5 C105.5 74.5 103 77.5 101.8 83 L95.5 116 C93.5 126 95.5 136 101 144 L103 156 L119 158 Z" />
+                                        <path class=ill__skin d="M121 65 C125 65 128 68.5 129.5 75 L131.5 74.5 C134.5 74.5 137 77.5 138.2 83 L144.5 116 C146.5 126 144.5 136 139 144 L137 156 L121 158 Z" />
+                                        <path class=ill__skin-edge d="M104 82 L98 116" opacity=.52 />
+                                        <path class=ill__skin-edge d="M136 82 L142 116" opacity=.52 />
+                                        <path class=ill__skin-crease d="M110.5 75 L103.5 112 M129.5 75 L136.5 112" stroke-width=1.5 opacity=.45 />
+                                        <path class=ill__skin-light d="M118.5 92 C113.5 92 109.5 96.5 108.5 103 L105 127 C103.8 136 108 144 115.5 147 L119 148 Z" opacity=.38 />
+                                        <path class=ill__skin-deep d="M121.5 92 C126.5 92 130.5 96.5 131.5 103 L135 127 C136.2 136 132 144 124.5 147 L121 148 Z" opacity=.2 />
+                                        <path class=ill__skin-crease d="M117.5 93 C113 94 109.5 98 108.5 104 L105.5 126 C104.5 135 108.5 142.5 115.5 146 M122.5 93 C127 94 130.5 98 131.5 104 L134.5 126 C135.5 135 131.5 142.5 124.5 146" stroke-width=1.8 opacity=.68 />
+                                        <line class=ill__skin-crease x1=120 y1=63 x2=120 y2=157 stroke-width=2.1 />
+                                        <path class=ill__cuff-trim d="M98 153 L118.5 157 L116 167 L94.5 162 Z M142 153 L121.5 157 L124 167 L145.5 162 Z" />
+                                        <path class=ill__cuff-brand d="M90 160 L116.5 166 L112 183 L83.5 176 Z M150 160 L123.5 166 L128 183 L156.5 176 Z" />
+                                        <circle class=ill__cuff-dot cx=96.5 cy=171.5 r=2.5 opacity=.9 />
+                                        <circle class=ill__cuff-dot cx=143.5 cy=171.5 r=2.5 opacity=.9 />
+                                    </g>
+                                </svg>
+                            </figure>
+                            <div class=step__body>
+                                <h2 class="title-lg step__title decision__title" id=decision-title><span class=step__label>Tu decisión:</span> ¿Estás listo para dar el paso?</h2>
+                                <p class=step__text>La decisión más importante de tu vida te está esperando. Dios te ama y quiere tener una relación personal contigo hoy mismo.</p>
+                                <blockquote class="verse step__verse">
+                                    <p>“Si confesares con tu boca que Jesús es el Señor, y creyeres en tu corazón que Dios le levantó de los muertos, serás salvo.”</p>
+                                    <cite>Romanos 10:9</cite>
+                                </blockquote>
+                                <a class="btn-app--block btn-app btn-app--primary decision__action" href=about.html#contacto data-bs-toggle=modal data-bs-target=#salvation-modal role=button>
+                                    <i class="fa-solid fa-hands-praying icon" aria-hidden="true"></i>Aceptar a Jesús ahora</a>
+                            </div>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+        </section>
+    </main>
+    <div class="modal fade prayer-modal" id=salvation-modal tabindex=-1 aria-labelledby=prayer-title aria-hidden=true>
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class=modal-content>
+                <button type=button class="btn-close prayer-modal__close" data-bs-dismiss=modal aria-label=Cerrar></button>
+                <div class="modal-body prayer-modal__body">
+                    <section class=prayer-modal__stage data-stage=prayer>
+                        <h2 class="title-lg prayer-modal__title" id=prayer-title tabindex=-1 data-stage-title>Una oración para recibir a Jesús</h2>
+                        <p>No son palabras mágicas: lo que importa es lo que crees en tu corazón. Puedes hablar con Dios con tus propias palabras o decirle algo así:</p>
+                        <blockquote class=prayer-modal__prayer>
+                            <p>Señor Jesús, reconozco que soy pecador y que te he fallado. Sé que la paga del pecado es muerte, pero creo que Tú moriste en la cruz por mí y que Dios te levantó de los muertos.</p>
+                            <p>Hoy recibo tu regalo de vida eterna, no por mis obras, sino por fe. Te abro la puerta de mi corazón y te confieso como mi Señor y Salvador.</p>
+                            <p>Gracias por amarme y hacerme hijo de Dios. Amén.</p>
+                        </blockquote>
+                        <div class=btn-row>
+                            <button class="btn-app btn-app--primary" type=button data-action=prayed>
+                                <i class="fa-solid fa-check icon" aria-hidden="true"></i>Ya oré</button>
+                            <button class="btn-app btn-app--outline" type=button data-bs-dismiss=modal>
+                                <i class="fa-solid fa-xmark icon" aria-hidden="true"></i>Ahora no</button>
+                        </div>
+                    </section>
+                    <section class=prayer-modal__stage data-stage=welcome hidden>
+                        <h2 class="title-lg prayer-modal__title" tabindex=-1 data-stage-title>¡Te damos la bienvenida a la familia de Dios!</h2>
+                        <p>Si hiciste esta oración de corazón, la Biblia dice que ahora eres hijo de Dios (Juan 1:12). Nos encantaría acompañarte en tus primeros pasos.</p>
+                        <p>El seguimiento es opcional. Puedes terminar aquí sin compartir tus datos.</p>
+                        <button class="btn-app btn-app--outline" type=button data-bs-dismiss=modal>Terminar</button>
+                        <form class=form-app data-form=salvation data-form-require-one="email telefono" method=post aria-label="Quiero que me contacten">
+                            <div class=field>
+                                <label class=field__label for=follow-name>Nombre</label>
+                                <input class=field__input id=follow-name name=nombre autocomplete=name required aria-describedby=follow-name-error>
+                                <p class=field__error id=follow-name-error></p>
+                            </div>
+                            <div class=field>
+                                <label class=field__label for=follow-email>Correo electrónico</label>
+                                <input class=field__input id=follow-email name=email type=email autocomplete=email aria-describedby="follow-contact-hint follow-email-error">
+                                <p class=field__error id=follow-email-error></p>
+                            </div>
+                            <div class=field>
+                                <label class=field__label for=follow-phone>Teléfono o WhatsApp</label>
+                                <input class=field__input id=follow-phone name=telefono type=tel autocomplete=tel aria-describedby="follow-contact-hint follow-phone-error">
+                                <p class=field__error id=follow-phone-error></p>
+                                <p class=form-note id=follow-contact-hint>Escribe al menos un correo o un teléfono.</p>
+                            </div>
+                            <p class=form-note>Responsable: Iglesia Bautista de Monterrey, Asociación Religiosa. Usaremos tu nombre, tu correo o teléfono y el hecho de que enviaste esta solicitud únicamente para darte seguimiento. Este último es un dato sensible, porque revela tu creencia religiosa. Puedes retirar tu consentimiento cuando quieras.</p>
+                            <div class="field field--check">
+                                <input class=field__check id=follow-consent name=consentimiento type=checkbox value=sí required aria-describedby=follow-consent-error>
+                                <label for=follow-consent>Acepto que la Iglesia Bautista de Monterrey me contacte para darme seguimiento y trate mis datos, incluido el dato sensible de mi creencia religiosa, conforme a su <a href=privacy.html>aviso de privacidad</a>.</label>
+                                <p class=field__error id=follow-consent-error></p>
+                            </div>
+                            <input class=form-trap name=_gotcha tabindex=-1 autocomplete=off aria-hidden=true>
+                            <input type=hidden name=origen value="Decisión en la página de Salvación">
+                            <div class=btn-row>
+                                <button class="btn-app btn-app--primary" type=submit>
+                                    <i class="fa-solid fa-paper-plane icon" aria-hidden="true"></i>Contáctenme</button>
+                                <button class="btn-app btn-app--outline" type=button data-bs-dismiss=modal>
+                                    <i class="fa-solid fa-xmark icon" aria-hidden="true"></i>Cerrar</button>
+                            </div>
+                            <p class=form-status data-form-status role=status></p>
+                        </form>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class=site-footer>
+        <div class="container site-footer__grid">
+            <div class=footer-brand>
+                <a class=footer-brand__name href=../index.html><img src=../assets/icons/app/logo.svg alt="" width=36 height=36>Iglesia Bautista de Monterrey</a>
+                <p class=footer-brand__tagline>Una iglesia que piensa en ti</p>
+            </div>
+            <nav class=footer-col aria-labelledby=footer-pages>
+                <h2 class=footer-col__title id=footer-pages>Página</h2>
+                <ul class=footer-list>
+                    <li><a class=footer-link href=../index.html data-page-link=home><i class="fa-solid fa-house icon" aria-hidden="true"></i>Inicio</a></li>
+                    <li><a class=footer-link href=../pages/about.html data-page-link=about><i class="fa-solid fa-church icon" aria-hidden="true"></i>Nosotros</a></li>
+                    <li><a class=footer-link href=../pages/salvation.html data-page-link=salvation aria-current=page><i class="fa-solid fa-hands-praying icon" aria-hidden="true"></i>Salvación</a></li>
+                    <li><a class=footer-link href=../pages/donate.html data-page-link=donate><i class="fa-solid fa-hand-holding-heart icon" aria-hidden="true"></i>Donativos</a></li>
+                </ul>
+            </nav>
+            <div class=footer-col>
+                <h2 class=footer-col__title id=footer-contact>Contacto</h2>
+                <ul class=footer-list aria-labelledby=footer-contact>
+                    <li><a class=footer-link href=https://maps.app.goo.gl/uekoBnmFoU2Vxx7K7 target=_blank rel=noopener><i class="fa-solid fa-location-dot icon" aria-hidden="true"></i>Cómo llegar</a></li>
+                    <li><a class=footer-link href=tel:+528183496161><i class="fa-solid fa-phone icon" aria-hidden="true"></i>81 8349 6161</a></li>
+                    <li><a class=footer-link href=tel:+528183496263><i class="fa-solid fa-phone icon" aria-hidden="true"></i>81 8349 6263</a></li>
+                    <li><a class=footer-link href=mailto:oficina@ibmty.com><i class="fa-solid fa-envelope icon" aria-hidden="true"></i>oficina@ibmty.com</a></li>
+                </ul>
+            </div>
+            <nav class=footer-col aria-labelledby=footer-links>
+                <h2 class=footer-col__title id=footer-links>Enlaces</h2>
+                <ul class=footer-list>
+                    <li><a class=footer-link href=https://www.ribbi.org/ target=_blank rel=noopener><i class="fa-solid fa-earth-americas icon" aria-hidden="true"></i>RIBBI</a></li>
+                    <li><a class=footer-link href=https://www.saucillo.org.mx/ target=_blank rel=noopener><i class="fa-solid fa-earth-americas icon" aria-hidden="true"></i>El Saucillo</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="container site-footer__bottom">
+            <p class=footer-copy>Iglesia Bautista de Monterrey © <span data-current-year>2026</span></p>
+            <a class=footer-link href=../pages/privacy.html data-page-link=privacy><i class="fa-solid fa-shield-halved icon" aria-hidden="true"></i>Aviso de privacidad</a>
+            <p class=footer-made>Hecho con <i class="fa-solid fa-heart icon footer-made__heart" aria-hidden="true"></i><span class=visually-hidden>amor</span> para Dios</p>
+        </div>
+    </footer>
+    <nav class=tabbar aria-label=Aplicación>
+        <ul class=tabbar__list>
+            <li class=tabbar__item>
+                <a class=tabbar__link href=../index.html data-page-link=home>
+                    <i class="fa-solid fa-house icon" aria-hidden="true"></i>Inicio</a>
+            </li>
+            <li class=tabbar__item>
+                <a class=tabbar__link href=about.html data-page-link=about>
+                    <i class="fa-solid fa-church icon" aria-hidden="true"></i>Nosotros</a>
+            </li>
+            <li class=tabbar__item>
+                <a class=tabbar__link href=salvation.html data-page-link=salvation aria-current=page>
+                    <i class="fa-solid fa-hands-praying icon" aria-hidden="true"></i>Salvación</a>
+            </li>
+            <li class=tabbar__item>
+                <a class=tabbar__link href=donate.html data-page-link=donate>
+                    <i class="fa-solid fa-hand-holding-heart icon" aria-hidden="true"></i>Donativos</a>
+            </li>
+            <li class=tabbar__item>
+                <a class=tabbar__link href=../app/settings.html data-page-link=settings>
+                    <i class="fa-solid fa-gear icon" aria-hidden="true"></i>Ajustes</a>
+            </li>
+        </ul>
+    </nav>
+</body>
+
+</html>

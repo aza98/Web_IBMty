@@ -1,0 +1,32 @@
+# Apache configuration for the shared hosting (shipped by tools/package.sh).
+# If the host answers 500 after upload, remove the Options line first: some
+# shared hosts do not allow it in .htaccess.
+
+Options -Indexes -Includes -ExecCGI
+
+# HTTPS on the production domain stated in pages/privacy.html; never built from
+# the Host header. X-Forwarded-Proto avoids a loop behind a TLS proxy.
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteCond %{HTTPS} !=on
+  RewriteCond %{HTTP:X-Forwarded-Proto} !=https
+  RewriteRule ^ https://www.ibmty.com%{REQUEST_URI} [R=301,L]
+</IfModule>
+
+# Dotfiles and dot-folders (.git*, .env, .ftp-deploy-sync-state.json) are never
+# served; /.well-known/ stays reachable for certificate validation.
+RedirectMatch 404 "/\.(?!well-known/)"
+
+# CSP hosts follow the code: Formspree and the YouTube Data API (fetch), OSM
+# tiles (images and the worker), YouTube and Google Maps embeds, blob: workers
+# (canvas-confetti). 'unsafe-inline' styles: style= attributes in salvation.html.
+# OneSignal fetches the SDK from its CDN and app configuration via API JSONP.
+# Report-only until checked in the browser console; GA4 hosts are still pending.
+<IfModule mod_headers.c>
+  Header always set Strict-Transport-Security "max-age=31536000"
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Permissions-Policy "accelerometer=(), browsing-topics=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=()"
+  Header always set Content-Security-Policy-Report-Only "default-src 'self'; script-src 'self' https://cdn.onesignal.com https://api.onesignal.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://tile.openstreetmap.org; font-src 'self'; connect-src 'self' https://formspree.io https://www.googleapis.com https://tile.openstreetmap.org https://api.onesignal.com https://onesignal.com; frame-src https://www.youtube-nocookie.com https://www.google.com; worker-src 'self' blob:; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self' https://formspree.io; frame-ancestors 'self'"
+</IfModule>

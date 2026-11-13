@@ -1,0 +1,87 @@
+[
+  {
+    "id": "evento-love-fest",
+    "label": "feb",
+    "status": "past",
+    "statusText": "Concluido",
+    "image": "assets/images/events/love-fest.webp",
+    "imageAlt": "Cartel de Love Fest",
+    "lazy": true,
+    "title": "Love Fest",
+    "datetime": "2026-02",
+    "date": "febrero 2026",
+    "place": null,
+    "text": "¡Festeja con nosotros este Día del Amor y la Amistad! Ven a disfrutar de una tarde increíble con feria, boliche, show de magia, torito mecánico y muchas sorpresas más...",
+    "links": [
+      {
+        "icon": "instagram",
+        "label": "Instagram",
+        "url": "https://www.instagram.com/p/DUHDHjwjryg/"
+      }
+    ]
+  },
+  {
+    "id": "evento-vistete-de-disenador",
+    "label": "mar",
+    "status": "past",
+    "statusText": "Concluido",
+    "image": "assets/images/events/vistete-de-disenador.webp",
+    "imageAlt": "Cartel de Vístete de Diseñador",
+    "lazy": true,
+    "title": "Vístete de Diseñador",
+    "datetime": "2026-03",
+    "date": "marzo 2026",
+    "place": null,
+    "text": "Una conferencia para mujeres que buscan reencontrarse con la identidad y el diseño de Su Creador.",
+    "links": [
+      {
+        "icon": "instagram",
+        "label": "Instagram",
+        "url": "https://www.instagram.com/vistetededisenador"
+      }
+    ]
+  },
+  {
+    "id": "evento-summer-camp",
+    "label": "jul",
+    "status": "past",
+    "statusText": "Concluido",
+    "image": "assets/images/events/summer-camp.webp",
+    "imageAlt": "Cartel de Summer Camp Estación Iluminación",
+    "lazy": true,
+    "title": "Summer Camp",
+    "datetime": "2026-07",
+    "date": "julio 2026",
+    "place": null,
+    "text": "Invitamos a niños de 3 a 11 años a una experiencia inolvidable llena de juegos, amigos y enseñanza.",
+    "links": [
+      {
+        "icon": "instagram",
+        "label": "Instagram",
+        "url": "https://www.instagram.com/vistetededisenador"
+      }
+    ]
+  },
+  {
+    "id": "evento-cima-2026-despliegue",
+    "label": "nov",
+    "status": "upcoming",
+    "statusText": "Próximamente",
+    "image": "assets/images/events/cima-2026.webp",
+    "imageAlt": "Cartel de CIMA 2026",
+    "lazy": false,
+    "title": "¡CIMA 2026 | DESPLIEGUE!",
+    "datetime": "2026-11-13",
+    "date": "13 al 16 de noviembre de 2026",
+    "place": "San Luis Potosí",
+    "text": "Celebra el llamado de Dios. El llamado que nos mueve a salir de lo desconocido y extendernos a lo inexplorado.",
+    "links": [
+      {
+        "icon": "arrow-up-right-from-square",
+        "label": "Página de RIBBI",
+        "url": "https://www.ribbi.org/",
+        "family": "solid"
+      }
+    ]
+  }
+]

@@ -1,0 +1,251 @@
+[
+  {
+    "id": "ministerio-pastor-lider",
+    "ministry": "Pastor Líder",
+    "names": "Brian & Jaidy Brown",
+    "text": "Comprometidos en enseñar la Palabra de Dios y acompañarte con sabiduría y amor en tu vida espiritual.",
+    "photo": "assets/images/leaders/iglesia.webp",
+    "photoAlt": "Brian y Jaidy Brown",
+    "logo": "assets/icons/app/logo.svg",
+    "chips": [],
+    "links": [
+      {
+        "icon": "facebook",
+        "label": "Facebook",
+        "url": "https://www.facebook.com/IBMty/"
+      },
+      {
+        "icon": "instagram",
+        "label": "Instagram",
+        "url": "https://www.instagram.com/iglesiabautistademonterrey"
+      }
+    ]
+  },
+  {
+    "id": "ministerio-adultos",
+    "ministry": "Adultos",
+    "names": "Alberto & Mariana De Agüero",
+    "text": "Para matrimonios y adultos que desean fortalecer su fe y reflejar a Cristo en su día a día.",
+    "photo": "assets/images/leaders/adultos.webp",
+    "photoAlt": "Alberto y Mariana De Agüero",
+    "logo": "assets/images/logos/adultos.webp",
+    "chips": [
+      {
+        "icon": "location-dot",
+        "text": "Local 41"
+      },
+      {
+        "icon": "clock",
+        "text": "Viernes 8:00 PM"
+      }
+    ],
+    "links": [
+      {
+        "icon": "facebook",
+        "label": "Facebook",
+        "url": "https://www.facebook.com/ministerioadultosibmty/"
+      },
+      {
+        "icon": "instagram",
+        "label": "Instagram",
+        "url": "https://www.instagram.com/adultosibmty"
+      }
+    ]
+  },
+  {
+    "id": "ministerio-profesionistas",
+    "ministry": "Profesionistas",
+    "names": "Edgar & Esther Zamarrón · Alma Barrera",
+    "text": "Un espacio para mayores de 25 años que buscan crecer espiritualmente mientras desarrollan propósito en su vida profesional.",
+    "photo": "assets/images/leaders/profesionistas.webp",
+    "photoAlt": "Edgar y Esther Zamarrón junto a Alma Barrera",
+    "logo": "assets/images/logos/profesionistas.webp",
+    "chips": [
+      {
+        "icon": "location-dot",
+        "text": "Auditorio IBMty"
+      },
+      {
+        "icon": "clock",
+        "text": "Viernes 8:00 PM"
+      }
+    ],
+    "flyer": "assets/images/shared/volantes_Profesionistas.jpg",
+    "links": [
+      {
+        "icon": "facebook",
+        "label": "Facebook",
+        "url": "https://www.facebook.com/ministerioadultosibmty/"
+      },
+      {
+        "icon": "instagram",
+        "label": "Instagram",
+        "url": "https://www.instagram.com/adultosibmty"
+      }
+    ]
+  },
+  {
+    "id": "ministerio-universitarios",
+    "ministry": "Universitarios",
+    "names": "Hugo & Thalía Guerrero",
+    "text": "Jóvenes de 18 a 24 años construyendo una fe firme y relaciones auténticas centradas en Jesús.",
+    "photo": "assets/images/leaders/universitarios.webp",
+    "photoAlt": "Hugo y Thalía Guerrero",
+    "logo": "assets/images/logos/universitarios.webp",
+    "chips": [
+      {
+        "icon": "location-dot",
+        "text": "Local 41"
+      },
+      {
+        "icon": "clock",
+        "text": "Sábado 7:00 PM"
+      }
+    ],
+    "links": [
+      {
+        "icon": "facebook",
+        "label": "Facebook",
+        "url": "https://www.facebook.com/unisibmty/"
+      },
+      {
+        "icon": "instagram",
+        "label": "Instagram",
+        "url": "https://www.instagram.com/unisibmty"
+      },
+      {
+        "icon": "tiktok",
+        "label": "TikTok",
+        "url": "https://www.tiktok.com/@unis.ibmty"
+      }
+    ]
+  },
+  {
+    "id": "ministerio-jovenes",
+    "ministry": "Jóvenes",
+    "names": "Ricardo & Daniela Silva",
+    "text": "Adolescentes de 14 a 18 años descubriendo su identidad y aprendiendo a vivir con propósito.",
+    "photo": "assets/images/leaders/jovenes.webp",
+    "photoAlt": "Ricardo y Daniela Silva",
+    "logo": "assets/images/logos/jovenes.webp",
+    "chips": [
+      {
+        "icon": "location-dot",
+        "text": "Auditorio IBMty"
+      },
+      {
+        "icon": "clock",
+        "text": "Sábado 5:00 PM"
+      }
+    ],
+    "flyer": "assets/images/shared/volantes_Jovenes.jpg",
+    "links": [
+      {
+        "icon": "facebook",
+        "label": "Facebook",
+        "url": "https://www.facebook.com/JVNSMty/"
+      },
+      {
+        "icon": "instagram",
+        "label": "Instagram",
+        "url": "https://www.instagram.com/jvns_ibmty"
+      },
+      {
+        "icon": "tiktok",
+        "label": "TikTok",
+        "url": "https://www.tiktok.com/@jvns_ibmty"
+      }
+    ]
+  },
+  {
+    "id": "ministerio-intermedios",
+    "ministry": "Intermedios",
+    "names": "Rafael & Karina Reyna",
+    "text": "Preadolescentes de 11 a 13 años creciendo en su relación con Dios e impactando su entorno.",
+    "photo": "assets/images/leaders/intermedios.webp",
+    "photoAlt": "Rafael y Karina Reyna",
+    "logo": "assets/images/logos/intermedios.webp",
+    "chips": [
+      {
+        "icon": "location-dot",
+        "text": "Local 10"
+      },
+      {
+        "icon": "clock",
+        "text": "Sábado 1:00 PM"
+      }
+    ],
+    "links": [
+      {
+        "icon": "facebook",
+        "label": "Facebook",
+        "url": "https://www.facebook.com/intersibmty/"
+      },
+      {
+        "icon": "instagram",
+        "label": "Instagram",
+        "url": "https://www.instagram.com/intersibmty"
+      }
+    ]
+  },
+  {
+    "id": "ministerio-culto-infantil",
+    "ministry": "Culto Infantil",
+    "names": "Laura Munguía",
+    "text": "Niños de 6 a 10 años aprendiendo principios bíblicos mediante juegos, historias y actividades dinámicas.",
+    "photo": "assets/images/leaders/cultoinfantil.webp",
+    "photoAlt": "Laura Munguía",
+    "logo": "assets/images/logos/culto-infantil.webp",
+    "chips": [
+      {
+        "icon": "location-dot",
+        "text": "Local 23 (parte superior)"
+      },
+      {
+        "icon": "clock",
+        "text": "Domingo, durante servicios"
+      }
+    ],
+    "links": []
+  },
+  {
+    "id": "ministerio-parvulos",
+    "ministry": "Párvulos",
+    "names": "José & Xóchitl Munguía",
+    "text": "Pequeños de 3 a 5 años descubriendo la Biblia de forma creativa y participativa.",
+    "photo": "assets/images/leaders/parvulos.webp",
+    "photoAlt": "José y Xóchitl Munguía",
+    "logo": "assets/images/logos/parvulos.webp",
+    "chips": [
+      {
+        "icon": "location-dot",
+        "text": "Local 10"
+      },
+      {
+        "icon": "clock",
+        "text": "Domingo, durante servicios"
+      }
+    ],
+    "links": []
+  },
+  {
+    "id": "ministerio-guarderia",
+    "ministry": "Guardería",
+    "names": "Gustavo & Emelina Pérez",
+    "text": "Un espacio seguro y lleno de cuidado para bebés de 0 a 2 años, para que puedas disfrutar cada reunión con tranquilidad.",
+    "photo": "assets/images/leaders/guarderia.webp",
+    "photoAlt": "Gustavo y Emelina Pérez",
+    "logo": "assets/images/logos/guarderia.webp",
+    "chips": [
+      {
+        "icon": "location-dot",
+        "text": "Local 23 (parte inferior)"
+      },
+      {
+        "icon": "clock",
+        "text": "Domingo, durante servicios"
+      }
+    ],
+    "links": []
+  }
+]

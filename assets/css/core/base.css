@@ -1,0 +1,119 @@
+html {
+  accent-color: var(--color-brand-strong);
+  caret-color: var(--color-brand-strong);
+  scrollbar-color: var(--color-text-muted) var(--color-surface)
+}
+
+html:not(:has(.modal-open)) {
+  scrollbar-gutter: stable
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text-primary);
+  font-family: var(--font-secondary);
+  overflow-wrap: anywhere
+}
+
+h1,
+h2,
+h3,
+h4 {
+  color: var(--color-heading);
+  font-family: var(--font-primary);
+  font-weight: 700;
+  line-height: var(--leading-heading);
+  text-wrap: balance;
+  hyphens: auto;
+  hyphenate-limit-chars: 7 3 3
+}
+
+p {
+  text-wrap: pretty
+}
+
+a {
+  color: var(--color-brand-strong);
+  text-underline-offset: .2em
+}
+
+::selection {
+  background: var(--color-brand);
+  color: var(--color-on-brand-ink)
+}
+
+:focus-visible {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 3px
+}
+
+.nav-link:focus-visible,
+.navbar-toggler:focus-visible,
+.btn-close:focus-visible {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 2px
+}
+
+.nav-link:focus-visible,
+.navbar-toggler:focus,
+.btn-close:focus {
+  box-shadow: none
+}
+
+.sheet--band,
+.step--decision,
+.visit__card,
+.notice,
+.site-footer {
+  --color-focus: var(--color-brand);
+  --color-brand-strong: var(--color-brand);
+  --color-heading: var(--color-on-band);
+  --color-text-secondary: var(--color-on-band-muted);
+  --color-text-muted: var(--color-on-band-muted);
+  --color-border: var(--color-band-line);
+  --color-surface-2: var(--color-band-raised);
+  --color-accent-warm: var(--color-on-band-warm);
+  --color-warm-surface: var(--color-band-raised);
+  --color-ornament: var(--color-ornament-band);
+  --outline-line: var(--color-on-band-muted);
+  --outline-hover-ink: var(--color-band)
+}
+
+.sheet--band :is(p, li) a:not(.btn-app) {
+  color: var(--color-on-band)
+}
+
+.skip-link {
+  position: absolute;
+  inset-block-start: var(--space-2);
+  inset-inline-start: var(--space-2);
+  z-index: 1100;
+  padding: .75rem 1.25rem;
+  border-radius: var(--radius-pill);
+  background: var(--color-heading);
+  color: var(--color-bg);
+  font-family: var(--font-secondary);
+  font-weight: 600;
+  text-decoration: none
+}
+
+@media (prefers-reduced-motion:reduce) {
+
+  *,
+  ::before,
+  ::after {
+    animation-duration: .01ms !important;
+    animation-delay: 0s !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+    transition-delay: 0s !important
+  }
+}
+
+:where(main, section, article, form, fieldset, .container) {
+  min-width: 0
+}
+
+:focus {
+  scroll-margin-block: 6rem calc(var(--tabbar-clearance) + 1rem)
+}

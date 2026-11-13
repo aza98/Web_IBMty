@@ -1,0 +1,130 @@
+body[data-page="offline"] {
+  --color-status-bar: var(--color-bg)
+}
+
+.offline {
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100svh - var(--nav-height) - var(--safe-top) - var(--tabbar-clearance));
+  padding-top: calc(var(--safe-top) + var(--nav-height) + var(--space-6));
+  padding-bottom: var(--space-6)
+}
+
+.offline__art {
+  display: block;
+  width: min(11.5rem, 56%);
+  height: auto;
+  margin-bottom: var(--space-3);
+  overflow: visible
+}
+
+.offline-ill__ground {
+  fill: var(--color-brand-tint)
+}
+
+.offline-ill__page-back {
+  fill: var(--color-surface-2);
+  stroke: var(--color-border);
+  stroke-width: 1.5
+}
+
+.offline-ill__page,
+.offline-ill__page-halo {
+  fill: var(--ill-card)
+}
+
+.offline-ill__page {
+  stroke: var(--color-border);
+  stroke-width: 1.5
+}
+
+.offline-ill__cloud {
+  fill: var(--color-surface);
+  stroke: var(--color-control-border);
+  stroke-width: 1.5
+}
+
+.offline-ill__signal {
+  fill: none;
+  stroke: var(--color-text-muted);
+  stroke-linecap: round;
+  stroke-width: 2
+}
+
+.offline-ill__signal-dot {
+  fill: var(--color-text-muted)
+}
+
+.offline-ill__slash {
+  stroke: var(--color-accent-warm);
+  stroke-linecap: round;
+  stroke-width: 2.5
+}
+
+.offline__actions {
+  order: 2;
+  margin-top: auto;
+  padding-top: var(--space-5)
+}
+
+.offline__subtitle {
+  margin-top: var(--space-5);
+  margin-bottom: var(--space-2);
+  font-size: var(--text-heading-sm)
+}
+
+@media (max-width:575.98px) {
+  [data-display="standalone"] .offline {
+    min-height: 100dvh
+  }
+}
+
+@media (min-width:576px) {
+  .offline {
+    display: block;
+    min-height: 0
+  }
+
+  .offline__actions {
+    order: 0;
+    margin-block: var(--space-4) var(--space-6);
+    padding-top: 0
+  }
+
+  .offline__subtitle {
+    margin-top: 0
+  }
+}
+
+.offline__pages {
+  max-width: 24rem;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--color-border);
+  list-style: none
+}
+
+.offline__pages a {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  min-height: var(--button-height);
+  border-bottom: 1px solid var(--color-border);
+  color: var(--color-heading);
+  font-weight: 600;
+  text-decoration: none
+}
+
+.offline__pages a .icon:first-child {
+  color: var(--color-brand-strong)
+}
+
+.offline__arrow {
+  margin-left: auto;
+  color: var(--color-text-muted);
+  font-size: .875em
+}
+
+.offline__pages a:hover {
+  color: var(--color-brand-strong)
+}

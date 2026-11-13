@@ -1,0 +1,261 @@
+/*
+ * Styles specific to pages/privacy.html. The notice is one sheet
+ * (components/sheets.css) over the hero; the footer closes the stack.
+ */
+.privacy-ill__lock-arch {
+  fill: none;
+  stroke: var(--white);
+  stroke-linecap: round;
+  stroke-width: 3
+}
+
+.privacy {
+  padding-top: var(--space-6)
+}
+
+.privacy-hero .hero__diamonds span:nth-child(1) {
+  width: clamp(7rem, 15vw, 13rem);
+  right: 6%;
+  top: 18%
+}
+
+.privacy-hero .hero__diamonds span:nth-child(2) {
+  width: clamp(3.5rem, 7vw, 6rem);
+  right: 28%;
+  bottom: 20%;
+  border-width: 1.5px
+}
+
+.privacy-hero .hero__diamonds span:nth-child(3) {
+  width: clamp(3rem, 5vw, 4.5rem);
+  left: -2%;
+  top: 34%;
+  border-width: 1px
+}
+
+.container.privacy__inner {
+  max-width: calc(var(--reading-max) + var(--gutter) * 2)
+}
+
+.privacy__date {
+  color: var(--color-text-muted);
+  font-size: var(--text-small);
+  font-weight: 600
+}
+
+.essentials {
+  margin-block: var(--space-4) var(--space-5);
+  padding: clamp(1.25rem, 2vw + 0.75rem, 2rem);
+  border-radius: var(--radius-lg);
+  background: var(--color-brand-tint);
+  box-shadow: var(--shadow-card)
+}
+
+.essentials__title {
+  margin-bottom: var(--space-1)
+}
+
+.essentials__lead {
+  color: var(--color-text-secondary)
+}
+
+.essentials__list {
+  display: grid;
+  gap: var(--space-3);
+  margin: var(--space-4) 0
+}
+
+.essentials__item {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  align-content: start;
+  gap: var(--space-1);
+  padding: var(--space-3);
+  border-radius: var(--radius-md);
+  background: var(--color-bg)
+}
+
+.essentials__item dt {
+  color: var(--color-brand-strong);
+  font-family: var(--font-primary);
+  font-size: var(--text-heading-sm);
+  font-weight: 700;
+  line-height: var(--leading-heading)
+}
+
+.essentials__item dd {
+  margin: 0;
+  color: var(--color-text-secondary)
+}
+
+.privacy__tools {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  margin-block: var(--space-5) var(--space-3)
+}
+
+.privacy__contents {
+  margin: 0
+}
+
+[data-disclosure-all] .icon {
+  transition: transform var(--dur-slow) var(--ease-out)
+}
+
+[data-disclosure-all][aria-expanded="true"] .icon {
+  transform: rotate(180deg)
+}
+
+.disclosures {
+  border-top: 1px solid var(--color-border)
+}
+
+.disclosure {
+  border-bottom: 1px solid var(--color-border)
+}
+
+.disclosure__summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  min-height: var(--control-min-height);
+  padding-block: var(--space-4);
+  cursor: pointer;
+  list-style: none
+}
+
+.disclosure__summary::-webkit-details-marker {
+  display: none
+}
+
+.disclosure__title {
+  margin: 0;
+  font-size: var(--text-heading-sm)
+}
+
+.disclosure__summary::after {
+  content: "";
+  flex: none;
+  width: .85rem;
+  height: .85rem;
+  margin-right: .3rem;
+  border: 2px solid var(--color-heading);
+  border-radius: 2px;
+  transform: rotate(45deg);
+  transition: transform var(--dur-slow) var(--ease-out), background-color var(--dur-slow) var(--ease-out), border-color var(--dur-slow) var(--ease-out)
+}
+
+.disclosure[open]>.disclosure__summary::after {
+  border-color: var(--color-brand);
+  background: var(--color-brand);
+  transform: rotate(135deg)
+}
+
+.disclosure[open]>.disclosure__summary .disclosure__title,
+.disclosure__summary:hover .disclosure__title {
+  color: var(--color-brand-strong)
+}
+
+.disclosure__body {
+  overflow: hidden
+}
+
+.disclosure__inner {
+  padding-bottom: var(--space-4)
+}
+
+.doc h4 {
+  margin: var(--space-4) 0 var(--space-2);
+  font-family: var(--font-secondary);
+  font-size: 1rem;
+  line-height: 1.2
+}
+
+.doc h4:first-child {
+  margin-top: 0
+}
+
+.doc-list {
+  display: grid;
+  gap: var(--space-2);
+  margin: 0 0 var(--space-3);
+  padding: 0;
+  list-style: none
+}
+
+.doc-list li {
+  position: relative;
+  padding-left: var(--space-4)
+}
+
+.doc-list li::before {
+  content: "";
+  position: absolute;
+  top: .6em;
+  left: .25rem;
+  width: .4rem;
+  height: .4rem;
+  background: var(--color-heading);
+  transform: rotate(45deg)
+}
+
+.doc .btn-app {
+  margin-top: var(--space-2)
+}
+
+.privacy__top {
+  margin-top: var(--space-5)
+}
+
+.privacy__top .icon {
+  transform: rotate(-90deg)
+}
+
+@media (min-width:768px) {
+  .essentials__list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-4)
+  }
+
+  .essentials__item {
+    grid-template-rows: auto 1fr
+  }
+}
+
+@media print {
+
+  .site-header,
+  .tabbar,
+  .site-footer,
+  .page-hero__art,
+  .privacy__tools,
+  .privacy__top,
+  .btn-app {
+    display: none !important
+  }
+
+  .privacy-hero {
+    display: block;
+    padding-top: 0;
+    background: none;
+    border-image: none
+  }
+
+  .essentials {
+    background: none;
+    box-shadow: none;
+    padding: 0
+  }
+
+  .disclosure__summary::after {
+    display: none
+  }
+
+  .doc a:not([href^="https://policies"]):not([href^="https://tools"])::after {
+    content: " (" attr(href) ")"
+  }
+}

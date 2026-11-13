@@ -1,0 +1,196 @@
+{
+  "description": "Inventory of third-party code, fonts and services. Source of truth for tools/verify.mjs and THIRD_PARTY_NOTICES.md.",
+  "reviewed": "2026-10-24",
+  "packages": [
+    {
+      "name": "bootstrap",
+      "version": "5.3.8",
+      "license": "MIT",
+      "licenseFile": "LICENSE",
+      "source": "https://www.npmjs.com/package/bootstrap/v/5.3.8",
+      "homepage": "https://getbootstrap.com",
+      "notes": "Bundle includes @popperjs/core (MIT).",
+      "files": {
+        "css/bootstrap.min.css": "sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB",
+        "js/bootstrap.bundle.min.js": "sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+      }
+    },
+    {
+      "name": "gsap",
+      "version": "3.15.0",
+      "license": "LicenseRef-GSAP-Standard",
+      "licenseFile": "LICENSE.md",
+      "source": "https://www.npmjs.com/package/gsap/v/3.15.0",
+      "homepage": "https://gsap.com/standard-license",
+      "notes": "Not MIT. Only Core and ScrollTrigger are vendored.",
+      "files": {
+        "gsap.min.js": "sha384-XmJ9SoHtVOHoQUcKvFAzVXwdkKo1Ie3bhmSoIAkcdsHGaIrVJIkmozyq0FJeb/Ly",
+        "ScrollTrigger.min.js": "sha384-wl5TeDVvOWt30Pbf8aSo2ZrzsOjddu3avOBvHe+p+OhJt9gP6w9YXmDkN5DK2/dF"
+      }
+    },
+    {
+      "name": "swiper",
+      "version": "14.3.0",
+      "license": "MIT",
+      "licenseFile": "LICENSE",
+      "source": "https://www.npmjs.com/package/swiper/v/14.3.0",
+      "homepage": "https://swiperjs.com",
+      "notes": "",
+      "files": {
+        "swiper-bundle.min.js": "sha384-nimz5qRuF8SOYqiuzkhgKleYiz6jIj9pUhB/LlAAsbB6I3fI9v9s5RMwMTzEyOAY",
+        "swiper-bundle.min.css": "sha384-xkKzAc7JSlGq3SLCZHugx/i0gfYZf6kaFzg3v9/wz0HtsAFYPLz7aUvCFTac8KBk"
+      }
+    },
+    {
+      "name": "leaflet",
+      "version": "1.9.4",
+      "license": "BSD-2-Clause",
+      "licenseFile": "LICENSE",
+      "source": "https://www.npmjs.com/package/leaflet/v/1.9.4",
+      "homepage": "https://leafletjs.com",
+      "notes": "Map data (OpenStreetMap, ODbL) is licensed separately; see remote services.",
+      "files": {
+        "leaflet.js": "sha384-cxOPjt7s7Iz04uaHJceBmS+qpjv2JkIHNVcuOrM+YHwZOmJGBXI00mdUXEq65HTH",
+        "leaflet.css": "sha384-sHL9NAb7lN7rfvG5lfHpm643Xkcjzp4jFvuavGOndn6pjVqS6ny56CAt3nsEVT4H",
+        "images/layers.png": "sha384-80x85ZS+G189o0xL8E8D7BnfhuNss6EwUPHzG7e+qByRD2xnpxikZ6UQU4Re5nNy",
+        "images/layers-2x.png": "sha384-+F2ZWK/HTpkV9kN2HnMGCQOTM/cnQJLs770FLOeHznwVWRfDESI8z4JwcGYmy2Au",
+        "images/marker-icon.png": "sha384-wg83fCOXjBtqzFAWhTL9Sd9vmLUNhfEEzfmNUX9zwv2igKlz/YQbdapF4ObdxF+R",
+        "images/marker-icon-2x.png": "sha384-bDEa1RhAAKIr/VQnMZ7gUhhXwmKYB4V0g8AsxOvCEPwGxfHCUEzAEMAEEzkjuxiA",
+        "images/marker-shadow.png": "sha384-dB8ivfvPGb1MSIzX8oWTakCxmq+VwqP/QL1TX4jT4INR3pM5T4FgF3Gx4mN3NTMq"
+      }
+    },
+    {
+      "name": "leaflet-markercluster",
+      "version": "1.5.3",
+      "license": "MIT",
+      "licenseFile": "LICENSE.txt",
+      "source": "https://www.npmjs.com/package/leaflet.markercluster/v/1.5.3",
+      "homepage": "https://github.com/Leaflet/Leaflet.markercluster",
+      "notes": "Copied from RIBBI (byte-identical) on 2026-10-24; clusters the missionaries map.",
+      "files": {
+        "MarkerCluster.css": "sha384-pmjIAcz2bAn0xukfxADbZIb3t8oRT9Sv0rvO+BR5Csr6Dhqq+nZs59P0pPKQJkEV",
+        "leaflet.markercluster.js": "sha384-eXVCORTRlv4FUUgS/xmOyr66XBVraen8ATNLMESp92FKXLAMiKkerixTiBvXriZr"
+      }
+    },
+    {
+      "name": "workbox",
+      "version": "7.4.1",
+      "license": "MIT",
+      "licenseFile": "LICENSE",
+      "source": "https://www.npmjs.com/package/workbox-sw/v/7.4.1",
+      "homepage": "https://developer.chrome.com/docs/workbox/",
+      "notes": "npm 7.4.1; module markers inside the .prod.js files read 7.4.0. workbox-expiration embeds idb (ISC, Jake Archibald).",
+      "files": {
+        "workbox-sw.js": "sha384-av/mKMINTV0P+2yTN0RvfQHV/hzK8ckHmo+X6xHOLIe/PR+WiriU60ScoQXGHv/9",
+        "workbox-core.prod.js": "sha384-q/B8YOk09ZmXurps1CZg/K0gPvaYGwzsfPL6QHD6H9H1LEjB4Wx4w4g0OjWFQGOp",
+        "workbox-routing.prod.js": "sha384-fNaJoy6p983RG0wuE8Dz9wUMYmi90gHjPWJ2Ydc74BV1Ct7VfJP6a6tKHSSBXZSP",
+        "workbox-strategies.prod.js": "sha384-IrHGoDjRVTRijKM2Ebww7W6DuJLcnC2SIrsNxl9Qkm29Ez3duBLHFBw3LIk12t/S",
+        "workbox-expiration.prod.js": "sha384-hCmle/7jDHAgA4+vHG4PA7zLnVgVrp73eClXbREnd/KTyqnSZiuzUo3oSoe/zAjS",
+        "workbox-cacheable-response.prod.js": "sha384-KNWljO0pRiqukSDoejyj/mal78cQk9QvXIOJGk0xSdKUmtNAHvxD5m7iFTQjIC0g",
+        "workbox-precaching.prod.js": "sha384-CObRFafCOdOYzzoN/trzIi5ivCN0l/l2fxWgop2hXvpyLQU68wVPDpdD15z/NcB3",
+        "workbox-navigation-preload.prod.js": "sha384-4yhRfSTEsT0Wwq4xQMhWUHoKOmHJUlnHxYC6ZhCq/d13SyQQ/8wgiZ2nV/iUjvZo"
+      }
+    },
+    {
+      "name": "canvas-confetti",
+      "version": "1.9.4",
+      "license": "ISC",
+      "licenseFile": "LICENSE",
+      "source": "https://www.npmjs.com/package/canvas-confetti/v/1.9.4",
+      "homepage": "https://github.com/catdad/canvas-confetti",
+      "notes": "",
+      "files": {
+        "confetti.browser.js": "sha384-bopE5cbMjKUprmGnIRk2UdvCnHImrRLCtNW2uR6oDYqO+o3XWJeuIrWWxDzeDgNW"
+      }
+    },
+    {
+      "name": "poppins",
+      "version": "5.3.0",
+      "license": "OFL-1.1",
+      "licenseFile": "LICENSE",
+      "source": "https://www.npmjs.com/package/@fontsource/poppins/v/5.3.0",
+      "homepage": "https://github.com/itfoundry/Poppins",
+      "notes": "Fontsource packaging; version is the package version, not the typeface version. Latin subset covers Spanish.",
+      "files": {
+        "poppins-latin-400-normal.woff2": "sha384-W4IwjlabTeW68fblL1nwDvUYgUVRfBlSg7TwKfQGYAuYTkO+zEQFxqxcc6hCAyp4",
+        "poppins-latin-500-normal.woff2": "sha384-e5qUKvS+nhUQiBFU8htn70k/VglzukkqCQFXH4JsQ6FnITQdV75pQpqIoutw40YZ",
+        "poppins-latin-600-normal.woff2": "sha384-EiYBHTqVpr4xspkuHQADXG6v0cTbknPv1ASa3UfRH0Y3H12N0TZcTbsgy7mRJnsK",
+        "poppins-latin-700-normal.woff2": "sha384-DnVuRIgLWR4+Jq22+jywTYJRUXCt5fiIyXBFpQvpZoXnYH+4Wr6/lwEGZoNQalyc"
+      }
+    },
+    {
+      "name": "league-spartan",
+      "version": "5.3.0",
+      "license": "OFL-1.1",
+      "licenseFile": "LICENSE",
+      "source": "https://www.npmjs.com/package/@fontsource/league-spartan/v/5.3.0",
+      "homepage": "https://github.com/theleagueof/league-spartan",
+      "notes": "Fontsource packaging; version is the package version, not the typeface version.",
+      "files": {
+        "league-spartan-latin-400-normal.woff2": "sha384-6pr52Gbwa0dqYpCsnhKiIQS5pmR+8v/x6geFwg+fQrsGLOeVVxeT7zlv4u2pTZuD",
+        "league-spartan-latin-500-normal.woff2": "sha384-iq07FUZHH3ctOopGOk+E9nPvWcEYkcE1vsQIHBuIuzgdlczHm2GDjQgj1rafCLLE",
+        "league-spartan-latin-600-normal.woff2": "sha384-RAlUj+Dnf233CWJDzX5jxcd6sG2wfjor9mAAd9qtpZ73fJGOftJe98iezKBP35cT",
+        "league-spartan-latin-700-normal.woff2": "sha384-WX5c/AUgUiO5iTvJEp56cZx/vl/K4LskglilxMEYXbFaAfBtaEFvgIPHRh9MO3Z4"
+      }
+    },
+    {
+      "name": "fontawesome",
+      "version": "7.3.1",
+      "license": "CC-BY-4.0 AND OFL-1.1 AND MIT",
+      "licenseFile": "LICENSE.txt",
+      "source": "https://www.npmjs.com/package/@fortawesome/fontawesome-free/v/7.3.1",
+      "homepage": "https://fontawesome.com",
+      "notes": "Icons CC BY 4.0, fonts SIL OFL 1.1, code MIT. Brand icons grant no trademark rights.",
+      "files": {
+        "css/brands.min.css": "sha384-pIEnzgIAdkjnrjeHT4EuN7Kq2yGdMr3Vk0e3gLOkA7/e07sPVkOqclXo09iTJVEo",
+        "css/fontawesome.min.css": "sha384-m8DKa0MtZAZlyNgF18TSkQRYTPDY0sEELpwK2YijfYnVFH8kxiaO6hvopM168nue",
+        "css/solid.min.css": "sha384-p/nJzgOJxEnSeUkMQ0nk5oPsUT5x8eOWi6pxU2ls9qcO9B78dCvZk0JSAOXWXUQN",
+        "webfonts/fa-brands-400.woff2": "sha384-QSzlW1NKpLQ4F3Vyt5v6/78tJC+q3tbKZBx6mmL4357XJJMQwKo3s0VxJ0Fp8l78",
+        "webfonts/fa-solid-900.woff2": "sha384-TeBDWCQ2a4tojAZRcJzXsEgFI2EzW27W0GYt9HIpqXdUiPIauuYxz9RpAgJM1x9+"
+      }
+    }
+  ],
+  "derived": [],
+  "remote": [
+    {
+      "name": "OneSignal Web SDK",
+      "version": "v16",
+      "license": "LicenseRef-OneSignal-Modified-MIT",
+      "url": "https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js",
+      "offline": false,
+      "notes": "Remote by design: requires the OneSignal service. Modified MIT ties use to OneSignal services."
+    },
+    {
+      "name": "OpenStreetMap tiles",
+      "version": "",
+      "license": "ODbL-1.0",
+      "url": "https://tile.openstreetmap.org/",
+      "offline": false,
+      "notes": "Visible attribution required. Tile usage policy forbids bulk prefetching; cache only what the user viewed."
+    },
+    {
+      "name": "YouTube (Data API and youtube-nocookie.com player)",
+      "version": "",
+      "license": "LicenseRef-Service-Terms",
+      "url": "https://www.youtube-nocookie.com/",
+      "offline": false,
+      "notes": "Video is never cached; only metadata may be."
+    },
+    {
+      "name": "Google Analytics 4 (gtag.js)",
+      "version": "",
+      "license": "LicenseRef-Service-Terms",
+      "url": "https://www.googletagmanager.com/gtag/js",
+      "offline": false,
+      "notes": "Loaded only after consent."
+    },
+    {
+      "name": "Formspree",
+      "version": "",
+      "license": "LicenseRef-Service-Terms",
+      "url": "https://formspree.io/",
+      "offline": false,
+      "notes": "Form endpoint. Submissions require a connection."
+    }
+  ]
+}
