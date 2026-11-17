@@ -99,6 +99,15 @@
   transform: rotate(-45deg)
 }
 
+@media (prefers-reduced-motion:reduce) {
+
+  .navbar-toggler-icon,
+  .navbar-toggler-icon::before,
+  .navbar-toggler-icon::after {
+    transition: none
+  }
+}
+
 .navbar-settings {
   font-size: 1.25rem
 }
@@ -181,6 +190,28 @@
 
   .site-header .navbar-nav {
     padding-block: var(--space-1) var(--space-2)
+  }
+}
+
+/* The phone menu grows from the pill; browsers that cannot animate to auto height just open it. */
+@supports (interpolate-size:allow-keywords) {
+  @media (max-width:767.98px) and (prefers-reduced-motion:no-preference) {
+    .site-header .navbar-collapse {
+      interpolate-size: allow-keywords;
+      overflow: clip;
+      transition: height var(--dur-base) var(--ease-out), display var(--dur-base);
+      transition-behavior: allow-discrete
+    }
+
+    .site-header .navbar-collapse:not(.show) {
+      height: 0
+    }
+
+    @starting-style {
+      .site-header .navbar-collapse.show {
+        height: 0
+      }
+    }
   }
 }
 

@@ -11,23 +11,7 @@
             await navigator.clipboard.writeText(text);
             return true
         } catch {
-            const area = document.createElement('textarea');
-            const focused = document.activeElement;
-            area.value = text;
-            area.setAttribute('readonly', '');
-            area.style.cssText = 'position:fixed;opacity:0';
-            document.body.append(area);
-            try {
-                area.select();
-                return document.execCommand('copy')
-            } catch {
-                return false
-            } finally {
-                area.remove();
-                focused?.focus({
-                    preventScroll: true
-                })
-            }
+            return false
         }
     }
 

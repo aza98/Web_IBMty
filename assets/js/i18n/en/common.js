@@ -10,6 +10,10 @@
     IBMty.i18n.add('en', {
         keep: ["IBMty", "Iglesia Bautista de Monterrey", "Iglesia Bautista de Monterrey ©", "oficina@ibmty.com", "RIBBI", "El Saucillo", "WhatsApp", "YouVersion", "YouTube"],
         texts: {
+            "Desliza": "Swipe",
+            "Desliza para ver más": "Swipe to see more",
+            "Evento anterior": "Previous event",
+            "Evento siguiente": "Next event",
             "No hay información publicada en esta lista por ahora.": "No information is published in this list at the moment.",
             "Transmisión por confirmar": "Stream awaiting confirmation",
             "Menú": "Menu",
@@ -102,8 +106,6 @@
             "Sin conexión": "Offline",
             "Cerrar": "Close",
             "Escribir por WhatsApp": "Message us on WhatsApp",
-            "Anterior": "Previous",
-            "Siguiente": "Next",
             "Uso de cookies": "Cookie use",
             "Usamos cookies de análisis para saber qué páginas son útiles y mejorar tu experiencia. Consulta nuestro": "We use analytics cookies to learn which pages are useful and improve your experience. Read our",
             "Activa las notificaciones": "Turn on notifications",

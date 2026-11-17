@@ -2,8 +2,9 @@
  * Subset of Font Awesome Free 7.3.1 (https://fontawesome.com): only the icons this site uses.
  * License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)
  * Copyright 2026 Fonticons, Inc.
- * New icon: copy its `.fa-name{--fa:"..."}` rule from vendor/fontawesome/7.3.1/css/.
- * tools/verify.project.mjs fails when a page uses an icon missing here.
+ * New icon: copy its `.fa-name{--fa:"..."}` rule from vendor/fontawesome/7.3.1/css/, then
+ * regenerate the fonts in vendor/fontawesome/7.3.1-subset/ (docs/development.md).
+ * tools/verify.project.mjs fails when a page uses an icon missing here or in those fonts.
  */
 .fa-brands,
 .fa-solid {
@@ -188,7 +189,7 @@
     font-style: normal;
     font-weight: 900;
     font-display: block;
-    src: url(../../../vendor/fontawesome/7.3.1/webfonts/fa-solid-900.woff2)
+    src: url(../../../vendor/fontawesome/7.3.1-subset/webfonts/fa-solid-900.woff2)
 }
 
 .fa-solid {
@@ -205,7 +206,7 @@
     font-style: normal;
     font-weight: 400;
     font-display: block;
-    src: url(../../../vendor/fontawesome/7.3.1/webfonts/fa-brands-400.woff2)
+    src: url(../../../vendor/fontawesome/7.3.1-subset/webfonts/fa-brands-400.woff2)
 }
 
 .fa-brands {

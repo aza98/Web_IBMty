@@ -16,8 +16,11 @@
     <link rel=apple-touch-icon href=../assets/icons/app/apple-touch-icon.png>
     <script src=../assets/js/boot/theme.js></script>
     <script src=../assets/js/boot/pwa-launch.js></script>
+    <link rel=preload as=font type=font/woff2 href=../vendor/league-spartan/5.3.0/league-spartan-latin-700-normal.woff2 crossorigin>
+    <link rel=preload as=font type=font/woff2 href=../vendor/poppins/5.3.0/poppins-latin-400-normal.woff2 crossorigin>
+    <link rel=preload as=fetch href=../assets/data/ministries.json crossorigin>
+    <link rel=preload as=fetch href=../assets/data/missionaries.json crossorigin>
     <link rel=stylesheet href=../assets/css/core/bootstrap-subset.css>
-    <link rel=stylesheet href=../vendor/swiper/14.3.0/swiper-bundle.min.css>
     <link rel=stylesheet href=../vendor/leaflet/1.9.4/leaflet.css>
     <link rel=stylesheet href=../vendor/leaflet-markercluster/1.5.3/MarkerCluster.css>
     <link rel=stylesheet href=../assets/css/core/icons.css>
@@ -36,8 +39,6 @@
     <link rel=stylesheet href=../assets/css/components/forms.css>
     <link rel=stylesheet href=../assets/css/components/floating.css>
     <link rel=stylesheet href=../assets/css/pages/about.css>
-    <script defer src=../vendor/bootstrap/5.3.8/js/bootstrap.bundle.min.js></script>
-    <script defer src=../vendor/swiper/14.3.0/swiper-bundle.min.js></script>
     <script defer src=../vendor/leaflet/1.9.4/leaflet.js></script>
     <script defer src=../vendor/leaflet-markercluster/1.5.3/leaflet.markercluster.js></script>
     <script defer src=../vendor/gsap/3.15.0/gsap.min.js></script>
@@ -83,7 +84,7 @@
                 <button class="navbar-settings icon-btn" type=button aria-label=Ajustes aria-haspopup=dialog aria-expanded=false aria-controls=settings-panel data-settings-toggle>
                     <i class="fa-solid fa-gear icon" aria-hidden="true"></i>
                 </button>
-                <button class=navbar-toggler type=button data-bs-toggle=collapse data-bs-target=#main-nav aria-controls=main-nav aria-expanded=false aria-label="Abrir menú">
+                <button class=navbar-toggler type=button aria-controls=main-nav aria-expanded=false aria-label="Abrir menú">
                     <span class=navbar-toggler-icon></span>
                 </button>
                 <div class="collapse navbar-collapse" id=main-nav>
@@ -218,15 +219,15 @@
                     <h2 class=section-title id=leaders-title>Líderes y Ministerios</h2>
                     <p class=section-lead>Personas con corazón dispuesto a servir, guiando a cada generación a conocer y seguir a Cristo</p>
                 </div>
-                <div class="carousel-app swiper" data-reveal data-carousel data-carousel-align=start aria-label="Líderes y ministerios">
-                    <div class=swiper-wrapper data-content=ministries>
+                <div class=carousel-app data-reveal data-carousel role=region aria-label="Líderes y ministerios">
+                    <div class=carousel-track data-content=ministries tabindex=0>
                     </div>
                 </div>
-                <div class=carousel-nav data-carousel-nav data-reveal>
-                    <span class=carousel-nav__count data-carousel-count aria-hidden=true>Desliza</span>
+                <div class=carousel-nav data-carousel-nav data-reveal hidden>
                     <button class="carousel-nav__button carousel-nav__button--prev" type=button data-carousel-prev aria-label="Ministerio anterior">
                         <i class="fa-solid fa-arrow-right icon" aria-hidden="true"></i>
                     </button>
+                    <span class=carousel-nav__count data-carousel-count aria-hidden=true>Desliza</span>
                     <button class=carousel-nav__button type=button data-carousel-next aria-label="Ministerio siguiente">
                         <i class="fa-solid fa-arrow-right icon" aria-hidden="true"></i>
                     </button>

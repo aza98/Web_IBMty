@@ -43,7 +43,8 @@
         target.searchParams.set('from', request.url);
         return Response.redirect(target.href, 302)
     };
-    workbox.navigationPreload.enable();
+    // Every page is precached and served cache-first, so a preload would download HTML no one reads.
+    workbox.navigationPreload.disable();
     registerRoute(({
         request
     }) => request.mode === 'navigate', new NetworkFirst({

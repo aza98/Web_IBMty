@@ -6,7 +6,7 @@
 (function(scope) {
     'use strict';
     scope.IBMTY_RELEASE = Object.freeze({
-        version: '8.0.0',
-        date: '2026-11-13'
+        version: '8.1.0',
+        date: '2026-11-17'
     })
 })(self)

@@ -11,7 +11,7 @@
         const chips = item.chips.map((chip) => `
             <li class="chip" data-share-part=""><i class="fa-solid fa-${e(chip.icon)} icon" aria-hidden="true"></i>${e(chip.text)}</li>`).join('');
         return `
-      <article class="swiper-slide slide-card" id="${e(item.id)}" data-share-scope="">
+      <article class="carousel-slide slide-card" id="${e(item.id)}" data-share-scope="">
         <figure class="slide-card__media">
           <img class="slide-card__photo" src="${e(app.root + item.photo)}" alt="${e(item.photoAlt)}" width="1920" height="1080" loading="lazy" decoding="async">
           <img class="leader-card__logo" src="${e(app.root + item.logo)}" alt="" width="64" height="64" loading="lazy" decoding="async">
@@ -50,7 +50,7 @@ ${IBMty.shareActions(app, item.flyer || item.logo, item.links)}
         </div>
       </li>`
     }
-    const byDeparture = (records) => [...records].sort((a, b) => departure(a.since) - departure(b.since));
+    const byDeparture = (records) => records.toSorted((a, b) => departure(a.since) - departure(b.since));
 
     function stage() {
         const root = document.querySelector('[data-stage]');

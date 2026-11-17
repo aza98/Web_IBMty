@@ -9,8 +9,13 @@
   position: fixed;
   top: var(--panel-top);
   right: calc(var(--safe-right) + var(--gutter));
+  bottom: auto;
   left: calc(var(--safe-left) + var(--gutter));
   z-index: 1035;
+  width: auto;
+  height: auto;
+  margin: 0;
+  border: 0;
   max-height: calc(100dvh - var(--panel-top) - var(--space-3) - var(--safe-bottom) - var(--tabbar-clearance));
   padding: var(--space-3) var(--space-3) var(--space-4);
   overflow-y: auto;
@@ -365,6 +370,12 @@
   background: var(--white);
   box-shadow: 0 1px 3px rgb(13 11 8 / .3);
   transition: transform var(--dur-fast) var(--ease-out)
+}
+
+@media (prefers-reduced-motion:reduce) {
+  .settings-switch__track::after {
+    transition: none
+  }
 }
 
 .settings-switch input:checked+.settings-switch__track {

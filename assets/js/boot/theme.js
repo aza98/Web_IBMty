@@ -28,6 +28,7 @@
     function apply() {
         const resolved = resolve();
         document.documentElement.dataset.bsTheme = resolved;
+        document.documentElement.style.colorScheme = resolved;
         const bar = document.querySelector('meta[name="theme-color"]');
         const installed = document.documentElement.dataset.display === 'standalone' && document.body;
         const page = installed ? getComputedStyle(document.body).getPropertyValue('--color-status-bar').trim() : '';
@@ -59,6 +60,8 @@
         if (mode === 'auto') apply();
     });
     document.documentElement.dataset.bsTheme = resolve();
+    // Dark canvas from the first frame, before the stylesheets that set color-scheme arrive.
+    document.documentElement.style.colorScheme = resolve();
     document.addEventListener('DOMContentLoaded', apply, {
         once: !0
     })

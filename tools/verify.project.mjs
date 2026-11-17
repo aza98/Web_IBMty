@@ -10,6 +10,55 @@ import {
     resolve
 } from 'node:path';
 import vm from 'node:vm';
+import {
+    brotliDecompressSync
+} from 'node:zlib';
+
+// Codepoints in a WOFF2 font's cmap (formats 4 and 12). Tables follow the directory unpadded.
+function woff2Codepoints(file) {
+    const buffer = readFileSync(file);
+    let at = 48;
+    const base128 = () => {
+        let value = 0;
+        for (let i = 0; i < 5; i++) {
+            const byte = buffer[at++];
+            value = value * 128 + (byte & 127);
+            if (!(byte & 128)) return value
+        }
+    };
+    const tables = [];
+    for (let i = 0; i < buffer.readUInt16BE(12); i++) {
+        const flags = buffer[at++];
+        const tag = (flags & 63) === 63 ? buffer.toString('latin1', at, at += 4) : flags & 63;
+        const length = base128();
+        const transformed = tag === 10 || tag === 11 ? flags >> 6 === 0 : flags >> 6 !== 0;
+        tables.push([tag, transformed ? base128() : length]);
+    }
+    const data = brotliDecompressSync(buffer.subarray(at, at + buffer.readUInt32BE(20)));
+    let cmap = 0;
+    for (const [tag, length] of tables) {
+        if (tag === 0) break;
+        cmap += length
+    }
+    const u16 = (o) => data.readUInt16BE(o);
+    const u32 = (o) => data.readUInt32BE(o);
+    const points = new Set();
+    for (let i = 0; i < u16(cmap + 2); i++) {
+        const sub = cmap + u32(cmap + 8 + i * 8);
+        if (u16(sub) === 4) {
+            const segments = u16(sub + 6) / 2;
+            for (let s = 0; s < segments; s++) {
+                const end = u16(sub + 14 + s * 2);
+                for (let c = u16(sub + 16 + segments * 2 + s * 2); c <= end && c !== 0xffff; c++) points.add(c)
+            }
+        } else if (u16(sub) === 12) {
+            for (let g = 0; g < u32(sub + 12); g++) {
+                for (let c = u32(sub + 16 + g * 12); c <= u32(sub + 20 + g * 12); c++) points.add(c)
+            }
+        }
+    }
+    return points
+}
 const BLOCKS = ['skip link', 'header', 'footer', 'tabbar', 'boot'];
 export default {
     namespace: 'IBMty',
@@ -63,21 +112,20 @@ export default {
             ROOT,
             fail
         }) {
-            let module, click, closing, opening = 0,
-                cleared = !1;
+            let module, click;
             const events = {};
-            const body = {};
-            const panel = {
-                open: !1,
-                dataset: {},
-                hasAttribute: () => Object.hasOwn(panel.dataset, 'closing'),
-                querySelector: (selector) => selector === 'summary' ? {
-                    addEventListener: (_, fn) => {
-                        click = fn
-                    }
-                } : body,
-                addEventListener() {}
+            const toggleAll = {
+                setAttribute() {},
+                querySelector: () => ({}),
+                addEventListener: (_, fn) => {
+                    click = fn
+                }
             };
+            const panels = ['a', 'b'].map((id) => ({
+                id,
+                open: !1,
+                addEventListener() {}
+            }));
             const sandbox = {
                 self: {
                     IBMty: {
@@ -87,8 +135,8 @@ export default {
                     }
                 },
                 document: {
-                    querySelectorAll: () => [panel],
-                    querySelector: () => null
+                    querySelectorAll: () => panels,
+                    querySelector: () => toggleAll
                 },
                 window: {
                     addEventListener: (name, fn) => {
@@ -96,39 +144,18 @@ export default {
                     }
                 },
                 location: {
-                    hash: ''
-                },
-                matchMedia: () => ({
-                    matches: !1
-                }),
-                gsap: {
-                    fromTo: () => {
-                        opening++
-                    },
-                    to: (_, vars) => {
-                        closing = vars.onComplete
-                    },
-                    killTweensOf: () => {
-                        closing = null
-                    },
-                    set: () => {
-                        cleared = !0
-                    }
+                    hash: '#b'
                 }
             };
             vm.runInNewContext(readFileSync(join(ROOT, 'assets/js/components/disclosure.js'), 'utf8'), sandbox);
             module.init();
-            const toggle = () => click({
-                preventDefault() {}
-            });
-            toggle();
-            toggle();
-            toggle();
-            if (!panel.open || panel.hasAttribute() || opening !== 2 || closing) fail('disclosure: rapid second click did not reverse closing');
-            toggle();
+            if (panels[0].open || !panels[1].open) fail('disclosure: the fragment did not open only its panel');
+            click();
+            if (!panels.every((panel) => panel.open)) fail('disclosure: open all left a panel closed');
+            click();
+            if (panels.some((panel) => panel.open)) fail('disclosure: close all left a panel open');
             events.beforeprint();
-            if (closing) closing();
-            if (!panel.open || panel.hasAttribute() || !cleared) fail('disclosure: printing left a closing or hidden panel');
+            if (!panels.every((panel) => panel.open)) fail('disclosure: printing left a closed panel');
         },
         navigation({
             ROOT,
@@ -180,6 +207,34 @@ export default {
                 if (linked(page).join() !== reference.join()) fail(`shared styles: ${page} links different shared stylesheets than index.html`);
             }
         },
+        serviceWorkerConfig({
+            ROOT,
+            fail
+        }) {
+            const sandbox = {
+                self: {
+                    IBMTY_RELEASE: {
+                        version: '0'
+                    }
+                }
+            };
+            vm.runInNewContext(readFileSync(join(ROOT, 'service-worker/config.js'), 'utf8'), sandbox);
+            if (!sandbox.self.IBMtySW?.config?.caches) fail('service worker: service-worker/config.js did not define IBMtySW.config (the worker would not install)');
+        },
+        iconFonts({
+            ROOT,
+            fail
+        }) {
+            const css = readFileSync(join(ROOT, 'assets/css/core/icons.css'), 'utf8');
+            const cut = css.indexOf('Font Awesome 7 Brands');
+            for (const section of [css.slice(0, cut), css.slice(cut)]) {
+                const font = section.match(/src:\s*url\(([^)]+)\)/)[1];
+                const points = woff2Codepoints(resolve(ROOT, 'assets/css/core', font));
+                for (const [, name, hex] of section.matchAll(/\.(fa-[a-z0-9-]+)\s*\{\s*--fa:\s*"\\([0-9a-f]+)"/g)) {
+                    if (!points.has(parseInt(hex, 16))) fail(`icon fonts: .${name} has no glyph in ${font.replace(/^(\.\.\/)+/, '')}; regenerate the subset (docs/development.md)`);
+                }
+            }
+        },
         vendorSubsets({
             ROOT,
             fail,
@@ -188,7 +243,7 @@ export default {
         }) {
             const read = (path) => readFileSync(join(ROOT, path), 'utf8');
             const defines = (css, name) => new RegExp(`\\.${name}(?![\\w-])`).test(css);
-            const full = ['bootstrap/5.3.8/css/bootstrap.min.css', 'fontawesome/7.3.1/css/fontawesome.min.css', 'fontawesome/7.3.1/css/brands.min.css'].map((path) => read(`vendor/${path}`)).join('');
+            const full = ['bootstrap/5.3.9/css/bootstrap.min.css', 'fontawesome/7.3.1/css/fontawesome.min.css', 'fontawesome/7.3.1/css/brands.min.css'].map((path) => read(`vendor/${path}`)).join('');
             const subset = read('assets/css/core/bootstrap-subset.css') + read('assets/css/core/icons.css');
             for (const file of walk(ROOT, (path) => /\.(html|js|json)$/.test(path) && !path.includes('/tools/') && !path.endsWith('skills-lock.json'))) {
                 const text = readFileSync(file, 'utf8');

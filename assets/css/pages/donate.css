@@ -27,22 +27,13 @@
 }
 
 .donate-ill__phone {
-  fill: var(--stone-850);
-  stroke: var(--stone-700);
+  fill: var(--ill-phone);
+  stroke: var(--ill-phone-line);
   stroke-width: 1.5
 }
 
-[data-bs-theme="dark"] .donate-ill__phone {
-  fill: var(--stone-950);
-  stroke: var(--stone-600)
-}
-
 .donate-ill__screen {
-  fill: var(--color-bg)
-}
-
-[data-bs-theme="dark"] .donate-ill__screen {
-  fill: var(--stone-900)
+  fill: var(--ill-phone-screen)
 }
 
 .donate-ill__slot {

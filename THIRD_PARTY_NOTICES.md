@@ -9,10 +9,9 @@ este documento lo resume. Rigen las licencias originales que acompañan a cada p
 
 | Componente | Versión | Licencia | Titular | Texto |
 | --- | --- | --- | --- | --- |
-| Bootstrap (incluye Popper) | 5.3.8 | MIT | The Bootstrap Authors | [LICENSE](vendor/bootstrap/5.3.8/LICENSE) |
-| Font Awesome Free (fuente web: solid y brands) | 7.3.1 | Iconos CC BY 4.0, fuentes SIL OFL 1.1, código MIT | Fonticons, Inc. | [LICENSE.txt](vendor/fontawesome/7.3.1/LICENSE.txt) |
+| Bootstrap (solo CSS) | 5.3.9 | MIT | The Bootstrap Authors | [LICENSE](vendor/bootstrap/5.3.9/LICENSE) |
+| Font Awesome Free (fuente web: solid y brands; recortada en 7.3.1-subset) | 7.3.1 | Iconos CC BY 4.0, fuentes SIL OFL 1.1, código MIT | Fonticons, Inc. | [LICENSE.txt](vendor/fontawesome/7.3.1/LICENSE.txt) |
 | GSAP Core y ScrollTrigger | 3.15.0 | Standard "No Charge" GSAP License (no es MIT) | GreenSock | [LICENSE.md](vendor/gsap/3.15.0/LICENSE.md) |
-| Swiper | 14.3.0 | MIT | Vladimir Kharlampidi | [LICENSE](vendor/swiper/14.3.0/LICENSE) |
 | Leaflet | 1.9.4 | BSD-2-Clause | Volodymyr Agafonkin, CloudMade | [LICENSE](vendor/leaflet/1.9.4/LICENSE) |
 | Leaflet.markercluster | 1.5.3 | MIT | David Leaver | [LICENSE.txt](vendor/leaflet-markercluster/1.5.3/LICENSE.txt) |
 | Workbox (incluye idb, ISC) | 7.4.1 | MIT | Google LLC | [LICENSE](vendor/workbox/7.4.1/LICENSE) |
@@ -27,8 +26,9 @@ Notas:
 - El módulo de expiración de Workbox incluye `idb` (ISC, copyright 2016 Jake Archibald).
 - Los iconos de marcas de Font Awesome no otorgan derechos de marca ni implican respaldo.
 - Las páginas cargan copias recortadas de Bootstrap y Font Awesome que conservan sus avisos
-  (`assets/css/core/bootstrap-subset.css`, `icons.css`); los archivos completos están en
-  `vendor/`.
+  (`assets/css/core/bootstrap-subset.css`, `icons.css` y las fuentes de
+  `vendor/fontawesome/7.3.1-subset/`, que conservan su tabla de nombres y van con su
+  `LICENSE.txt`); los archivos completos están en `vendor/`.
 
 ## Recursos derivados
 

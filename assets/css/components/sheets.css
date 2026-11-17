@@ -74,14 +74,6 @@
   rotate: 45deg
 }
 
-@media (prefers-reduced-motion:no-preference) {
-
-  .hero__diamonds span,
-  .sheet__diamonds span {
-    will-change: transform
-  }
-}
-
 .sheet__diamonds span:nth-child(1) {
   width: clamp(10rem, 24vw, 22rem);
   right: -6%;

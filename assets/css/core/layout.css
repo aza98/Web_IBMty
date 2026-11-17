@@ -112,3 +112,9 @@ html {
   transform: rotate(45deg);
   transition: background-color var(--dur-slow) var(--ease-out), border-color var(--dur-slow) var(--ease-out), transform var(--dur-slow) var(--ease-out)
 }
+
+@media (prefers-reduced-motion:reduce) {
+  .step-node::before {
+    transition-property: background-color, border-color
+  }
+}

@@ -61,7 +61,10 @@
                 [-85, -540],
                 [85, 540]
             ],
-            maxBoundsViscosity: 1
+            maxBoundsViscosity: 1,
+            zoomAnimation: !reduced(),
+            fadeAnimation: !reduced(),
+            markerZoomAnimation: !reduced()
         });
         L.control.zoom({
             position: 'bottomright',
@@ -97,6 +100,7 @@
         const cluster = L.markerClusterGroup({
             showCoverageOnHover: !1,
             maxClusterRadius: 48,
+            animate: !reduced(),
             iconCreateFunction: clusterIcon
         }).addTo(map);
         const markers = items.map((item, index) => {
@@ -143,7 +147,10 @@
                 ...fit,
                 duration: 0.9
             });
-            else map.fitBounds(L.latLngBounds(path), fit)
+            else map.fitBounds(L.latLngBounds(path), reduced() ? {
+                ...fit,
+                animate: !1
+            } : fit)
         }
         el.addEventListener('map:focus', (event) => focus(Number(event.detail.index), event.detail.animate !== !1));
         let resizing;

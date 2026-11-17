@@ -13,7 +13,7 @@
         const e = app.escapeHtml;
         const status = item.status === 'upcoming' ? 'event-status event-status--upcoming' : 'event-status';
         return `
-      <article class="swiper-slide slide-card event-card" id="${e(item.id)}" data-share-scope="" data-label="${e(item.label)}" data-status="${e(item.status)}">
+      <article class="carousel-slide slide-card event-card" id="${e(item.id)}" data-share-scope="" data-label="${e(item.label)}" data-status="${e(item.status)}">
         <div class="slide-card__media">
           <img class="slide-card__photo" src="${e(app.root + item.image)}" alt="${e(item.imageAlt)}" width="1920" height="1080"${item.lazy ? ' loading="lazy"' : ''} decoding="async">
         </div>

@@ -17,7 +17,6 @@
             "jul": "Jul",
             "nov": "Nov",
             "Concluido": "Finished",
-            "Próximamente": "Coming soon",
             "febrero 2026": "February 2026",
             "marzo 2026": "March 2026",
             "julio 2026": "July 2026",

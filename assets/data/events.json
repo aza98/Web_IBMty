@@ -65,8 +65,8 @@
   {
     "id": "evento-cima-2026-despliegue",
     "label": "nov",
-    "status": "upcoming",
-    "statusText": "Próximamente",
+    "status": "past",
+    "statusText": "Concluido",
     "image": "assets/images/events/cima-2026.webp",
     "imageAlt": "Cartel de CIMA 2026",
     "lazy": false,
@@ -81,6 +81,11 @@
         "label": "Página de RIBBI",
         "url": "https://www.ribbi.org/",
         "family": "solid"
+      },
+      {
+        "icon": "instagram",
+        "label": "Instagram",
+        "url": "https://www.instagram.com/cima.ribbi/"
       }
     ]
   }

@@ -27,4 +27,4 @@
             }
         })
     })
-})
+})(self.IBMtySW = self.IBMtySW || {});

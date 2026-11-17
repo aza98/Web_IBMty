@@ -48,7 +48,14 @@
         IBMty.page = document.body.dataset.page || '';
         await Promise.all([...modules].map(([name, module]) => prepareModule(name, module)));
         started = true;
-        modules.forEach((module, name) => initModule(name, module));
+        // Yield every 50 ms so start-up never blocks input as one long task; order is kept.
+        let deadline = performance.now() + 50;
+        for (const [name, module] of modules) {
+            initModule(name, module);
+            if (performance.now() < deadline) continue;
+            await (self.scheduler?.yield?.() ?? new Promise((resolve) => setTimeout(resolve)));
+            deadline = performance.now() + 50;
+        }
         emit('app:ready');
     }
 

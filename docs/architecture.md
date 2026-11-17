@@ -65,20 +65,22 @@ porque Impeccable los busca ahí.
 
 ## Carga e inicialización
 
-1. En el `head`, `boot/theme.js` y `boot/pwa-launch.js` aplican tema y modo antes del primer
-   pintado, sin depender de nada más.
+1. En el `head`, `boot/theme.js` y `boot/pwa-launch.js` aplican tema (con su `color-scheme`) y
+   modo antes del primer pintado, sin depender de nada más. Después se precargan la fuente de
+   los títulos (League Spartan 700), la del texto (Poppins 400) y los JSON de la página.
 2. CSS: Bootstrap y Font Awesome recortados (`assets/css/core/bootstrap-subset.css` e
-   `icons.css`; los archivos completos se quedan en `vendor/`), el resto del CSS de vendor que
-   haga falta, las hojas de `core/` y `components/` y el CSS de la página. El splash carga solo
+   `icons.css`, con las fuentes de iconos recortadas en `vendor/fontawesome/7.3.1-subset/`; los
+   archivos completos se quedan en `vendor/`), el resto del CSS de vendor que haga falta, las hojas de `core/` y `components/` y el CSS de la página. El splash carga solo
    `core/` y su propia hoja.
 3. Scripts `defer`: dependencias; versión, configuración, registro y almacenamiento;
    `core/i18n.js` y los diccionarios en inglés; módulos compartidos y lógica de la página, en
    el orden del HTML.
-4. `app.js` espera `DOMContentLoaded`, espera cada `prepare()`, arranca los módulos y emite
-   `app:ready`.
+4. `app.js` espera `DOMContentLoaded`, espera cada `prepare()`, arranca los módulos en orden
+   (cede el hilo cada 50 ms para que el arranque no bloquee la entrada) y emite `app:ready`.
 
-Cada pantalla carga sus bibliotecas: Swiper en inicio y nosotros, Leaflet en nosotros y
-canvas-confetti en Salvación. Revisa las etiquetas reales antes de cambiar el orden.
+Cada pantalla carga sus bibliotecas: GSAP donde hay movimiento, Leaflet en nosotros y
+canvas-confetti en Salvación. Carruseles, menú, panel de ajustes y diálogo son nativos (sin
+Swiper ni el JavaScript de Bootstrap). Revisa las etiquetas reales antes de cambiar el orden.
 
 ## Contratos de JS y DOM
 

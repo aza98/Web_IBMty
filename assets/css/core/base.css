@@ -1,10 +1,7 @@
 html {
   accent-color: var(--color-brand-strong);
   caret-color: var(--color-brand-strong);
-  scrollbar-color: var(--color-text-muted) var(--color-surface)
-}
-
-html:not(:has(.modal-open)) {
+  scrollbar-color: var(--color-text-muted) var(--color-surface);
   scrollbar-gutter: stable
 }
 
@@ -95,19 +92,6 @@ a {
   font-family: var(--font-secondary);
   font-weight: 600;
   text-decoration: none
-}
-
-@media (prefers-reduced-motion:reduce) {
-
-  *,
-  ::before,
-  ::after {
-    animation-duration: .01ms !important;
-    animation-delay: 0s !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: .01ms !important;
-    transition-delay: 0s !important
-  }
 }
 
 :where(main, section, article, form, fieldset, .container) {

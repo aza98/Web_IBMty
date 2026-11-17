@@ -2,8 +2,9 @@
  * Settings panel opened from the navbar gear ([data-settings-toggle]): appearance
  * (light, dark or automatic, through IBMty.theme), language (IBMty.i18n), church notices
  * (IBMty.push, services/push.js) and app installation (IBMty.install).
- * The panel is built here so its markup lives in one place; it closes on Escape,
- * on a click outside or when the page changes.
+ * The panel is built here so its markup lives in one place. It is a popover (top layer; Escape,
+ * the back gesture and a tap outside close it); browsers without popover get the same behavior
+ * from the listeners at the end.
  * The installed app hides the navbar, so the Ajustes page (app/settings.html) mounts
  * the same appearance and language controls inline in [data-appearance] and [data-language],
  * and binds its own [data-push] group with the same bindPush().
@@ -167,7 +168,6 @@
             panel.id = 'settings-panel';
             panel.setAttribute('role', 'dialog');
             panel.setAttribute('aria-labelledby', 'settings-panel-title');
-            panel.hidden = !0;
             panel.tabIndex = -1;
             panel.innerHTML = `
         <header class="settings-panel__head">
@@ -204,27 +204,43 @@
             panel.querySelector('[data-install]').addEventListener('click', () => app.install.prompt());
             app.on('install-change', sync);
 
-            function setOpen(open) {
-                panel.hidden = !open;
+            const closeButton = panel.querySelector('.settings-panel__close');
+            const opened = (open) => {
                 toggles.forEach((toggle) => toggle.setAttribute('aria-expanded', String(open)));
-                if (open) {
-                    sync();
-                    loadPush();
-                    panel.focus()
-                }
-            }
-            toggles.forEach((toggle) => toggle.addEventListener('click', () => setOpen(panel.hidden)));
-            const close = () => {
-                setOpen(!1);
-                toggles[0].focus()
+                if (!open) return;
+                sync();
+                loadPush();
+                panel.focus()
             };
-            panel.querySelector('.settings-panel__close').addEventListener('click', close);
-            document.addEventListener('keydown', (event) => {
-                if (event.key === 'Escape' && !panel.hidden) close();
-            });
-            document.addEventListener('click', (event) => {
-                if (!panel.hidden && !panel.contains(event.target) && ![...toggles].some((toggle) => toggle.contains(event.target))) setOpen(!1);
-            });
+            if ('popover' in HTMLElement.prototype) {
+                panel.popover = 'auto';
+                toggles.forEach((toggle) => {
+                    toggle.popoverTargetElement = panel
+                });
+                panel.addEventListener('toggle', (event) => opened(event.newState === 'open'));
+                closeButton.addEventListener('click', () => {
+                    panel.hidePopover();
+                    toggles[0].focus()
+                })
+            } else {
+                panel.hidden = !0;
+                const setOpen = (open) => {
+                    panel.hidden = !open;
+                    opened(open)
+                };
+                const close = () => {
+                    setOpen(!1);
+                    toggles[0].focus()
+                };
+                toggles.forEach((toggle) => toggle.addEventListener('click', () => setOpen(panel.hidden)));
+                closeButton.addEventListener('click', close);
+                document.addEventListener('keydown', (event) => {
+                    if (event.key === 'Escape' && !panel.hidden) close();
+                });
+                document.addEventListener('click', (event) => {
+                    if (!panel.hidden && !panel.contains(event.target) && ![...toggles].some((toggle) => toggle.contains(event.target))) setOpen(!1);
+                })
+            }
             sync()
         }
     })

@@ -16,6 +16,8 @@
     <link rel=apple-touch-icon href=../assets/icons/app/apple-touch-icon.png>
     <script src=../assets/js/boot/theme.js></script>
     <script src=../assets/js/boot/pwa-launch.js></script>
+    <link rel=preload as=font type=font/woff2 href=../vendor/league-spartan/5.3.0/league-spartan-latin-700-normal.woff2 crossorigin>
+    <link rel=preload as=font type=font/woff2 href=../vendor/poppins/5.3.0/poppins-latin-400-normal.woff2 crossorigin>
     <link rel=stylesheet href=../assets/css/core/bootstrap-subset.css>
     <link rel=stylesheet href=../assets/css/core/icons.css>
     <link rel=stylesheet href=../assets/css/core/tokens.css>
@@ -33,7 +35,6 @@
     <link rel=stylesheet href=../assets/css/components/forms.css>
     <link rel=stylesheet href=../assets/css/components/floating.css>
     <link rel=stylesheet href=../assets/css/pages/salvation.css>
-    <script defer src=../vendor/bootstrap/5.3.8/js/bootstrap.bundle.min.js></script>
     <script defer src=../vendor/gsap/3.15.0/gsap.min.js></script>
     <script defer src=../vendor/gsap/3.15.0/ScrollTrigger.min.js></script>
     <script defer src=../vendor/canvas-confetti/1.9.4/confetti.browser.js></script>
@@ -87,7 +88,7 @@
                 <button class="navbar-settings icon-btn" type=button aria-label=Ajustes aria-haspopup=dialog aria-expanded=false aria-controls=settings-panel data-settings-toggle>
                     <i class="fa-solid fa-gear icon" aria-hidden="true"></i>
                 </button>
-                <button class=navbar-toggler type=button data-bs-toggle=collapse data-bs-target=#main-nav aria-controls=main-nav aria-expanded=false aria-label="Abrir menú">
+                <button class=navbar-toggler type=button aria-controls=main-nav aria-expanded=false aria-label="Abrir menú">
                     <span class=navbar-toggler-icon></span>
                 </button>
                 <div class="collapse navbar-collapse" id=main-nav>
@@ -415,7 +416,7 @@
                                     <p>“Si confesares con tu boca que Jesús es el Señor, y creyeres en tu corazón que Dios le levantó de los muertos, serás salvo.”</p>
                                     <cite>Romanos 10:9</cite>
                                 </blockquote>
-                                <a class="btn-app--block btn-app btn-app--primary decision__action" href=about.html#contacto data-bs-toggle=modal data-bs-target=#salvation-modal role=button>
+                                <a class="btn-app--block btn-app btn-app--primary decision__action" href=about.html#contacto data-dialog=salvation-modal role=button>
                                     <i class="fa-solid fa-hands-praying icon" aria-hidden="true"></i>Aceptar a Jesús ahora</a>
                             </div>
                         </li>
@@ -424,69 +425,65 @@
             </div>
         </section>
     </main>
-    <div class="modal fade prayer-modal" id=salvation-modal tabindex=-1 aria-labelledby=prayer-title aria-hidden=true>
-        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-            <div class=modal-content>
-                <button type=button class="btn-close prayer-modal__close" data-bs-dismiss=modal aria-label=Cerrar></button>
-                <div class="modal-body prayer-modal__body">
-                    <section class=prayer-modal__stage data-stage=prayer>
-                        <h2 class="title-lg prayer-modal__title" id=prayer-title tabindex=-1 data-stage-title>Una oración para recibir a Jesús</h2>
-                        <p>No son palabras mágicas: lo que importa es lo que crees en tu corazón. Puedes hablar con Dios con tus propias palabras o decirle algo así:</p>
-                        <blockquote class=prayer-modal__prayer>
-                            <p>Señor Jesús, reconozco que soy pecador y que te he fallado. Sé que la paga del pecado es muerte, pero creo que Tú moriste en la cruz por mí y que Dios te levantó de los muertos.</p>
-                            <p>Hoy recibo tu regalo de vida eterna, no por mis obras, sino por fe. Te abro la puerta de mi corazón y te confieso como mi Señor y Salvador.</p>
-                            <p>Gracias por amarme y hacerme hijo de Dios. Amén.</p>
-                        </blockquote>
-                        <div class=btn-row>
-                            <button class="btn-app btn-app--primary" type=button data-action=prayed>
-                                <i class="fa-solid fa-check icon" aria-hidden="true"></i>Ya oré</button>
-                            <button class="btn-app btn-app--outline" type=button data-bs-dismiss=modal>
-                                <i class="fa-solid fa-xmark icon" aria-hidden="true"></i>Ahora no</button>
-                        </div>
-                    </section>
-                    <section class=prayer-modal__stage data-stage=welcome hidden>
-                        <h2 class="title-lg prayer-modal__title" tabindex=-1 data-stage-title>¡Te damos la bienvenida a la familia de Dios!</h2>
-                        <p>Si hiciste esta oración de corazón, la Biblia dice que ahora eres hijo de Dios (Juan 1:12). Nos encantaría acompañarte en tus primeros pasos.</p>
-                        <p>El seguimiento es opcional. Puedes terminar aquí sin compartir tus datos.</p>
-                        <button class="btn-app btn-app--outline" type=button data-bs-dismiss=modal>Terminar</button>
-                        <form class=form-app data-form=salvation data-form-require-one="email telefono" method=post aria-label="Quiero que me contacten">
-                            <div class=field>
-                                <label class=field__label for=follow-name>Nombre</label>
-                                <input class=field__input id=follow-name name=nombre autocomplete=name required aria-describedby=follow-name-error>
-                                <p class=field__error id=follow-name-error></p>
-                            </div>
-                            <div class=field>
-                                <label class=field__label for=follow-email>Correo electrónico</label>
-                                <input class=field__input id=follow-email name=email type=email autocomplete=email aria-describedby="follow-contact-hint follow-email-error">
-                                <p class=field__error id=follow-email-error></p>
-                            </div>
-                            <div class=field>
-                                <label class=field__label for=follow-phone>Teléfono o WhatsApp</label>
-                                <input class=field__input id=follow-phone name=telefono type=tel autocomplete=tel aria-describedby="follow-contact-hint follow-phone-error">
-                                <p class=field__error id=follow-phone-error></p>
-                                <p class=form-note id=follow-contact-hint>Escribe al menos un correo o un teléfono.</p>
-                            </div>
-                            <p class=form-note>Responsable: Iglesia Bautista de Monterrey, Asociación Religiosa. Usaremos tu nombre, tu correo o teléfono y el hecho de que enviaste esta solicitud únicamente para darte seguimiento. Este último es un dato sensible, porque revela tu creencia religiosa. Puedes retirar tu consentimiento cuando quieras.</p>
-                            <div class="field field--check">
-                                <input class=field__check id=follow-consent name=consentimiento type=checkbox value=sí required aria-describedby=follow-consent-error>
-                                <label for=follow-consent>Acepto que la Iglesia Bautista de Monterrey me contacte para darme seguimiento y trate mis datos, incluido el dato sensible de mi creencia religiosa, conforme a su <a href=privacy.html>aviso de privacidad</a>.</label>
-                                <p class=field__error id=follow-consent-error></p>
-                            </div>
-                            <input class=form-trap name=_gotcha tabindex=-1 autocomplete=off aria-hidden=true>
-                            <input type=hidden name=origen value="Decisión en la página de Salvación">
-                            <div class=btn-row>
-                                <button class="btn-app btn-app--primary" type=submit>
-                                    <i class="fa-solid fa-paper-plane icon" aria-hidden="true"></i>Contáctenme</button>
-                                <button class="btn-app btn-app--outline" type=button data-bs-dismiss=modal>
-                                    <i class="fa-solid fa-xmark icon" aria-hidden="true"></i>Cerrar</button>
-                            </div>
-                            <p class=form-status data-form-status role=status></p>
-                        </form>
-                    </section>
+    <dialog class=prayer-modal id=salvation-modal aria-labelledby=prayer-title closedby=any>
+        <button type=button class="btn-close prayer-modal__close" data-close aria-label=Cerrar></button>
+        <div class=prayer-modal__body>
+            <section class=prayer-modal__stage data-stage=prayer>
+                <h2 class="title-lg prayer-modal__title" id=prayer-title tabindex=-1 data-stage-title>Una oración para recibir a Jesús</h2>
+                <p>No son palabras mágicas: lo que importa es lo que crees en tu corazón. Puedes hablar con Dios con tus propias palabras o decirle algo así:</p>
+                <blockquote class=prayer-modal__prayer>
+                    <p>Señor Jesús, reconozco que soy pecador y que te he fallado. Sé que la paga del pecado es muerte, pero creo que Tú moriste en la cruz por mí y que Dios te levantó de los muertos.</p>
+                    <p>Hoy recibo tu regalo de vida eterna, no por mis obras, sino por fe. Te abro la puerta de mi corazón y te confieso como mi Señor y Salvador.</p>
+                    <p>Gracias por amarme y hacerme hijo de Dios. Amén.</p>
+                </blockquote>
+                <div class=btn-row>
+                    <button class="btn-app btn-app--primary" type=button data-action=prayed>
+                        <i class="fa-solid fa-check icon" aria-hidden="true"></i>Ya oré</button>
+                    <button class="btn-app btn-app--outline" type=button data-close>
+                        <i class="fa-solid fa-xmark icon" aria-hidden="true"></i>Ahora no</button>
                 </div>
-            </div>
+            </section>
+            <section class=prayer-modal__stage data-stage=welcome hidden>
+                <h2 class="title-lg prayer-modal__title" tabindex=-1 data-stage-title>¡Te damos la bienvenida a la familia de Dios!</h2>
+                <p>Si hiciste esta oración de corazón, la Biblia dice que ahora eres hijo de Dios (Juan 1:12). Nos encantaría acompañarte en tus primeros pasos.</p>
+                <p>El seguimiento es opcional. Puedes terminar aquí sin compartir tus datos.</p>
+                <button class="btn-app btn-app--outline" type=button data-close>Terminar</button>
+                <form class=form-app data-form=salvation data-form-require-one="email telefono" method=post aria-label="Quiero que me contacten">
+                    <div class=field>
+                        <label class=field__label for=follow-name>Nombre</label>
+                        <input class=field__input id=follow-name name=nombre autocomplete=name required aria-describedby=follow-name-error>
+                        <p class=field__error id=follow-name-error></p>
+                    </div>
+                    <div class=field>
+                        <label class=field__label for=follow-email>Correo electrónico</label>
+                        <input class=field__input id=follow-email name=email type=email autocomplete=email aria-describedby="follow-contact-hint follow-email-error">
+                        <p class=field__error id=follow-email-error></p>
+                    </div>
+                    <div class=field>
+                        <label class=field__label for=follow-phone>Teléfono o WhatsApp</label>
+                        <input class=field__input id=follow-phone name=telefono type=tel autocomplete=tel aria-describedby="follow-contact-hint follow-phone-error">
+                        <p class=field__error id=follow-phone-error></p>
+                        <p class=form-note id=follow-contact-hint>Escribe al menos un correo o un teléfono.</p>
+                    </div>
+                    <p class=form-note>Responsable: Iglesia Bautista de Monterrey, Asociación Religiosa. Usaremos tu nombre, tu correo o teléfono y el hecho de que enviaste esta solicitud únicamente para darte seguimiento. Este último es un dato sensible, porque revela tu creencia religiosa. Puedes retirar tu consentimiento cuando quieras.</p>
+                    <div class="field field--check">
+                        <input class=field__check id=follow-consent name=consentimiento type=checkbox value=sí required aria-describedby=follow-consent-error>
+                        <label for=follow-consent>Acepto que la Iglesia Bautista de Monterrey me contacte para darme seguimiento y trate mis datos, incluido el dato sensible de mi creencia religiosa, conforme a su <a href=privacy.html>aviso de privacidad</a>.</label>
+                        <p class=field__error id=follow-consent-error></p>
+                    </div>
+                    <input class=form-trap name=_gotcha tabindex=-1 autocomplete=off aria-hidden=true>
+                    <input type=hidden name=origen value="Decisión en la página de Salvación">
+                    <div class=btn-row>
+                        <button class="btn-app btn-app--primary" type=submit>
+                            <i class="fa-solid fa-paper-plane icon" aria-hidden="true"></i>Contáctenme</button>
+                        <button class="btn-app btn-app--outline" type=button data-close>
+                            <i class="fa-solid fa-xmark icon" aria-hidden="true"></i>Cerrar</button>
+                    </div>
+                    <p class=form-status data-form-status role=status></p>
+                </form>
+            </section>
         </div>
-    </div>
+    </dialog>
     <footer class=site-footer>
         <div class="container site-footer__grid">
             <div class=footer-brand>

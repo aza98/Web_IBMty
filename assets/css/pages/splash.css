@@ -5,20 +5,12 @@
  * rule is an accent, not a progress meter.
  *
  * Follows the theme: light is the sky-over-ground hero surface, dark is the night band.
- * The gradient lives on the canvas itself (background-attachment: fixed covers the full
- * viewport, including iOS safe areas) and body takes the color it ends in as a fallback;
- * the status bar takes the color it starts with.
+ * Paint the gradient on the fixed screen: iOS can clip fixed-attachment body backgrounds
+ * before the bottom safe area. Body keeps the end color as the canvas fallback.
  */
 body[data-page="splash"] {
-  --splash-ground: var(--gradient-hero-surface);
-  --color-status-bar: var(--cyan-50);
-  background: var(--splash-ground) fixed var(--stone-100)
-}
-
-[data-bs-theme="dark"] body[data-page="splash"] {
-  --splash-ground: var(--gradient-band);
-  --color-status-bar: var(--color-band);
-  background: var(--splash-ground) fixed var(--color-band-deep)
+  --color-status-bar: var(--splash-start);
+  background: var(--splash-end)
 }
 
 .splash {
@@ -31,8 +23,16 @@ body[data-page="splash"] {
   gap: var(--space-4);
   padding: calc(var(--safe-top) + var(--space-5)) calc(var(--safe-right) + var(--space-4)) calc(var(--safe-bottom) + var(--space-5)) calc(var(--safe-left) + var(--space-4));
   overflow: hidden;
+  background: var(--splash-ground) var(--splash-end);
   color: var(--color-text-primary);
   text-align: center
+}
+
+/* iOS may paint safe areas outside the fixed box: every installed surface must match. */
+html.splash-page[data-display="standalone"],
+html.splash-page[data-display="standalone"] body,
+html.splash-page[data-display="standalone"] .splash {
+  background: var(--splash-start)
 }
 
 .splash__mark {
@@ -49,8 +49,7 @@ body[data-page="splash"] {
   border: 2px solid var(--color-brand);
   border-radius: 14%;
   opacity: 0;
-  transform: rotate(45deg) scale(.4);
-  animation: splash-ripple 0.9s var(--ease-out) forwards
+  transform: rotate(45deg) scale(.4)
 }
 
 .splash__ring:nth-child(1) {
@@ -71,15 +70,13 @@ body[data-page="splash"] {
   position: relative;
   width: 7rem;
   height: 7rem;
-  filter: drop-shadow(0 10px 24px rgb(0 192 246 / .35));
-  animation: splash-logo 0.5s cubic-bezier(.34, 1.56, .64, 1) both
+  filter: drop-shadow(0 10px 24px rgb(0 192 246 / .35))
 }
 
 .splash__name {
   max-width: 12ch;
   margin: 0;
-  color: var(--color-heading);
-  animation: splash-rise 0.45s 0.25s var(--ease-out) both
+  color: var(--color-heading)
 }
 
 .splash__bar {
@@ -94,8 +91,26 @@ body[data-page="splash"] {
   height: 100%;
   border-radius: inherit;
   background: var(--color-brand);
-  animation: splash-draw 0.4s 0.45s var(--ease-out) both;
   transform-origin: 50% 50%
+}
+
+/* Without motion the rings stay hidden and the logo, name and rule show at rest. */
+@media (prefers-reduced-motion:no-preference) {
+  .splash__ring {
+    animation: splash-ripple 0.9s var(--ease-out) forwards
+  }
+
+  .splash__logo {
+    animation: splash-logo 0.5s cubic-bezier(.34, 1.56, .64, 1) both
+  }
+
+  .splash__name {
+    animation: splash-rise 0.45s 0.25s var(--ease-out) both
+  }
+
+  .splash__bar span {
+    animation: splash-draw 0.4s 0.45s var(--ease-out) both
+  }
 }
 
 @keyframes splash-ripple {

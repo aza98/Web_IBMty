@@ -344,12 +344,17 @@
 }
 
 .stage[data-stage-ready] .sending.is-current {
-  visibility: visible;
-  animation: sending-in var(--dur-slow) var(--ease-out) both
+  visibility: visible
 }
 
-.stage [data-direction="back"] .sending.is-current {
-  animation-name: sending-back
+@media (prefers-reduced-motion:no-preference) {
+  .stage[data-stage-ready] .sending.is-current {
+    animation: sending-in var(--dur-slow) var(--ease-out) both
+  }
+
+  .stage [data-direction="back"] .sending.is-current {
+    animation-name: sending-back
+  }
 }
 
 @keyframes sending-in {
@@ -422,6 +427,12 @@
   transform: rotate(45deg) scale(1.7)
 }
 
+@media (prefers-reduced-motion:reduce) {
+  .stage__line i {
+    transition-property: background-color
+  }
+}
+
 .journey__close {
   display: grid;
   gap: var(--space-4);
@@ -454,6 +465,15 @@
 .map-marker:hover::before,
 .map-marker:focus-visible::before {
   transform: rotate(45deg) scale(1.3)
+}
+
+@media (prefers-reduced-motion:reduce) {
+
+  .map-marker::before,
+  .map-origin::before,
+  .map-cluster::before {
+    transition-property: box-shadow
+  }
 }
 
 .map-marker.is-current::before,
@@ -686,47 +706,6 @@
   margin-bottom: var(--space-4)
 }
 
-.carousel-nav {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: var(--space-2);
-  margin-top: var(--space-4);
-  color: var(--color-text-muted);
-  font-weight: 600
-}
-
-.carousel-nav__count {
-  min-width: 4.5ch;
-  font-variant-numeric: tabular-nums;
-  text-align: right
-}
-
-.carousel-nav__button {
-  display: inline-grid;
-  place-items: center;
-  width: var(--button-height);
-  height: var(--button-height);
-  border: 1.5px solid var(--color-control-border);
-  border-radius: 50%;
-  background: var(--color-bg);
-  color: var(--color-heading);
-  cursor: pointer
-}
-
-.carousel-nav__button:hover {
-  border-color: var(--color-heading)
-}
-
-.carousel-nav__button.is-disabled {
-  opacity: .4;
-  pointer-events: none
-}
-
-.carousel-nav__button--prev .icon {
-  transform: scaleX(-1)
-}
-
 .leader-card__logo {
   position: absolute;
   bottom: calc(var(--space-4) * -1);
@@ -931,31 +910,6 @@
 }
 
 @media (min-width:768px) {
-  .leaders>.container {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
-    align-items: end;
-    gap: var(--space-4) var(--space-3)
-  }
-
-  .leaders__head {
-    margin-bottom: 0
-  }
-
-  .leaders .carousel-nav {
-    grid-column: 2;
-    grid-row: 1;
-    justify-content: flex-end;
-    margin-top: 0
-  }
-
-  .leaders .carousel-app {
-    grid-column: 1 / -1;
-    grid-row: 2;
-    min-width: 0;
-    width: 100%
-  }
-
   .contact-links {
     max-width: 24rem
   }

@@ -1,18 +1,17 @@
 {
   "description": "Inventory of third-party code, fonts and services. Source of truth for tools/verify.mjs and THIRD_PARTY_NOTICES.md.",
-  "reviewed": "2026-10-24",
+  "reviewed": "2026-11-17",
   "packages": [
     {
       "name": "bootstrap",
-      "version": "5.3.8",
+      "version": "5.3.9",
       "license": "MIT",
       "licenseFile": "LICENSE",
-      "source": "https://www.npmjs.com/package/bootstrap/v/5.3.8",
+      "source": "https://www.npmjs.com/package/bootstrap/v/5.3.9",
       "homepage": "https://getbootstrap.com",
-      "notes": "Bundle includes @popperjs/core (MIT).",
+      "notes": "CSS only: assets/css/core/bootstrap-subset.css is cut from css/bootstrap.min.css, kept here as the reference for tools/verify.project.mjs. The JavaScript bundle is no longer used.",
       "files": {
-        "css/bootstrap.min.css": "sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB",
-        "js/bootstrap.bundle.min.js": "sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        "css/bootstrap.min.css": "sha384-yEPZ7jP9S0QKiUQ0m3jjsO4ProIW7wvR9gXkI7JOGa2XVsw53Yke2bsdkBbjmmiX"
       }
     },
     {
@@ -26,19 +25,6 @@
       "files": {
         "gsap.min.js": "sha384-XmJ9SoHtVOHoQUcKvFAzVXwdkKo1Ie3bhmSoIAkcdsHGaIrVJIkmozyq0FJeb/Ly",
         "ScrollTrigger.min.js": "sha384-wl5TeDVvOWt30Pbf8aSo2ZrzsOjddu3avOBvHe+p+OhJt9gP6w9YXmDkN5DK2/dF"
-      }
-    },
-    {
-      "name": "swiper",
-      "version": "14.3.0",
-      "license": "MIT",
-      "licenseFile": "LICENSE",
-      "source": "https://www.npmjs.com/package/swiper/v/14.3.0",
-      "homepage": "https://swiperjs.com",
-      "notes": "",
-      "files": {
-        "swiper-bundle.min.js": "sha384-nimz5qRuF8SOYqiuzkhgKleYiz6jIj9pUhB/LlAAsbB6I3fI9v9s5RMwMTzEyOAY",
-        "swiper-bundle.min.css": "sha384-xkKzAc7JSlGq3SLCZHugx/i0gfYZf6kaFzg3v9/wz0HtsAFYPLz7aUvCFTac8KBk"
       }
     },
     {
@@ -147,6 +133,19 @@
         "css/solid.min.css": "sha384-p/nJzgOJxEnSeUkMQ0nk5oPsUT5x8eOWi6pxU2ls9qcO9B78dCvZk0JSAOXWXUQN",
         "webfonts/fa-brands-400.woff2": "sha384-QSzlW1NKpLQ4F3Vyt5v6/78tJC+q3tbKZBx6mmL4357XJJMQwKo3s0VxJ0Fp8l78",
         "webfonts/fa-solid-900.woff2": "sha384-TeBDWCQ2a4tojAZRcJzXsEgFI2EzW27W0GYt9HIpqXdUiPIauuYxz9RpAgJM1x9+"
+      }
+    },
+    {
+      "name": "fontawesome",
+      "version": "7.3.1-subset",
+      "license": "OFL-1.1 AND CC-BY-4.0",
+      "licenseFile": "LICENSE.txt",
+      "source": "https://www.npmjs.com/package/@fortawesome/fontawesome-free/v/7.3.1",
+      "homepage": "https://fontawesome.com",
+      "notes": "The 7.3.1 webfonts cut to the glyphs in assets/css/core/icons.css with fontTools pyftsubset (command in docs/development.md); outlines unchanged, name table kept. 7.3.1 stays as the source.",
+      "files": {
+        "webfonts/fa-brands-400.woff2": "sha384-RwdPbfJ+/L4ycT7BdLSgs3bxcbT7VRY7GsY8zP5SgrrQL/7lK+eH5XqooxTvTEeT",
+        "webfonts/fa-solid-900.woff2": "sha384-OE4QKHwXVAQj/nQoYHsfZDOxvFzgfWTdWzyJ/5i61pFYMwMrZPcTpOsWw1Y8sAAQ"
       }
     }
   ],

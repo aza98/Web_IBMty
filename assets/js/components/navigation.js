@@ -1,10 +1,17 @@
 /*
- * Current year and navbar DOM order matching the mobile/desktop visual order.
+ * Current year, the phone menu toggle and navbar DOM order matching the mobile/desktop visual order.
  */
 (function(IBMty) {
     'use strict';
     IBMty.register('component:navigation', {
         init() {
+            const toggler = document.querySelector('.navbar-toggler');
+            const menu = toggler && document.getElementById(toggler.getAttribute('aria-controls'));
+            if (menu) toggler.addEventListener('click', () => {
+                const open = toggler.getAttribute('aria-expanded') !== 'true';
+                toggler.setAttribute('aria-expanded', String(open));
+                menu.classList.toggle('show', open)
+            });
             const settings = document.querySelector('.navbar-settings');
             if (settings) {
                 const desktop = matchMedia('(min-width: 768px)');

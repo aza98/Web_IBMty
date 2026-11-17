@@ -75,6 +75,12 @@
   transform: translateY(1px)
 }
 
+@media (prefers-reduced-motion:reduce) {
+  .btn-app {
+    transition-property: background-color, border-color, color
+  }
+}
+
 .btn-app:disabled,
 .btn-app[aria-disabled="true"] {
   border-color: var(--color-border);

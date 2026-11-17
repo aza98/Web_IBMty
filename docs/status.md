@@ -1,6 +1,6 @@
 # Estado y pendientes
 
-Revisión del código: **2026-11-05**, versión 8.0.0 ([version.js](../assets/js/core/version.js)).
+Revisión del código: **2026-11-17**, versión 8.1.0 ([version.js](../assets/js/core/version.js)).
 El repositorio Git empieza en esta versión; los cambios están en el [CHANGELOG](../CHANGELOG.md).
 Este es el único lugar para pendientes y evidencia: lo resuelto se borra de aquí.
 
@@ -54,6 +54,27 @@ necesitan red y una configuración válida en [config.js](../assets/js/core/conf
   `donate.html#fund-missions` sí queda visible.
 
 ## Evidencia vigente
+
+- **2026-11-17, optimización de CSS y JS, 8.1.0 (sin publicar).** `node tools/verify.mjs` pasa
+  después de `--write-hashes` y `--write-precache`; sus comprobaciones nuevas fallan con el
+  `config.js` anterior y con un icono sin glifo. Chrome sin interfaz contra un servidor local,
+  sin worker ni caché: se compararon los estilos calculados de cada elemento antes y después en
+  las siete páginas a 390 y 1280 px, claro y oscuro, navegador y app instalada, con movimiento
+  reducido. Solo cambia lo buscado (duraciones, transiciones sin movimiento, el recorte de los
+  paneles y la estructura de los carruseles); colores, rellenos y degradados quedan iguales. Sin
+  errores de consola. Funciones: línea de meses, deslizar hasta el final, flechas con vuelta
+  (1 → 9 → 2), menú de teléfono, panel de ajustes (abre, enfoca, oculta los botones flotantes,
+  cierra y devuelve el foco), diálogo de oración (modal, foco en el título, bienvenida, confeti
+  dentro del diálogo), «Abrir/Cerrar todo» y altura animada en Privacidad, splash en ambos temas
+  con y sin movimiento, y conteos en inglés («2 of 9»). Con el worker activo (sin bypass): se
+  instala, activa y deja la precarga de navegación apagada. Apache 2.4 local con `.htaccess`:
+  gzip en HTML, JS y JSON con `mod_deflate`, sin recomprimir `.woff2`, y 200 (no 500) sin el
+  módulo. CPU 4 veces más lenta: tarea larga de inicio de 99 a 71 ms en Inicio y de 96 a 57 ms
+  en Nosotros; los JSON se piden a los ~19 ms en vez de tras `DOMContentLoaded`. Sin probar:
+  Safari y Firefox (popover, `::details-content`, `interpolate-size` y el respaldo del panel),
+  deslizar con el dedo y el gesto atrás en un teléfono real, el hosting real y la compresión en
+  producción (responde 403 a peticiones automáticas), y lectores de pantalla en el carrusel y
+  el diálogo.
 
 - **2026-11-13, auditoría de JavaScript (sin publicar).** `node tools/verify.mjs` pasa después
   de `--write-precache` y `node --check` acepta cada archivo de `assets/js/`. Chrome sin
@@ -144,3 +165,43 @@ necesitan red y una configuración válida en [config.js](../assets/js/core/conf
   actualizaciones pospuestas y aceptadas bajo `/review/` (con una revisión sintética del
   worker, sin cambiar la versión).
 - En ninguna revisión se enviaron formularios reales, suscripciones ni mensajes.
+
+- **2026-11-17, fondo del splash en iOS (sin publicar).** El degradado se pinta en
+  `.splash`, fijo a los cuatro bordes, en lugar de usar un fondo de body con
+  `background-attachment: fixed`. `node tools/verify.mjs` pasa después de regenerar
+  precaché. Chrome móvil emulado a 393 × 852: claro/oscuro, preferencias es/en y
+  navegador/standalone simulado, sin desbordamiento; capturas revisadas en ambos temas.
+  Para inspeccionar la pantalla se suspendieron las dos redirecciones solo en la respuesta
+  de prueba. El nombre propio permanece igual en ambos idiomas. Sin probar: PWA instalada
+  en iPhone real, sus áreas seguras nativas y la animación (prueba con movimiento reducido).
+- **2026-11-17, segunda corrección del splash tras reporte de iPhone.** Mover el degradado
+  no resolvió el corte reportado. En modo instalado se iguala el fondo sólido de `html`,
+  `body`, `.splash` y `theme-color` al token `--splash-start`; navegador conserva el
+  degradado. Se revisaron HTML, CSS y JS: el script solo programa la salida. Chrome móvil
+  emulado (393 × 852, preferencias es/en, claro/oscuro, navegador/standalone simulado):
+  colores calculados idénticos en las tres superficies instaladas y capturas revisadas;
+  sin desbordamiento. Verificador aprobado tras regenerar precaché. Sin validar en iPhone
+  físico. La consulta del CSS público devolvió HTTP 403; no se confirmó qué cambio está
+  desplegado y no se publicó desde esta tarea.
+- **2026-11-17, carruseles de eventos y ministerios (sin publicar).** Indicadores
+  sincronizados durante scroll mediante requestAnimationFrame, sin debounce de 100 ms;
+  marcador mensual con transición corta. Controles compartidos anterior / contador /
+  siguiente en ambas páginas. Pista móvil/PWA traducida, oculta al interactuar y restaurada
+  tras 12 segundos de inactividad sin cambiar su altura. Chrome: 393 y 1280 px,
+  claro/español y oscuro/inglés, standalone simulado en móvil; botones, regreso al primer
+  elemento por scroll, tarjeta activa, orden de controles y capturas revisados. Temporizador
+  probado con reloj controlado: aparición inicial, ocultación y retorno. Verificador
+  aprobado tras regenerar precaché. Sin probar: gestos en teléfono físico, Safari/iOS,
+  lector de pantalla y PWA instalada real. No se publicaron cambios.
+- **2026-11-17, controles y pista de carruseles (sin publicar).** Controles centrados
+  bajo Eventos y Ministerios. Pista con una tarjeta y flechas laterales. CIMA 2026
+  queda como concluido con el enlace a su Instagram. En Chrome se comprobaron 16
+  combinaciones de página, ancho (393 y 1280 px), tema con idioma y modo de pantalla
+  simulado. Se verificaron la posición de los controles, la traducción de la pista y
+  el estado y enlace de CIMA. El temporizador conserva los 12 segundos y la altura.
+  Captura móvil revisada. Sin probar en Safari ni en un teléfono físico.
+- **2026-11-17, centrado de Ministerios (sin publicar).** Ministerios usa el mismo
+  ajuste al centro que Eventos. Se comprobó el centro horizontal de la primera,
+  última y segunda tarjeta con las flechas en Chrome a 393 y 1280 px, en ambos
+  temas e idiomas, con modo instalado simulado en móvil. Precaché y verificador
+  aprobados. Falta probar el gesto en un dispositivo físico.

@@ -179,25 +179,33 @@
             });
             modal.querySelector(`[data-stage="${name}"] [data-stage-title]`).focus()
         };
-        modal.addEventListener('show.bs.modal', () => {
-            stages.forEach((stage) => {
-                stage.hidden = stage.dataset.stage !== 'prayer'
-            })
+        // Without JS the opener stays a link to the contact section.
+        document.querySelector(`[data-dialog="${modal.id}"]`)?.addEventListener('click', (event) => {
+            event.preventDefault();
+            modal.showModal();
+            show('prayer')
+        });
+        modal.addEventListener('click', (event) => {
+            if (event.target.closest('[data-close]')) modal.close()
+        });
+        const canvas = document.createElement('canvas');
+        canvas.className = 'prayer-modal__confetti';
+        modal.append(canvas);
+        const celebrate = typeof confetti === 'function' && confetti.create(canvas, {
+            resize: !0,
+            useWorker: !0,
+            disableForReducedMotion: !0
         });
         modal.querySelector('[data-action="prayed"]').addEventListener('click', () => {
             show('welcome');
-            if (typeof confetti === 'function') {
-                confetti({
-                    particleCount: 140,
-                    spread: 75,
-                    origin: {
-                        y: 0.55
-                    },
-                    colors: ['#00C0F6', '#DB7A58', '#FCFAF7', '#1C1915'],
-                    zIndex: 1100,
-                    disableForReducedMotion: !0
-                })
-            }
+            if (celebrate) celebrate({
+                particleCount: 140,
+                spread: 75,
+                origin: {
+                    y: 0.55
+                },
+                colors: ['#00C0F6', '#DB7A58', '#FCFAF7', '#1C1915']
+            })
         })
     }
     IBMty.register('page:salvation', {

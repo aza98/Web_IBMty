@@ -29,8 +29,13 @@
   background: var(--color-band);
   box-shadow: var(--shadow-raised);
   color: var(--color-on-band);
-  pointer-events: auto;
-  animation: notice-in var(--dur-slow) var(--ease-out)
+  pointer-events: auto
+}
+
+@media (prefers-reduced-motion:no-preference) {
+  .notice {
+    animation: notice-in var(--dur-slow) var(--ease-out)
+  }
 }
 
 .notice__text {
@@ -89,8 +94,13 @@
   background-color: var(--color-bg);
   background-image: linear-gradient(165deg, var(--color-brand-tint) 0%, var(--color-bg) 48%);
   box-shadow: var(--shadow-raised);
-  color: var(--color-text-primary);
-  animation: prompt-card-in var(--dur-slow) var(--ease-out)
+  color: var(--color-text-primary)
+}
+
+@media (prefers-reduced-motion:no-preference) {
+  .prompt-card {
+    animation: prompt-card-in var(--dur-slow) var(--ease-out)
+  }
 }
 
 [data-bs-theme="dark"] .prompt-card {
@@ -262,6 +272,12 @@
   transform: scale(.96)
 }
 
+@media (prefers-reduced-motion:reduce) {
+  .float-btn {
+    transition-property: background-color
+  }
+}
+
 .whatsapp-fab {
   background: var(--whatsapp);
   color: var(--white);
@@ -272,8 +288,13 @@
 .push-fab {
   background: var(--color-chrome-bg);
   box-shadow: var(--shadow-chrome);
-  color: var(--color-brand-strong);
-  animation: push-fab-in var(--dur-base) var(--ease-out)
+  color: var(--color-brand-strong)
+}
+
+@media (prefers-reduced-motion:no-preference) {
+  .push-fab {
+    animation: push-fab-in var(--dur-base) var(--ease-out)
+  }
 }
 
 body:has(.whatsapp-fab:not([hidden])) .push-fab {
@@ -313,7 +334,7 @@ body:has(.whatsapp-fab:not([hidden])) .push-fab {
 }
 
 body:is([data-page="settings"], [data-page="privacy"]) .float-btn,
-body:has(main :focus-visible, form :focus, .settings-panel:not([hidden])) .float-btn {
+body:has(main :focus-visible, form :focus, .settings-panel:is(:popover-open, :not([popover], [hidden]))) .float-btn {
   visibility: hidden;
   pointer-events: none
 }

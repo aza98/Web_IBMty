@@ -2,7 +2,7 @@
  * Share buttons ([data-share-item], hidden until this runs): Web Share API, falling back
  * to copying the text and link. data-share-title / -text / -url on the button win;
  * otherwise they come from the closest [data-share-scope]: its heading, its
- * [data-share-part] texts and its id (or data-share-id, on a carousel's loop copies) as the link hash. Live share links can be
+ * [data-share-part] texts and its id as the link hash. Live share links can be
  * updated by other modules through data-share-url.
  * data-share-image attaches that picture when the device can share files.
  * [data-share] shares the configured location, with feedback in data-share-status.
@@ -46,7 +46,7 @@
         const parts = scope ? Array.from(scope.querySelectorAll('[data-share-part]'), clean).filter(Boolean) : [];
         const text = [title, data.shareText ? translated(data.shareText) : parts.join('\n')].filter(Boolean).join('\n');
         const url = new URL(data.shareUrl || location.href, location.href);
-        if (!data.shareUrl) url.hash = scope ? scope.id || scope.dataset.shareId || '' : '';
+        if (!data.shareUrl) url.hash = scope ? scope.id : '';
         return {
             title,
             text,

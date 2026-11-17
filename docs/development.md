@@ -46,9 +46,10 @@ cualquier copia extraída del paquete (por ejemplo `build/`) antes de ejecutarlo
   inglés o en `keep`; las entradas que nadie usa se avisan;
 - la sintaxis de JS y las comprobaciones del proyecto: orden y destinos de la navegación,
   cálculo de la cuenta regresiva del domingo, selección y actualización del último video,
-  fragmentos de contenido mal formados, reversión e impresión de los paneles, que cada clase
+  fragmentos de contenido mal formados, apertura por fragmento, «Abrir todo» e impresión de los
+  paneles, que `service-worker/config.js` defina la configuración del worker, que cada clase
   de Bootstrap e icono de Font Awesome en uso exista en las copias recortadas de
-  `assets/css/core/`, y que todas las páginas enlacen las mismas hojas de `assets/css/core/` y
+  `assets/css/core/` y cada icono tenga su glifo en las fuentes recortadas, y que todas las páginas enlacen las mismas hojas de `assets/css/core/` y
   `assets/css/components/`, en el mismo orden y sin que falte ninguna.
 
 No comprueba el renderizado, los textos que los scripts generan en tiempo de ejecución, los
@@ -102,7 +103,20 @@ resultados. No envíes formularios reales ni cambies suscripciones durante una r
 - **GSAP** no es MIT: usa la licencia estándar «No Charge» de GSAP. Revísala antes de agregar
   plugins.
 - **Font Awesome Free**: iconos CC BY 4.0, fuentes SIL OFL 1.1, código MIT; los iconos de
-  marcas no otorgan derechos de marca.
+  marcas no otorgan derechos de marca. Las páginas usan `vendor/fontawesome/7.3.1-subset/`:
+  las fuentes de 7.3.1 recortadas a los glifos de `assets/css/core/icons.css`. Al agregar un
+  icono, copia su regla en `icons.css` y regenera las dos fuentes con fontTools
+  (`pip install fonttools brotli` en un entorno aparte), por ejemplo para solid:
+
+  ```sh
+  pyftsubset vendor/fontawesome/7.3.1/webfonts/fa-solid-900.woff2 \
+    --unicodes="U+f004,U+f00c,…" --flavor=woff2 --name-IDs='*' \
+    --output-file=vendor/fontawesome/7.3.1-subset/webfonts/fa-solid-900.woff2
+  ```
+
+  Los códigos son los `--fa` de la sección de solid (o de brands, con `fa-brands-400`).
+  Después ejecuta `--write-hashes`, `--write-precache` y el verificador, que falla si un icono
+  no tiene glifo.
 - **OneSignal** usa una licencia MIT modificada ligada a su servicio; se queda remoto.
 - **OpenStreetMap**: datos ODbL con atribución visible; la política de teselas prohíbe las
   descargas masivas (solo se guardan en caché las teselas vistas).
@@ -151,6 +165,7 @@ servidor.
   (`sftp:auto-confirm`); para fijarla habría que guardar su huella como secreto.
 - `.htaccess` responde 404 a los archivos que empiezan con punto, así que no se sirven.
 - `.htaccess` redirige HTTP a `https://www.ibmty.com` (el dominio del aviso de privacidad),
+  comprime HTML, CSS, JS, JSON y SVG cuando el hosting tiene `mod_deflate` y `mod_filter`, y
   envía cabeceras de seguridad y una CSP en modo solo informe. Si el hosting responde 500,
   quita su línea `Options`. Pasa la CSP a obligatoria (`Content-Security-Policy`) después de
   revisar la consola en cada página; agrega los dominios de GA4 u OneSignal antes de activar

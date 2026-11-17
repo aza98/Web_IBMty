@@ -56,6 +56,12 @@
   transition: background-color var(--dur-slow) var(--ease-out), box-shadow var(--dur-slow) var(--ease-out), transform var(--dur-slow) var(--ease-out)
 }
 
+@media (prefers-reduced-motion:reduce) {
+  .diamond-tab__gem::before {
+    transition-property: background-color, box-shadow
+  }
+}
+
 .diamond-tab:hover {
   color: var(--color-heading)
 }
@@ -88,8 +94,10 @@
   margin-top: var(--space-4)
 }
 
-[data-tabs-ready] .diamond-tabs__panel:not([hidden]) {
-  animation: panel-in var(--dur-slow) var(--ease-out)
+@media (prefers-reduced-motion:no-preference) {
+  [data-tabs-ready] .diamond-tabs__panel:not([hidden]) {
+    animation: panel-in var(--dur-slow) var(--ease-out)
+  }
 }
 
 @keyframes panel-in {

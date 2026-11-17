@@ -32,7 +32,9 @@
         return fetchedAt >= lastServiceEnd && now - fetchedAt < IDLE_REFRESH
     }
     async function request(path, params) {
-        const response = await fetch(`${API}/${path}?${new URLSearchParams(params)}`);
+        const response = await fetch(`${API}/${path}?${new URLSearchParams(params)}`, {
+            signal: AbortSignal.timeout(8000)
+        });
         if (!response.ok) throw new Error(`YouTube ${path}: ${response.status}`);
         return response.json()
     }

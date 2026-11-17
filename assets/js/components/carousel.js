@@ -1,48 +1,32 @@
 /*
- * Swiper on [data-carousel] elements. The attribute value is the id of an
- * optional pagination element, drawn as a line of labels (slide data-label)
- * whose marker travels to the active slide. Opens on the first slide with
- * data-status="upcoming", or on the slide named by the URL hash. An optional sibling [data-carousel-nav] holds
- * [data-carousel-prev] / [data-carousel-next] buttons and an optional [data-carousel-count]
- * that shows the position ("3 de 9"); data-carousel-align="start"
- * aligns slides to the left edge instead of centring the active one.
- * Slides loop endlessly; a short list is repeated (copies without id, data-share-id instead)
- * because Swiper's loop needs spare slides on both sides or it jumps over cards.
- * Without Swiper, CSS keeps a scroll-snap row.
+ * Carousels on [data-carousel]: a native scroll-snap row (.carousel-track of .carousel-slide),
+ * swipeable and readable without JavaScript. This script adds the active card (.is-active),
+ * the optional pagination named by the attribute value (a line of labels from each slide's
+ * data-label whose marker travels to the active slide) and an optional sibling
+ * [data-carousel-nav] with [data-carousel-prev] / [data-carousel-next] buttons, which loop from
+ * the last slide to the first, and [data-carousel-count] («3 de 9»). Opens on the slide named
+ * by the URL hash, otherwise the first with data-status="upcoming".
  */
 (function(IBMty) {
     'use strict';
-    const LOOP_MIN = 8;
 
     function start(root) {
-        const slides = Array.from(root.querySelectorAll('.swiper-slide'));
-        const line = document.getElementById(root.dataset.carousel);
-        const upcoming = slides.findIndex((slide) => slide.dataset.status === 'upcoming');
-        const linked = location.hash ? slides.findIndex((slide) => `#${slide.id}` === location.hash) : -1;
-        const nav = root.parentElement.querySelector('[data-carousel-nav]');
-        if (!slides.length) {
-            if (nav) nav.hidden = !0;
-            return
-        }
+        const track = root.querySelector('.carousel-track');
+        const slides = Array.from(track.children);
         const total = slides.length;
-        const loop = total > 1;
-        const wrapper = slides[0].parentElement;
-        while (loop && wrapper.children.length < LOOP_MIN) slides.forEach((slide) => {
-            const copy = slide.cloneNode(!0);
-            copy.dataset.shareId = slide.id;
-            copy.removeAttribute('id');
-            wrapper.append(copy)
-        });
-        Array.from(wrapper.children).forEach((slide, i) => slide.setAttribute('aria-label', `${i % total + 1} de ${total}`));
+        const line = document.getElementById(root.dataset.carousel);
+        const nav = root.parentElement.querySelector('[data-carousel-nav]');
+        if (nav) nav.hidden = total < 2;
+        if (!total) return;
         const count = nav && nav.querySelector('[data-carousel-count]');
-        let swiper;
-        if (line) {
-            const e = IBMty.escapeHtml;
-            line.innerHTML = slides.map((slide) => `<button type="button" class="month-line__item" data-status="${e(slide.dataset.status || '')}">` + `${e(slide.dataset.label)}<span class="visually-hidden">: ${e(slide.querySelector('h3')?.textContent.trim() || '')}</span></button>`).join('');
-            Array.from(line.children).forEach((item, index) => item.addEventListener('click', () => swiper.slideToLoop(index)))
-        }
-        const update = (instance) => {
-            const index = instance.realIndex % total;
+        const snap = (slide) => {
+            const left = slide.offsetLeft - (track.clientWidth - slide.offsetWidth) / 2;
+            return Math.min(Math.max(left, 0), track.scrollWidth - track.clientWidth)
+        };
+        let current = 0;
+        const mark = (index) => {
+            current = index;
+            slides.forEach((slide, i) => slide.classList.toggle('is-active', i === index));
             if (count) count.textContent = `${index + 1} de ${total}`;
             if (!line) return;
             Array.from(line.children).forEach((item, i) => {
@@ -53,45 +37,69 @@
             const item = line.children[index];
             line.style.setProperty('--marker-x', `${item.offsetLeft + item.offsetWidth / 2}px`)
         };
-        swiper = new Swiper(root, {
-            loop,
-            initialSlide: linked >= 0 ? linked : Math.max(upcoming, 0),
-            centeredSlides: root.dataset.carouselAlign !== 'start',
-            slidesPerView: 1.08,
-            spaceBetween: 16,
-            keyboard: {
-                enabled: !0
-            },
-            breakpoints: {
-                768: {
-                    slidesPerView: 1.5,
-                    spaceBetween: 24
-                },
-                1200: {
-                    slidesPerView: 2,
-                    spaceBetween: 32
-                }
-            },
-            a11y: {
-                slideLabelMessage: '',
-                prevSlideMessage: 'Anterior',
-                nextSlideMessage: 'Siguiente'
-            },
-            navigation: nav ? {
-                prevEl: nav.querySelector('[data-carousel-prev]'),
-                nextEl: nav.querySelector('[data-carousel-next]'),
-                disabledClass: 'is-disabled'
-            } : !1,
-            on: {
-                afterInit: update,
-                slideChange: update,
-                resize: update
-            }
-        })
+        const go = (index, behavior) => {
+            index = (index + total) % total;
+            track.scrollTo({
+                left: snap(slides[index]),
+                behavior
+            });
+            mark(index)
+        };
+        const settle = () => {
+            const distance = (i) => Math.abs(snap(slides[i]) - track.scrollLeft);
+            const closest = slides.reduce((best, _, i) => distance(i) < distance(best) ? i : best, current);
+            if (closest !== current) mark(closest)
+        };
+        slides.forEach((slide, i) => slide.setAttribute('aria-label', `${i + 1} de ${total}`));
+        if (line) {
+            const e = IBMty.escapeHtml;
+            line.innerHTML = slides.map((slide) => `<button type="button" class="month-line__item" data-status="${e(slide.dataset.status || '')}">` + `${e(slide.dataset.label)}<span class="visually-hidden">: ${e(slide.querySelector('h3')?.textContent.trim() || '')}</span></button>`).join('');
+            Array.from(line.children).forEach((item, index) => item.addEventListener('click', () => go(index)))
+        }
+        if (nav) {
+            nav.querySelector('[data-carousel-prev]')?.addEventListener('click', () => go(current - 1));
+            nav.querySelector('[data-carousel-next]')?.addEventListener('click', () => go(current + 1))
+        }
+        let frame;
+        track.addEventListener('scroll', () => {
+            if (frame) return;
+            frame = requestAnimationFrame(() => {
+                frame = 0;
+                settle()
+            })
+        }, {
+            passive: !0
+        });
+        if (total > 1) {
+            const hint = document.createElement('p');
+            hint.className = 'carousel-hint';
+            hint.innerHTML = `<svg viewBox="0 0 28 20" width="28" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                <rect x="9.5" y="3.5" width="9" height="13" rx="2"/>
+                <path d="M6 7 3 10l3 3m16-6 3 3-3 3"/>
+            </svg><span>Desliza para ver más</span>`;
+            root.append(hint);
+            let reminder;
+            let interacted = false;
+            const dismiss = () => {
+                interacted = true;
+                hint.classList.add('is-dismissed');
+                clearTimeout(reminder);
+                reminder = setTimeout(() => hint.classList.remove('is-dismissed'), 12000)
+            };
+            ['pointerdown', 'keydown', 'click', 'wheel'].forEach((type) => root.addEventListener(type, dismiss, { passive: !0 }));
+            track.addEventListener('scroll', () => {
+                if (interacted) dismiss()
+            }, { passive: !0 });
+            nav?.addEventListener('click', dismiss);
+            line?.addEventListener('click', dismiss)
+        }
+        new ResizeObserver(() => { settle(); mark(current) }).observe(track);
+        const linked = location.hash ? slides.findIndex((slide) => `#${slide.id}` === location.hash) : -1;
+        go(linked >= 0 ? linked : Math.max(slides.findIndex((slide) => slide.dataset.status === 'upcoming'), 0), 'instant');
+        root.dataset.carouselReady = ''
     }
     IBMty.register('component:carousel', {
         init() {
-            if (typeof Swiper !== 'function') return;
             document.querySelectorAll('[data-carousel]').forEach(start)
         }
     })

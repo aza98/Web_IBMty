@@ -165,8 +165,15 @@ body[data-page="home"] {
   background: var(--color-brand);
   box-shadow: var(--shadow-brand-glow);
   transform: rotate(45deg);
-  vertical-align: .05em;
-  animation: live-pulse 1.8s ease-in-out infinite
+  vertical-align: .05em
+}
+
+@media (prefers-reduced-motion:no-preference) {
+
+  .countdown [data-when="live"]::before,
+  .latest-live[data-live="true"] .latest-live__label::before {
+    animation: live-pulse 1.8s ease-in-out infinite
+  }
 }
 
 @keyframes live-pulse {

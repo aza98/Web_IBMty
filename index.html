@@ -17,8 +17,10 @@
     <script src=assets/js/boot/theme.js></script>
     <script src=assets/js/boot/pwa-launch.js></script>
     <link rel=preload as=image href=assets/images/shared/index-hero.webp fetchpriority=high>
+    <link rel=preload as=font type=font/woff2 href=vendor/league-spartan/5.3.0/league-spartan-latin-700-normal.woff2 crossorigin>
+    <link rel=preload as=font type=font/woff2 href=vendor/poppins/5.3.0/poppins-latin-400-normal.woff2 crossorigin>
+    <link rel=preload as=fetch href=assets/data/events.json crossorigin>
     <link rel=stylesheet href=assets/css/core/bootstrap-subset.css>
-    <link rel=stylesheet href=vendor/swiper/14.3.0/swiper-bundle.min.css>
     <link rel=stylesheet href=assets/css/core/icons.css>
     <link rel=stylesheet href=assets/css/core/tokens.css>
     <link rel=stylesheet href=assets/css/core/fonts.css>
@@ -35,8 +37,6 @@
     <link rel=stylesheet href=assets/css/components/forms.css>
     <link rel=stylesheet href=assets/css/components/floating.css>
     <link rel=stylesheet href=assets/css/pages/home.css>
-    <script defer src=vendor/bootstrap/5.3.8/js/bootstrap.bundle.min.js></script>
-    <script defer src=vendor/swiper/14.3.0/swiper-bundle.min.js></script>
     <script defer src=vendor/gsap/3.15.0/gsap.min.js></script>
     <script defer src=vendor/gsap/3.15.0/ScrollTrigger.min.js></script>
     <script defer src=assets/js/core/version.js></script>
@@ -79,7 +79,7 @@
                 <button class="navbar-settings icon-btn" type=button aria-label=Ajustes aria-haspopup=dialog aria-expanded=false aria-controls=settings-panel data-settings-toggle>
                     <i class="fa-solid fa-gear icon" aria-hidden="true"></i>
                 </button>
-                <button class=navbar-toggler type=button data-bs-toggle=collapse data-bs-target=#main-nav aria-controls=main-nav aria-expanded=false aria-label="Abrir menú">
+                <button class=navbar-toggler type=button aria-controls=main-nav aria-expanded=false aria-label="Abrir menú">
                     <span class=navbar-toggler-icon></span>
                 </button>
                 <div class="collapse navbar-collapse" id=main-nav>
@@ -132,9 +132,18 @@
                 <h2 class=section-title id=events-title data-reveal>Eventos</h2>
                 <p class=section-lead data-reveal>Mantente al día con nuestras actividades</p>
                 <div class=month-line id=events-months data-reveal></div>
-                <div class="carousel-app swiper" data-reveal data-carousel=events-months aria-label=Eventos>
-                    <div class=swiper-wrapper data-content=events>
+                <div class=carousel-app data-reveal data-carousel=events-months role=region aria-label=Eventos>
+                    <div class=carousel-track data-content=events tabindex=0>
                     </div>
+                </div>
+                <div class=carousel-nav data-carousel-nav data-reveal hidden>
+                    <button class="carousel-nav__button carousel-nav__button--prev" type=button data-carousel-prev aria-label="Evento anterior">
+                        <i class="fa-solid fa-arrow-right icon" aria-hidden=true></i>
+                    </button>
+                    <span class=carousel-nav__count data-carousel-count aria-hidden=true>Desliza</span>
+                    <button class=carousel-nav__button type=button data-carousel-next aria-label="Evento siguiente">
+                        <i class="fa-solid fa-arrow-right icon" aria-hidden=true></i>
+                    </button>
                 </div>
             </div>
         </section>

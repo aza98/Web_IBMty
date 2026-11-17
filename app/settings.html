@@ -16,6 +16,8 @@
     <link rel=apple-touch-icon href=../assets/icons/app/apple-touch-icon.png>
     <script src=../assets/js/boot/theme.js></script>
     <script src=../assets/js/boot/pwa-launch.js></script>
+    <link rel=preload as=font type=font/woff2 href=../vendor/league-spartan/5.3.0/league-spartan-latin-700-normal.woff2 crossorigin>
+    <link rel=preload as=font type=font/woff2 href=../vendor/poppins/5.3.0/poppins-latin-400-normal.woff2 crossorigin>
     <link rel=stylesheet href=../assets/css/core/bootstrap-subset.css>
     <link rel=stylesheet href=../assets/css/core/icons.css>
     <link rel=stylesheet href=../assets/css/core/tokens.css>
@@ -33,7 +35,6 @@
     <link rel=stylesheet href=../assets/css/components/forms.css>
     <link rel=stylesheet href=../assets/css/components/floating.css>
     <link rel=stylesheet href=../assets/css/pages/settings.css>
-    <script defer src=../vendor/bootstrap/5.3.8/js/bootstrap.bundle.min.js></script>
     <script defer src=../assets/js/core/version.js></script>
     <script defer src=../assets/js/core/config.js></script>
     <script defer src=../assets/js/core/app.js></script>
@@ -66,7 +67,7 @@
                     IBMty
                 </a>
                 <button class="navbar-settings icon-btn" type=button aria-label=Ajustes aria-haspopup=dialog aria-expanded=false aria-controls=settings-panel data-settings-toggle><i class="fa-solid fa-gear icon" aria-hidden=true></i></button>
-                <button class=navbar-toggler type=button data-bs-toggle=collapse data-bs-target=#main-nav aria-controls=main-nav aria-expanded=false aria-label="Abrir menú">
+                <button class=navbar-toggler type=button aria-controls=main-nav aria-expanded=false aria-label="Abrir menú">
                     <span class=navbar-toggler-icon></span>
                 </button>
                 <div class="collapse navbar-collapse" id=main-nav>

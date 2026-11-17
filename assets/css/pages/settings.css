@@ -104,14 +104,7 @@
 }
 
 .settings {
-  --settings-canvas: var(--color-surface);
-  --settings-card: var(--color-bg);
   padding-top: var(--space-4)
-}
-
-[data-bs-theme="dark"] .settings {
-  --settings-canvas: var(--color-bg);
-  --settings-card: var(--color-surface)
 }
 
 .settings.sheet {
@@ -231,6 +224,12 @@ summary .settings-link__arrow {
   transform: rotate(90deg)
 }
 
+@media (prefers-reduced-motion:reduce) {
+  summary .settings-link__arrow {
+    transition: none
+  }
+}
+
 .settings-list details>:not(summary) {
   margin: 0 var(--space-3) var(--space-3)
 }
@@ -239,8 +238,10 @@ summary .settings-link__arrow {
   margin-top: var(--space-3)
 }
 
-[data-check-update]:disabled .icon {
-  animation: settings-spin 1s linear infinite
+@media (prefers-reduced-motion:no-preference) {
+  [data-check-update]:disabled .icon {
+    animation: settings-spin 1s linear infinite
+  }
 }
 
 @keyframes settings-spin {
